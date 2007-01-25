@@ -1,0 +1,76 @@
+\ifx\exebook\mytoken \documentclass{mmcm}\else \fi
+
+
+\docbegin
+
+
+\section{实验事实}
+
+\begin{Exec}
+  证明空间$\br\times\br^3$的每个加利略变换都可唯一得表示为一个旋转, 
+  一个平移, 一个匀速运动的组合
+  ($g = g_1 \circ g_2 \circ g_3$ )(所以, 加利略变换群的维数是$3+4+3=10$)
+\end{Exec}
+
+\begin{proof}
+  
+\end{proof}
+
+\begin{Exec}
+  证明一切加利略空间均互相同构, 而特别是同构于坐标空间$\br\times\br^3$.
+\end{Exec}
+
+\begin{Exec}
+  平面上一个可微运动的轨迹是否有图$3$形状? 其加速度适量是否有图上所示的值?
+\end{Exec}
+
+\begin{solution}
+  可能, 如$\bx(t) = (t^3,t^2)$; 不可能 $\bxdd$ 指向曲线凹处. 
+\end{solution}
+
+\begin{Exec}
+  若一力学系只由一点组成, 证明它在惯性参考系中的加速度为零.
+\end{Exec}
+\begin{proof}
+  由例1,例2,加速度不依赖于$\bx,\bxd$和$t$, 所以$F(\bx,\bxd,t)=\bv$,
+  又由旋转不变性对任意$G$, $\bv=F(G\bx,G\bxd,t)=GF(\bx,\bxd,t)=G\bv$
+  所以只能有$\bv=0$. 即加速度为零.
+\end{proof}
+
+\begin{Exec}
+  设一个力学系由两点组成, 在初始时刻其速度均为零, 
+  证明他们将停留在初始时刻联结他们的直线上.
+\end{Exec}
+
+\begin{proof}
+  只要证明$\bxdd_i$平行于$\bx_1-\bx_2$. 
+  显然$\bx_1-\bx_2$非零, 可令$\bu=(\bx_1-\bx_2)/\left\|\bx_1-\bx_2\right\|$, 
+  对任意与$\bu$垂直的单位向量$\bv$,令$\bw = \bu\times\bv$ 
+  令$G = (\bu, \bv,\bw)^T$, 为一个旋转变换.
+  由例3的相同方法,可知$F=\bxdd = (\bxdd_1,\bxdd_2)$
+  只依赖于$\bx_1-\bx_2$和$\bxd_1-\bxd_2$.
+  则$G\bxdd = G\,F(\bx_1-\bx_2,\bxd_1-\bxd_2,t) 
+  = F(G\bu,G\b0,t) \equiv F((\|\bu\|,0,0)^T,\b0,t)$.
+  由$\bv$的任意性, $\bxdd_i$垂直于$\bv$. 又考虑到$\bx_1 = \bx_2 = 0$
+  所以$\bx_i(t)$始终在他们的连线上.
+  \end{proof}
+
+\begin{Exec}
+  设一个力学系由三点组成, 在初始时刻其速度均为零,
+  证明它们总位于初始时刻包含它们的平面上.
+\end{Exec}
+
+\begin{proof}
+  类似前一题, 构造正交变换$G$.
+  令$\bu$是垂直于$\bx_1-\bx_2,\bx_1-\bx_3$的向量.
+  $\bv$平行于$\bx_1-\bx_2$,
+  $\bw=\bu\times\bv$,
+  $G = (\bu,\bv,\bw)$,$G' = (-\bu,\bv,\bw)$,$\bx = (\bxdd_1,\bxdd_2,\bxdd_3)$.
+  由书中例, $F$只与$\bx_1-\bx_2,\bx_1-\bx_3$有关. 
+  则($\star$中部分不必考虑具体形式)
+  $$G\bxdd=F(G(\bx_1-\bx_2,\bx_1-\bx_3),G(\bxd_1,\bxd_2,\bxd_3),t)
+  = F((0,0,0;\star),\b0,t) = G' \bxdd$$,
+  得$\bu\bxdd = \b0$, 同上题得证.
+\end{proof}
+
+\docend
