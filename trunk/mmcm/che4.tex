@@ -1,0 +1,64 @@
+\ifx\exebook\mytoken \documentclass{mmcm}\else \fi
+
+
+\docbegin
+\section{Holonomic constraints}
+
+\section{Differentiable manifolds}
+\begin{Exec}
+  Show that $\text{SO(3)}$ is homeomorphic
+  to three-dimensional real projective space.
+\end{Exec}
+
+\section{E. Noether's theorem}
+
+
+\begin{Exec}
+  Suppose that a particle moves in the field of the uniform 
+  helical line $x = \cos\phi$, $y = \sin\phi$, $z = c\phi$. 
+  Find the law of conservation corresponding to this helical symetry.
+\end{Exec}
+
+\begin{solution}
+  任一质点若容许在螺线上运动, 且$L$在其上不变于是有容许映射$h$,
+  设$\bx = (\cos \phi,\sin\phi, c\phi)$.
+  则$h^s \bx = (\cos(\phi+s),\sin(\phi+s), c(\phi+s))$.
+  于是
+  $$dh^s\bx/ds \vat_{s = 0} = (-\sin\phi,\cos\phi,c) = (-y,x,c)$$.
+  又$M_3 = ([\bx,m\bxd],\be_3)= (m\bx,[\bx,\be_3])
+   = (m(\dot{x},\dot{y},\dot{z}),[(x,y,z),(0,0,1)]) 
+   = -m\dot{x}y + m\dot{y}x$
+  于是$I = m \dot{z} c + m \dot{x}(-y) + m \dot{y}x 
+  = cP_3+M_3$守恒.
+\end{solution}
+
+\begin{Exec}
+  Suppose that a rigid body is moving under its own inertia. Show that its
+  center of mass moves linearly and uniformly. If the center of mass is 
+  at rest, then the angular momentum with repect to its is conserved
+\end{Exec}
+
+\begin{proof}
+  
+\end{proof}
+
+\begin{Exec}
+  What quantity is conserved under the motion of a heavy rigid body if it is
+  fixed at some point $O$? What if, in addition, the body is symmetric 
+  with respect to an axis passing through $O$?
+\end{Exec}
+
+\begin{Exec}
+  Extend Noether's theorem to non-autonomous lagrangian systems.
+\end{Exec}
+
+\begin{solution}
+  令$M_1 = M\times \bR$为拓广的构形空间.
+  定义函数$L_1:TM_1\rightarrow \bR$为$L\frac{dt}{d\tau}$.
+  局部坐标下:
+  $$L_1\left(\bq,t,\frac{d\bq}{d\tau},\frac{dt}{d\tau}\right)
+  = L\left(\bq,\frac{d\bq/d\tau}{dt/d\tau},t)dt\right)$$,
+  
+  
+\end{solution}
+\docend
