@@ -1,0 +1,47 @@
+\ifx\exebook\mytoken \documentclass{mmcm}\else \fi
+
+
+\docbegin
+\section{Exterior multiplication}
+
+\begin{Exec}
+  Find the exterior $k$-th power of $\omega^2$.
+\end{Exec}
+\begin{solution}
+  $(\omega^2)^k =(\sum_{i=1}^{n}  p_i\wedge q_i)^k
+  =\sum_{i_1\cdots i_k} p_{i_1}\wedge q_{i_i}\wedge 
+  \cdots \wedge p_{i_k}\wedge q_{i_k}$.
+
+  考虑其中的项
+  $p_{i_1}\wedge q_{i_i}\wedge \cdots \wedge p_{i_k}\wedge q_{i_k}$,
+  若$i_1\cdots i_k$ 中有重复, 则为零. 若不充分, 将其变为形式:
+  $p_{i_1}\wedge\cdots \wedge p_{i_k} \wedge q_{i_1}\wedge\cdots\wedge q_{i_k}$.
+  这需要经过$1+2+\cdots+(k-1)$次对换, 所以其符号为$(-1)^{k(k-1)/2}$
+  再将$\{i_k\}$按大小顺序排列, 此时由于$p$, $q$都做同样的置换, 所以这种置换必是偶的.
+  固定$\{i_k\}$考虑共有多少这样的项?这是从$k$个$\omega^2$中取出$i_k$组成排列的个数, 
+  一共有$k!$个.
+  综合以上, 得
+  $$(\omega^2)^k = (-1)^{k(k-1)/2}
+  \sum_{i_1<\cdots<i_k}
+  p_{i_1}\wedge\cdots \wedge p_{i_k} \wedge q_{i_1}\wedge\cdots\wedge q_{i_k}$$
+  .
+\end{solution}
+
+\begin{Exec}
+  Show that every differential $1$-form on the line is the differential of 
+  some function.
+\end{Exec}
+
+\begin{proof}
+  $\bR$上的$1$-微分形式$\omega:T\bR \rightarrow \bR$, 在每一点$x$处, 可定义函数
+  $f(x) = df(x,1)$. 显然$f$是连续的, 令$F(x) = \int_0^x f(t) dt$.
+  则$F$的$1$-微分形式为$df = f\,dx$, 与$\omega$相同.
+\end{proof}
+
+\begin{Exec}
+  Find differential $1$-forms on the circle and the plane which are not the
+  differential of any function.
+\end{Exec}
+
+
+\docend
