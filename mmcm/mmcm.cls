@@ -14,6 +14,9 @@
 \RequirePackage{theorem}
 \RequirePackage{CJK}
 
+\def\setsection#1{{\setcounter{section}{#1}}}
+
+
 \@ifundefined{exebook}{
 \LoadClass[11pt,oneside, a4paper]{article}
 \newcommand{\docbegin}{\begin{document}\begin{CJK*}{GBK}{song}}
@@ -22,18 +25,14 @@
 \theorembodyfont{\normalfont}
 \newtheorem{Exec}{{Exercise}}[section]
 }
-\def\setsection#1{{\setcounter{section}{#1}}}
 }{
 \LoadClass[11pt,oneside,a4paper]{book}
 \newcommand{\docbegin}{}
 \newcommand{\docend}{}
-\def\section#1{\chapter{#1}}
 {
 \theorembodyfont{\normalfont}
 \newtheorem{Exec}{{Exercise}}[chapter]
 }
-\def\setsection#1{{\setcounter{chapter}{#1}}}
-\def\setsection#1{}
 }
 
 \newcommand{\setexenum}[1]{{\setcounter{Exec}{#1}}}
@@ -53,11 +52,11 @@
 \def\ae#1#2{\text{a.e.} {#1} \in {#2}}
 
 \def\brn{\mathbb{R}^N}
-\def\br{\mathbb{R}}
-\def\bn{\mathbb{N}}
-\def\bc{\mathbb{C}}
-\def\bq{\mathbb{Q}}
-\def\bz{\mathbb{Z}}
+\def\bR{\mathbb{R}}
+\def\bN{\mathbb{N}}
+\def\bC{\mathbb{C}}
+\def\bQ{\mathbb{Q}}
+\def\bZ{\mathbb{Z}}
 \def\bbf{\mathbb{F}}
 \def\ch{\mathcal{H}}
 \def\cb{\mathscr{B}}
@@ -102,6 +101,10 @@
 
 \def\b0{{\boldsymbol{0}}}
 \def\bu{{\boldsymbol{u}}}
+\def\be{{\boldsymbol{e}}}
+\def\ba{{\boldsymbol{a}}}
+\def\bq{{\boldsymbol{q}}}
+%\def\bp{{\boldsymbol{p}}}
 \def\bv{{\boldsymbol{v}}}
 \def\bw{{\boldsymbol{w}}}
 \def\bx{{\boldsymbol{x}}}
@@ -109,11 +112,16 @@
 \def\bxdd{{\boldsymbol{\ddot{x}}}}
 
 
+\def\ker{{\text{Ker}\,}}
+\def\tr{{\text{tr}\,}}
 \def\Re{\mathfrak{Re}}
 \def\Im{\mathfrak{Im}}
 
 \def\esssup{\text{ess}\,\sup}
 \def\sspan{{\text{\rm span}}}
+
+\newcommand{\vat}{\bigg\arrowvert}
+\def\arcsinh{\text{arc}\sinh}
 
 %\newtheorem{theorem}{{Theorem}}[section]
 %\newtheorem{proposition}[theorem]{{Proposition}}
