@@ -51,11 +51,11 @@
 \def\gcd{{\rm gcd}}
 
 \hypersetup{
-    bookmarks=true,         % show bookmarks bar?
+    bookmarks=false,         % show bookmarks bar?
     unicode=false,          % non-Latin characters in Acrobat¡¯s bookmarks
     pdftoolbar=true,        % show Acrobat¡¯s toolbar?
-    pdfmenubar=true,        % show Acrobat¡¯s menu?
-    pdffitwindow=true,      % page fit to window when opened
+    pdfmenubar=false,        % show Acrobat¡¯s menu?
+    pdffitwindow=false,      % page fit to window when opened
     pdftitle={Qualify Examination Answers - Algebra},    % title
     pdfauthor={Ma Jia Jun},     % author
     pdfsubject={Subject},   % subject of the document
@@ -238,7 +238,7 @@ Classify all groups of order $n$ up to isomorphism.
 \proof
 \begin{enumerate}[(a)]
 \item Suppose that $|G|=p^2$. By Sylow's theorem $G$ has a order $p$ subgroup 
-$P$. It's easy to see that $C_G(P)$ 
+$P$. We will prove that $C_G(P)\gneq P$, 
 \end{enumerate}
 \qed
 \section{Sem1, 2002/2003}
@@ -438,10 +438,68 @@ Hence $ba = ab$. So $R$ commutative.
 \qed
 
 \section{Sem 1, 2004/2005}
+\begin{exec}
+Classify all groups of order $8$ up to isomorphism.
+\end{exec}
+\proof
+If $G$ is abelian, then $G$ can be $\bZ_2\times \bZ_2 \times \bZ_2$, 
+$\bZ_4\times \bZ_2$ and $\bZ_8$. 
+If $G$ is non-abelian, $G$ has a order. 
+\qed
 
 \section{Sem 2, 2004/2005}
+\subsection{Ring Theory}
 \begin{exec}
 Prove that every integral domain can be imbedded in a field.
+\end{exec}
+
+\begin{exec}
+Let $D$ be an itegral domain and let 
+$F=\Set{x\in D|xd=1\text{ for some }d\in D}$. 
+Suppose that $D$ is a finite dimensional vector space over $F$.
+Prove that $D$ is a field.
+\end{exec}
+\proof
+I don't think $F$ is a field. 
+If $F$ is a field, it's the same as \hyperref[Q:5_00b]{Question~\ref{Q:5_00b}}.
+\qed
+
+\subsection{Group Theory}
+\begin{exec}
+Let $G$ be a group of order $56$. Suppose that $G$ has $2$ or more 
+subgroups of order $7$. Prove that $G$ has a subgroup isomorphic to 
+$\bZ_2\times \bZ_2\times \bZ_2$. 
+\end{exec}
+\proof
+By Sylow's theorem $G$ has $7$ different Sylow $7$-subgroups. 
+So there is unique Sylow $2$-subgroups containing all element of $G$ not in
+Sylow $7$-subgroups. 
+\qed
+
+\subsection{Field Theory}
+\begin{exec}
+Let $F$ be a finite field. Prove that $F-\Set{0}$ under multiplication is a
+cyclic group.
+\end{exec}
+\proof
+It's well know that finite multiplication group of field is cyclic. 
+Clearly $F-\Set{0}$ form a group under multiplication, then it is cyclic.
+
+We can prove this result as following.
+Let $G$ be a finite multiplication subgroup of field $F$. 
+Let the primary decomposition of $G$  be $\bigoplus_{i=1}^nG_{p_i}$, 
+where $n\in \bN$ and $p_i$ are prime number and 
+$G_{p_i} = \oplus_{j=1}^{n_i} \bZ_{p^{\alpha_j}}$, $n_i\in bN$, $alpha_{i,j}\geq 1$.
+We claim that $n_i=1$, i.e. $G_{p_i} = \bZ_{p^{\alpha_i}}$, then $G$ is cyclic
+($\bZ_a\oplus \bZ_b = \bZ_{ab}$ if $\gcd(a,b)=1$). 
+If $n_i>1$, for some $i$, $G$ has two distinct order $p_i$ subgroup, then 
+there are more than $p_i$ element is $G$ satisfying the equation $x^{p_i}-1=0$.
+Since $F$ is a field, there at most $p_i$ different solution of the equation, 
+a contradicition.  
+\qed
+
+\begin{exec}
+Prove that $\sqrt{2}+\sqrt{3}+\sqrt{5}+\sqrt{7}$ is irrational.
 \end{exec}
 
 \section{Sem 1, 2005/2006}
@@ -459,11 +517,11 @@ Prove that every integral domain can be imbedded in a field.
 \proof
 \begin{enumerate}[(a)]
 \item If $|G|=12$ and has no order $3$ normal subgroup. Then the number 
-  of it's Sylow-$3$ subgroups is $4$. 
+  of it's Sylow $3$-subgroups is $4$. 
   %Then by counting number of order $3$ 
   %element, we know all the elements which are not order $3$ form 
   %the unique Sylow-$2$ subgroup of $G$. 
-  Let $G$ act on the set of Sylow-$3$ subgroups  $S$ by conjugation.
+  Let $G$ act on the set of Sylow $3$-subgroups  $S$ by conjugation.
   It gives a homomorphism $\phi\colon G\to S_4$. The same as
   \hyperref[Q:2_03a]{Question~\ref{Q:2_03a} (c)} $G$ has no order $6$ subgroup. 
   So $\Im\phi \subset A_4$. 
@@ -604,7 +662,9 @@ $2$-Sylow subgroup of $G$.
   \begin{enumerate}[(i)]
   \item For any ideal $I \subset U$, $\phi^{-1}(I)$ is a ideal in $T$. 
     Then $\phi^{-1}(I) = (r)$ for some $r$. Then $I = (\phi(r))$.
-  \item 
+  \item Not true!
+    \href{http://en.wikipedia.org/wiki/Unique_factorization_domain#Counterexamples}{A example on wikipedia.} $F[X,Y, Z,W]$ is UFD for any field $F$. 
+    But $F[X,Y,Z,W]/(XY-ZW)$ is not UFD. 
   \end{enumerate}
 \end{enumerate}
 \qed
