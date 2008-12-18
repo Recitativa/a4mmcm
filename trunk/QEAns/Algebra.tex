@@ -345,6 +345,45 @@ Classify all groups of order $n$ up to isomorphism.
 
 \section{Sem 2, 2002/2003}
 
+\begin{exec}
+  Let $F$ be a finite field with $p^n$ elements. Prove that 
+  \begin{enumerate}[(a)]
+  \item the multiplicative group $F^\times = F\setminus \Set{0}$ is cyclic.
+  \item $F$ contains a subfield with $p^m$ elements if and only if $m|n$.
+  \end{enumerate}
+\end{exec}
+\proof
+\begin{enumerate}[(a)]
+\item It's the same as \hyperref[Q:5_04b]{Question~\ref{Q:5_04b}}.
+\item Suppose that $K$ is a subfield of $F$ then $K^\times$ is a subgroup 
+  of $F^\times$. So $|K^\times|$ diviedes $F^\times$.
+  As we know finite field with charactor $p$ is a extention field of $\bZ_p$
+  So have $p^m$ elements.
+  It's clearly that $p^m-1 | p^n-1$ if and only if $m|n$.
+
+  On the other hand, if $m|n$, $p^m-1|p^n-1$.
+  Let $a$ be a generator of $F^\times$, then consider 
+  \[
+  K=\Set{0}\cup \braket{a^{\frac{p^n-1}{p^m-1}}}
+  \]
+  Clearly $|K|=p^n$. We will prove that $K$ is a field. 
+  Consider the map 
+  \begin{align*}
+    \phi_m \colon F &\to F \\
+    x&\mapsto x^{p^m}
+  \end{align*}
+  Note that $\phi$ is a field homomorphism since
+  $(x+y)^{p^m} = x^{p^m} + y^{p^m}$.
+  
+  It's also easy to see that every element $x$ in $K$ satisify 
+  $\phi_m(x) = x$ ($0$ is trivial; it's ture for other elements in $K$
+  since $|\braket{a^{\frac{p^n-1}{p^m-1}}}| = p^m-1$.)
+  But equation $x^{p^m}-x =0$ have at most $p^m$ solutions.
+  So $K$ is the set of all elements s.t. $\phi_k(x)=x$.
+  So $K$ is a field since the set $\Set{x\in F|\phi_k(x)=x}$ form a field
+  ($x+y,xy, x^{-1} \in K$ if $x,y\in K$).
+\end{enumerate}
+\qed
 \section{Sem 1, 2003/2004}
 \begin{exec}\label{Q:1_03a}
   \begin{enumerate}[(a)]
@@ -503,7 +542,7 @@ Sylow $7$-subgroups.
 \qed
 
 \subsection{Field Theory}
-\begin{exec}
+\begin{exec}\label{Q:5_04b}
 Let $F$ be a finite field. Prove that $F-\Set{0}$ under multiplication is a
 cyclic group.
 \end{exec}
