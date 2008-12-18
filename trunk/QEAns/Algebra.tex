@@ -237,8 +237,34 @@ Classify all groups of order $n$ up to isomorphism.
 \end{exec}
 \proof
 \begin{enumerate}[(a)]
-\item Suppose that $|G|=p^2$. By Sylow's theorem $G$ has a order $p$ subgroup 
-$P$. We will prove that $C_G(P)\gneq P$, 
+\item Suppose that $|G|=p^2$. 
+  We claim that $G$ is abelian.
+  First, the center $Z(G)$ of $G$ is non-trivial.
+  Consider $G$ act on itself by conjugation. If $x\in Z(G)$, the orbit length
+  is $1$. Let $S=\Set{x_i}$ be the representitive set of different orbit.
+  Then we get the class equation:
+  \[
+  |G| = |Z(G)|+\sum_{i}[G:H_i]
+  \]
+  where $H_i=C_G(x_i)$. Note that $p|[G:H_i]$. So $|Z(G)\equiv 0 \pmod{p}$.
+  $|Z(G)|$ non-tivial since $e \in Z(G)$.
+  
+  If $Z(G)=G$, then $G$ is abelian. 
+  If $Z(G)<G$, then $|G/Z(G)|=p$ so $G/Z(G)$ is cyclic. 
+  Let $a\in G\setminus Z(G)$ and $a+Z(G)$ is a generator of $G/Z(G)$.
+  Then every element in $G$ can written as $a^ng$ for $n\in \bZ$, $g\in Z(G)$. 
+  So $a^{n_1}g_1 a^{n_2}g_2 = a^{n_1}a^{n_2}g_1g_2 = a^{n_2}g_2a^{n_1}g_1$.
+  Hence $G$ is abelian. 
+
+  So $G$ can be $\bZ_{p^2}$ and $\bZ_p\times \bZ_p$ by the classification of 
+  finite abelian group. 
+\item Condier Sylow $q$-subgroup $Q$. The number of Sylow $q$-subgroup 
+  is $kq+1$ and divides $pq$. Since $q\nmid p-1$, only $1$ Sylow $q$-subgroup.
+  So $Q$ is normal in $G$. On the other hand, there is a 
+  Sylow $p$-subgroup $P$. It is normal in $G$ since $p>q$, the number of Sylow 
+  $p$-group is $1$. Clearly $p\cap Q = \braket{e}$, $PQ=G$. $P\cong \bZ_p$
+  and $Q\cong \bZ_q$.
+  So $G \cong \bZ_p\oplus \bZ_q = \bZ_{pq}$. 
 \end{enumerate}
 \qed
 \section{Sem1, 2002/2003}
