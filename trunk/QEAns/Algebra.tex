@@ -581,6 +581,33 @@ we know that $G$ should be abelian, a contradiction.
 So $Z(G)$ is cyclic of order $p$.
 \qed
 
+\subsection{Field Theory}
+\begin{exec}
+Let $\sigma$ be a field automorphism from $\bR$ to $\bR$. Prove
+that $\sigma(x)=x$ for all $x\in \bR$.
+\end{exec}
+\proof
+First $\sigma$ preserves rational number $\bQ$.
+Note that $\sigma(1)=1$.
+So $\sigma(x)=x$ for all $x\i \bZ$. Then there are equal in it's 
+fractional field $\bQ$ by the universal property of fractional field.
+($\sigma_{\bZ} = \id_\bZ$ clearly can be  extended uniquely to a homomorphism
+$\sigma_{\bQ}$ on 
+$\bQ$ s.t. $\sigma_{\bQ}\circ i = \sigma_{\bZ}$ where $i$ is the natrual
+inclusion map from $\bZ$ into $\bQ$. Clearly $\id_\bQ$ is a map satisfying
+this property. Hence $\sigma_{\bQ}=\id_\bQ$.)
+
+Next not that $\sigma$ preserves the ``order'' of $\bR$.
+Let $a>b$ iff $a-b\in \bR^+$. If $x\in \bR^+$, there is $y\in \bR$, s.t.
+$y^2=x$, then $\sigma(x) = \sigma(y^2) = \sigma(y)^2 \in \bR^+$.
+So $\sigma(a)>\sigma(b)$ if $a>b$.
+Note that there is one-one corresponding between $x\in \bR$ and
+the set $\Set{q\in \bQ|x>q}$. 
+Since $\sigma$ preserves rational number $\sigma$ preserves
+ $\Set{q\in \bQ|x>q}$. So $\sigma(x)=x$ for any $x\in \bR$.
+\qed
+
+
 \section{Sem 2, 2004/2005}
 \subsection{Ring Theory}
 \begin{exec}
@@ -599,6 +626,16 @@ If $F$ is a field, it's the same as \hyperref[Q:5_00b]{Question~\ref{Q:5_00b}}.
 \qed
 
 \subsection{Group Theory}
+\begin{exec}
+Let $G$ be a nonabelian finite group generated $x$ and $y$, where 
+$o(x)=o(y)=2$.
+Prove that $G$ isomorphic to a dihedral group.
+\end{exec}
+\proof
+I think this Question is wrong order $4$ group are abelian. I think 
+$o(x)$ may be an odd prime number. 
+\qed
+
 \begin{exec}
 Let $G$ be a group of order $56$. Suppose that $G$ has $2$ or more 
 subgroups of order $7$. Prove that $G$ has a subgroup isomorphic to 
@@ -644,6 +681,28 @@ Classify all groups of order $8$ up to isomorphism.
 If $G$ is abelian, then $G$ can be $\bZ_2\times \bZ_2 \times \bZ_2$, 
 $\bZ_4\times \bZ_2$ and $\bZ_8$. 
 If $G$ is non-abelian, $G$ has a order. 
+\qed
+
+
+
+\begin{exec}
+Let $R$ be a ring with $1$. A simple left $R$-module $M$ is a left $R$-module 
+such that $|M|>1$ and if $N$ is a submodule of $M$,
+then either $N=M$ or $N=\Set{0}$.
+\begin{enumerate}[(a)]
+\item Let $I$ be a maximal left ideal of $R$. Show that $R/I$ is a simple
+ $R$-module.
+\item Let $m$ be a nonzero element of a simple left $R$-module $M$.
+  Prove that:
+\begin{enumerate}[(i)]
+\item $Rm:=\Set{rm|r\in R}$ equals $M$;
+\item $Ann(m):=\Set{r\in R|rm=0}$ is a maximal left ideal of $R$;
+\item $R/Ann(m)\cong M$ as left $R$-module.
+\end{enumerate}
+\end{enumerate}
+\end{exec}
+\proof
+See \hyperref{Q:4_07b}[Question~\ref{Q:4_07b}].
 \qed
 
 \section{Sem 2, 2005/2006}
@@ -692,7 +751,7 @@ prime ideal in $R[X]$, then it is maximal ideal by
 \qed
 
 \section{Sem 1, 2007/2008}
-\begin{exec}
+\begin{exec}\label{Q:4_07b}
 Prove that a simple group of order $60$ is isomorphic to $A_5$.
 \end{exec}
 \proof
@@ -745,6 +804,28 @@ $3,5,15$. Now consider $G$ act on Sylow-$2$ by conjugation.
 
 \section{Sem 2, 2007/2008}
 
+\begin{exec}
+Let $R$ be a ring with $1$, and let $M$ be a left $R$-module. Prove
+that the following statements are equivalent:
+\begin{enumerate}[(a)]
+\item $M$ is nonzero, and if $N$ is a submodule of $M$, then $N=0$ or $N=M$.
+\item For every $m\in M\setminus \Set{0}$, $M=\Set{rm|r\in R}$.
+\item There exists a maximal left ideal $I$ of $R$ such that $M\cong R/I$
+as left $R$-modules.
+\end{enumerate}
+\end{exec}
+\proof
+\begin{description}
+\item[$(a)\Rightarrow (b)$] Clearly $N = \Set{rm|r\in R}$ 
+is a submodule of $M$. $0\neq m \in N$. So $N\neq 0$. Hence $N=M$.
+\item[$(b)\Rightarrow (c)$] There is a natural homomorphism $\phi$ from
+left $R$-module $R$ to $M$ by $\phi(r) = rm$. $I=\Ker\phi$ have to be maximal. 
+If not $I$ is contained in some maximal left ideal $J$ since $R$ have $1$.
+Then $J/I$ is a proper nontrivial submodule of $R/I$, but $R/I\cong M$, a contradiction.
+\item[$(c)\Rightarrow(a)$] Clearly by the one-one corresponding between 
+left ideals of $R$ which contains $I$ and submodule of $R/I$.
+\end{description}
+\qed
 \section{Sem 1, 2008/2009}
 \begin{exec}\label{Q:1_08a}
 \begin{enumerate}[(a)]
