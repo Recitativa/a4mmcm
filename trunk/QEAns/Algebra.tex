@@ -76,7 +76,7 @@
 \begin{document}
 \maketitle
 
-\section{Sem2, 2000/2001}
+\section{Sem 2, 2000/2001}
 \begin{exec}
 Let $G$ be a finite group with a unique maximal subgroup. 
 Show that $G$ is cyclic.
@@ -105,7 +105,7 @@ Prove that $\chi$ is a group homomorphism. Determine the kernel of $\chi$.
 \end{exec}
 \proof
 Since $f_g \circ f_{g^{-1}} = \id_{G/A}$, $f_{g^{-1}} \circ f_g = \id_{G/A}$. $f_g$ is
-bijective.
+bijection.
 It's easy to see that 
 $\chi(gh)(g_iA) = f_{gh}(g_iA) = ghg_iA = f_g\circ f_h(g_iA) 
 = (\chi(g)\chi(h))(g_iA)$.
@@ -154,7 +154,7 @@ So $[F(v):F] \leq [F(a,b):F] = [F(a)(b):F(a)][F(a),F]\leq [F(b):F][F(a):F]
 Hence $v$ is algebraic over $F$. 
 \qed
 
-\section{Sem1, 2001/2002}
+\section{Sem 1, 2001/2002}
 \begin{exec}\label{Q:1_02a}
 \begin{enumerate}[(a)]
 \item Show that if $R$ is a commutative ring with identity, then
@@ -176,7 +176,7 @@ $\Leftrightarrow$ $I$ prime.
   \item $p$ is prime the $p$ is irreducible($r$ nonunit and $r=ab$ gives 
     $a$ or $b$ is unit).\\
     If $p=ab$, then $p|ab$. WLOG, suppose that $p|a$ then $a= ps$. So $p=psb$,
-    then $1=sb$ since $R$ is integral domian. So $b$ is unit.
+    then $1=sb$ since $R$ is integral domain. So $b$ is unit.
   \item $r$ is irreducible iff $(r)$ is maximal in the set of all proper
     principle ideals.\\
     If $r$ is irreducible, $(r)\subset (s)$. Then $r=sb$. If $s$ is unit, 
@@ -194,8 +194,8 @@ $\Leftrightarrow$ $I$ prime.
 \begin{enumerate}[(a)]
 \item Let $G$ and $H$ be finite groups with relatively prime orders. 
 Let $\theta\colon G\to H$ be a group homomorphism. 
-Whtat can conclude about $\theta$ why?
-\item Let $H$ be a subgroup of a group $G$ with index $2$. Prive that $H\lhd G$.
+What can conclude about $\theta$ why?
+\item Let $H$ be a subgroup of a group $G$ with index $2$. Prove that $H\lhd G$.
 \item Give an example to show that $H$ may not be a normal subgroup of $G$
 if $[G:H] = 3$.
 \end{enumerate}
@@ -227,8 +227,8 @@ Note that $[L:K]= [L:K(a)][K(a),K]$, $[K(a),K]>1$ since $a\notin K$.
 So $[L:K(a)]$ i.e. $L=K(a)$.
 \qed
 
-\section{Sem2, 2001/2002}
-\begin{exec}
+\section{Sem 2, 2001/2002}
+\begin{exec}\label{Q:1_01b}
 Classify all groups of order $n$ up to isomorphism.
 \begin{enumerate}[(a)]
 \item $n$ is the square of a prime integer.
@@ -241,13 +241,13 @@ Classify all groups of order $n$ up to isomorphism.
   We claim that $G$ is abelian.
   First, the center $Z(G)$ of $G$ is non-trivial.
   Consider $G$ act on itself by conjugation. If $x\in Z(G)$, the orbit length
-  is $1$. Let $S=\Set{x_i}$ be the representitive set of different orbit.
+  is $1$. Let $S=\Set{x_i}$ be the representative set of different orbit.
   Then we get the class equation:
   \[
   |G| = |Z(G)|+\sum_{i}[G:H_i]
   \]
   where $H_i=C_G(x_i)$. Note that $p|[G:H_i]$. So $|Z(G)\equiv 0 \pmod{p}$.
-  $|Z(G)|$ non-tivial since $e \in Z(G)$.
+  $|Z(G)|$ non-trivial since $e \in Z(G)$.
   
   If $Z(G)=G$, then $G$ is abelian. 
   If $Z(G)<G$, then $|G/Z(G)|=p$ so $G/Z(G)$ is cyclic. 
@@ -258,7 +258,7 @@ Classify all groups of order $n$ up to isomorphism.
 
   So $G$ can be $\bZ_{p^2}$ and $\bZ_p\times \bZ_p$ by the classification of 
   finite abelian group. 
-\item Condier Sylow $q$-subgroup $Q$. The number of Sylow $q$-subgroup 
+\item Consider Sylow $q$-subgroup $Q$. The number of Sylow $q$-subgroup 
   is $kq+1$ and divides $pq$. Since $q\nmid p-1$, only $1$ Sylow $q$-subgroup.
   So $Q$ is normal in $G$. On the other hand, there is a 
   Sylow $p$-subgroup $P$. It is normal in $G$ since $p>q$, the number of Sylow 
@@ -267,7 +267,7 @@ Classify all groups of order $n$ up to isomorphism.
   So $G \cong \bZ_p\oplus \bZ_q = \bZ_{pq}$. 
 \end{enumerate}
 \qed
-\section{Sem1, 2002/2003}
+\section{Sem 1, 2002/2003}
 \begin{exec}
 \begin{enumerate}[(a)]
 \item Determine whether each of the following pairs of groups are isomorphic:
@@ -344,6 +344,15 @@ Classify all groups of order $n$ up to isomorphism.
 \qed
 
 \section{Sem 2, 2002/2003}
+\begin{exec}
+Let $G$ be a group of order $2p$, where $p$ is an odd prime. Prove that
+either $G$ is a cyclic, or 
+$G= \Set{1, a, a^2,\cdots, a^{p-1}, b, ab, a^2b,\cdots,a^{p-1}b}$
+where $a$ has order $p$, $b$ has order $2$, and $ba=a^{-1}b$.
+\end{exec}
+\proof
+See \hyperref[Q:3_04a]{Question~\ref{Q:3_04a}}
+\qed
 
 \begin{exec}
   Let $F$ be a finite field with $p^n$ elements. Prove that 
@@ -356,8 +365,8 @@ Classify all groups of order $n$ up to isomorphism.
 \begin{enumerate}[(a)]
 \item It's the same as \hyperref[Q:5_04b]{Question~\ref{Q:5_04b}}.
 \item Suppose that $K$ is a subfield of $F$ then $K^\times$ is a subgroup 
-  of $F^\times$. So $|K^\times|$ diviedes $F^\times$.
-  As we know finite field with charactor $p$ is a extention field of $\bZ_p$
+  of $F^\times$. So $|K^\times|$ divides $F^\times$.
+  As we know finite field with character $p$ is a extension field of $\bZ_p$
   So have $p^m$ elements.
   It's clearly that $p^m-1 | p^n-1$ if and only if $m|n$.
 
@@ -375,8 +384,8 @@ Classify all groups of order $n$ up to isomorphism.
   Note that $\phi$ is a field homomorphism since
   $(x+y)^{p^m} = x^{p^m} + y^{p^m}$.
   
-  It's also easy to see that every element $x$ in $K$ satisify 
-  $\phi_m(x) = x$ ($0$ is trivial; it's ture for other elements in $K$
+  It's also easy to see that every element $x$ in $K$ satisfy 
+  $\phi_m(x) = x$ ($0$ is trivial; it's true for other elements in $K$
   since $|\braket{a^{\frac{p^n-1}{p^m-1}}}| = p^m-1$.)
   But equation $x^{p^m}-x =0$ have at most $p^m$ solutions.
   So $K$ is the set of all elements s.t. $\phi_k(x)=x$.
@@ -387,7 +396,7 @@ Classify all groups of order $n$ up to isomorphism.
 \section{Sem 1, 2003/2004}
 \begin{exec}\label{Q:1_03a}
   \begin{enumerate}[(a)]
-  \item Let $G$ be the additive grou $\bQ/\bZ$. 
+  \item Let $G$ be the additive group $\bQ/\bZ$. 
     Show that any finite subgroup of $G$ is cyclic.
   \item For the ring $R=\bZ\times \bZ$, give an example for each 
     of the following:
@@ -417,8 +426,8 @@ Classify all groups of order $n$ up to isomorphism.
   Suppose that $x$ have odd order, then $x^2$ is the generator of $<x>$ (A
   result of cyclic group, $\braket{x^r} = \braket{x}$ for any $(r, |x|) = 1$).
   Since $x^2\in H$, $\braket{x}\subset H$. So $x\in H$.  
-\item There is a natrual sign map form $\sgn\colon S_n\to \Set{\pm 1}$.
-  restric on $G$. If $G$ has odd permutation, $\sgn\vert_{G}$ is epimorphism.
+\item There is a natural sign map form $\sgn\colon S_n\to \Set{\pm 1}$.
+  restrict on $G$. If $G$ has odd permutation, $\sgn\vert_{G}$ is epimorphism.
   Then $\Ker \sgn_{G}$ is a normal subgroup of $G$ with index $2$.
 \item Note that $\braket{(123)}$, $\braket{(124)}$, $\braket{(134)}$
 and $\braket{(234)}$ gives $4$-distinct order $3$ subgroup of $A_4$.
@@ -480,7 +489,8 @@ Hence $n=1$. $H\cap K=K$ i.e. $K=H$ by $|K|=|H|$.
 \begin{enumerate}[(a)]
 \item $R$ is finite, so $R$ is right Artinian ring. right Artinian integral 
   domain is field. It's the same as \hyperref[Q:5_00b]{Question~\ref{Q:5_00b}}.
-\item g
+\item If $P$ is a prime ideal in $R$, $R/P$ is integral domain. Then 
+  $R/P$ is field since it is finite. So $P$ is maximal in $R$.
 \end{enumerate}
 \qed
 
@@ -502,24 +512,83 @@ $bab+ ba+ ab + a = ab^2+ 2ab + a$.
 Hence $ba = ab$. So $R$ commutative.
 \qed
 
-\section{Sem 1, 2004/2005}
 \begin{exec}
-Classify all groups of order $8$ up to isomorphism.
+\begin{enumerate}[(a)]
+\item 
+Let $K$ be a finite field of $p$ element, where $p$ is a prime.
+Let $\gcd(n,p)=1$ and $F$ be the splitting field of $x^n-1_K$ over
+$K$. Show that if $(F:K)=f$ then the $n$ divides $p^f-1$.
+\item Show that $f$ is the smallest integer $m$ for which $p^m-1$ 
+  is divisible by $n$.
+\end{enumerate}
 \end{exec}
 \proof
-If $G$ is abelian, then $G$ can be $\bZ_2\times \bZ_2 \times \bZ_2$, 
-$\bZ_4\times \bZ_2$ and $\bZ_8$. 
-If $G$ is non-abelian, $G$ has a order. 
+\begin{enumerate}[(a)]
+\item %By \hyperref[Q:5_04b]{Question~\ref{Q:5_04b}},
+It's clearly that $K\cong \bZ_p$ by the uniqueness field of $p$ elements. 
+Let $g(x) = x^n-1\in K[x]$.
+Since $\gcd(n,p)=1$, there exists $k$ such that $kn=1$. 
+So $-g + kxg' = -x^n+1 +knx^n = 1$, i.e. $g$, $g'$ coprime. So $f$ is 
+separable in $F$.
+It's easy to see that the set $S$ consists all  solutions of $x^n-1$ 
+form a multiplication subgroup of $F^\times$. Hence $n=|S|$ divides $p^f-1$.
+\item j
+\end{enumerate}
+
+\section{Sem 1, 2004/2005}
+\subsection{Ring Theory}
+\begin{exec}
+Let $R=M_n(\bR)$ be the ring of all $n\times n$ matrices over the real 
+numbers. Find all the ideals of $R$. Justify your answers.
+\end{exec}
+\proof
+$R$ is simple ring, so the all ideals of $R$ are $0$ and itself.
+To prove $R$ is simple 
+\qed
+\subsection{Group Theory}
+\begin{exec}\label{Q:3_04a}
+Let $p$ be a prime. Find all he groups (up to isomorphism) of order $2p$.
+Justify your answers.
+\end{exec}
+\proof
+If $p=2$, then it's order $4$ group and is abelian. 
+See \hyperref[Q:1_01b]{Question~\ref{Q:1_01b} (a)}.
+Then $G$ can be $\bZ_2\times \bZ_2$ or $\bZ_4$.
+
+If $p>2$, then consider the Sylow $p$-subgroup $P$. Clearly it's a
+cyclic group and suppose that it's generator is $a$. $P$ is normal in $G$
+since it's the only order $p$ subgroup of $G$.
+Let $Q=\braket{b}$ be a Sylow $2$-subgroup of $G$.
+Consider $Q$ act on $P$ by conjugation. Then $bab^{-1} = a^k$ and $a^k$ 
+is a generator of $P$. Moreover $a = b(bab^{-1})b^{-1} = a^{k^2}$
+So $k = \pm 1 \pmod{p}$.
+If $k=1$, $G$ is abelian. Then $G$ isomorphic to $\bZ_{2p}$.
+(Also see the proof of \hyperref[Q:1_01b]{Question~\ref{Q:1_01b} (a)}.)
+If $k = 1$, then $G$ is non-abelian and isomorphic to the dihedral group $D_p$.
+\qed
+
+\begin{exec}
+Let $p$ be a prime and let $G$ be a group of $p^3$ elements. Suppose
+that $G$ is not abelian. Prove that $Z(G)$ is cyclic of order $p$.
+\end{exec}
+\proof
+In the proof of  \hyperref[Q:1_01b]{Question~\ref{Q:1_01b} (a)}
+we see that $Z(G)$ is non-trivial.
+Then $|Z(G)|=p$ or $p^2$ since $G$ is not abelian. 
+But if $|Z(G)=p^2$, $G/Z(G)$ is a cyclic group of order $p$.
+Also in the proof of  \hyperref[Q:1_01b]{Question~\ref{Q:1_01b} (a)}
+we know that $G$ should be abelian, a contradiction.
+So $Z(G)$ is cyclic of order $p$.
 \qed
 
 \section{Sem 2, 2004/2005}
 \subsection{Ring Theory}
 \begin{exec}
-Prove that every integral domain can be imbedded in a field.
+Prove that every integral domain can be embedded in a field.
 \end{exec}
 
 \begin{exec}
-Let $D$ be an itegral domain and let 
+Let $D$ be an integral domain and let 
 $F=\Set{x\in D|xd=1\text{ for some }d\in D}$. 
 Suppose that $D$ is a finite dimensional vector space over $F$.
 Prove that $D$ is a field.
@@ -560,7 +629,7 @@ We claim that $n_i=1$, i.e. $G_{p_i} = \bZ_{p^{\alpha_i}}$, then $G$ is cyclic
 If $n_i>1$, for some $i$, $G$ has two distinct order $p_i$ subgroup, then 
 there are more than $p_i$ element is $G$ satisfying the equation $x^{p_i}-1=0$.
 Since $F$ is a field, there at most $p_i$ different solution of the equation, 
-a contradicition.  
+a contradiction.  
 \qed
 
 \begin{exec}
@@ -568,6 +637,14 @@ Prove that $\sqrt{2}+\sqrt{3}+\sqrt{5}+\sqrt{7}$ is irrational.
 \end{exec}
 
 \section{Sem 1, 2005/2006}
+\begin{exec}
+Classify all groups of order $8$ up to isomorphism.
+\end{exec}
+\proof
+If $G$ is abelian, then $G$ can be $\bZ_2\times \bZ_2 \times \bZ_2$, 
+$\bZ_4\times \bZ_2$ and $\bZ_8$. 
+If $G$ is non-abelian, $G$ has a order. 
+\qed
 
 \section{Sem 2, 2005/2006}
 \begin{exec}\label{Q:1_05b}
@@ -594,7 +671,7 @@ Prove that $\sqrt{2}+\sqrt{3}+\sqrt{5}+\sqrt{7}$ is irrational.
   So $|\Ker\phi| \leq 3$. Since $G$ have no order $3$ subgroup, 
   $|\Ker\phi|\neq 3$. 
   Since $A_4$ have no order $6$ subgroup, $|\Ker\phi|\neq 2$. 
-  So $\phi$ is monomorphism, then isomorphisom from $G$ to $A_4$.
+  So $\phi$ is monomorphism, then isomorphism from $G$ to $A_4$.
 \item See \hyperref[Q:1_08a]{Question~$\ref{Q:1_08a}$}
 \end{enumerate}
 \qed
@@ -609,7 +686,7 @@ First we can embed $R$ in $R[X]$. Since $R[X]$ is integral domain
 (commutative, no zero divisor),
 $R$ is integral domain.  
 Consider the evaluation $\phi\colon R[X]\to R$ by $f \mapsto f(0)$.
-$\phi$ is surjective. Since $R$ is integral domain, $\Ker\phi$ is 
+$\phi$ is sujective. Since $R$ is integral domain, $\Ker\phi$ is 
 prime ideal in $R[X]$, then it is maximal ideal by 
 \hyperref[Q:1_02a]{Question~\ref{Q:1_02a}~(b)}. So $R$ is a field. 
 \qed
