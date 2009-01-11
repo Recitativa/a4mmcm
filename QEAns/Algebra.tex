@@ -323,7 +323,13 @@ Classify all groups of order $n$ up to isomorphism.
   \]
   Since $\bQ$ have IBN, $\bQ$ can not isomorphism to $\bQ\times \bQ$.
 \end{enumerate}
-\item a
+\item 
+\begin{enumerate}[(i)]
+\item $1-5i = (1+2i)(-2-1i)+1$.
+\item $N(1+i)=2$,  $N(2+3i)=13$ are prime, so they are irreducible.
+$N(1+3i)=10$, if it is reducible, i.e. $rs = 1+3i$, $N(r)=2$, $N(s)=5$.
+So $r = \pm 1 \pm i$. Then it's clearly that $(1+i)(2+i) = 1+3i$. 
+\end{enumerate}
 \end{enumerate}
 
 \begin{exec}
@@ -338,8 +344,17 @@ Classify all groups of order $n$ up to isomorphism.
 \end{exec}
 \proof
 \begin{enumerate}[(a)]
-\item a
-\item b
+\item Clearly by combination, $S_p$ has $p!/p=(p-1)!$ order $p$ elements.
+Different $p$-subgroups has different non-trivial element, and such element
+is order $p$. So $S_p$ has $(p-1)!/(p-1)=(p-2)!$ Sylow $p$-subgroup.
+Then $(p-2)! \equiv 1 \mod{p}$. Then $(p-1)!+1 \equiv -1 (p-2)!+ 1
+ \equiv 0 \mod{p}$.
+ \item Clearly the addtive group of $R$ is $\bZ_p$. Let $0$ and $e$ be the 
+   identity of addtive and multiplication respectively. Then if $0=e$, 
+   $R$ is zero ring. If $0\neq e$, $e$ is a generator of the addtive group. 
+   Then it determine the ring structure of $R$ by $xy = (ne)(se) = nse$ where
+   $x= ne, y=se$ for $n,s\in \bZ$.
+   So $R$ is isomorphic to $\bZ_p$.
 \end{enumerate}
 \qed
 
@@ -848,14 +863,10 @@ Moreover $\Im \phi\subset A_n$. If not $\sgn \phi\colon G \to \Set{\pm 1}$
  is epimorphism. Then $G$ have a nontrivial index $2$ normal subgroup 
 $\Ker\,\sgn\phi$($|G|>2$).
 \item If $|G|=120=8\times 5\times 3$ 
-  and $G$ is simple.  By Sylow's theorem, $|G|$ has a order $8$
-subgroup $H$, it's normalizer $N(H)$ can not be $G$ since $G$ is simple.
-If the index of $N(H)$ is $5$ or $3$ for any cases it's impossible
-since $60=|A_5|, 6=|A_3| < 120=|G|$. But by (a) $G$ can be embedded into 
-$A_5$ or $A_3$, a contradiction.
-If the index of $N(H)$ is $15$, then there is $15$ different 
-$2$-Sylow subgroup of $G$. 
-
+  and $G$ is simple. 
+By Sylow's theorem, $G$ has $6$ Sylow $5$-subgroup. Consider $G$ act on the $6$ subgroup by conjugation. It gives a embedding of $G$into $A_6$. 
+Clearly $G$ has index $3$ in $A_6$. By considering $A_6$
+ act on the cosets of $G$, it gives a homomorphism from $A_6$ to $S_3$. But it impossible since $A_6$ is simple.
 \end{enumerate}
 \qed
 
