@@ -421,6 +421,21 @@ See \hyperref[Q:3_04a]{Question~\ref{Q:3_04a}}
     \end{enumerate}
   \end{enumerate}
 \end{exec}
+\proof
+\begin{enumerate}[(a)]
+\item Let $G$ be a finite subgroup of $G$. Let $a = \min 
+\Set{x\in [0,1)|\bar{x}\in G}$.
+Then $G=\braket{\bar{a}}$.
+If not, there is $b \in G\setminus\braket{\bar{a}}$. 
+It's easy to see that, we can find $\bar{b} = n\bar{a} +\bar{c}$, where
+$0< c<a$. This contradicte to the choice of $a$.
+\item $p\bZ\times \bZ$ is a maximal idel of $R$ since 
+$\bZ\times \bZ/p\bZ\times \bZ\cong \bZ_p$ is a field.
+$0\times \bZ$ is prime but not maximal 
+since $\bZ\times\bZ/0\times \bZ \cong \bZ$ is a integral domain but not 
+a field.
+\end{enumerate}
+\qed
 
 \begin{exec}\label{Q:2_03a}
   \begin{enumerate}[(a)]
@@ -450,6 +465,69 @@ If $A_4$ have index $2$ subgroup $H$. then $|H|=6$. But there already have
 $8$ odd order element. They should be in $H$, a contradiction. 
 \end{enumerate}
 \qed
+
+\begin{exec}
+Recall that an element $p$ of an itegral domain $D$ is called irreducible if $p$
+is a non-zero, non-unit and in any factorization $p=rs$ with $r,s\in D$,
+one of $r,s$ is a unit. Now let 
+\[
+D=\bZ[\sqrt{-7}]=\Set{a+b\sqrt{-7}|a,b\in \bZ}.
+\]
+\begin{enumerate}[(i)]
+\item By using the norm function $N(a+b\sqrt{-7})=a^2+7b^2$, 
+show that $2,1\pm\sqrt{-7}$ are irreducible elemens of $D$.
+\item Is $2D$ a prime ideal? Is $D$ a unique factorization domain? 
+Justify your answers.
+\end{enumerate}
+\end{exec}
+\proof
+\begin{enumerate}[(i)]
+\item Note that $N(rs) = N(r)N(s)$ for $r,s\in D$. Moreover $N(r)\in \bN$ for
+$r\in D$. So we can determin all the units of $D$. In fact, 
+if $u$ is a unit in $D$. $N(u)N(u^{-1}) = 1$. So $N(u) = 1$, i.e. $u=\pm 1$.
+
+If $2 = rs$, then $N(r)N(s) = 4$. No solution of the equation $2=a^2+7b^2$ for
+$a,b\in \bZ$. So $N(r)=1$ or $N(s)=1$, i.e. $r$ or $s$ is unit.
+
+If $1\pm \sqrt{-7} = rs$, then $N(r)N(s) = 8$. By the same reason of above, 
+$1\pm\sqrt{-7}$ is irreducible.
+\item Note that $(1+\sqrt{-7})(1-\sqrt{-7}) = 8\in 2D$, 
+but $1\pm \sqrt{-7}\notin 2D$. So $2D$ is not prime.
+ 
+Clearly $(1+\sqrt{-7})(1-\sqrt{-7}) = 8 = 2*2*2$. 
+So $D$ is not a unique factorization domain.
+\end{enumerate}
+\qed
+
+\begin{exec}
+\begin{enumerate}[(a)]
+\item Let $R$ be a finite commutative ring with $1$, such that $1\neq 0$. 
+Let $R^*=R\setminus\Set{0}$ and put
+\[
+k=\prod_{r\in R^*}r,
+\]
+is a field.
+\item Let $p$ be a positive prime number such that $p=4k+1$ for some $k\in \bZ$.
+Show that there exists $a\in \bZ_p$ such that $a^2=-1$ in $\bZ_p$
+\end{enumerate}
+\end{exec}
+\proof
+\begin{enumerate}[(a)]
+\item Do not know!
+\item In fact $p=4k+1$ iff exists $a$ s.t. $a^2=-1$ in $\bZ_p$.
+Note that the multiplicty group $\bZ_p^*$ is cyclic. $-1$ is the only order 
+$2$ element. If $p=4k+1$ then $|\bZ_p^*|=4k$. So exists order $4$ subgroup
+with generator $a$. Then $a^2 = -1$ since it is order $2$. 
+
+On the other hand if exists $a^2=-1$. Then there is a order $4$ subgroup 
+in $\bZ_p^*$. So $4$ divides $|\bZ_p^*|$. Hence $p=4k+1$.
+\end{enumerate}
+
+\begin{exec}
+Show that each of the following polynomials is irreducible over $\bQ$:
+you may want to consider reduction modulo a prime number.
+\end{exec}
+
 
 \section{Sem 2, 2003/2004}
 \begin{exec}
@@ -548,7 +626,9 @@ separable in $F$.
 It's easy to see that the set $S$ consists all  solutions of $x^n-1$ 
 form a multiplication subgroup of $F^\times$. Hence $n=|S|$ divides $p^f-1$.
 \item Clearly $F$ is a finite extenstion of $K$. So $F$ is finite field of 
-  charactor $p$. Then $F$ has $p^s$ elements.  
+  charactor $p$. Then $F$ has $p^s$ elements.  If $s$ not the smallest integer
+$m$ for which $q^m-1$ is divisible by $n$. Then consider 
+$x^{q^m}-1$ which is  
 \end{enumerate}
 
 \section{Sem 1, 2004/2005}
@@ -629,6 +709,9 @@ Since $\sigma$ preserves rational number $\sigma$ preserves
 \begin{exec}
 Prove that every integral domain can be embedded in a field.
 \end{exec}
+\proof
+Localization.
+\qed
 
 \begin{exec}
 Let $D$ be an integral domain and let 
@@ -660,7 +743,21 @@ $\bZ_2\times \bZ_2\times \bZ_2$.
 \proof
 By Sylow's theorem $G$ has $7$ different Sylow $7$-subgroups. 
 So there is unique Sylow $2$-subgroups containing all element of $G$ not in
-Sylow $7$-subgroups. 
+Sylow $7$-subgroups. Let $P$ be a Sylow $7$-subgroup. $Q$ be the unique Sylow
+$2$-subgroup. 
+If $Q$ has a order $4$ element. Consider the set $S$ of all order $4$ element.
+Let $P$ act on $S$ by conjugation. Then it gives a homomorphism from
+$P$ to $Aut_{|S|}$. Note that $|S|\leq 6$. So the action is trivial. 
+Let $a$ be a order $4$ element. So $H = P\braket{a}$ is a subgroup of $G$.
+More over $H$ is cyclic group of order $28$. 
+Clearly $H$ has order $2$ so $H$ is normal in $G$.
+By Sylow's theorem $gPg^{-1}$ givs all Sylow $7$-subgroup. 
+But, $gPg^{-1}<H$ since $P<H$ and $H$ normal. 
+So $gPg^{-1}=P$ for all $g$. This contradict to $G$ has $2$ 
+or more subgroups of order $7$. 
+So $Q$ has no order $4$ element. Then $Q\cong \bZ_2\times \bZ_2\times \bZ_2$
+(first $Q$ is abelian since every element is order $2$, 
+then deduce by the classifcation of finite abelian group.).
 \qed
 
 \subsection{Field Theory}
@@ -688,6 +785,18 @@ a contradiction.
 \begin{exec}
 Prove that $\sqrt{2}+\sqrt{3}+\sqrt{5}+\sqrt{7}$ is irrational.
 \end{exec}
+\proof
+Note that 
+$Q(\sqrt{2}, \sqrt{3},\sqrt{5})(\sqrt{2}+\sqrt{3}+\sqrt{5}+\sqrt{7})
+=Q(\sqrt{2},\sqrt{3},\sqrt{5})(\sqrt{7})$.
+$[Q(\sqrt{2},\sqrt{3},\sqrt{5})(\sqrt{7}):Q]= 16$.
+$[Q(\sqrt{2},\sqrt{3},\sqrt{5}):Q]= 8$.
+
+So $\sqrt{2}+\sqrt{3}+\sqrt{5}+\sqrt{7}$ is irrational since if it is rational,
+$Q(\sqrt{2},\sqrt{3},\sqrt{5}) = 
+Q(\sqrt{2}, \sqrt{3},\sqrt{5})(\sqrt{2}+\sqrt{3}+\sqrt{5}+\sqrt{7})$.
+\qed
+
 
 \section{Sem 1, 2005/2006}
 \begin{exec}
@@ -819,6 +928,47 @@ $3,5,15$. Now consider $G$ act on Sylow-$2$ by conjugation.
 \qed
 
 \section{Sem 2, 2007/2008}
+\begin{exec}
+Let $R$ be a commutative ring with $1$.
+\begin{enumerate}[(a)]
+\item Let $I$ be an ideal of $R$. Explain briefly what is meant to say that
+(i) $I$ is {\it prime}, (ii) I is {\it maximal}.
+\item Prove or disprove each of the following statements:
+\begin{enumerate}[(i)]
+\item If $I$ is a maximal ideal of $R$, then $I$ is prime.
+\item If $I$ is a nonzero prime ideal of $R$, then $I$ is maximal.
+\end{enumerate}
+\end{enumerate}
+\end{exec}
+\proof
+See \hyperref[Q:1_03a]{Question~\ref{Q:1_03a}}
+\qed
+\begin{exec}
+Let $p$ and $q$ be a prime integers with $p\leq q$.
+\begin{enumerate}[(a)]
+\item Show that any group of order $pq$ has a normal subgroup of order $q$.
+\item Hence, or otherwise, classify all groups of order $pq$ up to isomorphism.
+\end{enumerate}
+\end{exec}
+\proof
+\begin{enumerate}[(a)]
+\item 
+Suppose that $|G|=pq$.
+Sylow thorem there $kq+1|pq$ Sylow $q$-subgroup. By $p\leq q$, 
+there only one Sylow $q$-subgroup, then it is normal.
+\item 
+Let $Q$ be a Sylow $q$-subgroup in $G$. Let $P$ be a Sylwo $p$-subgroup of $G$.
+\begin{enumerate}[(i)]
+\item If $p\nmid q$, i.e. no $kp+1=q$ then $P$ is normal in $G$. 
+So $G\cong \bZ_p\times \bZ_q = \bZ_{pq}$.
+\item IF $p\mid q$. Let $P = \braket{a}$, $Q = \braket{b}$.
+Consider $P$ act on $Q$ by conjugation. 
+Then $aba^{-1}=a^s$ should be a generator of $Q$.
+So $G = \braket{a,b|a^p=1, b^q=1, aba^{-1}=a^s}$ 
+where $a^s$ is a generator of $Q$, i.e. $\gcd(s,q) = 1$.
+\end{enumerate}
+\end{enumerate}
+\qed
 
 \begin{exec}
 Let $R$ be a ring with $1$, and let $M$ be a left $R$-module. Prove
@@ -904,5 +1054,37 @@ Clearly $G$ has index $3$ in $A_6$. By considering $A_6$
 \end{enumerate}
 \qed
 
+\begin{exec}
+Let $K$ be the splitting field of $X^4-2$ over the field $\bQ$
+ of rational numbers.
+\begin{enumerate}[(a)]
+\item Show that there exist field automorphisms $\tau$ and $\sigma$ of 
+$K$ satisfying the following properties.
+\begin{itemize}
+\item $\tau$ has order $2$;
+\item $\sigma$ has order $4$;
+\item $\tau\circ \sigma = \sigma^{-1}\circ \tau$.
+\end{itemize}
+\item Hence, or otherwise, find all intermediate fields between $\bQ$ and $K$. 
+\end{enumerate}
+\end{exec}
+\proof
+\qed
+
+
+\begin{exec}
+Let $R$ be a ring with multiplicative identity, and let $M$ be a finitely 
+generated left $R$-module.
+\begin{enumerate}[(a)]
+\item Let $B$ be a non-empty finite subset of $M$. Show that $M$ is
+a free $R$-moudle with basis $B$ if and only if every function from
+$B$ to any left $R$-module $N$ can be uniquely extended to a left $R$-module
+homomorphism from $M$ to $N$.
+\item Suppose further that $R$ is a principal ideal domain. Prove that $M$ is 
+a free $R$-module if and only if $M$ is a projective $R$-moudule.
+\end{enumerate}
+\end{exec}
+\proof
+\qed
 
 \end{document}
