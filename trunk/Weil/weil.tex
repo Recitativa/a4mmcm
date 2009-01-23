@@ -1,5 +1,6 @@
 \documentclass[12pt]{amsart}
 \usepackage[margin=3cm]{geometry}
+
 \usepackage{hyperref}
 
 \usepackage{amssymb}
@@ -15,6 +16,7 @@
 \usepackage{amscd}
 %\usepackage{pictexwd,dcpic}
 %\usepackage{mathrsfs}
+
 
 \newtheorem{exec}{Question}[section]
 \newenvironment{subproof}{\newline\footnotesize\it}{\normalsize}
@@ -43,12 +45,13 @@
 \def\sH{\mathcal{H}}
 \def\sU{\mathcal{U}}
 \def\sC{\mathcal{C}}
-\def\kbar{{k\makebox[-0.06em][r]{\raisebox{0.5ex}{--}}}}
 \def\ad{{\rm ad}}
 \def\Ad{{\rm Ad}}
 \def\id{{\rm id}}
 \def\sgn{{\rm sgn}}
 \def\gcd{{\rm gcd}}
+\def\inn#1#2{\left\langle{#1},{#2}\right\rangle}
+
 
 \hypersetup{
     bookmarks=false,         % show bookmarks bar?
@@ -121,10 +124,63 @@ f (x + y + z) f (x) f(y) f (z) = f(x + y) f (y + z) f (z + x)
 whenever $x, y, z$ in $G$.
 
 	
-We always write $G*$ as the dual of $G$ (written additive too), 
+We always denote $G^*$  the dual of $G$ (written additive too), 
 and we write
-$(x, x *)$, for $X\in G$, $x^* \in G*$, as the value on $x$
-corresponding the character  $x*$ of $G$. On-eon
-come a law to identify all the bidual AVEE G (G *) * G so that there is
-(x, z *> = (z * x) 
+$(x, x^*)$, for $X\in G$, $x^* \in G^*$, as the value on $x$
+corresponding the character  $x^*$ of $G$.
+We always identify $G$ with the double-dual $(G^*)^*$ of  $G$ such that
+\[
+\inn{x}{x*} = \inn{x^*}{x}
+\]
+(it can made this identification such that
+$\inn{x}{x^*} ={-x^*}{x}$ as well, and it would be even more
+convenient 
+in some respects, 
+but this shock habits received too)
+If $x\to x\alpha$ is a morphism from $G$ to $H$, its dual $\alpha^*$
+is the morphism from $H^*$ to $G^*$ such that 
+\[
+\inn{x\alpha}{y^*}=\inn{x}{y^*\alpha^*}
+\]
+whenever $x\in G$,$y^*\in H^*$.
+
+All bicharacter of $G\times H$ can be written uniquely in the form 
+\[
+f(x,y)=\inn{x}{y\alpha}=\inn{y}{x\alpha^*}
+\]
+where $\alpha$ is a morphism from $H$ to $G^*$, 
+$\alpha^*\colon G\to H^*$ is the dual of $\alpha^*$.
+If $G=H$, it is both necessary and sufficient that $f$ is symmetric 
+in $x, y$, then we have $\alpha=\alpha^*$.
+We sa that the morphism $\alpha$ from $G$ to $G^*$ is {\it symmetric}. 
+ 
+If $f$ is a character of second degree of $G$, we have 
+\begin{equation}\label{eq:1}
+\frac{f(x+y)}{f(x)f(y)} = \inn{x}{y\rho},
+\end{equation}
+or $\rho=\rho(f)$ is a morphism, obviously symmetric, from $G$ to
+$G^*$;
+In expression $\ref{eq:1}$, we say that $f$ and $\rho$ are associated
+to each other. If we denote $X_2(G)$  the multiplication group of 
+characters of second degree on $G$, function $f\to \rho(f)$ is a
+homomorphism from $X_2(G)$ to the additive group of symetric
+morphisms from $G$ to $G^*$;
+the kernal of this homomorphism is the multiplicative group $X_1(G)$
+of characher on $G$.
+We can say more in the case that $x\to 2x$ is an automorphism of $G$
+ (which occurs for example if $G$ is local or on a body adelie k
+ characteristics other than 2);
+then, we denote $x\to 2^{-1}x$  the inverse of the automorphism $x\to
+2x$ of $G$. In this case, if $\rho$ is a symetric morphism from $G$ to
+$G^*$,
+it is associated with the second degree character
+ $f_\rho(x)=\inn{x}{2^{-1}x\rho}$; if we denote $X^0_2(G)$ the
+ subgroup of $X_2(G)$ formed by $f_\rho$, then $X_2(G) =
+ X^0_2(G)\times X_1(G)$, and $X^0_2(G)$ is isomorphic to the additive
+ group of symetric morphisms from $G$ to $G^*$.
+
+We say that the character of second degree $f$ is non {\it degenerate} 
+if the symetric morphism associated with $f$ is a isomrophism from $G$ 
+to $G^*$;the existance of such character is necessary (but not
+sufficient) for $G$ isomorphic to $G^*$.
 \end{document}
