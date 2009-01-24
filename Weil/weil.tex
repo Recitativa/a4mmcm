@@ -18,7 +18,7 @@
 %\usepackage{mathrsfs}
 
 
-\newtheorem{exec}{Question}[section]
+\newtheorem{lemma}{Lemma}
 \newenvironment{subproof}{\newline\footnotesize\it}{\normalsize}
 \DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
 
@@ -51,7 +51,8 @@
 \def\sgn{{\rm sgn}}
 \def\gcd{{\rm gcd}}
 \def\inn#1#2{\left\langle{#1},{#2}\right\rangle}
-
+\def\abs#1{\left|{#1}\right|}
+\def\Sp{{\rm Sp}}
 
 \hypersetup{
     bookmarks=false,         % show bookmarks bar?
@@ -185,6 +186,60 @@ to $G^*$;the existance of such character is necessary (but not
 sufficient) for $G$ isomorphic to $G^*$.
 
 \subsection{}
+Section 2
+
+Given a Haar measure $dx$ on G, a Fourier transform $\mathfrak{T}$
+is that we associate with each function $\Phi$ on $G$, a function
+$\Phi^{*}=\mathfrak{T}(\Phi)$ on $G^{*}$ defined as \[
+\Phi^{*}(x^{*})=\int\Phi(x)\cdot<x,x^{*}>\cdot dx\]
+
+
+\noindent whenever this integral, or a suitable extension of it, makes
+sense. Then there is a Haar measure $dx^{*}$ on $G^{*}$, called
+the $dual$ of $dx$, such that the inverse transformation $\mathfrak{T}^{-1}$
+of $\mathfrak{T}$ is given by the formula
+
+\[
+\Phi(x)=\int\Phi^{*}(x^{*})\cdot<x,-x^{*}>\cdot dx^{*};\]
+
+
+For this measure, we have the Plancherel formula
+
+\[
+\int|\Phi(x)|^{2}dx=\int|\Phi^{*}(x^{*})|^{2}dx^{*}\]
+
+
+It is clear that, for every $c>0$, the Haar measure on $G^{*}$,
+dual of $c\cdot dx$, is $c^{-1}dx^{*}$. This remark can be expressed
+as follows,
+
+\begin{lemma}\label{l:1}
+Let $G$, $H$ be two locally compact abelian groups,
+with Haar measure $dx$, $dy$; let $G^*$, $H^*$ be their duals,
+equipped with Haar measure $dx^*$, $dy^*$ respectively. Then,
+if $\alpha$ is an isomorphism of $G$ on $H$, $\alpha^{*}$ is an
+isomorphism of $H^{*}$ on $G^{*}$, and one has $|\alpha^{*}|=|\alpha|$.
+\end{lemma}
+
+Recall that, if $G$ and $H$ are locally compact groups (commutative
+or not) with Haar measures, the module of an isomorphism $\alpha$
+of $G$ on $H$ is the number $|\alpha|=d(x\alpha)/dx$ defined by
+the formula
+
+\[
+\int F(y)dy=|\alpha|\cdot\int F(x\alpha)dx\]
+
+
+where $F\in L^{1}(H)$; if $G=H$, it is generally understood that
+we take $dx=dy$, and then $|\alpha|$ is independent of the choice
+of $dx$. To prove the lemma, let $m=|\alpha|$; by transport of structure,
+$\alpha$ transforms $dx$ into a Haar measure $d'y$ on $H$, and
+as soon as we see that $d'y=m^{-1}dy$; it follows that $\alpha^{*}$transforms
+the dual measure of $d'y$, which is, as noted above, $m\cdot dy^{*}$
+into $dx^{*}$; thus $\alpha*$ transforms $dy^{*}$ into $m^{-1}dx^{*}$,
+which shows the lemma.
+
+\subsection{}
 Let $x\to z\sigma$ is an automorphism of $G\times G^*$; if we set
 $z=(x,x^*)$, we can also written in a matrix form:
 \[
@@ -211,5 +266,31 @@ is the automorphism defined by these formulas:
 \end{pmatrix}
 \]
 on $G^*\times G$.
+Let $\eta$ be the isomorphism $\begin{pmatrix}0 & 1\\ -1 & 0\end{pmatrix}$ 
+from $G\times G^*$ to $G^*\times G$, or, it's the same, 
+the isomorphism $(x,x^*)\to (-x^*, x)$ (we refer them as the same automorphism  for any groups.)  The forumla
+\begin{equation}\label{eq:2}
+\sigma^I = \eta \sigma^* \eta^I = 
+\begin{pmatrix} \delta^* & - \beta^*\\-\gamma^* & \alpha^*\end{pmatrix}
+\end{equation}
+defines an automorphism of $G\times G^*$, and Lemma~\ref{l:1} of section~2
+shows that $\abs{\sigma^I}=\abs{\sigma}$. 
+Note that $\sigma\to \sigma^I$ is an anti-automorphism involution of the
+group of automorphisms of $G\times G^*$.
+For the convenience of writing,  we will denote $F$ the bicharacter of 
+$(G\times G^*)\times (G\times G^*)$ defined by 
+\[
+F(z_1,z_2) = \inn{x_1}{x_2^*}\quad (z_1=(x_1,x_1^*), z_2=(x_2,x_2^*)
+\] 
+An automorphism $\sigma$ of $G\times G^*$ is called {\it symplectic} if
+it lead invariant of the bicharacter $F(z_1,z_2)F(z_2,z_1)^{-1}$, i.e. if
+you have 
+\begin{equation}
+\frac{F(z_1\sigma, z_2\sigma)}{F(z_2\sigma, z_1\sigma}= 
+\frac{F(z_1, z_2)}{F(z_2,z_1}.
+\end{equation}
+whenever $z_1$, $z_2$ in $G\times G^*$; we write $\Sp(G)$ as the group 
+formed by these automorphisms. For $\sigma$ to be symplectic, it is both necessary and sufficiently (as shown by a calculation immediately) that
+$\sigma \sigma^I = 1$, $\sigma^I$ is defined by (\ref{eq:2});
 
 \end{document}
