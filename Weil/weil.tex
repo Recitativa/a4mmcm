@@ -19,6 +19,7 @@
 
 
 \newtheorem{lemma}{Lemma}
+\newtheorem{thm}{Theorem}
 \newtheorem{prop}{Proposition}
 \newenvironment{subproof}{\newline\footnotesize\it}{\normalsize}
 \DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
@@ -591,7 +592,225 @@ $s^{-1}$ has the same properties as $s$, $t$ and $u$ are invertible and
  are therefore automorphism of $L^2(G)$.  
 
 \subsection{}
+Suppose that $s=(\sigma,f)$ is an automorphism of $A(G)$ belonging
+to $B_{0}(G)$; the center of the isomorphism between $A(G)$ and
+$\mathbf{A}(G)$, as defined in Section 4, operates on $\mathbf{A}(G)$
+in the obvious manner. In particular, the transformation of $U(w)$
+by $s$ will be $U(w)^{s}=f(w)\cdot U(w\sigma)$. We thereof deduce
+immediately an automorphism of the algebras of the operators $U(\varphi)$
+introduced in Section 8:
+
+\[
+U(\varphi)^{s}=\int U(w\sigma)f(w)\varphi(w)dw,\]
+
+
+then we can write $U(\varphi)^{s}=U(\varphi^{s})$, where $\varphi^{s}$
+is given by
+
+\[
+\varphi^{s}(w)=f(w\sigma^{-1})\varphi(w\sigma^{-1}).\]
+
+
+It follows that $\varphi\rightarrow\varphi^{s}$, which is evidently
+a unitary operator in $L^{2}(G\times G^{*})$, leaves the composition
+law (13) invariant; it is easy, of course, to verify directly. Therefore,
+if we write, in these conditions, $K=W(\varphi)$ and $K^{s}=W(\varphi^{s})$,
+in other words, if we define a mapping $K\rightarrow K^{s}$ of $L^{2}(G\times G)$
+to $L^{2}(G\times G)$ by the formula
+
+\[
+W^{-1}(K^{s})=(W^{-1}(K))^{s},\]
+
+
+this mapping will satisfy the hypothesis of Lemma 3. After this lemma,
+there is therefore an automorphism $t$ of $L^{2}(G)$ such that it
+has, for any $P$, $Q$ in $L^{2}(G)$, $(P\otimes Q)^{s}=P^{t}\otimes Q^{\overline{t}}$.
+Now we change the notations, writing $P\rightarrow s^{-1}P$ instead
+of $P\rightarrow P^{t}$; substitute $Q$ by $\overline{Q}$, and
+apply (12); this gives:
+
+\[
+(P,U(w)Q)^{s}=(s^{-1}P,U(w)s^{-1}Q).\]
+
+
+By the definition of $\varphi^{s}$, the first member has the value
+
+\[
+f(w\sigma^{-1})\cdot(P,U(w\sigma^{-1})Q)=(P,f(w\sigma^{-1})^{-1}U(w\sigma^{-1})Q)\]
+
+
+since $(P,Q)$ is antilinear in $Q$ and that $f$ takes its values
+in $T$; and the second member is equal to $(P,sU(w)s^{-1}Q)$ since
+$s$ is unitary. As the relation obtained is valid for any $P$, $Q$,
+we thus have
+
+\[
+f(w\sigma^{-1})^{-1}U(w\sigma^{-1})=sU(w)s^{-1}\]
+
+
+whence, replacing $w$ by $w\sigma$:
+
+\[
+s^{-1}U(w)s=f(w)\cdot U(w\sigma)=U(w)^{s}.\]
+
+
+(15)
+
+This amount to say that the inner automorphism determined by $s$
+in the unitary group induces the automorphism $s$ on $\mathbf{A}(G)$.
+Reciprocally, given $s$, this relation determines an element near
+the centralizer of $\mathbf{A}(G)$. Yet, if a unitary operator commutes
+with all $U(w)$, it is so with all $U(\varphi)$, therefore with
+the operators of the form (11) for any $K\in L^{2}(G\times G)$. For
+$K=P\otimes\overline{Q}$, (11) defines the operator $\Phi\rightarrow(\Phi,Q)\cdot P$;
+if $\Phi\rightarrow\Phi^{t}$ commute with this one, then we have
+
+\[
+(\Phi,Q)\cdot P^{t}=(\Phi^{t},Q)\cdot P\]
+
+
+for any $P$, $Q$, $\Phi$ in $L^{2}(G)$; then $\Phi\rightarrow\Phi^{t}$
+is of the form $\Phi\rightarrow t\cdot\Phi$, where $t$ is a scaler;
+if this operator is unitary, we have $t\in T$. We denote by $\mathbf{T}$
+the group formed by the operatore of this form; it is the center of
+$\mathbf{A}(G)$, and it is also the center of the group of all the
+automorphisms of $L^{2}(G)$. We have then shown the following theorem:
+
+\begin{thm}\label{th:1}
+The centralizer of $\mathbf{A}(G)$ in the group of the
+automorphisms of $L^{2}(G)$ is the center $\mathbf{T}$of these two
+groups; furthermore, if $B_{0}(G)$ is the normalizer of $\mathbf{A}(G)$
+in the same group, any automorphism of $\mathbf{A}(G)$ inducing the
+identity on $\mathbf{T}$ is induced on $\mathbf{A}(G)$ by the inner
+automorphism determined by an element of $\mathbf{B}_{0}(G)$; and
+$B_0(G)/T$ is isomorphic to $B_0(G)$, 	
+i.e. the group of automorphisms of $A(G)$ inducing identity on $T$.
+\end{thm}
 
 \subsection{}
+We know that the Fourier transform induces 
+an automorphism on a certain space of continuous functions 
+(say, quite wrongly, ``indefinitely differentiable a rapid decay'');
+ the space $S(G)$ has been introduced primarily for this reason, 
+by L. Schwartz ([4], Chap. VII) in the case of $\bR^n$ 
+and F. Bruhat [1] in the general case.
+We will see that the operators of $B_0(G)$ have the same property.
+
+Recall the definition of $S(G)$ for a locally compact abelian group $G$.
+First, consider a ``elementary'' group, i.e. of the form 
+$G=\bR^n\times \bZ^p\times T^q\times F$, where $F$ is a finite group. 
+A polynomial function on $G$ will be, by definition, 
+a function that can be written as  a polynomial relative to 
+$\bR$ and $\bZ$ coordinate in the product of $G$;
+$S(G)$ is the set of all founctions $\Phi$, indefinitely differentiable 
+on $G$; such that $P\cdot D\Phi$ or simply $G$ 
+whenever differential operator invariant under 
+translation $D$ and the polynomial $P$; 	
+topology of $S(G)$ is induced from all seminorms $\sup\abs{P\cdot D\Phi}$.
+In the general case, we will introduce
+all couples (H, H ') of subgroups of G with the following properties:
+\begin{enumerate}[(i)]
+\item $H$ is generated by a compact neighborhood of $0$ 
+in G (it is open and closed in $G$);
+\item $H'$is a compact subgroup of $H$ and $H/H'$ is isomorphic to
+ a elementary group.  
+\end{enumerate}
+For such a couple, we corresponds a family  $S(H, H')$
+of continuous functions on $G$, which upported in $H$, and constant on cosets 
+of $H'$, 	
+by restriction to H and passage to the quotient $H/H'$, 
+it  belongs to $S(H/H')$. 	
+Then $S(G)$ is the union of $S(H,H')$ 
+and  the topology is given by ``inductive limit'' of $S(H/H')$, 
+ie a convex set X is a neighborhood of $0$ in $S(G)$ if, 
+for all couple $(H,H')$, the image of $X\cap S(H,H')$ in $S(H/H')$ 
+is a neighborhood of $0$ in $S(H/H')$.
+We intend to see that any $s\in B_0(G)$ induce an automorphism of $S(G)$;
+We only have to show that $s\in B_0(G)$ induce a continuous map 
+from $S(G)$ to itself, we will follow step by step of the proof of 
+the Theorem~\ref{th:1}.  	
+We will write again $t$ instead of $s^{-1}$, $p^t$ 	
+instead of $s^{-l}P$ for $P\in L^2(G)$, 	
+and we will prove for the operator $p\to  pt$.
+After the foregoing, if we are given $Q\neq 0$ in $S(G)$,
+the map $p\to p^t$ is the following composition:
+\[
+(a) P\to K=P\otimes Q;\quad (b)K\to \phi=W^{-1}(K);\quad (c) \phi\to \phi^s
+\]
+\[
+(d) \phi^s\to K^s=W(\phi^s);\quad (e) K^s= P^t\otimes Q^{\overline{t}}\to P^t;
+\]
+it is sufficient to show that maps  from $S(G)$ to  $S(G\times G)$, 
+then to $S(G\times G^*)$,
+to $S(G\times G^*)$, to $S(G\times G)$ and to $S(G)$ are all continuous.
+For $(a)$ is immediately; (e) is also immediately if function 
+$K\in S(G\times G$ is in the form $P\otimes Q$ in the sense of $L^2(G\times G)$
+where $P$ and $Q$ are in $S(G)$, 
+and then, for $Q\neq 0$ in $S(G)$, the map $P\to  P\otimes Q$ 
+is an isomorphism from 
+$S(G)$ to a closed sub-space of $S(G\times G)$.
+For (b) and (d), it is intended to show that $W$
+determines an isomorphism from $S(G\times G^*)$ to $S(G\times G)$, 
+but $W$ is composed of the operator
+$F(x, y) -> F(yx,-x)$, which obviously an automorphism of $S(G\times G)$,
+and the partial Fourier transform on the second factor of 
+the product $G\times G^*$.
+  
+it is therefore requires to verify that if $A$ and $B$ are
+locally compact abelian groups 
+and if $B^*$ is the dual of $B$, the partial Fourier transform
+\[
+f(a,b)\to f'(a,b^*) = \int f(a,b)\inn{b}{b^*} db
+\]
+determines an isomorphism from $S(A\times B)$ to  $S(A\times B^*)$.
+This is an easy generalization of the theorem similar to
+ordinary Fourier Transform.
+
+\subsection{}
+I1 we still consider a (c). Since an automorphism $\sigma$ of a $G\times G^*$ 
+obviously determine an automorphism of $S(G\times G^*)$,
+we (after replacing $G$ to $G\times G^*$) reduces to prove that: 
+\begin{prop}\label{p:2}
+Let $f$ be a character of second degree of $G$.
+Then $\Phi\to \Phi f$ is an automorphism of $S(G)$.
+\end{prop}
+First, let $G=\bR^n\times \bZ^p \times T^q \times F$, 
+with $F$ a finite group; it is easy to see, all remains to show that 
+ any differential operator $D$ is invariant by translation on $G$,
+there is a polynomial function $P$ on $G$ such that $\abs{Df}<\abs{P}$. 
+This is not difficulty to varify the  expressing $f$ on the  classes 
+$\bR^n\times T^q$ in $G$ by using the formula (\ref{eq:1}) in subsection~1,
+and noting that, for $\bR^n\times T^q$, $f$ is necessarily of the form 
+$e^{iF(x)}\chi(x,y)$ where $x\in \bR^n$, $y\in T^q$, 
+$F$ is a quadratic form on $\bR^n$ and 
+$\chi$ is a character of $\bR^n\times T^q$. 	
+Moving to the general case, let $\rho$ be a symmetric morphism of from 
+$G$ to $G^*$ associated to $f$, and give a subgroup $H$ of $G$ 
+generated by a compact neighborhood of $0$.
+For a subgroup $H'$ of $H$ satisfies the condition $(ii)$ 
+of the definition of $S(H, H')$, 	
+it is both necessary and sufficient,
+ as we know (see [1], $n^o$~9, p. 60) that the group $H$,
+the group $H'_*$ which is associated by duality in $G^*$ 
+(the ``orthogonal'' of $H'$) is generated by a compact neighborhood of $0$, 
+then the group $H'_* +H\rho$ has the same property, 
+this shows that replacing $H'_*$ with $H'$  a smaller group satisfing (ii),
+ we can ensure that we have $H\rho \subset H'_*$. 
+By (\ref{eq:1}) subsection~1, this gives $f(h + h')=f(h)f(h')$ 
+for each $h\in H$, $h' \in H'$.  
+In particular, $f$  induces a character of $H'$, we can extend to a
+character of $G$  of the form $\inn{h'}{a^*}$ with $a^*\in G^*$. 	
+Replacing $H$ by the group generated by $H$ and $a^*$,
+we can make that $a^*$ in $H$;
+since, $f$ induces the constant $1$ on $H'$ and 
+and is constant in each class following $H'$. 
+After what has been demonstrated in the case $G$ is a  elementary group,
+it follows, by passing to the quotient,
+ that $\Phi\to \Phi f$ determine an automorphism of $S(H, H')$.
+As is the case, for any $H$ satisfying (i), provided that $H'$ 
+has been made small enough and satisfies (ii) it completed the
+demonstration 
+(given the definition of the topology of $S(G)$ by inductive limit).
 
 \end{document}
+
