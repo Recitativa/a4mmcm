@@ -53,7 +53,9 @@
 \def\gcd{{\rm gcd}}
 \def\inn#1#2{\left\langle{#1},{#2}\right\rangle}
 \def\abs#1{\left|{#1}\right|}
+\def\norm#1{{\left\|{#1}\right\|}}
 \def\Sp{{\rm Sp}}
+
 
 \hypersetup{
     bookmarks=false,         % show bookmarks bar?
@@ -513,4 +515,83 @@ we have (\ref{eq:9}) in a simpler form
 where $e$ is the identity element of $B_0(G)$; in that form, 
 it is well known in the theory classic modular group.
 But it is the relationship (9), as written above, we have to use later.
+
+\subsection{}
+
+\subsection{}
+Now let $\phi_1$, $\phi_2$ are two functions on $G\times G^*$, 	
+temporarily assume that continues a compact support; after (\ref{eq:10}),
+we have
+\[
+U(\phi_1)U(\phi_2) = U(\phi_3)
+\]
+where $\phi_3$ is given by the formula 
+\begin{equation}\label{eq:13}
+\phi_3(w) = \int \phi_1(w-w_1)\phi_2(w_1)F(w-w_1,w_1) dw_1;
+\end{equation}
+as before, $F$ denot the function defined here by (\ref{eq:3}) subsection~3.
+If we let $K_i=W(\phi_i)$ for $i = 1, 2, 3,$ (\ref{eq:11}) shows that $K_3$
+ is given by
+\begin{equation}\label{eq:14}
+K_3(x,y)=\int K_1(x,z)K_2(z,y)dz
+\end{equation}
+we write $K_3 = K_1\times K 2$.
+Moreover, the above formulas are extended by continuity 
+to the space $L^2(G\times G^*)$, $L^2 (G\times G)$.
+We will need the following lemma:
+\begin{lemma}\label{l:2}
+Let $K\in L^2(G\times G)$; K is in the form $P\otimes Q$, 
+with $P$ and $Q$ in $L^2(G)$, 
+it is both necessary and sufficient that for any $K'\in L^2(G\times G)$,
+$K x K' x K$ and $K$ differs by a scalar factor.
+Let $K = P\otimes Q$, $K'= P'\otimes Q'$, with $P, Q, P', Q '$in $L^2(G)$;
+for P and P '(resp. Q and Q ') 	
+no different from another by a scalar factor, 
+it is both necessary and sufficient that for any
+$K''=P''\otimes Q''$ with $P''$ and $Q''$ in $L^2(G)$, $K\times K''$
+ and $K'\times K''$ (resp. $K''\times K$ and $K''\times K'$) 
+are different by a scalar factor.
+\end{lemma}
+	 	
+The second part is obvious, and it is evident that in the first part, 
+the required condition is necessary;
+to see that it is sufficient, simply apply to the case $K'= P'\otimes Q'$. 
+The only consequence of this lemma we need is the following:
+\begin{lemma}\label{l:3}
+Let $K\to K^s$ an an automorphism of Hilbert space $L^2(G\times G)$
+with composition $(K_1,K_2) \to K_1\times K_2$ defined by (\ref{eq:14}).
+So there is an automorphism $t$ of  $L^2(G)$ such that, for all $P$ and $Q$ in
+$L^2(G)$, $(P\otimes Q)^s = P^t \otimes Q^{\overline{t}}$, 
+and $\overline{t}$ is the imaginary conjugation of  $t$, defined by 
+$\overline{Q}^{\overline{t}}= (\overline{Q^t})$.
+\end{lemma}
+Indeed, after Lemma 2, any element $(Q\otimes P)^s$ of $L^2(G\times G)$
+ is of the form $P'\otimes Q'$. Choose $P_0$ as $\norm{P_0}=1$; 
+then $s$ conserve the norm, we can put 
+$(P_0\otimes \overline{P}_0)^s$ in the form $P'_0\otimes Q'_0$ 
+with $\norm{P'_0}=\norm{Q'_0}=1$. 	
+The second part of lemma 2 shows, whenever $P,Q$ in $L^2(G)$
+$(P\otimes \overline{P}_0)^s$ and $(P+0\otimes Q)^s$ are, respectively,
+has unique form $P'\otimes Q'_0$ and $P'_0\otimes Q'$. 
+If describes $P'= P^t$, $Q'= Q^u$, it is clear that $t, u$ are linear maps
+from $L^2(G)$ to $L^2(G)$ and $p^t_0 = P'_0$, $\overline{P}^u_0=Q'_0$;
+$s$ preserve the norm of $L^2(G\times G)$, 	
+it is the same as $t$ and $u$ in $L^2(G)$.
+As we have $P\otimes Q = (P\otimes \overline{P}_0)\times (P_0\otimes Q)$,
+it follows that $(P\otimes Q)^s=c\cdot P^t\otimes Q^u$, 
+and $c=(P'_0, \overline{Q}'_0)$; for $P=P_0$, $Q=Q_0$, it gives $c=1$.
+As 
+\[
+(P\otimes Q)\times (P\otimes Q) = (P,\overline{Q})P\otimes Q,
+\]
+we see that for $P'= P^t$, $Q'=Q^u$, $(P',\overline{Q}')=(P,\overline{Q})$;
+it follows that $u=\overline{t}$. 
+Finally, since
+$s^{-1}$ has the same properties as $s$, $t$ and $u$ are invertible and
+ are therefore automorphism of $L^2(G)$.  
+
+\subsection{}
+
+\subsection{}
+
 \end{document}
