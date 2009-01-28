@@ -19,6 +19,7 @@
 
 
 \newtheorem{lemma}{Lemma}
+\newtheorem{prop}{Proposition}
 \newenvironment{subproof}{\newline\footnotesize\it}{\normalsize}
 \DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
 
@@ -302,5 +303,214 @@ through the relationship $\sigma^I \sigma = 1$, we see that $\beta^*\delta$ and
 $\gamma^*\alpha$ in the same way.
 
 \subsection{}
-Let $B(G)$ be the automorphism group of $A(G)$. $s$ be an auto
+For any element $w=(u,u^{*})$ of $G\times G^{*}$, we pick an operator
+$U(w)$, which, for any function $\Phi$ on $G$, gives a function
+$\Phi'=U(w)\Phi$ such that
+
+\[
+\Phi'(x)=(U(w)\Phi)(x)=\Phi(x+u)\cdot<x,u^{*}>\]
+
+
+For short, we write $U(w)\Phi(x)$ instead of $(U(w)\Phi)(x)$. Applied
+to functins $\Phi\in L^{2}(G)$, the $U(w)$ is obviously the unitary
+operator, and it was, for any $w_{1},w_{2}$ in $G\times G^{*}$:
+
+\[
+U(w_{1})U(w_{2})=F(w_{1},w_{2})\cdot U(w_{1}+w_{2})\]
+
+
+wherein $F$ is the function defined above by (3). It concludes that
+the operators $t\cdot U(w)$, for $w\in G\times G^{*}$ and $t\in T$,
+form a group, whose composition law is given by
+
+\begin{equation}\label{eq:4}
+(w_{1},t_{1})\cdot(w_{2},t_{2})=(w_{1}+w_{2},F(w_{1},w_{2})t_{1}t_{2})
+\end{equation}
+
+In other words, the formula (\ref{eq:4}) defines a group law
+ on the set $G\times G^{*}\times T$;
+and if we denote by $A(G)$ the group thus defined (which, with the
+obvious topology on $G\times G^{*}\times T$, is a locally compact
+group), the mapping $(w,t)\rightarrow t\cdot U(w)$ defines a unitary
+representation $A(G)$. We denote by $\mathbf{A}(G)$ the group formed
+by the operators $t\cdot U(w)$; if we choose the topology induced
+by the strong topology  in the
+group of automorphisms of $L^{2}(G)$ (cf. later in Sectin 35), it
+is easy to verify that $(w,t)\rightarrow t\cdot U(w)$ is even an
+isomorphism of topological groups.
+
+The center of the group $A(G)$ is obviously formed by the elements
+$(0,t)$; it is isomorphic to $T$, and denoted $T$ for short. It
+is clear that $(w,t)\rightarrow w$ is a homomorphism of $A(G)$ on
+$G\times G^{*}$, with kernel $T$; it allows to identify $A(G)/T$
+with $G\times G^{*}$.
+\subsection{}
+Let $B(G)$ be the automorphism group of $A(G)$. 
+An automorphism $s$ in  $B(G)$ induce an automorphism of the center $T$ of 
+ $A(G)$, which may not be t-> t or t-> i; 
+and induced by passing to the quotient, an automorphism a $A(G)/T$, i.e. 
+$G\times G^*$. We denoted $B_0(G)$ the automorphism group of $A(G)$, 
+which induce the identity map on the center $T$ of $A(G)$.
+We  consider $B_0(G)$ now, although the following results can partially 
+coverte to $B(G)$. Let $s$ be an element of $B_0(G)$, which induced a 
+automorphism $\sigma$ of $G\times G^*$. it is immediatly written $s$ as
+\begin{equation}\label{eq:5}
+(w,t)s = (w\sigma, f(w)t),
+\end{equation}
+where $f$ is a continous function from $G\times G^*$ to $T$. 
+This formula defines an automorphism of $A(G)$, it is necessary and sufficient 
+that
+\begin{equation}\label{eq:6}
+\frac{f(w_1+w_2)}{f(w_1)f(w_2)}=\frac{F(w_1\sigma, w_2\sigma)}{F(w_1,w_2)}
+\end{equation}
+where $w_1,w_2$ are in $G\times G^*$.
+This shows in particular that $f$ 
+is a character in the second degree of $G\times G^*$. 
+Moreover,the second is symmetric in $w_1$ and $w_2$,
+ we see that $\sigma$ must be symplectic.
+
+Write $s = (\sigma, f)$ where $s$ is the automorphism of $A(G)$ defined by 
+(\ref{eq:5}), $f$ and $\sigma$ satisfy the relation ($\ref{eq:6}$).
+The group law is given by 
+\[
+(\sigma, f)\cdot(\sigma',f') = (\sigma\sigma', f'')
+\]
+for any $w\in G\times G^*$, $f$ is defined by the formula
+\begin{equation}\label{eq:7}
+f''(w)=f(w)f'(w\sigma)
+\end{equation}
+The map $s\to \sigma$ is a homomorphism from $B_0(G)$ to $\Sp(G)$;
+its kernel is formed by  the elements $(1,f)$, where $f$, by (\ref{eq:6}),
+is a character of $G\times G^*$ of the form 
+\[
+f(u,u^*) = \inn{u}{a^*}\inn{a}{u^*}
+\]
+with $a\in G$, $a^*\in G^*$. 	 	
+But it immediately satisfies that $(1,f)$ is the inner
+ automorphism of $A(G)$ determind by the element $(-a, a^*, 1)$. 
+The kernel of $s\to \sigma$ formed by the inner automorphism of $A(G)$,
+is isomorphic to $A(G)/T$, therefore, $G\times G^*$.
+
+ 	
+We can go one step further by explaining the second term of (\ref{eq:6}).
+Let $\sigma$ be placed in matrix form as in Section~$3$. Let
+\[
+f'(u,u^*)=f(u,u^*)\inn{u^*\gamma}{-u\beta}
+\]
+Easy calculation gives (\ref{eq:6}) in the form
+\[
+f'(u_1+u_2, u^*_1+u^*_2) = f'(u_1,u^*_1)f'(u_2,u^*_2)\inn{u_1}{u_2\alpha\beta^*}
+\inn{u^*_1\gamma\delta^*}{u^*_2}.
+\]
+Let $g(u) = f'(u,0)$, $h(u^*)=f'(0,u^*)$; by $u_2=0$, $u_1^*=0$ in the relation
+about, we see that $f'(u,u^*)$ is no other than $g(u)h(u^*)$, then $g$ and $h$
+satisfy the relations
+\begin{align*}
+g(u_1+u_2)&=g(u_1)g(u_2)\inn{u_1}{u_2\alpha\beta^*}\\
+h(u^*_1+u^*_2)&=h(u^*_1)g(u^*_2)\inn{u^*_1\gamma\delta^*}{u^*_2},
+\end{align*}
+in other words they are the characters of second degree of $G$ and $G^*$,
+respectively associated with symmetric morphisms $\alpha\beta^*$, 
+$\gamma\delta^*$ from $G$ to $G^*$ and $G^*$ to $G$. Then:
+\[
+f(u,u^*)=g(u)h(u^*)\inn{u^*\gamma}{u\beta}.
+\]
+	
+It of course has more accurate results when $x-> 2x$ is an automorphism of $G$.
+In view of Subsection~1, above formulas show that,
+ for all symplecitc automorphism $\sigma$, it correspond to an element 
+$(\sigma, f)$ of $B_0(G)$, obtained by
+\[
+g(u)=\inn{u}{2^{-1}u\alpha\beta^*}, h(u^*)=\inn{2^{-1}u^*\gamma\delta^*}{u^*}.
+\]
+	
+Furthermore, these formulas define a monomorphisme from $\Sp(G)$ to $B_0(G)$, 
+and $B_0(G)$ is the semidirect product of the image of $\Sp(G)$ by this map 
+and the inner automorphisms of $A(G)$; consequently, 
+$B_0(G)$ is isomorphic to a semidirect product of $Sp (G)$ and  $G\times G^*$.
+
+\subsection{}
+
+\subsection{}
+Now agree, for $s=(\sigma, f)$ and 
+$\sigma=\begin{pmatrix}\alpha &\beta \\ \gamma &\delta
+\end{pmatrix}$, 
+put $\gamma = \gamma(s)$; and denote $\Omega_0(G)$  all the $s\in B_0(G)$
+such that $\gamma(s)$ is an isomorphism from $G^*$ to $G$
+(this set can be empty).
+It has the following result:
+\begin{prop}\label{p:1}
+These set $\Omega_0(G)$ of $s\in B_0(G)$ such that $\gamma(s)$ is an 
+isomorphism from $G^*$ to $G$ is the set of elements of $B_0(G)$  of the forme 
+\begin{equation}\label{eq:8}
+s = t_0(f_1)d'_0(\gamma)t_0(f_2)
+\end{equation}
+where $\gamma$ is a isomorphism from $G^*$ to $G$ and $f_1$, $f_2$ are 
+characters of second degree for $G$;
+and any element of $\Omega_0(G)$ has unique decomposition in that form.  
+\end{prop}
+if $s$ is given by (\ref{eq:8}), $\gamma(s)=\gamma$, then 
+$s$ is in $\Omega_0(G)$.
+Conversely, let $s =(\sigma, f) \in  \Omega_0(G)$; if (\ref{eq:8}) holds, 
+we must take $\gamma=\gamma(s)$. Then let 
+$\sigma=\begin{pmatrix}\alpha &\beta \\ \gamma &\delta \end{pmatrix}$; easy 
+calculation shows that (\ref{eq:8}) is satisfied, 
+it is necessary and sufficient that 
+\[
+f_1(u)=f(u,-u\alpha\gamma^{-1}), \quad f_2(u)=f(0,u\gamma^{-1}).
+\]
+These demonstrated by  the proposition. 
+Note that applying (\ref{eq:8}) the homomorphism
+$s\to \sigma$, by the relation:
+\[
+\begin{pmatrix}\alpha &\beta \\ \gamma &\delta \end{pmatrix}
+= \begin{pmatrix}
+1 & \alpha\gamma^{-1}\\
+0 & 1
+\end{pmatrix}
+\begin{pmatrix}
+0 & -\gamma^{*-1}\\
+\gamma & 0
+\end{pmatrix}
+\begin{pmatrix}
+1 & \gamma^{-1}\delta\\
+0 & 1
+\end{pmatrix};
+\]
+because of the symplectic of $\sigma$, $\alpha\gamma^{-1}$ and $\gamma^{-1}\delta$
+are symmetric morphisms from $G$ to $G^*$; they are associated with
+ $f_1$ and $f_2$ respectively.
+
+ 	
+This gives a important relationship by considering a second degree character $f$
+which is non degenerated of $G$, 	
+this means that the morphism $\rho$ associated with $f$ is an isomorphism
+from $G$ to $G^*$; then the function $f'$ to $G^*$, defined by 
+\[
+f'(x^*) = f(-x^*\rho^{-1}),
+\]
+is a character of second degree of $G^*$, with the associated symmetric 
+morphism $\rho^{-1}$ from $G^*$ to $G$. 
+By the proposition~\ref{p:1}, applied to $t'_0(f')$, gives
+\[
+t'(f')=t_0(f)d'_0(\rho^{-1})t_0(f^-)
+\]
+where $f^-$ is defined by $f^-(x)=f(-x)$ 	
+as mentioned above.
+A simple calculation gives the other:
+\[
+t'_0(f') = d'_0(\rho^{-1})t_0(f^{-1})d'_0(-\rho^{-1}).
+\]
+At the same time we have $d'_0(\rho^{-1})^2=d_0(-1)$, we derived the following:
+\begin{equation}\label{eq:9}
+d'_0(-\rho^{-1})t_0(f)d'_0(\rho^{-1})t_0(f^-)= t_0(f^{-1})d'_0(-\rho^{-1}).
+\end{equation}
+Taking into account the relationships obtained in subsection~6, 
+we have (\ref{eq:9}) in a simpler form
+\[
+(t_0(f)d'_0(-\rho_0^{-1}))^3=e,
+\] 
+where $e$ is the identity element of $B_0(G)$; in that form, 
+it is well known in the theory classic modular group.
+But it is the relationship (9), as written above, we have to use later.
 \end{document}
