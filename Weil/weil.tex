@@ -21,7 +21,7 @@
 \newtheorem{lemma}{Lemma}
 \newtheorem{thm}{Theorem}
 \newtheorem{prop}{Proposition}
-\newenvironment{subproof}{\newline\footnotesize\it}{\normalsize}
+\newenvironment{expl}{\small\it\color{red}}{\color{black}\normalsize}
 \DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
 
 
@@ -39,6 +39,7 @@
 \def\bA{{\mathbb{A}}}
 \def\bs{{\mathbf{s}}}
 \def\bd{{\mathbf{d}}}
+\def\bT{{\mathbb{T}}}
 \def\bt{{\mathbf{t}}}
 \def\br{{\mathbf{r}}}
 \def\vv{{\vec{v}}}
@@ -525,13 +526,79 @@ it is well known in the theory classic modular group.
 But it is the relationship (9), as written above, we have to use later.
 
 \subsection{}
+
+The automorphisms of the group $\mathbf{A}(G)$, (which is )isomorphic
+to $A(G)$, which was introduced in Section 4, are of course the same
+as those of $A(G)$. We now propose to show that any automorphism
+$s\in B_{0}(G)$ of $\mathbf{A}(G)$ is induced on $\mathbf{A}(G)$
+by an inner automorphism of the group of all the unitary operators.
+This theorem is due to I.Segal{[}6{]} in the case where $x\rightarrow2x$
+is an automorphism of $G$, and we borrow his method of demonstration,
+which includes the introduction of an algebra of operators naturally
+associated to the group $\mathbf{A}(G)$. For this, we propose, in
+a sense which will be precise in a moment,
+
+\[
+U(\varphi)=\int U(w)\varphi(w)dw,\]
+
+
+where $\varphi$ denotes a function on $G\times G^{*},$ and where
+$w=(u,u^{*})$ and $dw=du\cdot du^{*}$ (measure which does not depend
+on the choice of the measure $du$ on $G$). In other words, if $\Phi$
+is a function on $G$, $U(\varphi)\Phi$ is the functin defined by
+
 \begin{equation}\label{eq:10}
 U(\phi)\Phi(x)=\int U(w)\Phi(x)\cdot \phi(w)dw =
 \int \Phi(x+u)\cdot \inn{x}{u^*} \cdot \phi(u,u^*) du du^* 
 \end{equation}
+
+where we assume provisionally, to fix the ideas, that $\varphi$ and
+$\Phi$ are two continuous function with compact support. This can
+also be written as
+
 \begin{equation}\label{eq:11}
 U(\phi)\Phi(x)=\int K(x,y)\Phi(y)dy
 \end{equation}
+
+
+where $K$ is given by
+
+\[
+K(x,y)=\int\varphi(y-x,u^{*})\cdot<x,u^{*}>\cdot du^{*}\]
+
+
+
+or, which is the same as
+
+\[
+K(x,x+u)=\int\varphi(u,u^{*})\cdot<x,u^{*}>\cdot du^{*}\]
+
+
+one obtains then $K(-x,-x+u)$ from $\varphi(u,u^{*})$ while applying,
+for any value of $u$, the Fourier transform where $\varphi(u,u^{*})$
+considered as function of $u^{*}$. Under the conditions when the
+validity of Fourier inversion formula holds, we then have
+
+\[
+\varphi(u,u^{*})=\int K(x,x+u)\cdot<x,-u^{*}>\cdot dx;\]
+
+
+furthermore, in virtue of Plancherel theorem, we have
+
+\[
+\int|K(x,y)|^{2}dxdy=\int|\varphi(u,u^{*})|^{2}dudu^{*},\]
+
+
+this shows that the correspondence between the functions $\varphi$
+on $G\times G^{*}$ and the functions $K$ on $G\times G$, defined
+by the above formulas, is extended continuouly to an isomorphism $W$
+of $L^{2}(G\times G^{*})$ onto $L^{2}(G\times G)$.
+
+When $K$ is the function defined by $K(x,y)=P(x)Q(y)$, we write
+$K=P\otimes Q$; and, if $P$ and $Q$ are in $L^{2}(G)$, we write
+$(P,Q)=\int P(x)\overline{Q(x)}dx$; along with these notations, the
+formulas above are given in particular
+
 \begin{equation}\label{eq:12}
 W^{-1}(P\otimes \overline{Q})(w)=(P,U(w)Q)
 \end{equation}
@@ -764,14 +831,34 @@ where $P$ and $Q$ are in $S(G)$,
 and then, for $Q\neq 0$ in $S(G)$, the map $P\to  P\otimes Q$ 
 is an isomorphism from 
 $S(G)$ to a closed sub-space of $S(G\times G)$.
+\begin{expl}
+\def\tH{{\tilde{H}}}
+We have to prove that $E=\Set{P\otimes Q\in S(G\times G)}$ is closed
+and $i:P\to P\times P\otimes Q$ is isomorphism.
+
+By the definition of inductive limit, $i$ is countinous iff
+$i|_{S(H,H')}$ is countinous.
+Suppose $Q\in S(\tH,\tH')$ then 
+$i_{S(H,H')}:S(H,H') \to S(H\times \tH, H'\times \tH')\hookrightarrow S(G\times G)$
+$P_n$ converges in $S(H,H')\cong S(H/H')$
+\[
+\abs{p(x,y)D^{\alpha_1}D^{\alpha_2}P_n\otimes Q}\leq \abs{(p(x)q(y)+C)D^{\alpha_1}P_n\otimes D^{\alpha_2}Q}
+\to 0
+\]
+$i$ continous.
+
+\[
+\abs{p D^{\alpha} P} < \abs{p(x)D^{\alpha} P\otimes Q} 
+\]
+\end{expl}
+
 For (b) and (d), it is intended to show that $W$
 determines an isomorphism from $S(G\times G^*)$ to $S(G\times G)$, 
 but $W$ is composed of the operator
 $F(x, y) \to F(y-x,-x)$, which obviously an automorphism of $S(G\times G)$,
 and the partial Fourier transform on the second factor of 
 the product $G\times G^*$.
-  
-it is therefore requires to verify that if $A$ and $B$ are
+It is therefore requires to verify that if $A$ and $B$ are
 locally compact abelian groups 
 and if $B^*$ is the dual of $B$, the partial Fourier transform
 \[
@@ -780,11 +867,26 @@ f(a,b)\to f'(a,b^*) = \int f(a,b)\inn{b}{b^*} db
 determines an isomorphism from $S(A\times B)$ to  $S(A\times B^*)$.
 This is an easy generalization of the theorem similar to
 ordinary Fourier Transform.
+\begin{expl}
+Should be $F(x,y)\to F(y-x,x)$?
+\[
+\begin{matrix}
+W \colon & S(G\times G^*) & \to & S(G\times G) & \to & S(G\times G)&\\
+&\phi &\mapsto & \int \phi(x,u^*)\inn{u^*}{y}du^* 
+& \mapsto & \int \phi(y-x, u^*)\inn{x}{u^*}du^* &= W(\phi)
+\end{matrix}
+\]
+\end{expl}
 
 \subsection{}
 I1 we still consider a (c). Since an automorphism $\sigma$ of a $G\times G^*$ 
 obviously determine an automorphism of $S(G\times G^*)$,
 we (after replacing $G$ to $G\times G^*$) reduces to prove that: 
+\begin{expl}
+\[
+\phi^s = f(w\sigma^{-1})\phi(w\sigma^{-1})
+\]
+\end{expl}
 \begin{prop}\label{p:2}
 Let $f$ be a character of second degree of $G$.
 Then $\Phi\to \Phi f$ is an automorphism of $S(G)$.
@@ -792,39 +894,137 @@ Then $\Phi\to \Phi f$ is an automorphism of $S(G)$.
 First, let $G=\bR^n\times \bZ^p \times T^q \times F$, 
 with $F$ a finite group; it is easy to see, all remains to show that 
  any differential operator $D$ is invariant by translation on $G$,
-there is a polynomial function $P$ on $G$ such that $\abs{Df}<\abs{P}$. 
+there is a polynomial function $P$ on $G$ such that $\abs{Df}<\abs{P}$.
+\begin{expl}
+\[
+\abs{p D^\alpha \Phi f} = \abs{\sum_{\beta\leq \alpha} p C_\beta D^{\alpha-\beta} \Phi D^{\alpha-\beta}f}
+\]
+this gives $\Phi \to \Phi f$ continuous.
+\end{expl}
 This is not difficulty to varify the  expressing $f$ on the  coset of 
 $\bR^n\times T^q$ in $G$ by using the formula (\ref{eq:1}) in subsection~1,
 and noting that, for $\bR^n\times T^q$, $f$ is necessarily of the form 
 $e^{iF(x)}\chi(x,y)$ where $x\in \bR^n$, $y\in T^q$, 
 $F$ is a quadratic form on $\bR^n$ and 
 $\chi$ is a character of $\bR^n\times T^q$. 	
+\begin{expl}
+\[
+\frac{f((x_1,y_1)+(x_2,y_2))}{f((x_1,y_1))f((x_2,y_2)} = \inn{(x_1,y_1)}{(x_2,y_2)\rho}
+\]
+$\rho\colon G\to G^*$ is a morphism.
+$G^* = \bR^{n*}\times \bT^{q*} \cong \bR^n\times \bZ^q$ 
+So $\rho$ maps into $\bR^{n*}\times 0$ by connectness. 
+The image of $0\times \bT^{q}$ is trivial by campactness and connectness. 
+Then $\rho$ only depends on $x$.
+$2$ is auto. So $f(x,y) = \inn{x}{2^{-1}x\rho}\chi(x,y)$
+(by section~1, ker of $X_2(G)=X_1(G)\times X^0_2(G)$)
+\end{expl}
 Moving to the general case, let $\rho$ be a symmetric morphism of from 
 $G$ to $G^*$ associated to $f$, and give a subgroup $H$ of $G$ 
 generated by a compact neighborhood of $0$.
 For a subgroup $H'$ of $H$ satisfies the condition $(ii)$ 
 of the definition of $S(H, H')$, 	
 it is both necessary and sufficient,
- as we know (see [1], $n^o$~9, p. 60) that the group $H$,
+ as we know (see [1], $n^o$~9, p. 60), that
 the group $H'_*$ which is associated by duality in $G^*$ 
 (the ``orthogonal'' of $H'$) is generated by a compact neighborhood of $0$, 
+\begin{expl}
+\begin{enumerate}[(1)]
+\item
+(c.f. On the Schwartz-Bruhat Space and the Peley-Winer Theorem 
+for Locally Compact Abelian Groups Scott Osborne.)
+$K$ is ``good'' iff $G/K$ is a Lie group.
+
+$K$ is ``good'' iff $K^\perp$ is open and compactly generated
+(i.e. $K^\perp$ is generated by a compact neighborhood of $0$).
+
+This gives $H'_*$ comapct generated
+\item
+$0\to H'_* \to H^* \to H'^* \to 0$ 
+(c.f. A First Course in Harmonic Analysis 109 Ex~7.8)
+$H'_* \cong (H/H')^*$
+$H'$ compact, then $H'^*$ discrete, So $H'_*$ is open.
+\item (c.f. Scott Osborne)
+$G$ is compactly generated iff $G^*$ is a Lie group.
+\proof
+Let $C$ be a compact subset of $G$, $U$ a neighborhood of $1$ in $\bT$. 
+Let $W(C,U) = \Set{x^*\in G^*| x^*(C)\subset U}$ 
+be a neighberhood of $0$ of $G^*$.
+Let $<C>$ is the group $C$ generated, then $F^\perp \subset W(C,U)$. 
+Suppose that $U$ contains no nonidentity subgroups of $\bT$
+(we always can choose such $U$).
+Let $E$ be a subgroup in $W(C,U)$, 
+clearly $\Set{\inn{c}{e}|e\in E}$ is a subgroup of $\bT$ for any fixed $c\in C$.
+Then $\inn{c}{e}=1$ for all $c\in C, e\in E$, $E \subset <C>^\perp$.
+Thus $G$ is compactly generated(for example by $C$) iff $G^*$ has
+no small subgroups, i.e. iff $G^*$ is a Lie group. 
+
+(In 1953, Hidehiko Yamabe obtained the final answer to Hilbert¡¯s Fifth Problem: 
+A connected locally compact group G is 
+a projective limit of a sequence of Lie groups,
+and if G has ``no small subgroups'', then it is a Lie group.
+``no small subgroups''  if there is a neighbourhood N of $e$
+ containing no subgroup bigger than the trivial one.
+
+The locally compact abelian group case was solved in 1934 by Lev Pontryagin. )
+\end{enumerate}
+end.
+\end{expl}
 then the group $H'_* +H\rho$ has the same property, 
 this shows that replacing $H'_*$ with $H'$  a smaller group satisfing (ii),
  we can ensure that we have $H\rho \subset H'_*$. 
+\begin{expl}
+Note that if $K<G$, $K^{\perp\perp} = K$.
+Clearly $K \leq K^{\perp\perp}$, If $K\lneq K^{\perp\perp}$,
+ $K^{\perp\perp}/K$ nontrivial, then exists nontrivial 
+character $\alpha^*$ on $K^{\perp\perp}/K$. 
+Extend it to $G$, call it $\alpha^*$ also.
+Then $\alpha^* \in K^\perp$ but not in $K^{\perp\perp\perp}$.
+It's clearly that $K^\perp = K^{\perp\perp\perp}$($\perp$ is a Galois relation).
+This leads a contradiction.
+
+Now let  $\tilde{H}'_*=H'_* + H\rho$.
+Then $\tilde{H}' = \tilde{H}_*^{'\perp} < H_*^{'\perp} = H'$.
+
+By above $H/\tilde{H}'$ is a Lie group. But abelian Lie group is elementary!
+\end{expl}
 By (\ref{eq:1}) subsection~1, this gives $f(h + h')=f(h)f(h')$ 
 for each $h\in H$, $h' \in H'$.  
+\begin{expl}
+\[
+\frac{f(h+h')}{f(h)f(h')} = \inn{h'}{h\rho} = 1
+\]
+\end{expl}
 In particular, $f$  induces a character of $H'$, we can extend to a
 character of $G$  of the form $\inn{h'}{a^*}$ with $a^*\in G^*$. 	
+\begin{expl}
+\[
+0\to H'\to G\to G/H' \to 0
+\]
+induced 
+\[
+0 \to (G/H')^* \to G^* \to H'^* \to 0
+\]
+So we can extend it. 
+\end{expl}
 Replacing $H'_*$ by the group generated by $H'_*$ and $a^*$,
-we can make that $a^*$ in $H$;
+we can make that $a^*$ in $H'_*$;
+\begin{expl}
+as above
+\end{expl}
 since, $f$ induces the constant $1$ on $H'$ and 
-and is constant in each class following $H'$. 
-After what has been demonstrated in the case $G$ is a  elementary group,
+and is constant in each coset of $H'$.
+\begin{expl}
+\[
+f(h+h') = f(h)f(h')\inn{h'}{h\rho} = f(h)
+\]
+\end{expl} 
+After what has been proved in the case $G$ is a  elementary group,
 it follows, by passing to the quotient,
  that $\Phi\to \Phi f$ determine an automorphism of $S(H, H')$.
 As is the case, for any $H$ satisfying (i), provided that $H'$ 
 has been made small enough and satisfies (ii) it completed the
-demonstration 
+prove.
 (given the definition of the topology of $S(G)$ by inductive limit).
 
 \subsection{}
