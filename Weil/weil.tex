@@ -876,6 +876,28 @@ W \colon & S(G\times G^*) & \to & S(G\times G) & \to & S(G\times G)&\\
 & \mapsto & \int \phi(y-x, u^*)\inn{x}{u^*}du^* &= W(\phi)
 \end{matrix}
 \]
+
+$f\in S(H,K)$, $H$ can be choosen bigger s.t. $H=H_1\times H_2$,
+$K$ can be choosen smaller s.t. $K = K_1\times K_2$.
+Partial Fourier Transform maps $f$ to 
+$S(H_1\times K_2^\perp, K_1\times H_2^\perp)$.
+\[
+0\to H_2^\perp \to K_2^\perp \to (H_2/K_2)^\perp\to 0
+\]
+$\int_G f(x,y)\inn{y}{\alpha^*}dy 
+= \int_H f(x,y)\inn{y}{\alpha^*}dy$
+is constant if $\alpha^* \in H_2^\perp$.
+$\int_G f(x,y)\inn{y}{\alpha^*}dy 
+= \int_{H_2/K_2} \int_{K_2} f(x,y+k)\inn{y+k}{\alpha^*} dk\,dy
+= \int_{H_2/K_2}  f(x,y)\inn{y}{\alpha^*}
+\int_{K_2} \inn{k}{\alpha^*} dk\,dy
+=0$
+if $\alpha^*\notin K_2^\perp$.
+
+This transform can be consieder as Partial Fourier transform 
+from $S(H_1/K_1 \times H_2/K_2)$ 
+to $S(H_1/K_1 \times (H_2/K_2)^*)$.
+Then is automorphism by elementary case. 
 \end{expl}
 
 \subsection{}
@@ -986,7 +1008,8 @@ This leads a contradiction.
 Now let  $\tilde{H}'_*=H'_* + H\rho$.
 Then $\tilde{H}' = \tilde{H}_*^{'\perp} < H_*^{'\perp} = H'$.
 
-By above $H/\tilde{H}'$ is a Lie group. But abelian Lie group is elementary!
+By above $H/\tilde{H}'$ is a Lie group. But 
+compactly generated abelian Lie group is elementary!
 \end{expl}
 By (\ref{eq:1}) subsection~1, this gives $f(h + h')=f(h)f(h')$ 
 for each $h\in H$, $h' \in H'$.  
@@ -1044,6 +1067,10 @@ we set
 \[
 \bd_0(\alpha)\Phi(x)=\abs{\alpha}^{\frac{1}{2}}\Phi(x\alpha).
 \]
+\begin{expl}
+$\bd_0(\alpha)$ is unitary.
+\int \abs{\alpha}\abs{\Phi(x\alpha)}^2 = \int \abs{\Phi(x)}^2
+\end{expl}
 For any seconde degree characher $f$ of $G$, we set
 \[
 \bt_0(f)\Phi(x) = \Phi(x)f(x).
@@ -1052,11 +1079,18 @@ For any isomorphism $\gamma$ from $G^*$ to $G$, we set
 \[
 \bd'_0(\gamma)\Phi(x) = |\gamma|^{-\frac{1}{2}} \Phi^*(-x\gamma^{*-1}),
 \]
+\begin{expl}
+Fourier transform is unitary.
+\end{expl}
 where, $\Phi^*$ denotes the Fourier transform of $\Phi$.
-We can easily verify that $\bd_0$, $\bt_0$, $\bd'_0$ raising $\bB_0(G)$ to
-$d_0, t_0, d'_0$ defined in $n^o 6$, 
+We can easily verify that $\bd_0$, $\bt_0$, $\bd'_0$ lifting of  
+$d_0, t_0, d'_0$ defined in $n^o 6$ to  $\bB_0(G)$, 
 i.e. $d_0 = \pi_0 \circ \bd_0$, $t_0=\pi_0\circ \bt_0$, 
-$d'_0 = \pi_0 \circ \bd'_0$. Moreover, $\bd_0$ and $\bt_0$ are monomrophisms
+$d'_0 = \pi_0 \circ \bd'_0$. 
+\begin{expl}
+
+\end{expl}
+Moreover, $\bd_0$ and $\bt_0$ are monomrophisms
 from $B_0(G)$ to the group of the automorphisms of $G$, and the group
 $X_2(G)$ respectively; and when $\alpha$, $f$, $\gamma$ are like above,
 we have:
