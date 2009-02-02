@@ -21,7 +21,7 @@
 \newtheorem{lemma}{Lemma}
 \newtheorem{thm}{Theorem}
 \newtheorem{prop}{Proposition}
-\newenvironment{expl}{\small\it\color{red}}{\color{black}\normalsize}
+\newenvironment{expl}{\it}{\color{black}\normalsize}
 \DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
 
 
@@ -441,6 +441,100 @@ and the inner automorphisms of $A(G)$; consequently,
 $B_0(G)$ is isomorphic to a semidirect product of $Sp (G)$ and  $G\times G^*$.
 
 \subsection{}
+Returning to the general case, let $s(\sigma,f)$ be an element from
+$B_{0}(G)$, and let's write $\sigma$ in the matrix form introduced
+in Section 3. Consider first the case wherein $\beta=0$ and $\gamma=0$;
+the symplectic considition, $\sigma\sigma^{I}=1$, then gives $\delta=\alpha^{*-1}$;
+it follows that the second member in (6) has the value $1$; it agrees
+with (6) when taking $f=1$, and $s$ differs from $(\sigma,1)$ by
+only an inner automorphism. For any automorphism $\alpha$ of $G$,
+we let
+
+\[
+d_{0}(\alpha)=\left(\left(\begin{array}{cc}
+\alpha & 0\\
+0 & \alpha^{*-1}\end{array}\right),1\right);\]
+$\alpha\rightarrow d_{0}(\alpha)$ is then a monomorphism of the group
+of automorphisms of $G$ into the group $B_{0}(G)$.
+
+Now let $\alpha=0$, $\delta=0$; as $\sigma$ is an automorphism
+of $G\times G^{*}$, it implies that $\beta$, $\gamma$ are the isomorphisms
+of $G$ on $G^{*}$ and of $G^{*}$ on $G$, respectively. Then $\sigma\sigma^{I}=1$
+gives $\beta=-\gamma^{*-1}$, and we verify immediately that (6) is
+satisfied when $f(u,u^{*})=<u,-u^{*}>$. If $\gamma$ is an isomorphism
+of $G^{*}$ on $G$, we let
+
+\[
+d_{0}^{'}(\gamma)=\left(\left(\begin{array}{cc}
+0 & -\gamma^{*-1}\\
+\gamma & 0\end{array}\right),<u,-u^{*}>\right).\]
+
+
+Again let $\alpha=1$, $\delta=1$, $\gamma=0$; $\sigma\sigma^{I}=1$
+reduces to $\beta=\beta^{*}$, and the formulas of Section 5 show
+that $f$ is of the form $g(u)h(u^{*})$, where $h$ is a character
+of $G^{*}$ and $g$ a character of the second degree of $G$ associated
+to $\beta$. Whenever $f$ is a character of the second degree of
+$G$, and $\rho$ is the symmetric morphism of $G$ to $G^{*}$associated
+to $f$, this leads to
+
+\[
+t_{0}(f)=\left(\left(\begin{array}{cc}
+1 & \rho\\
+0 & 1\end{array}\right),f\right);\]
+
+
+$f\rightarrow t_{0}(f)$ is then a monomorphism of the group $X_{2}(G)$
+of characters of the second degree of $G$ into the group $B_{0}(G)$.
+Similarly, if $f'$ is a character of the seconde degree of $G^{*}$,
+associated with symmetric morphism $\rho'$ of $G^{*}$ to $G$, we
+write
+
+\[
+t_{0}^{'}(f')=\left(\left(\begin{array}{cc}
+1 & 0\\
+\rho' & 1\end{array}\right),f\right),\]
+ which defines a monomorphism of $X_{2}(G)$ into $B_{0}(G)$.
+
+If $f$ is a character of the seconde degree of $G$, and $\alpha$
+an automorphism of $G$, we write
+
+\[
+f^{\alpha}(x)=f(x\alpha^{-1})\]
+(however, as this notation would lead to confusion when $\alpha=-1$,
+we write $f^{-}(x)=f(-x)$); along with this notation, we have
+
+\[
+d_{0}(\alpha)^{-1}t_{0}(f)d_{0}(\alpha)=t_{0}(f^{\alpha}),\]
+\[
+d_{0}(\alpha)t_{0}^{'}(f')d_{0}(\alpha)^{-1}=t_{0}^{'}(f^{'\alpha^{*}}).\]
+
+
+If $\alpha$ is as above, and if $\gamma$ is an isomorphism of $G^{*}$
+on $G$, we have
+
+\[
+d_{0}^{'}(\gamma\alpha)=d_{0}^{'}(\gamma)d_{0}(\alpha),\]
+\[
+d_{0}^{'}(\alpha^{*-1}\gamma)=d_{0}(\alpha)d_{0}^{'}(\gamma);\]
+
+
+the first relation shows in particular that the set of elements of
+$B_{0}(G)$ of the form $d_{0}^{'}(\gamma)$, if it is nonempty, is
+a right coset relative to the subgroup of $B_{0}(G)$ formed by the
+elements of the form $d_{0}(\alpha)$. More generally, we observe
+that, according to (6), if an element $s$ of $B_{0}(G)$ is of the
+form $(\sigma,1)$, the bi-character $F$ must be invariant under
+$\sigma$; as $G^{*}$ is the set of $z_{1}\in G\times G^{*}$ such
+that $F(z_{1,}z_{2})=1$ for every $z_{2}$, and that $G$ is the
+set of $z_{2}\in G\times G^{*}$ such that $F(z_{1},z_{2})=1$ for
+every $z_{1}$, it follows that $\sigma$ is then of the form $\left(\begin{array}{cc}
+\alpha & 0\\
+0 & \delta\end{array}\right)$, and therefore, as been seen above, that we have $s=d_{0}(\alpha)$;
+the formula (7) then shows that, for any two elements $s=(\sigma,f)$
+and $s^{"}=(\sigma",f")$ of $B_{0}(G)$ belonging to the same right
+coset relative to the subgroup of elements of the form $d_{0}(\alpha)$,
+it is necessary and sufficent that $f=f^{"}$.
 
 \subsection{}
 Now agree, for $s=(\sigma, f)$ and 
@@ -1069,7 +1163,7 @@ we set
 \]
 \begin{expl}
 $\bd_0(\alpha)$ is unitary.
-\int \abs{\alpha}\abs{\Phi(x\alpha)}^2 = \int \abs{\Phi(x)}^2
+$\int \abs{\alpha}\abs{\Phi(x\alpha)}^2 = \int \abs{\Phi(x)}^2$
 \end{expl}
 For any seconde degree characher $f$ of $G$, we set
 \[
@@ -1088,7 +1182,52 @@ $d_0, t_0, d'_0$ defined in $n^o 6$ to  $\bB_0(G)$,
 i.e. $d_0 = \pi_0 \circ \bd_0$, $t_0=\pi_0\circ \bt_0$, 
 $d'_0 = \pi_0 \circ \bd'_0$. 
 \begin{expl}
-
+Let $(w,t) = ((u,u^*),t)$,
+\begin{enumerate}[(1)]
+\item
+$\bd_0(\alpha^{-1})(w,t)\bd_0(\alpha)$
+maps $\Phi(x)$ to $\abs{\alpha}^{\frac{1}{2}}\Phi(x\alpha)$
+to $t \abs{\alpha}^{\frac{1}{2}}\Phi((x+u)\alpha)\inn{x}{u^*}$
+to $t\Phi((x\alpha^{-1}+u)\alpha)\inn{x\alpha^{-1}}{u^*}
+=t\Phi(x+u\alpha)\inn{x}{u^*\alpha^{*-1}}$.
+But 
+\[
+((w,t)d_0(\alpha)) = ((u\alpha, u^*\alpha^{*-1}),1)
+\]
+\item
+$\bt_0(f^{-1})(w,t)\bt_0(f)$
+maps $\Phi(x) \mapsto \Phi(x)f(x) \mapsto
+t\Phi(x+u)f(x+u)\inn{x}{u^*} \to t \Phi(x+u) f(x+u) f^{-1}(u)\inn{x}{u^*}
+ = \Phi(x+u) f(x)\inn{x}{u\rho+u^*} $.\\
+$(w,t)\left(\begin{pmatrix}1& \rho \\ 0 & 1\end{pmatrix},f\right) 
+= ((u,u\rho +u^*),f(u)t)$ act on $\Phi$ gives $t\Phi(x+u)f(u)\inn{x}{u\rho+u^*}$
+\item 
+$\bd_0(-\gamma^*) \bd_0(\gamma) = \id$
+$\bd_0(-\gamma^*)(w,t)\bd_0(\gamma)$ maps $\Phi(x)$ 
+to $\abs{\gamma}^{-1/2}\Phi^*(-x\gamma^{*-1})$
+to  $\abs{\gamma}^{-1/2}t\Phi^*(-(x+u)\gamma^{*-1})\inn{x}{u^*}$
+to  
+\[
+\begin{split}
+&\abs{-\gamma^*}^{-1/2}\abs{\gamma}^{-1/2}t
+\int \Phi^*(-(y+u)\gamma^{*-1})\inn{y}{u^*}\inn{y}{x\gamma^{-1}}dy\\
+=& \abs{\gamma}^{-1} t
+\int \Phi^*(-y\gamma^{*-1})\inn{y-u}{u^*+x\gamma^{-1}}dy\\
+=& \abs{\gamma}^{-1} t
+\int \Phi^*(-y\gamma^{*-1})\inn{y-u}{u^*+x\gamma^{-1}}dy\\
+=& \abs{\gamma}^{-1} t \inn{-u}{u^*+x\gamma^{-1}}
+\int \Phi^*(-y\gamma^{*-1})\inn{y}{u^*+x\gamma^{-1}}dy\\
+=&  t \inn{-u}{u^*+x\gamma^{-1}}
+\int \Phi^*(y)\inn{-y\gamma^*}{u^*+x\gamma^{-1}}dy\\
+=&  t \inn{-u}{u^*+x\gamma^{-1}}
+\int \Phi^*(y)\inn{-y}{u^*\gamma+x}dy\\
+=& t \inn{-u}{u^*+x\gamma^{-1}}\Phi(u^*\gamma+x)
+\end{split}
+\]
+$(w,t)d_0(\gamma) = ((u^*\gamma, -u\gamma^{*-1}),t\inn{u}{-u^*})$,
+maps $\Phi$ to $t\Phi(x+u^*\gamma)\inn{u}{-u^*}\inn{x}{-u\gamma^{*-1}}
+=t\Phi(x+u^*\gamma)\inn{-u}{u^*}\inn{-u}{x\gamma^{-1}}$
+\end{enumerate}
 \end{expl}
 Moreover, $\bd_0$ and $\bt_0$ are monomrophisms
 from $B_0(G)$ to the group of the automorphisms of $G$, and the group
@@ -1099,7 +1238,24 @@ we have:
 \bd'_0(\gamma \alpha) = \bd'_0(\gamma)\bd_0(\alpha),\quad
 \bd'_0(\alpha^{*-1}\gamma) = \bd_0(\alpha)\bd'_0(\gamma).
 \]
-
+\begin{expl}
+\[
+\begin{split}
+\bd'_0(\gamma\alpha)\Phi 
+&= \abs{\gamma \alpha}^{-\frac{1}{2}} \int \Phi(y) \inn{y}{-x{\gamma\alpha}^{*-1}}dy \\
+&= \abs{\gamma}^{-\frac{1}{2}} {\alpha}^{-\frac{1}{2}} \int \Phi(y) 
+\inn{y}{-x\gamma^{*-1}\alpha^{*-1}}dy \\
+&= \abs{\gamma}^{-\frac{1}{2}} {\alpha}^{-\frac{1}{2}} \int \Phi(y) 
+\inn{y\alpha^{-1}}{-x\gamma^{*-1}}dy \\
+&= \abs{\gamma}^{-\frac{1}{2}} {\alpha}^{\frac{1}{2}} \int \Phi(y^*\alpha) 
+\inn{y^*}{-x\gamma^{*-1}}dy^*
+\end{split}
+\]
+\[
+\bd'(\alpha^{*-1}\gamma) = \abs{\gamma}^{-\frac{1}{2}} \abs{\alpha^{*-1}}^{-1/2} 
+\Phi^*(-x\alpha \gamma^{*-1})
+\]
+\end{expl}
 The propersiton~\ref{p:1} of $n^o~7$ 
 allows us raise $B_0 (G)$ for all the element of the set
 $\Omega_0(G)$ defined in this propersition.
