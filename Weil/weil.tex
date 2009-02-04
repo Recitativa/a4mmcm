@@ -1230,7 +1230,7 @@ maps $\Phi$ to $t\Phi(x+u^*\gamma)\inn{u}{-u^*}\inn{x}{-u\gamma^{*-1}}
 \end{enumerate}
 \end{expl}
 Moreover, $\bd_0$ and $\bt_0$ are monomrophisms
-from $B_0(G)$ to the group of the automorphisms of $G$, and the group
+from $\bB_0(G)$ to the group of the automorphisms of $G$, and the group
 $X_2(G)$ respectively; and when $\alpha$, $f$, $\gamma$ are like above,
 we have:
 \[
@@ -1241,14 +1241,14 @@ we have:
 \begin{expl}
 \[
 \begin{split}
-\bd'_0(\gamma\alpha)\Phi 
+\bd'_0(\gamma\alpha)\Phi(x)
 &= \abs{\gamma \alpha}^{-\frac{1}{2}} \int \Phi(y) \inn{y}{-x{\gamma\alpha}^{*-1}}dy \\
-&= \abs{\gamma}^{-\frac{1}{2}} {\alpha}^{-\frac{1}{2}} \int \Phi(y) 
+&= \abs{\gamma}^{-\frac{1}{2}} \abs{\alpha}^{-\frac{1}{2}} \int \Phi(y) 
 \inn{y}{-x\gamma^{*-1}\alpha^{*-1}}dy \\
-&= \abs{\gamma}^{-\frac{1}{2}} {\alpha}^{-\frac{1}{2}} \int \Phi(y) 
+&= \abs{\gamma}^{-\frac{1}{2}} \abs{\alpha}^{-\frac{1}{2}} \int \Phi(y) 
 \inn{y\alpha^{-1}}{-x\gamma^{*-1}}dy \\
-&= \abs{\gamma}^{-\frac{1}{2}} {\alpha}^{\frac{1}{2}} \int \Phi(y^*\alpha) 
-\inn{y^*}{-x\gamma^{*-1}}dy^*
+&= \abs{\gamma}^{-\frac{1}{2}} \abs{\alpha}^{\frac{1}{2}} \int \Phi(y\alpha) 
+\inn{y}{-x\gamma^{*-1}}dy
 \end{split}
 \]
 \[
@@ -1266,13 +1266,57 @@ $\Omega_0(G)$ defined in this propersition.
 \br_0(s)=\bt_0(f_1)\bd'_0(\gamma)\bt_0(f_2).
 \]
 An easy calculation shows this formula;  
-by writing, as usual, $S = (\sigma ,f)$,  
+by writing, as usual, $s = (\sigma ,f)$,  
 $\sigma = \begin{pmatrix}\alpha &\beta \\ \gamma & \delta\end{pmatrix}$,
  we obtains
 \[
 \br_0(s)\Phi(x) = 
 \abs{\gamma}^{\frac{1}{2}}\int \Phi(x\alpha + x^*\gamma) f(x,x^*) dx^*.
 \]
+
+\begin{expl}
+$\br_0(s)$ maps $\Phi(x)$ to $\Phi(x)f_2(x)$ 
+to $\abs{\gamma}^{-1/2}\int \Phi(y) f_2(y)\inn{y}{-x\gamma^{*-1}}dy$
+to $\abs{\gamma}^{-1/2}f_1(x)\int \Phi(y) f_2(y)\inn{y}{-x\gamma^{*-1}}dy $.
+\[
+\begin{split}
+=& \abs{\gamma}^{1/2}f_1(x)\int \Phi(y^*\gamma) f_2(y^*\gamma)
+\inn{y^*\gamma}{-x}dy \\
+=& \abs{\gamma}^{1/2}f_1(x)\int \Phi(y^*\gamma+x\alpha) f_2(y^*\gamma+x\alpha)
+\inn{y^*+x\alpha\gamma^{-1}}{-x}dy 
+\end{split}
+\]
+
+By $n^o~5$,
+\begin{align*}
+f(u,u^*) &= g(u)h(u^*)\inn{u^*\gamma}{u\beta}\\
+g(u_1+u_2) &=g(u_1)g(u_2)\inn{u_1}{u_2\alpha\beta^*}\\
+h(u^*_1+u^*_2) &= h(u^*_1)h(u^*_2)\inn{u_1^*\gamma \delta^*}{u^*}
+\end{align*}
+Then
+\[
+\begin{split}
+& f_2(y^*\gamma + x\alpha)\inn{-x}{y^*+x\alpha\gamma^{-1}}f_1(x)\\
+=&f(0,y^*+x\alpha\gamma^{-1})f(x,-x\alpha\gamma^{-1})
+\inn{-x}{y^*+x\alpha\gamma^{-1}}\\
+=&g(0)h(y^*+x\alpha\gamma^{-1}g(x)h(-x\alpha\gamma^{-1})\inn{-x\alpha}{x\beta}
+\inn{-x}{y^*+x\alpha\gamma^{-1}}\\
+=&g(x)h(y^*)\inn{-x\alpha\delta^*}{y^*+x\alpha\gamma^{-1}}^{-1}
+\inn{-x\alpha}{x\beta}\inn{-x}{y^*+x\alpha\gamma^{-1}}\\
+=&g(x)h(y^*)\inn{x\alpha\delta^*-x}{y^*+x\alpha\gamma^{-1}}
+\inn{-x\alpha}{x\beta}\\
+=&g(x)h(y^*)\inn{x(\alpha\delta^*\gamma^{*-1}-\gamma^{*-1})}{y^*\gamma+x\alpha}
+\inn{-x\alpha}{x\beta}\\
+=&g(x)h(y^*)\inn{x(\alpha\gamma{-1}\delta-\gamma^{*-1})}{y^*\gamma+x\alpha}
+\inn{-x\alpha}{x\beta}\\
+=&g(x)h(y^*)\inn{x\beta}{y^*\gamma+x\alpha}
+\inn{-x\alpha}{x\beta}\\
+=&g(x)h(y^*)\inn{x\beta}{y^*\gamma}\\
+=&f(x,y^*)
+\end{split}
+\]
+\end{expl}
+
 The conditions of this formula valid are obviously same as 
 those of the formula of  definition transformation of Fourier, 
 who was useful has to clarify $\bd'_0$; 
