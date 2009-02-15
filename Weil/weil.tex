@@ -21,6 +21,7 @@
 \newtheorem{lemma}{Lemma}
 \newtheorem{thm}{Theorem}
 \newtheorem{prop}{Proposition}
+\newtheorem{cor}{Corollary}
 \newenvironment{expl}{\it}{\color{black}\normalsize}
 \DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
 
@@ -87,7 +88,12 @@
 }
 
 
-\title{ON CERTAIN GROUPS of unitary OPIRATEURS}
+\newcounter{ssection}
+\setcounter{ssection}{0}
+\renewcommand{\subsection}{
+  \addtocounter{ssection}{1}{\bf  \arabic{ssection}.\  }}
+
+\title{ON CERTAIN GROUPS of unitary operators}
 
 \begin{document}
 \maketitle
@@ -1325,6 +1331,210 @@ it is valid almost everywhere if $\Phi\in L^2(G)\cap L^1(G)$;
 it is valid for all x if $\Phi\in S(G)$,
 the two members then defining a same function of $S(G)$.
 
+\subsection{}
+One obtains the important result on the {}``splitting'' of $\mathbf{B}_{0}(G)$,
+the kernel of the mapping in Section 13, the relation between the
+elements of $B_{0}(G)$; that is what we are going to do for the relation
+(9) of Section 7. As in Section 7, we considered then a nondegenerate
+character of the second degree $f$ of $G$, associated with the symmetric
+isomorphism $\rho$ of $G$ on $G^{*}$. For a moment, denote by $\mathbf{s}$
+and $\mathbf{s}'$ respectively the operators which give the first
+and the second member of (9) while replacing $\mathbf{d}_{0}^{'}$,
+$\mathbf{t}_{0}$ with $d_{0}^{'}$, $t_{0}$. In addition, with $\Phi$
+being assumed to be continuous with compact support at this moment,
+let $\Phi_{1}=\Phi\star f$, where the notation denotes naturally
+the usual product of composition
 
+\[
+\Phi_{1}(x)=\int\Phi(u)f(x-u)du;\]
+ then an easy calculation shows that $\mathbf{s}\Phi$, $\mathbf{s}'\Phi$
+are defined by
+
+\[
+\mathbf{s}\Phi(x)=|\rho|\Phi_{1}^{*}(x\rho),\]
+ \[
+\mathbf{s}'\Phi(x)=|\rho|^{\frac{1}{2}}\Phi^{*}(x\rho)\cdot f(x)^{-1}.\]
+
+
+The operators introduced here are all unitary, so it follows that
+the operator $\Phi\rightarrow\Phi\star f$ is continuous with respect
+to $L^{2}(G)$. Moerover, the relation (9), which if written now as
+$\pi_{0}(\mathbf{s})=\pi_{0}(\mathbf{s}')$, implies that $\mathbf{s}$
+and $\mathbf{s}'$ can differ only by a scalar factor with absolute
+value 1. We write $\mathbf{s}=\gamma(f)\mathbf{s}'$, which gives,
+while substitute $x^{*}\rho^{-1}$ with $x$:
+
+\[
+\mathfrak{I}(\Phi\star f)=\gamma(f)|\rho|^{-\frac{1}{2}}\mathfrak{I}(\Phi)\cdot g,\]
+ (17)where $g$ is the character of the second degree of $G^{*}$,
+associated with $-\rho^{-1}$, and defined by
+
+\[
+g(x^{*})=(x^{*}\rho^{-1})^{-1}.\]
+ In accordance with the usual conventions in the theory of Fourier
+transform, we express (17) by saying that $\gamma(f)|\rho|^{-\frac{1}{2}}g$
+is the Fourier transform of $f$. We have thus shown the following: 
+\begin{thm}
+Let $f$ be a nondegenerate character of the seconde degree of $G$,
+associated with the symmetric isomorphism $\rho$ of $G$ onto $G^{*}$.
+Then $f$ admits a Fourier transform $\mathfrak{I}(f)$, defined by
+the formula \[
+\mathfrak{I}(f)(x^{*})=\gamma(f)|\rho|^{-\frac{1}{2}}f(x^{*}\rho^{-1})^{-1},\]
+ where $\gamma(f)$ is a scalar factor with absolute value 1.
+\end{thm}
+Let us repeat that this assertion must be understood in the following
+sense: the mapping $\Phi\to\Phi\star f$ extends by the continuity
+with $L^{2}(G)$, and, for any $\Phi\in L^{2}(G)$, one has $\mathfrak{I}(\Phi\star f)=\Phi^{*}\cdot\mathfrak{I}(f)$.
+Using transport of structure by means of the isomorphisms $\rho$
+of $G$ onto $G^{*}$, one concludes from it that then one has also
+$\mathfrak{I}(\Phi f)=\Phi^{*}\star\mathfrak{I}(f)$. By means of
+the Proposition 2 in Section 12, one sees moreover that, for $\Phi\in\mathbf{S}(G)$,
+both members of the last relation are continuous functions, thus that
+equality holds, not only in the sense of $L^{2}(G^{*})$, but also
+for every point, then, by transport of structure, that it is the same
+for the preceding relation. We state this result explicitly in the
+form of corollary: 
+\begin{cor}
+The hypothesis and notations being those of theorem 2, in addition
+let $\Phi\in\mathbf{S}(G)$ .
+\end{cor}
+
+\subsection{}
+\subsection{}
+\subsection{}
+\subsection{}
+\subsection{}
+\subsection{}
+\subsection{}
+\subsection{}
+
+
+
+\section{Map  with Quadratic reciprocity}
+\subsection{}
+To be consistent as much as possible with our algebraic notations in Chapter I,
+we assume, that $X$ is a vector space (always finite dimension) on a field $k$,
+denotes its dual by $X^*$, and let  $[x, x^*]$, for $x\in X, x^* \in X^*$,
+the value on $x$ of the linear form $x*$ of $X$;
+we will identify $X$ with its bidual $(X^*)^*$ 
+by  formula 
+\[
+[x, x^*] = [x^*, x];
+\]
+and, when $\alpha$ is a linear map (called `` morphism'') from a space $X$ 
+to a space $Y$, we will denote $\alpha^*$ as its transport, 
+it is a linear map from $Y^*$ to $X^*$, for $X \in X$, $y^* \in Y^*$, 
+defined by the formula 
+\[
+[x\alpha, y^*] = [x, y^*\alpha^*].
+\]
+Any bilinear form on $X\times Y$ can be written as $[X, y\alpha]$,
+where $\alpha$ is a morphism form $Y$ to $X^*$;
+For $X=Y$, we said $\alpha$ is symmetric if $[x, y\alpha]$
+ is symmetric in $x$ and $y$, therefore if $\alpha=\alpha^*$.
+
+If $f$ is a quadratic form on X, we have, whenever $x \in X, y \in X$: 
+\[
+f (x + y) -f(x) - f (y) = [x, y\rho], 
+\]
+where $\rho$ is a symmetric morphism form $X$ to $X^*$; we 
+say $f$ and $\rho$ are associated with each other;
+$f$ is called non-degenerate if $\rho$ is an isomorphism from $X$ to  $X^*$,
+ and additive if $\rho=0$.
+There is no additive quadratic form other that $0$, if $k$ has characteristic  $2$. 
+If $k$ is not characteristic 2,  all symmetric morphism $\rho$ form $X$ $X^*$
+is associated with a unique quadratic form $f$,
+as we know that which is given by $f(x) = [x, 2^{-1}x\rho]$.
+In all cases,  $2f(x)= [x, x\rho]$. We let $Q(X)$ 
+be the vector space of quadratic forms on $X$,
+ and $Q_a(X)$ be the subspace of $Q(X)$ consisting the additive forms. 
+
+\subsection{}
+Firstly let $k$ be a \emph{local field}; by which we mean a locally
+compact non-discrete commutative (topological) field; it is then,
+either isomorphic to $\mathbf{R}$ or $\mathbf{C}$, or with a discrete
+valuation%
+\footnote{which is function $v:k\to\mathbb{Z}\cup\{\infty\}$ such that 
+$v(x\cdot y)=v(x)+v(y)$;
+$v(x+y)\geq min\{v(x),v(y)\}$; and $v(x)=0\Leftrightarrow x=\infty$%
+}; and, in the latter case, it is a finite extension, either of a field
+$\mathbf{Q}_{p}$ ($p$-adic completion of the field $\mathbf{Q}$
+of rationals) if it is of characteristic $0$, or of the field of
+formal series with one parameter over the prime field $\mathbf{F}_{p}$
+if it is of characterist $p$. If $k$ has discrete valuation, one
+denote by $\mathfrak{o}$ the ring of integers of $k$ and $\pi$
+a prime element of $\mathfrak{o}$, i.e. a generator of the prime
+ideal $\mathfrak{p}$ of $\mathfrak{o}$; one denotes by $q$ the
+number of elements of the finite field $\mathfrak{o}/\mathfrak{p}$.
+One chooses once and for all a character $\chi$ of the additive group
+of $k$, where we assume only that it is nontrivial (i.e. that it
+is not of constant value 1); it is possible, as one knows, to choose
+$\chi$ in a canonical way, but that is irrelevant to us. One knows
+that $\chi(xy)$ is then a bicharacter of $k\times k$ which puts
+$k$ self-dual in the sense of the thoery of locally compact abelian
+groups. More generally, suppose $X$ is a vector space (of finite
+dimension, as always) over $k$; suppose $X^{*}$ is the dual; $X$
+and $X^{*}$ being provided with the obvious topology, one is then
+able to identify $X^{*}$ with the dual of $X$ in the sense of the
+theory of locally compact abelian groups so as to have, for any $x\in X$
+and any $x^{*}\in X^{*}$:\[
+<x,x^{*}>=\chi([x,x^{*}]).\]
+This identification (which depends on the choice of $\chi$) will
+be made from now on once and for all, so that one will not have to
+distinguish between the algebraic dual and the dual in the sense of
+Chapter I.
+
+If $f$ is a quadratic form on the space $X$ over $k$, $\chi\circ f$
+is a character of the second degree on $X$ in the sense of Chapter
+I, Section 1; the morphism of $X$ into $X^{*}$ associated with $\chi\circ f$
+is the same one which is associated to $f$; in particular, whenever
+$\chi\circ f$ is nondegenerate, it is necessary and sufficient that
+$f$ is so, and, when this is the case, one can apply to $\chi\circ f$
+the theorem $2$ of Chapter I, Section $14$, which defines a number
+$\gamma(\chi\circ f)$ of absolute value $1$. For short, one writes
+$\gamma(f)$ instead of $\gamma(\chi\circ f)$, but it should not
+be forgotten that the symbol $\gamma(f)$ depends on the choice of
+$\chi$. On the other hand, as $|\gamma(f)|=1$, it does not depend
+on the choice of Haar measure which occurs in its definition, since,
+when the measures are changed, it only modifies the formulas in theorem
+$2$ of Chapter I, Section $14$, and its corollaries, by a positive
+real factor; this remark allows even, in the calculation of $\gamma(f)$
+by means of these corollaries, to abandon the convention, followed
+in Chapter I, to always take, in the dual $G^{*}$ of a group $G$,
+the dual measure of the one we choose in $G$.
+
+
+
+\subsection{}
+The remark above shows in particular that,
+ if $f$ and $X$ are as above and if $f'=f\circ \alpha$, 
+where $\alpha$ is an isomorphism from a space $X'$ to $X$,
+we have $\gamma(f')=\gamma(f)$;
+in other words, $gamma$ has same value on the two ``equivalent'' forms
+$f,f'$.
+In additional, since $\chi\circ(-f)$ is the imaginary conjugation of 
+$\chi\circ f$, we have $\gamma(-f)=\gamma(f)^{-1}$. 
+If $-1$ is a square in $k$ (n particular if $k$ has characteristic $2$),
+$-f$ is equivalent to $f$; 
+In this case, we have $\gamma(f) = \pm 1$ for all $f$.
+
+\begin{prop}\label{p:3}
+The map $f\to \gamma(f)$ determin a character of the Witt group of local field
+$k$.
+\end{prop} 
+As one knows, a non-degnenerate form $f$ corresponds to the element $0$
+of the Witt group(we will say that it is {\it trivial})
+if it is equivalent to the form $\sum_1^n x_i x_{n+i}$ on $k^{2n}$ 
+for some $n$; that is also means 
+that $f$ is equivalent to the form $[x, x^*]$ on $X\times X^*$ 
+for a certain choice of $X$.
+But then the corollary of Theorem~$5$ of Chapter~I, $n^o$~20,
+shows that $\gamma(f)=1$.In addition, $f_1,f_2$
+are  non-degenerate forms on spaces $X_1$, $X_2$;
+that means the form $f$ given by  $f(x_1, x_2) = f_l (x_l) +f_2 (x_2)$
+ on the direct sum of $X_1$ and $X_2$; it is non-degenerate, obviously, 
+according to the definition of $\gamma$ in theorem~2 of Chapter I, $n^o$~14,
+ $\gamma(f) =\gamma(f1)\gamma(f_2)$. 
+That proves the proposition.  
 \end{document}
 
