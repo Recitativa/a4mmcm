@@ -69,9 +69,9 @@
 
 \hypersetup{
     bookmarks=false,         % show bookmarks bar?
-    unicode=false,          % non-Latin characters in Acrobat¡¯s bookmarks
-    pdftoolbar=true,        % show Acrobat¡¯s toolbar?
-    pdfmenubar=false,        % show Acrobat¡¯s menu?
+    unicode=false,          % non-Latin characters in Acrobatâ€™s bookmarks
+    pdftoolbar=true,        % show Acrobatâ€™s toolbar?
+    pdfmenubar=false,        % show Acrobatâ€™s menu?
     pdffitwindow=false,      % page fit to window when opened
     pdftitle={Qualify Examination Answers - Algebra},    % title
     pdfauthor={Ma Jia Jun},     % author
@@ -1081,7 +1081,7 @@ Then $\inn{c}{e}=1$ for all $c\in C, e\in E$, $E \subset <C>^\perp$.
 Thus $G$ is compactly generated(for example by $C$) iff $G^*$ has
 no small subgroups, i.e. iff $G^*$ is a Lie group. 
 
-(In 1953, Hidehiko Yamabe obtained the final answer to Hilbert¡¯s Fifth Problem: 
+(In 1953, Hidehiko Yamabe obtained the final answer to Hilbertâ€™s Fifth Problem: 
 A connected locally compact group G is 
 a projective limit of a sequence of Lie groups,
 and if G has ``no small subgroups'', then it is a Lie group.
@@ -1536,5 +1536,97 @@ that means the form $f$ given by  $f(x_1, x_2) = f_l (x_l) +f_2 (x_2)$
 according to the definition of $\gamma$ in theorem~2 of Chapter I, $n^o$~14,
  $\gamma(f) =\gamma(f1)\gamma(f_2)$. 
 That proves the proposition.  
+
+\section{The Metaplectic group(local and adelie cases)}
+\setcounter{ssection}{30}
+\subsection{}
+ As in $n^o$~23, Let $X$ be a vector space (finit dimension, as usual) 
+on a field $k$;keeping the notations introduced in $n^o$~23, we 
+will consider automorphisms $z\to z\sigma$ on $X\times  X^*$,
+as in Chapter I (cf $n^o$~3), in matrix form
+\[
+\sigma = \begin{pmatrix} \alpha & \beta\\ \gamma & \delta
+\end{pmatrix}
+\]
+As in $n^o$~3, we set 
+\[
+\sigma^I = \begin{pmatrix} \delta^* & -\beta^* \\ -\gamma^* & \alpha^*
+\end{pmatrix}
+\]
+For $(X\times X^*)\times (X\times X^*)$, we consider the bilinear form
+\[
+B(z_1,z_2) = [x_1,x_2^*] \quad (z_1 = (x_1,x_1^*), z_2=(x_2,x_2^*)),
+\]
+and we call an automorphism $\sigma$ of $X\times X^*$ is symplectic 
+if it leaves the bilinear $B(z_l,z_2) - B(z_2,Z_1)$ form invariant; 
+for it is true, it is necessary and sufficient that $\sigma \sigma^I=l$. 
+These automorphisms form a group called the symplectic group of $X$ 
+and which one denote $Sp(X)$.
+
+On $X\times X^* \times k$, we put a group structure by the following law 
+(analog (4) of Chapter I):
+\begin{equation}\label{eq:30}
+(z_1,t_1)(z_2,t_2)=(z_1+z_2,B(z_1,z_2)+t_1+t_2);
+\end{equation}
+\def\fU{{\mathfrak{U}}}
+$\fU(x)$ denote the group defined above.
+For an automorphism $\sigma$ of $X \times X^*$ and a quadratic form $f$ 
+on $X \times X^*$; so that the formula
+\begin{equation}\label{eq:31}
+(z,t) \to (z\delta, f(z)+t) \quad (z\in X\times X^*, t\in k)
+\end{equation}
+define a automorphism of $\fU(X)$, it is necessary and sufficient that $\sigma$ and $f$ 
+satisfy the relation
+\begin{equation}\label{eq:32}
+f(z_1+z_2)-f(z_1)-f(z_2) = B(z_1\sigma, z_2\sigma)-B(z_1,z_2),
+\end{equation}
+analog (6) of Chapter~I.
+Then, we will indicate the automorphism 
+of $\fU(X)$ defined by (\ref{eq:31});   
+the group forms by these automorphisms called the  
+pseudosymplectic group of $X$ and will be denote $Ps(X)$.  
+The group law in $Ps(X)$ is given by 
+\[
+(\sigma,f)\cdot (\sigma',f') = (\sigma\sigma',f''), 
+\]
+where $f''$ is the quadratic form defined by 
+\[
+f''(z) =f(z)+f'(z\sigma).
+\]
+
+If (\ref{eq:32}) is satisfied, 
+the second member must be symmetrical in $z_1$ and $z_2$;
+so it is necessary and sufficient that $\sigma$ is symplectic;
+thus $(\sigma, f)\to sigma$ is a homomorphism from $Ps(X)$ to $Sp(X)$.
+If $k$ is not characteristic $2$, (\ref{eq:32}) corresponded all $\sigma \in Sp(X)$
+a unique quadratic form $f$ on $X\times X^*$; 
+consequently, in this case, $(\sigma,f)\to \sigma$ is one 
+isomorphism from $Ps(X)$ to  $Sp(X)$,
+means identify these groups with the other.
+On the contrary, when $k$ is of characteristic $2$,
+ by taking $z_1 =z_2$ in (\ref{eq:32}), that the nondegenerate quadratic form $B(z,z)$ 
+of $X\times X^*$  invariant under $\sigma$;  consequently, $(\sigma,f)--->\sigma$ is a homomorphism from $Ps(X)$
+into the orthogonal group $O(B)$ of this form on$X\times X^*$;it is easy to checke that it is 
+surjective; its kernel is formd by the elements $(1,f)\in Ps (X)$, according to (\ref{eq:32}),
+for all the additive quadratic forms $f$ on $X\times X^*$.
+
+Now we starts from a vector space $X_k$ on $k$, 
+and that we denotes $X$ the extension of $X_k$ with a``universal property'' on $k$,
+we can apply that precedes, if $X_k$ an $k$, where 
+$X$ with the universal property. The groups $Sp(X)$, $\fU(X)$, $P_s(X)$ are then algebraic groups defined on $k$, 
+and $Sp(X_k)$, $\fU(X_k)$, $Ps(X_k)$ are no other than the groups 
+$Sp(X)_k$, $\fU(X)_k$, $Ps(X)_k$  formed by the elements of $Sp(X)$, $\fU(X)$, 
+$Ps(X)$ which are rational on $k$. 
+Note $Ps(X)$ is of dimension $m(2m + 1)$ if $m =dim(X)$, for any characteristic of $k$;
+We can say (in the language of the scheme may precisely) that $Ps(X)$ in 
+caractdristic $2$ is a  is a degeneration of the symplectic group with caractdristic $0$. 
+II is well-known that the symplectic group, in any characteristic, is connected, 
+simply connected and semisimple;
+it is the same of $Ps(X)$ when $k$ is not characteristic $2$, but it is no more true in characteristic $2$.
+
+\subsection{}
+
+\subsection{}
+
 \end{document}
 
