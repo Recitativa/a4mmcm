@@ -1718,6 +1718,105 @@ onto $Ps(X)_{A}$; it is surjective and has as kernel the group ${e}\times\mathbf
 which we will write as, more simply, $\mathbf{T}$.
 
 \subsection{}
+38.  We now define a continuous lifting in $Mp(X)_A$ from an open set of 
+$Ps(X)_A$,
+what, as in the local case, will make it possible to conclude that $Mp(X)_A$ 
+is locally compact and has same locally homeomorphic of $Ps(X)_A \times T$,
+and that $\pi$ is 
+an open map from $Mp(X)_A$ to  $Ps(X)_A$.
+We let $\Omega_v = \Omega(X)_v$ for all $v$. 
+it is a nonempty opene set of $PS(X)_v$. Then let, for any finite set $S$ of
+the comletions of $k$, contain $S_\infty$:
+\[
+\Omega_S=\prod_{v\in S} \Omega_v \times \prod_{v\notin S} Ps(X)_v^\circ;
+\] 
+it is an open set of $Ps(X)_s^\circ$, then of $Ps(X)_A$. For each $\Omega_v$, 
+according to $n^o$~34, a lefting from $\Omega_v$ to $Mp(X)_v$, will denote by 
+$\br_v$; in addition, according to $n^o$~36, for all $v$, $k_v$ is discrete valuation, and for any lattice L in $X_v$, a lifting $\br'_L$ from $Ps(X_v,L)$ to
+$Mp(X_v)$; moreover, according to $n^o$~21 of Chapter I, 
+this map $Ps(X_v, L)$ to a subgroup of $Mp(X_v)$ which leaves 
+the characteristic function of the network $L$ invariant.
+For almost all $v$, $Ps(X)_v^\circ$ is a subgroup of $Ps(X_v,L)$
+ when $L =X_v^\circ$; We will denote the set $S_0$ 
+(finite, and containing $S_\infty$) complement of $k$ for which it is not thus,
+and for $v\notin S_0$, we will show $\br'_v$, the lefting induced by $r'_L$ of
+$Ps(X)_v^\circ$ when $L=X_v^\circ$.
+
+In addition, for all $v$, $\Phi_v$ is a function in  $L^2(X_v)$,
+and assume that, for almost all $v$, $\Phi_v$ 
+is the characteristic function of $X_v^\circ$; let $\Phi$ is a function on $X_A$,
+for $x=(x_v)\in X_A$, define by the formula
+\begin{equation}\label{eq:36}
+\Phi(x) = \prod_v \Phi_v(x_v).
+\end{equation}
+The mesure on $X_A$ is defined in in conformity with $n^o$~30 of Chapter II,
+$\Phi$ is in $L^2(X_A)$, and linear combinations of  functions in this 
+form are dense in $L^2(X_A)$.
+For any $S\supset S_0$, and any $s=(s_v)\in \Omega_S$, we set
+\[
+\br_S(s)\Phi(x) = \prod_{v\in S} \br_v(s_v)\Phi_v(x_v) 
+\times \prod_{v\notin S} \br'_v(s_v)\Phi_v(x_v).
+\]
+According to what we have above,
+almost all the factors of the second product are
+respectively equal to the caractdristic functions of the lattice $X_v^\circ$,
+so that the function defined has same form of $\Phi$.
+It then results from $n^o$~22 of Chapter I that 
+the map $\Phi\to \br_ss(s)\Phi$ defineded above for tfunctions 
+with form (\ref{eq:36}) extend to be an automorphisme of $L^2(X_A)$, and 
+then define a continuous lifting $\br_S$ from $\Omega_s$ to $Mp(X)_A$.
+From that we draw the conclusions as above.  
+
+\section{}
+As in the local case, we now show that $(S, \Phi)\to S\Phi$ given 
+a continuous map from $Mp(X_A)\times S(X_A)$ to $S(XA)$;
+as in $n^o$~35, it is sufficient to show that $(s,\Phi) \to \br_S(s) \Phi$ 
+is a continous map from $\Phi_S\times S(X_A)$ to $S(X_A)$. 
+
+By the definition in $n^o$~11 of Chapter I, and the remarks of $n^o$~29 of 
+Chapter II, $S(X_A)$ are composed of finite linear combinations,
+ constant coefficients, function of form
+\begin{equation}\label{eq:37}
+\Phi_\infty(x_\infty) \prod_{x\in S_\infty}\Phi_v(x_v)
+\end{equation} 
+where $\Phi_\infty$ in the space $S(X_\infty)$ of the product $X_\infty =\prod X_v$
+extended to $v\in S_\infty$ (so that $X_\infty$ is a finite dimensional 
+vector space on $\bR$), and  $\Phi_v$ belongs to  $S(X_v)$ for all $v$,
+and, for almost all $v$, is the characteristic function of $X_v^\circ$.
+
+Let $\Phi$ be the function defined by (\ref{eq:37}), and let $s\in \Omega_s$. 
+As above, $r'_v$ leave $\Phi_v$ invariant for almost all $v$. 
+For all $x\in S-S_\infty$, $s_v\to \br_v(s_v)\Phi_v$ is a continous map, 
+and locally constant, form $Ps(X)_v^\circ$ to $S(X_v)$. 
+Fininally, form $n^o$~22 Chapter I, and $n^o$~35, 
+apply to the product $X_\infty$, then $s_v$(resp, $\br_v(s_v)$) 
+for $v\in S_\infty$ determine an element $s_\infty$ of $Ps(X_\infty)$
+(resp, an element $\br_\infty(s_\infty)$ of $Mp(X_\infty)$),
+ their ``tensor product'', so that $s_\infty \to \br_\infty(s_\infty)$ is a 
+continuous map; it follows, by $n^o$~35, 
+that $s_\infty \to r_\infty(s_\infty)\Phi_\infty$ is a continous map from $S(X_\infty)$
+to the product $\prod \Omega_v$ for $v\in S_\infty$. 
+Combine these results, we conclude that $s\to \br_S(s)\Phi$ is a continous map 
+from $\Omega_S$ to $S(X_A)$, then $S\to S\Phi$ is an continous map from
+$Mp(X)_A$ to $S(X_A)$, where $\Phi \in S(X_A)$.
+
+	
+To prove the continuity of $(s, \Phi)\to \br_S(s)\Phi$, it is sufficient 
+to verify  that: $K$ a compact set of $\Omega_S$, and $U$ 
+a convex neihgborhood of $0$ of $S(X_A)$; $U'$ is the set 
+of $\Phi\in S(X_A)$ such that $\br_S(s)\Phi\in U$ for all $s\in K$ is a
+ neighborhood of $0$ of $S(X_A)$. Since $U'$ is convex, 
+by the definition of the topology of $S(X_A)$ as inductive limit of 
+$S(H,H')$(cf. $n^o$~11), we have to show $U'\cap S(H,H')$ is a neighborhood of 
+$0$ of $S(H,H')$ for all $H$ and $H'$. 
+However, for $K$, $H$ and $H'$ give, there is a finite set $S'$ of complement 
+of $k$ having the following properties: (a) for all $s=(s_v)\in K$, and all 
+$v\notin S'$, we have $s_v\in Ps(X)_v^o$; (b) for all function in $S(H,H')$
+is linear combination of function in form (\ref{eq:37}) where $\Phi_v$ 
+is the characteristic function of $X_v^\circ$ for all $v\notin S'$. 
+Under these conditions, the assertion the assertion which it is a
+immediate consdquence of the properties of continuity proof in $n^o$~35 
+for the local case.
 
 \end{document}
 
