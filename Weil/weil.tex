@@ -1399,12 +1399,44 @@ The hypothesis and notations being those of theorem 2, in addition
 let $\Phi\in\mathbf{S}(G)$ .
 \end{cor}
 
-\setcounter{ssection}{18}
+\setcounter{ssection}{16}
 \subsection{}
-\begin{equation}\label{eq:25}
-\br_\Gamma(s)\Theta(z) = \Theta(z\delta)f(z),
+\begin{equation}\label{eq:22}
+\Theta(z+\zeta)=\Theta(z)F(\zeta,z)^{-1} 
+\quad (z\in G\times G^*, \zeta \in \Gamma\times \Gamma_*)
 \end{equation}
 
+\subsection{}
+We will define $H(G,F)$ the Hilbert space of solutions $\Theta$ of (\ref{eq:22}),
+ locally intgerable on $G\times G^*$ 
+and such as $\|\Theta\|_Q< +\infty$, this space being provided with the norm $\|\Theta\|_Q$.
+
+\subsection{}
+We now define  $B_0(G, \Gamma)$ be the subgroup of $B_0(G)$ 
+forms by elements $s=(\sigma, f)$ in $B_0(G)$ such that
+$f$ take value $1$ on $\Gamma\times \Gamma_*$ and $\sigma$ 
+induce a automorphism of $\Gamma\times \Gamma_*$. For all 
+$s=(\sigma, f)$ of $B_0(G,\Gamma)$, we define an operator 
+$\br_\Gamma(s)$ of $H(G,\Gamma)$ by the formula
+\begin{equation}\label{eq:25}
+\br_\Gamma(s)\Theta(z) = \Theta(z\sigma)f(z),
+\end{equation} 
+we checks that immediately it transforms 
+any solution $\Theta$ of (\ref{eq:22}) 
+to a solution of the same equation.
+It is then obvious that $\br_\Gamma$ is a unitary representation of $B_0(G, \Gamma)$
+.
+
+\subsection{}
+\begin{thm}[Theorem 5]
+If $f$ is a charctor of seconde degree of $G$, 
+taking value $1$ on a closed subgroup $\Gamma$ of $G$;
+let $G^*$ be the dual of $G$, $\Gamma_*$ be the
+subgroup of $G^*$ correspond to $\Gamma$,and 
+suppose that symmetric homomorphism  $\sigma$ from G to G* associate to $f$
+is an isomorphism from $(G, \Gamma)$ to $(G^*, \Gamma_*)$.  
+Then $\gamma(f)=1$.
+\end{thm}
 
 \setcounter{ssection}{22}
 
@@ -1535,6 +1567,47 @@ according to the definition of $\gamma$ in theorem~2 of Chapter I, $n^o$~14,
  $\gamma(f) =\gamma(f1)\gamma(f_2)$. 
 That proves the proposition.  
 
+\def\fo{\mathfrak{o}}
+\setcounter{ssection}{28}
+\subsection{}
+Suppose that $k$ is a algebric number field or a function field of 1 dimension 
+on a finit field. We will define by $k_v$ be the completion of $k$,
+ by $\fo$ be the integer ring of $k_v$ for each $k_v$ has discrete valuation,
+and $A_k$ be the adele ring of $k$. Let $X_k$ be a vector spaces 
+(finite dimension) of $k$; we set $X_A= X_k\otimes A_k$, and for any $v$, 
+$X_v=X_k\otimes k_v$. If $X^\circ$ is a basis of $X_k$ for $k$, we denote
+$X_v^\circ$, when $k_v$ has discrete valuation, the set of points of $X_v$
+whose coordinate respect to base $X^\circ$ in $\fo_v$;
+is a lattice in $X_v$. We denote $S$ be the set of all 
+ finite complement of $k$, containing all which are isomorphic 
+to $\bR$ or $\bC$. Under these conditons, $X_A$ is the union ( and same, 
+as a topological space, inductive limit) of product
+\begin{equation}\label{eq:29}
+X_S^\circ = \prod_{v\in S} X_v \times \prod_{v\in S} X_v^\circ.
+\end{equation}
+
+Every compact set of $X_A$ is contained in a set of form $\prod C_v$, 
+where $C_v$ is for all $v$, a compact set of $X_v$ and for almost all $v$
+(it is to say that all except finite number of $v$), is equal to $X_v^\circ$.
+We conclude from this any subgroup of $X_A$, 
+generate by a compact neighborhood of $0$, contained in a subgroup of form
+$H=\prod H_v$, where $H_v$ is equal to $X_v$ when $k_v$ is isomorphic to $\bR$
+or $\bC$, a lattice in $X_v$ when $k_v$ has discrete valuation, and is $X_v$
+for almost all $v$. Suppose $H$ is choose as this, then any compact subgroup 
+$H'$ of $H$ such that $H/H'$ is a elementary group(cf. Chapter I, $n^o$~11)
+contain a similer subgroup of form $H'=\prod H'_v$,  where $H'_v$ is 
+$\Set{0}$ when $k_V$ is isomorphic to $\bR$ or $\bC$, is a lattic of
+$X_v$ containd in $H_v$ for $k_v$ has discrete valuation, is $X_v^\circ$
+for almost all $v$. We easily deduce form the sturcture of $S(X_A)$;
+$S(X_A)$ contain, in any case, all the function of the 
+form $(x_v) \to \prod \Phi_v(x_v)$, where $\Phi_v \in S(X_v)$ for all 
+$v$, and for almost all $v$, $\Phi_v$ is the characteristic function 
+of $X_v^\circ$; for $k=\bQ$, or for $k$ of characteristic $p\neq 0$, 
+$S(X_A)$ is the set of all finite linear combination, has constant coefficients,
+of function obtained that (for the corresponding assertion when 
+$k$ is an algebraic field of numbers other that $\bQ$, 
+see further, with $n^o$~39).
+
 \section{The Metaplectic group(local and adelie cases)}
 \setcounter{ssection}{30}
 \subsection{}
@@ -1566,21 +1639,21 @@ On $X\times X^* \times k$, we put a group structure by the following law
 \begin{equation}\label{eq:30}
 (z_1,t_1)(z_2,t_2)=(z_1+z_2,B(z_1,z_2)+t_1+t_2);
 \end{equation}
-\def\fU{{\mathfrak{U}}}
-$\fU(x)$ denote the group defined above.
+\def\fA{{\mathfrak{A}}}
+$\fA(x)$ denote the group defined above.
 For an automorphism $\sigma$ of $X \times X^*$ and a quadratic form $f$ 
 on $X \times X^*$; so that the formula
 \begin{equation}\label{eq:31}
 (z,t) \to (z\delta, f(z)+t) \quad (z\in X\times X^*, t\in k)
 \end{equation}
-define a automorphism of $\fU(X)$, it is necessary and sufficient that $\sigma$ and $f$ 
+define a automorphism of $\fA(X)$, it is necessary and sufficient that $\sigma$ and $f$ 
 satisfy the relation
 \begin{equation}\label{eq:32}
 f(z_1+z_2)-f(z_1)-f(z_2) = B(z_1\sigma, z_2\sigma)-B(z_1,z_2),
 \end{equation}
 analog (6) of Chapter~I.
 Then, we will indicate the automorphism 
-of $\fU(X)$ defined by (\ref{eq:31});   
+of $\fA(X)$ defined by (\ref{eq:31});   
 the group forms by these automorphisms called the  
 pseudosymplectic group of $X$ and will be denote $Ps(X)$.  
 The group law in $Ps(X)$ is given by 
@@ -1595,32 +1668,35 @@ f''(z) =f(z)+f'(z\sigma).
 If (\ref{eq:32}) is satisfied, 
 the second member must be symmetrical in $z_1$ and $z_2$;
 so it is necessary and sufficient that $\sigma$ is symplectic;
-thus $(\sigma, f)\to sigma$ is a homomorphism from $Ps(X)$ to $Sp(X)$.
+thus $(\sigma, f)\to \sigma$ is a homomorphism from $Ps(X)$ to $Sp(X)$.
 If $k$ is not characteristic $2$, (\ref{eq:32}) corresponded all $\sigma \in Sp(X)$
 a unique quadratic form $f$ on $X\times X^*$; 
-consequently, in this case, $(\sigma,f)\to \sigma$ is one 
+consequently, in this case, $(\sigma,f)\to \sigma$ is a
 isomorphism from $Ps(X)$ to  $Sp(X)$,
 means identify these groups with the other.
 On the contrary, when $k$ is of characteristic $2$,
  by taking $z_1 =z_2$ in (\ref{eq:32}), that the nondegenerate quadratic form $B(z,z)$ 
-of $X\times X^*$  invariant under $\sigma$;  consequently, $(\sigma,f)--->\sigma$ is a homomorphism from $Ps(X)$
+of $X\times X^*$  invariant under $\sigma$;  consequently, $(\sigma,f)\to \sigma$ is a homomorphism from $Ps(X)$
 into the orthogonal group $O(B)$ of this form on$X\times X^*$;it is easy to checke that it is 
 surjective; its kernel is formd by the elements $(1,f)\in Ps (X)$, according to (\ref{eq:32}),
 for all the additive quadratic forms $f$ on $X\times X^*$.
 
 Now we starts from a vector space $X_k$ on $k$, 
-and that we denotes $X$ the extension of $X_k$ with a``universal property'' on $k$,
-we can apply that precedes, if $X_k$ an $k$, where 
-$X$ with the universal property. The groups $Sp(X)$, $\fU(X)$, $P_s(X)$ are then algebraic groups defined on $k$, 
-and $Sp(X_k)$, $\fU(X_k)$, $Ps(X_k)$ are no other than the groups 
-$Sp(X)_k$, $\fU(X)_k$, $Ps(X)_k$  formed by the elements of $Sp(X)$, $\fU(X)$, 
+and that we denotes $X$ the extension of $X_k$ with a``universal domain'' on $k$,
+we can apply that precedes, if $X_k$ has $k$ and
+$X$ with the universal domain. The groups $Sp(X)$, $\fA(X)$, $Ps(X)$ are then algebraic groups defined on $k$, 
+and $Sp(X_k)$, $\fA(X_k)$, $Ps(X_k)$ are no other than the groups 
+$Sp(X)_k$, $\fA(X)_k$, $Ps(X)_k$  formed by the elements of $Sp(X)$, $\fA(X)$, 
 $Ps(X)$ which are rational on $k$. 
 Note $Ps(X)$ is of dimension $m(2m + 1)$ if $m =dim(X)$, for any characteristic of $k$;
 We can say (in the language of the scheme may precisely) that $Ps(X)$ in 
-caractdristic $2$ is a  is a degeneration of the symplectic group with caractdristic $0$. 
-II is well-known that the symplectic group, in any characteristic, is connected, 
+caractdristic $2$ is a  is a degeneration of the
+ symplectic group with caractdristic $0$. 
+It is well-known that the symplectic group, in any characteristic, 
+is connected, 
 simply connected and semisimple;
-it is the same of $Ps(X)$ when $k$ is not characteristic $2$, but it is no more true in characteristic $2$.
+it is the same of $Ps(X)$ when $k$ is not characteristic $2$, 
+but it is no more true in characteristic $2$.
 
 \subsection{}
 
@@ -1630,17 +1706,17 @@ it is the same of $Ps(X)$ when $k$ is not characteristic $2$, but it is no more 
 \subsection{}
  In the case $k$ is a discrete valuation field,
 we also can, instead useing the lifting $\br_0$, 
-use the lifting $\br_\gamma$ which was defined in $n^\circ$~19 of Chapter I;
+use the lifting $\br_\Gamma$ which was defined in $n^\circ$~19 of Chapter I;
 we will choose a lattice $L$ of $X$ for $\Gamma$. In the notation of Chapter I, 
 we replace $G, G^*$, 
-$F, F$, by $X, X^*$, $L$, $L_*$, where $L$ is a lattice in $X$ and $L_*$
+$\Gamma, \Gamma_*$, by $X, X^*$, $L$, $L_*$, where $L$ is a lattice in $X$ and $L_*$
 is the lattic which corresponds to $L$ by duality in $X^*$
-(say, all $x^*\in X^*$ such that $\chi([x, x^*]) =l$ for all $x\in L$).
+(say, all $x^*\in X^*$ such that $\chi([x, x^*]) =1$ for all $x\in L$).
 Just as we have substituted,  consider $Ps(X)$ and $B_0(X)$,
 we will substituted here, consider the group $B_0(X, L)$ 
 which obtained by applying the definitions in $n^o$~19 Chapter I and 
-sub-group $P_s(X, L)$ of $Ps(X)$ forms elements $s=(\sigma, f)$ in $Ps(X)$
-such that constant $1$ on $L$ and that $\sigma$
+subgroup $Ps(X, L)$ of $Ps(X)$ forms elements $s=(\sigma, f)$ in $Ps(X)$
+such that $\chi\circ f$ constant $1$ on $L\times L_*$ and that $\sigma$
 induces an automorphism of $L\times L_*$. 
 We immediately varified that it is an open subgroup of $Ps(X)$,
 compact if $k$ is not characteristic $2$,
@@ -1682,28 +1758,30 @@ $k$; in particular, one writes $Ps(X)_{k}$, $Ps(X)_{v}$ for the
 groups formed by the elements of the algebraic group $Ps(X)$ which
 is rational respectively over $k$ and over $k_{v}$, and one writes
 $Ps(X)_{A}$ for the adelic group attached with $Ps(X)$ in the usual
-manner. As in Section 29, we denote by $X^{o}$a base of $X$, and
-by $(X*)^{o}$ a base of $X*$, of which one can assume, to fix the
-notions, that it is the dual base of $X^{o}$. For any completion
-$k_{v}$ of $k$ with discrete valuation, one denotes by $Ps(X)_{v}^{o}$
+manner. As in Section 29, we denote by $X^\circ$ a base of $X$, and
+by $(X^*)^\circ$ a base of $X^*$, of which one can assume, to fix the
+notions, that it is the dual base of $X^\circ$. For any completion
+$k_{v}$ of $k$ with discrete valuation, one denotes by $Ps(X)_{v}^\circ$
 the group formed by the elements $(\sigma,f)$ of $Ps(X)_{v}$ such
-that $\sigma$ induces on $X_{v}^{o}\times(X*)_{v}^{o}$ an automorphism
+that $\sigma$ induces on $X_{v}^\circ\times(X^*)_{v}^\circ$ an automorphism
 of this lattice, and that $f$ induces on this same lattice a function
-with integer values (that is to say belonging to the ring $\mathfrak{o}_{v}$
+with integer values (that is to say belonging to the ring $\fo_{v}$
 of the integers of $k_{v}$). Then $Ps(X)_{A}$ is the collection,
-and even the inductive limit, of the group\[
-Ps(X)_{S}^{o}=\prod_{v\in S}Ps(X)_{v}\times\prod_{v\notin S}Ps(X)_{v}^{o}\]
+and same as the inductive limit, of the group
+\[
+Ps(X)_{S}^\circ=\prod_{v\in S}Ps(X)_{v}\times\prod_{v\notin S}Ps(X)_{v}^\circ
+\]
 when one takes for $S$, as of the convention, all the finite sets
 of the completions of $k$ containing the set $S_{\infty}$ which
 is isomorphic with $\mathbb{R}$ or with $\mathbb{C}$.
 
 Just as in the local case (cf. Section 33), one has a homomorphism
-$(w,t)\to(w,\chi(t))$ of $\mathfrak{U}(X)_{A}$ into the group $A(X_{A})$
+$(w,t)\to(w,\chi(t))$ of $\fA(X)_{A}$ into the group $A(X_{A})$
 attached to locally compact group $X_{A}$ in the sense of the Chapter
 I, Section 4. In the same way the formula\[
 \mu_{A}((\sigma,f))=(\sigma,\chi\circ f)\]
 defines a homomorphism $\mu_{A}$ of $Ps(X)_{A}$ into the group $B_{0}(X_{A})$
-attached with $X_{A}$ in the sense of the Chapter I, Section m5;
+attached with $X_{A}$ in the sense of the Chapter I, $n^o$~5;
 as in the local case, $\mu_{A}$ is injective when $k$ is not of
 characteristic $2$.
 
@@ -1718,19 +1796,19 @@ onto $Ps(X)_{A}$; it is surjective and has as kernel the group ${e}\times\mathbf
 which we will write as, more simply, $\mathbf{T}$.
 
 \subsection{}
-38.  We now define a continuous lifting in $Mp(X)_A$ from an open set of 
+We now define a continuous lifting in $Mp(X)_A$ from an open set of 
 $Ps(X)_A$,
 what, as in the local case, will make it possible to conclude that $Mp(X)_A$ 
 is locally compact and has same locally homeomorphic of $Ps(X)_A \times T$,
 and that $\pi$ is 
 an open map from $Mp(X)_A$ to  $Ps(X)_A$.
 We let $\Omega_v = \Omega(X)_v$ for all $v$. 
-it is a nonempty opene set of $PS(X)_v$. Then let, for any finite set $S$ of
-the comletions of $k$, contain $S_\infty$:
+it is a nonempty open set of $Ps(X)_v$. Then let, for any finite set $S$ of
+the completions of $k$, contain $S_\infty$:
 \[
 \Omega_S=\prod_{v\in S} \Omega_v \times \prod_{v\notin S} Ps(X)_v^\circ;
 \] 
-it is an open set of $Ps(X)_s^\circ$, then of $Ps(X)_A$. For each $\Omega_v$, 
+it is an open set of $Ps(X)_S^\circ$, then of $Ps(X)_A$. For each $\Omega_v$, 
 according to $n^o$~34, a lefting from $\Omega_v$ to $Mp(X)_v$, will denote by 
 $\br_v$; in addition, according to $n^o$~36, for all $v$, $k_v$ is discrete valuation, and for any lattice L in $X_v$, a lifting $\br'_L$ from $Ps(X_v,L)$ to
 $Mp(X_v)$; moreover, according to $n^o$~21 of Chapter I, 
@@ -1738,8 +1816,9 @@ this map $Ps(X_v, L)$ to a subgroup of $Mp(X_v)$ which leaves
 the characteristic function of the network $L$ invariant.
 For almost all $v$, $Ps(X)_v^\circ$ is a subgroup of $Ps(X_v,L)$
  when $L =X_v^\circ$; We will denote the set $S_0$ 
-(finite, and containing $S_\infty$) complement of $k$ for which it is not thus,
-and for $v\notin S_0$, we will show $\br'_v$, the lefting induced by $r'_L$ of
+(finite, and containing $S_\infty$) of complement 
+of $k$ for which $v\notin S_0$, we will show $\br'_v$ induce
+ the lefting by $\br'_L$ of
 $Ps(X)_v^\circ$ when $L=X_v^\circ$.
 
 In addition, for all $v$, $\Phi_v$ is a function in  $L^2(X_v)$,
@@ -1762,14 +1841,14 @@ almost all the factors of the second product are
 respectively equal to the caractdristic functions of the lattice $X_v^\circ$,
 so that the function defined has same form of $\Phi$.
 It then results from $n^o$~22 of Chapter I that 
-the map $\Phi\to \br_ss(s)\Phi$ defineded above for tfunctions 
+the map $\Phi\to \br_S(s)\Phi$ defineded above for the functions 
 with form (\ref{eq:36}) extend to be an automorphisme of $L^2(X_A)$, and 
-then define a continuous lifting $\br_S$ from $\Omega_s$ to $Mp(X)_A$.
-From that we draw the conclusions as above.  
+then define a continuous lifting $\br_S$ from $\Omega_S$ to $Mp(X)_A$.
+From that we draw the above conclusions.  
 
-\section{}
+\subsection{}
 As in the local case, we now show that $(S, \Phi)\to S\Phi$ given 
-a continuous map from $Mp(X_A)\times S(X_A)$ to $S(XA)$;
+a continuous map from $Mp(X_A)\times S(X_A)$ to $S(X_A)$;
 as in $n^o$~35, it is sufficient to show that $(s,\Phi) \to \br_S(s) \Phi$ 
 is a continous map from $\Phi_S\times S(X_A)$ to $S(X_A)$. 
 
@@ -1777,18 +1856,18 @@ By the definition in $n^o$~11 of Chapter I, and the remarks of $n^o$~29 of
 Chapter II, $S(X_A)$ are composed of finite linear combinations,
  constant coefficients, function of form
 \begin{equation}\label{eq:37}
-\Phi_\infty(x_\infty) \prod_{x\in S_\infty}\Phi_v(x_v)
+\Phi_\infty(x_\infty) \prod_{v\notin S_\infty}\Phi_v(x_v)
 \end{equation} 
 where $\Phi_\infty$ in the space $S(X_\infty)$ of the product $X_\infty =\prod X_v$
-extended to $v\in S_\infty$ (so that $X_\infty$ is a finite dimensional 
+where $v\in S_\infty$ (so that $X_\infty$ is a finite dimensional 
 vector space on $\bR$), and  $\Phi_v$ belongs to  $S(X_v)$ for all $v$,
 and, for almost all $v$, is the characteristic function of $X_v^\circ$.
 
-Let $\Phi$ be the function defined by (\ref{eq:37}), and let $s\in \Omega_s$. 
-As above, $r'_v$ leave $\Phi_v$ invariant for almost all $v$. 
-For all $x\in S-S_\infty$, $s_v\to \br_v(s_v)\Phi_v$ is a continous map, 
-and locally constant, form $Ps(X)_v^\circ$ to $S(X_v)$. 
-Fininally, form $n^o$~22 Chapter I, and $n^o$~35, 
+Let $\Phi$ be the function defined by (\ref{eq:37}), and let $s\in \Omega_S$. 
+As above, $\br'_v$ leave $\Phi_v$ invariant for almost all $v$. 
+For all $v\in S-S_\infty$, $s_v\to \br_v(s_v)\Phi_v$ is a continous map, 
+and locally constant, from $Ps(X)_v^\circ$ to $S(X_v)$. 
+Fininally, from $n^o$~22 Chapter I, and $n^o$~35, 
 apply to the product $X_\infty$, then $s_v$(resp, $\br_v(s_v)$) 
 for $v\in S_\infty$ determine an element $s_\infty$ of $Ps(X_\infty)$
 (resp, an element $\br_\infty(s_\infty)$ of $Mp(X_\infty)$),
@@ -1799,7 +1878,6 @@ to the product $\prod \Omega_v$ for $v\in S_\infty$.
 Combine these results, we conclude that $s\to \br_S(s)\Phi$ is a continous map 
 from $\Omega_S$ to $S(X_A)$, then $S\to S\Phi$ is an continous map from
 $Mp(X)_A$ to $S(X_A)$, where $\Phi \in S(X_A)$.
-
 	
 To prove the continuity of $(s, \Phi)\to \br_S(s)\Phi$, it is sufficient 
 to verify  that: $K$ a compact set of $\Omega_S$, and $U$ 
