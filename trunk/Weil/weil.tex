@@ -1399,18 +1399,16 @@ The hypothesis and notations being those of theorem 2, in addition
 let $\Phi\in\mathbf{S}(G)$ .
 \end{cor}
 
+\setcounter{ssection}{18}
 \subsection{}
-\subsection{}
-\subsection{}
-\subsection{}
-\subsection{}
-\subsection{}
-\subsection{}
-\subsection{}
+\begin{equation}\label{eq:25}
+\br_\Gamma(s)\Theta(z) = \Theta(z\delta)f(z),
+\end{equation}
 
 
+\setcounter{ssection}{22}
 
-\section{Map  with Quadratic reciprocity}
+\section{Application  with Quadratic reciprocity}
 \subsection{}
 To be consistent as much as possible with our algebraic notations in Chapter I,
 we assume, that $X$ is a vector space (always finite dimension) on a field $k$,
@@ -1625,6 +1623,99 @@ simply connected and semisimple;
 it is the same of $Ps(X)$ when $k$ is not characteristic $2$, but it is no more true in characteristic $2$.
 
 \subsection{}
+
+\subsection{}
+
+\setcounter{ssection}{35}
+\subsection{}
+ In the case $k$ is a discrete valuation field,
+we also can, instead useing the lifting $\br_0$, 
+use the lifting $\br_\gamma$ which was defined in $n^\circ$~19 of Chapter I;
+we will choose a lattice $L$ of $X$ for $\Gamma$. In the notation of Chapter I, 
+we replace $G, G^*$, 
+$F, F$, by $X, X^*$, $L$, $L_*$, where $L$ is a lattice in $X$ and $L_*$
+is the lattic which corresponds to $L$ by duality in $X^*$
+(say, all $x^*\in X^*$ such that $\chi([x, x^*]) =l$ for all $x\in L$).
+Just as we have substituted,  consider $Ps(X)$ and $B_0(X)$,
+we will substituted here, consider the group $B_0(X, L)$ 
+which obtained by applying the definitions in $n^o$~19 Chapter I and 
+sub-group $P_s(X, L)$ of $Ps(X)$ forms elements $s=(\sigma, f)$ in $Ps(X)$
+such that constant $1$ on $L$ and that $\sigma$
+induces an automorphism of $L\times L_*$. 
+We immediately varified that it is an open subgroup of $Ps(X)$,
+compact if $k$ is not characteristic $2$,
+and the homomorphism $\mu$ from $P_s(X)$ to $B_0(X)$
+ gives homomorphism $P_s(X, L)$ to $B_0(X, L)$. 
+
+With above notation, space $H(G,\Gamma)$ of Chapter I, $N^o$~18, 
+becomes Hilbert space $H(X,L)$, and formulate (\ref{eq:25})
+in $n^o$~19  defines a representation $\br_L$ from $B_0(X,L)$ to 
+the automorphism group of $H(X,L)$, then a representation 
+$\br_L\circ \mu$ from $Ps(X, L)$ to this group;
+by transport of structure by isomorphism 
+$Z^{-1}$ from $H(X,L)$ to $L^2(X)$ defined in $n^o$~18 of the same chapter,
+From the representations of $B(X, L)$ and of $Ps (X, L)$, denote $\br_\Gamma$
+and $\br_L\circ \mu$ by abuse of notation, we give representation of 
+automorphism group of $L^2(X)$.
+Moreover, one immediately deduces from (\ref{eq:25}) that 
+representation of $Ps(X, L)$ in the group of the automorphisms of $H(X, L)$, 
+the same, of $L^2(X)$, 
+is continuous when this last group is provided with strong topology. 
+Then let us denote $\br'_L$ the representation
+\[
+s\to (s,\br_L(\mu(s)))
+\]
+from $Ps(X,L)$ to $Mp(X)$;
+from that $\br'_L$ is an isomorphism from $Ps(X, L)$ 
+to its image in $Mp(X)$, $(s,\tau)\to \tau \br'_L(s)$ is a isomorphism from 
+$Ps(X,L)\times T$ to an open subgroup of $Mp(X)$. 
+Moreover, immediately from the end of  $n^o$~21  
+Chapter I, for all $\Phi\in S(X)$, the map $s\to \br'_L(s)\Phi$ from $Ps(X,L)$
+to $S(X)$ is locally constant.  
+
+\subsection{}
+We proceed now to extend the preceding results to the adele case.
+We again assume naturally here the hypothesis and the notations of
+Sections 29 and 30 of the Chapter II, which extends in an obvious
+manner with all the algebraic groups defined on the field of base
+$k$; in particular, one writes $Ps(X)_{k}$, $Ps(X)_{v}$ for the
+groups formed by the elements of the algebraic group $Ps(X)$ which
+is rational respectively over $k$ and over $k_{v}$, and one writes
+$Ps(X)_{A}$ for the adelic group attached with $Ps(X)$ in the usual
+manner. As in Section 29, we denote by $X^{o}$a base of $X$, and
+by $(X*)^{o}$ a base of $X*$, of which one can assume, to fix the
+notions, that it is the dual base of $X^{o}$. For any completion
+$k_{v}$ of $k$ with discrete valuation, one denotes by $Ps(X)_{v}^{o}$
+the group formed by the elements $(\sigma,f)$ of $Ps(X)_{v}$ such
+that $\sigma$ induces on $X_{v}^{o}\times(X*)_{v}^{o}$ an automorphism
+of this lattice, and that $f$ induces on this same lattice a function
+with integer values (that is to say belonging to the ring $\mathfrak{o}_{v}$
+of the integers of $k_{v}$). Then $Ps(X)_{A}$ is the collection,
+and even the inductive limit, of the group\[
+Ps(X)_{S}^{o}=\prod_{v\in S}Ps(X)_{v}\times\prod_{v\notin S}Ps(X)_{v}^{o}\]
+when one takes for $S$, as of the convention, all the finite sets
+of the completions of $k$ containing the set $S_{\infty}$ which
+is isomorphic with $\mathbb{R}$ or with $\mathbb{C}$.
+
+Just as in the local case (cf. Section 33), one has a homomorphism
+$(w,t)\to(w,\chi(t))$ of $\mathfrak{U}(X)_{A}$ into the group $A(X_{A})$
+attached to locally compact group $X_{A}$ in the sense of the Chapter
+I, Section 4. In the same way the formula\[
+\mu_{A}((\sigma,f))=(\sigma,\chi\circ f)\]
+defines a homomorphism $\mu_{A}$ of $Ps(X)_{A}$ into the group $B_{0}(X_{A})$
+attached with $X_{A}$ in the sense of the Chapter I, Section m5;
+as in the local case, $\mu_{A}$ is injective when $k$ is not of
+characteristic $2$.
+
+As in the local case, we then define the \emph{metaplectic group}
+$Mp(X)_{A}$ as being the subgroup of $Ps(X)_{A}\times\mathbf{B}_{0}(X_{A})$
+formed by the elements $(s,\mathbf{s})$ of this product such that
+$\mu_{A}(s)=\pi_{0}(\mathbf{s})$; this is given the topology induced
+by the one of the ambient group when one gives with $\mathbf{B}_{0}(X_{A})$
+the strong topology and with $Ps(X)_{A}$ the usual adelic topology.
+We will denote frome now on by $\pi$ the projection of this group
+onto $Ps(X)_{A}$; it is surjective and has as kernel the group ${e}\times\mathbf{T}$,
+which we will write as, more simply, $\mathbf{T}$.
 
 \subsection{}
 
