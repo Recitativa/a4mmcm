@@ -1438,6 +1438,29 @@ is an isomorphism from $(G, \Gamma)$ to $(G^*, \Gamma_*)$.
 Then $\gamma(f)=1$.
 \end{thm}
 
+\subsection{}
+First, let us take $\Phi$ be the characteristic function $\phi_\Gamma$ 
+of $\Gamma$; then $Z(\phi_\Gamma)$  is the characteristic function 
+of $\Gamma\times \Gamma_*$; by (\ref{eq:25}), 
+it is invariant by $B_0(G,\Gamma)$;
+it is then same, by definition, of $\Phi=\phi_\Gamma$.
+
+If $\Gamma'$ is an open compact subgroup of $G$, contain $\Gamma$.
+Then, with the notations of $n^o$~11,
+the set $S(\Gamma', \Gamma)$ is contained by linear combinations of 
+function $\phi_\Gamma(x-a)$ for $a\in \Gamma'$ with constant coefficients;
+it is a vector space, on the field of complexes of dimension equal 
+to the index (necessary finit) from $\Gamma$ to $\Gamma'$. 
+For $s=(\sigma, f)$, as above, an element of $B_0(G,\Gamma)$. 
+The, for ally function of $S(\Gamma', \Gamma)$ is invariant by $\br_\Gamma(s)$,
+it is necessary and sufficient, by the procedure, that $f$ take value $1$ on 
+$\Gamma'\times \Gamma_*$, then $\Gamma'\cdot (\alpha-1) \subset \Gamma$, 
+and then $\Gamma'\cdot \beta \subset \Gamma_*$. it is same to say that 
+$f$ must take value $1$ on $\Gamma'\times \Gamma_*$, and $\sigma$ induce 
+an automorphism of $\Gamma'\times \Gamma$, and that $\sigma$ determined, 
+by passing to the quotient, the identical automorphism on 
+$\Gamma'\times \Gamma /\Gamma\times \Gamma_*$.
+
 \setcounter{ssection}{22}
 
 \section{Application  with Quadratic reciprocity}
@@ -1571,8 +1594,8 @@ That proves the proposition.
 \setcounter{ssection}{28}
 \subsection{}
 Suppose that $k$ is a algebric number field or a function field of 1 dimension 
-on a finit field. We will define by $k_v$ be the completion of $k$,
- by $\fo$ be the integer ring of $k_v$ for each $k_v$ has discrete valuation,
+on a finite field. We will denote by $k_v$ the completion of $k$,
+ by $\fo_v$ be the integer ring of $k_v$ for each $k_v$ has discrete valuation,
 and $A_k$ be the adele ring of $k$. Let $X_k$ be a vector spaces 
 (finite dimension) of $k$; we set $X_A= X_k\otimes A_k$, and for any $v$, 
 $X_v=X_k\otimes k_v$. If $X^\circ$ is a basis of $X_k$ for $k$, we denote
@@ -1583,7 +1606,7 @@ is a lattice in $X_v$. We denote $S$ be the set of all
 to $\bR$ or $\bC$. Under these conditons, $X_A$ is the union ( and same, 
 as a topological space, inductive limit) of product
 \begin{equation}\label{eq:29}
-X_S^\circ = \prod_{v\in S} X_v \times \prod_{v\in S} X_v^\circ.
+X_S^\circ = \prod_{v\in S} X_v \times \prod_{v\notin S} X_v^\circ.
 \end{equation}
 
 Every compact set of $X_A$ is contained in a set of form $\prod C_v$, 
@@ -1720,8 +1743,8 @@ such that $\chi\circ f$ constant $1$ on $L\times L_*$ and that $\sigma$
 induces an automorphism of $L\times L_*$. 
 We immediately varified that it is an open subgroup of $Ps(X)$,
 compact if $k$ is not characteristic $2$,
-and the homomorphism $\mu$ from $P_s(X)$ to $B_0(X)$
- gives homomorphism $P_s(X, L)$ to $B_0(X, L)$. 
+and the homomorphism $\mu$ from $Ps(X)$ to $B_0(X)$
+ gives homomorphism $Ps(X, L)$ to $B_0(X, L)$. 
 
 With above notation, space $H(G,\Gamma)$ of Chapter I, $N^o$~18, 
 becomes Hilbert space $H(X,L)$, and formulate (\ref{eq:25})
@@ -1730,7 +1753,7 @@ the automorphism group of $H(X,L)$, then a representation
 $\br_L\circ \mu$ from $Ps(X, L)$ to this group;
 by transport of structure by isomorphism 
 $Z^{-1}$ from $H(X,L)$ to $L^2(X)$ defined in $n^o$~18 of the same chapter,
-From the representations of $B(X, L)$ and of $Ps (X, L)$, denote $\br_\Gamma$
+From the representations of $B_0(X, L)$ and of $Ps (X, L)$, denote $\br_\Gamma$
 and $\br_L\circ \mu$ by abuse of notation, we give representation of 
 automorphism group of $L^2(X)$.
 Moreover, one immediately deduces from (\ref{eq:25}) that 
