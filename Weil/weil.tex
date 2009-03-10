@@ -1409,7 +1409,8 @@ let $\Phi\in\mathbf{S}(G)$ .
 \subsection{}
 We will define $H(G,F)$ the Hilbert space of solutions $\Theta$ of (\ref{eq:22}),
  locally intgerable on $G\times G^*$ 
-and such as $\|\Theta\|_Q< +\infty$, this space being provided with the norm $\|\Theta\|_Q$.
+and such as $\|\Theta\|_Q< +\infty$, 
+this space being provided with the norm $\|\Theta\|_Q$.
 
 \subsection{}
 We now define  $B_0(G, \Gamma)$ be the subgroup of $B_0(G)$ 
@@ -1427,8 +1428,25 @@ to a solution of the same equation.
 It is then obvious that $\br_\Gamma$ is a unitary representation of $B_0(G, \Gamma)$
 .
 
+
+\begin{thm}\label{t:4}
+For all function $\Phi\in S(G)$ and all $\bs\in \bB_0(G,\Gamma)$, we have
+\[
+\int_\Gamma \Phi(\xi)d\xi =\int_\Gamma \bs \Phi(\xi)d\xi.
+\]
+\end{thm}
+
+\begin{cor}
+For all function $\Phi\in S(G)$, the formula
+\[
+F(\bs) = \int_\Gamma  \bs \Phi(\xi)d\xi \quad (\bs\in \bB_0(G))
+\]
+define on the group $\bB_0(G)$ is an function invariant under the 
+left translation of $\bB_0(G,\Gamma)$
+\end{cor}
+
 \subsection{}
-\begin{thm}[Theorem 5]
+\begin{thm}\label{t:5}
 If $f$ is a charctor of seconde degree of $G$, 
 taking value $1$ on a closed subgroup $\Gamma$ of $G$;
 let $G^*$ be the dual of $G$, $\Gamma_*$ be the
@@ -1722,6 +1740,66 @@ it is the same of $Ps(X)$ when $k$ is not characteristic $2$,
 but it is no more true in characteristic $2$.
 
 \subsection{}
+One has, for the group $P_{s}(X)$, entirely analogous results as
+those of Section 5, 6 and 7 of Chapter I for the group $B_{0}(G)$;
+we will summarize them quickly. One defines a monomorphism to $P_{x}(X)$
+from the group $Aut(X)$ of the automorphisms of $X$ by setting\[
+d(\alpha)=\left(\left(\begin{array}{cc}
+\alpha & 0\\
+0 & \alpha^{*-1}\end{array}\right),0\right).\]
+One defines a mapping to $P_{s}(X)$ from the set $Is(X^{*},X)$ of
+the isomorphisms from $X^{*}$ to $X$ by setting\[
+d'(\gamma)=\left(\left(\begin{array}{cc}
+0 & -\gamma^{*-1}\\
+\gamma & 0\end{array}\right),[x,-x^{*}]\right).\]
+One defines a monomorphism to $P_{s}(X)$ from the additive group
+$Q(X)$ of the quadratic forms on $X$ by setting\[
+t(f)=\left(\left(\begin{array}{cc}
+1 & \rho\\
+0 & 1\end{array}\right),f\right),\]
+where $\rho$ is the symmetric morphism from $X$ to $X^{*}$ associated
+with the quadratic form $f$ on $X$. Similarly, if $f'$ is a quadratic
+form on $X^{*}$, associated with morphism $\rho'$ from $X^{*}$
+to $X$, one defines\[
+t'(f')=\left(\left(\begin{array}{cc}
+1 & 0\\
+\rho' & 1\end{array}\right),f'\right).\]
+Among the elements of $P_{s}(X)$ thus defined, one has the relations
+analogous to those in Sections 6-7, and notably\[
+d(\alpha)^{-1}t(f)d(\alpha)=t(f^{\alpha}),\]
+\[
+d(\alpha)t'(f')d(\alpha)^{-1}=t'(f'^{\alpha*}).\]
+where $f^{\alpha}$is defined by $f^{\alpha}(x)=f(x\alpha^{-1})$,
+and\[
+d'(\gamma\alpha)=d'(\gamma)d(\alpha),\]
+\[
+d'(\alpha^{*-1}\gamma)=d(\alpha)d'(\gamma),\]
+for $\alpha\in Aut(X)$, $\gamma\in Is(X^{*},X)$.
+
+For $s=(\sigma,f)$, $\sigma=\left(\begin{array}{cc}
+\alpha & \beta\\
+\gamma & \delta\end{array}\right)$, set $\gamma=\gamma(s)$; we denote by $\Omega(X)$ the set of the
+$s\in P_{s}(X)$ for which $\gamma(s)$ is invertible, that is, for
+which it is an isomorphism from $X^{*}$ to $X$. While repeating
+over here, with obvious modifications, the proof of the proposition
+$1$ of Chapter I, Section $7$, one sees that any $s\in\Omega(X)$
+is of one and only one form\begin{equation}
+s=t(f_{1})d'(\gamma)t(f_{2}),\label{33}\end{equation}
+where $f_{1}$, $f_{2}$ are quadratic forms on $X$, and $\gamma\in Is(X^{*},X)$;
+one has $\gamma=\gamma(s)$. More precisely, $\Omega(X)$ is $k$-open
+in $P_{s}(X)$ in the sense of Zariski topology, and \ref{33} determines
+a $k$-isomorphism of algebraic varieties between $\Omega(X)$ and
+$Q(X)\times Is(X^{*},X)\times Q(X)$; as $Is(X^{*},X)$ is nonempty,
+$\Omega(X)$ is nonempty. The complement of $\Omega(X)$ in $P_{s}(X)$
+is moreover defined by $\det\gamma(s)=0$, the determinant being taken
+for an arbitrary choice of the bases in $X^{*}$ and $X$; it follows
+that this complement is collection of the varieties of codimension
+$0$ or $1$ in $P_{s}(X)$; it is even a collection of the varieties
+of codimension $1$ in $P_{s}(X)$ provided $k$ is not of characteristic
+$2$, since then $P_{s}(X)$ is isomorphic with $Sp(X)$ which is
+connected, and that $\Omega(X)$ is nonempty. If in contrary $k$
+is of characteristic $2$, one sees that the orthogonal group $O(B)$
+comprises two connected components
 
 \subsection{}
 
@@ -1815,7 +1893,7 @@ $\mu_{A}(s)=\pi_{0}(\mathbf{s})$; this is given the topology induced
 by the one of the ambient group when one gives with $\mathbf{B}_{0}(X_{A})$
 the strong topology and with $Ps(X)_{A}$ the usual adelic topology.
 We will denote frome now on by $\pi$ the projection of this group
-onto $Ps(X)_{A}$; it is surjective and has as kernel the group ${e}\times\mathbf{T}$,
+onto $Ps(X)_{A}$; it is surjective and has as kernel the group $\Set{e}\times\mathbf{T}$,
 which we will write as, more simply, $\mathbf{T}$.
 
 \subsection{}
@@ -1838,9 +1916,9 @@ $Mp(X_v)$; moreover, according to $n^o$~21 of Chapter I,
 this map $Ps(X_v, L)$ to a subgroup of $Mp(X_v)$ which leaves 
 the characteristic function of the network $L$ invariant.
 For almost all $v$, $Ps(X)_v^\circ$ is a subgroup of $Ps(X_v,L)$
- when $L =X_v^\circ$; We will denote the set $S_0$ 
-(finite, and containing $S_\infty$) of complement 
-of $k$ for which $v\notin S_0$, we will show $\br'_v$ induce
+ when $L =X_v^\circ$; We will denote this that $S_0$ 
+(finite, and containing $S_\infty$) of complete 
+of $k$ for which $v\notin S_0$, we can show $\br'_v$ induce
  the lefting by $\br'_L$ of
 $Ps(X)_v^\circ$ when $L=X_v^\circ$.
 
@@ -1918,6 +1996,258 @@ is the characteristic function of $X_v^\circ$ for all $v\notin S'$.
 Under these conditions, the assertion the assertion which it is a
 immediate consdquence of the properties of continuity proof in $n^o$~35 
 for the local case.
+
+\def\barx{{\bar{x}}}
+\def\dotx{{\dot{x}}}
+\subsection{}
+In this part, we appliy the results of Chapter I, $n^o$~16-19, 
+with $G=X_A$, $G^*=X_A^*$, $\Gamma=X_k$, $\Gamma_*=X_k^*$; it is 
+immediate that the homomorphism $\mu_A$ form $Ps(X)_A$ to $B_0(X_A)$
+defined in $n^o$~37, maps $Ps(X)_k$ into a subgroup of $B_0(X_A)$ 
+which with the noation of $n^o$~19, written as $B_0(X_A,X_k)$. 
+It is similar as the situations we studied above, lifting $r_\Gamma$ of
+$B_0(G,\Gamma)$ defined in $n^o$~19, define a lifting from $Ps(X)_k$
+to $\bB_0(G)$, and then a lefting from $Ps(X)_k$ to $Mp(X)_A$,
+we denote by $\br_k$. We now explain it; it is sufficient for expressing
+$\br_k(s)\Phi$ through $\Phi$ for $\Phi\in S(X)_A$, $s\in Ps(X)_k$. 
+According to the definitoin in Chapter I, we can introduce the function
+\[
+\Theta(x,x^*)=\sum_{\xi\in X_k} \Phi(x+\xi)\chi([\xi,x^*])
+\quad (x\in X_A, x^*\in X^*_A
+\]
+here, as already noted in the more general case studied in Chapter I,
+$n^o$~18, the series is 
+uniformly convergent on any compact set under the assumption 
+$\Phi\in S(X_A)$. 
+Then the formular (particular case of (\ref{eq:23}) of $n^o$~18):
+\[
+\Phi(x)=\int_{X^*_A/X^*_k} \Theta(x,x^*) d\dot{x}^*
+\]
+where $d\dot{x}^*$ is the mesure on the compact group $X^*_A/X^*_k$ 
+which gives measure $1$ on the group.
+Let $s=(\sigma, f)$ be an element of $Ps(X)_k$, and as usual 
+$\sigma=\begin{pmatrix}\alpha & \beta\\ \gamma & \delta
+\end{pmatrix}$.
+By $n^o$~19, the function $\Phi' = \br_k(s)\Phi$ is defined by the
+formular
+\begin{align*}
+\Theta'(z) &= \Theta(z\sigma)\chi(f(z)) \quad (z=(x,x^*)\in X_A\times X'_A),\\
+\Phi'(x) &= \int \Theta'(x,x^*) d\dot{x}^*,
+\end{align*}
+where
+\[
+\Phi'(x) = \int \Theta(x\alpha + x^*\gamma, x\beta+x^*\delta)\chi(f(x,x^*))
+d\dot{x}^*
+\]
+integrating over $X^*_A/X^*_k$. 
+Let $N$ be the kernel of $\gamma$ in $X^*$; let $Y=X^*/N$. 
+We can, in an obvious way, identify $N_A/N_k$ with a closed subgroup of 
+$X^*_A/X^*_k$ and $Y_A/Y_k$ with the quotient of $X^*_A/X^*_k$ for $N_A/N_k$;
+denote $\bar{x}^*$ the image of $\dotx$ in the quotient, we cam write
+\[
+\Phi'(x) = \int \Psi(x,\barx^*)d\barx^*,
+\]
+where $\Psi$ is denote by the formular
+\[
+\Psi(x, \barx^*)=\int_{N_A/N_k} \sum_{\xi\in X_k} \Phi(x\alpha + x^*\gamma+\xi)
+\chi([\xi, x\beta+(x^*+n)\delta]+f(x, x^*+n))d\dot(n);
+\]
+here $\dot{n}$ denote the image of $n\in N_A$ in $N_A/N_k$,
+and $d\dot{n}$ is the measure on $N_A/N_k$ for which $N_A/N_k$ has measure $1$;
+the same, $d\barx^*$ is the measure in $Y_A/Y_k$ for which $Y_A/Y_k$ has measure
+$1$.
+
+On the other hand, by (\ref{eq:32}):
+\[
+f(x,x_1^*+x_2^*)=f(0,x_1^*)+f(x,x_2^*) + [x^*_1\gamma, x \beta +x_2^*\delta],
+\]
+where, for $n\in N$:
+\[
+f(x, x^*+n)=f(0,n)+f(x,x^*).
+\]
+
+In particular,  it follows that $f(0, n)$ is an additive form on $N$.
+As $f$ is rational on k, we define a charactor $\varphi$ on $N_A/N_k$ 
+by $\varphi(\dot{n})=\chi(f(0,n))$ for $n\in N_A$, 
+then extend $\varphi$ be an character of $X_A^*/X_k^*$. It is same to 
+say that there is a charactor of $X^*_A$, taking value $1$ on $X_k^*$,
+which coincides with $\chi(f(0,n)$ on $N_A$, then there exists 
+$\xi_0\in X_k$ such that 
+\[
+\chi(f(0,n)) = \chi([\xi_0,n])
+\] 
+for $n\in N_A$. Of course, if $k$ is not characteristic $2$, the 
+additive form $f(0,n)$ on $N$ deduce to $0$, so we can take $\xi_0=0$.
+
+The expression above for $\Phi$ can also be written as 
+\[
+\Psi(x, \barx^*)=\int \sum_{\xi} \Phi(x\alpha + x^*\gamma+\xi)
+\chi([\xi, x\beta+x^*\delta]+f(x, x^*))\chi([\xi\delta^*+\xi_0,n]d\dot(n);
+\]
+or more simply, 
+\[
+\Phi(x, \barx^*) = \sum_{\xi\in L} \Phi(x\alpha + x^*\gamma+\xi)
+\chi([\xi, x\beta+x^*\delta]+f(x,x^*)),
+\]
+where the summation is take on the set $L$ of $\xi \in X_k$ such that 
+\[
+[\xi\delta^*+\xi_0,n] = 0
+\]
+for all $n\in N$, or $\xi\delta^*+\xi_0$ belongs to the subspace $N_*$ 
+of $X$ orthogonal to the kernel $N$ of $\gamma$ in $X^*$; $N_*$ is no other
+than the image $X^*\gamma^*$ of $X^*$ for $\gamma^*$. 
+We can say that $L$ is the set of all $\xi\in X_k$ for the equation
+\[
+\xi \delta^*+\xi_0=\xi^*\gamma^*
+\] 
+is an solution of $\xi^*\in X^*_k$; as we have 
+\[
+\sigma^{-1} = \begin{pmatrix} \delta^* & -\beta^* \\ -\gamma^* & \alpha^*
+\end{pmatrix}
+\]
+that means $(\xi, \xi^*)\sigma^{-1}$ has form $(-\xi_0, \xi_1^*$ 
+with $\xi_1^*\in X_k$. 
+Ultimately, $L$ is the image of $X^*_k$ of the map 
+\[
+\xi_1^* \to -\xi_0\alpha + \xi_1^*\gamma
+\] 
+from $X^*_k$ to $X_k$.
+By (\ref{eq:32}), we can then write
+\[
+\Phi(x, \barx^*) = \sum \Phi((x-\xi_0)\alpha+(x^*+\xi_1^*)\gamma)
+\chi(f(x-\xi_0, x^*+\xi^*_1)-[\xi_0,x^*]),
+\]
+oh the summation has values $\xi^*$ taken in a complete system of 
+representatives of $X_k^*$ modulo $N_k$.  
+Observe now that by the definition of $\xi_0$, 
+the function
+\[
+\chi(f(x,x^*)-[\xi_0,x^*])
+\]
+do not change if we replace $x^*$ by $x^*+n$, with $n\in N_A$.
+We can define a function $\Omega$ on $X_A\times Y_A$ by 
+\[
+\Omega(x,y)=\Phi(x\alpha+x^*\gamma)\chi(f(x,x^*)-[\xi_0,x^*])
+\]
+for $x\in _A$, $x^*\in X_A^*$, and $y$ is the image of $X^*$ in $Y_A=X^*_A/N_A$.
+We has, with the same notation,
+\[
+\Phi(x,\barx^*)=\sum_{\eta\in Y_k}\Omega(x-xi_0,y+\eta),
+\]
+and consequently
+\[
+\Phi'(x) = \int_{Y_A}\Omega(x-\xi_0,y)dy,
+\]
+where $dy$ is the Tamayawa measure on $Y_A$ ($Y_A/Y_k$ is measure $1$).
+$x^*\to x^*\gamma$ determined, by passing to the quotient, an isomorphism of
+$Y$ to the image $Z=X^*\gamma$ of $X^*$ for $\gamma$, we finally obtain
+\[
+\br_k(s)\Phi(x) = \int_{Z_A}\Phi((x-\xi_0)\alpha+ z)\psi(x-\xi_0, z) dz,
+\]
+where $Z=X^*\gamma$, $dz$ is the Tamagawa mesure on $Z_A$, and $\psi$ is 
+the charactor of second degree of $X_A\times Z_A$ defined by 
+\[
+\phi(x,x^*\gamma) = \chi(f(x,x^*)-[\xi_0,x^*])
+\quad (x\in X_A,x^*\in X^*_A).
+\]
+
+\section{}
+The application of theorem~\ref{t:4} of Chapter I, $n^o$~19, 
+will give it now to us 
+result which we kept mainly in mind in this memory.  
+This theorem gives initially: 
+\begin{equation}\label{eq:39}
+\sum_{\xi\in X_k} \Phi(\xi)= \sum_{\xi\in X_k}\br_k(s)\Phi(\xi),
+\end{equation}
+which is valide when $s\in Ps(X)_k$ and $\Phi \in S(X_A)$;
+it is reduced to Poisson formula when $s =d'(\gamma)$, $\gamma$ is an
+isomorphism form $X^*_k$ to $X_k$. 
+It is same as corollary of theorem~\ref{t:4}, we now deduce that:
+\begin{thm}\label{t:6}
+If $X_k$ is an finite dimensional vector space on $k$; and $\Phi$ is 
+a function belongs to $S(X_A)$. $\Theta$ is the function on $Mp(X)_A$, defined,
+for all $S\in Mp(X)_A$, by the formular
+\[
+\Theta(S) = \sum_{\xi\in X_k} S\Phi(\xi).
+\]
+Then $\Theta$ is a continous function on $Mp(X)_A$, 
+invariant by the left translations determined by 
+the elements of $Mp(X)_A$ of the form $\br_k(S)$, 
+with $s\in Ps(X)_k$.
+\end{thm} 
+
+The invarianee of $\Theta$ is obvious according to (\ref{eq:39}),
+or according to the corollary of theorem $4$ in $n^o$~19; 
+we only have to show its continuity,
+which we will deduce from the following lemmas. 
+
+\begin{lemma}\label{l:4}
+If $(a_n)_{n\in \bN}$ is a sequence of real numbers with $a_n>0$. 
+Then there exists a function $\varphi\in S(\bR)$ such that , for any $x$:
+\[
+\varphi(x) \geq \inf_{n\in \bN} (a_n|x|^{-n}).
+\]
+\end{lemma}
+
+Indeed, let $f(x) = \inf(a_n|x|^{-n})$; let $g$ be a function infinit 
+differantiable on $\bR$, has value $\geq 0$, of support contained in $[-1,+1]$,
+and $\int g\, dx = 1$, and let $h = f*g$. 
+We have
+\begin{align*}
+f(x-1) \geq h(x)\geq f(x+1)  &\text{ for } x\geq +1,\\
+f(x-1) \leq h(x) \leq f(x+1) &\text{ for } x\leq -1.
+\end{align*}
+Moreover, if $D=d/dx$, we have $D^pf = f*D^pg$ when $p\geq 0$, 
+we can conclude immediately that $|x^nD^ph|$ is bounded for all $n\geq 0$
+and $p\geq 0$, then $h\in S(\bR)$.
+Let $h_0\in S(\bR)$ such that $h_0(x)\geq a_0$ for $-2\leq x\leq +2$. 
+We have, for all $x$:
+\[
+f(x)\leq h(x-1)+h(x+1)+h_0(x),
+\] 
+this proves the lemma.
+
+\begin{lemma}\label{l:5}
+Suppose that $G$ is a locally compact abelian group and 
+$C$ is a compact set of $S(G)$. Then there exists $\Phi_0\in S(G)$
+such that $|\Phi(x)|\leq \Phi_0(x)$ for all $\Phi\in C$ and $x\in G$. 
+\end{lemma}
+
+With the notations which were used to definie $S(G)$ in $n^o$~11,
+we know (cf. Bruhat [1]) that all compact set of $S(G)$ is contained in 
+a space $S(H, H')$; it is thus sufficient to prove the lemma for a elementary
+group $G=\bR^n\times \bZ^p\times T^q\times F$, where $F$ is a finite group. 
+Let $x\in G$; let $x_1, \cdots, x_n$, $y_1, \cdots, y_p$ is its coordinate 
+relative to the factors $\bR$, $\bZ$ of $G$; let 
+\[
+r(x0 = \sum_{i=1}^n x_i^2 + \sum_{j=1}^p y_j^2,
+\]
+and for all $n\in \bN$:
+\[
+a_n = \sup_{x\in G, \Phi\in C} \abs{r(x)^n\Phi(x)};
+\]
+by the definition of $S(G)$, we have $a_n < +\infty$ for all $n$. 
+For this sequence $(a_n)$, let $\varphi$ be a function of $S(\bR)$
+having the property stated in lemma~\ref{l:4}. Then $\Phi_0 = \varphi\circ r$
+has the property wanted.
+
+Let us return to the proof of theorem~\ref{t:6}. It is immediately from the 
+definition that, for all $x_0\in X_A$, $\Phi\to \Phi(x_0)$ 
+is a continous map from $S(X_A)$ to $\bC$. 
+We see that, for each $\Phi\in S(X_A)$, $S\to S\Phi$ is a continous map
+from $Mp(X)_A$ to $S(X_A)$, it follows that each term of the series 
+is a continous function of $S(X_A)$. Let $C$ be a compact set of $Mp(X)_A$;
+if $\Phi\in S(X_A)$, the image of $C$ for $S\to S\Phi$ is a compact 
+set of $S(X_A)$, and then from lemma~\ref{l:5} that there exists 
+$\Phi_0\in S(X_A)$ such that $\abs{S\Phi} \leq \Phi_0$ when $S \in C$. 
+The series which defines $F(S)$ is 
+therefore, for $S\in C$,  dominated by the series $\sum\Phi_0(\xi)$. 
+This one being convergent 
+according to the procedure, that complete the proof. 
+
+The definition of modular functions by means of theta series 
+is naturally a particular case of the 
+mode of definition of automorphic functions contained in theorem~\ref{t:6}.
 
 \end{document}
 
