@@ -1,0 +1,168 @@
+\documentclass[11pt]{beamer}
+\usepackage{cite}
+
+%\beamertemplatenumberedballsectiontoc
+%\beamertemplateboldpartpage
+
+%\usepackage{diagrams} 
+%\diagramstyle[labelstyle=\scriptstyle] 
+\usepackage[all,cmtip]{xy} 
+%\usepackage{diagxy} 
+\usepackage{amsfonts}
+
+\usetheme{umbc4}
+
+\usepackage{hyperref}
+
+\usepackage{amsmath,amssymb}
+\usepackage{graphics}
+\usepackage{multimedia}
+
+\usepackage{color}
+\usepackage{braket}
+
+
+\author[JJ, Ma]{Ma Jia Jun}
+\title{Theta correspondence and cohomological induction}
+\subtitle[Unitarity]{with the unitarity the constructions}
+\institute[Dept. of Math.]{Departement of Mathematics, \\
+  National University of Singapore\\[1ex]
+  \texttt{g0701232@nus.edu.sg}
+}
+
+\def\bZ{\mathbb{Z}}
+\def\bR{\mathbb{R}}
+
+\newtheorem{thm}{Theorem}
+
+\begin{document}
+
+\begin{frame}[plain]
+  \titlepage
+\end{frame}
+
+\def\fk{{\mathfrak{k}}}
+\def\fh{{\mathfrak{h}}}
+\def\fg{{\mathfrak{g}}}
+\def\ft{{\mathfrak{t}}}
+\def\fu{{\mathfrak{u}}}
+\def\fm{{\mathfrak{m}}}
+\def\fl{{\mathfrak{l}}}
+\def\fq{{\mathfrak{q}}}
+\def\Ad{{\mathrm{Ad}}}
+\def\Hom{{\mathrm{Hom}}}
+\def\H{{\mathrm{H}}}
+\def\bC{{\mathbb{C}}}
+
+
+\section{Cohomological induction}
+\subsection{Notations}
+\frame{
+ \frametitle{\subsecname}
+ We following Wallach's approach~\cite{Wallach1984}~\cite{Wallach1988}
+ \begin{description}
+ \item[$G$] a real reductive Lie group of inner type 
+ \item[$\theta$] Cartan involution of $G$, with $\fk$ compact subalgebra. 
+ \item[$\fh $] fundamental Cartan subalgebra of $\fg$ 
+ \item[$\ft$] $\fk\cap \fh$ is maximal abelian in $\fk$
+ \item[$H$] a element in $i\ft$.
+ \item[$\fl$] $\Set{X\in \fg|[H,X]=0}$
+ \item[$\fu$] $\Set{X\in \fg|[H,X]=\lambda X, \lambda >0}$
+ \item[$\fq$] $=\fl_\bC+ \fu$, $\theta$-stable parabolic subalgebra.
+ %%\item[$L$] $\Set{g\in G|\Ad(g)H=H}$
+ \item[$\fm$] $=\fk\cap \fl$.
+ \item[$\fq_k$] $\triangleq \fq\cap \fk_\bC = \fm_\bC + \fu_k$, 
+   $\theta$-satable parabolic of $\fk$.
+ \item[$M$] $=\Set{g\in K|\Ad(g)H=H}=K\cap L$.
+ \end{description}
+}
+
+\subsection{Cohomology induction}
+%\frame[<+->]{
+\frame{
+  \frametitle{\subsecname}
+  Fix a $(\fl,M)$-module $W$.
+  \begin{enumerate}[(I)]
+  \item Regard $W$ as a $\fq$-module with $\fu$ act trivially on it. 
+  \item Define $M(\fq,W) = U(\fg)\otimes_{U(\fl)}W$, 
+    which is a $(\fk,M)$-module.
+  \item Applying the Zuckerman functor, $\Gamma^j(M(\fl,W))$.
+  \item $\Gamma^j(M(\fl,W))$ is
+    nontrivial for all $j<n$. ($n=\dim\fu_k$)
+  \end{enumerate}
+}
+
+\subsection{Zuckerman functor}
+\frame{
+  \frametitle{\subsecname}
+  The Zuckerman functor is defined by 
+  ($H(K)$:left $K$-finite smooth
+  functions on $K$)
+  \[
+  \Gamma^j(V) = \H^j(\fk,M;V\otimes H(K)).
+  \]
+  $\H^j(V)$ is the cohomology of complex 
+  \[
+  C^j(\fk,M;V)= \Hom_M(\bigwedge^j(\fk/\fm), V)
+  \]
+
+  $\Gamma^j$ is a functor from $C(\fg,M)$ to $C(\fg,K)$, where $K$
+  action given by right transform of $H(K)$ and $\fg$ action given by
+  the commutative relation 
+  \[
+  \xymatrix{
+    \Gamma^j(U(\fg)\otimes V) \ar[d]_{\Gamma^j(V)} 
+    \ar[r]^{T_{U(\fg)}(V)}
+    &  U(\fg)\otimes \Gamma^j(V) \ar[d]^{m}  \\ 
+    \Gamma^j(V) \ar[r]^{\mathrm{Identity}} & \Gamma^j(V)
+  }
+  \]
+}
+
+\def\inn#1#2{\left<#1,#2\right>}
+
+\subsection{Hermition Form}
+\frame{
+  \frametitle{\subsecname}
+  Now assume $W$ be an irreducible $(\fl,M)$-module admits a positive definite 
+  Hermition form $\inn{\cdot}{\cdot}$. 
+  We can construct a hermition form on $\Gamma^n(M(\fq,W))$.
+  \begin{enumerate}[(I)]
+  \item Shapovalov Form,
+    $(x\otimes w, y\otimes v) = \inn{p(y^*x)w}{v}$, \\
+    $p$ is the projection from $U(\fg$ to $U(\fl_\bC)$ by
+    decompostion 
+    \[
+    U(\fg_\bC)=U(\fl_\bC)\oplus(\overline{\fu}U(\fg_\bC)+U(\fg_\bC)\fu).
+    \]
+  \item The Hermition form on $\Gamma^n(M(\fq,W))$ comes from 
+    the nature pairing between complex 
+    $C^j(M(\fq,W))\subset \bigwedge^j(\ft/fm)_\bC^*\otimes M(\fq,W)$ and
+    $C^{(2n-j)}(M(\fq,W))$:
+    \[
+    \inn{\alpha\otimes w}{\beta\otimes v} = (\alpha,\beta)(w,v)
+    \]
+  \end{enumerate}
+  If $M(\fq,W)$ is also irreducible, $(\cdot,\cdot)$ non-degenerate,
+  and only $\Gamma^n(M(\fq,W)$ nontrivial.
+}
+
+\subsection{Signature charactor}
+\frame{
+  \frametitle{\subsecname}
+  
+}
+
+\section{Theta correspondence}
+\frame{
+ \frametitle{The duality relation}
+
+}
+
+\frame{
+  \frametitle{References}
+  \bibliographystyle{alpha}
+  \bibliography{bib/reppapers}	
+}
+
+\end{document}
