@@ -1,13 +1,10 @@
 \documentclass[11pt]{beamer}
 \usepackage{cite}
 
-%\beamertemplatenumberedballsectiontoc
-%\beamertemplateboldpartpage
 
-%\usepackage{diagrams} 
-%\diagramstyle[labelstyle=\scriptstyle] 
 \usepackage[all,cmtip]{xy} 
-%\usepackage{diagxy} 
+
+
 \usepackage{amsfonts}
 
 \usetheme{umbc4}
@@ -15,6 +12,7 @@
 \usepackage{hyperref}
 
 \usepackage{amsmath,amssymb}
+\usepackage{euruf}
 \usepackage{graphics}
 \usepackage{multimedia}
 
@@ -71,8 +69,8 @@
  \item[$\fq$] $=\fl_\bC+ \fu$, $\theta$-stable parabolic subalgebra.
  %%\item[$L$] $\Set{g\in G|\Ad(g)H=H}$
  \item[$\fm$] $=\fk\cap \fl$.
- \item[$\fq_k$] $\triangleq \fq\cap \fk_\bC = \fm_\bC + \fu_k$, 
-   $\theta$-satable parabolic of $\fk$.
+% \item[$\fq_k$] $\triangleq \fq\cap \fk_\bC = \fm_\bC + \fu_k$, 
+%   $\theta$-satable parabolic of $\fk$.
  \item[$M$] $=\Set{g\in K|\Ad(g)H=H}=K\cap L$.
  \end{description}
 }
@@ -111,7 +109,7 @@
   the commutative relation 
   \[
   \xymatrix{
-    \Gamma^j(U(\fg)\otimes V) \ar[d]_{\Gamma^j(V)} 
+    \Gamma^j(U(\fg)\otimes V) \ar[d]_{\Gamma^j(m)} 
     \ar[r]^{T_{U(\fg)}(V)}
     &  U(\fg)\otimes \Gamma^j(V) \ar[d]^{m}  \\ 
     \Gamma^j(V) \ar[r]^{\mathrm{Identity}} & \Gamma^j(V)
@@ -121,12 +119,12 @@
 
 \def\inn#1#2{\left<#1,#2\right>}
 
-\subsection{Hermition Form}
+\subsection{Hermitian Form}
 \frame{
   \frametitle{\subsecname}
   Now assume $W$ be an irreducible $(\fl,M)$-module admits a positive definite 
-  Hermition form $\inn{\cdot}{\cdot}$. 
-  We can construct a hermition form on $\Gamma^n(M(\fq,W))$.
+  Hermitian form $\inn{\cdot}{\cdot}$. 
+  We can construct a hermitian form on $\Gamma^n(M(\fq,W))$.
   \begin{enumerate}[(I)]
   \item Shapovalov Form,
     $(x\otimes w, y\otimes v) = \inn{p(y^*x)w}{v}$, \\
@@ -135,7 +133,7 @@
     \[
     U(\fg_\bC)=U(\fl_\bC)\oplus(\overline{\fu}U(\fg_\bC)+U(\fg_\bC)\fu).
     \]
-  \item The Hermition form on $\Gamma^n(M(\fq,W))$ comes from 
+  \item The Hermitian form on $\Gamma^n(M(\fq,W))$ comes from 
     the nature pairing between complex 
     $C^j(M(\fq,W))\subset \bigwedge^j(\ft/fm)_\bC^*\otimes M(\fq,W)$ and
     $C^{(2n-j)}(M(\fq,W))$:
@@ -147,31 +145,135 @@
   and only $\Gamma^n(M(\fq,W)$ nontrivial.
 }
 
+\def\hK{\widehat{K}}
+\def\hM{\widehat{M}}
+\def\ch{\mathrm{ch}}
+\def\sgn{\mathrm{sgn}}
 \subsection{Signature charactor}
 \frame{
   \frametitle{\subsecname}
-  
+  For a $(\fg,K)$ module $V$ define the {\em charactor} of it:
+  \[
+  \ch_M(V) = \sum_{\gamma\in \widehat{M}} \dim\,\Hom_M(F_\gamma, V)\gamma.
+  \]
+  $V$ admits Hermitian form $\inn{\cdot}{\cdot}$, then define
+  {\em signature charactor}:
+  \[
+  \ch_s(V,\inn{\cdot}{\cdot}) = \sum_{\gamma \in \widehat{M}} \frac{1}{d(\gamma)}
+  (p_\gamma-q_\gamma)\gamma
+  \]
+  $(p_\gamma$,$q_\gamma)$ is the signature of the Hermitian form 
+  $\inn{\cdot}{\cdot}$ restricted on isotropic component $V(\gamma)$.
+
+  Note that $\inn{\cdot}{\cdot}$ definite if and only if 
+  \[
+  \ch_s(V,\inn{\cdot}{\cdot}) = \pm \ch_M(V)
+  \]
 }
 
 \subsection{Unitarizablity}
 \frame{
   \frametitle{\subsecname}
+  By vanishing theorems and the construction of the Hermition form on 
+  $\Gamma^j(V)$ we have:
+  \[
+  \begin{split}
+    \ch_s(\Gamma^n(V)) 
+    &= \sum_{\gamma} \sgn(\sum_{\gamma\in \hK} 
+    H^n(\ft,M;V\otimes F_\gamma^*)\otimes F_\gamma) \\
+    &= \sum_{\gamma\in \hK} \sgn(\bigoplus_j C^j(\ft,M;V\otimes F_\gamma^*))
+    \ch_M \gamma
+  \end{split}
+  \]
+  Hence deduce compute $\ch_s(\Gamma^n(M(\fq,W)))$ to compute
+  \[
+  \ch_s(\bigwedge^j (\ft/fm)^*\otimes M(\fq,W) \otimes V^*_\gamma)
+  \]
+  The key is to compute 
+  \[
+  \ch_s(M(\fq,W)).
+  \]
+}
+
+\subsection{Unitarizablity}
+\frame{
+  \frametitle{\subsecname}
+  Now we use a ``continous argument''.
   
+  Assume exists $\mu\in i\fl^*$ such that 
+  $(\mu,\alpha)>0$ for $\alpha\in \Sigma$. 
+  Then $M(\fq,W\otimes C_{-t\mu}$ is irreducible. 
+  Note that:
+  \begin{enumerate}[(I)]
+  \item the decomposition of $M(\fq,W\otimes C_{-t\mu})$ 
+    in to isotypic components
+    is independent of $t$;
+  \item signature take integer value, the constant for all $t>0$;
+  \item Key formula:
+    \[
+    \begin{split}
+      &\inn{X^IY^J\otimes w}{X^{I'}Y^{J'}\otimes w'}_t\\
+      =& t^{|I|+|J|}\delta_{I,I'}\delta_{J,J'}(-1)^{|J|} \prod_k(\mu,\alpha_k)^{i_k}
+      \prod_k(\mu,\beta_k)^{j_k}\inn{w}{w'} \\
+      &+ \text{lower order terms}
+    \end{split}
+    \]
+  \end{enumerate}
+  Then give an expression of $\ch_s(M(\fq,W))$ by $\ch_M(W)$.
+  Finish the proof by compare the form of siganiture charactor and charactor.
+}
+
+\def\Sp{{\mathrm{Sp}}}
+\def\tSp{{\widetilde{\mathrm{Sp}}}}
+\def\bR{\mathbb{R}}
+\def\cR{{\mathcal{R}}}
+\def\tG{{\widetilde{G}}}
+\def\cY{\mathsrc{Y}}
+\section{Theta correspondence}
+\subsection{Unitary Represnetation of double cover of Symplectic group}
+\frame{
+   \frametitle{\subsecname}
+   For simplectic group $Sp$ (except complex case),
+   for each central charactor $\chi$ there is 
+   a unique unitary representation $\omega=\omega_\chi$
+   of the double cover $\tSp$ of $\Sp$.
+   
+   For any subgroup $G$ of $Sp$, let $\tG$ be the perimage of projecetion 
+   $\pi\colon \tSp \to \Sp$. Let
+   \[
+   \bR(\tG) = \Set{\text{unitary representation }\rho\text{ of }\tG}|
+   \rho\cong \cY^{\infty}/\cY_\rho}
+   \]
 }
 
 
-\section{Theta correspondence}
-\subsection{The duality relation}
-
+\subsection{Reductive dual pair in Symplectic group}
 \frame{
  \frametitle{\subsecname}
+ $(G,G')$ called a reductive dual pair if $G$, $G'$ are reductive 
+ subgroups of some 
+ symplectic group $Sp$ and are mutual centralizers.
+ 
+ Roughly, we want to know the repsentation of $\tG$ by the represntation of 
+ $\tG'$. 
+ 
+ Note that $\cR(\tG_1\times \tG_2) \cong \cR(\tG_1)\times \cR(\tG_2)$.
 
+ We can consider irreducible dual pairs. 
+ \begin{enumerate}[Type I]
+ \item $\Sp=\Sp(V\otimes V')$, $G$ and $G'$ 
+   are group of isometries of $(,)$ $(,)'$
+   respectively. $(V,(,))$ hermitian $(V',(,)')$ skew-hermitian.
+ \item $\Sp=\Sp(U\otimes U^*)$, $G=\mathrm{GL}(V)$, $G'=\mathrm{GL}(V')$ 
+ \end{enumerate}
+ 
 }
+
 
 \subsection{Theta correspondence}
 \frame{
  \frametitle{\subsecname}
-
+ 
 }
 
 \subsection{Unitarity version}
@@ -180,19 +282,30 @@
 
 }
 
-\section{Unitary dual}
+\subsection{Unitary dual}
 
 \frame{
  \frametitle{\subsecname}
-
- We can construct principle series
-
+ A central problem in represnetaion theory is to know the unitary dual of 
+ group $G$. 
+ 
+ For real reductive group, 
+ we can construct unitary representations by parabolic induction. 
+ This gives {\rm principle series}.
+ 
+ But they are not all. There are also some {\rm discrete series}
+ (can be constructed by cohomological induction or other ways).
+ 
+ Theta-correspondence give another way to construct. 
+ 
+ It seems some realation between cohomological induction 
+ and theta-correspondence \cite{Zhu2004}. 
 }
 
 
 \frame{
   \frametitle{References}
-  \bibliographystyle{alpha}
+  \bibliographystyle{plain}
   \bibliography{bib/reppapers}	
 }
 
