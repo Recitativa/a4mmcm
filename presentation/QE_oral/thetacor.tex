@@ -12,12 +12,13 @@
 \usepackage{hyperref}
 
 \usepackage{amsmath,amssymb}
-\usepackage{euruf}
+%\usepackage{euruf}
 \usepackage{graphics}
 \usepackage{multimedia}
 
 \usepackage{color}
 \usepackage{braket}
+%\usepackage{mathpple}
 
 
 \author[JJ, Ma]{Ma Jia Jun}
@@ -228,22 +229,26 @@
 \def\bR{\mathbb{R}}
 \def\cR{{\mathcal{R}}}
 \def\tG{{\widetilde{G}}}
-\def\cY{\mathsrc{Y}}
+\def\cY{\mathcal{Y}}
+\def\cN{\mathcal{N}}
 \section{Theta correspondence}
-\subsection{Unitary Represnetation of double cover of Symplectic group}
+\subsection{Represnetation of double cover of Symplectic group}
 \frame{
    \frametitle{\subsecname}
    For simplectic group $Sp$ (except complex case),
    for each central charactor $\chi$ there is 
-   a unique unitary representation $\omega=\omega_\chi$
+   a {\em oscillator representation} $\omega=\omega_\chi$
    of the double cover $\tSp$ of $\Sp$.
    
    For any subgroup $G$ of $Sp$, let $\tG$ be the perimage of projecetion 
    $\pi\colon \tSp \to \Sp$. Let
    \[
-   \bR(\tG) = \Set{\text{unitary representation }\rho\text{ of }\tG}|
-   \rho\cong \cY^{\infty}/\cY_\rho}
+   \cR(\tG) = \Set{\text{countinous irr. adm. representation }
+     \rho\text{ of }\tG| \rho\cong \cY^{\infty}/\cN_\rho }/\text{ininitesimal equivalence}
    \]
+   
+   We have
+   $\cR(\tG_1\times \tG_2) \cong \cR(\tG_1)\times \cR(\tG_2)$.
 }
 
 
@@ -257,29 +262,72 @@
  Roughly, we want to know the repsentation of $\tG$ by the represntation of 
  $\tG'$. 
  
- Note that $\cR(\tG_1\times \tG_2) \cong \cR(\tG_1)\times \cR(\tG_2)$.
-
+ 
  We can consider irreducible dual pairs. 
  \begin{enumerate}[Type I]
  \item $\Sp=\Sp(V\otimes V')$, $G$ and $G'$ 
    are group of isometries of $(,)$ $(,)'$
    respectively. $(V,(,))$ hermitian $(V',(,)')$ skew-hermitian.
- \item $\Sp=\Sp(U\otimes U^*)$, $G=\mathrm{GL}(V)$, $G'=\mathrm{GL}(V')$ 
+ \item $\Sp=\Sp(U\oplus U^*)$, $G=\mathrm{GL}(U)$, $G'=\mathrm{GL}(U')$ 
  \end{enumerate}
- 
 }
 
 
 \subsection{Theta correspondence}
 \frame{
  \frametitle{\subsecname}
+ We follows~\cite{Howe1989}.
+ There is a one-one correspondence between $\cR(\tG)$ and $\cR(\tG')$ 
+ and $\cR(\tG \tG')$ is the graph of this bijection.
  
+ Steps to give this correspondence:
+ \begin{enumerate}[(1)]
+ \item Given $\rho' \in \cR(\tG')$, 
+ \item Define
+   \[
+   \cY_{\rho'}=\bigcap_{\rho \cong \cY^{\infty}/\cY_1} \cY_1.
+   \]
+ \item Consider $\cY^\infty/\cY_{\rho'}$ be a $\tG\tG'$ module, then
+   \[
+   \cY^\infty/\cY_{\rho'} = \rho_1\otimes \rho'
+   \]
+   $\rho_1$ is a $\tG$ module
+ \item $\rho_1$ has a unique irreducible quotiont $\rho'$.
+ \item $\rho'\leftrightarrow \rho$ gives the correspondence. 
+ \end{enumerate}
+
+ The proof is purely algebraically by using the classical invariant theory.
 }
 
 \subsection{Unitarity version}
 \frame{
  \frametitle{\subsecname}
+ Want to know when this correspondence preserve unitarity. Li~\cite{Li1989}
+ given results in {\em stable range} for Type I reductive dual pair.
+ Li introduct a different approch to the correspondence:
+ \begin{enumerate}[(1)]
+ \item Fix realizaitions $\cY^\infty$ and $H_\omega^\infty$ 
+   of $\omega$ and $\sigma\in \widehat{\tG'}(\varepsilon)$
+ \item Consider $\cY^\infty\otimes H_\sigma^\infty$.
+ \item Define form:
+   \[
+   (\Phi,\Phi')_\sigma = \int_{G'}(\Phi,(\omega\otimes \sigma)(g)\Phi')dg
+   \]
+ \item make sense in {\em stable range}: Witt index of $V$
+   $\geq \dim V'$.
+ \item Let 
+   \[
+   R = \Set{\Phi \in \cY^\infty\otimes H_\sigma^\infty|(\Phi,\Phi')_\sigma =0 
+   \text{ for all} \Phi'}
+   \]
+ \item $H(\sigma) \triangleq (\cY^\infty\otimes H_\sigma^\infty)/R$ is irreducible 
+   unitary representation denoted by
+   $\phi(\sigma)$.
+ \end{enumerate}
 
+ This correspondence is 
+ same as Howe's by $\rho'\to \pi(\rho'^*)$.
+ 
 }
 
 \subsection{Unitary dual}
@@ -303,10 +351,17 @@
 }
 
 
-\frame{
-  \frametitle{References}
-  \bibliographystyle{plain}
-  \bibliography{bib/reppapers}	
-}
+%\frame{
+%  \frametitle{References}
+%  \bibstyle{apa}
+%  %\bibliographystyle{plain}
+%  \bibliography{bib/reppapers}	
+%}
+
+\section{References}
+\begin{frame}[allowframebreaks]{Bibliography}
+\bibliographystyle{alpha}
+\bibliography{bib/reppapers}
+\end{frame}
 
 \end{document}
