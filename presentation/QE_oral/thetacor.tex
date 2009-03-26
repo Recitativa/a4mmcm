@@ -1,4 +1,4 @@
-\documentclass[11pt]{beamer}
+\documentclass[mathserif]{beamer}
 \usepackage{cite}
 \usepackage{calrsfs}
 
@@ -22,8 +22,8 @@
 
 
 \author[JJ, Ma]{Ma Jia Jun}
-\title{Theta correspondence and cohomological induction}
-\subtitle[Unitarity]{with the unitarity of the constructions}
+\title{Cohomological induction and Theta correspondence}
+\subtitle[Unitarity]{and the unitarizability of the constructions}
 \institute[Dept. of Math.]{Departement of Mathematics, \\
   National University of Singapore\\[1ex]
   \texttt{g0701232@nus.edu.sg}
@@ -58,15 +58,16 @@
 \subsection{Notations}
 \frame{
  \frametitle{\subsecname}
- We following Wallach's approach~\cite{Wallach1984}~\cite{Wallach1988}
+ We follow Wallach's approach~\cite{Wallach1984}~\cite{Wallach1988}
  \begin{description}
  \item[$G$] a real reductive Lie group of inner type 
- \item[$\theta$] Cartan involution of $G$, with $\fk$ compact subalgebra. 
+ \item[$\theta$] Cartan involution of $G$, with  compact subalgebra $\fk$. 
  \item[$\fh $] fundamental Cartan subalgebra of $\fg$ 
  \item[$\ft$] $\fk\cap \fh$ is maximal abelian in $\fk$
  \item[$H$] a element in $i\ft$.
- \item[$\fl$] $\Set{X\in \fg|[H,X]=0}$
- \item[$\fu$] $\Set{X\in \fg|[H,X]=\lambda X, \lambda >0}$
+ \item[$\fl$] $=\Set{X\in \fg|[H,X]=0}$
+ \item[$\fu$] $=\Set{X\in \fg|[H,X]=\lambda X, \lambda >0}$
+ \item[$\fu_k$] $= \fu\cap \fk_\bC$
  \item[$\fq$] $=\fl_\bC+ \fu$, $\theta$-stable parabolic subalgebra.
  %%\item[$L$] $\Set{g\in G|\Ad(g)H=H}$
  \item[$\fm$] $=\fk\cap \fl$.
@@ -82,15 +83,16 @@
   \frametitle{\subsecname}
   Fix a $(\fl,M)$-module $W$.
   \begin{enumerate}[(I)]
-  \item Regard $W$ as a $\fq$-module with $\fu$ act trivially on it. 
-  \item Define $M(\fq,W) = U(\fg)\otimes_{U(\fl)}W$, 
-    which is a $(\fk,M)$-module.
-  \item Applying the Zuckerman functor, $\Gamma^j(M(\fl,W))$.
-  \item $\Gamma^j(M(\fq,W))$ is
-    nontrivial for all $j<n$. ($n=\dim\fu_k$)
+  \item Regard $W$ as a $(\fq, M)$-module on which $\fu$ act trivially. 
+  \item Define $M(\fq,W) = U(\fg_\bC)\otimes_{U(\fq)}W$, 
+    which is a $(\fg,M)$-module.
+  \item Apply the Zuckerman functor, $\Gamma^j(M(\fq,W))$.
   \end{enumerate}
+  $\Gamma^j(M(\fq,W))$ is
+    trivial for all $j<n$. ($n=\dim \fu_k$).
 }
 
+\def\cC{\mathcal{C}}
 \subsection{Zuckerman functor}
 \frame{
   \frametitle{\subsecname}
@@ -100,12 +102,12 @@
   \[
   \Gamma^j(V) = \H^j(\fk,M;V\otimes H(K)).
   \]
-  $\H^j(V)$ is the cohomology of complex 
+  $\H^j(V)$ is the $j$-th cohomology group of the cochian complex 
   \[
   C^j(\fk,M;V)= \Hom_M(\bigwedge^j(\fk/\fm), V)
   \]
 
-  $\Gamma^j$ is a functor from $C(\fg,M)$ to $C(\fg,K)$, where $K$
+  $\Gamma^j$ is a functor from $\cC(\fg,M)$ to $\cC(\fg,K)$, where $K$
   action given by right transform of $H(K)$ and $\fg$ action given by
   the commutative relation 
   \[
@@ -123,42 +125,43 @@
 \subsection{Hermitian Form}
 \frame{
   \frametitle{\subsecname}
-  Now assume $W$ be an irreducible $(\fl,M)$-module admits a positive definite 
+  Now assume that $W$ is an irreducible $(\fl,M)$-module 
+  admitting a positive definite 
   Hermitian form $\inn{\cdot}{\cdot}$. 
-  We can construct a hermitian form on $\Gamma^n(M(\fq,W))$.
+  We construct a hermitian form on $\Gamma^n(M(\fq,W))$.
   \begin{enumerate}[(I)]
-  \item Shapovalov Form,
-    $(x\otimes w, y\otimes v) = \inn{p(y^*x)w}{v}$, \\
-    $p$ is the projection from $U(\fg$ to $U(\fl_\bC)$ by
-    decompostion 
+  \item Shapovalov Form on $M(\fq,W)=U(\fg_\bC)\otimes _{U(\fq)} W$.
+    \[(x\otimes w, y\otimes v) = \inn{p(y^*x)w}{v},\] 
+    $p$ --- projection from $U(\fg_\bC)$ to $U(\fl_\bC)$ by
+    decomposition 
     \[
     U(\fg_\bC)=U(\fl_\bC)\oplus(\overline{\fu}U(\fg_\bC)+U(\fg_\bC)\fu).
     \]
-  \item Hermitian form on $\Gamma^n(M(\fq,W))$ ---
-    the nature pairing between complex 
-    $C^j(M(\fq,W))\subset \bigwedge^j(\ft/fm)_\bC^*\otimes M(\fq,W)$ and
+  \item Hermitian form on $\Gamma^n(M(\fq,W))$ --- by
+    the nature pairing between complexes
+    $C^j(M(\fq,W))\subset \bigwedge^j(\ft_\bC/\fm_\bC)^*\otimes M(\fq,W)$ and
     $C^{(2n-j)}(M(\fq,W))$:
     \[
     \inn{\alpha\otimes w}{\beta\otimes v} = (\alpha,\beta)(w,v)
     \]
   \end{enumerate}
-  If $M(\fq,W)$ is also irreducible, $(\cdot,\cdot)$ non-degenerate,
-  and only $\Gamma^n(M(\fq,W)$ nontrivial.
+  If $M(\fq,W)$ is also irreducible, $(\cdot,\cdot)$ non-degenerate
+  and only $\Gamma^n(M(\fq,W))$ nontrivial.
 }
 
 \def\hK{\widehat{K}}
 \def\hM{\widehat{M}}
 \def\ch{\mathrm{ch}}
 \def\sgn{\mathrm{sgn}}
-\subsection{Signature charactor}
+\subsection{Signature character}
 \frame{
   \frametitle{\subsecname}
-  For a $(\fg,K)$ module $V$ define the {\em charactor} of it:
+  For a $(\fg,K)$ module $V$ define the {\em character} of it:
   \[
   \ch_M(V) = \sum_{\gamma\in \widehat{M}} \dim\,\Hom_M(F_\gamma, V)\gamma.
   \]
   $V$ admits Hermitian form $\inn{\cdot}{\cdot}$, then define
-  {\em signature charactor}:
+  {\em signature character}:
   \[
   \ch_s(V,\inn{\cdot}{\cdot}) = \sum_{\gamma \in \widehat{M}} \frac{1}{d(\gamma)}
   (p_\gamma-q_\gamma)\gamma
@@ -166,13 +169,13 @@
   $(p_\gamma$,$q_\gamma)$ is the signature of the Hermitian form 
   $\inn{\cdot}{\cdot}$ restricted on isotropic component $V(\gamma)$.
 
-  Note that $\inn{\cdot}{\cdot}$ definite if and only if 
+  Note that $\inn{\cdot}{\cdot}$ is definite if and only if 
   \[
   \ch_s(V,\inn{\cdot}{\cdot}) = \pm \ch_M(V)
   \]
 }
 
-\subsection{Unitarizablity}
+\subsection{Unitarizablity I}
 \frame{
   \frametitle{\subsecname}
   By vanishing theorems and the construction of the Hermition form on 
@@ -186,9 +189,9 @@
     \ch_M \gamma
   \end{split}
   \]
-  Hence deduce compute $\ch_s(\Gamma^n(M(\fq,W)))$ to compute
+  Hence reduce computing $\ch_s(\Gamma^n(M(\fq,W)))$ to computing
   \[
-  \ch_s(\bigwedge^j (\ft/fm)^*\otimes M(\fq,W) \otimes V^*_\gamma)
+  \ch_s(\bigwedge^j (\ft_\bC/\fm_\bC)^*\otimes M(\fq,W) \otimes F^*_\gamma)
   \]
   The key is to compute 
   \[
@@ -196,30 +199,30 @@
   \]
 }
 
-\subsection{Unitarizablity}
+\subsection{Unitarizablity II}
 \frame{
   \frametitle{\subsecname}
   Now we use a ``continous argument''.
   
-  Assume exists $\mu\in i\fl^*$ such that 
-  $(\mu,\alpha)>0$ for $\alpha\in \Sigma$ and some technical condition. 
-  Moreover $M(\fq,W\otimes C_{-t\mu})$ is irreducible. 
+  Assume there exists $\mu\in i\fl^*$ such that 
+  $(\mu,\alpha)>0$ for $\alpha\in \Delta(\fu_k,\ft_\bC)$ and some technical condition. 
+  $M(\fq,W\otimes C_{-t\mu})$ is irreducible for $t\geq 0$. 
   %Note that:
   \begin{enumerate}[(I)]
   \item the decomposition of $M(\fq,W\otimes C_{-t\mu})$ 
-    in to eigenspace  is independent of $t$;
-  \item signature take integer value, the constant for all $t>0$;
+    into eigenspaces  is independent of $t$;
+  \item signature takes integer value, then is constant for all $t\geq 0$;
   \item Key formula:
     \[
     \begin{split}
       &\inn{X^IY^J\otimes w}{X^{I'}Y^{J'}\otimes w'}_t\\
-      =& t^{|I|+|J|}\delta_{I,I'}\delta_{J,J'}(-1)^{|J|} \prod_k(\mu,\alpha_k)^{i_k}
-      \prod_k(\mu,\beta_k)^{j_k}\inn{w}{w'} \\
-      &+ \text{lower order terms}
+      =& t^{|I|+|J|}\delta_{I,I'}\delta_{J,J'}(-1)^{|J|} \prod_a(\mu,\alpha_a)^{i_a}
+      \prod_b(\mu,\beta_b)^{j_b}\inn{w}{w'} \\
+      &+ \text{lower degree terms}.
     \end{split}
     \]
   \end{enumerate}
-  Then give an expression of $\ch_s(M(\fq,W))$ by $\ch_M(W)$.
+  This gives an expression for $\ch_s(M(\fq,W))$ by $\ch_M(W)$.
   %Finish the proof by compare the form of siganiture charactor and charactor.
 }
 
@@ -234,16 +237,16 @@
 \def\cY{\mathcal{Y}}
 \def\cN{\mathcal{N}}
 \section{Theta correspondence}
-\subsection{Represnetation of double cover of Symplectic group}
+\subsection{Representations of double cover of Symplectic group}
 \frame{
    \frametitle{\subsecname}
    For simplectic group $\Sp$ (except complex case),
-   for each central charactor $\chi$ there is 
-   a {\em oscillator representation} $\omega=\omega_\chi$
+   for each central character $\chi$ there is 
+   an {\em oscillator representation} $\omega=\omega_\chi$
    of the double cover $\tSp$ of $\Sp$.
    
    For any subgroup $G$ of $\Sp$, let $\tG$ be the perimage of projecetion 
-   $\varphi\colon \tSp \to \Sp$. Suppose $\omega$ realize on $\cY$, with 
+   $\varphi\colon \tSp \to \Sp$. Suppose $\omega$ is realized on $\cY$, with 
    smooth vector $\cY^\infty$.
    Let
    \[
@@ -263,18 +266,20 @@
  subgroups of some 
  symplectic group $\Sp$ and are mutual centralizers.
  
- Roughly, we want to know the repsentation of $\tG$ by the represntation of 
- $\tG'$. 
+% Roughly, we want to know the repsentation of $\tG$ by the represntation of 
+% $\tG'$. 
  
  We can only consider irreducible dual pairs. Let $\Sp = \Sp(W)$ 
  \begin{enumerate}[Type I]
- \item $W= V\otimes_D V'$, $G$ and $G'$ 
-   are group of isometries of hermitian form $(,)$ and skew-hermitian $(,)'$.
+ \item $W= V\otimes_D V'$, $D$ with involution $\tau$.
+   $G$ and $G'$  
+   are group of isometries of sesqui-linear 
+   hermitian form $(,)$ and skew-hermitian $(,)'$.
    \[
    \inn{v_1\otimes v_1'}{v_2\otimes v_2'} = \tr((v_1,v_2)(v'_2,v'_1)')
    \]
    E.g. $(O_{p,q}, \Sp_{2n}(\bR)))\subset Sp_{2(p+q)n}(\bR)$.
- \item $W = U\oplus U^*$, $U = V\otimes_D V'$, $U^*=V^*\otimes V'^*$
+ \item $W = U\oplus U^*$, $U = V\otimes_D V'$, $U^*=V^*\otimes_D V'^*$
    $G=\mathrm{GL}_D(V)$, $G'=\mathrm{GL}_D(V')$. \\
    E.g. $(\GL_m(\bR),\GL_n(\bR))\subset \Sp_{2nm}(\bR)$
  \end{enumerate}
@@ -284,13 +289,13 @@
 \subsection{Theta correspondence}
 \frame{
  \frametitle{\subsecname}
- We follows~\cite{Howe1989}.
+ We follow~\cite{Howe1989}.
  There is a one-one correspondence between $\cR(\tG,\omega)$
- and $\cR(\tG',\omega)$ 
- and $\cR(\tG \tG',\omega)$ is the graph of this bijection.
+ and $\cR(\tG',\omega)$.
+  $\cR(\tG \tG',\omega)$ is the graph of this bijection.
  Steps to give this correspondence:
  \begin{enumerate}[(1)]
- \item Given $\rho' \in \cR(\tG')$, 
+ \item Given $\rho' \in \cR(\tG',\omega)$, 
  \item Define
    \[
    \cY_{\rho'}=\bigcap_{\rho \cong \cY^{\infty}/\cY_1} \cY_1.
@@ -300,20 +305,20 @@
    \cY^\infty/\cY_{\rho'} = \rho_1\otimes \rho'
    \]
    $\rho_1$ is a $\tG$ module
- \item $\rho_1$ has a unique irreducible quotiont $\rho$.
+ \item $\rho_1$ has a unique irreducible quotient $\rho$.
  \item $\rho'\leftrightarrow \rho$ gives the correspondence. 
  \end{enumerate}
 
- The proof is purely algebraically by classical invariant theory.
+ The proof is purely algebraic by classical invariant theory.
 }
 
 
 
-\subsection{Unitarity version}
+\subsection{Unitary version}
 \frame{
  \frametitle{\subsecname}
- Want to know when this correspondence preserve unitarity. Li~\cite{Li1989}
- given results in {\em stable range} for Type I reductive dual pair.
+ Want to know when this correspondence preserves unitarity. Li~\cite{Li1989}
+ gives results in {\em stable range} for Type I reductive dual pair.
  $\widehat{\tG}(\varepsilon)$ --- unitary dual of $\tG$ with nontrivial action
  on $\bZ_2={\pm 1}$.
  %A different approch to the correspondence:
@@ -332,7 +337,8 @@
    R = \Set{\Phi \in \cY^\infty\otimes H_\sigma^\infty|(\Phi,\Phi')_\sigma =0 
    \text{ for all} \Phi'}
    \]
- \item $H(\sigma) \triangleq (\cY^\infty\otimes H_\sigma^\infty)/R$ is irreducible 
+ \item $H(\sigma) \triangleq (\cY^\infty\otimes H_\sigma^\infty)/R$ 
+   gives irreducible 
    unitary representation denoted by
    $\pi(\sigma)$.
  \end{enumerate}
@@ -343,10 +349,10 @@
   \frametitle{}
    Howe's duality correspondence gives an injection (in the stable range)
    \[
-   \htG'(\varepsilon)\hookrightarrow \htG(\varepsilon).
+   \widehat{\widetilde{G'}}(\varepsilon)\hookrightarrow \htG(\varepsilon).
    \]
    
-   This correspondence is 
+   This correspondence is the 
    same as Howe's by $\sigma\to \pi(\sigma^*)$.
 
    The proof is by analysis.
@@ -357,20 +363,20 @@
 
 \frame{
  \frametitle{\subsecname}
- A central problem in represnetaion theory is to know the unitary dual of 
+ A central problem in represnetaion theory is to understand the unitary dual of 
  group $G$. 
  
  For real reductive group, 
  we can construct unitary representations by parabolic induction. 
  This gives {\rm principle series}.
  
- But they are not all. It may also has {\rm discrete series}
- (can be constructed by cohomological induction or other ways)
+ But they are not all. It may also have {\rm discrete series}
+ (can be constructed by cohomological induction or other methods)
  and other types.
  
- Theta-correspondence give another way to construct. 
+ Theta-correspondence gives another way to construct. 
  
- It seems be some relation between cohomological induction 
+ There seems to be some relation between cohomological induction 
  and theta-correspondence \cite{Zhu2004}. 
  We are trying to find some kind of such relations.
 }
