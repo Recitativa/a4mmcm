@@ -1,38 +1,38 @@
-#include <stdio.h>
-#include "minunit.h"
-#include "theretic.h"
+#define BOOST_TEST_DYN_LINK
+#define BOOST_AUTO_TEST_MAIN 
+#include <boost/test/auto_unit_test.hpp> 
+#include <cmath>
+
+#include <gsl/gsl_integration.h>
+
+double f(double x, void * params) {
+  double alpha = *(double *) params;
+  double ff = log(alpha*x) / sqrt(x);
+  return ff;
+}
+
+double inte_test() {
+  gsl_integration_workspace * w 
+    = gsl_integration_workspace_alloc (1000);
+  
+  double result, error;
+  double expected = -4.0;
+  double alpha = 1.0;
+  
+  gsl_function F;
+  F.function = &f;
+  F.params = &alpha;
+  
+  gsl_integration_qags (&F, 0, 1, 0, 1e-7, 1000,
+			w, &result, &error); 
+  gsl_integration_workspace_free(w);
+  return result;
+}
 
 
-int tests_run = 0;
- 
-int foo = 7;
-int bar = 4;
- 
-static char * test_foo() {
-  mu_assert("error, foo != 7", foo == 7);
-  return 0;
-}
- 
-static char * test_bar() {
-  mu_assert("error, bar != 5", bar == 5);
-  return 0;
-}
- 
-static char * all_tests() {
-  mu_run_test(test_foo);
-  mu_run_test(test_bar);
-  return 0;
-}
- 
-int main(int argc, char **argv) {
-  char *result = all_tests();
-  if (result != 0) {
-    printf("%s\n", result);
-  }
-  else {
-    printf("ALL TESTS PASSED\n");
-  }
-  printf("Tests run: %d\n", tests_run);
- 
-  return result != 0;
-}
+BOOST_AUTO_TEST_CASE( test1 ) 
+{ 
+   // with or without some check 
+   BOOST_REQUIRE( fabs(inte_test() + 4.0) < 0.01);
+   
+} 
