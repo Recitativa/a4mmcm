@@ -39,8 +39,17 @@ BOOST_AUTO_TEST_CASE( test1 )
   // with or without some check 
   BOOST_REQUIRE( fabs(inte_test() + 4.0) < 0.01);
   
-  Quatile Q1(1.0,.3);
-  //cout << "g1(2,4,1,1)" << << endl;
-  cout << "g(2,8) = " << Q1.g(1,2) << endl;
+  Quantile Q1(1.0,.3);
+
+  double dX1_E = 0.0612817;
+  double mean_E =  -0.230539;
+  double dX1 = Q1.dX(1);
+  double mean = Q1.mean();
+  cout << "dX(1) = " << dX1_E << endl;
+  cout << "mean " << mean_E << endl;
+  
+  BOOST_REQUIRE( fabs(mean_E-mean) < 0.001);
+  BOOST_REQUIRE( fabs(dX1_E -dX1) < 0.001);
+  
 
 } 

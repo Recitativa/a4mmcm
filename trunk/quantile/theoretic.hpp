@@ -6,6 +6,9 @@
 #include <gsl/gsl_cdf.h>
 #include <gsl/gsl_integration.h>
 
+#include <iostream>
+using namespace std;
+
 // path-dependent options, The annals of Applied Probability, 1995,
 // Vol. 5, No. 2, 389-298
 
@@ -16,21 +19,20 @@ class Brownian
 public:
   double sigma;
   double mu;
-}
+  Brownian(double Isigma, double Imu): sigma(Isigma), mu(Imu) {};
+};
 
-class Quatile 
+class Quantile : public Brownian
 {
 public:
   double alpha;
-  Quatile(double Isigma = 1, double Ialpha=1) 
-    : sigma(Isigma), alpha (Ialpha) {}
-  double g(double x, double T);
-  static double g_inn(double x, double T, double sigma, double alpha, \
-		      gsl_integration_workspace *w);
+  Quantile(double Isigma = 1, double Ialpha=1) 
+    : Brownian(Isigma,0), alpha(Ialpha) {}
+  double dX(double x);
+  double mean();
 private:
-      // g_1(x-y;\alpha*t)*g_2(y;(1-\alpha)*t)
-  static double g1(double x,double t, double sigma);
-  static double g2(double x, double t, double sigma); 
-  static double intg(double y, void * Iparams);
+  static double dX_i(double x, void * Iparams);
+  static double XdX_i(double x, void * Iparams) 
+  { return x*dX_i(x, Iparams); }
 };
 
