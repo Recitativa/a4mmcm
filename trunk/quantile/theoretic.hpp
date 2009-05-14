@@ -133,3 +133,11 @@ Num QRCounter<Num, C>::Quantile(double alpha) {
   return result;
 }
 
+class BrownSim {
+private:
+  double sigma;
+  double mu;
+public:
+  BrownSim(double Isigma = 1, double Imu=0): sigma(Isigma), mu(Imu) {}
+  void Sim();
+};
