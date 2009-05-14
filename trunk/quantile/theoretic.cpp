@@ -2,8 +2,12 @@
 #include <cmath>
 #include <iostream>
 
+#include <gsl/gsl_rng.h>
+#include <gsl/gsl_randist.h>
 
+#include <fstream>
 
+using namespace std;
 
 double Quantile::dX(double x) {
   double params[] =  {sigma, alpha};
@@ -39,5 +43,36 @@ double Quantile::mean() {
   gsl_integration_workspace_free(w);
 
   return result;
+}
+
+void BrownSim::Sim(double T=1, int n=1000) {
+  QRCounter<double, int> C1(-1,1, 1<<20);
+  int i;
+  double hsigma = T*sigma/n; 
+
+  ofstream fout("out.bin", ios::app| ios::binary);
+  //setup random number generator
+  const gsl_rng_type * rngT;
+  gsl_rng * r;
+  rngT = gsl_rng_taus;
+  r = gsl_rng_alloc (rngT);
+  gsl_rng_set(r, 123);
+
+  
+  double B;
+  for(int l = 0 ; l< 100; l++) {
+    B = 0; i=0;
+    C1.init();
+    //C1.PrintDest();
+    do {
+      C1.Add(B);
+      B += gsl_ran_gaussian(r, hsigma);
+    } while(++i<n);
+    double Q5 = C1.QuantileC(.5);
+    fout.write((char *)&Q5, sizeof(double));
+    fout.flush();
+  }
+  fout.close();
+  gsl_rng_free (r);
 }
 
