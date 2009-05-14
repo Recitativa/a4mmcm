@@ -41,24 +41,3 @@ double Quantile::mean() {
   return result;
 }
 
-template<class Num, class C>
-QRCounter<Num, C>::QRCounter(Num begin, Num end, size_t In): Rbegin(begin), Rend(end), n(In), total(0) {
-  counter = new C[n](0);
-}
-
-template<class Num, class C>
-QRCounter<Num, C>::~QRCounter() {
-  delete counter;
-}
-
-template<class Num, class C>
-int QRCounter<Num, C>::Add(Num x) {
-  return 0;
-}
-
-template<class Num, class C>
-void QRCounter<Num, C>::PrintDest() {
-  for(size_t i =0; i< n; i++) 
-    std::cout << counter[i] << "\t";
-}
-
