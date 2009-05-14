@@ -62,13 +62,20 @@ public:
   void PrintDest();
   Num QuantileC(double alpha);
   Num Quantile(double alpha);
+  int init();
 };
 
 template<class Num, class C>
 QRCounter<Num, C>::QRCounter(Num begin, Num end, size_t In):
   Rbegin(begin), Rend(end), n(In), total(0), h((end-begin)/In) {
   counter = new C[n];
+  init();
+}
+template<class Num, class C> 
+int QRCounter<Num, C>::init() {
+  total = 0;
   memset(counter, 0, sizeof(C)*n);
+  return 0;
 }
 
 template<class Num, class C>
@@ -139,5 +146,6 @@ private:
   double mu;
 public:
   BrownSim(double Isigma = 1, double Imu=0): sigma(Isigma), mu(Imu) {}
-  void Sim();
+  void Sim(double, int);
 };
+

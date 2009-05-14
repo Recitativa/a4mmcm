@@ -50,7 +50,7 @@ BOOST_AUTO_TEST_CASE( test1 ) {
   BOOST_REQUIRE( fabs(mean_E - mean) < 0.001);
   BOOST_REQUIRE( fabs(dX1_E - dX1) < 0.001);
 
-  QRCounter<double, long> C1(2,8,1<<28);
+  QRCounter<double, long> C1(2,8,1<<20);
   double Data[12] = {2, 3, 4, 5, 1, 
 		     6, 7, 10, 8, 9, 
 		     11, 12};
@@ -66,11 +66,12 @@ BOOST_AUTO_TEST_CASE( test1 ) {
   } 
   catch( OutofRangeException e ) {
     if (e.i ==0) 
-      cerr << "Out of lower range" << endl;
+      Cerr << "Out of lower range" << endl;
     else
       cerr << "Out of upper range" << endl;
   }
   //QRCounter<double, long> C1(2,8,268435456);
-  
+  BrownSim S1;
+  S1.Sim(1,100);
   
 }
