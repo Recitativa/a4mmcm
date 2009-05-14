@@ -58,8 +58,10 @@ BOOST_AUTO_TEST_CASE( test1 ) {
     C1.Add(Data[i]);
   C1.PrintDest();
   try {
-    cerr << "Quantile .5 : " << C1.QuantileC(.5) << endl;
+    cerr << "Countinous Quantile .5 : " << C1.QuantileC(.5) << endl;
+    cerr << "Quantile .5 : " << C1.Quantile(.5) << endl;
     cerr << "Quantile .5 : " << C1.QuantileC(.9) << endl;
+
   } 
   catch( OutofRangeException e ) {
     if (e.i ==0) 

@@ -61,6 +61,7 @@ public:
   int Add(Num x);
   void PrintDest();
   Num QuantileC(double alpha);
+  Num Quantile(double alpha);
 };
 
 template<class Num, class C>
@@ -96,12 +97,11 @@ void QRCounter<Num, C>::PrintDest() {
 // Countinous Quantile
 template<class Num, class C>
 Num QRCounter<Num, C>::QuantileC(double alpha) {
-  size_t i;
-  size_t j;
+  size_t i,j;
   C aim = (C)(alpha* total);
   C r1 = 0;
   C r2 = 0;
-  for(j=0,i = 0; i< n; i++) {
+  for(i=0,j = 0; i< n; i++) {
     r1 = r2;
     r2 += counter[i];
     if (r2 > aim) break;
@@ -110,7 +110,26 @@ Num QRCounter<Num, C>::QuantileC(double alpha) {
   if (i==0 || i == n-1) 
     throw OutofRangeException(i);
 
-  Num result = Rbegin+h*(Num)(j) + h*(Num)(aim-r1)*(Num)(i-j) /(Num)(r2-r1);
+  Num result = Rbegin+h*(Num)(j) + h*(Num)(aim-r1) * (Num)(j-i) /(Num)(r2-r1);
+  return result;
+}
+
+// Quantile = inf {x #{X(i) < x} > alpha*T}
+template<class Num, class C>
+Num QRCounter<Num, C>::Quantile(double alpha) {
+  size_t i;
+  C aim = (C)(alpha* total);
+  C r1 = 0;
+  C r2 = 0;
+  for(i=0; i< n; i++) {
+    r1 = r2;
+    r2 += counter[i];
+    if (r2 > aim) break;
+  }
+  if (i==0 || i == n-1) 
+    throw OutofRangeException(i);
+
+  Num result = Rbegin+h*(Num)(i+1);
   return result;
 }
 
