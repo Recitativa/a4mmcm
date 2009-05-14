@@ -1,9 +1,13 @@
 #define BOOST_TEST_DYN_LINK
 #define BOOST_AUTO_TEST_MAIN 
+#include <iostream>
 #include <boost/test/auto_unit_test.hpp> 
 #include <cmath>
 
+#include "theoretic.hpp"
 #include <gsl/gsl_integration.h>
+
+using namespace std;
 
 double f(double x, void * params) {
   double alpha = *(double *) params;
@@ -32,7 +36,11 @@ double inte_test() {
 
 BOOST_AUTO_TEST_CASE( test1 ) 
 { 
-   // with or without some check 
-   BOOST_REQUIRE( fabs(inte_test() + 4.0) < 0.01);
-   
+  // with or without some check 
+  BOOST_REQUIRE( fabs(inte_test() + 4.0) < 0.01);
+  
+  Quatile Q1(1.0,.3);
+  //cout << "g1(2,4,1,1)" << << endl;
+  cout << "g(2,8) = " << Q1.g(1,2) << endl;
+
 } 
