@@ -50,13 +50,14 @@ BOOST_AUTO_TEST_CASE( test1 ) {
   BOOST_REQUIRE( fabs(mean_E - mean) < 0.001);
   BOOST_REQUIRE( fabs(dX1_E - dX1) < 0.001);
 
-  QRCounter<double, long> C1(2,8,100);
+  QRCounter<double, long> C1(2,8,1<<28);
   double Data[12] = {2, 3, 4, 5, 1, 
 		     6, 7, 10, 8, 9, 
 		     11, 12};
   for(int i=0; i< 12; i++)
     C1.Add(Data[i]);
-  C1.PrintDest();
+  //C1.PrintDest();
+  cerr << "finish adding" << endl;
   try {
     cerr << "Countinous Quantile .5 : " << C1.QuantileC(.5) << endl;
     cerr << "Quantile .5 : " << C1.Quantile(.5) << endl;
@@ -69,6 +70,7 @@ BOOST_AUTO_TEST_CASE( test1 ) {
     else
       cerr << "Out of upper range" << endl;
   }
+  //QRCounter<double, long> C1(2,8,268435456);
   
   
 }
