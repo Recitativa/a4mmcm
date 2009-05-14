@@ -50,6 +50,23 @@ BOOST_AUTO_TEST_CASE( test1 ) {
   BOOST_REQUIRE( fabs(mean_E - mean) < 0.001);
   BOOST_REQUIRE( fabs(dX1_E - dX1) < 0.001);
 
-  QRCounter<double, long> C1(-8,10,1000);
+  QRCounter<double, long> C1(2,8,100);
+  double Data[12] = {2, 3, 4, 5, 1, 
+		     6, 7, 10, 8, 9, 
+		     11, 12};
+  for(int i=0; i< 12; i++)
+    C1.Add(Data[i]);
   C1.PrintDest();
+  try {
+    cerr << "Quantile .5 : " << C1.QuantileC(.5) << endl;
+    cerr << "Quantile .5 : " << C1.QuantileC(.9) << endl;
+  } 
+  catch( OutofRangeException e ) {
+    if (e.i ==0) 
+      cerr << "Out of lower range" << endl;
+    else
+      cerr << "Out of upper range" << endl;
+  }
+  
+  
 }
