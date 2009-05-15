@@ -149,3 +149,21 @@ public:
   void Sim(double, int);
 };
 
+template < class T >
+class StepIter {
+private:
+  T * p;
+  int step;
+public:
+  explicit StepIter(T * Ip, int Istep): p(Ip), step(Istep) {};
+  StepIter<T>& operator= (T *Ip) {p = Ip; return *this;}
+  StepIter<T> operator+ (int n) {p += n*step; return *this;}
+  StepIter<T>& operator+= (int n)  {p += n*step; return *this;}
+  StepIter<T> operator- (int n) {p -= n*step; return *this;}
+  StepIter<T>& operator-= (int n) {p -= n*step; return *this;}
+  int operator- (const StepIter<T> & rhs ) 
+  {return (p-rhs)/step;}
+  T& operator[] (int n) {return p[n*step];}
+  //bool operator < (StepIter<T> & rhs) 
+  //{p-rsh)
+};
