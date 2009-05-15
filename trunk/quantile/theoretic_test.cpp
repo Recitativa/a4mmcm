@@ -66,12 +66,12 @@ BOOST_AUTO_TEST_CASE( test1 ) {
   } 
   catch( OutofRangeException e ) {
     if (e.i ==0) 
-      Cerr << "Out of lower range" << endl;
+      cerr << "Out of lower range" << endl;
     else
       cerr << "Out of upper range" << endl;
   }
   //QRCounter<double, long> C1(2,8,268435456);
   BrownSim S1;
   S1.Sim(1,100);
-  
 }
+
