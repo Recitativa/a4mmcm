@@ -62,7 +62,7 @@ BOOST_AUTO_TEST_CASE( test1 ) {
     cerr << "Countinous Quantile .5 : " << C1.QuantileC(.5) << endl;
     cerr << "Quantile .5 : " << C1.Quantile(.5) << endl;
     cerr << "Quantile .5 : " << C1.QuantileC(.9) << endl;
-
+    BOOST_REQUIRE(false && "never go here");
   } 
   catch( OutofRangeException e ) {
     if (e.i ==0) 
@@ -71,7 +71,48 @@ BOOST_AUTO_TEST_CASE( test1 ) {
       cerr << "Out of upper range" << endl;
   }
   //QRCounter<double, long> C1(2,8,268435456);
-  BrownSim S1;
-  S1.Sim(1,100);
+  //BrownSim S1;
+  //S1.Sim(1,100);
+
+  StepIter<double> Sp1(Data,2), Sp2, Sp3(Data,3);  
+  Sp2 = Sp1+1;
+  cerr << "Sp1[0]: " << Sp1[0] << endl;
+  BOOST_REQUIRE(Sp1[0]==2);
+  cerr << "Sp2: " << Sp2[0]  << endl;
+  BOOST_REQUIRE(Sp2[0]==4);
+  cerr << "Sp2+1: " << *(Sp2+1)  << endl;  
+  BOOST_REQUIRE(*(Sp2+1)==1);
+  try {
+    cerr << Sp3-Sp2;
+    BOOST_REQUIRE(false && "never access here: Sp3-Sp2 for different 'steps'");
+  } catch(DifferentStepsException) {
+    cerr << "Different Steps Expected!" << endl;
+  }
+  Sp2 += 1;
+  cerr << "Sp2:" << *Sp2 << endl;
+  cerr << "Sp2-Sp1 " << Sp2-Sp1 << endl;
+  Sp2 -=1;
+  cerr << "Sp2:" << *Sp2 << endl;
+  cerr << "Sp2-Sp1 " << Sp2-Sp1 << endl;
+  Sp3 = Sp2-1;
+  cerr << "Sp3:" << *Sp3 << endl;
+  cerr << "Sp3-Sp2 " << Sp3-Sp2 << endl;
+  cerr << "Sp2<Sp3 ? :" << (Sp2<Sp3) << endl;
+  cerr << "Sp2>Sp3 ? :" << (Sp2>Sp3) << endl;
+  cerr << "Sp3<Sp1 ? :" << (Sp3<Sp1) << endl;
+  cerr << "Sp3<Sp1 ? :" << (Sp3<=Sp1) << endl;
+
+  Sp1 = Data+1;
+  cerr << "Sp1=Data+1 : " << *Sp1 << endl;
+  for(int i=0; i<12; i++)
+    cerr << Data[i] << " ";
+  cerr << endl;
+  Sp1 = Data;
+  sort(Sp1, Sp1+6);
+  for(int i=0; i<12; i++)
+    cerr << Data[i] << " ";
+  cerr << endl;
+ 
 }
+
 
