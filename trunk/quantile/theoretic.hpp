@@ -4,6 +4,8 @@
 #include <cstdio>
 #include <iostream>
 
+//#include <stl_relops.h>
+
 using namespace std;
 
 // path-dependent options, The annals of Applied Probability, 1995,
@@ -152,14 +154,16 @@ public:
 
 class DifferentStepsException {};
 
+
 #include <iterator>
+
 template < class T>
-class StepIter :
+struct StepIter :
   public iterator<std::random_access_iterator_tag, T, int> {
-private:
+  private:
   T * p;
   int step;
-public:
+  public:
   explicit StepIter(T * Ip=NULL, int Istep=0): p(Ip), step(Istep) {};
   StepIter<T>& operator= (T *Ip) {p = Ip; return *this;}
   StepIter<T> operator+ (int n) {
@@ -168,7 +172,7 @@ public:
   StepIter<T> operator- (int n) {
     StepIter<T> tmp=*this; tmp.p -=  n*step; return tmp;}
   StepIter<T>& operator-= (int n) {p -= n*step; return *this;}
-  StepIter<T>::difference_type operator- (const StepIter<T> & rhs ) {
+  int operator- (const StepIter<T> & rhs ) {
     if(step==rhs.step) return (p-rhs.p)/step;
     else throw DifferentStepsException(); 
   }
@@ -176,10 +180,15 @@ public:
   T& operator* () {return *p;}
   StepIter<T>& operator--() {p -= step; return *this; }
   StepIter<T>& operator++() {p += step; return *this; }
-  bool operator < (StepIter<T> & rhs) { return (p-rhs.p)/step < 0;}
-  bool operator > (StepIter<T> & rhs) { return (rhs< (*this));}
-  bool operator <= (StepIter<T> & rhs) { return !(rhs < *this);}
-  bool operator >= (StepIter<T> & rhs) { return rhs <= *this;}
-  bool operator == (StepIter<T> & rhs) { return p == rhs.p && step==rhs.step;}
-  bool operator != (StepIter<T> & rhs) { return p != rhs.p || step!= rhs.step; }
+  StepIter<T>  operator++(int) {
+    StepIter<T> tmp = *this; ++(*this); return tmp; }
+  StepIter<T>  operator--(int) {
+    StepIter<T> tmp = *this; --(*this); return tmp; }
+  bool operator< (const StepIter<T> & rhs) const { return (p-rhs.p)/step < 0;}
+  bool operator > (const StepIter<T> & rhs) const { return (rhs< *this);}
+  bool operator <= (const StepIter<T> & rhs) const { return !(rhs < *this);}
+  bool operator >= (const StepIter<T> & rhs) const { return rhs <= *this;}
+  bool operator== (const StepIter<T> & rhs) const {
+    return p == rhs.p && step==rhs.step;}
+  bool operator != (const StepIter<T> & rhs) const { return !(*this == rhs); }
 };

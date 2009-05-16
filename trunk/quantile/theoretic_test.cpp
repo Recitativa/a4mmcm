@@ -52,8 +52,8 @@ BOOST_AUTO_TEST_CASE( test1 ) {
 
   QRCounter<double, long> C1(2,8,1<<20);
   double Data[12] = {2, 3, 4, 5, 1, 
-		     6, 7, 10, 8, 9, 
-		     11, 12};
+		     6, 9, 11, 8, 7, 
+		     12, 10};
   for(int i=0; i< 12; i++)
     C1.Add(Data[i]);
   //C1.PrintDest();
@@ -101,18 +101,32 @@ BOOST_AUTO_TEST_CASE( test1 ) {
   cerr << "Sp2>Sp3 ? :" << (Sp2>Sp3) << endl;
   cerr << "Sp3<Sp1 ? :" << (Sp3<Sp1) << endl;
   cerr << "Sp3<Sp1 ? :" << (Sp3<=Sp1) << endl;
-
+  cerr << "*(Sp3++) :" << *(Sp3++) << endl;
+  cerr << "*Sp3 :" << *Sp3 << endl;
   Sp1 = Data+1;
   cerr << "Sp1=Data+1 : " << *Sp1 << endl;
-  for(int i=0; i<12; i++)
-    cerr << Data[i] << " ";
-  cerr << endl;
-  Sp1 = Data;
-  sort(Sp1, Sp1+6);
-  for(int i=0; i<12; i++)
-    cerr << Data[i] << " ";
-  cerr << endl;
- 
+  
+#define PRT_DATA do {				\
+    for(int i=0; i<12; i++)			\
+      cerr << Data[i] << " ";			\
+    cerr << endl;				\
+  } while(false)
+  PRT_DATA;
+  StepIter<double> Sp_4(Data, 4);
+  sort(Sp_4, Sp_4+3);
+  PRT_DATA;
+  StepIter<double> Sp_3(Data, 3);
+  sort(Sp_3, Sp_3+4);
+  PRT_DATA;
+  StepIter<double> Sp_2(Data, 2);
+  sort(Sp_2, Sp_2+6);
+  PRT_DATA;
+  StepIter<double> Sp_1(Data, 1);
+  sort(Sp_1, Sp_1+12);
+  PRT_DATA;
+  StepIter<double> Sp_r(Data+11, -1);
+  sort(Sp_r, Sp_r+12);
+  PRT_DATA;
 }
 
 
