@@ -5,7 +5,7 @@ test: theoretic_test.exe
 	theoretic_test
 
 theoretic_test.exe: theoretic_test.cpp theoretic.o theoretic.hpp 
-	g++ -o $@ $< theoretic.o $(CXXFLAGS) $(LDFLAGS)
+	g++ -Wall -o $@ $< theoretic.o $(CXXFLAGS) $(LDFLAGS)
 
 default: test
 
