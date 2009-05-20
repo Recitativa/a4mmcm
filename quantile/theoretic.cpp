@@ -17,7 +17,7 @@ double Quantile::dX(double x) {
 
 double Quantile::dX_i(double x, void * Iparams) {
   double * params = (double *)Iparams;
-  double sigma = params[0];
+  //double sigma = params[0];
   double alpha = params[1];
   double beta = sqrt((1. - alpha) / alpha);
   static const double c1 = sqrt(2 / PI) * 2;
@@ -50,7 +50,7 @@ double Quantile::mean() {
 void BrownSim::Sim(double T=1, const int P2=20) {
   typedef double Real;
   const int Rb = 4; // records begin with 2^Rb+1 points.  
-  const int Re = 21; // records end with 2^Re+1 points.
+  const int Re = 10; // records end with 2^Re+1 points.
 
   Real * Record = new Real[1<<Re+1];
 
@@ -89,6 +89,7 @@ void BrownSim::Sim(double T=1, const int P2=20) {
     fout.write((char *)&nRQ, sizeof(int));
     fout.write((char *)RQuantile, sizeof(RQuantile));
     fout.flush();
+    cerr << "Output file " << outFilename << ": Head has written" << endl;
   }
   testf.close();
 
@@ -125,10 +126,12 @@ void BrownSim::Sim(double T=1, const int P2=20) {
       for(int k=0; k< nRQ; k++) {
 	A = max(0,min(Np-1,(int)floor(Np*RQuantile[k])));
 	nth_element (Sp, Sp+A, Sp+Np);
-	fout.write((char *)&(Sp[A]), sizeof(double));	
+	double Q = (double)Sp[A];
+	fout.write((char *)&Q, sizeof(double));	
       }
     }
     fout.flush();
+    cerr << "Adding " << l << "th records" << endl;
   }
   fout.close();
   gsl_rng_free (r);
