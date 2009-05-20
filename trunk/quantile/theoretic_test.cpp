@@ -156,6 +156,22 @@ BOOST_AUTO_TEST_CASE( test1 ) {
   }
   testf.close();
 
+
+#define PRT_DD do {				\
+    for(int i=0; i<9; i++)			\
+      cerr << DD[i] << " ";			\
+    cerr << endl;				\
+  } while(false)
+
+  
+  double DD[] = {8,3,1,9,2,5,4,6,7};
+  StepIter<double> SpD2(DD,2), SpD1(DD,1);
+  nth_element(SpD2, SpD2+2, SpD2+5); 
+  PRT_DD;
+  nth_element(SpD1, SpD1+4, SpD1+9); 
+  PRT_DD;
+ 
+
 }
 
 
