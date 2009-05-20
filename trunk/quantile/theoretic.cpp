@@ -45,12 +45,27 @@ double Quantile::mean() {
   return result;
 }
 
-void BrownSim::Sim(double T=1, int n=1000) {
-  QRCounter<double, int> C1(-1,1, 1<<20);
+// P2 number of points in brwonian motion is 2<<P2
+void BrownSim::Sim(double T=1, const int P2=20) {
+  typedef double Real;
+  const int Rb = 4; // records begin with 2^Rb+1 points.  
+  const int Re = 21; // records end with 2^Re+1 points.
+
+  Real * Record = new real[1<<Re+1];
+
+  QRCounter<Real, int> C1(-10,10, 1<<20);
   int i;
+  int n= 2<<P2;
   double hsigma = T*sigma/n; 
 
+  double RQuantile[] = {.5, .6, .7, .8, .9, 1.0};
+  const int nRQ = sizeof(RQuantile) / sizeof(double);
+  
   ofstream fout("out.bin", ios::app| ios::binary);
+  //write number of recorded quantile, and eqch quantile
+  fout.write((char *)&nRQ, sizeof(int));
+  fout.flush((char *)RQuantile, sizeof(RQuantile));
+
   //setup random number generator
   const gsl_rng_type * rngT;
   gsl_rng * r;
@@ -59,16 +74,20 @@ void BrownSim::Sim(double T=1, int n=1000) {
   gsl_rng_set(r, 123);
 
   
-  double B;
-  for(int l = 0 ; l< 100; l++) {
+  Real B;
+  for(int l = 0 ; l<100; l++) {
     B = 0; i=0;
     C1.init();
-    //C1.PrintDest();
-    do {
-      C1.Add(B);
-      B += gsl_ran_gaussian(r, hsigma);
-    } while(++i<n);
-    double Q5 = C1.QuantileC(.5);
+    Record[0]= B;
+    C1.Add(B);
+    for(i=0; i< 1<< Re; i++) {
+      for(j=0; j< 1<< (P2-Re); j++) {
+	B += (Real)gsl_ran_gaussian(r, hsigma);
+	C1.Add(B);
+      }
+      Record[i+1] = B;
+    } 
+    Real Q5 = C1.QuantileC(.5);
     fout.write((char *)&Q5, sizeof(double));
     fout.flush();
   }
