@@ -69,7 +69,7 @@ public:
 
 template<class Num, class C>
 QRCounter<Num, C>::QRCounter(Num begin, Num end, size_t In):
-  Rbegin(begin), Rend(end), n(In), total(0), h((end-begin)/In) {
+  total(0), Rbegin(begin), Rend(end), h((end-begin)/In),n(In) {
   counter = new C[n];
   init();
 }
@@ -89,8 +89,8 @@ template<class Num, class C>
 int QRCounter<Num, C>::Add(Num x) {
   long i = (size_t)((x-Rbegin)/h);
   if( i <0 ) { i=0;}
-  if(i > n-1) {i=n-1;}
-  counter[i]++;
+  if(i > (long)(n-1)) {i=(long)n-1;}
+  counter[(size_t)i]++;
   total++;
   return 0;
 }

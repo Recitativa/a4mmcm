@@ -1,11 +1,12 @@
 #include "theoretic.hpp"
 #include <cmath>
 #include <iostream>
+#include <sstream>
+#include <fstream>
 
 #include <gsl/gsl_rng.h>
 #include <gsl/gsl_randist.h>
 
-#include <fstream>
 
 using namespace std;
 
@@ -51,7 +52,7 @@ void BrownSim::Sim(double T=1, const int P2=20) {
   const int Rb = 4; // records begin with 2^Rb+1 points.  
   const int Re = 21; // records end with 2^Re+1 points.
 
-  Real * Record = new real[1<<Re+1];
+  Real * Record = new Real[1<<Re+1];
 
   QRCounter<Real, int> C1(-10,10, 1<<20);
   int i;
@@ -59,12 +60,37 @@ void BrownSim::Sim(double T=1, const int P2=20) {
   double hsigma = T*sigma/n; 
 
   double RQuantile[] = {.5, .6, .7, .8, .9, 1.0};
-  const int nRQ = sizeof(RQuantile) / sizeof(double);
+  const int nRQ = sizeof(RQuantile) / sizeof(double); // #of Quantiles
   
-  ofstream fout("out.bin", ios::app| ios::binary);
-  //write number of recorded quantile, and eqch quantile
-  fout.write((char *)&nRQ, sizeof(int));
-  fout.flush((char *)RQuantile, sizeof(RQuantile));
+  // FileName format out_P2_Rb_Re_quantiles
+  ostringstream SoutFilename;
+  SoutFilename << "out_" << P2 << "_ " << Rb << "_" << Re;
+  for(i= 0 ; i< nRQ ; i++)
+    SoutFilename << "_" << (int)(RQuantile[i]*100);
+  SoutFilename <<".bin";
+  string outFilename = SoutFilename.str();
+  ifstream testf(outFilename.c_str());
+  ofstream fout(outFilename.c_str(), ios::app| ios::binary);
+ 
+  // output number of recorded quantile, and eqch quantile at first
+  // write.
+  // Format 
+  // Head: int: P2 Rb Re nRQ double: RQuantiles
+  // Record: Quantiles for total, 
+  //         Quantiles for 1<< Rb number of elements
+  //         Quantiles for 1<< (Rb+1) number of elements
+  //         ...........................................
+  //         Quantiles for 1<< (Re-1) number of elements 
+
+  if(!testf.is_open()) {
+    fout.write((char *)&P2, sizeof(int));
+    fout.write((char *)&Rb, sizeof(int));
+    fout.write((char *)&Re, sizeof(int));
+    fout.write((char *)&nRQ, sizeof(int));
+    fout.write((char *)RQuantile, sizeof(RQuantile));
+    fout.flush();
+  }
+  testf.close();
 
   //setup random number generator
   const gsl_rng_type * rngT;
@@ -81,14 +107,27 @@ void BrownSim::Sim(double T=1, const int P2=20) {
     Record[0]= B;
     C1.Add(B);
     for(i=0; i< 1<< Re; i++) {
-      for(j=0; j< 1<< (P2-Re); j++) {
+      for(int j=0; j< 1<< (P2-Re); j++) {
 	B += (Real)gsl_ran_gaussian(r, hsigma);
 	C1.Add(B);
       }
       Record[i+1] = B;
     } 
-    Real Q5 = C1.QuantileC(.5);
-    fout.write((char *)&Q5, sizeof(double));
+    for(int k=0; k< nRQ; k++) {
+      double Q = (double)C1.QuantileC(RQuantile[k]);
+      fout.write((char *)&Q, sizeof(double));
+    }
+    // as Np = 1<<g +1 points path
+    for(int g=Rb; g< Re; g++) {
+      const int Np = 1<<g+1;
+      StepIter<double> Sp(Record,1<<(P2-g));
+      int A;
+      for(int k=0; k< nRQ; k++) {
+	A = max(0,min(Np-1,(int)floor(Np*RQuantile[k])));
+	nth_element (Sp, Sp+A, Sp+Np);
+	fout.write((char *)&(Sp[A]), sizeof(double));	
+      }
+    }
     fout.flush();
   }
   fout.close();

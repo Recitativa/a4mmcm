@@ -3,6 +3,8 @@
 #include <iostream>
 #include <boost/test/auto_unit_test.hpp>
 #include <cmath>
+#include <sstream>
+#include <fstream>
 
 #include "theoretic.hpp"
 #include <gsl/gsl_integration.h>
@@ -127,6 +129,33 @@ BOOST_AUTO_TEST_CASE( test1 ) {
   StepIter<double> Sp_r(Data+11, -1);
   sort(Sp_r, Sp_r+12);
   PRT_DATA;
+
+
+  
+  // open files
+  int i;
+  double RQuantile[] = {.5, .6, .7, .8, .9, 1.0};
+  const int nRQ = sizeof(RQuantile) / sizeof(double);
+  
+  ostringstream SoutFilename;
+  SoutFilename << "out";
+  for(i= 0 ; i< nRQ ; i++)
+    SoutFilename << "_" << (int)(RQuantile[i]*100);
+  SoutFilename <<".bin";
+  string outFilename = SoutFilename.str();
+  ifstream testf(outFilename.c_str());
+  ofstream fout(outFilename.c_str(), ios::app| ios::binary);
+
+ 
+  // output number of recorded quantile, and eqch quantile at first
+  // write.
+  if(!testf.is_open()) {
+    fout.write((char *)&nRQ, sizeof(int));
+    fout.write((char *)RQuantile, sizeof(RQuantile));
+    fout.flush();
+  }
+  testf.close();
+
 }
 
 
