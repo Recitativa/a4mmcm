@@ -10,10 +10,10 @@ run: simquantile.exe
 	simquantile
 
 simquantile.exe: simquantile.cpp theoretic.cpp theoretic.hpp
-	g++ -Wall -o $@ $< theoretic.cpp $(CXXFLAGS) $(LDFLAGS)
+	g++ -Wall -g -o $@ $< theoretic.cpp $(CXXFLAGS) $(LDFLAGS)
 
 theoretic_test.exe: theoretic_test.cpp theoretic.cpp theoretic.hpp 
-	g++ -Wall -o $@ $< theoretic.cpp $(CXXFLAGS) $(LDFLAGS)
+	g++ -Wall -g -o $@ $< theoretic.cpp $(CXXFLAGS) $(LDFLAGS)
 
 
 clean:
