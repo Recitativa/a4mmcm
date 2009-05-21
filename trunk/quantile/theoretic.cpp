@@ -47,7 +47,7 @@ double Quantile::mean() {
 }
 
 // P2 number of points in brwonian motion is 2<<P2
-int BrownSim::Sim(double T=1, const int P2=20) {
+int BrownSim::Sim(double T=1, const int P2=20, const int Terms=100) {
   typedef double Real;
   const int Rb = 4; // records begin with 2^Rb+1 points.  
   const int Re = 10; // records end with 2^Re+1 points.
@@ -111,7 +111,7 @@ int BrownSim::Sim(double T=1, const int P2=20) {
     cerr << "no enough memory!" << endl;
     return 1;
   }
-  for(int l = 0 ; l<100; l++) {
+  for(int l = 0 ; l< Terms; l++) {
     B = 0; 
     C1.init();
     Record[0]= B;

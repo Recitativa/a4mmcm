@@ -149,7 +149,7 @@ private:
   double mu;
 public:
   BrownSim(double Isigma = 1, double Imu=0): sigma(Isigma), mu(Imu) {}
-  int Sim(double, int);
+  int Sim(double, int, int);
 };
 
 
