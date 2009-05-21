@@ -73,6 +73,7 @@ QRCounter<Num, C>::QRCounter(Num begin, Num end, size_t In):
   counter = new C[n];
   init();
 }
+
 template<class Num, class C> 
 int QRCounter<Num, C>::init() {
   total = 0;
@@ -148,7 +149,7 @@ private:
   double mu;
 public:
   BrownSim(double Isigma = 1, double Imu=0): sigma(Isigma), mu(Imu) {}
-  void Sim(double, int);
+  int Sim(double, int);
 };
 
 

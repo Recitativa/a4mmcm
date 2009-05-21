@@ -47,17 +47,16 @@ double Quantile::mean() {
 }
 
 // P2 number of points in brwonian motion is 2<<P2
-void BrownSim::Sim(double T=1, const int P2=20) {
+int BrownSim::Sim(double T=1, const int P2=20) {
   typedef double Real;
   const int Rb = 4; // records begin with 2^Rb+1 points.  
   const int Re = 10; // records end with 2^Re+1 points.
 
-  Real * Record = new Real[1<<Re+1];
 
-  QRCounter<Real, int> C1(-10,10, 1<<20);
+  QRCounter<Real, int> C1(-10,10, 1<<11);
   int i;
-  int n= 2<<P2;
-  double hsigma = T*sigma/n; 
+  int n= 1<<P2; // total number of segements
+  double hsigma = T*sigma/n; // corresponding sigma for each step; 
 
   double RQuantile[] = {.5, .6, .7, .8, .9, 1.0};
   const int nRQ = sizeof(RQuantile) / sizeof(double); // #of Quantiles
@@ -69,9 +68,9 @@ void BrownSim::Sim(double T=1, const int P2=20) {
     SoutFilename << "_" << (int)(RQuantile[i]*100);
   SoutFilename <<".bin";
   string outFilename = SoutFilename.str();
-  ifstream testf(outFilename.c_str());
-  ofstream fout(outFilename.c_str(), ios::app| ios::binary);
- 
+  ifstream testf;
+  ofstream fout;
+  testf.open(outFilename.c_str());
   // output number of recorded quantile, and eqch quantile at first
   // write.
   // Format 
@@ -80,9 +79,11 @@ void BrownSim::Sim(double T=1, const int P2=20) {
   //         Quantiles for 1<< Rb number of elements
   //         Quantiles for 1<< (Rb+1) number of elements
   //         ...........................................
-  //         Quantiles for 1<< (Re-1) number of elements 
+  //         Quantiles for 1<< Re number of elements 
 
   if(!testf.is_open()) {
+    testf.close();
+    fout.open(outFilename.c_str(), ios::app| ios::binary);
     fout.write((char *)&P2, sizeof(int));
     fout.write((char *)&Rb, sizeof(int));
     fout.write((char *)&Re, sizeof(int));
@@ -90,8 +91,10 @@ void BrownSim::Sim(double T=1, const int P2=20) {
     fout.write((char *)RQuantile, sizeof(RQuantile));
     fout.flush();
     cerr << "Output file " << outFilename << ": Head has written" << endl;
+  } else {
+    testf.close();
+    fout.open(outFilename.c_str(), ios::app| ios::binary);
   }
-  testf.close();
 
   //setup random number generator
   const gsl_rng_type * rngT;
@@ -102,12 +105,18 @@ void BrownSim::Sim(double T=1, const int P2=20) {
 
   
   Real B;
+  double Q;
+  Real * Record = new Real[(1<<Re)+1];
+  if(Record == NULL) {
+    cerr << "no enough memory!" << endl;
+    return 1;
+  }
   for(int l = 0 ; l<100; l++) {
-    B = 0; i=0;
+    B = 0; 
     C1.init();
     Record[0]= B;
     C1.Add(B);
-    for(i=0; i< 1<< Re; i++) {
+    for(i=0; i< (1<< Re); i++) {
       for(int j=0; j< 1<< (P2-Re); j++) {
 	B += (Real)gsl_ran_gaussian(r, hsigma);
 	C1.Add(B);
@@ -115,25 +124,30 @@ void BrownSim::Sim(double T=1, const int P2=20) {
       Record[i+1] = B;
     } 
     for(int k=0; k< nRQ; k++) {
-      double Q = (double)C1.QuantileC(RQuantile[k]);
+      Q = (double)C1.QuantileC(RQuantile[k]);
       fout.write((char *)&Q, sizeof(double));
     }
+    cerr << "coumputed Q" << endl;
     // as Np = 1<<g +1 points path
-    for(int g=Rb; g< Re; g++) {
-      const int Np = 1<<g+1;
-      StepIter<double> Sp(Record,1<<(P2-g));
+    for(int g=Rb; g< Re+1; g++) {
+      const int Np = (1<<g)+1;
+      StepIter<Real> Sp(Record,1<<(Re-g));
       int A;
       for(int k=0; k< nRQ; k++) {
 	A = max(0,min(Np-1,(int)floor(Np*RQuantile[k])));
 	nth_element (Sp, Sp+A, Sp+Np);
-	double Q = (double)Sp[A];
+	Q = (double)(Sp[A]);
 	fout.write((char *)&Q, sizeof(double));	
+	//cerr << "G:" << k << endl;
       }
+      //cerr << "Seg:" << g << endl;
     }
     fout.flush();
     cerr << "Adding " << l << "th records" << endl;
   }
   fout.close();
+  delete Record;
   gsl_rng_free (r);
+  return 0;
 }
 
