@@ -155,7 +155,12 @@ BOOST_AUTO_TEST_CASE( test1 ) {
     fout.flush();
   }
   testf.close();
-
+  for(int l=0; l< 10000; l++) {
+    double Q = 3.213123124325324324242424*l;
+    fout.write((char *)&Q, sizeof(double));
+    fout.flush();
+  }
+  fout.close();
 
 #define PRT_DD do {				\
     for(int i=0; i<9; i++)			\
