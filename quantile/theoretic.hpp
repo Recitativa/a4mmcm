@@ -69,7 +69,7 @@ public:
 
 template<class Num, class C>
 QRCounter<Num, C>::QRCounter(Num begin, Num end, size_t In):
-  total(0), Rbegin(begin), Rend(end), h((end-begin)/In),n(In) {
+  total(0), Rbegin(begin), Rend(end), h((end-begin)/(Num)In),n(In) {
   counter = new C[n];
   init();
 }
@@ -89,8 +89,8 @@ QRCounter<Num, C>::~QRCounter() {
 template<class Num, class C>
 int QRCounter<Num, C>::Add(Num x) {
   long i = (size_t)((x-Rbegin)/h);
-  if( i <0 ) { i=0;}
-  if(i > (long)(n-1)) {i=(long)n-1;}
+  if( i < 0 ) { i=0;}
+  if(i > (long)(n-1)) {i=(long)(n-1);}
   counter[(size_t)i]++;
   total++;
   return 0;
@@ -108,19 +108,19 @@ void QRCounter<Num, C>::PrintDest() {
 template<class Num, class C>
 Num QRCounter<Num, C>::QuantileC(double alpha) {
   size_t i,j;
-  C aim = (C)(alpha* total);
+  C aim = (C)(alpha * (double)total);
   C r1 = 0;
   C r2 = 0;
   for(i=0,j = 0; i< n; i++) {
     r1 = r2;
     r2 += counter[i];
-    if (r2 > aim) break;
+    if (r2 >= aim) break;
     if (counter[i]>0) j=i;
   }
   if (i==0 || i == n-1) 
     throw OutofRangeException(i);
 
-  Num result = Rbegin+h*(Num)(j) + h*(Num)(aim-r1) * (Num)(j-i) /(Num)(r2-r1);
+  Num result = Rbegin+h*(Num)(j) + h*(Num)(alpha*(double)total-r1)/(Num)(r2-r1);
   return result;
 }
 
@@ -134,12 +134,12 @@ Num QRCounter<Num, C>::Quantile(double alpha) {
   for(i=0; i< n; i++) {
     r1 = r2;
     r2 += counter[i];
-    if (r2 > aim) break;
+    if (r2 >= aim) break;
   }
   if (i==0 || i == n-1) 
     throw OutofRangeException(i);
 
-  Num result = Rbegin+h*(Num)(i+1);
+  Num result = Rbegin+h*(Num)(i);
   return result;
 }
 
