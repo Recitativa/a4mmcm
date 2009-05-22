@@ -6,7 +6,12 @@ readFile <- function(inFilename) {
   nRQ <- readBin(fin,integer())
   RQuantiles <- readBin(fin,double(), n = nRQ)
 
-  while()
+  rawdat <- vector() 
+  repeat {
+    v <- readBin(fin, double(), n=nRQ*(Re-Rb+1))
+    if(is.nan(v)) break;
+    rawdat <- append(rawdat, v)
+  }
   i = 0; 
 }
 
