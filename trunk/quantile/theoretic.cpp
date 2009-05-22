@@ -47,13 +47,11 @@ double Quantile::mean() {
 }
 
 // P2 number of points in brwonian motion is 2<<P2
-int BrownSim::Sim(double T=1, const int P2=20, const int Terms=100) {
+int BrownSim::Sim(double T=1, const int P2=25, const int Terms=100) {
   typedef double Real;
   const int Rb = 4; // records begin with 2^Rb+1 points.  
-  const int Re = 10; // records end with 2^Re+1 points.
+  const int Re = P2-5; // records end with 2^Re+1 points.
 
-
-  QRCounter<Real, int> C1(-10,10, 1<<11);
   int i;
   int n= 1<<P2; // total number of segements
   double hsigma = T*sigma/n; // corresponding sigma for each step; 
@@ -106,6 +104,8 @@ int BrownSim::Sim(double T=1, const int P2=20, const int Terms=100) {
   
   Real B;
   double Q;
+  QRCounter<Real, int> C1(-10,10, 1<<25);
+
   Real * Record = new Real[(1<<Re)+1];
   if(Record == NULL) {
     cerr << "no enough memory!" << endl;
@@ -124,8 +124,13 @@ int BrownSim::Sim(double T=1, const int P2=20, const int Terms=100) {
       Record[i+1] = B;
     } 
     for(int k=0; k< nRQ; k++) {
-      Q = (double)C1.QuantileC(RQuantile[k]);
-      fout.write((char *)&Q, sizeof(double));
+      try {
+	Q = (double)C1.QuantileC(RQuantile[k]);
+	fout.write((char *)&Q, sizeof(double));
+	//cerr << Q << " ";
+      } catch(OutofRangeException o) {
+	cerr << "out of range when qantile: " << RQuantile[k];
+      }
     }
     cerr << "coumputed Q" << endl;
     // as Np = 1<<g +1 points path
@@ -139,6 +144,7 @@ int BrownSim::Sim(double T=1, const int P2=20, const int Terms=100) {
 	Q = (double)(Sp[A]);
 	fout.write((char *)&Q, sizeof(double));	
 	//cerr << "G:" << k << endl;
+	//cerr << Q << " ";
       }
       //cerr << "Seg:" << g << endl;
     }
