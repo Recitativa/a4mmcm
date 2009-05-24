@@ -18,7 +18,7 @@ int main() {
   // 		  double * RQuantile
   // 		  ) 
 
-  time_t seconds = time (NULL)
+  time_t seconds = time (NULL);
 
   SimPara Para;
   Para.T = 1;
