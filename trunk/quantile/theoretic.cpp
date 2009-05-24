@@ -49,8 +49,6 @@ double Quantile::mean() {
 // P2 number of points in brwonian motion is 2<<P2
 int BrownSim::Sim(SimPara Para) {
   typedef double Real;
-  const int nRQ = Para.nRQ;
-  const double * RQuantile = Para.RQuantile;
   const double T = Para.T;
   const int P2 = Para.P2;
   const int Terms = Para.Terms;
@@ -59,7 +57,6 @@ int BrownSim::Sim(SimPara Para) {
   const int Nseg = Para.Nseg;
   const unsigned long int Rseed = Para.Rseed;
 
-  for(int i=0;i< nRQ;i++) { cerr << RQuantile[i] << " ";}
   int i;
   int n= 1<<P2; // total number of segements
   double hsigma = T*sigma/n; // corresponding sigma for each step; 
@@ -67,9 +64,7 @@ int BrownSim::Sim(SimPara Para) {
   
   // FileName format out_P2_Rb_Re_quantiles
   ostringstream SoutFilename;
-  SoutFilename << "out_" << P2 << "_ " << Rb << "_" << Re;
-  for(i= 0 ; i< nRQ ; i++)
-    SoutFilename << "_" << (int)(RQuantile[i]*100);
+  SoutFilename << "sout_" << P2 << "_ " << Rb << "_" << Re << "_" << Nseg;
   SoutFilename <<".bin";
   string outFilename = SoutFilename.str();
   ifstream testf;
@@ -91,8 +86,6 @@ int BrownSim::Sim(SimPara Para) {
     fout.write((char *)&P2, sizeof(int));
     fout.write((char *)&Rb, sizeof(int));
     fout.write((char *)&Re, sizeof(int));
-    fout.write((char *)&nRQ, sizeof(int));
-    fout.write((char *)RQuantile, nRQ*sizeof(double));
     fout.flush();
     cerr << "Output file " << outFilename << ": Head has written" << endl;
   } else {
@@ -112,7 +105,7 @@ int BrownSim::Sim(SimPara Para) {
   double Q;
   QRCounter<Real, int> C1(-10,10, 1<<Nseg);
 
-  Real * Record = new Real[(1<<Re)+1];
+  Real * Record = new Real[1<<Re];
   if(Record == NULL) {
     cerr << "no enough memory!" << endl;
     return 1;
@@ -120,34 +113,38 @@ int BrownSim::Sim(SimPara Para) {
   for(int l = 0 ; l< Terms; l++) {
     B = 0; 
     C1.init();
-    Record[0]= B;
+    //Record[0]= B;
     //C1.Add(B);
     for(i=0; i< (1<< Re); i++) {
       for(int j=0; j< 1<< (P2-Re); j++) {
 	B += (Real)gsl_ran_gaussian(r, hsigma);
 	C1.Add(B);
       }
-      Record[i+1] = B;
+      Record[i] = B;
     } 
-    for(int k=0; k< nRQ; k++) {
+
+    long nQ; int k;
+    // Record from 1<<(Rb-1)/1<<Rb  to 1 step 1/1<<Rb
+    for(k=0, nQ = 1<< (P2-Rb+1);
+	k<= 1<<(Rb-1); k++, nQ += 1<< (P2-Rb)) {
       try {
-	Q = (double)C1.Quantile(RQuantile[k]);
+	Q = (double)C1.nQuantile(nQ);
 	fout.write((char *)&Q, sizeof(double));
 	//cerr << Q << " ";
       } catch(OutofRangeException o) {
-	cerr << "out of range when qantile: " << RQuantile[k];
+	cerr << "out of range when qantile: " << ((double)nQ)/(1<< P2);
       }
     }
     cerr << "coumputed Q" << endl;
     // as Np = 1<<g +1 points path
-    for(int g=Rb; g< Re+1; g++) {
-      const int Np = (1<<g)+1;
-      StepIter<Real> Sp(Record,1<<(Re-g));
-      int A;
-      for(int k=0; k< nRQ; k++) {
-	A = max(0,min(Np-1,(int)floor((1<<Re)*RQuantile[k])+1));
-	nth_element (Sp, Sp+A, Sp+Np);
-	Q = (double)(Sp[A]);
+    for(int g=Rb; g<= Re; g++) {
+      const int Np = 1<<g;
+      size_t nStep = 1<<(Re-g);
+      StepIter<Real> Sp(Record+(nStep-1), nStep);
+      for(k=0, nQ = 1<< (g-Rb+1);
+	  k<= 1<<(Rb-1); k++, nQ += 1<< (g-Rb)) {
+	nth_element (Sp, Sp+(nQ-1), Sp+Np);
+	Q = (double)(Sp[nQ-1]);
 	fout.write((char *)&Q, sizeof(double));	
 	//cerr << "G:" << k << endl;
 	//cerr << Q << " ";

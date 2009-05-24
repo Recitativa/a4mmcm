@@ -3,9 +3,9 @@ readFile <- function(inFilename) {
   P2 <- readBin(fin, integer())
   Rb <- readBin(fin,integer())
   Re <- readBin(fin,integer())
-  nRQ <- readBin(fin,integer())
-  RQuantiles <- readBin(fin,double(), n = nRQ)
-
+  nRQ <- 2**(Rb-1) +1
+  RQuantiles <- (2**(Rb-1)):(2**Rb)/(2**Rb)
+                 
   rawdat <- vector() 
   Nrows <- 0; 
   repeat {
@@ -18,7 +18,8 @@ readFile <- function(inFilename) {
   adat <- array(rawdat, dim=c(nRQ,Re-Rb+1+1,Nrows),
                 dimnames = list(
                   paste("Q",
-                        formatC(RQuantiles*100, width=2, flag="0"),
+                        formatC(RQuantiles*100,
+                                width=2, flag="0"),
                         sep = "_"),
                   c("Dense", paste("A", Rb:Re,sep = "_")),
                   NULL
@@ -33,7 +34,7 @@ readFile <- function(inFilename) {
 
 
 
-run <- function(inFilename = "out_13_ 4_10_50_59_69_80_90_100.bin") {
+run <- function(inFilename = "sout_22_ 4_17_22.bin") {
   boutname <- sub(".bin$","", inFilename)
   ret <- readFile(inFilename)
   attach(ret)
@@ -43,12 +44,13 @@ run <- function(inFilename = "out_13_ 4_10_50_59_69_80_90_100.bin") {
   fmAdErr <- as.data.frame(mAdErr)
   fmAdErr$P <- Rb:Re
   pdf(paste(boutname,"lines.pdf"))
+  l2mAdErr <- log(mAdErr)/log(2)
   plot(c(Rb,Re),
-       log(c(min(mAdErr),max(mAdErr))),
+       c(min(l2mAdErr),max(l2mAdErr)),
        type="n")
   cols <- rainbow(nRQ)
   for(i in 1:nRQ) {
-    lines(Re:Rb, log(mAdErr[,i]), type="b",col=cols[i])
+    lines(Re:Rb, l2mAdErr[,i], type="b",col=cols[i])
   }
   dev.off()
   alm <- function(x) {return(lm(log(Q)~P, data.frame(Q=x,P=Rb:Re)))}

@@ -64,6 +64,7 @@ public:
   void PrintDest();
   Num QuantileC(double alpha);
   Num Quantile(double alpha);
+  Num nQuantile(C aim);
   int init();
 };
 
@@ -143,9 +144,28 @@ Num QRCounter<Num, C>::Quantile(double alpha) {
   return result;
 }
 
+// Quantile = inf {x #{X(i) < x} > alpha*T}
+template<class Num, class C>
+Num QRCounter<Num, C>::nQuantile(C aim) {
+  size_t i;
+  if (aim<0 || aim > total) 
+    throw OutofRangeException(i);
+  C r1 = 0;
+  C r2 = 0;
+  for(i=0; i< n; i++) {
+    r1 = r2;
+    r2 += counter[i];
+    if (r2 >= aim) break;
+  }
+  if (i==0 || i == n-1) 
+    throw OutofRangeException(i);
+
+  Num result = Rbegin+h*(Num)(i);
+  return result;
+}
+
+
 typedef struct {
-  int nRQ;
-  double * RQuantile;
   double T;
   int P2; 
   int Terms; // How many loops times 
