@@ -39,6 +39,7 @@ run <- function(inFilename = "sout_22_ 4_17_22.bin") {
   ret <- readFile(inFilename)
   Re = ret$Re
   Rb = ret$Rb
+  nRQ = ret$nRQ
   dErr <- ret$adat[,2:(Re-Rb+2),] - ret$adat[,rep("Dense",Re-Rb+1),]
   AdErr <- abs(dErr)
   mAdErr <- apply(AdErr, c(2,3), mean)
