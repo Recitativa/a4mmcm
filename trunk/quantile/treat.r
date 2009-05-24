@@ -1,8 +1,7 @@
 readFile <- function(inFilename) {
   fin <- file(inFilename, open="rb")
-  P2 <- readBin(fin, integer())
   Rb <- readBin(fin,integer())
-  Re <- readBin(fin,integer())
+  Re <- readBin(fin,integer())-1
   nRQ <- 2**(Rb-1) +1
   RQuantiles <- (2**(Rb-1)):(2**Rb)/(2**Rb)
                  
@@ -21,12 +20,12 @@ readFile <- function(inFilename) {
                         formatC(RQuantiles*100,
                                 width=2, flag="0"),
                         sep = "_"),
-                  c("Dense", paste("A", Rb:Re,sep = "_")),
+                  c(paste("A", Rb:Re,sep = "_"),"Dense"),
                   NULL
                   )
                 )
   adat <- aperm(adat,perm=c(3,2,1))
-  ret <- list(adat = adat, P2=P2, Rb=Rb, Re=Re,
+  ret <- list(adat = adat, Rb=Rb, Re=Re,
               nRQ=nRQ, RQuantiles =RQuantiles)
   close(fin)
   return(ret)
@@ -34,15 +33,15 @@ readFile <- function(inFilename) {
 
 
 
-run <- function(inFilename = "sout_22_ 4_17_22.bin") {
+run <- function(inFilename = "nout_4_20.bin") {
   boutname <- sub(".bin$","", inFilename)
   ret <- readFile(inFilename)
   Re = ret$Re
   Rb = ret$Rb
   nRQ = ret$nRQ
-  dErr <- ret$adat[,2:(Re-Rb+2),] - ret$adat[,rep("Dense",Re-Rb+1),]
+  dErr <- ret$adat[,1:(Re-Rb+1),] - ret$adat[,rep("Dense",Re-Rb+1),]
   AdErr <- abs(dErr)
-  mAdErr <- apply(AdErr, c(2,3), mean)
+  mAdErr <- apply(AdErr, c(2,3), mean,trim=.05)
   fmAdErr <- as.data.frame(mAdErr)
   fmAdErr$P <- Rb:Re
 
