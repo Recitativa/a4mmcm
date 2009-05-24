@@ -47,17 +47,23 @@ double Quantile::mean() {
 }
 
 // P2 number of points in brwonian motion is 2<<P2
-int BrownSim::Sim(double T=1, const int P2=25, const int Terms=100) {
+int BrownSim::Sim(SimPara Para) {
   typedef double Real;
-  const int Rb = 4; // records begin with 2^Rb+1 points.  
-  const int Re = P2-5; // records end with 2^Re+1 points.
+  const int nRQ = Para.nRQ;
+  const double * RQuantile = Para.RQuantile;
+  const double T = Para.T;
+  const int P2 = Para.P2;
+  const int Terms = Para.Terms;
+  const int Rb = Para.Rb;
+  const int Re = Para.Re;
+  const int Nseg = Para.Nseg;
+  const unsigned long int Rseed = Para.Rseed;
 
+  for(int i=0;i< nRQ;i++) { cerr << RQuantile[i] << " ";}
   int i;
   int n= 1<<P2; // total number of segements
   double hsigma = T*sigma/n; // corresponding sigma for each step; 
 
-  double RQuantile[] = {.5, .6, .7, .8, .9, 1.0};
-  const int nRQ = sizeof(RQuantile) / sizeof(double); // #of Quantiles
   
   // FileName format out_P2_Rb_Re_quantiles
   ostringstream SoutFilename;
@@ -86,7 +92,7 @@ int BrownSim::Sim(double T=1, const int P2=25, const int Terms=100) {
     fout.write((char *)&Rb, sizeof(int));
     fout.write((char *)&Re, sizeof(int));
     fout.write((char *)&nRQ, sizeof(int));
-    fout.write((char *)RQuantile, sizeof(RQuantile));
+    fout.write((char *)RQuantile, nRQ*sizeof(double));
     fout.flush();
     cerr << "Output file " << outFilename << ": Head has written" << endl;
   } else {
@@ -99,12 +105,12 @@ int BrownSim::Sim(double T=1, const int P2=25, const int Terms=100) {
   gsl_rng * r;
   rngT = gsl_rng_taus;
   r = gsl_rng_alloc (rngT);
-  gsl_rng_set(r, 123);
+  gsl_rng_set(r, Rseed);
 
   
   Real B;
   double Q;
-  QRCounter<Real, int> C1(-10,10, 1<<25);
+  QRCounter<Real, int> C1(-10,10, 1<<Nseg);
 
   Real * Record = new Real[(1<<Re)+1];
   if(Record == NULL) {
@@ -115,7 +121,7 @@ int BrownSim::Sim(double T=1, const int P2=25, const int Terms=100) {
     B = 0; 
     C1.init();
     Record[0]= B;
-    C1.Add(B);
+    //C1.Add(B);
     for(i=0; i< (1<< Re); i++) {
       for(int j=0; j< 1<< (P2-Re); j++) {
 	B += (Real)gsl_ran_gaussian(r, hsigma);
@@ -125,7 +131,7 @@ int BrownSim::Sim(double T=1, const int P2=25, const int Terms=100) {
     } 
     for(int k=0; k< nRQ; k++) {
       try {
-	Q = (double)C1.QuantileC(RQuantile[k]);
+	Q = (double)C1.Quantile(RQuantile[k]);
 	fout.write((char *)&Q, sizeof(double));
 	//cerr << Q << " ";
       } catch(OutofRangeException o) {
@@ -139,7 +145,7 @@ int BrownSim::Sim(double T=1, const int P2=25, const int Terms=100) {
       StepIter<Real> Sp(Record,1<<(Re-g));
       int A;
       for(int k=0; k< nRQ; k++) {
-	A = max(0,min(Np-1,(int)floor(Np*RQuantile[k])));
+	A = max(0,min(Np-1,(int)floor((1<<Re)*RQuantile[k])+1));
 	nth_element (Sp, Sp+A, Sp+Np);
 	Q = (double)(Sp[A]);
 	fout.write((char *)&Q, sizeof(double));	

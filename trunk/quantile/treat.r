@@ -36,9 +36,10 @@ readFile <- function(inFilename) {
 run <- function(inFilename = "out_13_ 4_10_50_59_69_80_90_100.bin") {
   boutname <- sub(".bin$","", inFilename)
   ret <- readFile(inFilename)
+  attach(ret)
   ret$dErr <- ret$adat[,2:(Re-Rb+2),] - ret$adat[,rep("Dense",Re-Rb+1),]
   ret$AdErr <- abs(ret$dErr)
-  mAdErr <- apply(ret$AdErr, c(2,3), mean)
+  mAdErr <- apply(ret$AdErr, c(2,3), mean, trim=.05)
   fmAdErr <- as.data.frame(mAdErr)
   fmAdErr$P <- Rb:Re
   pdf(paste(boutname,"lines.pdf"))
