@@ -143,13 +143,26 @@ Num QRCounter<Num, C>::Quantile(double alpha) {
   return result;
 }
 
+typedef struct {
+  int nRQ;
+  double * RQuantile;
+  double T;
+  int P2; 
+  int Terms; // How many loops times 
+  int Rb; // records begin with 2^Rb+1 points 
+  int Re; // records end with 2^Re+1 points
+  int Nseg;
+  unsigned long int Rseed; // Random seed
+} SimPara;
+
+
 class BrownSim {
 private:
   double sigma;
   double mu;
 public:
   BrownSim(double Isigma = 1, double Imu=0): sigma(Isigma), mu(Imu) {}
-  int Sim(double, int, int);
+  int Sim(SimPara Para);
 };
 
 
