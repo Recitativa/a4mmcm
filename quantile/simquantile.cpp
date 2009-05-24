@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cmath>
+#include <ctime>
 
 #include "theoretic.hpp"
 
@@ -17,6 +18,8 @@ int main() {
   // 		  double * RQuantile
   // 		  ) 
 
+  time_t seconds = time (NULL)
+
   SimPara Para;
   Para.T = 1;
   Para.P2 = 23;
@@ -24,7 +27,7 @@ int main() {
   Para.Rb = 4;
   Para.Re = Para.P2-6;
   Para.Nseg = 26;
-  Para.Rseed = 780;
+  Para.Rseed = seconds;
   S.Sim(Para);
 }
 
