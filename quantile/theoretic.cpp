@@ -50,22 +50,19 @@ double Quantile::mean() {
 int BrownSim::Sim(SimPara Para) {
   typedef double Real;
   const double T = Para.T;
-  const int P2 = Para.P2;
   const int Terms = Para.Terms;
   const int Rb = Para.Rb;
   const int Re = Para.Re;
-  const int Nseg = Para.Nseg;
   const unsigned long int Rseed = Para.Rseed;
 
   int i;
-  int n= 1<<P2; // total number of segements
+  int n= 1<<Re; // total number of segements
   double hsigma = T*sigma/n; // corresponding sigma for each step; 
 
   
   // FileName format out_P2_Rb_Re_quantiles
   ostringstream SoutFilename;
-  SoutFilename << "sout_" << P2 << "_ " << Rb << "_" << Re << "_" << Nseg;
-  SoutFilename <<".bin";
+  SoutFilename << "nout_" << Rb << "_" << Re <<".bin";
   string outFilename = SoutFilename.str();
   ifstream testf;
   ofstream fout;
@@ -73,8 +70,8 @@ int BrownSim::Sim(SimPara Para) {
   // output number of recorded quantile, and eqch quantile at first
   // write.
   // Format 
-  // Head: int: P2 Rb Re nRQ double: RQuantiles
-  // Record: Quantiles for total, 
+  // Head: int: Rb Re nRQ double: RQuantiles
+  // Record: 
   //         Quantiles for 1<< Rb number of elements
   //         Quantiles for 1<< (Rb+1) number of elements
   //         ...........................................
@@ -83,7 +80,6 @@ int BrownSim::Sim(SimPara Para) {
   if(!testf.is_open()) {
     testf.close();
     fout.open(outFilename.c_str(), ios::app| ios::binary);
-    fout.write((char *)&P2, sizeof(int));
     fout.write((char *)&Rb, sizeof(int));
     fout.write((char *)&Re, sizeof(int));
     fout.flush();
@@ -103,7 +99,6 @@ int BrownSim::Sim(SimPara Para) {
   
   Real B;
   double Q;
-  QRCounter<Real, int> C1(-10,10, 1<<Nseg);
 
   Real * Record = new Real[1<<Re];
   if(Record == NULL) {
@@ -112,30 +107,16 @@ int BrownSim::Sim(SimPara Para) {
   }
   for(int l = 0 ; l< Terms; l++) {
     B = 0; 
-    C1.init();
-    //Record[0]= B;
-    //C1.Add(B);
     for(i=0; i< (1<< Re); i++) {
-      for(int j=0; j< 1<< (P2-Re); j++) {
-	B += (Real)gsl_ran_gaussian(r, hsigma);
-	C1.Add(B);
-      }
+      B += (Real)gsl_ran_gaussian(r, hsigma);
       Record[i] = B;
     } 
 
+    cerr << "coumputing Q" << endl;
+
     long nQ; int k;
     // Record from 1<<(Rb-1)/1<<Rb  to 1 step 1/1<<Rb
-    for(k=0, nQ = 1<< (P2-Rb+1);
-	k<= 1<<(Rb-1); k++, nQ += 1<< (P2-Rb)) {
-      try {
-	Q = (double)C1.nQuantile(nQ);
-	fout.write((char *)&Q, sizeof(double));
-	//cerr << Q << " ";
-      } catch(OutofRangeException o) {
-	cerr << "out of range when qantile: " << ((double)nQ)/(1<< P2);
-      }
-    }
-    cerr << "coumputed Q" << endl;
+
     // as Np = 1<<g +1 points path
     for(int g=Rb; g<= Re; g++) {
       const int Np = 1<<g;
