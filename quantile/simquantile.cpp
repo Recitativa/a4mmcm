@@ -19,12 +19,12 @@ int main() {
 
   SimPara Para;
   Para.T = 1;
-  Para.P2 = 22;
+  Para.P2 = 23;
   Para.Terms = 500;
   Para.Rb = 4;
-  Para.Re = Para.P2-5;
+  Para.Re = Para.P2-6;
   Para.Nseg = 26;
-  Para.Rseed = 123;
+  Para.Rseed = 780;
   S.Sim(Para);
 }
 

@@ -37,21 +37,35 @@ readFile <- function(inFilename) {
 run <- function(inFilename = "sout_22_ 4_17_22.bin") {
   boutname <- sub(".bin$","", inFilename)
   ret <- readFile(inFilename)
-  attach(ret)
-  ret$dErr <- ret$adat[,2:(Re-Rb+2),] - ret$adat[,rep("Dense",Re-Rb+1),]
-  ret$AdErr <- abs(ret$dErr)
-  mAdErr <- apply(ret$AdErr, c(2,3), mean, trim=.05)
+  Re = ret$Re
+  Rb = ret$Rb
+  dErr <- ret$adat[,2:(Re-Rb+2),] - ret$adat[,rep("Dense",Re-Rb+1),]
+  AdErr <- abs(dErr)
+  mAdErr <- apply(AdErr, c(2,3), mean)
   fmAdErr <- as.data.frame(mAdErr)
   fmAdErr$P <- Rb:Re
+
   pdf(paste(boutname,"lines.pdf"))
+  plot(c(Rb,Re),
+       c(min(mAdErr),max(mAdErr)),
+       type="n")
+  cols <- rainbow(nRQ)
+  for(i in 1:nRQ) {
+    lines(Rb:Re, mAdErr[,i], type="b",col=cols[i])
+  }
+  dev.off()
+  
+  pdf(paste(boutname,"l.lines.pdf"))
   l2mAdErr <- log(mAdErr)/log(2)
   plot(c(Rb,Re),
        c(min(l2mAdErr),max(l2mAdErr)),
        type="n")
   cols <- rainbow(nRQ)
   for(i in 1:nRQ) {
-    lines(Re:Rb, l2mAdErr[,i], type="b",col=cols[i])
+    lines(Rb:Re, l2mAdErr[,i], type="b",col=cols[i])
   }
+
+  
   dev.off()
   alm <- function(x) {return(lm(log(Q)~P, data.frame(Q=x,P=Rb:Re)))}
   rLM <- apply(mAdErr, c(2), alm)
