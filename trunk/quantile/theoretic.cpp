@@ -48,7 +48,7 @@ double Quantile::mean() {
 
 // P2 number of points in brwonian motion is 2<<P2
 int BrownSim::Sim(SimPara Para) {
-  typedef double Real;
+  typedef long double Real;
   const double T = Para.T;
   const int Terms = Para.Terms;
   const int Rb = Para.Rb;
@@ -57,7 +57,7 @@ int BrownSim::Sim(SimPara Para) {
 
   int i;
   int n= 1<<Re; // total number of segements
-  double hsigma = T*sigma/n; // corresponding sigma for each step; 
+  double hsigma = sqrt(T/n); // corresponding sigma for each step; 
 
   
   // FileName format out_P2_Rb_Re_quantiles
@@ -70,7 +70,7 @@ int BrownSim::Sim(SimPara Para) {
   // output number of recorded quantile, and eqch quantile at first
   // write.
   // Format 
-  // Head: int: Rb Re nRQ double: RQuantiles
+  // Head: int: Rb Re
   // Record: 
   //         Quantiles for 1<< Rb number of elements
   //         Quantiles for 1<< (Rb+1) number of elements
@@ -122,10 +122,11 @@ int BrownSim::Sim(SimPara Para) {
       const int Np = 1<<g;
       size_t nStep = 1<<(Re-g);
       StepIter<Real> Sp(Record+(nStep-1), nStep);
-      for(k=0, nQ = 1<< (g-Rb+1);
-	  k<= 1<<(Rb-1); k++, nQ += 1<< (g-Rb)) {
+      for(k=0, nQ = 1<< (g-1);
+	  k<= 1<<(Rb-1); k++, nQ += (1<< (g-Rb))) {
 	nth_element (Sp, Sp+(nQ-1), Sp+Np);
 	Q = (double)(Sp[nQ-1]);
+	if(nQ == Np) Q = max(0.,Q);
 	fout.write((char *)&Q, sizeof(double));	
 	//cerr << "G:" << k << endl;
 	//cerr << Q << " ";

@@ -1,10 +1,35 @@
+ppX <- function(x,alpha=.6,beta=sqrt((1-alpha)/alpha)) {
+	c1 = sqrt(2/pi)*2
+	y = 0
+	for (i in 1:length(x)) {
+		if(x[i]>=0)
+			y[i] <- c1*exp(-x[i]^2/2)*(1-pnorm(x[i]*beta)) 
+		else
+			y[i] <- c1*exp(-x[i]^2/2)*(1-pnorm(-x[i]/beta))
+		}
+	return(y)
+	}
+	
+FppX <- function(end=Inf,alpha=.6) {
+	y <- 0
+	pX <- function(x) {ppX(x,alpha)}
+	for (i in 1:length(end)) {
+		y[i] <- integrate(pX,-Inf,end[i])$value
+		}
+	return(y)
+	}
+
+
+
+
 readFile <- function(inFilename) {
   fin <- file(inFilename, open="rb")
   Rb <- readBin(fin,integer())
   Re <- readBin(fin,integer())-1
   nRQ <- 2**(Rb-1) +1
   RQuantiles <- (2**(Rb-1)):(2**Rb)/(2**Rb)
-                 
+
+    
   rawdat <- vector() 
   Nrows <- 0; 
   repeat {
@@ -39,7 +64,8 @@ run <- function(inFilename = "nout_4_20.bin") {
   Re = ret$Re
   Rb = ret$Rb
   nRQ = ret$nRQ
-  dErr <- ret$adat[,1:(Re-Rb+1),] - ret$adat[,rep("Dense",Re-Rb+1),]
+  adat <- ret$adat
+  dErr <- adat[,1:(Re-Rb+1),] - adat[,rep("Dense",Re-Rb+1),]
   AdErr <- abs(dErr)
   mAdErr <- apply(AdErr, c(2,3), mean,trim=.05)
   fmAdErr <- as.data.frame(mAdErr)
@@ -74,4 +100,25 @@ run <- function(inFilename = "nout_4_20.bin") {
   pdf(paste(boutname,"rato.pdf"))
   plot(PrLM)
   dev.off()
+
+
+  RQuantiles <- ret$RQuantiles
+  PPP <- Re-Rb+2
+  cols <- heat.colors(2*PPP)[1:PPP]
+  # draw the distribution of quantiles
+  tt <- c(seq(-6,6,length.out=300))
+  for(i in 1:nRQ) {
+    alpha <- RQuantiles[i]
+    print(alpha)
+    FX <- FppX(tt, alpha)
+    pdf(paste(boutname,'_',alpha, '.quantile.pdf',sep=""))
+    plot(tt,FX,type='l',col='black',
+         main=sprintf('compare with Bb=%g Be=%g,alpha=%g',Rb,Re,alpha),
+         ylab="Empirical Cumulative Distribution Function",xlab='')
+    for(j in 1:PPP) {
+      EeulerSim <- ecdf(adat[,j,i])
+      lines(tt,EeulerSim(tt),type='l',col=cols[j])
+    }
+    dev.off()
+    }
 }
