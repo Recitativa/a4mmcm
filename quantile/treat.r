@@ -64,14 +64,17 @@ run <- function(inFilename = "nout_4_20.bin") {
   Re = ret$Re
   Rb = ret$Rb
   nRQ = ret$nRQ
+  RQuantiles <- ret$RQuantiles
   adat <- ret$adat
+
+
   dErr <- adat[,1:(Re-Rb+1),] - adat[,rep("Dense",Re-Rb+1),]
   AdErr <- abs(dErr)
   mAdErr <- apply(AdErr, c(2,3), mean,trim=.05)
   fmAdErr <- as.data.frame(mAdErr)
   fmAdErr$P <- Rb:Re
 
-  pdf(paste(boutname,"lines.pdf"))
+  pdf(paste(boutname,".lines.pdf",sep=""))
   plot(c(Rb,Re),
        c(min(mAdErr),max(mAdErr)),
        type="n")
@@ -81,11 +84,12 @@ run <- function(inFilename = "nout_4_20.bin") {
   }
   dev.off()
   
-  pdf(paste(boutname,"l.lines.pdf"))
+  pdf(paste(boutname,".l.lines.pdf",sep=""))
   l2mAdErr <- log(mAdErr)/log(2)
   plot(c(Rb,Re),
        c(min(l2mAdErr),max(l2mAdErr)),
-       type="n")
+       type="n", xlab = "k", ylab="log(|Err|)/log(2)",
+       main="log(|Err|) v.s. k, under different Quantiles")
   cols <- rainbow(nRQ)
   for(i in 1:nRQ) {
     lines(Rb:Re, l2mAdErr[,i], type="b",col=cols[i])
@@ -97,12 +101,12 @@ run <- function(inFilename = "nout_4_20.bin") {
   rLM <- apply(mAdErr, c(2), alm)
   getp <- function(x) {return(coef(x)["P"])}
   PrLM <- sapply(rLM, getp)
-  pdf(paste(boutname,"rato.pdf"))
-  plot(PrLM)
+  pdf(paste(boutname,".rato.pdf",sep=""))
+  plot(-as.vector(PrLM),RQuantiles, xlab="Quantile", ylab="Empirical rato",
+       main="Empirical discrete Error Rato under different Quantiles")
   dev.off()
 
 
-  RQuantiles <- ret$RQuantiles
   PPP <- Re-Rb+2
   cols <- heat.colors(2*PPP)[1:PPP]
   # draw the distribution of quantiles
@@ -113,7 +117,7 @@ run <- function(inFilename = "nout_4_20.bin") {
     FX <- FppX(tt, alpha)
     pdf(paste(boutname,'_',alpha, '.quantile.pdf',sep=""))
     plot(tt,FX,type='l',col='black',
-         main=sprintf('compare with Bb=%g Be=%g,alpha=%g',Rb,Re,alpha),
+         main=sprintf('compare with Bb=%g Be=%g,alpha=%g',Rb,Re+1,alpha),
          ylab="Empirical Cumulative Distribution Function",xlab='')
     for(j in 1:PPP) {
       EeulerSim <- ecdf(adat[,j,i])
@@ -121,4 +125,6 @@ run <- function(inFilename = "nout_4_20.bin") {
     }
     dev.off()
     }
+  dev.off()
+  return(0)
 }
