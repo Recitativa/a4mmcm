@@ -57,6 +57,8 @@ private:
   Num h; // Step length
   size_t n; // number of point between Rbegin and Rend.
   C * counter;
+  size_t t_j;
+  C t_r1;
 public:
   QRCounter(Num begin, Num end, size_t In);
   ~QRCounter();
@@ -64,7 +66,8 @@ public:
   void PrintDest();
   Num QuantileC(double alpha);
   Num Quantile(double alpha);
-  Num nQuantile(C aim);
+  Num nQuantile(C aim);  
+  Num nQuantileC(C aim);
   int init();
 };
 
@@ -77,7 +80,7 @@ QRCounter<Num, C>::QRCounter(Num begin, Num end, size_t In):
 
 template<class Num, class C> 
 int QRCounter<Num, C>::init() {
-  total = 0;
+  total = 0; t_j=0; t_r1=0;
   memset(counter, 0, sizeof(C)*n);
   return 0;
 }
@@ -124,6 +127,34 @@ Num QRCounter<Num, C>::QuantileC(double alpha) {
   Num result = Rbegin+h*(Num)(j) + h*(Num)(alpha*(double)total-r1)/(Num)(r2-r1);
   return result;
 }
+
+// Countinous Quantile
+template<class Num, class C>
+Num QRCounter<Num, C>::nQuantileC(C aim) {
+  size_t i,j;
+  C r1, r2;
+  if(aim > t_r1) {
+    i = t_j; r2 = t_r1;
+  } else {
+    i=0;r2 = 0; 
+  }
+  for(j = i; i< n; i++) {
+    r1 = r2;
+    r2 += counter[i];
+    if (r2 >= aim) break;
+    if (counter[i]>0) j=i;
+  }
+  if (i==0 || i == n-1) 
+    throw OutofRangeException(i);
+
+  t_j = j;
+  t_r1 = r1;
+  
+  Num result = Rbegin+h*(Num)(j) + h*(Num)(aim-r1)/(Num)(r2-r1);
+  return result;
+}
+
+
 
 // Quantile = inf {x #{X(i) < x} > alpha*T}
 template<class Num, class C>

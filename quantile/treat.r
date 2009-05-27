@@ -25,7 +25,9 @@ FppX <- function(end=Inf,alpha=.6) {
 readFile <- function(inFilename) {
   fin <- file(inFilename, open="rb")
   Rb <- readBin(fin,integer())
-  Re <- readBin(fin,integer())-1
+  Re <- readBin(fin,integer())
+  P2 <- readBin(fin,integer())
+  Nseg <- readBin(fin,integer())
   nRQ <- 2**(Rb-1) +1
   RQuantiles <- (2**(Rb-1)):(2**Rb)/(2**Rb)
 
@@ -50,7 +52,7 @@ readFile <- function(inFilename) {
                   )
                 )
   adat <- aperm(adat,perm=c(3,2,1))
-  ret <- list(adat = adat, Rb=Rb, Re=Re,
+  ret <- list(adat = adat, Rb=Rb, Re=Re, P2 = P2, Nseg = Nseg, 
               nRQ=nRQ, RQuantiles =RQuantiles)
   close(fin)
   return(ret)
@@ -58,7 +60,7 @@ readFile <- function(inFilename) {
 
 
 
-run <- function(inFilename = "nout_4_20.bin") {
+run <- function(inFilename) {
   boutname <- sub(".bin$","", inFilename)
   ret <- readFile(inFilename)
   Re = ret$Re
@@ -92,7 +94,7 @@ run <- function(inFilename = "nout_4_20.bin") {
        main="log(|Err|) v.s. k, under different Quantiles")
   cols <- rainbow(nRQ)
   for(i in 1:nRQ) {
-    lines(Rb:Re, l2mAdErr[,i], type="b",col=cols[i])
+    lines(Rb:Re, l2mAdErr[,i],  type="b",col=cols[i])
   }
 
   
@@ -109,6 +111,7 @@ run <- function(inFilename = "nout_4_20.bin") {
 
   PPP <- Re-Rb+2
   cols <- heat.colors(2*PPP)[1:PPP]
+  cols[PPP] = "blue"
   # draw the distribution of quantiles
   tt <- c(seq(-6,6,length.out=300))
   for(i in 1:nRQ) {

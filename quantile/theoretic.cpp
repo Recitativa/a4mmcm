@@ -58,13 +58,14 @@ int BrownSim::Sim(SimPara Para) {
   const unsigned long int Rseed = Para.Rseed;
 
   int i;
-  int n= 1<<Re; // total number of segements
+  int n= 1<<P2; // total number of segements
   double hsigma = sqrt(T/n); // corresponding sigma for each step; 
 
   
   // FileName format out_P2_Rb_Re_quantiles
   ostringstream SoutFilename;
-  SoutFilename << "nout_" << Rb << "_" << Re <<".bin";
+  SoutFilename << "sout_" << Rb << "_" << Re << "_";
+  SoutFilename << P2 << "_" << Nseg << ".bin";
   string outFilename = SoutFilename.str();
   ifstream testf;
   ofstream fout;
@@ -72,12 +73,13 @@ int BrownSim::Sim(SimPara Para) {
   // output number of recorded quantile, and eqch quantile at first
   // write.
   // Format 
-  // Head: int: Rb Re
+  // Head: int: Rb Re P2 Nseg
   // Record: 
   //         Quantiles for 1<< Rb number of elements
   //         Quantiles for 1<< (Rb+1) number of elements
   //         ...........................................
-  //         Quantiles for 1<< Re number of elements 
+  //         Quantiles for 1<< Re number of elements   
+  //         Quantiles for 1<< P2 number of elements, i.e. the Dense one 
 
   if(!testf.is_open()) {
     testf.close();
@@ -94,14 +96,14 @@ int BrownSim::Sim(SimPara Para) {
   //setup random number generator
   const gsl_rng_type * rngT;
   gsl_rng * r;
-  rngT = gsl_rng_taus;
+  rngT = gsl_rng_ran3;
   r = gsl_rng_alloc (rngT);
   gsl_rng_set(r, Rseed);
 
   
   Real B;
   double Q;
-  
+  QRCounter<Real, int> C1(-10,10,1<<Nseg);
   
   Real * Record = new Real[1<<Re];
   if(Record == NULL) {
@@ -111,19 +113,23 @@ int BrownSim::Sim(SimPara Para) {
 
   for(int l = 0 ; l< Terms; l++) {
     B = 0; 
+    C1.init();
     for(i=0; i< (1<< Re); i++) {
-      B += (Real)gsl_ran_gaussian(r, hsigma);
+      for(int j=0;j< (1 <<(P2-Re)); j++) {
+	B += (Real)gsl_ran_gaussian(r, hsigma);
+	C1.Add(B);
+      }
       Record[i] = B;
     } 
 
     cerr << "coumputing Q" << endl;
-
-    long nQ; int k;
+    int nQ;
+    int k;
     // Record from 1<<(Rb-1)/1<<Rb  to 1 step 1/1<<Rb
 
     // as Np = 1<<g +1 points path
     for(int g=Rb; g<= Re; g++) {
-      const int Np = 1<<g;
+      int Np = 1<<g;
       size_t nStep = 1<<(Re-g);
       StepIter<Real> Sp(Record+(nStep-1), nStep);
       for(k=0, nQ = 1<< (g-1);
@@ -137,6 +143,23 @@ int BrownSim::Sim(SimPara Para) {
       }
       //cerr << "Seg:" << g << endl;
     }
+    cerr << "computing Dense Quantiles.\t";
+    for(k=0, nQ = 1<< (P2-1);
+        k<= 1<<(Rb-1); k++, nQ += (1 <<(P2-Rb))) {
+      try {
+        Q = (double)C1.nQuantileC(nQ);
+	if(nQ == (1<<P2)) {
+	  Q = max(0., Q);
+	  cerr << "maximal in nQ" << endl;
+	}
+        fout.write((char *)&Q, sizeof(double));
+        //cerr << Q << " ";
+      } catch(OutofRangeException o) {
+        cerr << "out of range when qantile: " << ((double)nQ)/(1<< P2);
+      }
+    }
+    cerr << "coumputed Q" << endl;
+
     fout.flush();
     cerr << "Adding " << l << "th records" << endl;
   }
