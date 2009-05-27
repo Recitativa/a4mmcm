@@ -53,6 +53,8 @@ int BrownSim::Sim(SimPara Para) {
   const int Terms = Para.Terms;
   const int Rb = Para.Rb;
   const int Re = Para.Re;
+  const int P2 = Para.P2;
+  const int Nseg = Para.Nseg;
   const unsigned long int Rseed = Para.Rseed;
 
   int i;
@@ -99,12 +101,14 @@ int BrownSim::Sim(SimPara Para) {
   
   Real B;
   double Q;
-
+  
+  
   Real * Record = new Real[1<<Re];
   if(Record == NULL) {
     cerr << "no enough memory!" << endl;
     return 1;
   }
+
   for(int l = 0 ; l< Terms; l++) {
     B = 0; 
     for(i=0; i< (1<< Re); i++) {

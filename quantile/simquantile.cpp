@@ -23,7 +23,8 @@ int main() {
   SimPara Para;
   Para.T = 1;
   Para.Terms = 200;
-  //Para.P2 = 23;
+  Para.P2 = 23;
+  Para.Nseg = 26;
   Para.Rb = 5;
   Para.Re = 20;
   Para.Rseed = seconds;
