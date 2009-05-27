@@ -28,7 +28,7 @@ readFile <- function(inFilename) {
   Re <- readBin(fin,integer())
   P2 <- readBin(fin,integer())
   Nseg <- readBin(fin,integer())
-  nRQ <- 2**(Rb-1) +1
+  nRQ <- 2**(Rb-1) + 1
   RQuantiles <- (2**(Rb-1)):(2**Rb)/(2**Rb)
 
     
@@ -79,7 +79,8 @@ run <- function(inFilename) {
   pdf(paste(boutname,".lines.pdf",sep=""))
   plot(c(Rb,Re),
        c(min(mAdErr),max(mAdErr)),
-       type="n")
+       type="n", xlab = "k", ylab="|Err|",
+       main="|Err| v.s. k, under different Quantiles")
   cols <- rainbow(nRQ)
   for(i in 1:nRQ) {
     lines(Rb:Re, mAdErr[,i], type="b",col=cols[i])
@@ -96,7 +97,8 @@ run <- function(inFilename) {
   for(i in 1:nRQ) {
     lines(Rb:Re, l2mAdErr[,i],  type="b",col=cols[i])
   }
-
+  legend(14, -5, paste("Quantile ",RQuantiles),
+         col=cols, lty=1, cex = 0.8)
   
   dev.off()
   alm <- function(x) {return(lm(log(Q)~P, data.frame(Q=x,P=Rb:Re)))}
@@ -120,8 +122,8 @@ run <- function(inFilename) {
     FX <- FppX(tt, alpha)
     pdf(paste(boutname,'_',alpha, '.quantile.pdf',sep=""))
     plot(tt,FX,type='l',col='black',
-         main=sprintf('compare with Bb=%g Be=%g,alpha=%g',Rb,Re+1,alpha),
-         ylab="Empirical Cumulative Distribution Function",xlab='')
+         main=sprintf('compare with Bb=%g Be=%g,alpha=%g',Rb,Re,alpha),
+         ylab="Empirical Cumulative Distribution Function",xlab='X')
     for(j in 1:PPP) {
       EeulerSim <- ecdf(adat[,j,i])
       lines(tt,EeulerSim(tt),type='l',col=cols[j])
