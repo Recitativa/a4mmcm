@@ -23,11 +23,12 @@ int main() {
   SimPara Para;
   Para.T = 1;
   Para.Terms = 100;
-  Para.P2 = 20;
-  Para.Nseg = 20;
-  Para.Rb = 5;
-  Para.Re = 15;
+  Para.P2 = 23;
+  Para.Nseg = 27;
+  Para.Rb = 4;
+  Para.Re = 20;
   Para.Rseed = seconds;
+  //Para.IsQ = false;
   S.Sim(Para);
 }
 

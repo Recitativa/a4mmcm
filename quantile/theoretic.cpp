@@ -61,15 +61,21 @@ int BrownSim::Sim(SimPara Para) {
   int n= 1<<P2; // total number of segements
   double hsigma = sqrt(T/n); // corresponding sigma for each step; 
 
-  
+ 
   // FileName format out_P2_Rb_Re_quantiles
   ostringstream SoutFilename;
   SoutFilename << "sout_" << Rb << "_" << Re << "_";
   SoutFilename << P2 << "_" << Nseg << ".bin";
+  
   string outFilename = SoutFilename.str();
   ifstream testf;
   ofstream fout;
   testf.open(outFilename.c_str());
+
+  SoutFilename << ".txt";
+  ofstream ftout;
+  ftout.open(SoutFilename.str().c_str(), ios::out);
+
   // output number of recorded quantile, and eqch quantile at first
   // write.
   // Format 
@@ -85,7 +91,9 @@ int BrownSim::Sim(SimPara Para) {
     testf.close();
     fout.open(outFilename.c_str(), ios::app| ios::binary);
     fout.write((char *)&Rb, sizeof(int));
-    fout.write((char *)&Re, sizeof(int));
+    fout.write((char *)&Re, sizeof(int));    
+    fout.write((char *)&P2, sizeof(int));    
+    fout.write((char *)&Nseg, sizeof(int));
     fout.flush();
     cerr << "Output file " << outFilename << ": Head has written" << endl;
   } else {
@@ -121,12 +129,12 @@ int BrownSim::Sim(SimPara Para) {
       }
       Record[i] = B;
     } 
-
+    
     cerr << "coumputing Q" << endl;
     int nQ;
     int k;
     // Record from 1<<(Rb-1)/1<<Rb  to 1 step 1/1<<Rb
-
+    
     // as Np = 1<<g +1 points path
     for(int g=Rb; g<= Re; g++) {
       int Np = 1<<g;
@@ -136,11 +144,13 @@ int BrownSim::Sim(SimPara Para) {
 	  k<= 1<<(Rb-1); k++, nQ += (1<< (g-Rb))) {
 	nth_element (Sp, Sp+(nQ-1), Sp+Np);
 	Q = (double)(Sp[nQ-1]);
-	if(nQ == Np) Q = max(0.,Q);
+	//if(nQ == Np) Q = max(0.,Q);
 	fout.write((char *)&Q, sizeof(double));	
+	ftout << Q  << "\t";
 	//cerr << "G:" << k << endl;
 	//cerr << Q << " ";
       }
+      ftout << endl;
       //cerr << "Seg:" << g << endl;
     }
     cerr << "computing Dense Quantiles.\t";
@@ -148,10 +158,10 @@ int BrownSim::Sim(SimPara Para) {
         k<= 1<<(Rb-1); k++, nQ += (1 <<(P2-Rb))) {
       try {
         Q = (double)C1.nQuantileC(nQ);
-	if(nQ == (1<<P2)) {
-	  Q = max(0., Q);
-	  cerr << "maximal in nQ" << endl;
-	}
+	//if(nQ == (1<<P2)) {
+	//  Q = max(0., Q);
+	//  cerr << "maximal in nQ:" << endl;
+	//}
         fout.write((char *)&Q, sizeof(double));
         //cerr << Q << " ";
       } catch(OutofRangeException o) {
