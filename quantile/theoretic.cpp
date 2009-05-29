@@ -58,14 +58,14 @@ int BrownSim::Sim(SimPara Para) {
   const unsigned long int Rseed = Para.Rseed;
 
   int i;
-  int n= 1<<P2; // total number of segements
+  int n= 1<<Re; // total number of segements
   double hsigma = sqrt(T/n); // corresponding sigma for each step; 
 
  
   // FileName format out_P2_Rb_Re_quantiles
   ostringstream SoutFilename;
-  SoutFilename << "sout_" << Rb << "_" << Re << "_";
-  SoutFilename << P2 << "_" << Nseg << ".bin";
+  SoutFilename << "nout_" << Rb << "_" << Re << "_";
+  SoutFilename << ".bin";
   
   string outFilename = SoutFilename.str();
   ifstream testf;
@@ -91,7 +91,8 @@ int BrownSim::Sim(SimPara Para) {
     testf.close();
     fout.open(outFilename.c_str(), ios::app| ios::binary);
     fout.write((char *)&Rb, sizeof(int));
-    fout.write((char *)&Re, sizeof(int));    
+    int tRe = Re-1;
+    fout.write((char *)&tRe, sizeof(int));    
     fout.write((char *)&P2, sizeof(int));    
     fout.write((char *)&Nseg, sizeof(int));
     fout.flush();
@@ -111,7 +112,7 @@ int BrownSim::Sim(SimPara Para) {
   
   Real B;
   double Q;
-  QRCounter<Real, int> C1(-10,10,1<<Nseg);
+  //QRCounter<Real, int> C1(-10,10,1<<Nseg);
   
   Real * Record = new Real[1<<Re];
   if(Record == NULL) {
@@ -121,12 +122,9 @@ int BrownSim::Sim(SimPara Para) {
 
   for(int l = 0 ; l< Terms; l++) {
     B = 0; 
-    C1.init();
+    //C1.init();
     for(i=0; i< (1<< Re); i++) {
-      for(int j=0;j< (1 <<(P2-Re)); j++) {
-	B += (Real)gsl_ran_gaussian(r, hsigma);
-	C1.Add(B);
-      }
+      B += (Real)gsl_ran_gaussian(r, hsigma);
       Record[i] = B;
     } 
     
@@ -144,31 +142,13 @@ int BrownSim::Sim(SimPara Para) {
 	  k<= 1<<(Rb-1); k++, nQ += (1<< (g-Rb))) {
 	nth_element (Sp, Sp+(nQ-1), Sp+Np);
 	Q = (double)(Sp[nQ-1]);
-	//if(nQ == Np) Q = max(0.,Q);
+	if(nQ == Np) Q = max(0.,Q);
 	fout.write((char *)&Q, sizeof(double));	
 	ftout << Q  << "\t";
-	//cerr << "G:" << k << endl;
-	//cerr << Q << " ";
+
       }
       ftout << endl;
-      //cerr << "Seg:" << g << endl;
     }
-    cerr << "computing Dense Quantiles.\t";
-    for(k=0, nQ = 1<< (P2-1);
-        k<= 1<<(Rb-1); k++, nQ += (1 <<(P2-Rb))) {
-      try {
-        Q = (double)C1.nQuantileC(nQ);
-	//if(nQ == (1<<P2)) {
-	//  Q = max(0., Q);
-	//  cerr << "maximal in nQ:" << endl;
-	//}
-        fout.write((char *)&Q, sizeof(double));
-        //cerr << Q << " ";
-      } catch(OutofRangeException o) {
-        cerr << "out of range when qantile: " << ((double)nQ)/(1<< P2);
-      }
-    }
-    cerr << "coumputed Q" << endl;
 
     fout.flush();
     cerr << "Adding " << l << "th records" << endl;

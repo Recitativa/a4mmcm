@@ -82,6 +82,8 @@ run <- function(inFilename) {
        type="n", xlab = "k", ylab="|Err|",
        main="|Err| v.s. k, under different Quantiles")
   cols <- rainbow(nRQ)
+  legend(15, .12, paste("Quantile ",RQuantiles),
+         col=cols, lty=1)
   for(i in 1:nRQ) {
     lines(Rb:Re, mAdErr[,i], type="b",col=cols[i])
   }
@@ -94,11 +96,12 @@ run <- function(inFilename) {
        type="n", xlab = "k", ylab="log(|Err|)/log(2)",
        main="log(|Err|) v.s. k, under different Quantiles")
   cols <- rainbow(nRQ)
+  legend(15, -2, paste("Quantile ",RQuantiles),
+         col=cols, lty=1)
+ 
   for(i in 1:nRQ) {
     lines(Rb:Re, l2mAdErr[,i],  type="b",col=cols[i])
   }
-  legend(14, -5, paste("Quantile ",RQuantiles),
-         col=cols, lty=1, cex = 0.8)
   
   dev.off()
   alm <- function(x) {return(lm(log(Q)~P, data.frame(Q=x,P=Rb:Re)))}
@@ -106,7 +109,7 @@ run <- function(inFilename) {
   getp <- function(x) {return(coef(x)["P"])}
   PrLM <- sapply(rLM, getp)
   pdf(paste(boutname,".rato.pdf",sep=""))
-  plot(-as.vector(PrLM),RQuantiles, xlab="Quantile", ylab="Empirical rato",
+  plot(RQuantiles, -as.vector(PrLM), ylab="Quantile", xlab="Empirical rato",
        main="Empirical discrete Error Rato under different Quantiles")
   dev.off()
 
