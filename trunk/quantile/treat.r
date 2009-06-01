@@ -1,3 +1,4 @@
+## Theoretical distribution of quantiles
 ppX <- function(x,alpha=.6,beta=sqrt((1-alpha)/alpha)) {
 	c1 = sqrt(2/pi)*2
 	y = 0
@@ -9,7 +10,9 @@ ppX <- function(x,alpha=.6,beta=sqrt((1-alpha)/alpha)) {
 		}
 	return(y)
 	}
-	
+
+## distribution of quantiles
+## i.e. FppX(x,alpha) = P(X_alpha < x)
 FppX <- function(end=Inf,alpha=.6) {
 	y <- 0
 	pX <- function(x) {ppX(x,alpha)}
@@ -21,7 +24,7 @@ FppX <- function(end=Inf,alpha=.6) {
 
 
 
-
+## read data from binary file
 readFile <- function(inFilename) {
   fin <- file(inFilename, open="rb")
   Rb <- readBin(fin,integer())
@@ -51,6 +54,10 @@ readFile <- function(inFilename) {
                   NULL
                   )
                 )
+  ## adat is a three dimentional array of data with [i,j,k]
+  ## i -- i-th record
+  ## j -- different k: Rb, Rb+1, Rb+2, ..., Re, Dense(see below)
+  ## k -- Quantiles 2^(Rb-1)/2^Rb, 2^(Rb-1)+1/2^Rb, ...., 1
   adat <- aperm(adat,perm=c(3,2,1))
   ret <- list(adat = adat, Rb=Rb, Re=Re, P2 = P2, Nseg = Nseg, 
               nRQ=nRQ, RQuantiles =RQuantiles)
@@ -59,9 +66,11 @@ readFile <- function(inFilename) {
 }
 
 
-
+## main function to treat the data
 run <- function(inFilename) {
+  ## file name pattern: ?????.bin, then get ????? part. 
   boutname <- sub(".bin$","", inFilename)
+  ## read data from file
   ret <- readFile(inFilename)
   Re = ret$Re
   Rb = ret$Rb
@@ -69,13 +78,14 @@ run <- function(inFilename) {
   RQuantiles <- ret$RQuantiles
   adat <- ret$adat
 
-
+  ## Formula: AdErr = |X_k -  X_Dense|
   dErr <- adat[,1:(Re-Rb+1),] - adat[,rep("Dense",Re-Rb+1),]
   AdErr <- abs(dErr)
+  ## Formula: mAdErr = mean(|X_k -  X_Dense|)
+  ## mAdErr is a 2-dim array, 1st-dimension is k, 2nd-dim is Quantile
   mAdErr <- apply(AdErr, c(2,3), mean,trim=.05)
-  fmAdErr <- as.data.frame(mAdErr)
-  fmAdErr$P <- Rb:Re
 
+  ## plot the lines of mAdErr for different Quantile
   pdf(paste(boutname,".lines.pdf",sep=""),pointsize=8)
   plot(c(Rb,Re),
        c(min(mAdErr),max(mAdErr)),
@@ -88,7 +98,8 @@ run <- function(inFilename) {
     lines(Rb:Re, mAdErr[,i], type="b",col=cols[i])
   }
   dev.off()
-  
+
+  ## plot log(|Err|)/log(2)
   pdf(paste(boutname,".l.lines.pdf",sep=""),pointsize=8)
   l2mAdErr <- log(mAdErr)/log(2)
   plot(c(Rb,Re),
@@ -102,8 +113,9 @@ run <- function(inFilename) {
   for(i in 1:nRQ) {
     lines(Rb:Re, l2mAdErr[,i],  type="b",col=cols[i])
   }
-  
   dev.off()
+  
+  ## regression for each quantile & plot the result.
   alm <- function(x) {return(lm(log(Q)~P, data.frame(Q=x,P=Rb:Re)))}
   rLM <- apply(mAdErr, c(2), alm)
   getp <- function(x) {return(coef(x)["P"])}
@@ -113,7 +125,9 @@ run <- function(inFilename) {
        main="Empirical discrete Error Rato under different Quantiles")
   dev.off()
 
-
+  ## compare the empirical distribution and theoretical distribution.
+  ## each alpha a pdf file, and for each k a line.
+  ## The black line is theoretic and blue line is the "dense" one.
   PPP <- Re-Rb+2
   cols <- heat.colors(2*PPP)[1:PPP]
   cols[PPP] = "blue"
