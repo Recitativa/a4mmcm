@@ -21,6 +21,7 @@ public:
   Brownian(double Isigma, double Imu): sigma(Isigma), mu(Imu) {};
 };
 
+//Never use 
 class Quantile : public Brownian {
 
 public:
@@ -40,8 +41,7 @@ private:
 
 
 
-// Quantile Range Counter
-
+// Quantile Range Counter, Never use.
 class OutofRangeException {
 public:
   size_t i;
@@ -196,6 +196,8 @@ Num QRCounter<Num, C>::nQuantile(C aim) {
 }
 
 
+// Structure of parameters for simulation.
+
 typedef struct {
   double T;
   int P2; 
@@ -220,6 +222,7 @@ public:
 class DifferentStepsException {};
 
 
+// The step Iterator class
 #include <iterator>
 
 template < class T>
