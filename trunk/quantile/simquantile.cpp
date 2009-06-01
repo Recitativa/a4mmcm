@@ -10,23 +10,19 @@ using namespace std;
 int main() {
   BrownSim S;
   
-  // int BrownSim::Sim(double T=t1, const int P2=25, const int Terms=100,
-  // 		  const int Rb=4, // records begin with 2^Rb+1 points. 
-  // 		  const int Re = P2-5, // records end with 2^Re+1 points.
-  // 		  const int Nseg = 26,
-  // 		  const int nRQ,
-  // 		  double * RQuantile
-  // 		  ) 
 
-  time_t seconds = time (NULL);
+  time_t seconds = time (NULL); // Get time as random seed. 
 
-  SimPara Para;
-  Para.T = 1;
-  Para.Terms = 200;
-  Para.P2 = 23;
-  Para.Nseg = 27;
+  SimPara Para; // The class for Parameters 
+  Para.T = 1; // Brownian motion form 0 to time T.
+  Para.Terms = 200; // simulate how many times.  
+  Para.P2 = 23; // Never use, for compatible.
+  Para.Nseg = 27; // Never use, for compatible.
+  // begin of the segements.
   Para.Rb = 6;
+  // maximal segements, i.e. the end one. 
   Para.Re = 20;
+  // Seed for random number generator
   Para.Rseed = seconds;
   S.Sim(Para);
 }
