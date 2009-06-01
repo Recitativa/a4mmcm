@@ -1,5 +1,6 @@
 CXXFLAGS= -I/usr/include/boost-1_33_1/ -I/usr/local/include  
-LDFLAGS	= -L/usr/local/lib -lgsl -lgslcblas -lboost_unit_test_framework-gcc-mt
+LDFLAGS	= -L/usr/local/lib -lgsl -lgslcblas 
+BOOSTFLAGS = -lboost_unit_test_framework-gcc-mt
 
 default: run
 
@@ -13,7 +14,7 @@ simquantile.exe: simquantile.cpp theoretic.cpp theoretic.hpp
 	g++ -Wall -mtune=prescott -march=prescott -o $@ $< theoretic.cpp $(CXXFLAGS) $(LDFLAGS)
 
 theoretic_test.exe: theoretic_test.cpp theoretic.cpp theoretic.hpp 
-	g++ -Wall -g -o $@ $< theoretic.cpp $(CXXFLAGS) $(LDFLAGS)
+	g++ -Wall -g -o $@ $< theoretic.cpp $(CXXFLAGS) $(LDFLAGS) $(BOOSTFLAGS)
 
 
 clean:
