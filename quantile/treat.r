@@ -76,28 +76,28 @@ run <- function(inFilename) {
   fmAdErr <- as.data.frame(mAdErr)
   fmAdErr$P <- Rb:Re
 
-  pdf(paste(boutname,".lines.pdf",sep=""))
+  pdf(paste(boutname,".lines.pdf",sep=""),pointsize=8)
   plot(c(Rb,Re),
        c(min(mAdErr),max(mAdErr)),
        type="n", xlab = "k", ylab="|Err|",
        main="|Err| v.s. k, under different Quantiles")
   cols <- rainbow(nRQ)
-  legend(15, .12, paste("Quantile ",RQuantiles),
-         col=cols, lty=1)
+  legend(x="topright", paste("",RQuantiles),
+         col=cols, lty=1, ncol=3)
   for(i in 1:nRQ) {
     lines(Rb:Re, mAdErr[,i], type="b",col=cols[i])
   }
   dev.off()
   
-  pdf(paste(boutname,".l.lines.pdf",sep=""))
+  pdf(paste(boutname,".l.lines.pdf",sep=""),pointsize=8)
   l2mAdErr <- log(mAdErr)/log(2)
   plot(c(Rb,Re),
        c(min(l2mAdErr),max(l2mAdErr)),
        type="n", xlab = "k", ylab="log(|Err|)/log(2)",
        main="log(|Err|) v.s. k, under different Quantiles")
-  cols <- rainbow(nRQ)
-  legend(15, -2, paste("Quantile ",RQuantiles),
-         col=cols, lty=1)
+  cols <- rainbow(2*nRQ)[(nRQ+1):(2*nRQ)]
+  legend(x = "topright", paste("",RQuantiles),
+         col=cols, lty=1,ncol=3)
  
   for(i in 1:nRQ) {
     lines(Rb:Re, l2mAdErr[,i],  type="b",col=cols[i])
