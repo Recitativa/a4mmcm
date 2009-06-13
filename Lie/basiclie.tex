@@ -1,0 +1,408 @@
+\documentclass[12pt]{amsart}
+\usepackage[margin=3cm]{geometry}
+
+\usepackage{hyperref}
+
+\usepackage{amssymb}
+\usepackage{graphicx}
+%\usepackage{amscd}
+\usepackage{braket}
+\usepackage{paralist}
+\usepackage{eufrak}
+%\usepackage{calrsfs}
+%\usepackage[small,nohug,heads=littlevee]{diagrams}
+%\diagramstyle[labelstyle=\scriptstyle]
+%\usepackage{diagrams}
+\usepackage{amscd}
+%\usepackage{pictexwd,dcpic}
+%\usepackage{mathrsfs}
+
+
+\newtheorem{lemma}{Lemma}
+\newtheorem{thm}{Theorem}
+\newtheorem{prop}{Proposition}
+\newtheorem{cor}{Corollary}
+\newenvironment{expl}{\it}{\color{black}\normalsize}
+\DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
+
+
+
+\def\Ker{\rm{Ker}}
+\def\Im{\rm{Im}}
+\def\Hom{\rm{Hom}}
+\def\Mat{\rm{Mat}}
+\def\bR{{\mathbb{R}}}
+\def\bN{{\mathbb{N}}}
+\def\bZ{{\mathbb{Z}}}
+\def\bC{{\mathbb{C}}}
+\def\bQ{{\mathbb{Q}}}
+\def\bB{{\mathbb{B}}}
+\def\bA{{\mathbb{A}}}
+\def\bs{{\mathbf{s}}}
+\def\bd{{\mathbf{d}}}
+\def\bT{{\mathbb{T}}}
+\def\bt{{\mathbf{t}}}
+\def\br{{\mathbf{r}}}
+\def\vv{{\vec{v}}}
+\def\vw{{\vec{w}}}
+\def\vx{{\vec{x}}}
+\def\vy{{\vec{y}}}
+\def\v0{{\vec{0}}}
+\def\ol{\overline}
+\def\sspan{\rm{span}}
+\def\sl2{{\mathfrak{sl}(2)}}
+\def\slc{{\mathfrak{sl}(2,\bC)}}
+\def\sP{\mathcal{P}}
+\def\sH{\mathcal{H}}
+\def\sU{\mathcal{U}}
+\def\sC{\mathcal{C}}
+\def\ad{{\rm ad}}
+\def\Ad{{\rm Ad}}
+\def\id{{\rm id}}
+\def\sgn{{\rm sgn}}
+\def\gcd{{\rm gcd}}
+\def\inn#1#2{\left\langle{#1},{#2}\right\rangle}
+\def\abs#1{\left|{#1}\right|}
+\def\norm#1{{\left\|{#1}\right\|}}
+\def\Sp{{\rm Sp}}
+
+
+\hypersetup{
+    bookmarks=false,         % show bookmarks bar?
+    unicode=false,          % non-Latin characters in Acrobat’s bookmarks
+    pdftoolbar=true,        % show Acrobat’s toolbar?
+    pdfmenubar=false,        % show Acrobat’s menu?
+    pdffitwindow=false,      % page fit to window when opened
+    pdftitle={Qualify Examination Answers - Algebra},    % title
+    pdfauthor={Ma Jia Jun},     % author
+    pdfsubject={Subject},   % subject of the document
+    pdfcreator={Creator},   % creator of the document
+    pdfproducer={Producer}, % producer of the document
+    pdfkeywords={keywords}, % list of keywords
+    pdfnewwindow=true,      % links in new window
+    colorlinks=true,       % false: boxed links; true: colored links
+    linkcolor=blue,          % color of internal links
+    citecolor=green,        % color of links to bibliography
+    filecolor=magenta,      % color of file links
+    urlcolor=cyan           % color of external links
+}
+
+
+\newcounter{ssection}
+\setcounter{ssection}{0}
+\renewcommand{\subsection}{
+  \addtocounter{ssection}{1}{\bf  \arabic{ssection}.\  }}
+
+\title{Basic Facts about Lie groups and its representation.}
+
+\def\Ad{\mathrm{Ad}}
+\def\agl{\mathrm{gl}}
+\def\asl{\mathrm{sl}}
+\def\au{\mathrm{u}}
+\def\diag#1{\mathrm{diag}(#1)}
+\def\fh{\mathfrak{h}}
+\def\ft{\mathfrak{t}}
+\def\fg{\mathfrak{g}}
+\def\GL{\mathrm{GL}}
+\def\SO{\mathrm{SO}}
+\def\rad{\mathrm{rad}}
+\def\SL{\mathrm{SL}}
+\def\tr{\mathrm{tr}}
+\def\Mat{\mathrm{Mat}}
+\def\U{\mathrm{U}}
+\begin{document}
+\maketitle
+
+\section{notation}
+\begin{description}
+\item[$B_K$] Killing form, i.e. 
+  \[
+  B_K(X,Y) = \tr(\ad X \ad Y)
+  \]
+\item[$B_T$] Trace form 
+  \[
+  B_T(X,Y) = \Re\tr(XY^*)
+  \]
+\item[$\Mat_n(F)$] set of matrix over field $F$;   
+\item[$I_n$] identity matrix in $\Mat_n(\bC)$;
+\item[$E_{k,l}$] matrix with only $(k,j)$-th entry $1$ and others are
+  zero. 
+\item[$e_l$] can be consider as an element in $\ft^*$ the dual space
+  of cartan algebra.
+\item[$H_\alpha$] coroot corresponding to $\alpha$, i.e. 
+  \[
+  B_K(H,H_\alpha) = \alpha(H).
+  \]
+\item[$\inn{\alpha}{\beta}$] 
+  $\inn{\alpha}{\beta} = B_K(H_\alpha,H_\beta) = \alpha(H_\beta) = \beta(H_\alpha)$
+\item[$\theta$] cartan involution of lie algebras
+\item[$\Theta$] cartan involution of lie groups.
+\end{description}
+
+\section{Structures}
+\subsection{basic facts}
+Note that 
+\[
+E_{k,l}E_{s,t} = \delta_{l,s}E_{k,t}
+\]
+Then 
+\[
+[E_{s,s},E_{k,l}] = E_{s,s}E_{k,l} - E_{k,l}E_{s,s} 
+= \delta_{s,k}E_{k,l} - \delta_{l,s}E_{k,l}
+\]
+
+\subsection{simple, semisimple, reductive groups}
+
+\subsubsection{simple lie groups}
+
+\subsubsection{semisimple lie groups}
+
+\subsubsection{reductive group}
+$\GL(n,\bC)$
+
+\subsection{$\GL(n,\bC)$}
+\[
+\GL(n,\bC) = \Set{g\in \Mat_{n\times n}(\bC)|\det g \neq 0}
+\]
+
+Hence the Lie algebra is 
+\[
+\agl(n,\bC) = \Mat_{n\times n}(\bC)
+\]
+
+Note that 
+\[
+\agl(n,\bC) = \asl(n,\bC) \oplus Z_{\agl(n,\bC)}
+\]
+where 
+\[
+Z_{\agl(n,\bC)} = \bC I_n
+\]
+
+$\GL(n,\bC)$ is a complex lie group, with complex dimension $n^2$ and real
+dimension $2n^2$.
+
+\subsection{$\SL(n,\bC)$}
+\[
+\SL(n,\bC) = \Set{g\in \Mat_{n\times n}(\bC)|\deg g = 1}
+\]
+
+By $\det(\exp X ) = \exp(\tr X)$ 
+\[
+\asl(n,\bC) = \Set{g\in \Mat_{n\times n}(\bC)|\tr X = 0}
+\]
+it is a simple complex lie algebra of type $A_{n-1}$
+
+$\SL(n,\bC)$ is a complex lie group, with complex dimension $n^2-1$,
+real dimension $2(n^2-1)$.
+
+The catan algebra is 
+\[
+\ft = \Set{X \in \asl(n,\bC) | X = \diag(a_1, \cdots, a_n)}
+\]
+correspond $T$ is all diagonal matrix wih determinat $1$. 
+
+Now, choose basis of $\ft$ be $H_l = iE_{l,l}$, $l = 1,\cdots, n$.
+\[
+[H_l, E_{l,s}] = i E_{l,s}, \quad l\neq s
+\]
+\[
+[H_s, E_{l,s}] = -iE_{l,s}, \quad l\neq s
+\]
+Hence 
+The nontrival roots are $e_l - e_s$ with root sapces
+$E_{l,s}$ ($l\neq s$).
+
+Choose a \index{positive root system} be $e_l-e_s$ positive iff $l<s$.
+Corresponding standard\index{simple roots} are $e_l-e_{l+1}$ for $l=1, \cdots, n-1$. Call it $A_{n-1}$.
+
+Since $\asl(n,\bC)$ is a simple complex lie algebra. 
+The invariant bilinear form is 
+%%need an reference to sec:bilinear_form_simple
+unique up to scale.
+
+The relation between killing form over $\asl(n,\bC)$ and trace form is 
+\[
+2n\,B_T(X,Y) = B_K(X,Y).
+\]
+This can be calculated by let $X=Y=E_{1,1}-E_{2,2}$.
+
+Let $H_{st} = E_{s,s} - E_{t,t}$.
+
+Then 
+\[
+H_{e_l-e_k} = \frac{1}{2n} (E_{l,l}-E_{k,k}).
+\]
+
+In fact,
+\[
+(e_l-e_k)(H_{st}) =\delta_{ls} - \delta_{lt} - \delta_{ks} +\delta_{kt}=
+B_T(H_{lk}H_{st}).
+\]
+
+Then 
+\[
+\inn{e_l-e_k}{e_s-e_t} 
+= \frac{1}{4n^2}(\delta_{ls} - \delta_{lt} - \delta_{ks} + \delta_{kt}).
+\]
+
+\[
+\frac{2\inn{e_l-e_{l+1}}{e_k-e_{k+1}}}{\inn{e_k-e_{k+1}}{e_k-e_{k+1}}} =
+\begin{cases}
+  2 & l=k \\
+  -1 & l = k\pm 1
+\end{cases} 
+\]
+ 
+Cartan matrix respect to the standard simple root is 
+\[
+\begin{pmatrix}
+  2  & -1 &  0 & 0 & \cdots & 0 \\
+  -1 &  2 & -1 & 0 & \cdots & 0 \\
+  0  & -1 &  2 & -1& \cdots & 0 \\
+  \cdots & \cdots & \cdots & \cdots & \cdots &\cdots \\
+  0 & 0 & 0 & 0 & \cdots & 2 
+\end{pmatrix}
+\] 
+
+
+Borel subalgebra
+
+\subsection{$\SO(n,\bC$}
+\[
+\SO(n,\bC) = \Set{g\in \GL(n,\bC)| g^Tg = 1}
+\]
+Correspond lie algebra
+\[
+\aso(n,\bC) = \Set{X\in \agl(n,\bC)| X^T + X = 0}
+\]
+
+
+\subsection{$\GL(n,\bR)$}
+\[
+\GL(n,\bR) = \GL(n,\bC) \cap \Mat_{n\times n}(\bR)
+\]
+Consider the complex conjugate $\sigma$ of $\agl(n,\bC)$, 
+i.e $\sigma(X) = \overline{X}$. It is a involution on $\agl(n,\bC)$.
+$\agl(n,\bR)$ is the set of fix points of $\sigma$.
+
+Then one cartan involution of $\agl(n,\bR)$ is $\theta(X) = -X^*$,
+which commutes with $\sigma$.
+
+Now 
+\[ 
+\begin{split}
+B_\theta(X,Y) &= -B_K(X, \theta(Y)) 
+\end{split}
+\]
+
+\subsection{$\SL(n,\bR)$}
+\[
+\SL(n,\bR) = \SL(n,\bC) \cap \GL(n,\bR)
+\]
+
+
+
+\subsection{$U(n)$}
+Consider the involution $\theta$ of $\agl(n,\bR)$:
+\[
+\theta(X) = -X^*
+\]
+$\au(n)$ is the set of fixed point of $\theta$.
+
+\[
+\U(n) = \Set{g \in \GL(n,\bC)|g^*g = I}
+\]
+
+Lie algebra: 
+
+\[
+u(n,\bC) = \Set{X\in \GL(n,\bC)|X^* + X = 0}
+\]
+
+Then the real dimension of $U(n)$ is $2\frac{(n-1)n}{2}+ n = n^2+1$. 
+It is simpliy connected
+when $n>1$. When $n=1$ it is torus, hence connected with fundermantal
+group $\bZ$.
+
+The typical cartan subalgebra is 
+\[
+\ft = \Set{X\in \Mat_{n\times n}(\bC)| X = \diag{a_1, \cdots, a_n},
+  a_l\in i\bR}
+\] 
+corresponding maximal torus $T$ of $U(n,\bC)$ is the diagnal matrics with
+entries on the torus $S^1$. Clearly $T\cong S^n$.
+
+
+
+The roots correspond to $T$ spaned by  
+\[
+\Set{e_l}
+\]
+Where 
+
+Then the nontrivial roots are $e_l-e_s$ and $-(e_l-e_s)$for any $l\neq s$, 
+with root vectors $ d$ and $(1-i)E_{ls}$
+
+
+\section{bilinear form}
+\subsection{invariant form over lie algebra}
+Invariant bilinear form $B$ over simple lie algebra $\fg$ is a bilinear 
+form satifies 
+\[
+B(\ad(Z)X,Y) =  -B(X,\ad(Z)Y), \quad X,Y\in \fg
+\]
+
+If $\fg$ is a lie algebra of some lie group $G$, then 
+\[
+B(\Ad(g)X, \Ad(g)Y) = B(X,Y), \quad g\in G, X,Y\in \fg
+\]
+
+\subsection{killing form}
+Define \index{killing form} by 
+\[
+B_K(X,Y) = \tr(\ad X \ad Y), \quad X,Y\in \fg
+\]
+
+\subsection{trace form}
+For real linear lie algebra,
+define \index{trace form}
+\[
+B_T(X,Y) = \tr(XY).
+\]
+clearly, it is a symetric bilnear form (by compare the explicit expressions of
+both sides), i.e. 
+\[
+B_T(X,Y) = B_T(Y,X)
+\]
+moreover 
+\[
+\begin{split}
+B_T(\ad(Z)X,Y) &= \tr([Z,X]Y) = \tr(ZXY-XZY) \\
+&=  \tr(XYZ - XZY) =
+\tr(X[Y,Z]) = - B_T(X, \ad(Z)Y)
+\end{split}
+\]
+
+\subsection{bilinear form over simple lie algebra} 
+\label{sec:bilinear_form_simple}
+The radical $\rad(B) = \Set{Y\in \fg|B(X,Y) = 0\, \forall X\in \fg}$ 
+of the invariant bilinear form $B$ is a ideal of lie algebra
+$\fg$. 
+In fact, if $Y\in \rad(B)$, 
+\[
+B(X,\ad(Z) Y) = -B(\ad(Z)X,Y) = 0.
+\]
+Hence $\ad(Z) Y \in \rad(B)$. 
+
+So, if the lie algebra is simple, nontrival invariant bilinear form
+is nondegenerate. 
+
+In fact, the bilinear form give a hermitian structure on the adjoint
+representation of $\fg$. $\fg$ is simple lie algebra means this
+representation is irreducible. Thus the bilinear form is unique up to scaler.
+
+\section{Index}
+
+\end{document}
+
