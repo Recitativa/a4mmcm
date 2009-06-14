@@ -14,7 +14,7 @@ int main() {
   time_t seconds = time (NULL); // Get time as random seed. 
 
   SimPara Para; // The class for Parameters 
-  Para.T = 1; // Brownian motion form 0 to time T.
+  Para.T = 1; // Brownian motion from 0 to time T.
   Para.Terms = 200; // simulate how many times.  
   Para.P2 = 23; // Never use, for compatible.
   Para.Nseg = 27; // Never use, for compatible.

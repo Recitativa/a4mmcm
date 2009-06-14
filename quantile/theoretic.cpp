@@ -74,7 +74,7 @@ int BrownSim::Sim(SimPara Para) {
   double hsigma = sqrt(T/n); // corresponding sigma for each step; 
 
  
-  // FileName format out_Rb_Re_.bin, a binary file. 
+  // FileName format nout_Rb_Re_.bin, a binary file. 
   ostringstream SoutFilename;
   SoutFilename << "nout_" << Rb << "_" << Re << "_";
   SoutFilename << ".bin";
@@ -122,7 +122,7 @@ int BrownSim::Sim(SimPara Para) {
   Real B;
   double Q; // temporary varible for Quantile
   
-  // the array stor the Brownina path
+  // the array store the Brownian path
   Real * Record = new Real[1<<Re]; 
   
   if(Record == NULL) {
@@ -160,7 +160,7 @@ int BrownSim::Sim(SimPara Para) {
       int Np = 1<<g;
       // following the example, nStep=2, when g = Re-1; 
       // nStep=4, when g= Re-2;
-      size_t nStep = 1<<(Re-g);
+      int nStep = 1<<(Re-g);
       // StepIter is a Random Access Iterator which help STL 
       // consider Record as array with step nStep 
       StepIter<Real> Sp(Record+(nStep-1), nStep);
