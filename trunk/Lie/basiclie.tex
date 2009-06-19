@@ -98,6 +98,8 @@
 \def\Ad{\mathrm{Ad}}
 \def\agl{\mathrm{gl}}
 \def\asl{\mathrm{sl}}
+\def\aso{\mathrm{so}}
+\def\asp{\mathrm{sp}}
 \def\au{\mathrm{u}}
 \def\diag#1{\mathrm{diag}(#1)}
 \def\fh{\mathfrak{h}}
@@ -270,7 +272,7 @@ Cartan matrix respect to the standard simple root is
 
 Borel subalgebra
 
-\subsection{$\SO(n,\bC$}
+\subsection{$\SO(n,\bC)$}
 \[
 \SO(n,\bC) = \Set{g\in \GL(n,\bC)| g^Tg = 1}
 \]
@@ -281,8 +283,161 @@ Correspond lie algebra
 
 
 \subsection{$\Sp(n,\bC)$}
+Let 
+\[
+J = \begin{pmatrix}
+0 & I_n \\
+-I_n & 0
+\end{pmatrix}
+\]
+Define
+\[
+\Sp(n,\bC) = \Set{g\in \GL(2n,\bC)| g^TJg = J}.
+\]
 
-\section{}
+The lie algebra is 
+\[
+\asp(n,\bC) = \Set{X\in \Mat_{2n\times 2n}(\bC)| X^TJ + JX = 0}.
+\]
+
+If we write 
+\[
+X = \begin{pmatrix}
+  A & B \\
+  C & D 
+\end{pmatrix},
+\]
+by above equation, we have
+\begin{align*}
+X^TJ = & 
+\begin{pmatrix}
+  A^T & C^T \\
+  B^T & D^T
+\end{pmatrix}
+\begin{pmatrix}
+  0 & I_n \\
+  -I_n & 0
+\end{pmatrix}
+= \begin{pmatrix}
+-C^T & A^T \\
+ -D^T & B^T
+\end{pmatrix}\\
+JX = & 
+\begin{pmatrix}
+  0 & I_n \\
+  -I_n & 0
+\end{pmatrix}
+\begin{pmatrix}
+  A & B \\
+  C & D
+\end{pmatrix}
+= \begin{pmatrix}
+ C & D \\
+ -A & -B
+\end{pmatrix}
+\end{align*}
+
+Hence 
+\begin{align*}
+D =& -A^T\\
+B =& B^T \\
+C =&  C^T  
+\end{align*}
+
+The typical Cartan subalgebra is 
+\[
+\begin{split}
+\ft &=\sspan\Set{E_{l,l}-E_{n+l,n+l}|l=1,\cdots, n} \\
+&= 
+\Set{\begin{pmatrix}
+    h_1   &   0   & \cdots&  0   & 0    &   0  &\cdots& 0 \\
+    0     &   h_2 & \cdots&  0   & 0    &   0  &\cdots& 0  \\
+    \cdots& \cdots& \cdots&\cdots&\cdots&\cdots&\cdots& \cdots \\
+    0     &   0   & \cdots&  h_n & 0    &   0  &\cdots& 0 \\
+    0     &   0   & \cdots&  0   & -h_1 &   0  &\cdots& 0 \\
+    0     &   0   & \cdots&  0   &   0  &-h_2  &\cdots& 0 \\
+    \cdots& \cdots& \cdots&\cdots&\cdots&\cdots&\cdots& \cdots \\
+    0     &   0   &\cdots &  0   &    0 &   0  &\cdots& -h_n     
+  \end{pmatrix}}.
+\end{split}
+\]
+
+Let 
+\[
+e_l(X) = h_l,
+\]
+where $X$ is in above form.
+
+Now consider 
+\[ S = 
+ \begin{pmatrix}
+  H & 0 \\
+  0 & -H
+\end{pmatrix}
+\]
+in $\ft$, where $H$ is a diagnal matrix.
+Let 
+\[
+X = \begin{pmatrix}
+  A & B \\
+  C & -A^T
+\end{pmatrix}
+\] be an element in $\asp(2n,\bC)$, where $B, C$ are symetric matrix. 
+
+By elementary cumputation, we can see
+\[
+[S, X] = 
+\begin{pmatrix}
+  HA-AH & HB + BH \\
+  -(HC+CH) & -(HA-AH)^T 
+\end{pmatrix}
+\]
+
+Then we can see the roots and corresponding root vectors are
+\begin{align*}
+e_l-e_k : & E_{l,k} -E_{k+n,l+n} \\
+e_l+e_k : & E_{l, k+n} + E_{k,l+n} \\
+-(e_l+e_k) :& E_{l+n,k} + E_{k+n,l} ,
+\end{align*}
+where $l,k = 1, \cdots, n$.
+
+Choose positive system $\Delta=\Set{e_l-e_k|l<k} \cup \Set{e_l+e_k}$.
+Then the set of simple roots is $\Set{e_l-e_{l+1}|l=1,\cdots, n} \cup \Set{2e_{n}}$.
+
+Let $S = E_{1,1} - E_{1+n,1+n}$.
+Then 
+\[
+B_K(S,S) = \sum_{\alpha\in \Delta} \alpha(S)^2 = 2*(n-1) + 4*n = (3n-1) B_T(S,S)
+\]
+
+we can choose (under $B = \frac{1}{2}B_T$)
+\[
+H_{\pm e_l \pm e_k} = \pm(E_{l,l}-E_{l+n,l+n}) \pm (E_{k,k}-E_{k+n,k+n})
+\]
+
+Then 
+\[
+\frac{2\inn{e_l-e_k}{e_s-e_t}}{\inn{e_l-e_k}{e_l-e_k}}
+=\delta_{l,s} + \delta_{k,t}-\delta_{k,s} -\delta_{l,t}
+\]
+\[
+\frac{2\inn{e_l-e_k}{e_s+e_t}}{\inn{e_l-e_k}{e_s+e_k}}
+=\delta_{l,s} + \delta_{l,t}-\delta_{k,s} -\delta_{k,t}
+\]
+
+The cartan matrix is 
+\[
+\begin{pmatrix}
+ 2 & -1 &  0 & \cdots & 0 & 0 \\
+-1 &  2 & -1 & \cdots & 0 & 0 \\
+0  & -1 &  2 & \cdots & 0 & 0 \\
+\cdots & \cdots &\cdots & \cdots &\cdots & \cdots \\
+0  & 0  &  0 & \cdots & 2 & -2 \\
+0  & 0  &  0 & \cdots & -1 & 2 
+\end{pmatrix}
+\]
+
+\section{Real Lie groups and its algebra}
 
 \subsection{$\GL(n,\bR)$}
 \[
