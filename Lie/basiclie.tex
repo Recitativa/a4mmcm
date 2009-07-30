@@ -269,10 +269,9 @@ Cartan matrix respect to the standard simple root is
 \end{pmatrix}
 \] 
 
+The borel subalgebra is upper triangle matrices in $\asl(n,\bC)$. 
 
-Borel subalgebra
-
-\subsection{$\SO(n,\bC)$}
+\subsection{$\SO(2n,\bC)$ and $\SO(2n+1,\bC)$}
 \[
 \SO(n,\bC) = \Set{g\in \GL(n,\bC)| g^Tg = 1}
 \]
@@ -280,6 +279,106 @@ Correspond lie algebra
 \[
 \aso(n,\bC) = \Set{X\in \agl(n,\bC)| X^T + X = 0}
 \]
+
+The diagnal elements are all zero for any $X\in \aso(n,\bC)$.
+Hence the complex dimension of the lie algebra is 
+$n(n-1)/2$.
+
+Choose the cartan subalgebra be 
+\[
+\ft = \begin{pmatrix}
+   0 & h_1 &   0 & 0 & \cdots & 0 & 0 & 0 \\
+-h_1 & 0   &   0 & 0 & \cdots & 0 & 0 & 0 \\
+   0 & 0   &   0 & h_2 & \cdots & 0 & 0 & 0 \\
+   0 & 0   & -h_2&  0 & \cdots & 0 & 0 & 0 \\
+\cdots&\cdots&\cdots&\cdots&\cdots&\cdots&\cdots&\cdots\\
+   0 & 0   & 0   &  0 & \cdots & 0 & h_n & 0 \\
+   0 & 0   & 0   &  0 & \cdots & -h_n& 0 & 0 \\
+   0 & 0   & 0   &  0 & \cdots & 0 & 0 & 0 
+\end{pmatrix}
+\]
+for $\aso(2n+1,\bC)$ and delete the last row and column for $\aso(2n,\bC)$.
+
+\subsubsection{$\aso(2n,\bC)$}
+Consider the block matrix, with $k,l$-the block:
+\[
+Y = \begin{pmatrix}
+  0  & X \\
+  -X^T & 0  
+\end{pmatrix}
+\]
+where $X\in \Mat_{2\times 2}(\bC)$.
+
+\[
+S = \begin{pmatrix}
+   0 & h_k &   0 & 0 \\
+-h_k & 0   &   0 & 0 \\
+   0 & 0   &   0 & h_l \\
+   0 & 0   & -h_l&  0 
+\end{pmatrix}
+\]
+By easy caculation we see that:
+\[
+\begin{cases}
+[S,Y] = (ih_k+ih_l) Y
+& X = \begin{pmatrix}
+  1 & i \\
+  i & -1
+\end{pmatrix} \\
+[S,Y] = (ih_k-ih_l) Y
+& X = \begin{pmatrix}
+  1 & -i \\
+  i & 1
+\end{pmatrix} \\
+[S,Y] = (-ih_k-ih_l) Y
+& X = \begin{pmatrix}
+  -1 & i \\
+  i & 1
+\end{pmatrix} \\
+[S,Y] = (-ih_k+ih_l) Y
+& X = \begin{pmatrix}
+   1 & i \\
+  -i & 1
+\end{pmatrix} 
+\end{cases}
+\]
+
+Let $e_k(H) = -ih_k$, then all the nontrivial roots are $\pm e_k \pm e_l$.
+
+Still choose the positive system by \index{lexticographic order}
+\subsubsection{$\aso(2n+1, \bC$}
+Consider the last column now. Let
+\[
+S = \begin{pmatrix}
+  0 & h_l & 0 \\
+  -h_l & 0 & 0 \\
+  0 & 0 &0 
+\end{pmatrix}
+\]
+
+\[
+Y = \begin{pmatrix}
+  0 & X\\
+  -X^T & 0
+\end{pmatrix}
+\]
+where $X\in \Mat_{2\times 1}(\bC)$.
+Then 
+\[
+\begin{cases}
+[S,Y] = -ih_k Y & 
+X = \begin{pmatrix}
+  1 \\
+  -i
+\end{pmatrix} \\
+[S,Y] = ih_k Y & 
+X = \begin{pmatrix}
+  1 \\
+  i
+\end{pmatrix} 
+\]
+Hence $\pm e_k$ are extra roots for $\aso(2n+1,\bC)$ than $\aso(2n,\bC)$.
+
 
 
 \subsection{$\Sp(n,\bC)$}
@@ -343,6 +442,9 @@ D =& -A^T\\
 B =& B^T \\
 C =&  C^T  
 \end{align*}
+
+Hence the complex dimension of the lie algebra and lie group is 
+$n^2+n(n+1) = n(2n+1)$.
 
 The typical Cartan subalgebra is 
 \[
@@ -422,7 +524,7 @@ Then
 \]
 \[
 \frac{2\inn{e_l-e_k}{e_s+e_t}}{\inn{e_l-e_k}{e_s+e_k}}
-=\delta_{l,s} + \delta_{l,t}-\delta_{k,s} -\delta_{k,t}
+=\delta_{l,s} + \delta_{l,zazat}-\delta_{k,s} -\delta_{k,t}
 \]
 
 The cartan matrix is 
