@@ -22,7 +22,7 @@ theoretic_test.exe: theoretic_test.cpp theoretic.cpp theoretic.hpp
 	g++ -Wall -g -o $@ $< theoretic.cpp $(CXXFLAGS) $(LDFLAGS) $(BOOSTFLAGS)
 
 t1.exe: t1.cpp
-	g++ -o $@ $<
+	g++ -Wall -g -o $@ $<
 
 bitree_rec.exe: bitree_rec.cpp
 	g++ -o $@ $<
