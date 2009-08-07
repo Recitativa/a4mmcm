@@ -25,7 +25,7 @@ t1.exe: t1.cpp
 	g++ -Wall -g -o $@ $<
 
 bitree_rec.exe: bitree_rec.cpp
-	g++ -o $@ $<
+	g++ -O3 -o $@ $<
 
 clean:
 	rm -f *.o 
@@ -33,3 +33,5 @@ clean:
 
 astyle:
 	sh -c "astyle --style=kr --pad=oper --indent=spaces=2  *.cpp *.hpp"
+
+.PHONY: clean t1 bitree_rec test run
