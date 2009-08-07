@@ -29,18 +29,33 @@ typedef struct{
   int qth;
 } Node;
 
+#define PRINT_LIST       do {				\
+    list<Real>::iterator iit;				\
+    for(iit=OrderedPath.begin();			\
+	iit!=OrderedPath.end();				\
+	iit++)						\
+      cout << *iit << " ";				\
+    cout << endl;					\
+  }while(false)					
+
+
+
 Real pprice(int steps, Real ZZ) {
   list<Real>::iterator it;
   Real g1,g2,g3, pay;
-  Real Walpha, Z;
+  Real Walpha;
   
   Node *STACK = new Node[steps+1];
   int nstack = 1;
-  OrderedPath.push_back(Z);
+  OrderedPath.clear();
+  OrderedPath.push_back(ZZ);
   STACK[0].in_it = OrderedPath.begin();
   STACK[0].qu_it = OrderedPath.begin();
   STACK[0].st = no;
   STACK[0].qth = 0;
+
+  //PRINT_LIST;
+
 #define DELTERM do {				\
     OrderedPath.erase(PTERM.in_it);		\
   } while(false)
@@ -54,10 +69,10 @@ Real pprice(int steps, Real ZZ) {
     else {						\
       for(it=PTERM.in_it;it!=OrderedPath.begin() && Z <=*(--it);)	\
 	NULL;								\
-    }                                                                   \
-    if(Z>*it) it++;							\
+      if(Z>*it) it++;							\
+    }									\
     OrderedPath.insert(it,Z);						\
-    NTERM.in_it = it;							\
+    NTERM.in_it = (--it);						\
     it = PTERM.qu_it;							\
     int qth = PTERM.qth;						\
     if(Z<=*(PTERM.qu_it)) qth++;					\
@@ -72,11 +87,13 @@ Real pprice(int steps, Real ZZ) {
     NTERM.Walpha = Z1 + (Z2-Z1)*(nstack*alpha-qth);			\
     NTERM.g1 = payfun(NTERM.Walpha);					\
     nstack++;								\
+    /*PRINT_LIST;*/							\
   } while(false)
 
   do {
     Node &PTERM = STACK[nstack-1]; // present Node;
     Node &NTERM = STACK[nstack]; // next Node;
+    Real Z;
     if(nstack==steps)
       { pay = PTERM.g1;
 	DELTERM;
@@ -98,7 +115,7 @@ Real pprice(int steps, Real ZZ) {
       Z = *(PTERM.in_it) + mu + sdelta;
       ADDTERM;
     } 
-  }while(nstack==0);
+  }while(nstack!=0);
   return pay;
 }
 
@@ -106,12 +123,12 @@ Real pprice(int steps, Real ZZ) {
 int main()
 {
   mu = 1;
-  sdelta= 2;
+  sdelta= .5;
   alpha = .5;
-  dis = exp(-.01);
+  dis = 1.0;
   // payfun=callfun; 
   OrderedPath.clear();
-  cout << pprice(30,0) << endl; 
+  cout << pprice(25,0) << endl; 
   
   return 0;
 }
