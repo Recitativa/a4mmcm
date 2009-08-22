@@ -69,7 +69,7 @@ int main() {
   //fp.open("fsg.dat", ofstream::app);
   fp.open("fsg.dat");
   valp[0]=exp(-r*T);
-  for( steps=10; steps<=1000; steps+=10)
+  for( steps=10; steps<=100; steps+=10)
   {
     double up=sigma*sqrt(T/steps)/factor; // up movement
 	for(int j= -steps; j<steps+1; j++) {
