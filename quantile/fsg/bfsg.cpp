@@ -16,9 +16,9 @@ double forwardST( double S, //spot price
 		  double T,  //time to maturity 
 		  int steps) {
   double dt = T/steps;
-  double R = exp((-r)*dt); 	//discount rate at each step
-  double dw = sigma*dt; // up movement
-  double du = (r)*dt; // up per unit time
+  double R = exp(-r*dt); 	//discount rate at each step
+  double dw = sigma*sqrt(dt); // up movement
+  double du = (r-sigma*sigma/2)*dt; // up per unit time
   double D = alpha*(steps);  //barrier
   double pu = .5;  //probability of upward
   double pd = .5;   //downward
@@ -70,19 +70,23 @@ int main() {
 
   for( steps=10; steps<=100; steps+=10)
   {
+    int k;
     double valp, valn;
     valp = 0;
     valn = exp(-r*T);
     value = 0;
-    int n = 100;
-    double dd = ((r-sigma*sigma/2)*T+sigma*T)/n;
-    for(int k=log(X/S)/dd; k<n; k++) {
+    int n = 2000;
+    double dt = T/steps;
+    double dd = ((r-sigma*sigma/2)*T+sigma*sqrt(dt)*steps)/n;
+    for(k=log(X/S)/dd; k<n; k++) {
       B= S*exp(k*dd);
       valp = valn;
       valn=forwardST(S, r, B, alpha, sigma, T, steps); 
       //cerr<<k <<" "<< B<< " "<< valp << " " << valn << endl;
       value=value+max(B-X,0.0)*(valp-valn);
+      if(valp <= 0.00001) break;
     }
+    cerr << valp << " " << k << endl;
     fp << steps << "  " << value << endl;
   }		
   fp.close();
