@@ -16,39 +16,41 @@ double forwardST( double S, //spot price
 		  double T,  //time to maturity 
 		  int steps) {
   double dt = T/steps;
-  double R = exp((-r)*(T/steps)); 	//discount rate at each step
+  double R = exp((-r)*dt); 	//discount rate at each step
   double dw = sigma*dt; // up movement
-  double du = (r-sigma*sigma/2)*dt; // up per unit time
-  double D = alpha*(steps+1);  //barrier
+  double du = (r)*dt; // up per unit time
+  double D = alpha*(steps);  //barrier
   double pu = .5;  //probability of upward
   double pd = .5;   //downward
   double p0 = 0;
   int m = steps;
   double bar = log(B/S); //barrier
-  double odd[m+1][2*m+1];
-  double even[m+1][2*m+1];
+  const int N = (m+1)*(2*m+1);
+  double data[2*N];
 
 #define g(k,j) ((dw*(j)+du*i<=bar)?((k)+1):(k))
+#define IND(k,j)  ((k)*(2*m+1)+(j)+m)
 	
+  double * even, * odd, *tmp;
+  even  = data;
+  odd = data+N;
+
   for(int k=0; k<m+1;k++)
     for(int j=-m; j<m+1;j++) {
-      if (k<D) even[k][j+m]=1;
-      else even[k][j+m]=0;
+      if (k<D) even[IND(k,j)]=1;
+      else even[IND(k,j)]=0;
     }
 	
   for(int i=m-1;i >=0; i--) {
+    tmp = even; even = odd; odd = tmp;
     for(int k=0; k<i+1;k++)
-      if((m-i)%2==1) {
 	for(int j=-i; j<i+1;j++) {
-	  odd[k][j+m]= (pu*even[g(k,j+1)][j+1+m]+p0*even[g(k,j)][j+m]+pd*even[g(k,j-1)][j-1+m])*R; }
-      }
-      else { 
-	for(int j=-i; j<i+1;j++) {
-	  even[k][j+m]=(pu*odd[g(k,j+1)][j+1+m]+p0*odd[g(k,j)][j+m]+pd*odd[g(k,j-1)][j-1+m])*R;
+	  even[IND(k,j)] = (  pu*odd[IND(g(k,j+1),j+1)]			\
+			      + p0*odd[IND(g(k,j),j)]			\
+			      + pd*odd[IND(g(k,j-1),j-1)])*R;
 	}
-      }
   }  
-  return (m%2)==1?even[0][m]:odd[0][m];
+  return even[IND(0,0)];
 }
 
 int main() {
@@ -78,7 +80,7 @@ int main() {
       B= S*exp(k*dd);
       valp = valn;
       valn=forwardST(S, r, B, alpha, sigma, T, steps); 
-      cerr<<k <<" "<< B<< " "<< valp << " " << valn << endl;
+      //cerr<<k <<" "<< B<< " "<< valp << " " << valn << endl;
       value=value+max(B-X,0.0)*(valp-valn);
     }
     fp << steps << "  " << value << endl;
