@@ -30,11 +30,11 @@ double forward_shorting_grid_cumulative_parisian_binary_option( double S, //spot
   double odd[m+1][2*m+1];
   double even[m+1][2*m+1];
 
-#define g(k,j) (((j)>=b)?((k)+1):(k))
+#define g(k,j) (((j)<=b)?((k)+1):(k))
 	
   for(int k=0; k<m+1;k++)
     for(int j=-m; j<m+1;j++) {
-      if (k>D) even[k][j+m]=1;
+      if (k<D) even[k][j+m]=1;
       else even[k][j+m]=0;
     }
 	
@@ -62,24 +62,26 @@ int main() {
   double sigma=0.2;  //volatility																
   double T=0.25;  //time to maturity 
   int steps=10;
-  vector<double> valp(1000*2+2,0);
-  vector<double> value(1000,0);
+  vector<double> valp(2000*2+2,0);
+  double value;
   
   ofstream fp;
   //fp.open("fsg.dat", ofstream::app);
   fp.open("fsg.dat");
   valp[0]=exp(-r*T);
-  for( steps=10; steps<=100; steps+=10)
+  for( steps=130; steps<=190; steps+=10)
   {
     double up=sigma*sqrt(T/steps)/factor; // up movement
-	for(int j= -steps; j<steps+1; j++) {
+    for(int j= -steps; j<steps+1; j++) {
       B=S*exp(j*up);
-      valp[j+steps+1]=forward_shorting_grid_cumulative_parisian_binary_option(S, r, B, 1-alpha, sigma, T, steps); 
-										}
-    value[(steps/10)-1]=0;	
+      valp[j+steps+1] =							\
+	forward_shorting_grid_cumulative_parisian_binary_option(S, r, B, alpha, sigma, T, steps); 
+    }
+ 
+    value=0;	
     for(int j=-steps; j<steps+1;j++)
-      value[steps/10-1]=value[steps/10-1]+max(exp(j*up)*S-X,0.0)*(valp[j+steps]-valp[j+steps+1]);
-    fp << steps << "  " << up << " " <<  value[steps/10-1] << endl;
+      value=value+max(exp(j*up)*S-X,0.0)*(valp[j+steps]-valp[j+steps+1]);
+    fp << steps << "  " << up << " " <<  value << endl;
   }		
   fp.close();
   return 0;
