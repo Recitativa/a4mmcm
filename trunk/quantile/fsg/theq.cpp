@@ -6,6 +6,13 @@
 using namespace std;
 
 const double PI = 3.1415926535897932384626433832795;
+double mu;
+double sigma; //
+double r; // interest rate
+double S0; // initial value of stocks
+double T; // time 
+double K; // strike price
+
 
 
 double dP_dy(double t, double u, double y) {
@@ -18,22 +25,31 @@ double dP_dy(double t, double u, double y) {
 	       );
 }
 
-double mu;
-double sigma; //
-double r; // interest rate
-double S0; // initial value of stocks
-double T; // time 
-double K; // strike price
+double phi(double t,x, u) {
+}
 
-double f(double w, void *Iparams) { 
-  return (S0-K)*exp(w)*dP_dy(T,mu/sigma,w);
+
+gsl_integration_workspace * w			\
+= gsl_integration_workspace_alloc (3000);
+
+gsl_function iF;
+
+
+int main() {
+  double S0=100; // spot price
+  double X=95;  //strike price
+  double r=0.05; //interest rate
+  double B; //down barrier
+  double alpha=0.8; 
+  double sigma=0.2;  //volatility
+  double T=0.25;  //time to maturity 
+  
+  
+  
 }
 
 double Quantile::mean() {
 
-  gsl_integration_workspace * w
-
-  = gsl_integration_workspace_alloc (3000);
 
 
   double result, error;
