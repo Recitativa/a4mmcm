@@ -64,29 +64,46 @@ int main() {
   int steps=10;
   double value;
 
+  double bars[20000];
+
   ofstream fp;
-  fp.open("fsg.dat");
+  fp.open("bfsg.dat");
 
 
-  for( steps=10; steps<=100; steps+=10)
+
+  for( steps=160; steps<=200; steps+=10)
   {
-    int k;
+    double dt = T/steps;
+    double dw = sigma*sqrt(dt); // up movement
+    double du = (r-sigma*sigma/2)*dt; // up per unit time
+ 
+    int i,j, n;
+    n=0;
+    for(i=0; i<= steps;i++) {
+      bars[n] = i*du+i*dw;
+      n++;
+      for(j=0;j<i;j++) {
+	bars[n]=bars[n-1]-2*dw;
+	n++;
+      }
+    }
+    sort(bars,bars+n);
+
     double valp, valn;
     valp = 0;
     valn = exp(-r*T);
     value = 0;
-    int n = 2000;
-    double dt = T/steps;
-    double dd = ((r-sigma*sigma/2)*T+sigma*sqrt(dt)*steps)/n;
-    for(k=log(X/S)/dd; k<n; k++) {
-      B= S*exp(k*dd);
+    double barstart = log(X/S);
+    for(i=0; i<n; i++) {
+      if(bars[i]< barstart) continue;
+      B= S*exp(bars[i]);
       valp = valn;
       valn=forwardST(S, r, B, alpha, sigma, T, steps); 
-      //cerr<<k <<" "<< B<< " "<< valp << " " << valn << endl;
+      //cerr<<i <<" "<< B<< " "<< valp << " " << valn << " " << value << endl;
       value=value+max(B-X,0.0)*(valp-valn);
       if(valp <= 0.00001) break;
     }
-    cerr << valp << " " << k << endl;
+    cerr << valp << " " << i << endl;
     fp << steps << "  " << value << endl;
   }		
   fp.close();
