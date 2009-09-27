@@ -129,8 +129,8 @@ int main()
 
   Real S0, K, r, sigma,T, mu;
   int n;
-  S0=100, K=100, alpha=0.5, r=0.05, sigma=0.2, T=1, mu=r;
-  n = 30;
+  S0=100, K=95, alpha=0.8, r=0.05, sigma=0.2, T=.25, mu=r-sigma*sigma/2;
+  n = 20;
 
   su = mu*T/n;
   sdelta= sigma*sqrt(T/n);
