@@ -2,6 +2,7 @@
 #include<list>
 #include <cmath>
 #include <algorithm>
+#include <cassert>
 
 using namespace std;
 
@@ -9,7 +10,7 @@ typedef double Real;
 
 Real K; 
 Real su, sdelta, dis, rho, alpha;
-//Real (*payfun)();
+Real dt;
 
 
 list<Real> OrderedPath;
@@ -67,13 +68,14 @@ Real pprice(int steps, Real ZZ) {
       for(it=PTERM.in_it;it!=OrderedPath.end() && Z > (*it);it++)	\
 	NULL;								\
     }									\
-    else {						\
-      for(it=PTERM.in_it;it!=OrderedPath.begin() && Z <=*(--it);)	\
+    else {								\
+      for(it=PTERM.in_it;it!=OrderedPath.begin() && Z <=*(it);it--)	\
 	NULL;								\
       if(Z>*it) it++;							\
     }									\
     OrderedPath.insert(it,Z);						\
     NTERM.in_it = (--it);						\
+    assert(*(NTERM.in_it)==Z);						\
     it = PTERM.qu_it;							\
     int qth = PTERM.qth;						\
     if(Z<=*(PTERM.qu_it)) qth++;					\
@@ -88,7 +90,7 @@ Real pprice(int steps, Real ZZ) {
     NTERM.Walpha = Z1 + (Z2-Z1)*(nstack*alpha-qth);			\
     /*NTERM.g1 = payfun(NTERM.Walpha);*/				\
     if(nstack==steps-1) NTERM.g1 = payfun(NTERM.Walpha);       		\
-    else NTERM.g1=10000;						\
+    else NTERM.g1=1000000;						\
     nstack++;								\
     /*PRINT_LIST;*/							\
   } while(false)
@@ -97,6 +99,7 @@ Real pprice(int steps, Real ZZ) {
     Node &PTERM = STACK[nstack-1]; // present Node;
     Node &NTERM = STACK[nstack]; // next Node;
     Real Z;
+    PRINT_LIST;
     if(nstack==steps)
       { pay = PTERM.g1;
 	DELTERM;
@@ -130,15 +133,16 @@ int main()
   Real S0, K, r, sigma,T, mu;
   int n;
   S0=100, K=95, alpha=0.8, r=0.05, sigma=0.2, T=.25, mu=r-sigma*sigma/2;
-  n = 20;
+  n = 8;
 
-  su = mu*T/n;
-  sdelta= sigma*sqrt(T/n);
-  dis = exp(-r*T/n);
+  dt = T/n;
+  su = mu*dt;// su=.5;
+  sdelta= sigma*sqrt(dt); //sdelta=1;
+  dis = exp(-r*dt);
   rho = S0/K;
 
   cout<< su << " " << sdelta <<" "<< alpha << " " << dis <<" " << rho << endl; 
-  // payfun=callfun; 
+ 
   OrderedPath.clear();
   cout << K*pprice(n+1,0) << endl; 
   return 0;
