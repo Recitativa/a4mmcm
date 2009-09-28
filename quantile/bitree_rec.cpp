@@ -3,6 +3,7 @@
 #include <cmath>
 #include <algorithm>
 #include <cassert>
+#include <fstream>
 
 using namespace std;
 
@@ -94,8 +95,7 @@ Real pprice(int steps, Real ZZ) {
     NTERM.Walpha = Z1 + (Z2-Z1)*(nstack*alpha-qth);			\
     /*NTERM.g1 = payfun(NTERM.Walpha);*/				\
     /*NTERM.Walpha = *it;*/						\
-    if(nstack==steps-1) NTERM.g1 = payfun(NTERM.Walpha);       		\
-    else NTERM.g1=10000;						\
+    NTERM.g1 = payfun(NTERM.Walpha);					\
     nstack++;								\
     /*PRINT_LIST;*/							\
   } while(false)
@@ -110,8 +110,8 @@ Real pprice(int steps, Real ZZ) {
 	DELTERM;
       }
     else if(PTERM.st == down) {
-      //pay = max(PTERM.g1, dis*(PTERM.g2+pay)/2);
-      pay = dis*(PTERM.g2+pay)*.5;
+      pay = max(PTERM.g1, dis*(PTERM.g2+pay)*.5);
+      //pay = dis*(PTERM.g2+pay)*.5;
       DELTERM;
     }
     else if(PTERM.st == up) {
@@ -129,15 +129,15 @@ Real pprice(int steps, Real ZZ) {
   return pay;
 }
 
+ofstream of;
+
 int main()
 {
   Real S0, K, r, sigma,T, mu;
   int n,i;
   S0=100, K=95, alpha=0.8, r=0.05, sigma=0.2, T=.25, mu=r-sigma*sigma/2;
-  n = 20;
+  n = 30;
 
-  for(i=0;i<5; i++) {
-    n=10+2*i;
   dt = T/n;
   su = mu*dt;// su=.5;
   sdelta= sigma*sqrt(dt); //sdelta=1;
@@ -147,8 +147,7 @@ int main()
   OrderedPath.clear();
   Real A = K*pprice(n+1,0);
   cout << dt <<" " << n << " " << A << endl;
-  }
-
+ 
   return 0;
 }
 
