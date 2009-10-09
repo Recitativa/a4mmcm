@@ -38,7 +38,7 @@
 \def\sspan{\rm{span}}
 \def\sl2{{\mathfrak{sl}(2)}}
 \def\slc{{\mathfrak{sl}(2,\bC)}}
-\def\Sp{\mathrm{SP}}
+\def\Sp{\mathrm{Sp}}
 \def\GL{\mathrm{GL}}
 \def\sP{\mathcal{P}}
 \def\sH{\mathcal{H}}
@@ -50,7 +50,12 @@
 \def\id{{\rm id}}
 \def\sgn{{\rm sgn}}
 \def\gcd{{\rm gcd}}
-\def\inn#1#2{\left<{#1},{#2}\right>}
+\def\inn#1#2{\left<{#1}\,,\,{#2}\right>}
+\def\bform#1#2{\left({#1}\,,\,{#2}\right)}
+\def\cform#1#1{\left\{{#1}\,,\,{#2}\right\}}
+\def\isoarrow{\tilde{\rightarrow}}
+\def\tr{{\rm tr}}
+\def\invl{{\natural}}
 
 \hypersetup{
     bookmarks=false,         % show bookmarks bar?
@@ -77,8 +82,49 @@
 
 \begin{document}
 \maketitle
+\section{Heisenberg groups}
+\begin{prop}\label{prop:1.1}
+\end{prop}
+\begin{prop}\label{prop:1.2}
+Give $W$ the structure of $A$-module as in proposition~\ref{prop:1.1} d). 
+Then $\inn{}{}\colon W\times W \to A$ is an $A$-bilinear form which 
+is skew-symmetric and non-degenerate in the strong sense that the map 
+$\alpha\colon W \to \Hom_A(W,A)$ defined by 
+\begin{equation}\label{eq:1.5}
+\alpha(w)(w') = \inn{w}{w'}
+\end{equation}
+is an isomorphism of $A$-modules.
+\end{prop}
 
-\section{reductive dual pairs}
+\section{Structure of $\Sp(W)$; free polarizations}
+\begin{prop}\label{prop:5.2}
+\begin{enumerate}[a)]
+\item $\Sp$ acts transitively on the set of free polarizations of rank $m$.
+\item Let $U\subseteq W$ be a free polarization, and let $P(U,W)= P(U) = P$
+be the subgroup of $\Sp$ leaving $U$ invariant. Then the restrictio map 
+\begin{equation}\label{eq:5.2}
+r\colon P\rightarrow \GL(U)
+\end{equation}
+is surjective.
+\item Let $N(U,W) = N(U)=N$ be the kernel of the map $r$ of $(\ref{eq:5.2})$.
+Then $N$ acts simply transitively on the set of complete polarizations with
+$U$ as first member. Equivalently $N$ acts simply transitively on 
+the set of free polarizations of $W$ complementray to $U$.
+\item Fix a free polarization $U'$ complementry to $U$. 
+Then there is an isomorphism 
+\begin{equation}\label{eq:5.3}
+\beta\colon N \isoarrow S^{2*}(U'),
+\end{equation}
+where $S^{2*}(U')$ denots the space of symmetric bilinear forms on $U'$.
+\item Let $M=P(U)\cap P(U')$. Then $M$ is a complement to $N$ 
+in $P$, so that $P$ is a semidirect product.
+\begin{equation}\label{eq:5.4}
+P\simeq M \ltimes N
+\end{equation}
+\end{enumerate}
+\end{prop}
+
+\section{Reductive dual pairs, definition and classification}
 Let $\Gamma$ be a group $(G, G')$ be a pair of subgroups of $\Gamma$. 
 We will say $(G,G')$ form a {\em dual pair}\index{dual pair} 
 of subgroups of $\Gamma$ if
@@ -112,7 +158,7 @@ is the {\em direct sum}\index{direct sum} of $(G_i, G'_i)$.
 If $(G,G')$ has no non-trivial direct sum decomposition, then we will call 
 $(G,G')$ {\em irreducible}\index{irreducible}. 
 
-\begin{prop}
+\begin{prop}\label{prop:6.1}
 \begin{enumerate}[a)]
 \item Every reductive dual pair is the direct sum of irreducible subpairs in an 
 essentially unique way (i.e., up to numbering of the pairs)
@@ -158,12 +204,12 @@ therefor, it will sufficent to show that each $G$-isotypic component is irreduci
 Consider a subspace $U\subseteq W$ which is irreducible for $G\cdot G'$. 
 Then $U$ must consist of a single isotypic component for either $G$ 
 or $G'$. The form $\inn{}{}$ is either trivial or non-degenerate on $U$. 
-Suppose first $\inn{}{}$ is non-degenerate. Then $W= U\oplus U^\prep$ is a 
+Suppose first $\inn{}{}$ is non-degenerate. Then $W= U\oplus U^\perp$ is a 
 decomposition of $(G,G')$.  Since the operator which is the identity on $U$
-and minus the identity on $U^\prep$ commutes with both $G$ and $G'$, it must 
+and minus the identity on $U^\perp$ commutes with both $G$ and $G'$, it must 
 belong to both. 
-Therefore $U$ and $U^\prep$ contain no isomorphic $G$-submodules\footnote{if has
-there exits an non-trivial intertwining map $T\colon U\to U^\prep$, 
+Therefore $U$ and $U^\perp$ contain no isomorphic $G$-submodules\footnote{if has
+there exits an non-trivial intertwining map $T\colon U\to U^\perp$, 
 then $-Tu=gTu =Tgu = Tu$, a contradicitoion},
 so $U$ is a full isotypic component in $W$ for $G$ and $G'$. This is case 
 $b)i)$. 
@@ -171,19 +217,166 @@ $b)i)$.
 Secondly, suppose $\inn{}{}$ is trivial on $U$. 
 Then there is another $G\cdot G'$-irreducible subspace $V$ which is paired 
 non-trivially, hence non-degenerately, with $U$. I claim $V$ must also be 
-isotropic. Otherwise, we could write $W=V\oplus V^\prep$ and reason as just 
+isotropic. Otherwise, we could write $W=V\oplus V^\perp$ and reason as just 
 above. But then $U$ would be the graph of a non-trivial $G\cdot G'$ 
-intertwining morphism form $V^\prep$ to $V$, which, we saw above, does not 
+intertwining morphism form $V^\perp$ to $V$, which, we saw above, does not 
 exist. Thus $U$ and $V$ are both isotropic. 
-Write $W=(U\oplus V) \oplus (U\oplus V)^\prep$. Observe that multiplicatio by 
-a scalar $t$ on $U$, by $t^-1$ on $V$ and by $1$ on $(U\oplus V)^\prep$
+Write $W=(U\oplus V) \oplus (U\oplus V)^\perp$. Observe that multiplicatio by 
+a scalar $t$ on $U$, by $t^-1$ on $V$ and by $1$ on $(U\oplus V)^\perp$
 defines an element of $\Sp$ commuting with both $G$ and $G'$, so belonging
 to both. Thus again $U$ must be a full $G$-isotypic component in $W$, 
 and the proposition is proved. 
 \qed
 
+Let $(G,G')$ be a reductive dual pair in $\Sp$. We will say $(G,G')$
+is of {\em type I}\index{type I} or {\em type II}\index{type II} according as
+possibility i) or possibility ii) of proposition~\ref{prop:6.1} b) obtains. 
+We proceed to describe more precisely the pairs of the two types. 
+We begin with type II pairs, as these are somewhat simpler than type I pairs.
 
+\begin{prop}\label{prop:6.2}
+Let $(G,G')\subseteq \Sp$ be an irreducible type II reductive dual pair. 
+Let $(U_1, U_2)$ be the complete polarization of $W$ invariant by $G\cdot G'$,
+so that $W=U_1\oplus U_2$ and each of $U_1$ and $U_2$ are isotropic and 
+irreducible under $G\cdot G'$. Then restriction to $U_i$ embeds 
+$(G,G')$ as a reductive dual pair in $GL(U_i)$. Thus there is 
+\begin{enumerate}[i)]
+\item a division algebra $D$, and
+\item a right vector space $V$ and a left vector space $V'$ over $D$, 
+\end{enumerate}
+such that $U_1$ is isomorphic to $V\otimes_D V'$ in such fashion 
+that $G$ is identified to $\GL_D(V)\otimes I_{V'}$ and $G'$ 
+is identified to $I_V\otimes GL_D(V')$ where $I_V$ and $I_{V'}$
+are the identity operators on $V$ and $V'$ respectively. 
+\end{prop}
+\proof
+Both $G$ and $G'$ are in the subgroup $M$ preserving $U_1$ and $U_2$, 
+as described in proposition~\ref{prop:5.2} e). By that result $M$ is identified 
+by restriction with $\GL(U_i)$. Clearly, if $G'$ is the centralizer 
+of $G$ in $\Sp$, it is the centralizer of $G$ in $M$ also. 
+We now may apply the classical description of reductive dual pairs 
+in the general linear groups, essentially amounting to the
+Double Commutant Theorem of linear algebra, to obtain the existence 
+of $D$ and the decompositio of $U_1$ as a tensor product\footnote{
+Here view $U_1$ as a $G$ representation which has only one isotypic component,
+hence $U_1 = \bigoplus_{h} V_h$ wherr all $V_h \simeq V_\sigma$, where 
+$\sigma \in \hat{G}$. Then $D = \Hom_G(V_\sigma, V_\sigma)$.
+}.
 
+Remark: Since $U_2$ may be identified to $U_1^*$ as in $(\ref{eq:1.5})$,
+we may write $W \simeq V\otimes_D V' \oplus V'^*\otimes_D V^*$ in such 
+a way that $(G,G')$ is identified to $(\GL_D(V), \GL_D(V'))$
+acting in the obvious way. 
+Sometimes a slight variant of this construction is useful.
+Namely, we can take two right $D$ vector space $V$ and $V'$ and identify
+$U_1$ with $\Hom_D(V,V')$. Then $G$ acts by right multiplication by 
+inverses and $G'$ acts by left multiplication. 
+Then 
+\begin{equation}\label{eq:6.1}
+W\simeq \Hom_D(V,V') \oplus \Hom_D(V',V)
+\end{equation}
+and if $S\in \Hom_D(V,V')$ and $T\in \Hom_D(V',V)$, and
+$g\in G$; $g'\in G'$, then 
+\begin{equation}\label{eq:6.2}
+g\cdot g'(S,T) = (g'Sg^{-1}, gTg'^{-1})
+\end{equation}
+This formulation has the advantage that there is a simple formula
+for $\inn{}{}$. 
+Assuming the identification $(\ref{eq:6.1})$ is normalized properly, 
+we have
+\begin{equation}\label{eq:6.3}
+\inn{(S_1,T_1)}{(S_2,T_2)} = \tr(S_1T_2-S_2T_1)
+\end{equation}
+where notation is parallel to $(\ref{eq:6.2})$, and $\tr$ here is
+reduced trace\footnote{
+the usual trace get a element in $D$, than consider $D$ as a linear operator 
+on $F$ vector space $D$, it has a trace, this is the value of $\tr$ here. 
+} over $F$ on $End_D(V')$. 
+Of course $\tr(T_2S_1 - T_1S_2)$ gives the same answer.
+
+We turn to type $I$ pairs, which present mor variety.
+
+\begin{prop}\label{prop:6.3}
+Let $(G,G')$ be an irreducible type I reductive dual pair. Then there exist
+\begin{enumerate}[i)]
+\item a division algebra $D$,
+\item with involution (i.e., involutory antiautomorphism) $\invl$,
+\item vector spaces $V$ and $V'$ over $D$
+\item with forms $\bform{}{}$ and $\bform{}{}'$, which are $D$-linear
+in the first variable and either $\invl$-hermitian or $\invl$-skew hermitian
+(one of each type)
+\end{enumerate}
+such that $W\simeq V\otimes_DV'$ in such fashion that $G$ is identified to 
+the isometry group of $\bform{}{}$ and $G'$ to the isometry group of 
+$\bform{}{}'$.
+\end{prop}
+
+Remarks: 
+\begin{enumerate}[a)]
+\item Just as in the type II case, we can slightly less symmetric and write
+\begin{equation}\label{eq:6.4}
+W\simeq \Hom_D(V,V')
+\end{equation}
+Then the action of $G$ is by permultiplication (by inverses) and
+that of $G'$ is by postmultiplication. Of course we could also 
+write $W\cong \Hom_D(V',V)$. 
+Note that there are nice maps mediating between these two alternatives. 
+Namely, define
+\begin{align}
+*\colon \Hom_D(V,V')&\to \Hom_D(V,V'), & \text{and} \notag \\
+*'\colon \Hom_D(V',V)&\to \Hom_D(V',V), & \text{by} \notag \\
+\bform{Tv}{v'}' &= \bform{v},{T^* v'} &\text{for } T\in \Hom_D(V,V') \\
+\bform{Sv'}{v}' &= \bform{v'},{S^{*'} v} 
+& \text{for } S\in \Hom_D(V',V) \notag
+\end{align}
+\end{enumerate}
+
+\proof
+We must begin with some generalities on $D$-semi-linear forms 
+where $D$ is a division algebra with involution $\invl$ over some field $F$.
+Consider $D$ as a left vector space over itself, 
+and define
+\begin{equation}\label{eq:6.8}
+\bform{x}{y}_\circ = x y^\invl
+\end{equation}
+for $x,y$ in $D$. Then $\inn{}{}_\circ$ satisfies
+\begin{align}\label{eq:6.9}
+i) \quad \bform{ax}{y}_\circ &= a\bform{x}{y}_\circ,  &
+ \bform{x}{ay}_\circ&=\bform{x}{y}_\circ a^\invl\quad \text{ for } a,x,y\in D\\
+ii)\quad \bform{y}{x}_\circ  &= \bform{x}{y}_\circ^\invl. \notag
+\end{align}
+
+If $E$ is any left $D$ vector space, call a form $\bform{}{}$
+satisfying $(\ref{eq:6.9})$ i) 
+{\em $\invl$-sesquilinear}\index{$\invl$-sesquilinear}.
+If it also setisfies $(\ref{6.9})$ ii) call it 
+{\em $\invl$-hermitian}\index{$\invl$-hermitian}.
+Evidently, if we choose a basis for $E$ and so identify 
+$E$ with $D^k$, then the $k$-fold direct sum
+of $\bform{}{}_\circ$ as in $(\ref{eq:6.8}$ will define 
+a non-degenerate $\invl$-hermitian form on $V$.
+
+Let $\tr$ denote the reduced trace map from $D$ to $F$. 
+We recall 
+\begin{align}\label{eq:6.10}
+\tr(xy) &= \tr(yx) & \tr(x^\invl)&=\tr(x) & \text{for } x,y\in D 
+\end{align}
+The $D$ vector space $E$ may be regarded as an $F$ vector space, 
+denoted $E_F$, by restriction of scalars. 
+If $\bform{}{}$ is an $\invl$-hermitian form on $E$, 
+then 
+\[
+\tr\bform{}{}\colon x,y \mapsto \tr(\bform{x}{u}) \quad x,y \in E = E_F
+\]
+defines a symmetric bilinear form on $E_F$.
+Moreover $(\ref{eq:6.9})$ i) and $(\ref{eq:6.10})$ imply 
+\begin{equation}\label{eq:6.11}
+\tr\bform{ax}{y} = \tr\bform{x}{a^\invl y} \quad \text{for } a\in D, x,y,\in E_F
+\end{equation}
+
+Let $\bform{}{}_1$ be a fixed non-degenerate $\invl$-hermitian form on $E$.
+Let $\cform{}{}$ ba an $F$-bilinear form on $E_F$ satisfying $(\ref{eq:6.11})$.
+Since $
 \printindex
 
 \end{document}
