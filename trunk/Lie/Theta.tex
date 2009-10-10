@@ -23,6 +23,7 @@
 \def\Ker{\rm{Ker}}
 \def\Im{\rm{Im}}
 \def\Hom{\rm{Hom}}
+\def\End{\rm{End}}
 \def\Mat{\rm{Mat}}
 \def\bR{{\mathbb{R}}}
 \def\bN{{\mathbb{N}}}
@@ -52,10 +53,11 @@
 \def\gcd{{\rm gcd}}
 \def\inn#1#2{\left<{#1}\,,\,{#2}\right>}
 \def\bform#1#2{\left({#1}\,,\,{#2}\right)}
-\def\cform#1#1{\left\{{#1}\,,\,{#2}\right\}}
+\def\cform#1#2{\left\{{#1}\,,\,{#2}\right\}}
 \def\isoarrow{\tilde{\rightarrow}}
 \def\tr{{\rm tr}}
 \def\invl{{\natural}}
+\def\Gal{{\rm Gal}}
 
 \hypersetup{
     bookmarks=false,         % show bookmarks bar?
@@ -349,7 +351,7 @@ ii)\quad \bform{y}{x}_\circ  &= \bform{x}{y}_\circ^\invl. \notag
 If $E$ is any left $D$ vector space, call a form $\bform{}{}$
 satisfying $(\ref{eq:6.9})$ i) 
 {\em $\invl$-sesquilinear}\index{$\invl$-sesquilinear}.
-If it also setisfies $(\ref{6.9})$ ii) call it 
+If it also setisfies $(\ref{eq:6.9})$ ii) call it 
 {\em $\invl$-hermitian}\index{$\invl$-hermitian}.
 Evidently, if we choose a basis for $E$ and so identify 
 $E$ with $D^k$, then the $k$-fold direct sum
@@ -387,7 +389,7 @@ for some $T\in \Hom_F(E_F)$. We compute
 \]
 Therefor actually $T$ in in $\Hom_D(E)$, so that if
 \begin{equation}\label{eq:6.13}
-\bform(x}{y}_2 = \cform{Tx}{y}_2
+\bform{x}{y}_2 = \cform{Tx}{y}_2
 \end{equation}
 then $\cform{}{}_2$ is a $\invl$-sesquilinear form on $E$ such that 
 \begin{equation}\label{eq:6.14}
@@ -424,13 +426,203 @@ one $\invl$-hermitian and the other $\invl$-antihermitian.
 
 Suppose we find two involutions $\invl$ and $\sharp$ for $D$ which 
 have the same restriction to the center of $D$. Then $\invl\sharp$ 
-is an automorphism of $D$ over its center, so by Skolem-Nother
-\begin{equation}
+is an automorphism of $D$ over its center, so by Skolem-Nother\footnote{
+Skolem-Noether theorem:
+let $A$ and $B$ be central simple algebras over $K$, 
+Suppose that the dimension of $B$ over the field $K$ is finite,
+Then if
+\[f,g \colon A \to B\]
+are $K$-algebra homomorphisms, 
+there exists a unit $b$ in $B$ such that
+\[g(a) = b¡¤f(a)b^{-1}\]
+for all $a$ in $A$.
+}
+\begin{equation}\label{eq:6.15}
 \invl\sharp(d) = \delta d \delta^{-1} \quad \text{for } d\in D.
 \end{equation}
 for some $\delta\in D$. Thus involutions on $D$ having a given restriction 
 to the center differ by inner automorphisms of $D$.
 
+Consider a vector space $U$ over $F$, and a non-degenrate bilinear form
+$\bform{}{}$ on $F$, either symmetric or antisymmetric. 
+Then $\bform{}{}$ induces an $\End(U)$ an involution $\sharp$ defined by 
+\begin{equation}\label{eq:6.16}
+\bform{Tu_1}{u_2} = \bform{u_1}{T^\sharp u_2} \quad u_i \in U, T\in \End(U)
+\end{equation}
+and satisfying the familiar rules:
+\begin{equation}\label{eq:6.17}
+\begin{split}
+i)& \quad(ST)^\sharp = T^\sharp S^\sharp \quad  (S+T)^\sharp = S^\sharp + T^\sharp\\
+ii)&\quad T^{\sharp\sharp} = T \\
+iii)& \quad \text{The isometries of } \bform{}{} \text{ are } 
+\Set{g\in GL(U)|g^\sharp = g^{-1}}
+\end{split}
+\end{equation}
+
+Supppose $G$ is a group acting irreducibly on $U$. Let $L$ be
+the span of $G$ in $End(U)$ and let $D$ be the commuting algebra. 
+Then $L$ is a simple algebra, $D$ is a division algebra and 
+$D\cap L$ is their common center\footnote{
+$C_{L}L = D \cap L$ by definition.
+by von Neumann bicommutant theorem,
+$L$ is the commutator of $D$. So $C_D D = L\cap D$.}. 
+Suppose $G$ preserves the form $\bform{}{}$ of the last paragraph.
+Then clearly, from $(\ref{eq:6.17})$ iii) we see $\sharp$ preserves $G$,
+hence $L$ hence $D$. 
+Thus $D$ is a division algebra with involution. 
+If $\bform{}{}_1$ is another $G$-invariant form inducing the involution 
+$\sharp_1$, then again by $(\ref{eq:6.17})$ iii), 
+both $\sharp$ and $\sharp_1$ agree on $L$, hence they agree on the center
+of $D$.  We can say more. Since $G$ acts irreducibly, the form $\bform{}{}$
+must be non-degenerate. Hence we may write
+\[
+\bform{u_1}{u_2}_1 = \bform{Tu_1}{u_2}
+\]
+for some $T$ in $\End(U)$. Since $\bform{}{}_1$ is also $G$-invariant, 
+we must have $T\in D$. The relation between $\sharp$ and $\sharp_1$
+is easily seen to be 
+\[
+S^{\sharp_1} = (T^\sharp)^{-1} S^\sharp T^\sharp.
+\]
+Hence we can demonstrate directly the conjugacy between $\sharp$
+and $\sharp_1$ in this situation.
+
+Now take $G$ to be the first member of our pair $(G,G')$ and take
+$U\subseteq W$ an irreducible subspace for $G$. Then the $D$ 
+of the above paragraph is isomorphic to the $D$ in the 
+isomorphism $W\simeq \Hom(V,V')$. 
+Further $U$ is isomorphic to $V$ as a joint $G$ and $D$ module. 
+On $U$ there are many bilinear forms invariant by $G$, 
+which we may transfer to $V$. Namely, for $g'_1, g'_2$ in $G'$, 
+consider 
+\begin{equation}\label{eq:6.18}
+B_{g_1,g_2}(u_1,u_2) = \inn{g'_1 (u_1)}{g'_2(u_2)}
+\end{equation}
+Some of these forms will be non-degenerate\footnote{
+Consider cannoical map $W\to U^*$ by $w \mapsto \inn{}{w}$. 
+it is a $G$-intertwing map, hence, there is a subspace $U'$ of $W$
+isomorphism to $U^*$, since $W$ has only one $G$-type, $U'\simeq U$,
+Since $U\cap U'$ is $G$ invariant, hence two cases $U=U'$ or $U\cap U'=0$.
+Then choose $g'$ be identity map, or extend the isomorphism $U\cong U'$. 
+}, and so 
+will their symmetric or antisymmetric parts.
+Thus we may find at least one form $B$, either symmetric or 
+antisymmetric on $V$ invariant by $G$. 
+If $\invl$ is the involution of $D$ induced by $B$, then according 
+to proposition~\ref{prop:6.4}, there is a $\invl$-hermitian 
+or $\invl$-antihermitian form $\bform{}{}$ on $V$ invariant by $G$\footnote{
+passing to $\tr\inn{}{}$, $\invl$ action are same,
+ by $\tr(\delta d \delta^{-1})=\tr(d)$.
+}.
+
+By similar reasoning, and by adjusting our involutions as explained above, 
+we can also find a form $\bform{}{}'$ on $V'$ either 
+$\invl$-hermitian or $\invl$-antihermitian, 
+and invariant by $G'$. Thus we have forms on $V$ and $V'$. 
+It remains only to show we can take exactly one to 
+be $\invl$-hermitian and the other to be $\invl$-antihermitian.
+To do this, it is more convenient to use the involution 
+on $D$ to regard $V'$ as a right vector space and write 
+$W\simeq V\otimes_D V'$. Take $v_i\in V$ and $v'_i\in V'$, 
+and consider the quantity
+\begin{equation}\label{eq:6.19}
+\cform{v_1\otimes v'_1}{v_2\otimes v'_2} 
+= \tr(\bform{v_1}{v_2}\bform{v'_2}{v'_1}')
+\end{equation}
+If $d\in D$, we compute
+\[
+\begin{split}
+&\cform{(dv_1)\otimes v'_1}{v_2\otimes v'_2}
+=\tr(\bform{dv_1}{v_2}\bform{v'_2}{v'_1}')\\
+=\,& \tr(d\bform{v_1}{v_2}\bform{v'_2}{v'_1}')
+= \tr(\bform{v_1}{v_2}\bform{v'_2}{v'_1}'d)\\
+=\,& \tr(\bform{v_1}{v_2}\bform{v'_2}{d^\invl v'_1}')
+= \cform{(v_1)\otimes d^\invl v'_1}{v_2\otimes v'_2}
+\end{split}
+\]
+A similar relation holds in the second variable. It follows that 
+$\cform{}{}$ factors to define a $F$-bilinear form on $V\otimes_D V'$.
+Moreover $\cform{}{}$ will be symmetric if $\bform{}{}$
+and $\bform{}{}'$ have the sam parity, and 
+will be anti-symmetric if they have opposite parties. 
+Since $\cform{}{}$ is obviously $G\cdot G'$ invariant, 
+we have $\cform{w_1}{w_2} = \inn{c w_1}{w_2}$ where 
+$c$ commutes with $G\cdot G'$. 
+That is, $c$ is in the center of $D$. If we replace $\bform{}{}$
+with the form 
+\[
+v_1, v_2\mapsto \bform{c^{-1} v_1}{v_2}
+\]
+befor we perform the construction $(\ref{eq:6.19})$, then we 
+will have $c=1$, or $\cform{}{}=\inn{}{}$.
+Since $\inn{}{}$ is antisymmetric, the symmetry properties of 
+$\bform{}{}$ and $\bform{}{}'$ are as desired. 
+
+Finally, we see that the full isometry group of $\bform{}{}$
+perserves $\inn{}{}$, commutes $G'$ and contains $G$, 
+so it is equal to $G$. Similarly, 
+$G'$ is the full isometry group of $\bform{}{}'$.
+This concludes proposition~\ref{prop:6.3}.
+
+To round out this section, we will review the rudiments of the 
+classification theory for division algebras with involution. 
+See [] for a more complete discussion. 
+Given a field $F$, the set of isomorphism classes of simple algebras 
+central over $F$ forms a semigroup under tensor product and 
+if one factors out by the matrix algebras over $F$, one obtains 
+a torsion group called the {\em Brauer group}\index{Brauer group} of $F$.
+Given a simple algebra $M$ over $F$, let $\Set{M}$ denote its class in
+the Brauer group. Then $\Set{M}^{-1}$ is represented by 
+the {\em opposed algebra}\index{opposed algebra} $\widetilde{M}$ 
+of $M$ -- the same space with reversed order of multiplication.
+
+Let $\overline{F}$ be a separable algebraic closure of $F$,
+with multiplicative group $\overline{F}^\times$. Let $\Gamma$
+be the Galois group of $\overline{F}$ over $F$. 
+A basic result  []  is that the Brauer group of $F$ 
+has an alternative description as the Galois cohomology 
+group $H^2(\Gamma;\overline{F}^\times)$. Suppose $F'\subseteq \overline{F}$
+is a finite Galois extension of $F$. 
+Then $\Gal(F'/F)$ acts in a natural way (via its action on cocycles) 
+on the Brauer group $H^2(\Gamma'; \overline{F}^\times)$, 
+where $\Gamma'$ is the Galois group of $\overline{F}$ over $F'$. 
+Call this action $\alpha$. Let $M_1$ and $M_2$ be simple algebras 
+central over $F'$ and let $\varphi\colon M_1\to M_2$ be an $F$-linear
+isomorphism. 
+If $\varphi|_{F'} = h \in \Gal(F'/F)$, then $\Set{M_2}=\alpha(h) \Set{M_1}$.
+
+Suppose now $M$ is a simple algebra over $F'$ with involution $\invl$,
+and let $F\subseteq F'$ be the fixed field of $\invl$.
+Then $F'=F$ or $F'$ is quadratic over $F$. In any case, 
+the restriction $\invl|_{F'}$ is a generator $\sigma$ of 
+$\Gal(F'/F)$. Combining $\invl$ with the standard antiautomorphism of
+$L$ with $\tilde{L}$, the opposite algebra, we conclude that 
+$\alpha(\sigma) \Set{L} = \Set{\tilde{L}} = \Set{L}^{-1}$, 
+or in other words,
+\begin{equation}\label{eq:6.20}
+(\alpha(\sigma)+1)\Set{L} = 0
+\end{equation}
+If $\alpha(\sigma)$ reduces to the identity, then $(\ref{eq:6.20})$
+just says $2\Set{L}=0$, 
+or $\Set{L}$ is of order $2$ in the Brauer group. 
+More detailed statements depend on the finer structure of $F'$.
+
+Let us now take $F'$ to be a local field. The Brauer groups 
+of local fields are know []. If $F'$ is non-Archimedean, 
+then its Brauer group is $\bQ/\bZ$. The Brauer group of $\bR$
+is $\bZ/2$ and that of $\bC$ is trivial. 
+Shafarevich's Theorem [] shows the Galois acton is trivial.
+Therefore in these cases, the only possibilities for division algebras
+over $F$ such that $F$ is the fixed field of the center are
+a) $F$ itself; b) a quadratic extension $F'$ over $F$; 
+c) the unique quaternion algebra over $F$;
+d) the quaternion algebra over a quadratic extension of $F$. 
+However, as it turns out, possibility d) is also impossible. 
+Hence there are in fact only $3$ possibilities for $D$.
+
+The situation for global fields is more complicated because the 
+Galois action on the Brauer group can be non-trivial. 
+See [] for some discussion of this.  
 \printindex
 
 \end{document}
