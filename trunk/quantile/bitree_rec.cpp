@@ -110,8 +110,8 @@ Real pprice(int steps, Real ZZ) {
 	DELTERM;
       }
     else if(PTERM.st == down) {
-      pay = max(PTERM.g1, dis*(PTERM.g2+pay)*.5);
-      //pay = dis*(PTERM.g2+pay)*.5;
+      //pay = max(PTERM.g1, dis*(PTERM.g2+pay)*.5);
+      pay = dis*(PTERM.g2+pay)*.5;
       DELTERM;
     }
     else if(PTERM.st == up) {
@@ -136,7 +136,7 @@ int main()
   Real S0, K, r, sigma,T, mu;
   int n,i;
   S0=100, K=95, alpha=0.8, r=0.05, sigma=0.2, T=.25, mu=r-sigma*sigma/2;
-  n = 30;
+  n = 32;
 
   dt = T/n;
   su = mu*dt;// su=.5;
