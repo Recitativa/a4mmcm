@@ -376,7 +376,61 @@ Moreover $(\ref{eq:6.9})$ i) and $(\ref{eq:6.10})$ imply
 
 Let $\bform{}{}_1$ be a fixed non-degenerate $\invl$-hermitian form on $E$.
 Let $\cform{}{}$ ba an $F$-bilinear form on $E_F$ satisfying $(\ref{eq:6.11})$.
-Since $
+Since $\tr\bform{}{}_1$ is non-degenerate we can write
+\begin{equation}\label{eq:6.12}
+\cform{}{}=\tr\bform{Tx}{u} \quad x,y\in E_F
+\end{equation}
+for some $T\in \Hom_F(E_F)$. We compute
+\[
+\tr\bform{Tax}{y} = \cform{ax}{y} =\cform {x}{a^\invl y}_1 
+= \tr\bform{Tx}{a^\invl y}_1 = \tr\bform{aTx}{y}_1
+\]
+Therefor actually $T$ in in $\Hom_D(E)$, so that if
+\begin{equation}\label{eq:6.13}
+\bform(x}{y}_2 = \cform{Tx}{y}_2
+\end{equation}
+then $\cform{}{}_2$ is a $\invl$-sesquilinear form on $E$ such that 
+\begin{equation}\label{eq:6.14}
+\cform{}{} = \tr\bform{}{}
+\end{equation}
+Thus we have shown
+
+\begin{prop}\label{prop:6.4}
+If $D$ is a division algebra over a field $F$, with involution $\invl$, 
+and $E$ is a (left) vector space over $D$, then the map 
+\[
+\bform{}{} \mapsto \tr\bform{}{}
+\]
+establishes an isomorphism between $\invl$-sesquilinear form on $E$
+and bilinear forms on $E_F$ satisfying $(\ref{eq:6.11})$. Under this 
+map $\invl$-(anti) hermitian form correspond to (anti) symmetric forms.
+\end{prop}
+
+Remark: this shows in particular we may always lift forms satisfying 
+$(\ref{eq:6.11})$ to bilinear forms over the $\invl$-fixed subfield 
+of the center of $D$.
+
+Return to our reductive dual pair $(G,G')$ acting irreducibly on 
+$W$. From the standard double commutant theory we know we can finde 
+a division algebra $D$ and a left $D$-vector space $V$ and $V'$ 
+such that $W\cong \Hom_D(V,V')$ in such a manner that the action of $G$ 
+is identified to right multiplication by $D$ linear mappings of $V$ 
+and the action of $G'$ is given by left multiplication by $D$ linear 
+maps of $V'$. To prove 
+proposition~\ref{prop:6.3} we have to find an involution $\invl$ of $D$ 
+and $\invl$-sesquilinear forms $\bform{}{}$ and $\bform{}{}'$ on $V$
+and $V'$ respectively, invariant by $G$ and $G'$ respectively, 
+one $\invl$-hermitian and the other $\invl$-antihermitian.
+
+Suppose we find two involutions $\invl$ and $\sharp$ for $D$ which 
+have the same restriction to the center of $D$. Then $\invl\sharp$ 
+is an automorphism of $D$ over its center, so by Skolem-Nother
+\begin{equation}
+\invl\sharp(d) = \delta d \delta^{-1} \quad \text{for } d\in D.
+\end{equation}
+for some $\delta\in D$. Thus involutions on $D$ having a given restriction 
+to the center differ by inner automorphisms of $D$.
+
 \printindex
 
 \end{document}
