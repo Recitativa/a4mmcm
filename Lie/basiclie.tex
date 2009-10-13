@@ -52,10 +52,16 @@
 \def\sspan{\rm{span}}
 \def\sl2{{\mathfrak{sl}(2)}}
 \def\slc{{\mathfrak{sl}(2,\bC)}}
+\def\sp{{\mathfrak{sp}}}
+\def\gg{{\mathfrak{g}}}
+\def\kk{{\mathfrak{k}}}
+\def\pp{{\mathfrak{p}}}
+\def\qq{{\mathfrak{q}}}
 \def\sP{\mathcal{P}}
 \def\sH{\mathcal{H}}
 \def\sU{\mathcal{U}}
 \def\sC{\mathcal{C}}
+\def\Stab{{\rm Stab}}
 \def\ad{{\rm ad}}
 \def\Ad{{\rm Ad}}
 \def\id{{\rm id}}
@@ -526,7 +532,7 @@ Then
 \]
 \[
 \frac{2\inn{e_l-e_k}{e_s+e_t}}{\inn{e_l-e_k}{e_s+e_k}}
-=\delta_{l,s} + \delta_{l,zazat}-\delta_{k,s} -\delta_{k,t}
+=\delta_{l,s} + \delta_{l,t}-\delta_{k,s} -\delta_{k,t}
 \]
 
 The cartan matrix is 
@@ -540,6 +546,7 @@ The cartan matrix is
 0  & 0  &  0 & \cdots & -1 & 2 
 \end{pmatrix}
 \]
+
 
 \section{Real Lie groups and its algebra}
 
@@ -608,6 +615,42 @@ Where
 
 Then the nontrivial roots are $e_l-e_s$ and $-(e_l-e_s)$for any $l\neq s$, 
 with root vectors $ d$ and $(1-i)E_{ls}$
+
+
+\section{Symplectic groups}
+\subsection{polarizations}
+
+Let $W$ be a symplectic space, $W = U \oplus U'$ be a complete polization.
+Let $P(U) = \Stab_{\Sp(W)} U$ be the stablizer of space $U$. 
+Then there is a natural map 
+\[
+r\colon P(U) \to \GL(U)
+\]
+
+Let $N(U,W) = N(U)=N$ be the kernel of map $r$. 
+
+
+\subsection{Wallach}
+assume $W_\bC=W\otimes \bC$, where $W_0$ is a symplectic space over $\bR$. 
+$W$ have a symplectic structrue over $\bC$ extend from $W_0$, 
+define $\sigma$ be the conjugation on $\bC$ extend to $W$. 
+Then we can define a real form $\Sp(W)$ 
+of $\Sp(W)$ by the commutator of $\sigma$.
+Moreover, it is clear this act on the eigen space of $\sigma$ which are $W$
+and $W\otimes i$.
+
+suppose that $W= U\oplus U'$ be a compelet polization. 
+define $\theta$ be multiply $i$ on $U\otimes \bC$ and $-i$ on $U'\otimes \bC$. 
+(or multiply $1$, $-1$ on $U$ and $U'$.)
+this gives a cartan involution on $\gg=\sp(W)$ or on $\gg_\bC$.
+$\kk= \Set{X\in \gg|X\circ \theta = \theta X}$
+is the commutator of $\theta$ and
+$\pp=\Set{X\in gg|X\circ \theta = - \theta X}$ 
+is the anti-commutator of $\theta$.
+moreover $X$ should act on the eigen space of $\theta$, which are
+$U$ and $U'$ hence in fact $K = P(U)\cap P(U') = U(n)$ 
+
+Let $W=W_1\oplus W_2$, where $\dim W_1 = 2r$, $\dim W_2 = 2s$. 
 
 
 \section{bilinear form}
