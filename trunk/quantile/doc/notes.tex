@@ -1,10 +1,7 @@
-\documentclass[11pt]{amsart}
-\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
-\geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
-%\geometry{landscape}                % Activate for for rotated page geometry
-%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\documentclass[11pt]{book}
+\usepackage{amsmath}
+\usepackage{geometry}               
 \usepackage{epstopdf}
-
 \usepackage{hyperref}
 
 \usepackage{amssymb}
@@ -16,9 +13,8 @@
 
 
 
-\title{Brief Article}
+\title{Notes}
 \author{Zhu Yong Ting}
-%\date{}                                           % Activate to display a given date or no date
 
 \def\bE{{\mathbb{E}}}
 \def\bR{{\mathbb{R}}}
@@ -27,8 +23,8 @@
 \maketitle
 %\section{}
 %\subsection{}
-\section{Introduction}
-\subsection{Brownian motion}
+\chapter{Introduction}
+\section{Brownian motion}
 Let $(B_t, t\geq 0)$  be a real-valued one-dimensional standard Brownian motion.
 More generally, 
 for $ \mu \in \bR$, $(X_t = B_t + \mu t, t \geq 0)$ 
@@ -38,33 +34,56 @@ is a Brownian motion with drift $\mu$.
 Fix a process $X_t$, define $M_t = \max_{0\leq s\leq t} X_s $. 
 When $X_t$ is a standard brownian motion without drift, 
 the joint distribution of $M_t$ and $X_t$
- can be easly calculated by reflection principle\cite{}:
+ can be easly calculated by reflection principle\cite{Karatzas91}:
 \[
 P(X_t \in a+dx, M_t \in b+dm) =  
 \]
 
 \subsection{$\alpha$-quantile}
-Fix a Stochstic prcess $X_t$.
+Fix a Stochastic prcess $X_t$.
 The the $\alpha$-quantile $( 0 \leq \alpha \leq 1)$ 
 is defined as 
 \[
 X_{\alpha,t} = \inf\Set{x:\int_0^t 1_{X_s\leq x} > \alpha t}.
 \]
 When $X_{t}$ is a Brownian motion $B_t$we have a result about the distribution
-of $\alpha$-quantile
+of $\alpha$-quantile\cite{Dassios2005}
 \[
-B_t^\alpha = 
+(B_t^\alpha, B_t) \stackrel{\text{(law)}}{=}
+ (\max_{0\leq s\leq \alpha t} B'_s-\max_{0\leq s\leq (1-\alpha)t B''_s},
+ B'_\alpha t + B''_{(1-\alpha) t})
 \]
 
 
+\section{Options}
+
+\subsection{Eurapian v.s. American} 
+definition of ...
+
+\subsection{Lookback options}
+definition
+
+\subsection{$\alpha$-quantile options}
+
+\section{Discrite v.s. continous}
+\subsection{Euler scheme and randon walk}
+approximate brownian by randon walk through Euler scheme.
+
+\subsection{path transform}
+Results\cite{Chaumont1999}
+
+\subsection{an estimate of discrete error}
+read the paper again and combin above result. 
+
+\chapter{Priceing $\alpha$-quantile option}
+\section{Eurapian}
+\subsection{by path decomposition}
+
+\subsection{forward shooting by lookback}
 
 
-\subsection{}
+\section{American}
 
-
-\section{Lookback option}
-
-
-\bibliography{mybib}{}
+\bibliography{prob}{}
 \bibliographystyle{plain}
 \end{document}  
