@@ -1,0 +1,70 @@
+\documentclass[11pt]{amsart}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
+%\geometry{landscape}                % Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{epstopdf}
+
+\usepackage{hyperref}
+
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{braket}
+\usepackage{paralist}
+\usepackage{eufrak}
+\usepackage{amscd}
+
+
+
+\title{Brief Article}
+\author{Zhu Yong Ting}
+%\date{}                                           % Activate to display a given date or no date
+
+\def\bE{{\mathbb{E}}}
+\def\bR{{\mathbb{R}}}
+
+\begin{document}
+\maketitle
+%\section{}
+%\subsection{}
+\section{Introduction}
+\subsection{Brownian motion}
+Let $(B_t, t\geq 0)$  be a real-valued one-dimensional standard Brownian motion.
+More generally, 
+for $ \mu \in \bR$, $(X_t = B_t + \mu t, t \geq 0)$ 
+is a Brownian motion with drift $\mu$. 
+
+\subsection{runing maxiam}
+Fix a process $X_t$, define $M_t = \max_{0\leq s\leq t} X_s $. 
+When $X_t$ is a standard brownian motion without drift, 
+the joint distribution of $M_t$ and $X_t$
+ can be easly calculated by reflection principle\cite{}:
+\[
+P(X_t \in a+dx, M_t \in b+dm) =  
+\]
+
+\subsection{$\alpha$-quantile}
+Fix a Stochstic prcess $X_t$.
+The the $\alpha$-quantile $( 0 \leq \alpha \leq 1)$ 
+is defined as 
+\[
+X_{\alpha,t} = \inf\Set{x:\int_0^t 1_{X_s\leq x} > \alpha t}.
+\]
+When $X_{t}$ is a Brownian motion $B_t$we have a result about the distribution
+of $\alpha$-quantile
+\[
+B_t^\alpha = 
+\]
+
+
+
+
+\subsection{}
+
+
+\section{Lookback option}
+
+
+\bibliography{mybib}{}
+\bibliographystyle{plain}
+\end{document}  
