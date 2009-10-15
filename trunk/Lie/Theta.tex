@@ -58,6 +58,8 @@
 \def\tr{{\rm tr}}
 \def\invl{{\natural}}
 \def\Gal{{\rm Gal}}
+\def\tB{\widetilde{B}}
+
 
 \hypersetup{
     bookmarks=false,         % show bookmarks bar?
@@ -127,6 +129,7 @@ P\simeq M \ltimes N
 \end{prop}
 
 \section{Reductive dual pairs, definition and classification}
+\label{sec:6}
 Let $\Gamma$ be a group $(G, G')$ be a pair of subgroups of $\Gamma$. 
 We will say $(G,G')$ form a {\em dual pair}\index{dual pair} 
 of subgroups of $\Gamma$ if
@@ -622,7 +625,72 @@ Hence there are in fact only $3$ possibilities for $D$.
 
 The situation for global fields is more complicated because the 
 Galois action on the Brauer group can be non-trivial. 
-See [] for some discussion of this.  
+See [] for some discussion of this.
+
+\section{Lie algebras of the classical groups; Cayley transform}  
+The groups which emerged from the discussion of \S\ref{sec:6}, 
+that is, the general linear group of a vector space over a division algebra,
+and the isometry group of a hermitian or antihermitian sesquilinear form
+over a division algebra with involution, are often referred to as
+{\em classical groups}\index{classical groups}. 
+Sometimes other groups closely related to these, e.g., special linear groups,
+etc., are also called classical groups. 
+However, in the present paper, a classical group will be precisely 
+one of the groups specified in proposition~\ref{prop:6.3} and \ref{prop:6.4},
+in other words, one member of a reductive dual pair in $\Sp$.
+
+In many parts of the development of the theory of reductive dual pairs,
+the type I and type II groups, e.g., isometry groups and $\GL$,
+must be discussed separately, a circumstance which predictably leads at 
+times to considerable tedium. Sometimes explicit separate discussion of
+$\GL$ can be avoided if we make the convention that $\GL$ is the isometry
+group of the zero form. That is, results stated for isometry groups 
+are formally correct for $\GL$ under this interpretation. Thus below and
+elsewhere where there is no explicit treatment of $\GL$ separate from 
+isometry groups, the results are to be interpreted as holding for $\GL$ 
+as isometries of the trivial form (and ignoring the fact that $D$ 
+should have an involution), unless the results are stated explicitly for type I
+classical groups. 
+
+Let $G$ be a classical group, the isometry group of the hermitian 
+or antihermitian form $\bform{}{}$ on the vector space $V$ over the 
+division algebra $D$ with involution $\invl$. We will call 
+$(V, D, \invl, \bform{}{})$ the {\em basic data}\index{basic data}
+of $G$ and will always consider $G$ coming with this data attached.
+Thus $G$ is not simply an isomorphism class of groups, but is acting
+on a particular space in a particular way. Regarding the form $\bform{}{}$, 
+it will be said to be of {\em type $(D,\invl, +)$}\index{type!$(D,\invl, +)$}
+o {\em type $(D,\invl, -)$}\index{type!$(D,\invl, -)$} depending on 
+whether it is $\invl$-hermitian or $\invl$-antihermitian. 
+The type $(D, \invl, -)$ will be said to bo of {\em dual type}\index{dual type}
+to the type $(D, \invl,+)$, and vice versa. 
+
+The {\em Lie algebra}\index{Lie algebra} $\gg$ of $G$ is defined heuristically
+as the collection $T\in \End_D(V)$ such that, if $\epsilon$ is an infinitesimal
+-- a non-zero quantity so small its square is zero, then $I+\epsilon T$
+is an isometry of $\bform{}{}$. Formally this amouts to the identity
+\begin{equation}\label{eq:7.1}
+\bform{Tv}{v'} + \bform{v}{Tv'}= 0 \quad T\in \gg, v, v'\in V
+\end{equation}
+It is seay to check that $\gg$ as defined by $(\ref{eq:7.1})$ is indeed a 
+Lie algebra, i.e., is closed under taking commutators. 
+Also if $T\in \gg$ and $g\in G$, we define
+\begin{equation}\label{eq:7.2}
+\Ad g (T) = g T g^{-1}
+\end{equation}
+It is easy to compute that $\Ad G$ preserves $\gg$, so $\Ad$ defines an action
+of $G$ on $\gg$.
+
+Let $\tB(V)$ denote the space of forms on $V$ of the type dual to $\bform{}{}$.
+There is a natural action $\sigma$ of $\GL_D(V)$ on $\tB(V)$ defined 
+by 
+\begin{equation}\label{eq:7.3}
+\sigma(A) \beta(v,v') = \beta(A^{-1}v, A^{-1}v) \quad \text{for } 
+A\in \GL_D(V), \beta \in \tB(V)
+\end{equation} 
+For $(\ref{eq:7.1})$ it is straightforward to verify the follwoing fact. 
+
+
 \printindex
 
 \end{document}
