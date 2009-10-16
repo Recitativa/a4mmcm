@@ -757,8 +757,8 @@ has image in $\fg$. Similarly the map
 has image in $\fg'$. Moreover
 \begin{equation}\label{eq:7.5a}\tag{\ref{eq:7.5}) a}
 \begin{split}
-\ttau(g'Tg^{-1}) &= \Ad g (\tau(T))\\
-\ttau'(gS g'^{-1}) &= \Ad g'(\tau'(S))
+\ttau(g'Tg^{-1}) &= \Ad g (\ttau(T))\\
+\ttau'(gS g'^{-1}) &= \Ad g'(t\tau'(S))
 \end{split}
 \end{equation}
 Hence the image under $\ttau$ of a $G\cdot G'$ orbit in $\Hom_D(V,V')$ 
@@ -793,12 +793,12 @@ condition to belong to $\fg$. We also compute
 \begin{split}
 \bform{g'Tg^{-1}v}{v'}' &= \bform{Tg^{-1}v}{g'^{-1} v'}' = 
 \bform{g^{-1} v}{T^* g'^{-1}v'} \\
-&= \bform{v}{gTg'^{-1} v'},
+&= \bform{v}{gT^*g'^{-1} v'},
 \end{split}
 \]
 whence
 \begin{equation}\label{eq:7.6}
-(g'Tg^{-1})^* = g T g'^{-1}.
+(g'Tg^{-1})^* = g T^* g'^{-1}.
 \end{equation}
 Equation $(\ref{eq:7.5a})$ is immediate form $(\ref{eq:7.6})$.
 
@@ -841,6 +841,74 @@ where
 Since $\tr T^\sharp = \tr T$, the decomposition $(\ref{eq:7.9})$ is orthogonal 
 for the pairing $(\ref{eq:7.7})$. Since $\tr TS$ is non-degenerate on
 $\End_D(V)$, it is also non-degenerate on $\fg$.
+
+For a type II pair, the analogue of proposition~\ref{prop:7.2} comes by 
+considering $(G,G')\simeq (\GL_D(V), \GL_D(V'))$ and writing 
+$W=\Hom_D(V,V')\oplus \Hom_D(V',V)$. Then if $T\in \Hom_D(V,V')$ 
+and $S\in \Hom_D(V',V)$, the pair $(T,S)$ is a typical point of $W$. 
+We may consider the maps
+\begin{equation}\label{eq:7.11}
+\ttau(T,S) =  ST \quad \ttau'(T,S) = TS
+\end{equation}
+Then clearly $\ttau$ maps $W$ to $\End_D(V)$ which is the 
+Lie algebra of $\GL_D$, and $\ttau'$ maps $W$ to $\End_D(V')$.
+It is obvious that formulas $(\ref{eq:7.5})$, and 
+the consequent remarks, hold in the type II case also.
+
+For $T\in \End_D(V)$, such that $I+T$ is invertible (where as usual 
+$I$ is the identity map of $V$) define the 
+{\em Cayley transform}\index{Cayley transform}, $c(T)$, by 
+\begin{equation}\label{eq:7.12}
+c(T) = \frac{I-T}{I+T}
+\end{equation}
+The following formulas are immediate from the definition.
+\begin{align}\label{eq:7.13}
+i) & c(c(T)) = T & ii) & c(0) = I; c(I)=0 \\
+iii)& c(-T)=c(T)^{-1} & iv)& c(T^{-1}) = -c(T)\notag\\
+v)& c(\Ad S (T)) = \Ad S (c(T)) \notag \\
+\end{align}
+
+\begin{prop}\label{prop:7.3}
+Let $G$ be a classical group with basic data $(V, D, \invl, \bform{}{})$. 
+Let $\fg$ be the Lie algebra of $G$. Then 
+\begin{equation}
+c(\fg) \subset G \quad \text{and} \quad c(G) \subset \fg
+\end{equation}
+
+\proof
+Taking $T\in \fg$, and with $\sharp$ as in $(\ref{6.16})$, we use
+$(\ref{eq:7.8})$ and $(\ref{eq:7.13})$
+to compute
+\[
+c(T)^\sharp = c(T^\sharp) = c(-T) = c(T)^{-1}
+\]
+so that $c(T)\in G$ by $(\ref{6.17})$. The other inclusion is similar
+\footnote{c(g)^\sharp =  c(g^\sharp) = c(g^{-1}) = -c(g)}.
+
+Remark:
+\begin{enumerate}[a)]
+\item The Cayley transform is a rational map, so proposition~\ref{7.3} 
+can be sharpened by using terminology from algebraic geometry. 
+Precisely, $c$ gives a birational equivalence between $\fg$ and the
+(Zariski) connected component of $I$ in $G$.
+\item It is curious that the set 
+\[
+\fg \cap G = \Set{T|T^\sharp=-T \text{ and } T^\sharp = T^{-1}}
+\]
+is just the set of complex structures in $\fg$ or $G$. 
+A {\em complex structure} is simply a $J\in \End_D(V)$ 
+such that $J^2 = -I$. But if $T\in \fg \cap G$, 
+then $-T= T^\sharp = T^{-1}$, or $-T^2 = I$, so $T$ is a complex structure. 
+By the proposition~\ref{prop:7.3}, the Cayley transform will preserve 
+$\fg \cap G$. Indeed, we can also caracterize the complex structure as 
+maps $J$ such that $c(J)=-J$, for $\frac{I-J}{I+J}=-J$
+implies $I-J = -J-J^2$, or $-J^2 = I$.
+\end{enumerate}
+
+If we regard $I$ as an indeterminate, we may expand $c(T)$ in a formal 
+power series. 
+\begin{equation}
+
 
 \section{Witt's Theorem and orbits}\label{sec:8}
 \printindex
