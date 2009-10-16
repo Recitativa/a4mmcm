@@ -41,6 +41,7 @@
 \def\sl2{{\mathfrak{sl}(2)}}
 \def\slc{{\mathfrak{sl}(2,\bC)}}
 \def\fg{{\mathfrak{g}}}
+\def\fs{{\mathfrak{s}}}
 \def\fk{{\mathfrak{k}}}
 \def\Sp{\mathrm{Sp}}
 \def\GL{\mathrm{GL}}
@@ -49,18 +50,18 @@
 \def\sU{\mathcal{U}}
 \def\sC{\mathcal{C}}
 \def\kbar{{k\makebox[-0.06em][r]{\raisebox{0.5ex}{--}}}}
-\def\ad{{\rm ad}}
-\def\Ad{{\rm Ad}}
-\def\id{{\rm id}}
-\def\sgn{{\rm sgn}}
-\def\gcd{{\rm gcd}}
+\def\ad{{\rm ad\,}}
+\def\Ad{{\rm Ad\,}}
+\def\id{{\rm id\,}}
+\def\sgn{{\rm sgn\,}}
+\def\gcd{{\rm gcd\,}}
 \def\inn#1#2{\left<{#1}\,,\,{#2}\right>}
 \def\bform#1#2{\left({#1}\,,\,{#2}\right)}
 \def\cform#1#2{\left\{{#1}\,,\,{#2}\right\}}
 \def\isoarrow{\tilde{\rightarrow}}
-\def\tr{{\rm tr}}
+\def\tr{{\rm tr}\,}
 \def\invl{{\natural}}
-\def\Gal{{\rm Gal}}
+\def\Gal{{\rm Gal}\,}
 \def\tB{\widetilde{B}}
 \def\ttau{\widetilde{\tau}}
 \def\oO{{\mathcal{O}}}
@@ -339,6 +340,26 @@ Namely, define
 \bform{Sv'}{v}' &= \bform{v'},{S^{*'} v} 
 & \text{for } S\in \Hom_D(V',V) \notag
 \end{align}
+Since $\bform{}{}$ and $\bform{}{}'$ have opposite parties, we see that
+\begin{equation}\label{eq:6.6}
+T^{**'} = -T \quad S^{*'*} = -S
+\end{equation}
+Again, this slightly assymetric approach allows one to give a convenient
+formula for $\inn{}{}$.
+\begin{equation}\label{eq:6.7}
+\inn{T_1}{T_2} = \tr(T_2^* T_1) \quad \text{for } T_i \in \Hom_D(V,V')
+\end{equation}
+where $\tr$ again is reduced trace on $\End_D(V)$. Implicit 
+in $(\ref{eq:6.7})$ is the fact that $\tr(T^*T)=0$. This is indeed the case. 
+For the moment we merely record $(\ref{eq:6.7})$. We will discuss it more
+hully in $\S\ref{sec:7}$
+\item The classification of irreducible reductive dual pairs given by this 
+proposition and the previous one is a reworking from a new viewpoint 
+of classical results, going back through Weil [] and Siegel to Albert.
+These results can also be dug out of Satake [], and propositoin~\ref{prop:6.4}
+following is stated in Shimure []. What seems to be new here is the 
+insistence on the equality of statues of $G$ and $G'$, and of the mutuality 
+of their relation to one another.
 \end{enumerate}
 
 \proof
@@ -633,6 +654,7 @@ Galois action on the Brauer group can be non-trivial.
 See [] for some discussion of this.
 
 \section{Lie algebras of the classical groups; Cayley transform}  
+\label{sec:7}
 The groups which emerged from the discussion of \S\ref{sec:6}, 
 that is, the general linear group of a vector space over a division algebra,
 and the isometry group of a hermitian or antihermitian sesquilinear form
@@ -793,6 +815,32 @@ by $G$ and by $G'$. Hence altering the identification of $\Hom_D(V,V')$
 with $W$ by an element of the center of $D$ if necessary, 
 we can indeed arrange that the form $\inn{}{}$ on $W$ be given by
 $(\ref{eq:6.7})$.
+
+Let $F$ continue as in the above remark. Although $\fg \subseteq \Ker\,\tr$,
+the bilinear form
+\begin{equation}\label{eq:7.7}
+T, S \mapsto \tr TS \quad T,S\in \fg
+\end{equation}
+is a non-degenerate symmetric, $\Ad$-invariant bilinear form on $\fg$.
+Indeed symmetry and $\Ad$-invariance are standard facts. As to non-degeneracy,
+recall that the form $\bform{}{}$ an involution $\sharp$ on $\End_D(V)$ 
+according to the recipe $(\ref{eq:6.16})$. In terms of $\sharp$, 
+formula $(\ref{eq:7.1})$ can be written 
+\begin{equation}\label{eq:7.8}
+\fg = \Set{T\in \End_D(V)| T^\sharp = -T}
+\end{equation}
+Therefore the map $T\mapsto \frac{1}{2}(T- T^\sharp)$ projects $\End_D(V)$ 
+onto $\fg$, and we have 
+\begin{equation}\label{eq:7.9}
+\End_D(V) = \fg \oplus \fs
+\end{equation}
+where
+\begin{equation}\label{eq:7.10}
+\fs = \Set{T\in \End_D(V)| T=T^\sharp}
+\end{equation}
+Since $\tr T^\sharp = \tr T$, the decomposition $(\ref{eq:7.9})$ is orthogonal 
+for the pairing $(\ref{eq:7.7})$. Since $\tr TS$ is non-degenerate on
+$\End_D(V)$, it is also non-degenerate on $\fg$.
 
 \section{Witt's Theorem and orbits}\label{sec:8}
 \printindex
