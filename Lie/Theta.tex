@@ -9,6 +9,7 @@
 \usepackage{braket}
 \usepackage{paralist}
 \usepackage{eufrak}
+\usepackage{eucal}
 
 \usepackage{dsfont}
 
@@ -39,6 +40,8 @@
 \def\sspan{\rm{span}}
 \def\sl2{{\mathfrak{sl}(2)}}
 \def\slc{{\mathfrak{sl}(2,\bC)}}
+\def\fg{{\mathfrak{g}}}
+\def\fk{{\mathfrak{k}}}
 \def\Sp{\mathrm{Sp}}
 \def\GL{\mathrm{GL}}
 \def\sP{\mathcal{P}}
@@ -59,6 +62,8 @@
 \def\invl{{\natural}}
 \def\Gal{{\rm Gal}}
 \def\tB{\widetilde{B}}
+\def\ttau{\widetilde{\tau}}
+\def\oO{{\mathcal{O}}}
 
 
 \hypersetup{
@@ -327,7 +332,7 @@ that of $G'$ is by postmultiplication. Of course we could also
 write $W\cong \Hom_D(V',V)$. 
 Note that there are nice maps mediating between these two alternatives. 
 Namely, define
-\begin{align}
+\begin{align}\label{eq:6.5}
 *\colon \Hom_D(V,V')&\to \Hom_D(V,V'), & \text{and} \notag \\
 *'\colon \Hom_D(V',V)&\to \Hom_D(V',V), & \text{by} \notag \\
 \bform{Tv}{v'}' &= \bform{v},{T^* v'} &\text{for } T\in \Hom_D(V,V') \\
@@ -660,26 +665,26 @@ of $G$ and will always consider $G$ coming with this data attached.
 Thus $G$ is not simply an isomorphism class of groups, but is acting
 on a particular space in a particular way. Regarding the form $\bform{}{}$, 
 it will be said to be of {\em type $(D,\invl, +)$}\index{type!$(D,\invl, +)$}
-o {\em type $(D,\invl, -)$}\index{type!$(D,\invl, -)$} depending on 
+or {\em type $(D,\invl, -)$}\index{type!$(D,\invl, -)$} depending on 
 whether it is $\invl$-hermitian or $\invl$-antihermitian. 
 The type $(D, \invl, -)$ will be said to bo of {\em dual type}\index{dual type}
 to the type $(D, \invl,+)$, and vice versa. 
 
-The {\em Lie algebra}\index{Lie algebra} $\gg$ of $G$ is defined heuristically
+The {\em Lie algebra}\index{Lie algebra} $\fg$ of $G$ is defined heuristically
 as the collection $T\in \End_D(V)$ such that, if $\epsilon$ is an infinitesimal
 -- a non-zero quantity so small its square is zero, then $I+\epsilon T$
 is an isometry of $\bform{}{}$. Formally this amouts to the identity
 \begin{equation}\label{eq:7.1}
-\bform{Tv}{v'} + \bform{v}{Tv'}= 0 \quad T\in \gg, v, v'\in V
+\bform{Tv}{v'} + \bform{v}{Tv'}= 0 \quad T\in \fg, v, v'\in V
 \end{equation}
-It is seay to check that $\gg$ as defined by $(\ref{eq:7.1})$ is indeed a 
+It is seay to check that $\fg$ as defined by $(\ref{eq:7.1})$ is indeed a 
 Lie algebra, i.e., is closed under taking commutators. 
-Also if $T\in \gg$ and $g\in G$, we define
+Also if $T\in \fg$ and $g\in G$, we define
 \begin{equation}\label{eq:7.2}
 \Ad g (T) = g T g^{-1}
 \end{equation}
-It is easy to compute that $\Ad G$ preserves $\gg$, so $\Ad$ defines an action
-of $G$ on $\gg$.
+It is easy to compute that $\Ad G$ preserves $\fg$, so $\Ad$ defines an action
+of $G$ on $\fg$.
 
 Let $\tB(V)$ denote the space of forms on $V$ of the type dual to $\bform{}{}$.
 There is a natural action $\sigma$ of $\GL_D(V)$ on $\tB(V)$ defined 
@@ -690,7 +695,106 @@ A\in \GL_D(V), \beta \in \tB(V)
 \end{equation} 
 For $(\ref{eq:7.1})$ it is straightforward to verify the follwoing fact. 
 
+\begin{prop}\label{prop:7.1}
+Define $\beta\colon \fg \to \tB(V)$ by 
+\begin{equation}\label{eq:7.4}
+\beta_T(v,v') = \bform{Tv}{v'}
+\end{equation}
+Then $\beta$ is an isomorphism form $\fg$ to $\tB(V)$ and is equivariant 
+for the actions $\Ad$ and $\sigma$ of $G$.\footnote{
+$\beta_T(v,v')=(Tv,v') = -(v,Tv') = - \epsilon (Tv',v) 
+= -\epsilon \beta_T(v',v)$
+where $\epsilon=\pm 1$ is the type of $\bform{}{}$. Hence the map is well 
+defined, it is injective by non-degenerate of $\bform{}{}$.
+Same argument as above, $\beta$ is surjective. 
+Hence isomorphism as vector space.
+It is easy to check $\beta$ is an intertwining map.
+}
+\end{prop}
 
+For $G=\GL_D(V)$, we ignore proposition~\ref{prop:7.1} and simply note
+that $\fg$ is all of $\End_D(V)$. 
+
+Let $G$ and $G'$ be classical groups with basic data $(V, D, \invl, \bform{}{})$
+and $(V', D, \invl, \bform{}{}')$ respectively. Take $\bform{}{}$
+and $\bform{}{}'$ to be of dual type, so that $(G,G')$ acting on 
+$\Hom_D(V,V')$ by right and left multiplication form an irreducible type I
+reductive dual pair. We have defined the isomorphisms 
+$*\colon \Hom_D(V,V')\to \Hom_D(V',V)$ and $*'$ in the reverse direction 
+in $(\ref{eq:6.5})$.
+
+\begin{prop}\label{prop:7.2}
+The map 
+\begin{equation}\label{eq:7.5}
+\ttau\colon T\mapsto T^*T \quad \Hom_D(V,V')
+\end{equation}
+has image in $\fg$. Similarly the map 
+\begin{equation}\notag
+\ttau'\colon S\mapsto S^{*'}S \quad \Hom_D(V',V)
+\end{equation}
+has image in $\fg'$. Moreover
+\begin{equation}\label{eq:7.5a}\tag{\ref{eq:7.5}) a}
+\begin{split}
+\ttau(g'Tg^{-1}) &= \Ad g (\tau(T))\\
+\ttau'(gS g'^{-1}) &= \Ad g'(\tau'(S))
+\end{split}
+\end{equation}
+Hence the image under $\ttau$ of a $G\cdot G'$ orbit in $\Hom_D(V,V')$ 
+is an $\Ad G$ orbit in $\fg$, and the image of a $G'$ orbit is a single point;
+and similary for $\ttau'$.
+\end{prop}
+
+Remark: By this proposition we see that to each $G\cdot G'$ orbit $\oO$ in
+$W=\Hom_D(V,V')\simeq \Hom_D(V',V)$ we can attach a pair of orbits 
+$(\ttau(\oO), \ttau'(\oO)$ in $\fg$ and $fg'$. Thus we obtain a correspondence
+$\ttau(\oO)\leftrightarrow \ttau'(\oO)$ between certain $\Ad G$ 
+orbits in $\fg$ and certain $\Ad G'$ orbits in $G'$. We will see 
+in \S\ref{sec:8} that this correspondence is ``generically'',
+i.e., for $\oO$ in some Zariski open set, bijective. 
+This phenomenon was to my knowledge first made explicit in [].
+
+\proof: We recall from $(\ref{eq:6.5})$ the definition of $*$
+\[
+\bform{Tv}{v'}' = \bform{v}{T^*v} \quad T\in \Hom_D(V,V')
+\]
+Therefore
+\[
+\begin{split}
+& \bform{T^*Tv_1}{v_2} = \pm\bform{v_2}{T^*Tv_1}^\invl = 
+\pm\bform{Tv_2}{Tv_1}'^\invl \\
+=& -\bform{Tv_1}{Tv_2}' = -\bform{v_1}{T^*Tv_2}
+\end{split}
+\]
+Comparing with $(\ref{eq:7.1})$ we find that $T^*T$ satisfies the 
+condition to belong to $\fg$. We also compute 
+\[
+\begin{split}
+\bform{g'Tg^{-1}v}{v'}' &= \bform{Tg^{-1}v}{g'^{-1} v'}' = 
+\bform{g^{-1} v}{T^* g'^{-1}v'} \\
+&= \bform{v}{gTg'^{-1} v'},
+\end{split}
+\]
+whence
+\begin{equation}\label{eq:7.6}
+(g'Tg^{-1})^* = g T g'^{-1}.
+\end{equation}
+Equation $(\ref{eq:7.5a})$ is immediate form $(\ref{eq:7.6})$.
+
+Remark: Let $F$ be a subfield of the center of $D$, in the fixed field of 
+$\invl$, such that $D$ is a finite dimensional over $F$ and its 
+center is separable over $F$. Then $\tr=\tr(D/F)$, 
+the reduced trace of $D$ over $F$ is defined on $D$ and also on 
+$\Hom_D(V,V)$. Since $\fg$ is the lie algebra of the isometries of some 
+non-degenerate form, $\tr$ vanishes on $\fg$. 
+Hence $\tr(T^*T)=0$, for $T\in \Hom_D(V,V')$, which shows that 
+$(\ref{eq:6.7})$ does define an alternating form on $W=\Hom_D(V,V')$.
+Formula $(\ref{eq:7.5a})$ shows $(\ref{eq:6.7})$ is invariant 
+by $G$ and by $G'$. Hence altering the identification of $\Hom_D(V,V')$
+with $W$ by an element of the center of $D$ if necessary, 
+we can indeed arrange that the form $\inn{}{}$ on $W$ be given by
+$(\ref{eq:6.7})$.
+
+\section{Witt's Theorem and orbits}\label{sec:8}
 \printindex
 
 \end{document}
