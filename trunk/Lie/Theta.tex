@@ -43,6 +43,7 @@
 \def\fg{{\mathfrak{g}}}
 \def\fs{{\mathfrak{s}}}
 \def\fk{{\mathfrak{k}}}
+\def\sp{{\mathfrak{sp}}}
 \def\Sp{\mathrm{Sp}}
 \def\GL{\mathrm{GL}}
 \def\sP{\mathcal{P}}
@@ -874,6 +875,7 @@ Let $\fg$ be the Lie algebra of $G$. Then
 \begin{equation}
 c(\fg) \subset G \quad \text{and} \quad c(G) \subset \fg
 \end{equation}
+\end{prop}
 
 \proof
 Taking $T\in \fg$, and with $\sharp$ as in $(\ref{6.16})$, we use
@@ -882,12 +884,12 @@ to compute
 \[
 c(T)^\sharp = c(T^\sharp) = c(-T) = c(T)^{-1}
 \]
-so that $c(T)\in G$ by $(\ref{6.17})$. The other inclusion is similar
-\footnote{c(g)^\sharp =  c(g^\sharp) = c(g^{-1}) = -c(g)}.
+so that $c(T)\in G$ by $(\ref{eq:6.17})$. The other inclusion is similar
+\footnote{$c(g)^\sharp =  c(g^\sharp) = c(g^{-1}) = -c(g)$}.
 
 Remark:
 \begin{enumerate}[a)]
-\item The Cayley transform is a rational map, so proposition~\ref{7.3} 
+\item The Cayley transform is a rational map, so proposition~\ref{prop:7.3} 
 can be sharpened by using terminology from algebraic geometry. 
 Precisely, $c$ gives a birational equivalence between $\fg$ and the
 (Zariski) connected component of $I$ in $G$.
@@ -907,8 +909,96 @@ implies $I-J = -J-J^2$, or $-J^2 = I$.
 
 If we regard $I$ as an indeterminate, we may expand $c(T)$ in a formal 
 power series. 
-\begin{equation}
+\begin{equation}\label{eq:7.15}
+c(T)= I+2\sum_{n=1}^\infty (-1)^n T^n = I - 2T + 2T^2 - 2T^3 + \cdots
+\end{equation}
+Comparing this with the exponential series
+\begin{equation}\label{eq:7.16}
+\exp T = \sum_{n=1}^\infty \frac{T^n}{n!} =  I + T + \frac{T^2}{2} +
+\frac{T^3}{6}  + \cdots 
+\end{equation}
+we find
+\begin{equation}\label{eq:7.17}
+c(T) \equiv \exp(-2T) \pmod{T^3}
+\end{equation}
+Thus, the following truncated version of the Campbell-Hausdorff 
+formula holds for $c(T)$.
+\begin{equation}\label{eq:7.18}
+c(T)c(S) \equiv c(T+S - [T,S]) \text{ modulo 3rd order terms}
+\end{equation}
 
+Some examples of the foregoing topics will figure in later discussion.
+We give a compendium of some formulas that will be pertinent.
+The simples operators $\End_D(V)$ are the dyads $E_{xy}$, defined by 
+\begin{equation}\label{eq:7.19}
+E_{xy}(z) = \bform{z}{x}y\quad x,y,z \in V
+\end{equation}
+Here $\bform{}{}$ is our usual form, part of the basic data of the type I
+classical group $G$. Of course, the $E_{xy}$ span $\End_D(V)$. 
+We can easily compute
+\begin{align}\label{eq:7.20}
+i) & E_{xy}E_{zu} = E_{z\bform{u}{x}y}\\
+ii) & E^\sharp_{xy} = E_{yx} \text{ or } -E_{yx} \text{ according as } \bform{}{}
+\text{ is $\invl$-hermitian or $\invl$-antihermitian.} \notag\\
+iii) & E_{TxSy} = S\, E_{xy} \, T^\sharp \text{ for } T,S\in \End_D(V)\notag
+\end{align}
+Thus we get by $(\ref{eq:7.8})$ a spanning set for $\fg$ made of the elements
+\def\hE{{\widehat{E}}}
+\begin{equation}\label{eq:7.21}
+\hE_{xy} = E_{xy} \pm E_{yx}
+\end{equation}
+where we take the $-$ sign if $\bform{}{}$ is $\invl$-hermitian and the
+$+$ sign if $\bform{}{}$ is $\invl$-antihermitian. 
+If $T$ is a general element of $\fg$, then we can compute
+\begin{equation}\label{eq:7.22}
+\begin{split}
+& \tr(T\, \hE_{xy}) = \tr(T (E_{xy}-E^\sharp_{xy})) \\
+=& \tr(T E_{xy} + (E_{xy} T)^\sharp)\\
+=& 2 \tr(T E_{xy}) = 2\bform{Ty}{x}
+\end{split}
+\end{equation}
+
+We can specialize this to our original symplectic group $\Sp$, 
+whose defining data is $(W,F, 1, \inn{}{})$ where $F$ is our base field 
+and $\inn{}{}$ is the symplectic form on $W$. 
+In this case for any $w\in W$ the dyad $E_{ww}$ itself belongs to 
+the Lie algebra of $\Sp$, which we shall denote $\sp$. 
+We note that since $\inn{w}{w}=0$, we have $E^2_{ww} = 0$. 
+Hence the power series $(\ref{eq:7.15})$ for the Cayley transform 
+degenerates and we find 
+\begin{equation}\label{eq:7.23}
+c(a E_{ww}) = I - 2a E_{ww}. 
+\end{equation}
+Symplectic maps of the form $(\ref{eq:7.23})$
+are called {\em transvections}\index{transvections}. The 
+transvections
+\begin{equation}
+t_w = I+E_{ww} = c(-\frac{1}{2} E_{ww})
+\end{equation}
+will be called {\em unit transvections}. Clearly the map $w\mapsto t_w$
+is a quadratic map from $W$ to $\Sp$, equivariant with respect 
+to the appropriate actions of $\Sp$. Sinc $\Sp$ acts transitively on $W$, 
+the unit transvections form a single conjugacy class in $\Sp$. 
+Somewhat mor generally, it may be computed that $I+ a E_{ww}$ 
+and $I+ bE_{w'w'}$ are conjugate in $\Sp$ if and only if $ab$ is a square 
+in $F$. However, any two transvections are conjugate via outer automorphisms 
+fo $\Sp$. 
+
+We conclude with a computation. If $(G,G')$ is an irreducible type I 
+reductive dual pair in $\Sp$, then $\fg \subseteq  \sp \supseteq \fg'$. 
+Write $W\simeq \Hom_D(V,V')$ where $V$ and $V'$ are the space 
+in the basic data for $G$ and $G'$, and
+$D$ is the division algebra. If $T\in \Hom_D(V,V')$, then $E_{TT} \in \sp$.
+We wish to compute $\tr(M E_{TT})$, for $M\in \fg$. 
+From $(\ref{eq:7.22})$ we see 
+\[ \tr(M E_{TT}) = \inn{M(T)}{T}.\]
+But from $(\ref{eq:6.7})$, noting $M(T) = -TM$, 
+we find
+\begin{equation}\label{eq:7.24}
+\tr(M E_{TT}) = -\tr ( T^* T M).
+\end{equation}
+Here the $\tr$ on the left hand side is in $\Hom_F(W)$ and the 
+$\tr$ on the right hand side is in $\Hom_D(V)$.
 
 \section{Witt's Theorem and orbits}\label{sec:8}
 \printindex
