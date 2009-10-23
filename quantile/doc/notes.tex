@@ -21,21 +21,52 @@
 
 \begin{document}
 \maketitle
-%\section{}
-%\subsection{}
-\chapter{Introduction}
-\section{Brownian motion}
-Let $(B_t, t\geq 0)$  be a real-valued one-dimensional standard Brownian motion.
-More generally, 
-for $ \mu \in \bR$, $(X_t = B_t + \mu t, t \geq 0)$ 
-is a Brownian motion with drift $\mu$. 
+\section{introduction}
+\subsection{Option}
 
-\subsection{runing maxiam}
-Fix a process $X_t$, define $M_t = \max_{0\leq s\leq t} X_s $. 
+An option is a contract which give the holder the right to buy or sell a underlying asset by a certain date at an agreed price. To get this right, the buyer should pay the seller. The price set in the contract is known as the strike price; the date is known as expiration date or maturity. There are always two sides involved in every option contract. On one side  is the investor who has bought the option. This side is known as the long position. Another side is the short position who has sold the option. A call option gives the holder the right to buy the underlying assets. While a put option gives the holder the right to sell the underlying asset. European options can be exercised only at the expiration date. American options on the other hand may be exercised at any time before the expiry date. 
+
+Usually, there are five factors affecting the price of a stock option:
+\begin{enumerate}[1.]
+\item The current stock price, $S_0$
+\item The strike price, $K$
+\item The time to maturity, $T$
+\item The volatility of the stock price, $\sigma$
+\item The risk-free interest rate, $r$
+\end{enumerate}
+
+For European option, the payoff from a long position is $(S_T - K)^+$. As for American option, the payoff function is
+similar, what is different is we should use the stock price when the option is executed to calculate payoff, instead of $S_T$ in European case. 
+
+\subsection{Black-Shores model}   
+The most popular model to describe stock price behavior is known Black--Shore model. Let $S_t$ be the stock price. Then under this model, $S_t$ satisfies this equation: 
+\begin{equation}\label{eq:1}
+dS = \mu Sdt + \sigma SdB, 
+\end{equation}
+with $\mu$ and $\sigma $ constant, $B$ a standard Brownian motion. This approach to model stock price was first introduced by Black, Shores and Morton. Denote $r$ as the constant continuously compounded risk-free interest rate. Under risk-neutral assumption, we can get $\mu = r $. 
+
+If we define $G = \ln S$. After some calculation, we get 
+\begin{equation}\label{eq:2}
+dG = \frac{\mu - \sigma ^2 }{2} dt + \sigma dB.
+\end{equation}
+From this we can see that the natural logarithm of stock price is Brownian motion with dift $\mu$, and variance $\sigma^2$. This model implies that the stock's price at a given time $T$ follows lognormal distribution. The standard deviation of the logarithm of the stock price is $\sigma \sqrt{T}$. 
+
+Black etc. \cite{Black:1973} pointed out that the proper price of an option should be the expected present value of its payoff. Based on this idea, there are many studies about the pricing of options. For European plain vanilla option, its price can be priced in closed form. As for American plain vanilla option, because it can be executed at any time before maturity, the pricing is much more complicated. In this case, it is a optimal stopping problem. Comparing to vanilla option, there are another school of options called exotic options. Exotic options are nonstandard options created by financial engineers, which usually only traded in over-the- counter market. Although exotic options are a relatively small part of financial market in terms of volume, these options are important to investment banks because they are generally much more profitable than plain vanilla option. Usually, these options are path dependent. One typical exotic option is lookback option.
+
+%In the this case, one can deduce that the optimal stopping time is given by some region. Precisely, the holder excise the option when stock price enter some region. 
+
+\subsection{Lookback options}
+Look back options give the hold the right to capture the difference between asset price when the option is execute and maximum or minimum asset price reached during the life of the option. For a European style lookback call option, the payoff is the amount that the final asset price exceeds the minimum asset price happened during the life of the option. As for the put option, the payoff is the amount by which the maximum asset price happened during the life of the option exceeds the final asset price. Goldman etl firstly provided the valuation formulas for European lookbacks. In Hull, the value of a this type call option is
+\begin{equation}\label{eq:3}
+S_0e^{-qt}N(a_1) - S_0 e{-qT}\frac{\sigma ^2}{2(r-q)} N(-a_1) - S_min e^{-rT}(N(a_2) - \frac{\sigma^2}{2(r-q)} e ^{Y_1} N(-a_3) 
+\end{equation}
+where 
+
+
+Fix a process $X_t$, define $M_t = \max_{0\leq s\leq t} X_s$. 
 When $X_t$ is a standard brownian motion without drift, 
-the joint distribution of $M_t$ and $X_t$
- can be easly calculated by reflection principle\cite{Karatzas91}:
-\[
+the joint distribution of $M_t$ and $X_t$ can be easly calculated by reflection principle\cite{Karatzas91}:
+\[ 
 P(X_t \in a+dx, M_t \in b+dm) =  
 \]
 
@@ -55,10 +86,10 @@ of $\alpha$-quantile\cite{Dassios2005}
 \]
 
 
-\section{Options}
+
 
 \subsection{Eurapian v.s. American} 
-definition of ...
+
 
 \subsection{Lookback options}
 definition
@@ -75,8 +106,8 @@ Results\cite{Chaumont1999}
 \subsection{an estimate of discrete error}
 read the paper again and combin above result. 
 
-\chapter{Priceing $\alpha$-quantile option}
-\section{Eurapian}
+\chapter{Pricing $\alpha$-quantile option}
+\section{European}
 \subsection{by path decomposition}
 
 \subsection{forward shooting by lookback}
