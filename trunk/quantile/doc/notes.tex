@@ -56,11 +56,40 @@ Black etc. \cite{Black:1973} pointed out that the proper price of an option shou
 %In the this case, one can deduce that the optimal stopping time is given by some region. Precisely, the holder excise the option when stock price enter some region. 
 
 \subsection{Lookback options}
-Look back options give the hold the right to capture the difference between asset price when the option is execute and maximum or minimum asset price reached during the life of the option. For a European style lookback call option, the payoff is the amount that the final asset price exceeds the minimum asset price happened during the life of the option. As for the put option, the payoff is the amount by which the maximum asset price happened during the life of the option exceeds the final asset price. Goldman etl firstly provided the valuation formulas for European lookbacks. In Hull, the value of a this type call option is
+Look back options give the hold the right to capture the difference between asset price when the option is execute and maximum or minimum asset price reached during the life of the option. For a European style lookback call option, the payoff is the amount that the final asset price exceeds the minimum asset price happened during the life of the option. As for the put option, the payoff is the amount by which the maximum asset price happened during the life of the option exceeds the final asset price. Goldman etl firstly provided the valuation formulas for European lookbacks. In Hull \cite{}, the value of a this type call option is 
 \begin{equation}\label{eq:3}
 S_0e^{-qt}N(a_1) - S_0 e{-qT}\frac{\sigma ^2}{2(r-q)} N(-a_1) - S_min e^{-rT}(N(a_2) - \frac{\sigma^2}{2(r-q)} e ^{Y_1} N(-a_3) 
 \end{equation}
+where
+\begin{equation}\label{eq:4}
+a_1=\frac{ln(S_0 / S_{min}) + (r-q+\sigma^2 /2)T}{\sigma \sqrt{T}}
+a_2 = a_1 - \sigma \sqrt{T}
+a_3 = \frac{ln(S_0 / S_{min}}+ (-r+q+\sigma^2 / 2)T}{\sigma \sqrt{T}}
+Y_1 = - \frac{2(r-q-\sigma^2 / 2)ln(S_0 / S_{min})}{\sigma^2}
+\end{equation}
+and $S_min$ is the minimum asset price achieved to date. 
+The value of a European lookback put is 
+\begin{equation}\lable{eq:5}
+S_max e^{-rT} ( N(b_1) - \frac{\sigma^2}{2(r-q)} e^{Y_2} N(-b_3)) + S_0 e^{-qT}\frac{\sigma^2}{2(r-q)} N(-b_2) - S_0 e^{-qT} N(b_2)
+\end{equation}
 where 
+\begin{equation}\lable{eq:6}
+b_1 = \frac{ln(S_max / S_0) + (-r + q + \sigma^2 /2)T}{\sigma \sqrt{T}}
+b_2 = b_1 - \sigma \sqrt{T}
+b_3 = \frac{ln(S_max / S_0) + (r-q-\sigma^2 /2)T}{\sigma \sqrt{T}}
+Y_2 = \frac{2(r-q-\sigma^2 / 2) ln(S_max / S_0)}{\sigma^2}
+\end{equation}
+and $S_max$ is the maximum asset price achieved to date. 
+
+These formula are got under the assumption that the asset price is observed continuously. However, in real life, the asset price is observed discretely. Broadie etl. \cite{} give a creation to these formulas to deal with discrete situation.  In their paper, we can find that the price of a discrete lookback at the $k-th$ fixing data and the price of a continuous lookback at time $t = k \delta t$ satisfy
+\begin{equation}\lable{eq:7}
+V_m (S_{+_}) = [e^{\beta _1 \sigma \sqrt{\frac{T}{m}} V(S_{-}e^{+\beta _1 \sigma \sqrt{\frac{T}{m}} + (e^{\bata _1 \sigma \sqrt{\frac{T}{m}} -1)S_t) + o(1/\sqrt{m})
+\end{equation}
+where, in $+$ and $-$, the top case applies for puts and the bottom for calls, and $\beta_1 = lim \frac{\sqrt{m}E[max B_t - max B_{kT/m}}{\sigma \sqrt{T}}. 
+
+By this correction,we can use continuous pricing formula to value discrete loolback. To get a more precise value for put, first we should inflate the predetermined max by a factor of $e^{\bete_1 \sigma \sqrt{T/m}, then deflate the expected maximum over $[0,T] by the same factor. For a lookback call, first deflate the predetermined min, then inflate the expected minimum. 
+
+
 
 
 Fix a process $X_t$, define $M_t = \max_{0\leq s\leq t} X_s$. 
