@@ -15,14 +15,15 @@
 
 \title{Notes}
 \author{Zhu Yong Ting}
-
 \def\bE{{\mathbb{E}}}
 \def\bR{{\mathbb{R}}}
 
+\def\eqlaw{{\stackrel{\text{(law)}}{=}}}
+\def\tS{{\widetilde{S}}}
 \begin{document}
 \maketitle
-\section{introduction}
-\subsection{Option}
+\chapter{introduction}
+\section{Option}
 
 An option is a contract which give the holder the right to buy or sell a underlying asset by a certain date at an agreed price. To get this right, the buyer should pay the seller. The price set in the contract is known as the strike price; the date is known as expiration date or maturity. There are always two sides involved in every option contract. On one side  is the investor who has bought the option. This side is known as the long position. Another side is the short position who has sold the option. A call option gives the holder the right to buy the underlying assets. While a put option gives the holder the right to sell the underlying asset. European options can be exercised only at the expiration date. American options on the other hand may be exercised at any time before the expiry date. 
 
@@ -117,7 +118,7 @@ X_{\alpha,t} = \inf\Set{x:\int_0^t 1_{X_s\leq x} > \alpha t}.
 When $X_{t}$ is a Brownian motion $B_t$we have a result about the distribution
 of $\alpha$-quantile\cite{Dassios2005}
 \[
-(B_t^\alpha, B_t) \stackrel{\text{(law)}}{=}
+(B_t^\alpha, B_t) \eqlaw
  (\max_{0\leq s\leq \alpha t} B'_s-\max_{0\leq s\leq (1-\alpha)t B''_s},
  B'_\alpha t + B''_{(1-\alpha) t})
 \]
@@ -138,7 +139,31 @@ definition
 approximate brownian by randon walk through Euler scheme.
 
 \subsection{path transform}
-Results\cite{Chaumont1999}
+Let $S_k$ be a randon walk (assume $S_0=0$) 
+with i.i.d increasment, i.e. 
+$\Delta S_k = S_k -  S_{k-1}$ is i.i.d. 
+Define the ordered statistics $M_{k,n}$ be the $k$th-smallest value in
+$\Set{S_i}_{i=0}^n$. 
+Under this setting, clearly, $M_{0,n} = \inf_{0\leq i\leq n}S_i$
+and $M_{n,n} = \sup_{0\leq i\leq n}S_i$
+Define 
+\[S'_i = S_{i+k}-S_k\] 
+for fixed $k, n$.  
+
+In Wendel's paper\cite{Wendel1960}, an identity about randon walk with 
+i.i.d increasment was dirived:
+\[
+(M_{k,n}, S_n) \eqlaw (\sup_{i\leq k} S_i +\sup_{i\leq n-k} S'_i, S_n)
+\]
+In 
+\cite{Chaumont1999}, Chaumont provide a combinatorics treatment. 
+He constructed a explicit path transform for $S$ to $\tS$, such that 
+\[
+(M_{k,n}, S_n) = (\sup_{\i\leq k} \tS_i+\sup_{i\leq n-k} \tS'_i, \tS_n)
+\]
+Here $\tS$ has same distribution with $S$ and each path $S$
+ one-one corresponed to $\tS$.
+
 
 \subsection{an estimate of discrete error}
 read the paper again and combin above result. 
