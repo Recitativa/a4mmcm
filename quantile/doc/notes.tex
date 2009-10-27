@@ -20,6 +20,13 @@
 
 \def\eqlaw{{\stackrel{\text{(law)}}{=}}}
 \def\tS{{\widetilde{S}}}
+\def\tB{{\widetilde{B}}}
+\def\tmu{{\widetilde{\mu}}}
+\def\tsigma{{\widetilde{\sigma}}}
+\def\abs#1{{\left|#1\right|}}
+\def\E{{\mathrm{E}\,}}
+\def\EE#1{{{\mathrm{E}}\left(#1\right)}}
+
 \begin{document}
 \maketitle
 \chapter{introduction}
@@ -152,21 +159,111 @@ for fixed $k, n$.
 
 In Wendel's paper\cite{Wendel1960}, an identity about randon walk with 
 i.i.d increasment was dirived:
-\[
-(M_{k,n}, S_n) \eqlaw (\sup_{i\leq k} S_i +\sup_{i\leq n-k} S'_i, S_n)
-\]
+\begin{equation}\label{eq:dpathdec}
+(M_{k,n}, S_n) \eqlaw (\sup_{i\leq k} S_i +\inf_{i\leq n-k} S'_i, S_n)
+\end{equation}
+
 In 
 \cite{Chaumont1999}, Chaumont provide a combinatorics treatment. 
 He constructed a explicit path transform for $S$ to $\tS$, such that 
 \[
-(M_{k,n}, S_n) = (\sup_{\i\leq k} \tS_i+\sup_{i\leq n-k} \tS'_i, \tS_n)
+(M_{k,n}, S_n) = (\sup_{i\leq k} \tS_i+\inf_{i\leq n-k} \tS'_i, \tS_n)
 \]
 Here $\tS$ has same distribution with $S$ and each path $S$
  one-one corresponed to $\tS$.
 
+By using path transform, Chaumont proved 
+following continous version of path decomposition:
+\begin{equation}\label{eq:cpathdec}
+(M_{\alpha,T}, S_T) \eqlaw (\sup_{t\leq \alpha{T}} S_T +\inf_{t \leq (1-\alpha)T} S'_t, S_T)
+\end{equation}
+where as above:
+\[
+S'_t = S_{\alpha T+t} - S_{\alpha_t}.
+\]
+
+For Brownian motion case, this formular were proved in many differet ways
+and original due to Dassios\cite{Dassios1995}. 
 
 \subsection{an estimate of discrete error}
-read the paper again and combin above result. 
+\cite{Janssen2008} gives a estimate of the difference of  expatations 
+between maximum of borwnian motion and associated random walk. 
+Since we just give a really rough estimate, we only list the first two term
+(for $B(t)$ is a Borwnian motion with drift $\mu$ and variance $1$
+\begin{equation}\label{eq:est1}
+E\max_{0\leq t \leq 1} B(t) - E\max_{n=0,\cdots, N}B(n/N) 
+= -\frac{\zeta(1/2)}{\sqrt{2\pi N}}-\frac{2g(1)-\mu}{4N} + O(1/N^2)
+\end{equation}
+where 
+\[
+g(t) = \mu \Phi(\mu \sqrt{t}) + \frac{1}{\sqrt{2\pi t}} e^{-\frac{1}{2}\mu^2 t}.
+\]
+\[
+\zeta(1/2) \approx -3.92264613.
+\]
+
+For general Borwnian $\tB(t)$ motion with drift $\tmu$, variance $\tsigma$
+we use following transform
+\begin{align*}
+\tB_t &= \tsigma\sqrt{T} B_{t/T} = \sqrt{T} \mu t/T + \sqrt{T}\sigma B_{t/T}\\
+\mu &= \tmu \sqrt{T} 
+\end{align*}
+do derive the follwoing formula:
+\begin{equation}\label{eq:maxest}
+E\max_{0\leq t\leq T} B(t) - E \max_{0\leq n \leq N} B(nT/N) = 
+ -\frac{\zeta(1/2)}{\sqrt{2\pi}}\sqrt{T/N}-\frac{2g(1)-\mu}{4N}\sqrt{T} + 
+O(\sqrt{T}/N^2)
+\end{equation}
+
+Now combine $(\ref{eq:cpathdec})$ $(\ref{eq:dpathdec})$ and $(\ref{eq:maxest})$,
+we get an very rough estimate of the apporximation order:
+\begin{equation}
+\begin{split}
+\E (M_{\alpha,T}) - \E (M_{k,N})
+=& \EE{\sup_{t\leq \alpha{T}} S_t +\inf_{t \leq (1-\alpha)T}S'_t} 
+- \EE{\sup_{i\leq k} S_i+\inf_{i\leq n-k} S'_i}\\
+=& \EE{\sup_{t\leq \alpha{T}} S_t +\inf_{t \leq (1-\alpha)T}S'_t
+-  \sup_{i\leq k} S_i-\inf_{i\leq n-k} S'_i} \\
+= &  \EE{\sup_{t\leq \alpha{T}} S_t - \sup_{i\leq k} S_i} +
+\EE{\inf_{i\leq n-k} S'_i-\inf_{i\leq n-k} S'_i}\\
+=& -\frac{\zeta(1/2)}{\sqrt{2\pi}}\sqrt{T/N} 
+\left(\sqrt{\alpha} - \sqrt{1-\alpha}\right) \\
+& + \frac{2g(1)}{4N}\sqrt{T}\left(\sqrt{\alpha} - \sqrt{1-\alpha}\right) \\
+& + \frac{\mu}{N}\left(\sqrt{\alpha}+\sqrt{1-\alpha}\right)\sqrt{T}
+ + O(\sqrt{T}/N^2) 
+\end{split}
+\end{equation}
+where $k = \alpha N$.
+The last equality holds by view $\inf_{t\leq (1-\alpha)T} S'_t$ as 
+$-\max_{t\leq (1-\alpha)T} (-S'_t)$.
+
+This estimate shows that the convergence order 
+are all $\frac{1}{2}$ when $\alpha \neq 1/2$. If $\alpha=1/2$ and the 
+Brownian motion does not have  drift ($\mu=0$), it is easy to see 
+(by noting that 
+$\E M_{1/2,T} = \E -M_{1/2,T}$) $\E M_{1/2,T} = \E M_{k,n} = 0$. 
+When the Brownian moton has drift, the order becomes $1$. 
+
+Now, suppose that $f$ is an monotone Lipschitz continous function.
+WLOG, asuume 
+\begin{equation}\label{eq:lips}
+0 \leq f(x)-f(y) \leq C (x-y) \quad \forall x>y,
+\end{equation}
+where some counstant $C$. This aways the case when $f$ the 
+(truncated) payoff of a $\alpha$-quantile option.
+
+Then it is easy to see
+\[
+-C\left( \sup_{i\leq n-k} (-S'_i)-\sup_{i\leq n-k} (-S'_i)\right)
+ \leq f(M_{\alpha,T}) - f(M_{k,N}) 
+\leq  C \left(\sup_{t\leq \alpha{T}} S_t - \sup_{i\leq k} S_i\right)
+\]
+Hence 
+\[
+\abs{\E f(M_{\alpha,T}) - \E f(M_{k,N})} 
+\leq \max\Set{\sqrt{\alpha}, \sqrt{1-\alpha}}
+C\frac{-\zeta(1/2)}{\sqrt{2\pi}}\sqrt{T/N}  + O(1/N)
+\]
 
 \chapter{Pricing $\alpha$-quantile option}
 \section{European}
