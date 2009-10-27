@@ -66,7 +66,7 @@
 \def\tB{\widetilde{B}}
 \def\ttau{\widetilde{\tau}}
 \def\oO{{\mathcal{O}}}
-
+\def\Ind{{\rm Ind}}
 
 \hypersetup{
     bookmarks=false,         % show bookmarks bar?
@@ -1001,6 +1001,45 @@ Here the $\tr$ on the left hand side is in $\Hom_F(W)$ and the
 $\tr$ on the right hand side is in $\Hom_D(V)$.
 
 \section{Witt's Theorem and orbits}\label{sec:8}
+
+
+\section{Realizstions of $\rho$}
+An essential fact about the Heisenberg group is that although there
+is only one equivalence class $\rho$ of irreducible unltary represenratlons
+of $H$ with central character $\chi_0$, there are, as already remarked by
+Cartier, many different ways of realizing $\rho$ concretely. 
+These reslizations are for the most part as induced representations, 
+and they fall naturally into families, 
+with the families fitting together into a
+coherent hierarchy.
+The structure of these families of realizations is the
+basic phenomenon of study for invariant theory and many other questions
+related to the oscillator representation. In this section we wlll review
+the various realizations of $\rho$ and prove some basic facts about their
+structure.
+
+First let us note, as have others, that if $B$ is a subgroup of $H$,
+containing $Z$; and $B$ becomes maxinal abelian in $H/\Ker \chi_0$,
+and if $\psi$
+is any character of $B$ whose restriction to $Z$ ia $\chi_0$ , then $\rho$ is
+realized as the induced representation
+\begin{equation}\label{eq2:3.1}
+\rho\simeq \Ind_B^H \psi
+\end{equation}
+
+Indeed, it is obvious $\Ind_B^H\psi=\rho$ is a representation of $H$ with
+central character $\chi_0$, so it must be a multiple of $\rho$ , 
+so $(\ref{eq2:3.1})$
+amounts to the assertion that $\rho$ is irreducible. To see this, consider
+$\rho$ more closely.  The space $\rho$ is the space $L^2(H/B; \psi)$
+ of functions $f$ on $H$ such that
+\begin{equation}\label{eq2:3.2}
+f(bh) = \psi(b)f(h)
+\end{equation}
+so that $|f|$, the absolute value of $f$, is deifined on $H/B$ and satisfies
+
 \printindex
+
+
 
 \end{document}
