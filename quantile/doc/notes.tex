@@ -46,6 +46,10 @@ Usually, there are five factors affecting the price of a stock option:
 For European option, the payoff from a long position is $(S_T - K)^+$. As for American option, the payoff function is
 similar, what is different is we should use the stock price when the option is executed to calculate payoff, instead of $S_T$ in European case. 
 
+Usually there are closed form price formulas for European. In addition numerical approach can solve this problem, such as binomial tree and Monte Carlo simulation. However, the pricing of    American is more complicate. A complete solution to American option pricing problem should address two aspects, option value and an optimal exercise strategy. Only in a few case analytic solutions are available. In most cases, numerical approach is needed. Lim and Lai \cite{Lim2004} propose to an approach to compute both the price and the optimal exercise boundary. 
+
+
+
 \subsection{Black-Shores model}   
 The most popular model to describe stock price behavior is known as Black--Shore model. Let $S_t$ be the stock price. Then under this model, $S_t$ satisfies this equation: 
 \begin{equation}\label{eq:1}
@@ -64,7 +68,7 @@ Black etc. \cite{Black:1973} pointed out that the proper price of an option shou
 %In the this case, one can deduce that the optimal stopping time is given by some region. Precisely, the holder excise the option when stock price enter some region. 
 
 \subsection{Lookback options}
-Look back options give the hold the right to capture the difference between asset price when the option is execute and maximum or minimum asset price reached during the life of the option. For a European style lookback call option, the payoff is the amount that the final asset price exceeds the minimum asset price happened during the life of the option. As for the put option, the payoff is the amount by which the maximum asset price happened during the life of the option exceeds the final asset price. Goldman etl firstly provided the valuation formulas for European lookbacks. In Hull \cite{Hull2008}, the value of a this type call option is 
+Lookback options give the hold the right to capture the difference between asset price when the option is execute and maximum or minimum asset price reached during the life of the option. For a European style lookback call option, the payoff is the amount that the final asset price exceeds the minimum asset price happened during the life of the option. As for the put option, the payoff is the amount by which the maximum asset price happened during the life of the option exceeds the final asset price. Goldman etl firstly provided the valuation formulas for European lookbacks. In Hull \cite{Hull2008}, the value of a this type call option is 
 \begin{equation}\label{eq:3}
 S_0e^{-qt}N(a_1) - S_0 e{-qT}\frac{\sigma ^2}{2(r-q)} N(-a_1) - S_min e^{-rT}(N(a_2) - \frac{\sigma^2}{2(r-q)} e ^{Y_1} N(-a_3) 
 \end{equation}
@@ -188,9 +192,9 @@ and original due to Dassios\cite{Dassios1995}.
 
 \subsection{an estimate of discrete error}
 \cite{Janssen2008} gives a estimate of the difference of  expatations 
-between maximum of borwnian motion and associated random walk. 
+between maximum of Brownian motion and associated random walk. 
 Since we just give a really rough estimate, we only list the first two term
-(for $B(t)$ is a Borwnian motion with drift $\mu$ and variance $1$
+(for $B(t)$ is a Brownian motion with drift $\mu$ and variance $1$
 \begin{equation}\label{eq:est1}
 E\max_{0\leq t \leq 1} B(t) - E\max_{n=0,\cdots, N}B(n/N) 
 = -\frac{\zeta(1/2)}{\sqrt{2\pi N}}-\frac{2g(1)-\mu}{4N} + O(1/N^2)
