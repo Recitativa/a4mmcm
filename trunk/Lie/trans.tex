@@ -1,0 +1,289 @@
+\documentclass[12pt]{amsart}
+\usepackage[margin=3cm]{geometry}
+
+\usepackage{hyperref}
+
+\usepackage{amssymb}
+\usepackage{graphicx}
+%\usepackage{amscd}
+\usepackage{braket}
+\usepackage{paralist}
+\usepackage{eufrak}
+%\usepackage{calrsfs}
+%\usepackage[small,nohug,heads=littlevee]{diagrams}
+%\diagramstyle[labelstyle=\scriptstyle]
+%\usepackage{diagrams}
+\usepackage{amscd}
+%\usepackage{pictexwd,dcpic}
+%\usepackage{mathrsfs}
+
+
+\newtheorem{lemma}{Lemma}
+\newtheorem{thm}{Theorem}
+\newtheorem{prop}{Proposition}
+\newtheorem{cor}{Corollary}
+\newenvironment{expl}{\it}{\color{black}\normalsize}
+\DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
+
+
+
+\def\Ker{\rm{Ker}}
+\def\Im{\rm{Im}}
+\def\Hom{\rm{Hom}}
+\def\Mat{\rm{Mat}}
+\def\Ind{{\rm Ind}}
+\def\bR{{\mathbb{R}}}
+\def\bN{{\mathbb{N}}}
+\def\bZ{{\mathbb{Z}}}
+\def\bC{{\mathbb{C}}}
+\def\bQ{{\mathbb{Q}}}
+\def\bB{{\mathbb{B}}}
+\def\bA{{\mathbb{A}}}
+\def\bs{{\mathbf{s}}}
+\def\bd{{\mathbf{d}}}
+\def\bT{{\mathbb{T}}}
+\def\bt{{\mathbf{t}}}
+\def\br{{\mathbf{r}}}
+\def\vv{{\vec{v}}}
+\def\vw{{\vec{w}}}
+\def\vx{{\vec{x}}}
+\def\vy{{\vec{y}}}
+\def\v0{{\vec{0}}}
+\def\ol{\overline}
+\def\sspan{\rm{span}}
+\def\sl2{{\mathfrak{sl}(2)}}
+\def\slc{{\mathfrak{sl}(2,\bC)}}
+\def\sp{{\mathfrak{sp}}}
+\def\gg{{\mathfrak{g}}}
+\def\kk{{\mathfrak{k}}}
+\def\pp{{\mathfrak{p}}}
+\def\qq{{\mathfrak{q}}}
+\def\sP{\mathcal{P}}
+\def\sH{\mathcal{H}}
+\def\sU{\mathcal{U}}
+\def\sC{\mathcal{C}}
+\def\Stab{{\rm Stab}}
+\def\ad{{\rm ad}}
+\def\Ad{{\rm Ad}}
+\def\id{{\rm id}}
+\def\sgn{{\rm sgn}}
+\def\gcd{{\rm gcd}}
+\def\inn#1#2{\left\langle{#1},{#2}\right\rangle}
+\def\abs#1{\left|{#1}\right|}
+\def\norm#1{{\left\|{#1}\right\|}}
+\def\Sp{{\rm Sp}}
+
+\def\Ad{\mathrm{Ad}}
+\def\agl{\mathrm{gl}}
+\def\asl{\mathrm{sl}}
+\def\aso{\mathrm{so}}
+\def\asp{\mathrm{sp}}
+\def\au{\mathrm{u}}
+\def\diag#1{\mathrm{diag}(#1)}
+\def\lww{\mathcal{W}}
+\def\lxx{\mathcal{X}}
+\def\lyy{\mathcal{Y}}
+\def\fhh{\mathfrak{h}}
+\def\ftt{\mathfrak{t}}
+\def\fgg{\mathfrak{g}}
+\def\fkk{\mathfrak{k}}
+\def\chh{\mathcal{H}}
+\def\fmm{\mathfrak{m}}
+\def\GL{\mathrm{GL}}
+\def\SO{\mathrm{SO}}
+\def\rad{\mathrm{rad}}
+\def\SL{\mathrm{SL}}
+\def\tr{\mathrm{tr}}
+\def\Mat{\mathrm{Mat}}
+\def\U{\mathrm{U}}
+
+
+\hypersetup{
+    bookmarks=false,         % show bookmarks bar?
+    unicode=false,          % non-Latin characters in Acrobat’s bookmarks
+    pdftoolbar=true,        % show Acrobat’s toolbar?
+    pdfmenubar=false,        % show Acrobat’s menu?
+    pdffitwindow=false,      % page fit to window when opened
+    pdftitle={Qualify Examination Answers - Algebra},    % title
+    pdfauthor={Ma Jia Jun},     % author
+    pdfsubject={Subject},   % subject of the document
+    pdfcreator={Creator},   % creator of the document
+    pdfproducer={Producer}, % producer of the document
+    pdfkeywords={keywords}, % list of keywords
+    pdfnewwindow=true,      % links in new window
+    colorlinks=true,       % false: boxed links; true: colored links
+    linkcolor=blue,          % color of internal links
+    citecolor=green,        % color of links to bibliography
+    filecolor=magenta,      % color of file links
+    urlcolor=cyan           % color of external links
+}
+
+
+\newcounter{ssection}
+\setcounter{ssection}{0}
+\renewcommand{\subsection}{
+  \addtocounter{ssection}{1}{\bf  \arabic{ssection}.\  }}
+
+\title{transfer of $K$ type}
+
+\begin{document}
+\maketitle
+
+\section{Heisenberg groups}
+Consider $H = W\oplus Z$, $W = X\oplus Y$ 
+with group law: 
+\[
+h(x,y,z)h(x',y',z') = h(x+x', y+y', z+z'+xy').
+\]
+This law is from 
+\[
+\begin{pmatrix}
+1 & x & z\\
+0 & I & y\\
+0 & 0 & 1
+\end{pmatrix}
+\begin{pmatrix}
+1 & x' & z'\\
+0 & I & y'\\
+0 & 0 & 1
+\end{pmatrix}
+=
+\begin{pmatrix}
+1 & x+x' & z+z'+ x y'\\
+0 & I & y+y'\\
+0 & 0 & 1
+\end{pmatrix}.
+\]
+
+Let $w = (x,y)$. 
+
+Define exponation map $\exp$ from the lie algebra $\fhh$ of $H$ to $H$. 
+\[
+\fhh = \lww\oplus F= \Set{\begin{pmatrix}
+    0 & a & t\\
+    0 & 0 & b\\
+    0 & 0 & 0
+  \end{pmatrix}}
+\]
+Note
+\[
+\begin{pmatrix}
+0 & a & c\\
+0 & 0 & b\\
+0 & 0 & 0
+\end{pmatrix}
+\begin{pmatrix}
+0 & a' & c'\\
+0 & 0 & b'\\
+0 & 0 & 1
+\end{pmatrix}
+=
+\begin{pmatrix}
+0 & 0 & a b'\\
+0 & 0 & 0\\
+0 & 0 & 0
+\end{pmatrix}.
+\]
+Hence $X^3 = 0$ for any $X\in \fhh$. 
+Then 
+\[
+\exp(X) = I + X + \frac{1}{2}X^2= h(a,b, c+ \frac{1}{2} ab) \in H. \]
+and
+\[ 
+\log(h) = (x,y, z-\frac{1}{2}xy\in \fhh. 
+\]
+
+Using above formula, we have
+\[
+h^{-1} = \exp(-\log(h)) = h(-x,-y,-z+x y).
+\]
+
+\[
+\begin{split}
+hgh^{-1}g^{-1} &= h(x,y,z)h(x',y',z') h(-x,-y,-z+xy) h(-x',y',-z'+x'y')\\
+&= h(x+x',y+y', z+z'+xy')h(-(x+x'),-(y+y'), -(z+z')+xy+x'y'+xy')\\
+&= h(0,0,-(x+x')(y+y')+xy + x'y' +xy')
+= h(0,0,xy'-x'y)\\ 
+&= h(0,0,\inn{w}{w'}).
+\end{split}
+\]
+
+\[
+[X,Y] = (0,0,ab'-a'b) = (0,0,\inn{w}{w'}) \in \lww.
+\]
+
+\[
+\begin{split}
+\exp(w,c)\exp(w',c') &= h(w,c+\frac{1}{2}ab)h(w',c'+\frac{1}{2}a'b')
+= h(w+w',c+c'+\frac{1}{2}(ab+a'b')+ab')\\
+&= \exp(w+w', c+c'+\frac{1}{2}(ab'-b'a)) = 
+\exp(w+w',c+c'+\frac{1}{2}\inn{w}{w'}).
+\end{split}
+\]
+This give an alternateve construction of Heisenberg groups. 
+
+The Haar measure on $H$ is $dzdxdy = dzdw$.
+
+
+Choose a unitary character $\chi$ of $F$, extend to $S = Y\oplus Z$, by 
+$Y$ act trivially.
+Let 
+\[
+\chh_\chi = \Ind_S^H \chi 
+=  \Set{f\colon H\to F|f(sh) = \chi(s)f(h)\, \forall s\in S\text{ and }
+   \int_{H} |f(g)|^2 \leq 0}
+\]
+The right translation give a $H$-module structure on $\chh_\chi$.  
+
+We can consider $f\in \chh_\chi$ as a function on $X$ by 
+\[
+\phi(x) =f(h(x,0,0)) = f(\exp(x,0,0)).
+\]
+
+Then 
+\[
+\rho(h(x',y',z'))\phi(x) = f(h(x,0,0)h(x',y',z')) =
+f(h(x',y',z')
+\]
+
+\section{sp}
+
+$X\in \sp$, 
+\section{notation}
+
+
+
+Give $(\fgg_\bC, M)$-module $(\pi, V)$.
+
+In this situation. 
+Consider 
+\[
+\Gamma^i (V) = \Hom_{\fkk}(\fkk/\fmm, V\otimes \chh(K))
+\]
+
+
+The $\fkk$-module structure on $V\otimes \chh(K)$ given when compute the
+$\Gamma^i$ is $\pi\otimes l_K$
+The nature $K$ structure on $\Gamma^i$ is given by $I\otimes r_K$.
+
+Look $V\otimes \chh(K)$ as $\chh(K, V)$ by $v\otimes f \mapsto F$, 
+$F(k) = f(k)v$. 
+ 
+Give $\fgg$ action on $\chh(K,V)$ by 
+\[
+(\mu(X)F)(k) = \pi(\Ad(k) X) F(k)
+\]
+This $\fgg$ structure compact with the $K$ structure, i.e. 
+\[
+\pi(\Ad(k) X) F(k) = (r_X F)(k).
+\]
+Take $k=1$, 
+this means 
+\[
+\pi(x)v \otimes f = v \otimes r_x f
+\]
+for any $x\in U(\fkk)$.
+
+
+\end{document}
+
