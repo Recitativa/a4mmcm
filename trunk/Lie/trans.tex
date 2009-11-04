@@ -13,7 +13,8 @@
 %\usepackage[small,nohug,heads=littlevee]{diagrams}
 %\diagramstyle[labelstyle=\scriptstyle]
 %\usepackage{diagrams}
-\usepackage{amscd}
+\usepackage[all,cmtip]{xy}
+\usepackage{diagxy}
 %\usepackage{pictexwd,dcpic}
 %\usepackage{mathrsfs}
 
@@ -231,7 +232,7 @@ Let
 \[
 \chh_\chi = \Ind_S^H \chi 
 =  \Set{f\colon H\to F|f(sh) = \chi(s)f(h)\, \forall s\in S\text{ and }
-   \int_{H} |f(g)|^2 \leq 0}
+   \int_{S\backslash H} |f(h)|^2 d\dot h <\infty}
 \]
 The right translation give a $H$-module structure on $\chh_\chi$.  
 
@@ -239,12 +240,129 @@ We can consider $f\in \chh_\chi$ as a function on $X$ by
 \[
 \phi(x) =f(h(x,0,0)) = f(\exp(x,0,0)).
 \]
+This give a isometry from $\chh_\chi$ to $L^2(X)$. 
 
 Then 
 \[
-\rho(h(x',y',z'))\phi(x) = f(h(x,0,0)h(x',y',z')) =
-f(h(x',y',z')
+\begin{split}
+\rho(h(x',y',z'))\phi(x) =& f(h(x,0,0)h(x',y',z')) =
+f(h(x',y',z'+xy'))\\
+ =& f(h(0,y', z'+xy')h(x+x',0,0))\\
+=& \chi(z'+xy')\phi(x+x').
+\end{split}
 \]
+This is the Schr\"odinger representation. Moreover
+\[
+\int_{S\backslash H} |f(h)|^2 d\dot h = \int_X|\phi(x)|^2 dx
+\]
+
+
+The oscillator representation, choose polarlization $W=X\oplus Y$. 
+Let $P = P(Y) = \Stab_\Sp Y$, $M = P(Y)\cap P(X) \cong \GL(X)$,
+$N=\cap_{y\in Y} \Stab_\Sp y$, i.e the kernel of map $P(Y) \to \GL(Y)$. 
+There is a isomorphism from $N$ to $S^{2*}(X)$ given by 
+\[
+n \mapsto (\beta_n \colon v,v' \mapsto \inn{v}{n v'}
+\]
+For $\beta\in S^{2*}(X)$, $\beta(v,v')$ give a map $\gamma_\beta\colon X\to Y$
+such that 
+\[
+\inn{v}{\gamma_\beta(v')} = \beta(v,v')
+\]
+The inverse map then defined by 
+\[
+\beta \mapsto n\colon \begin{cases}
+v & \text{for } v\in Y\\
+v+\gamma_\beta(v) & \text{for } v\in X
+\end{cases}
+\]
+One can verify that $\beta_n^{-1} = -\beta_n$
+
+
+Extand $\chi$ to $P\ltimes S$ by $P$ act trivially. 
+Let $\chh_\chi = \Ind_{P\ltimes S}^{P\ltimes H}\chi$ be the unitary 
+induced representation. $P\ltimes H$ act by left translation.
+Again let 
+\[
+\phi(x) = f(h(x,0,0))
+\]
+This compactable with $\Ind_S^H \chi$, and has same Hermitian inner product:
+\[
+\int_{X}\abs{\phi(x)}^2 dx 
+\]
+
+Then for $m\in M=\GL(X)$
+\[
+f(h(x,0,0)g)=f(m m^{-1}h(x,0,0)m) = f(h(m^{-1}x,0,0))  = \phi(m^{-1}x)
+\]
+Since 
+\[
+|\phi(m^{-1}x)|^2 dx = |\phi(x)|^2 d mx = |\phi(x)|^2 \abs{\det_{\GL(X)} m} dx,
+\]
+define 
+\[
+\omega(m)\phi(x) = \abs{\det_{\GL(X)} m}^{-1/2}f(mx).
+\]
+
+\[
+\begin{split}
+f(h(x,0,0)n) =& f(n n^{-1}h(x,0,0)n) = f(e(n^{-1}(x,0),0)) \\
+=& f(e(x,\gamma_{\beta_{n^{-1}}}(x),0)) = 
+f(h(x, \gamma_{\beta_{n^{-1}}}(x), \frac{1}{2}\inn{x}{\gamma_{\beta_{n^{-1}}}(x)}))\\
+=& f(h(x, \gamma_{\beta_{n^{-1}}}(x),  -\frac{1}{2}\beta_n(x,x))) \\
+=& \chi(-\frac{1}{2}\beta_n(x,x))f(h(x,0,0))
+\end{split}
+\]
+Hence 
+\[
+\omega(n)\phi(x) = \chi(-\frac{1}{2}\beta_n(x,x))\phi(x)
+\]
+
+The special element is 
+\[
+\sigma = \begin{pmatrix}
+0 & 1
+1 & 0
+\end{pmatrix} \in \Sp(W)
+\]
+It exchange the role of $x, y$. It is reasonable to believe the intertwining
+map is a Fourier transform. 
+
+
+\section{Fock model}
+Let $J\in \Sp(W)\cap \sp(W)$ such that $J^2 = -\id$.
+Then $J$ given a complex structure on $W$.
+Then 
+\[
+B_J(w,w') = \inn{Jw}{w'}
+\]
+is a (non-degenerate) symmetric bilinear form.
+
+\[
+H_J(w,w') = \inn{Jw}{w'} + i\inn{w}{w'}
+\]
+become a Hermitian bilinear form(inner product) on $W$ where the 
+complex structure on $W$ defined by $J$. 
+I.e. $i w = J(w)$. 
+ 
+Complexify $W$ to $W_\bC$. Extend $\inn{}{}$ to $W_\bC$.  
+ 
+View $H = W\oplus Z$ from the exponatial map of Lie algebra $\fhh$ of $H$. 
+Then the group law becomes
+\[
+\exp(w, t) \exp(w',t) = \exp(w+w', t+t'+\frac{1}{2}\inn{w}{w'}).
+\]
+Similary define $H_\bC$. 
+Let $V^\pm$ be the $\pm i$ eigen space of $J$ on $W_\bC$. 
+Then consider the subgrou $P = V^-\oplus Z  < H_\bC$.
+Consider the following digram
+\[
+\bfig
+\square/^{(}->`->>`->>`^{(}->/[G`G_\bC`Z\backslash G`P\backslash G_\bC;{}`{}`{}`{}]
+\efig
+\]
+
+
 
 \section{sp}
 
