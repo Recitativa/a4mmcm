@@ -493,7 +493,7 @@ So the infinitesimal representaition is
 \[
 \rho(X) \phi = \theta_X(\phi) -\pi\lambda H_X \phi
 \]
-Where $H_X(w') =\inn{X}{Jw'} + i\inn{X}{w'}$ is a linear function.
+Where $H_X(w') =\inn{X}{Jw'} + i\inn{X}{w'} = -H_J(w',X)$ is a linear function.
 
 Take $Y = \frac{1}{2}(X-iJX)$. Then $X = Y + \overline{Y}$, 
 and 
@@ -511,6 +511,20 @@ all derivative equal to zero mean $\phi$ is constant.
 
 Hence $\rho$ is irreducible. 
 
+Choose complex basis of $W$ $\Set{P_1, \cdots, P_n}$
+respect to $J$ such that
+$H_J(P_k, P_l) = \delta_{kl}$ and let $Q_j = J P_j$. 
+Then $\Set{z, P_j, Q_j}$ form a basis of $\fhh$. 
+Let $z_k(P_l) = H_J(P_l, P_k) =\delta_{kl}$ be complex linear function on 
+$W$. Then $z_j$ generate $\chh_\chi$. 
+
+\[
+\rho(P_j-iQ_j) = 2 \theta_{P_j} =  2\theta_{z_j}
+\]
+\[
+\rho(P_j+iQ_j) = -2\pi\lambda (-H_J(\cdot,P_j)) 
+ = 2\pi \lambda z_j
+\]
 \section{sp}
 
 $X\in \sp$, 
