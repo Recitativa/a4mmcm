@@ -476,37 +476,40 @@ Finiteness condition becomes:
 Then
 \[
 \begin{split}
-(\omega(\exp(w,t))\phi)(w') =& e^{\pi \lambda \inn{w'}{Jw'}/2} f(\exp(w') \exp(w,t))\\
+(\rho(\exp(w,t))\phi)(w') =& e^{\pi \lambda \inn{w'}{Jw'}/2} f(\exp(w') \exp(w,t))\\
 =& e^{\pi \lambda \inn{w'}{Jw'}/2} f(\exp(w'+w,t+ \frac{1}{2}\inn{w'}{w}))\\
 =& e^{\pi \lambda \inn{w'}{Jw'}/2} \chi(t+ \frac{1}{2}\inn{w'}{w}) f(\exp(w'+w))\\
-=& \chi(t) e^{\frac{1}{2}\pi \lambda (\inn{w'}{Jw'}+2i \inn{w'}{w}}  f(\exp(w+w')) \\
-=& \chi(t) e^{\frac{1}{2}\pi \lambda (\inn{w'}{Jw'}+2i \inn{w'}{w}} 
-e^{-\pi \lambda H_J(w'+w,w'+w)/2} \phi(w+w')\\
-=& \chi(t) e^{\frac{1}{2}\pi \lambda (H_J(w',w')+2i \inn{w'}{w}-H_J(w+w',w+w')} 
- \phi(w+w')\\
-=& \chi(t) e^{\frac{1}{2}\pi \lambda (H_J(w',w')+2i \inn{w'}{w}
-  -(H_J(w,w)+H_J(w,w')+ H_J(w',w)+H_J(w',w'))} 
- \phi(w+w')\\
-=& \chi(t) e^{\frac{1}{2}\pi \lambda (-H_J(w,w)+2i \inn{w'}{w}-2\inn{w}{Jw'})} 
- \phi(w+w')\\
-=& \chi(t) e^{-\pi \lambda (H_J(w,w)/2+ H_J(w,w'))} 
- \phi(w+w')
+=& \chi(t) e^{\frac{1}{2}\pi \lambda (\inn{w'}{Jw'}+2i \inn{w'}{w})}
+ f(\exp(w+w')) \\
+=& \chi(t) e^{\frac{1}{2}\pi \lambda (\inn{w'}{Jw'}+2i \inn{w'}{w})} 
+e^{-\pi \lambda \inn{w'+w}{J(w'+w)}/2} \phi(w+w')\\
+=& \chi(t) e^{-\pi \lambda (\inn{w}{Jw}/2+ \inn{w}{Jw'}+i\inn{w}{w'}))} 
+ \phi(w+w') 
 \end{split}
 \]
 
 
 So the infinitesimal representaition is 
 \[
-\omega(X) \phi = \theta_X(\phi) -\pi\lambda H_X \phi
+\rho(X) \phi = \theta_X(\phi) -\pi\lambda H_X \phi
 \]
-Where $H_X(w') = H(X,w')$ is a linear function.
+Where $H_X(w') =\inn{X}{Jw'} + i\inn{X}{w'}$ is a linear function.
 
 Take $Y = \frac{1}{2}(X-iJX)$. Then $X = Y + \overline{Y}$, 
 and 
 \begin{align*}
-\omega(Y) \phi &= \theta_X \phi \\
-\omega(\overline{Y}) \phi &= -\pi \lambda H_X \phi
+\rho(Y) \phi &= \theta_X \phi \\
+\rho(\overline{Y}) \phi &= -\pi \lambda H_X \phi
 \end{align*}
+
+The space 
+\[
+\Set{\phi \in \chh_\chi |\rho(V^+) \phi = 0}
+\]
+is one dimension, this is since $\phi$ is holomorphic, 
+all derivative equal to zero mean $\phi$ is constant. 
+
+Hence $\rho$ is irreducible. 
 
 \section{sp}
 
