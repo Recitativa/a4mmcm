@@ -97,7 +97,7 @@
 \def\tr{\mathrm{tr}}
 \def\Mat{\mathrm{Mat}}
 \def\U{\mathrm{U}}
-
+\def\ddt{\frac{d}{dt}}
 
 \hypersetup{
     bookmarks=false,         % show bookmarks bar?
@@ -342,9 +342,18 @@ is a (non-degenerate) symmetric bilinear form.
 H_J(w,w') = \inn{Jw}{w'} + i\inn{w}{w'}
 \]
 become a Hermitian bilinear form(inner product) on $W$ where the 
-complex structure on $W$ defined by $J$. 
-I.e. $i w = J(w)$. 
- 
+complex structure on $W$ defined by $J$, i.e. $i$ act on $W$ by $J$. 
+In fact,
+\[
+H_J(w',w) = \inn{Jw'}{w} + i \inn{w'}{w} = -\inn{w'}{Jw} + i\inn{w'}{w}
+= \inn{Jw}{w'} - i \inn{w}{w'}= \overline{H_J(w,w')}
+\]
+and
+\[
+H_J(Jw,w') = \inn{JJw}{w'} + i\inn{Jw}{w'} = i\inn{Jw}{w'} - \inn{w}{w'} 
+= i(\inn{Jw}{w'} + i\inn{w}{w'} = i H_J(w,w').
+\]
+
 Complexify $W$ to $W_\bC$. Extend $\inn{}{}$ to $W_\bC$.  
  
 View $H = W\oplus Z$ from the exponatial map of Lie algebra $\fhh$ of $H$. 
@@ -354,15 +363,150 @@ Then the group law becomes
 \]
 Similary define $H_\bC$. 
 Let $V^\pm$ be the $\pm i$ eigen space of $J$ on $W_\bC$. 
-Then consider the subgrou $P = V^-\oplus Z  < H_\bC$.
+Then 
+\[
+V^\pm = \Set{w \mp iJw | w\in W },
+\] 
+since $J(w - iJw) = iw+Jw = i(w-iJw)$ and
+$J(w+iJw) = -iw + Jw = -i(w+iJw)$.
+
+
+Then consider the subgroup $P = V^-\oplus Z  < H_\bC$.
 Consider the following digram
 \[
 \bfig
-\square/^{(}->`->>`->>`^{(}->/[G`G_\bC`Z\backslash G`P\backslash G_\bC;{}`{}`{}`{}]
+\square/^{(}->`->>`->>`^{(}->/[
+H`H_\bC`Z\backslash H`P\backslash H_\bC;{}`{}`{}`{}]
 \efig
 \]
 
+Hence $W = Z\backslash H$ have a complex structure given by $G_\bC$. 
+In fact, by
+\[
+iw \equiv Jw +i(w+iJw) \equiv Jw \pmod{P}.
+\]
+Hence the complex structure given by $J$ is same as the complex structure given
+by above commutative diagram. 
 
+
+Fix a character $\chi(t)=e^{2\pi i\lambda t}$ of $\bR$ for some $\lambda\in \bR$. 
+Extend it into a character of $\bC$ then $P$ in a obvious way. 
+Define
+\[
+\chh_\chi = \Set{f\colon G_\bC \to \bC|\begin{array}{rl}
+    (a) & f \text{ is holomorphic};\\
+    (b) & f(pg) = \chi(p)f(g) \quad \forall p\in P, g\in G_\bC;\\
+    (c) & \int_{Z\backslash G} \abs{f(g)}^2 dg < \infty
+  \end{array}
+}
+\]
+Inner product is given by 
+\[
+(f,f') = \int_{Z\backslash G} f(g)\overline{f'(g)} dg.
+\]
+$G$ act on $\chh_\chi$ by right translation.
+
+For $X \in W$.
+\[
+\begin{split}
+f(\exp w+tiX) =& f(\exp w+ tJX + ti(X+iJX))\\
+=& f(e^{-\frac{1}{2}\inn{ti(X+iJX)}{w+tJX}}\exp ti(X+iJX) \exp(w+tJX))  \\
+=& e^{-2\pi i \lambda\frac{1}{2}\inn{ti(X+iJX)}{w+tJX}}f(\exp (w+tJX))\\
+= & e^{2\pi \lambda \frac{1}{2} t \inn{X+iJX}{w} + t^2 \inn{X+iJX}{JX}}f(\exp(w+tJW))
+\end{split}
+\]
+Then 
+\[
+\ddt f(\exp w+tiX) =  \ddt f(\exp w+tJX) + 2\pi \lambda \frac{1}{2} 
+\inn{X+iJX}{w} f(\exp(w+tJX))
+\]
+Then the holomorphic condition is,
+\[
+\lim_{t\to 0} \frac{f(\exp(w+tX)) -f(\exp(w))}{t} = 
+\lim_{t\to 0} \frac{f(\exp(w+tiX))- f(\exp(w))}{ti} 
+\]
+ i.e.
+\[
+i \ddt f(\exp w+tX) = \ddt f(\exp w+tJX) + \pi \lambda
+\inn{X+iJX}{w} f(\exp(w+tJX)).
+\]
+
+Choose $J$ such that $\inn{w}{Jw} \geq 0$, this $J$ called ``positive''. 
+
+
+For $f\in \chh_\chi$, define
+\[
+\phi(w) = e^{\pi \lambda \inn{w}{Jw}/2} f(\exp w) 
+\] 
+
+We check the holomorphic condition becomes 
+\[
+\theta_{JX} \phi = i \theta_{X} \phi.
+\]
+where 
+\[
+(\theta_X \phi)(w) = \frac{d}{dt}\phi(w+tX) \quad \for X\in W.
+\]
+
+In fact, 
+\[
+\begin{split}
+\theta_X \phi(w) =& \ddt e^{\pi \lambda \inn{w+tX}{J(w+tX)}/2} f(\exp(w+tX))\\
+= &  e^{\pi \lambda \inn{w}{Jw}}(\ddt f(\exp(w+tX)) 
++ \frac{1}{2}\pi\lambda (\inn{X}{Jw}+\inn{w}{JX}) f(\exp(w+tX))) \\
+= &  e^{\pi \lambda H_J(w,w)}(\ddt f(\exp(w+tX)) + \pi\lambda \inn{X}{Jw} f(\exp(w+tX))) \\
+\end{split}
+\] 
+Then 
+\[
+\begin{split}
+&\theta_{JX}\phi - i\theta_{X}\phi \\
+= & \ddt f(\exp(w+tJX)) + \pi\lambda \inn{JX}{Jw} f(\exp(w+tJX))\\
+&-i \left[ \ddt f(\exp(w+tX)) + \pi\lambda \inn{X}{Jw} f(\exp(w+tX))\right]\\
+=& \ddt f(\exp(w+tJX)  + \pi \lambda \inn{X+iJX}{w} f(\exp(w+tJX)
+- i \ddt f(\exp(w+tX))= 0 
+\end{split}
+\]
+
+Finiteness condition becomes:
+\[
+\int_W e^{-\pi \lambda \inn{w}{Jw}}\abs{\phi(w)}^2dw < \infty.
+\]
+
+Then
+\[
+\begin{split}
+(\omega(\exp(w,t))\phi)(w') =& e^{\pi \lambda \inn{w'}{Jw'}/2} f(\exp(w') \exp(w,t))\\
+=& e^{\pi \lambda \inn{w'}{Jw'}/2} f(\exp(w'+w,t+ \frac{1}{2}\inn{w'}{w}))\\
+=& e^{\pi \lambda \inn{w'}{Jw'}/2} \chi(t+ \frac{1}{2}\inn{w'}{w}) f(\exp(w'+w))\\
+=& \chi(t) e^{\frac{1}{2}\pi \lambda (\inn{w'}{Jw'}+2i \inn{w'}{w}}  f(\exp(w+w')) \\
+=& \chi(t) e^{\frac{1}{2}\pi \lambda (\inn{w'}{Jw'}+2i \inn{w'}{w}} 
+e^{-\pi \lambda H_J(w'+w,w'+w)/2} \phi(w+w')\\
+=& \chi(t) e^{\frac{1}{2}\pi \lambda (H_J(w',w')+2i \inn{w'}{w}-H_J(w+w',w+w')} 
+ \phi(w+w')\\
+=& \chi(t) e^{\frac{1}{2}\pi \lambda (H_J(w',w')+2i \inn{w'}{w}
+  -(H_J(w,w)+H_J(w,w')+ H_J(w',w)+H_J(w',w'))} 
+ \phi(w+w')\\
+=& \chi(t) e^{\frac{1}{2}\pi \lambda (-H_J(w,w)+2i \inn{w'}{w}-2\inn{w}{Jw'})} 
+ \phi(w+w')\\
+=& \chi(t) e^{-\pi \lambda (H_J(w,w)/2+ H_J(w,w'))} 
+ \phi(w+w')
+\end{split}
+\]
+
+
+So the infinitesimal representaition is 
+\[
+\omega(X) \phi = \theta_X(\phi) -\pi\lambda H_X \phi
+\]
+Where $H_X(w') = H(X,w')$ is a linear function.
+
+Take $Y = \frac{1}{2}(X-iJX)$. Then $X = Y + \overline{Y}$, 
+and 
+\begin{align*}
+\omega(Y) \phi &= \theta_X \phi \\
+\omega(\overline{Y}) \phi &= -\pi \lambda H_X \phi
+\end{align*}
 
 \section{sp}
 
