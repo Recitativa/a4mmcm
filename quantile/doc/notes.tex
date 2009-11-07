@@ -50,7 +50,7 @@ Usually there are closed form price formulas for European. In addition numerical
 
 
 
-\subsection{Black-Shores model}   
+\section{Black-Shores model}   
 The most popular model to describe stock price behavior is known as Black--Shore model. Let $S_t$ be the stock price. Then under this model, $S_t$ satisfies this equation: 
 \begin{equation}\label{eq:1}
 dS = \mu Sdt + \sigma SdB, 
@@ -67,7 +67,7 @@ Black etc. \cite{Black:1973} pointed out that the proper price of an option shou
 
 %In the this case, one can deduce that the optimal stopping time is given by some region. Precisely, the holder excise the option when stock price enter some region. 
 
-\subsection{Lookback options}
+\section{Lookback options}
 Lookback options give the hold the right to capture the difference between asset price when the option is execute and maximum or minimum asset price reached during the life of the option. For a European style lookback call option, the payoff is the amount that the final asset price exceeds the minimum asset price happened during the life of the option. As for the put option, the payoff is the amount by which the maximum asset price happened during the life of the option exceeds the final asset price. Goldman etl firstly provided the valuation formulas for European lookbacks. In Hull \cite{Hull2008}, the value of a this type call option is 
 \begin{equation}\label{eq:3}
 S_0e^{-qt}N(a_1) - S_0 e{-qT}\frac{\sigma ^2}{2(r-q)} N(-a_1) - S_min e^{-rT}(N(a_2) - \frac{\sigma^2}{2(r-q)} e ^{Y_1} N(-a_3) 
@@ -123,7 +123,7 @@ As for American option, the complete solution should provide both the option val
 %\]
 
 
-\subsection{$\alpha$-quantile}
+\section{$\alpha$-quantile}
 For a stochastic prcess $X_t$,
 the $\alpha$-quantile $( 0 \leq \alpha \leq 1)$ 
 is defined by 
@@ -160,13 +160,13 @@ where $V^{bin}_{cum}[(1-\alpha)T, S_{-(M+1)}^M] = e^{-rT}$. By this result, we c
 
 Parisian option is like an advanced version of barrier option. We know barrier option are options where the payoff depends on whether the underlying asset's price reaches a certain level (barrier) during the option's life. Barrier options usually trade in the over-the counter market. This kind of option is attractive because it is usually cheaper than similar option without barrier. Like vanilla option, barrier options also authorize holders the right to buy or sell, but  long sides of barrier options do not need to pay for scenarios they think is unlikely to happen in the future. One good example I find from wikipedia is about IBM. If you believe that IBM will go up this year, but are willing to bet that it won't go above \$100, then you can buy the barrier and pay less premium than the vanilla option. But in this one-touch knock-out or knock can bring difficulties to option writers when asset price is close to barrier. Particularly in the foreign exchange market where manipulation of underlying asset price is not impossible. To overcome short period price manipulation, various adjustments to one-touch knock out or knock in have been performed in practice. Parisian option is one solution.  In order to get activated, the underlying assets of parisian option need to stay in the knout out or knout in region for certain period of time. The payoff of a cumulative Parisian option is dependent on the total amount of time the underlying asset price has spent above or below barrier. As for binary option, the payoff is either some fixed amount of some asset or nothing at all. 
 
-\subsection{pricing cumulative parisian option by FSG}
+\subsection{pricing cumulative parisian binary option by FSG}
 Kwok and Lau also proposed a forward shorting grid(FSG) to price cumulative parisian option in \cite{Kwok2001}. The character of FSG is that this approach need add additional information at each node of  a lattice tree. Commonly in pricing path-dependent option, at each node we should add state vector to represent the path-dependent attribute, such as the extreme value of the underlying asset price achieved in lookback option case. As we know Hull and White \cite{Hull1993} and Ritchken, Sankarasubramanian and Vijh \cite{Vijh1993} were the first authors suggested this approach. In 1996, Barraquand and Pudet \cite{Barraquand1996} introduced a comprehensive framework for FSG. In this paper they indicated that the FSG method is unconditionally convergent. Further, they showed that when the covariance matrix is degenerate, the FSG method can outperform finite difference methods. The convergence of the FSG algorithm in pricing of Asian options was studied by Forsyth, Verzal and Zvan \cite{Forsyth1999}. Foesyth et al. pointed out that    
  
  In Kwok and Lau's paper\cite{Kwok2001}, they constructed a trinomial tree to get the price of cumulative parisian option. But due to the fact that the result is not steady according to the setting of the length of up movement between each immediate steps, we modify their method to binomial tree. 
  
 In building binomial tree, we start by cutting the entire life of one option into many small time intervals of length $\Delta t$. 
-Our tree is build to mimic the the logarithm process of underlying asset price. Denote $x=\ln S$. In each step, the logarithm of the price of underlying asset is assumed to move from its initial value of $x_0$ to one of the two new values, $x_0 + u-d$ and $x_0 - u-d$ with equal probability, where $u = \sigma \sqrt{\Delta t}$ and $d = (r - {\sigma}^2 /2)\Delta t$. Here $\sigma$, and $r$ are volatility and riskless interest rate, respectively. The model is illustrated in Figure 1.  %add fiugure here
+Our tree is build to mimic the the logarithm process of underlying asset price. Denote $x=\ln S$. In each step, the logarithm of the price of underlying asset is assumed to move from its initial value of $x_0$ to one of the two new values, $x_0 + u+d$ and $x_0 - u+d$ with equal probability,that is $p_{up} = p_{down} = 0.5$ , where $u = \sigma \sqrt{\Delta t}$ and $d = (r - {\sigma}^2 /2)\Delta t$. Here $\sigma$, and $r$ are volatility and riskless interest rate, respectively. The model is illustrated in Figure 1.  %add fiugure here
 
 Like the notation used in \cite{Kwok2001}, we denote $V[m,j;k]$ as the numerical option value of the cumulative parisian option at the $m$-th time interval,  $j$ upward jumps from the initial underlying asset value and $k$ times breaches so far. Let $g(k,j)$ be the grid function that describes the correlated evolution of number of breaches $k$ and price indicate $j$. Denote $x_j$ be the value of $x$ corresponding to $j$ upward movements on the binomial tree. Then we should add $1$ to the indicator $k$ if the underlying asset price $S$ is no more than the barrier $B$; i.e $x_j \leq \ln B$. Hence we can see that a suitable setting of the grid evolution function $g(k,j)$ should be 
 \begin{equation}\label{eq:grid}
@@ -179,8 +179,25 @@ where $1_{\set{x_j \leq B}}$ is the indicator function. It is defined as
 0 & \text{if } x_j > \ln B
 \end{cases}
 \end{equation}
+Then the FSG method for pricing the cumulative Parisian binary option can be expressed as
+\begin{equation}\label{eq:fsg}
+V[m-1,j;k] =\set{0.5V[m,j+1;g(k,j+1)]+0.5V[m,j-1,g(k,j-1)]}e^{-r\Delta t} 
+\end{equation}
+for $m-1 < M$. 
 
- 
+
+Let $N$ be the predetermined number of breaches recored for the all duration of the life of an option that is desired to activate   the contract. 
+Considering the binary feature of the option, we should initiate our algorithm with
+\begin{equation}\label{eq:initiate}
+V[M,j;k] = \begin {cases}
+1 & \text{if }  k < N \\
+0 & \text{if }  k \geq N
+\end{cases}
+\end{equation}
+By (\ref{eq:initiate})  (\ref{eq:fsg}) and backward induction, we can get the price of cumulative Parisian binary option with any prescribed times of breaches and barrier. 
+
+Recall what we get by equation (\ref{eq:kowk2}). In order to get the price of $\alpha$-quantile option, we can use the prices of $2M + 1$ cumulative Parisian binary options to approximate $\alpha$-quantile option's value. Hence using the FSG method we described above to calculate the prices of cumulative Parisian option  and doing a simple math work by equation (\ref{eq:kowk2}), we can get the approximated price for $\alpha$-quantile option with $M$ time steps.  
+
 
 
  
