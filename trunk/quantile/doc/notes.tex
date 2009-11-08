@@ -70,32 +70,32 @@ Black etc. \cite{Black:1973} pointed out that the proper price of an option shou
 \section{Lookback options}
 Lookback options give the hold the right to capture the difference between asset price when the option is execute and maximum or minimum asset price reached during the life of the option. For a European style lookback call option, the payoff is the amount that the final asset price exceeds the minimum asset price happened during the life of the option. As for the put option, the payoff is the amount by which the maximum asset price happened during the life of the option exceeds the final asset price. Goldman etl firstly provided the valuation formulas for European lookbacks. In Hull \cite{Hull2008}, the value of a this type call option is 
 \begin{equation}\label{eq:3}
-S_0e^{-qt}N(a_1) - S_0 e{-qT}\frac{\sigma ^2}{2(r-q)} N(-a_1) - S_min e^{-rT}(N(a_2) - \frac{\sigma^2}{2(r-q)} e ^{Y_1} N(-a_3) 
+S_0e^{-qt}N(a_1) - S_0 e^{-qT}\frac{\sigma ^2}{2(r-q)} N(-a_1) - S_{\min} e^{-rT}(N(a_2) - \frac{\sigma^2}{2(r-q)} e ^{Y_1} N(-a_3) 
 \end{equation}
 where
 \begin{equation}\label{eq:4}
 \begin{split}
-a_1 &=\frac{\ln(S_0 / S_{min}) + (r-q+\sigma^2 /2)T}{\sigma \sqrt{T}}\\
+a_1 &=\frac{\ln(S_0 / S_{\min}) + (r-q+\sigma^2 /2)T}{\sigma \sqrt{T}}\\
 a_2 &= a_1 - \sigma \sqrt{T}\\
-a_3 &= \frac{ln(S_0 / S_{min})+ (-r+q+\sigma^2 / 2)T}{\sigma \sqrt{T}}\\
+a_3 &= \frac{ln(S_0 / S_{\min})+ (-r+q+\sigma^2 / 2)T}{\sigma \sqrt{T}}\\
 Y_1 &= - \frac{2(r-q-\sigma^2 / 2) \ln(S_0 / S_{min})}{\sigma^2}
 \end{split}
 \end{equation}
-and $S_{min}$ is the minimum asset price achieved to date. 
+and $S_{\min}$ is the minimum asset price achieved to date. 
 The value of a European lookback put is 
 \begin{equation}\label{eq:5}
-S_{max} e^{-rT} ( N(b_1) - \frac{\sigma^2}{2(r-q)} e^{Y_2} N(-b_3)) + S_0 e^{-qT}\frac{\sigma^2}{2(r-q)} N(-b_2) - S_0 e^{-qT} N(b_2)
+S_{\max} e^{-rT} ( N(b_1) - \frac{\sigma^2}{2(r-q)} e^{Y_2} N(-b_3)) + S_0 e^{-qT}\frac{\sigma^2}{2(r-q)} N(-b_2) - S_0 e^{-qT} N(b_2)
 \end{equation}
 where 
 \begin{equation}\label{eq:6}
 \begin{split}
-b_1 &= \frac{\ln(S_max / S_0) + (-r + q + \sigma^2 /2)T}{\sigma \sqrt{T}}\\
+b_1 &= \frac{\ln(S_{\max} / S_0) + (-r + q + \sigma^2 /2)T}{\sigma \sqrt{T}}\\
 b_2 &= b_1 - \sigma \sqrt{T}\\
-b_3 &= \frac{\ln(S_{max} / S_0) + (r-q-\sigma^2 /2)T}{\sigma \sqrt{T}}\\
+b_3 &= \frac{\ln(S_{\max} / S_0) + (r-q-\sigma^2 /2)T}{\sigma \sqrt{T}}\\
 Y_2 &= \frac{2(r-q-\sigma^2 / 2) \ln(S_max / S_0)}{\sigma^2}
 \end{split}
 \end{equation}
-and $S_{max}$ is the maximum asset price achieved to date. 
+and $S_{\max}$ is the maximum asset price achieved to date. 
 
 These formula are got under the assumption that the asset price is observed continuously. However, in real life, the asset price is observed discretely. Broadie etl. \cite{Broadie1999} give a creation to these formulas to deal with discrete situation. For the discrete options, let $m$ be the number of price-fixing dates and $\Delta = T/m$ the interval between fixing. In their paper, we can find that the price of a discrete lookback at the $k-th$ fixing data and the price of a continuous lookback at time $t = k \delta t$ satisfy
 \begin{equation}\label{eq:7}
@@ -165,8 +165,14 @@ Kwok and Lau also proposed a forward shorting grid(FSG) to price cumulative pari
  
  In Kwok and Lau's paper\cite{Kwok2001}, they constructed a trinomial tree to get the price of cumulative parisian option. But due to the fact that the result is not steady according to the setting of the length of up movement between each immediate steps, we modify their method to binomial tree. 
  
-In building binomial tree, we start by cutting the entire life of one option into many small time intervals of length $\Delta t$. 
-Our tree is build to mimic the the logarithm process of underlying asset price. Denote $x=\ln S$. In each step, the logarithm of the price of underlying asset is assumed to move from its initial value of $x_0$ to one of the two new values, $x_0 + u+d$ and $x_0 - u+d$ with equal probability,that is $p_{up} = p_{down} = 0.5$ , where $u = \sigma \sqrt{\Delta t}$ and $d = (r - {\sigma}^2 /2)\Delta t$. Here $\sigma$, and $r$ are volatility and riskless interest rate, respectively. The model is illustrated in Figure 1.  %add fiugure here
+In building binomial tree, we start by cutting the entire life of one option into many small time intervals of length $\Delta t = T / M$. 
+Our tree is build to mimic the the logarithm process of underlying asset price. Denote $x=\ln S$. In each step, the logarithm of the price of underlying asset is assumed to move from its initial value of $x_0$ to one of the two new values, $x_0 + d + u$ and $x_0 + d - u$ with equal probability,that is $p_{up} = p_{down} = 0.5$ , where $u = \sigma \sqrt{\Delta t}$ and $d = (r - {\sigma}^2 /2)\Delta t$. Here $\sigma$, and $r$ are volatility and riskless interest rate, respectively. The model is illustrated in Figure~\ref{fig:tree1}.  
+\begin{figure}[htbp]
+   \centering
+   \includegraphics{trees.pdf} % requires the graphicx package
+   \caption{Forward shooting}
+   \label{fig:tree1}
+\end{figure}
 
 Like the notation used in \cite{Kwok2001}, we denote $V[m,j;k]$ as the numerical option value of the cumulative parisian option at the $m$-th time interval,  $j$ upward jumps from the initial underlying asset value and $k$ times breaches so far. Let $g(k,j)$ be the grid function that describes the correlated evolution of number of breaches $k$ and price indicate $j$. Denote $x_j$ be the value of $x$ corresponding to $j$ upward movements on the binomial tree. Then we should add $1$ to the indicator $k$ if the underlying asset price $S$ is no more than the barrier $B$; i.e $x_j \leq \ln B$. Hence we can see that a suitable setting of the grid evolution function $g(k,j)$ should be 
 \begin{equation}\label{eq:grid}
@@ -197,6 +203,9 @@ V[M,j;k] = \begin {cases}
 By (\ref{eq:initiate})  (\ref{eq:fsg}) and backward induction, we can get the price of cumulative Parisian binary option with any prescribed times of breaches and barrier. 
 
 Recall what we get by equation (\ref{eq:kowk2}). In order to get the price of $\alpha$-quantile option, we can use the prices of $2M + 1$ cumulative Parisian binary options to approximate $\alpha$-quantile option's value. Hence using the FSG method we described above to calculate the prices of cumulative Parisian option  and doing a simple math work by equation (\ref{eq:kowk2}), we can get the approximated price for $\alpha$-quantile option with $M$ time steps.  
+
+Recall we defined earlier $\Delta t = T / M$. We compute the approximated option price of an $\alpha$-quantile call option with different time steps using equation (\ref{eq:kowk2}). As you can see in Figure % add figure ,
+the numerical values of option are plotted against varying $\Delta t$. The values of parameters of the $\alpha$-quantile call option are set as: $ \alpha = 0.8$, $S_0 = 100$, $X = 95$, $r = 5\%$, $\sigma = 20\%$, and $T = 0.25$. 
 
 
 
