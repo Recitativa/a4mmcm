@@ -12,7 +12,7 @@ real[] y = a[1];
 
 draw(graph(x,y),red, marker(scale(2)*unitcircle,red));
 
-xaxis("$h = 1/N$",BottomTop,LeftTicks);
+xaxis("$\Delta t = T/N$",BottomTop,LeftTicks);
 yaxis("price",LeftRight,RightTicks);
 
      
