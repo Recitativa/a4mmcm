@@ -27,6 +27,12 @@
 \def\E{{\mathrm{E}\,}}
 \def\EE#1{{{\mathrm{E}}\left(#1\right)}}
 
+
+\def\tX{{\widetilde{X}}}
+\def\tM{{\widetilde{M}}}
+\def\tx{{\widetilde{x}}}
+\def\tm{{\widetilde{m}}}
+
 \begin{document}
 \maketitle
 \chapter{introduction}
@@ -255,6 +261,7 @@ the numerical values of option are plotted against varying $\Delta t$. The value
 \subsection{Euler scheme and randon walk}
 approximate brownian by random walk through Euler scheme.
 
+
 \subsection{path transform}
 Let $S_k$ be a randon walk (assume $S_0=0$) 
 with i.i.d increasment, i.e. 
@@ -289,7 +296,7 @@ following continous version of path decomposition:
 \end{equation}
 where as above:
 \[
-S'_t = S_{\alpha T+t} - S_{\alpha_t}.
+S'_t = S_{\alpha T+t} - S_{\alpha_T}.
 \]
 
 For Brownian motion case, this formular were proved in many differet ways
@@ -297,12 +304,12 @@ and original due to Dassios\cite{Dassios1995}.
 
 \subsection{an estimate of discrete error}
 \cite{Janssen2008} gives a estimate of the difference of  expatations 
-between maximum of Brownian motion and associated random walk. 
+between maximum of borwnian motion and associated random walk. 
 Since we just give a really rough estimate, we only list the first two term
-(for $B(t)$ is a Brownian motion with drift $\mu$ and variance $1$
+(for $B(t)$ is a Borwnian motion with drift $\mu$ and variance $1$
 \begin{equation}\label{eq:est1}
 E\max_{0\leq t \leq 1} B(t) - E\max_{n=0,\cdots, N}B(n/N) 
-= -\frac{\zeta(1/2)}{\sqrt{2\pi N}}-\frac{2g(1)-\mu}{4N} + O(1/N^2)
+= -\frac{\zeta(1/2)}{\sqrt{2\pi N}}-\frac{2g(1)-\mu}{4N} + O(1/N^{3/2})
 \end{equation}
 where 
 \[
@@ -315,14 +322,16 @@ g(t) = \mu \Phi(\mu \sqrt{t}) + \frac{1}{\sqrt{2\pi t}} e^{-\frac{1}{2}\mu^2 t}.
 For general Borwnian $\tB(t)$ motion with drift $\tmu$, variance $\tsigma$
 we use following transform
 \begin{align*}
-\tB_t &= \tsigma\sqrt{T} B_{t/T} = \sqrt{T} \mu t/T + \sqrt{T}\sigma B_{t/T}\\
-\mu &= \tmu \sqrt{T} 
+\tB_t &= \tsigma \sqrt{T} B_{t/T} = \tsigma \sqrt{T} \mu t/T 
++ \sqrt{T}\tsigma B_{t/T}\\
+\mu &= \tmu \sqrt{T}/\tsigma 
 \end{align*}
 do derive the follwoing formula:
 \begin{equation}\label{eq:maxest}
 E\max_{0\leq t\leq T} B(t) - E \max_{0\leq n \leq N} B(nT/N) = 
- -\frac{\zeta(1/2)}{\sqrt{2\pi}}\sqrt{T/N}-\frac{2g(1)-\mu}{4N}\sqrt{T} + 
-O(\sqrt{T}/N^2)
+ -\frac{\zeta(1/2)}{\sqrt{2\pi}}\tsigma \sqrt{T/N}
+ -\frac{2g(1)-\tmu\sqrt{T}}{4N}\tsigma\sqrt{T} + 
+O(\sqrt{T}/N^{3/2})
 \end{equation}
 
 Now combine $(\ref{eq:cpathdec})$ $(\ref{eq:dpathdec})$ and $(\ref{eq:maxest})$,
@@ -336,11 +345,19 @@ we get an very rough estimate of the apporximation order:
 -  \sup_{i\leq k} S_i-\inf_{i\leq n-k} S'_i} \\
 = &  \EE{\sup_{t\leq \alpha{T}} S_t - \sup_{i\leq k} S_i} +
 \EE{\inf_{i\leq n-k} S'_i-\inf_{i\leq n-k} S'_i}\\
-=& -\frac{\zeta(1/2)}{\sqrt{2\pi}}\sqrt{T/N} 
-\left(\sqrt{\alpha} - \sqrt{1-\alpha}\right) \\
-& + \frac{2g(1)}{4N}\sqrt{T}\left(\sqrt{\alpha} - \sqrt{1-\alpha}\right) \\
-& + \frac{\mu}{N}\left(\sqrt{\alpha}+\sqrt{1-\alpha}\right)\sqrt{T}
- + O(\sqrt{T}/N^2) 
+=& -\frac{\zeta(1/2)}{\sqrt{2\pi}}\left(\sqrt{T/\alpha N} 
+\sqrt{\alpha} - \sqrt{T/(1-\alpha)N}\sqrt{1-\alpha}\right) \\
+& + \frac{2g(1)}{4}\sqrt{t}
+\left(\frac{1}{\alpha N} \sqrt{\alpha} 
+  - \frac{1}{(1-\alpha)N}\sqrt{1-\alpha}\right) \\
+& + \tmu \left( \frac{1}{4\alpha N}\alpha
+  +\frac{1}{4(1-\alpha)N}(1-\alpha)\right)T
++ O(\sqrt{T}/N^2) \\
+=& \frac{2g(1)\sqrt{T}}{4N}
+\left(\frac{1}{\sqrt{\alpha}} 
+  - \frac{1}{\sqrt{1-\alpha}}\right) \\
+& + \frac{\tmu T}{2 N}
++ O(1/N^{3/2}) \\
 \end{split}
 \end{equation}
 where $k = \alpha N$.
@@ -377,10 +394,77 @@ C\frac{-\zeta(1/2)}{\sqrt{2\pi}}\sqrt{T/N}  + O(1/N)
 
 
 \subsection{a study of the joint distribution of Brownian motion and its $\alpha$-quantile}
-In this section we are going to provide a give the joint distribution of Brownian motion and its quantile. When the Brownian motion is without drift, ie $\mu = 0 $, 
+In this section we are going to provide a give the joint distribution of Brownian motion and its quantile. When the Brownian motion is without drift, 
+ie $\mu = 0 $, 
+As we know the joint distribution of runing maximal and end point of 
+standard Brownian motion at time $\tau$ is 
+\[
+P(X_\tau\in da, M_\tau\in db) =  
+\frac{2(2b-a)}{\sqrt{2\pi \tau^3}} \exp(-\frac{(2b-a)^2}{2\tau}) 
+I_{\Set{a\leq b, b\geq 0}} (a,b) da db \triangleq p_\tau(a,b)
+\] 
+
+To deal with the distribution of $\alpha$-quantile, we usetwo copy of 
+Brownian motion and denote corresponding value at 
+$\tau=\alpha t$(respectively $\tau=(1-\alpha) t$) by $X_1$(resp. $X_2$) and
+maxiamal $M_1$(resp. $M_2$). 
+Then 
+\[
+\begin{split}
+(X_1,M_1, X_2, M_2) \sim& P(X_1\in dx_1, M_1\in dm_1, X_2\in dx_2, M_2\in dm_2)\\
+&= P_{\alpha t}(x_1, m_1) P_{(1-\alpha)t}(x_2,m_2) dx_1dm_1dx_2dm_2
+\end{split}
+\] 
 
 
+Use the transform 
+\[
+\begin{pmatrix}
+X_1\\ X_2\\ M_1\\ M_2\\
+\end{pmatrix}
+\overset{
+\begin{pmatrix}
+1 & 1 & 0 &0 \\
+1 & -1 & 0 & 0 \\
+0 & 0 & 1 & 1\\
+0 & 0 & 1 & -1\\
+\end{pmatrix}
+}{\longrightarrow}
+\begin{pmatrix}
+X_1+X_2\\
+X_1 - X_2 \\
+M_1 + M_2 \\
+M_1 - M_2 \\
+\end{pmatrix}
+\triangleq 
+\begin{pmatrix}
+X \\ \tX\\ \tM \\M 
+\end{pmatrix}
+\]
 
+And 
+\[
+(X, \tX, M, \tM) \sim \frac{1}{4} P_{\alpha t}(\frac{x+\tx}{2},\frac{m+\tm}{2})
+P_{(1-\alpha)t}(\frac{x-\tx}{2},\frac{\tm-m}{2}) I_D,
+\]
+where $D$ is the domain $\Set{x_1\leq m_1, x_2\leq m_2, m_1 >0, m_2>0}$
+
+
+Hence (use change of variable $x' = (x+\tx)/2$ and $m' = (m+\tm)/2$ 
+\[
+\begin{split}
+&P(M_{\alpha,t}\in dm, X_t \in dx) = P(M_1-M_2\in dm, X_1+X_2\in dx) \\
+=& \frac{1}{4} \int_{-\infty}^{\infty}\int_{-\infty}^\infty 
+P_{\alpha t}(\frac{x+\tx}{2},\frac{m+\tm}{2})
+P_{(1-\alpha)t}(\frac{x-\tx}{2},\frac{\tm-m}{2}) I_D d\tx d\tm\\
+= & \int_{-\infty}^{\infty}\int_{-\infty}^\infty 
+P_{\alpha t}(x',m')
+P_{(1-\alpha)t}(x-x',m-m') I_{D'} d\tx d\tm\\
+= & \int_{\max\Set{0,m}}^{\infty} \int_{x+m-m'}^{m'}
+P_{\alpha t}(x', m') P_{(1-\alpha)t}(x-x',m'-m) dx' dm',
+\end{split}
+\]
+where domain $D' = \Set{x' \leq m', x-x'\leq m'-m, m'>0, m'-m>0}$.
 
 
 
