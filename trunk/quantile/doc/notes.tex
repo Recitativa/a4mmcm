@@ -33,6 +33,7 @@
 \section{Option}
 
 An option is a contract which give the holder the right to buy or sell a underlying asset by a certain date at an agreed price. To get this right, the buyer should pay the seller. The price set in the contract is known as the strike price; the date is known as expiration date or maturity. There are always two sides involved in every option contract. On one side  is the investor who has bought the option. This side is known as the long position. Another side is the short position who has sold the option. A call option gives the holder the right to buy the underlying assets. While a put option gives the holder the right to sell the underlying asset. European options can be exercised only at the expiration date. American options on the other hand may be exercised at any time before the expiry date. 
+% add more Brodie option pricing: valuation models and applications and the market share from Value at risk
 
 Usually, there are five factors affecting the price of a stock option:
 \begin{enumerate}[1.]
@@ -66,6 +67,8 @@ From this we can see that the natural logarithm of stock price is Brownian motio
 Black etc. \cite{Black:1973} pointed out that the proper price of an option should be the expected present value of its payoff. Based on this idea, there are many studies about the pricing of options. For European plain vanilla option, its price can be priced in closed form. As for American plain vanilla option, because it can be executed at any time before maturity, the pricing is much more complicated. In this case, it is a optimal stopping problem. Comparing to vanilla option, there are another school of options called exotic options. Exotic options are nonstandard options created by financial engineers, which usually only traded in over-the- counter market. Although exotic options are a relatively small part of financial market in terms of volume, these options are important to investment banks because they are generally much more profitable than plain vanilla option. Usually, these options are path dependent. One typical exotic option is lookback option.
 
 %In the this case, one can deduce that the optimal stopping time is given by some region. Precisely, the holder excise the option when stock price enter some region. 
+
+% add something about path dependent option, particularly Asian option. 
 
 \section{Lookback options}
 Lookback options give the hold the right to capture the difference between asset price when the option is execute and maximum or minimum asset price reached during the life of the option. For a European style lookback call option, the payoff is the amount that the final asset price exceeds the minimum asset price happened during the life of the option. As for the put option, the payoff is the amount by which the maximum asset price happened during the life of the option exceeds the final asset price. Goldman etl firstly provided the valuation formulas for European lookbacks. In Hull \cite{Hull2008}, the value of a this type call option is 
@@ -136,6 +139,25 @@ When $X_{t}$ is a Brownian motion $B_t$, using similar mathematical tools, Dassi
 M(\alpha, t) \eqlaw \sup_{s \leq \alpha t} X_s + \inf_{s\leq (1-\alpha)t} X'_s ,
 \end{equation}
 where $X'$ is a independent copy of $X$. Later in 1995, Embrechts, Rogers and Yor \cite{EmRoge1995} gave two proofs of this theorem without using Feynman-Kac computations. 
+\subsection{The advantage of $\alpha$-quantile option}
+\cite{Ballotta}
+\subsection{The distribution function of $\alpha$-quantile of Brownian motion}
+In 1995, Yor gave the distribution function of the $\alpha$-quantile of Brownian motion without drift in \cite{Yor1995}. He obtained this result by simplifying related integral expressions on Miura \cite{Miura}. When $\mu = 0$, that is Brownian motion $B_t$ is without drift, define $\theta = ((1 - \alpha)/(\alpha))^{1/2}$, for the Brownian quantiles on time interval $[0, 1]$,  in \cite{Yor1995} we find:
+\begin{equation}
+P(M(\alpha,1)\in dx)= \begin{cases} 
+\sqrt{2 / \pi}exp(-x^2 / 2) \Phi(|x| / \theta)dx  &  \text{if } x \leq 0 \\
+\sqrt{2 / \pi}exp(-x^2 / 2) \Phi(\theta x)dx  &  \text{if } x \geq 0 
+\end{cases}
+\end{equation}
+where 
+\begin{equation}\label{eq:density}
+\Phi (x) = \sqrt{2/ \pi} \int^{\infty}_x dy exp(-y^2 / 2) = P (|N| \geq x)     (x \geq 0),
+\end{equation}
+with $N$ a standard Normal random variable. 
+
+
+When $u \neq 0$, Dassios  in \cite{Dassios1995} addressed this question for a more general case.  As stated in equation (\ref{eq:Dassios}), the density of 
+
 
 \subsection{Tree method for European Option}
 Like lookback option, quantile option is also path-dependent. What makes things difficult is that quantile option is not markov. Normal tree methods which usually involve backward induction do not work in this case. We need to record all the information of the path because of lack of markov property, which will lead the tree to explosion computationally. 
@@ -206,9 +228,16 @@ Recall what we get by equation (\ref{eq:kowk2}). In order to get the price of $\
 
 Recall we defined earlier $\Delta t = T / M$. We compute the approximated option price of an $\alpha$-quantile call option with different time steps using equation (\ref{eq:kowk2}). As you can see in Figure % add figure ,
 the numerical values of option are plotted against varying $\Delta t$. The values of parameters of the $\alpha$-quantile call option are set as: $ \alpha = 0.8$, $S_0 = 100$, $X = 95$, $r = 5\%$, $\sigma = 20\%$, and $T = 0.25$. 
+\begin{figure}[htbp]
+   \centering
+   \includegraphics{bfsg.pdf} % requires the graphicx package
+   \caption{example caption}
+   \label{fig:2}
+\end{figure}
 
 
-
+\subsection{ an exponential time tree for American $\alpha$-quantile option}
+% to be add
  
  
 
@@ -224,7 +253,7 @@ the numerical values of option are plotted against varying $\Delta t$. The value
 
 \section{Discrite v.s. continous}
 \subsection{Euler scheme and randon walk}
-approximate brownian by randon walk through Euler scheme.
+approximate brownian by random walk through Euler scheme.
 
 \subsection{path transform}
 Let $S_k$ be a randon walk (assume $S_0=0$) 
