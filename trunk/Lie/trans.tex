@@ -534,6 +534,220 @@ $W$. Then $z_j$ generate $\chh_\chi$.
 
 Above is from Pierre Cartier 
 
+\section{Fock model II}
+Let $J\in \Sp(W)\cap \sp(W)$ such that $J^2 = -\id$.
+Then $J$ given a complex structure on $W$.
+Then 
+\[
+B_J(w,w') = \inn{Jw}{w'}
+\]
+is a (non-degenerate) symmetric bilinear form.
+
+\[
+H_J(w,w') = \inn{Jw}{w'} + i\inn{w}{w'}
+\]
+become a Hermitian bilinear form(inner product) on $W$ where the 
+complex structure on $W$ defined by $J$, i.e. $i$ act on $W$ by $J$. 
+In fact,
+\[
+H_J(w',w) = \inn{Jw'}{w} + i \inn{w'}{w} = -\inn{w'}{Jw} + i\inn{w'}{w}
+= \inn{Jw}{w'} - i \inn{w}{w'}= \overline{H_J(w,w')}
+\]
+and
+\[
+H_J(Jw,w') = \inn{JJw}{w'} + i\inn{Jw}{w'} = i\inn{Jw}{w'} - \inn{w}{w'} 
+= i(\inn{Jw}{w'} + i\inn{w}{w'} = i H_J(w,w').
+\]
+
+Complexify $W$ to $W_\bC$. Extend $\inn{}{}$ to $W_\bC$.  
+ 
+View $H = W\oplus Z$ from the exponatial map of Lie algebra $\fhh$ of $H$. 
+Then the group law becomes
+\[
+\exp(w, t) \exp(w',t) = \exp(w+w', t+t'+\frac{1}{2}\inn{w}{w'}).
+\]
+Similary define $H_\bC$. 
+Let $V^\pm$ be the $\pm i$ eigen space of $J$ on $W_\bC$. 
+Then 
+\[
+V^\pm = \Set{w \mp iJw | w\in W },
+\] 
+since $J(w - iJw) = iw+Jw = i(w-iJw)$ and
+$J(w+iJw) = -iw + Jw = -i(w+iJw)$.
+
+
+Then consider the subgroup $P = V^-\oplus Z  < H_\bC$.
+Consider the following digram
+\[
+\bfig
+\square/^{(}->`->>`->>`^{(}->/[
+H`H_\bC` H/Z`H_\bC/P;{}`{}`{}`{}]
+\efig
+\]
+
+Hence $W = H/Z$ have a complex structure given by $H_\bC$. 
+In fact, by
+\[
+iw \equiv Jw +i(w+iJw) \equiv Jw \pmod{P}.
+\]
+Hence the complex structure given by $J$ is same as the complex structure given
+by above commutative diagram. 
+
+
+Fix a character $\chi(t)=e^{2\pi i\lambda t}$ of $\bR$ for some $\lambda\in \bR$. 
+Extend it into a character of $\bC$ then $P$ in a obvious way. 
+Define
+\[
+\chh_\chi = \Set{f\colon G_\bC \to \bC|\begin{array}{rl}
+    (a) & f \text{ is holomorphic};\\
+    (b) & f(gp) = \chi(p^{-1})f(g) \quad \forall p\in P, g\in G_\bC;\\
+    (c) & \int_{G/Z} \abs{f(g)}^2 dg < \infty
+  \end{array}
+}
+\]
+Inner product is given by 
+\[
+(f,f') = \int_{G/Z} f(g)\overline{f'(g)} dg.
+\]
+$G$ act on $\chh_\chi$ by left translation.
+
+For $X \in W$.
+\[
+\begin{split}
+f(\exp w+tiX) =& f(\exp w+ tJX + ti(X+iJX))\\
+=& f(e^{\frac{1}{2}\inn{ti(X+iJX)}{w+tJX}} \exp(w+tJX)\exp ti(X+iJX))  \\
+=& e^{2\pi i \lambda\frac{1}{2}\inn{ti(X+iJX)}{w+tJX}}f(\exp (w+tJX))\\
+= & e^{-2\pi \lambda \frac{1}{2} t \inn{X+iJX}{w} - t^2 \inn{X+iJX}{JX}}f(\exp(w+tJW))
+\end{split}
+\]
+Then 
+\[
+\ddt f(\exp w+tiX) =  \ddt f(\exp w+tJX) - \pi \lambda  
+\inn{X+iJX}{w} f(\exp w)
+\]
+Then the holomorphic condition is,
+\[
+\lim_{t\to 0} \frac{f(\exp(w+tX)) -f(\exp(w))}{t} = 
+\lim_{t\to 0} \frac{f(\exp(w+tiX))- f(\exp(w))}{ti} 
+\]
+ i.e.
+\[
+i \ddt f(\exp w+tX) = \ddt f(\exp w+tJX) - \pi \lambda
+\inn{X+iJX}{w} f(\exp w).
+\]
+
+Choose $J$ such that $\inn{Jw}{w}=H_J(w,w) \geq 0$, this $J$ called ``positive''. 
+
+
+For $f\in \chh_\chi$, define
+\[
+\phi(w) = e^{\pi \lambda \inn{Jw}{w}/2} f(\exp w) 
+\] 
+
+We check the holomorphic condition becomes 
+\[
+\theta_{JX} \phi = i \theta_{X} \phi.
+\]
+where 
+\[
+(\theta_X \phi)(w) = \frac{d}{dt}\phi(w+tX) \quad \for X\in W.
+\]
+
+In fact, 
+\[
+\begin{split}
+\theta_X \phi(w) =& \ddt e^{\pi \lambda \inn{J(w+tX)}{w+tX}/2} f(\exp(w+tX))\\
+= &  e^{\pi \lambda \inn{Jw}{w}}(\ddt f(\exp(w+tX)) 
++ \frac{1}{2}\pi\lambda (\inn{JX}{w}+\inn{Jw}{X}) f(\exp w )) \\
+= &  e^{\pi \lambda H_J(w,w)}(\ddt f(\exp(w+tX)) + \pi\lambda \inn{JX}{w} 
+f(\exp w)) \\
+\end{split}
+\] 
+Then 
+\[
+\begin{split}
+& e^{-\pi \lambda H_J(w,w)}\cdot (\theta_{JX}\phi - i\theta_{X}\phi) \\
+= & \ddt f(\exp(w+tJX)) + \pi\lambda \inn{JJX}{w} f(\exp w)\\
+&-i \left[ \ddt f(\exp(w+tX)) + \pi\lambda \inn{JX}{w} f(\exp w)\right]\\
+=& \ddt f(\exp(w+tJX)  - \pi \lambda \inn{X+iJX}{w} f(\exp w)
+- i \ddt f(\exp(w+tX))= 0 
+\end{split}
+\]
+
+Finiteness condition becomes:
+\[
+\int_W e^{-\pi \lambda \inn{Jw}{w}}\abs{\phi(w)}^2dw < \infty.
+\]
+
+Then
+\[
+\begin{split}
+(\rho(\exp(w,t))\phi)(w') 
+=& e^{\pi \lambda \inn{Jw'}{w'}/2} f(\exp(w,t)^{-1}\exp(w'))\\
+=& e^{\pi \lambda \inn{Jw'}{w'}/2} f(\exp(-w,-t)\exp(w'))\\
+=& e^{\pi \lambda \inn{Jw'}{w'}/2} f(\exp(w'-w,-t+\frac{1}{2}\inn{w'}{w}))\\
+=& e^{\pi \lambda \inn{Jw'}{w'}/2} \chi(-t+ \frac{1}{2}\inn{w'}{w}) f(\exp(w'-w))\\
+=& \chi(t) e^{\frac{1}{2}\pi \lambda (\inn{Jw'}{w'}+2i \inn{w'}{w})}
+ f(\exp(w'-w)) \\
+=& \chi(-t) e^{\frac{1}{2}\pi \lambda (\inn{Jw'}{w'}+2i \inn{w'}{w})} 
+e^{-\pi \lambda \inn{J(w'-w)}{w'-w}/2} \phi(w'-w)\\
+=& \chi(-t) e^{-\pi \lambda \inn{Jw}{w}/2+ \pi\lambda (\inn{Jw'}{w}+i\inn{w'}{w})} 
+ \phi(w'-w) \\
+=& \chi(-t) e^{-\pi\lambda H_J(w,w)/2} e^{\pi\lambda H_J(w',w)} \phi(w'-w)
+\end{split}
+\]
+
+
+So the infinitesimal representaition is 
+\[
+\rho(X) \phi = -\theta_X(\phi) +\pi\lambda H_X \phi
+\]
+Where $H_X(w') = H_J(w',X)$ is a (complex-)linear function on $W$.
+Note that $H_{JX} = -i H_X$ and $\theta_{JX} = i\theta_X$.
+
+Take $Y = \frac{1}{2}(X-iJX)$. Then $X = Y + \overline{Y}$, 
+and 
+\[
+\begin{split}
+\rho(Y) \phi =& \frac{1}{2}[(-\theta_X + \pi \lambda H_X) 
+-i(-\theta_{JX}+\pi\lambda H_{JX})]\\
+=& -\theta_X \phi 
+\end{split}
+\]
+\[
+\begin{split}
+\rho(\overline{Y}) \phi =& \frac{1}{2}[(-\theta_X + \pi \lambda H_X) 
++i(-\theta_{JX}+\pi\lambda H_{JX})]\\
+=& \pi\lambda H_X \\
+\end{split}
+\]
+
+The space 
+\[
+\Set{\phi \in \chh_\chi |\rho(V^+) \phi = 0}
+\]
+is one dimension, this is since $\phi$ is holomorphic, 
+all derivative equal to zero mean $\phi$ is constant. 
+
+Hence $\rho$ is irreducible. 
+
+Choose complex basis of $W$ $\Set{P_1, \cdots, P_n}$
+respect to $J$ such that
+$H_J(P_k, P_l) = \delta_{kl}$ and let $Q_j = J P_j$. 
+Then $\Set{z, P_j, Q_j}$ form a basis of $\fhh$. 
+Let $z_k(P_l) = H_J(P_l, P_k) =\delta_{kl}$ be complex linear function on 
+$W$. Then $z_j$ generate $\chh_\chi$. 
+
+\[
+\rho(P_j-iQ_j) = -2 \theta_{P_j} =  -2\theta_{z_j}
+\]
+\[
+\rho(P_j+iQ_j) = 2\pi\lambda (H_J(\cdot,P_j)) 
+ = 2\pi \lambda z_j
+\]
+
+Above ALMOST from Pierre Cartier 
+
 
 \section{dual pair}
 
@@ -587,7 +801,85 @@ Hence
 i,e, $S^2(\tU) \subset \sp(\tU)$. Since both side has dimension $n(2n+1)$,
 they are equal. 
 
+\def\tJ{{\widetilde{J}}}
+\section{computation}
+Take 
+\[
+J = \begin{pmatrix} 0 & -1\\1 & 0
+\end{pmatrix}
+\]
+Define 
+\[
+\inn{w}{v} = v^T J w = ad - cb \quad \forall w = (a,b), v = (c,d) \in \bR^n
+\]
 
+\[
+\tJ = -J = J^T = 
+\begin{pmatrix}
+  0 & 1 \\ -1 & 0
+\end{pmatrix}
+\]
+satisfy 
+\[
+\inn{\tJ w}{w} = w^T w \geq 0.
+\]
+
+Choose a basis of $W$ respect to $H_j$.
+Let $e_1, \cdots, e_{2n}$ be the standard basis of $\bR^2$.
+Noting that 
+\[
+H_J(e_k,e_l) = \inn{\tJ e_k}{e_l}+i\inn{e_k}{e_l}
+= e_l^T e_k =\delta_{kl} \quad \forall k,l \leq n
+\]
+Hence we set $P_k = e_k$ and $Q_k = \tJ P_k = -e_{n+k}$
+Then $z_k = e_k + i e_{n+k}$ and $\overline{z_k} = e_k -i e_{n+k}$.
+
+We can compute $K$ which is the isometric group of $H_J$.
+In fact compute the lie algebra $\fkk$ of $K$. 
+\[
+K = \set{k \ in \GL(2n,\bR)|k^tk = I, k^TJk = J }
+\]
+Then the lie algebra is,
+\[
+\fkk = \Set{X\in \agl(2n,\bR)|X^T + X  = 0, X^TJ + JX = 0}
+\]
+If
+\[
+X = \begin{pmatrix} A & B \\ C & D \\
+\end{pmatrix}
+\]
+
+Then 
+\[
+\begin{pmatrix}
+A^T & C^T \\
+B^T & D^T 
+\end{pmatrix} =
+\begin{pmatrix}
+-A & -B \\
+-C & -D 
+\end{pmatrix}
+\]
+and 
+\[
+\begin{pmatrix}
+C^T & -A^T \\
+D^T & -B^T 
+\end{pmatrix} =
+\begin{pmatrix}
+C & D \\
+-A & -B 
+\end{pmatrix}.
+\]
+Hence $A^T = -A$, $D = -A^T= A$, $B = B^T$, $C = -B^T = -B$,
+i.e. 
+\[
+X = \begin{pmatrix}
+A & B\\
+-B & A
+\end{pmatrix}
+\]
+$A$ antisymmetric and $B$ symmetric.
 
 \section{sp}
 
