@@ -802,6 +802,7 @@ i,e, $S^2(\tU) \subset \sp(\tU)$. Since both side has dimension $n(2n+1)$,
 they are equal. 
 
 \def\tJ{{\widetilde{J}}}
+\def\bZ{{\overline{Z}}}
 \section{computation}
 Take 
 \[
@@ -824,11 +825,11 @@ satisfy
 \inn{\tJ w}{w} = w^T w \geq 0.
 \]
 
-Choose a basis of $W$ respect to $H_j$.
+Choose a basis of $W$ respect to $H_\tJ$.
 Let $e_1, \cdots, e_{2n}$ be the standard basis of $\bR^2$.
 Noting that 
 \[
-H_J(e_k,e_l) = \inn{\tJ e_k}{e_l}+i\inn{e_k}{e_l}
+H_\tJ(e_k,e_l) = \inn{\tJ e_k}{e_l}+i\inn{e_k}{e_l}
 = e_l^T e_k =\delta_{kl} \quad \forall k,l \leq n
 \]
 Hence we set $P_k = e_k$ and $Q_k = \tJ P_k = -e_{n+k}$
@@ -837,7 +838,7 @@ Then $z_k = e_k + i e_{n+k}$ and $\overline{z_k} = e_k -i e_{n+k}$.
 We can compute $K$ which is the isometric group of $H_J$.
 In fact compute the lie algebra $\fkk$ of $K$. 
 \[
-K = \set{k \ in \GL(2n,\bR)|k^tk = I, k^TJk = J }
+K = \set{k  \in \GL(2n,\bR)|k^tk = I, k^TJk = J }
 \]
 Then the lie algebra is,
 \[
@@ -880,6 +881,41 @@ A & B\\
 \end{pmatrix}
 \]
 $A$ antisymmetric and $B$ symmetric.
+Note that we have a natrue isomorphism of lie algebra
+$\fkk \cong U(n)$ by 
+\[
+X = \begin{pmatrix}
+A & B\\
+-B & A
+\end{pmatrix}
+\mapsto
+A + iB.
+\]
+By the isomorphism $\bR^2 \simeq \bC$ with $(a,b) \to a-ib$, 
+we have $H_\tJ((a,b),(c,d)) = c^ta + b^td +i(d^t a- b^t c)
+= (c+id)^t(a-ib)$, hence identify $H_\tJ$ with the usual Hermitian inner
+product on $\bC$. This is compatible with above lie algebra isomorphism.
+
+We can use 
+\begin{align*}
+Z_k  &= P_k-iQ_k = e_k + i e_{n+k}\\
+\bZ_k &=  e_k - i e_{n+k}
+\end{align*}
+
+be the basis of $W_{\bC}$. 
+
+Now compute the action of $\fhh$ on the oscillator representation. 
+In fact 
+\[
+\begin{split}
+e_k &= \frac{1}{2}(Z_k + \bZ_k) = \frac{1}{2}[(P_k -iQ_k) + (P_k + iQ_k)] 
+=  -\theta_{z_j}  + \pi \lambda z_j\\
+e_{n+k} & = i\frac{1}{2}[(P_k-iQ_k) - (P_k + iQ_k)]
+= -i\theta_{z_j} -i \pi \lambda z_j
+\end{split}
+\]
+
+
 
 \section{sp}
 
