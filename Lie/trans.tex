@@ -75,6 +75,10 @@
 \def\norm#1{{\left\|{#1}\right\|}}
 \def\Sp{{\rm Sp}}
 
+\def\tJ{{\widetilde{J}}}
+\def\barZ{{\overline{Z}}}
+
+
 \def\Ad{\mathrm{Ad}}
 \def\agl{\mathrm{gl}}
 \def\asl{\mathrm{sl}}
@@ -90,6 +94,7 @@
 \def\fgg{\mathfrak{g}}
 \def\fkk{\mathfrak{k}}
 \def\chh{\mathcal{H}}
+\def\crr{\mathcal{R}}
 \def\fmm{\mathfrak{m}}
 \def\GL{\mathrm{GL}}
 \def\SO{\mathrm{SO}}
@@ -100,6 +105,7 @@
 \def\U{\mathrm{U}}
 \def\tU{{\widetilde{U}}}
 \def\ddt{\frac{d}{dt}}
+\def\pz#1{\partial z_{#1}}
 
 \def\cmm#1#2{\left[{#1},{#2}\right]}
 \def\acmm#1#2{\left\{{#1},{#2}\right\}}
@@ -801,8 +807,6 @@ Hence
 i,e, $S^2(\tU) \subset \sp(\tU)$. Since both side has dimension $n(2n+1)$,
 they are equal. 
 
-\def\tJ{{\widetilde{J}}}
-\def\bZ{{\overline{Z}}}
 \section{computation}
 Take 
 \[
@@ -833,10 +837,11 @@ H_\tJ(e_k,e_l) = \inn{\tJ e_k}{e_l}+i\inn{e_k}{e_l}
 = e_l^T e_k =\delta_{kl} \quad \forall k,l \leq n
 \]
 Hence we set $P_k = e_k$ and $Q_k = \tJ P_k = -e_{n+k}$
-Then $z_k = e_k + i e_{n+k}$ and $\overline{z_k} = e_k -i e_{n+k}$.
+Then $z_k = e_k - i e_{n+k}$ and $\overline{z_k} = e_k +i e_{n+k}$
+by $z_k(P_l) = \delta_{kl}$ and $z_k(\tJ P_l)= i\delta_{kl}$.
 
-We can compute $K$ which is the isometric group of $H_J$.
-In fact compute the lie algebra $\fkk$ of $K$. 
+We can compute $K$ which is the isometric group of $H_\tJ$.
+In fact compute the Lie algebra $\fkk$ of $K$. 
 \[
 K = \set{k  \in \GL(2n,\bR)|k^tk = I, k^TJk = J }
 \]
@@ -895,33 +900,247 @@ By the isomorphism $\bR^2 \simeq \bC$ with $(a,b) \to a-ib$,
 we have $H_\tJ((a,b),(c,d)) = c^ta + b^td +i(d^t a- b^t c)
 = (c+id)^t(a-ib)$, hence identify $H_\tJ$ with the usual Hermitian inner
 product on $\bC$. This is compatible with above lie algebra isomorphism.
+In fact
+\[
+X\begin{pmatrix}a\\b
+\end{pmatrix}
+= \begin{pmatrix} Aa+Bb\\
+-Ba+ Ab
+\end{pmatrix} 
+\]
+and compatible with
+\[
+(A+iB)(a-ib) = Aa+Bb -i(-Ba+Bb)
+\]
 
 We can use 
 \begin{align*}
-Z_k  &= P_k-iQ_k = e_k + i e_{n+k}\\
-\bZ_k &=  e_k - i e_{n+k}
+Z_k  &= \frac{1}{2}(P_k-iQ_k) = \frac{1}{2}(e_k + i e_{n+k})\\
+\barZ_k &= \frac{1}{2}(P_k+iQ_k) = \frac{1}{2}(e_k - i e_{n+k})
 \end{align*}
-be the basis of $W_{\bC}$. 
+be the basis of $W_{\bC}$. Where $Z_k$ span the $i$-eigen space of $\tJ$.
+Then 
+\begin{align*}
+\rho(Z_k) &= -\pz{k} \\
+\rho(\barZ_k) & = \pi\lambda z_k
+\end{align*}
 
 Now compute the action of $\fhh$ on the oscillator representation. 
 In fact 
 \[
 \begin{split}
-e_k &= \frac{1}{2}(Z_k + \bZ_k) = \frac{1}{2}[(P_k -iQ_k) + (P_k + iQ_k)] 
-=  -\theta_{z_j}  + \pi \lambda z_j\\
-e_{n+k} & = i\frac{1}{2}[(P_k-iQ_k) - (P_k + iQ_k)]
-= -i\theta_{z_j} -i \pi \lambda z_j
+e_k &= \frac{1}{2}[(P_k-iQ_k) + (P_k + iQ_k)] =
+Z_k + \barZ_k =  -\pz{j}  + \pi \lambda z_k\\
+e_{n+k} & = i\frac{1}{2}[-(P_k-iQ_k) + (P_k + iQ_k)] = i(-Z_k+\barZ_k)
+= i\pz{k} +i \pi \lambda z_k
 \end{split}
+\]
+Now the matrix of change of basis is: $Z_k, \barZ_j \mapsto e_k, e_{n+j}$
+by 
+\[
+\frac{1}{2}\begin{pmatrix}
+1 & 1\\
+i & -i 
+\end{pmatrix}
+\]
+And the inverse is $e_k, e_{n+j} \mapsto Z_k, \barZ_j$
+\[
+\begin{pmatrix}
+1 & -i
+1 & i
+\end{pmatrix}
 \]
 
 now consider the symplectic lie algebra $\sp \simeq S^2(W_\bC)$. 
+Note that 
+\[
+\cmm{\pz{k}}{z_j} = \delta_{kj}
+\]
+\[
+\cmm{Z_k}{\barZ_j} = \cmm{-\pz{k}}{\pi \lambda z_j} = -\pi\lambda \delta_{kj}
+\]
+\[
+\cmm{Z_k}{Z_j} = \cmm{\barZ_k}{\barZ_j} =0.
+\]
 
+For all $0\leq k,j \leq n$
 \[
-\cmm{Z_K}{\bZ_j} = \cmm{-2\theta_{z_k}}{2\pi \lambda z_j} = \delta_{}
+\cmm{e_k}{e_{j}}= \cmm{Z_k+\barZ_k}{Z_j+\barZ_j} = \pi\lambda (\delta_{kj}-\delta_{jk}) 
+=0 
 \]
 \[
-\cmm{e_k}{e_{n+k}}= 
+\cmm{e_{n+k}}{e_{n+j}} = \cmm{i(-Z_k+\barZ_k)}{i(-Z_j+\barZ_j)} = 0
 \]
+\[
+\cmm{e_k}{e_{n+j}} = \cmm{Z_k + \barZ_k}{i(-Z_j+\barZ_j)} = -2\pi\lambda i \delta_{kj} 
+\]
+Hence for $w,v\in W$, we have 
+\[
+\cmm{w}{v}= - 2\pi \lambda i \inn{w}{v} 
+\]
+
+Now consider how $\sp = S^2(W_\bC)$ act on $W_\bC$ or $W$ by adjoint.
+\begin{align*}
+\cmm{\acmm{Z_k}{Z_j}}{Z_l} &= \acmm{\cmm{Z_k}{Z_l}}{Z_j} 
++ \acmm{Z_k}{\cmm{Z_j}{Z_l}} = 0\\
+\cmm{\acmm{Z_k}{Z_j}}{\barZ_l} &= \acmm{\cmm{Z_k}{\barZ_l}}{Z_j} 
++ \acmm{Z_k}{\cmm{Z_j}{\barZ_l}} = -2\pi \lambda(\delta_{kl}Z_j+\delta_{jl}Z_k)
+\end{align*}
+
+\begin{align*}
+ \cmm{\acmm{Z_k}{\barZ_j}}{Z_l} &= \acmm{\cmm{Z_k}{Z_l}}{\barZ_j} 
++ \acmm{Z_k}{\cmm{\barZ_j}{Z_l}} = 2\pi \lambda \delta_{jl} Z_k\\
+ \cmm{\acmm{Z_k}{\barZ_j}}{\barZ_l} &= \acmm{\cmm{Z_k}{\barZ_l}}{\barZ_j} 
++ \acmm{Z_k}{\cmm{\barZ_j}{\barZ_l}} = -2\pi \lambda \delta_{jl} \barZ_j
+\end{align*}
+
+\begin{align*}
+ \cmm{\acmm{\barZ_k}{\barZ_j}}{Z_l} &= \acmm{\cmm{\barZ_k}{Z_l}}{\barZ_j} 
++ \acmm{\barZ_k}{\cmm{\barZ_j}{Z_l}} 
+= 2\pi \lambda (\delta_{kl} \barZ_j+ \delta_{jl}\barZ_k)\\
+ \cmm{\acmm{\barZ_k}{\barZ_j}}{\barZ_l} 
+&= \acmm{\cmm{\barZ_k}{\barZ_l}}{\barZ_j} 
++ \acmm{\barZ_k}{\cmm{\barZ_j}{\barZ_l}} 
+= 0
+\end{align*}
+
+In the basis $Z_k, \barZ_k$, (assume $k<=j$)
+Hence 
+\begin{align*}
+\acmm{Z_k}{Z_j} \mapsto& -2\pi \lambda (E_{j,n+k}+E_{k,n+j}) = 2\pi\lambda
+\begin{pmatrix}
+ & & & -1\\
+ & &-1 & \\
+ & &  & \\
+ & &  &  
+\end{pmatrix}
+\\
+\acmm{Z_k}{\barZ_j} \mapsto& 2\pi\lambda (E_{k,j}-E_{n+j,n+k}) 
+= 2\pi\lambda
+\begin{pmatrix}
+ &1 &  & \\
+ & &  & \\
+ & &  & \\
+ & &-1  &  
+\end{pmatrix}
+\\
+\acmm{\barZ_k}{\barZ_j} \mapsto & 2\pi\lambda (E_{n+j,k} + E_{n+k,j}) 
+= 2\pi\lambda
+\begin{pmatrix}
+ & &  & \\
+ & &  & \\
+ & 1&  & \\
+ 1& &  &  
+\end{pmatrix}
+\end{align*}
+
+If $k<j$,
+\begin{align*}
+\acmm{e_k}{e_j} =& \acmm{Z_k+\barZ_k}{Z_j+\barZ_j} = 
+\acmm{Z_k}{Z_j} +\acmm{\barZ_k}{Z_j} +
+\acmm{Z_k}{\barZ_j} + \acmm{\barZ_k}{\barZ_j}\\
+=& 2 \pi \lambda[-(E_{j,n+k}+E_{k,n+j})+(E_{n+j,k} + E_{n+k,j}) +
+(E_{k,j}+E_{j,k}-E_{n+k,n+j}-E_{n+j,n+k})] \\
+=& 2\pi\lambda
+\begin{pmatrix}
+  &1 &  &-1 \\
+1 &  & -1 & \\
+  & 1&  &-1 \\
+1 &  &-1  &  
+\end{pmatrix}\\
+\acmm{e_k}{e_{n+j}} =& \acmm{Z_k+\barZ_k}{-iZ_j+i\barZ_j} = 
+-i\acmm{Z_k}{Z_j} -i\acmm{\barZ_k}{Z_j} +
+i\acmm{Z_k}{\barZ_j} + i\acmm{\barZ_k}{\barZ_j}\\
+=& 2 \pi \lambda[i(E_{j,n+k}+E_{k,n+j})+i(E_{n+j,k} + E_{n+k,j}) +
+(-iE_{j,k}+iE_{n+k,n+j} +iE_{k,j}-iE_{n+j,n+k})] \\
+=& 2\pi\lambda
+\begin{pmatrix}
+  & i&   &i \\
+-i&  & i & \\
+  & i&   &-i \\
+i &  & i &  
+\end{pmatrix}\\
+\acmm{e_{n+k}}{e_{n+j}} =& \acmm{-iZ_k+i\barZ_k}{-iZ_j+i\barZ_j} 
+=-\acmm{Z_k-\barZ_k}{Z_j-\barZ_j} 
+=& 
+-\acmm{Z_k}{Z_j} +\acmm{\barZ_k}{Z_j} +
+\acmm{Z_k}{\barZ_j} - \acmm{\barZ_k}{\barZ_j}\\
+=& 2 \pi \lambda[(E_{j,n+k}+E_{k,n+j})-(E_{n+j,k} + E_{n+k,j}) +
+(E_{k,j}+E_{j,k}-E_{n+k,n+j}-E_{n+j,n+k})] \\
+=& 2\pi\lambda
+\begin{pmatrix}
+  &1 &  &1 \\
+1 &  & 1 & \\
+  & -1&  &-1 \\
+-1&  &-1  &  
+\end{pmatrix}\\
+\end{align*}
+
+\section{$\chh(U(n))$}
+$\chh(K)$ means all $K$-finite elements in the represnetaion of $K\times K$ on 
+$C(K)$.  Now assume $K=U(n)$. We claim that 
+\[
+\crr(\GL(n, \bC)) \simeq \chh(K),
+\]
+where $\crr(\GL(n,\bC))$ is the coordinate ring of affine variety $\GL(n,\bC)$,
+or the subring of functions on $\GL(n,\bC)$ generated by entries and $\det$. 
+
+Consider the restriction map:
+\[
+\pi:\crr(\GL(n,\bC)) \to C(K).
+\]
+It is injective.
+Not so ``rigid'': since element in $\crr(\GL(n,\bC))$ are holomorphic functions
+on $\GL(n,\bC)$ hence determined by restrict to $K$, a infinite compact set. 
+
+Suppose that $f(g) = \sum p_k(g) \det^k(g) \in \crr(\GL(n,\bC))$, where
+$p_k$ are polynomials on $M_n(\bC)$. Since it is a 
+finite sum $f\det^k$ is a polynomial on $M_n(\bC)$ 
+for sufficient large $k\in \bZ$.
+Since  $\det^k(g)\neq 0$ on $\GL(n,\bC)$,
+$f(g) = 0$ for all $g\in \GL(n,\bC)$ eqivalent to $f(g)\det^k(g) = 0$
+for all $g\in \GL(n,\bC)$. 
+Since $\GL(n,\bC)$ is (Zariski) dense in $M_n(\bC)$, above eqivalent to 
+$f\det^k=0$ as polynomial on $M_n(\bC)$. 
+Assume $\pi(f)=0$, i.e. $f(g) = 0$ for all $g\in U(n)$. Hence 
+$f(g)\det^k(g)=0$ for all $g\in U(n)$. 
+Now decomposite $f$ in to homogenous component, i.e. $f=\sum p_l$. 
+Then $0=f(au)=\sum p_l(au) =\sum a^l p_l(u)$ for all $a\in U(1)$. Hence
+$p_l(u) =0$. Since any $g\in \GL(n,\bC)$ can written as $\lambda u$ for 
+$\lambda \in \bC$. We have $f(g) = f(\lambda u) = \sum \lambda^l p_l(u) = 0$. 
+Hence $f=0$ in $\crr(GL(n,\bC)$.
+
+It is obvious that $\Im \pi \subset \chh(K)$
+ since the $K$ action on $\crr(\GL(n,\bC))$ is finite. 
+For the subjectivity, we only have to check the $\Im \pi$ is dense in $C(K)$. 
+Then by Peter-Weyl theorem, $\Im \pi=\chh(K)$. 
+The image is dense by Stone-Weierstrass theorem. 
+Fist $K$ is a compact Hausdorff space, 
+We check:
+\begin{enumerate}[(1)]
+\item obviously, $\Im \pi$ is a subalgebra of $C(K)$.
+\item obviously, it contains non-zero constant function.
+\item the matrix entries $z_{ij}$ separate points.
+\item Closed by conjugation is by the following observation: 
+$u\in U(k)$ then $u^* = u^{-1} = {\rm Adj}(u) \det^{-1}(u)$, hence 
+$\overline{z_{ij}} \in \Im\pi$. Moreover $\det(u)\in U(1)$, hence
+$\overline{\det^{-1}(u)} = \det(u) \in \Im\pi$.
+Combine these evidences, we see for any $f = \sum p_l \det^{-l} \in \Im \pi$,
+\[
+\overline{f}(u) = \sum \overline{p_l(u)}\overline{\det(u)}^{-l}
+= \sum \widetilde{p}_l(\overline{u})\det(u)^l \in \Im \pi
+\]  
+\end{enumerate}
+
+We can summerize the result:
+
+\begin{lemma}
+\[
+\crr(\GL(n,\bC)) \simeq \chh(U(n))
+\]
+as representation of $K$. 
+\end{lemma}
+
 \section{sp}
 
 $X\in \sp$, 
