@@ -1143,6 +1143,108 @@ as representation of $K$.
 
 \section{sp}
 
+$\sp_\bC(n)$ has roots $\pm \epsilon_k \pm \epsilon_l$, $k\neq l$ and 
+and $\pm 2\epsilon_k$, $k$.
+Simple roots are 
+\[
+\alpha_1 = 2\epsilon_n, \alpha_2 = \epsilon_1 -\epsilon_2, \cdots, 
+\alpha_n = \epsilon_{n-1}-\epsilon_{n}.
+\]
+
+Take 
+\[
+\begin{cases}
+\eta_k = \epsilon_k & 1\leq k \leq r,\\
+\eta_{r+k}= -\epsilon_{n-k+1} & 1\leq k \leq s
+\end{cases}
+\]
+Take 
+\[
+H = \frac{1}{2} \sum_{k=1}^n \eta_k, = \frac{1}{2} \sum_{k=1}^r \epsilon_k 
+- \frac{1}{2} \sum_{k=r+1}^n \epsilon_k
+\]
+\[
+H' = \frac{1}{2} \sum_{k=1}^r \eta_k + \frac{1}{2} \sum_{k=r+1}^n \eta_k
+= \frac{1}{2} \sum_{k=1}^n \epsilon_k
+\]
+Here
+$\epsilon_k$ correspond to a element in $\fhh$, the usual Cartan subalgebra
+-- diagnal matrix.
+In fact, 
+\[
+\epsilon_k \leftrightarrow H_{\epsilon_k}= E_{k,k}-E_{n+k,n+k}
+\] 
+
+Here we realize $\sp_\bC$ by $2n\times 2n$ matrix
+\[
+\begin{pmatrix}
+A & B \\
+C & -A^T
+\end{pmatrix}
+\]
+such that $B,C$ symmetric, i.e. $B=B^T$ and $C= C^T$.
+Hence 
+\[
+H = \frac{1}{2} \begin{pmatrix}
+I_r & & & \\
+ & -I_s & & \\
+ & & -I_r & \\
+ & & & I_s 
+\end{pmatrix}
+\text{ and }
+H' = \frac{1}{2} 
+\begin{pmatrix}
+I_r & & & \\
+ & I_s & & \\
+ & & -I_r & \\
+ & & & -I_s 
+\end{pmatrix}
+\]
+Then 
+\[
+\theta = e^{\pi i \ad H} =\Ad \begin{pmatrix}
+iI_r & & & \\
+ & -iI_s & & \\
+ & & -iI_r & \\
+ & & & iI_s 
+\end{pmatrix}
+\]
+and
+\[
+\theta' = e^{\pi i \ad H'} = \Ad \begin{pmatrix}
+iI_r & & & \\
+ & iI_s & & \\
+ & & -iI_r & \\
+ & & & -iI_s 
+\end{pmatrix}
+\]
+
+For any element 
+\[ X = 
+\begin{pmatrix}
+A & B \\
+C & -A^T 
+\end{pmatrix} \in \sp_\bC(n)
+\]
+We have 
+\[
+\theta'(X) = \begin{pmatrix}
+A & -B\\
+-C & -A^T
+\end{pmatrix}
+\]
+Hence 
+\[
+\ftt_\bC = \begin{pmatrix}
+A & 0 \\
+0 & -A^T 
+\end{pmatrix} \simeq \gl_{n, \bC}  
+\]
+in a obvious way. 
+
+
+
+
 \section{$W_{p,q}$}
 
 \section{notation}
