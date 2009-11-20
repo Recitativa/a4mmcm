@@ -1006,7 +1006,7 @@ Now consider how $\sp = S^2(W_\bC)$ act on $W_\bC$ or $W$ by adjoint.
 
 In the basis $Z_k, \barZ_k$, (assume $k<=j$)
 Hence 
-\begin{align*}
+\begin{align}\label{eq:matZ}
 \acmm{Z_k}{Z_j} \mapsto& -2\pi \lambda (E_{j,n+k}+E_{k,n+j}) = 2\pi\lambda
 \begin{pmatrix}
  & & & -1\\
@@ -1032,7 +1032,7 @@ Hence
  & 1&  & \\
  1& &  &  
 \end{pmatrix}
-\end{align*}
+\end{align}
 
 If $k<j$,
 \begin{align*}
@@ -1183,7 +1183,31 @@ C & -A^T
 \end{pmatrix}
 \]
 such that $B,C$ symmetric, i.e. $B=B^T$ and $C= C^T$.
-Follows Howe
+Follows Howe\cite{Howe1985}, we take negative $\dagger$, where 
+\[
+\begin{pmatrix}
+A & B
+C & -A^T 
+\end{pmatrix}^\dagger
+=
+\begin{pmatrix}
+A^* & -C^*
+-B^* & -\overline{A}
+\end{pmatrix}
+=\begin{pmatrix}
+A^* & -\overline{C}
+-\overline{B} & -\overline{A}
+\end{pmatrix}
+\]
+(by (\ref{eq:matZ})) be the involution defining the realform of $\sp_\bC$.
+The the element in realform is 
+\[
+\begin{pmatrix}
+A & B\\
+-\overline{B} & -\overline{A}
+\end{pmatrix}
+\]
+since $ -A^* = A$ and $C=-B^*$ and $B = B^T$.
 
 Hence 
 \[
@@ -1240,7 +1264,7 @@ Hence
 \ftt_\bC = \begin{pmatrix}
 A & 0 \\
 0 & -A^T 
-\end{pmatrix} \simeq \gl_{n, \bC}  
+\end{pmatrix} \simeq \agl_{n, \bC}  
 \]
 in a obvious way. 
 
@@ -1286,5 +1310,6 @@ for any $x\in U(\fkk)$.
 
 \bibliography{bib/reppapers}{}
 \bibliographystyle{plain}
+
 \end{document}
 
