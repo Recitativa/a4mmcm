@@ -80,16 +80,21 @@
 
 
 \def\Ad{\mathrm{Ad}}
-\def\agl{\mathrm{gl}}
-\def\asl{\mathrm{sl}}
-\def\aso{\mathrm{so}}
-\def\asp{\mathrm{sp}}
-\def\au{\mathrm{u}}
+\def\agl{\mathfrak{gl}}
+\def\asl{\mathfrak{sl}}
+\def\aso{\mathfrak{so}}
+\def\asp{\mathfrak{sp}}
+\def\au{\mathfrak{u}}
 \def\diag#1{\mathrm{diag}(#1)}
 \def\lww{\mathcal{W}}
 \def\lxx{\mathcal{X}}
 \def\lyy{\mathcal{Y}}
 \def\fhh{\mathfrak{h}}
+\def\fnn{\mathfrak{n}}
+\def\fuu{\mathfrak{u}}
+\def\foo{\mathfrak{o}}
+\def\fpp{\mathfrak{p}}
+\def\fqq{\mathfrak{q}}
 \def\ftt{\mathfrak{t}}
 \def\fgg{\mathfrak{g}}
 \def\fkk{\mathfrak{k}}
@@ -110,6 +115,9 @@
 \def\cmm#1#2{\left[{#1},{#2}\right]}
 \def\acmm#1#2{\left\{{#1},{#2}\right\}}
 
+
+\def\real{{\rm Re\,}}
+\def\imag{{\rm Im\,}}
 
 \hypersetup{
     bookmarks=false,         % show bookmarks bar?
@@ -937,16 +945,16 @@ e_{n+k} & = i\frac{1}{2}[-(P_k-iQ_k) + (P_k + iQ_k)] = i(-Z_k+\barZ_k)
 \]
 Now the matrix of change of basis is: $Z_k, \barZ_j \mapsto e_k, e_{n+j}$
 by 
-\[
+\begin{equation}\label{eq:tZtoe}
 \frac{1}{2}\begin{pmatrix}
 1 & 1\\
 i & -i 
 \end{pmatrix}
-\]
+\end{equation}
 And the inverse is $e_k, e_{n+j} \mapsto Z_k, \barZ_j$
 \[
 \begin{pmatrix}
-1 & -i
+1 & -i\\
 1 & i
 \end{pmatrix}
 \]
@@ -1186,16 +1194,16 @@ such that $B,C$ symmetric, i.e. $B=B^T$ and $C= C^T$.
 Follows Howe\cite{Howe1985}, we take negative $\dagger$, where 
 \[
 \begin{pmatrix}
-A & B
+A & B\\
 C & -A^T 
 \end{pmatrix}^\dagger
 =
 \begin{pmatrix}
-A^* & -C^*
+A^* & -C^*\\
 -B^* & -\overline{A}
 \end{pmatrix}
 =\begin{pmatrix}
-A^* & -\overline{C}
+A^* & -\overline{C}\\
 -\overline{B} & -\overline{A}
 \end{pmatrix}
 \]
@@ -1204,10 +1212,41 @@ The the element in realform is
 \[
 \begin{pmatrix}
 A & B\\
--\overline{B} & -\overline{A}
+\overline{B} & \overline{A}
 \end{pmatrix}
 \]
-since $ -A^* = A$ and $C=-B^*$ and $B = B^T$.
+since $ -A^* = A$ and $C=\overline{B}$.
+
+Now from (\ref{eq:tZtoe})  conjugate by 
+\[c = \frac{1}{2}
+\begin{pmatrix}
+1 & 1\\
+i & i
+\end{pmatrix},
+\]
+we have 
+\[
+\begin{split}
+(\Ad c)
+\begin{pmatrix}
+A & B\\
+\overline{B} & \overline{A}
+\end{pmatrix}
+=& \frac{1}{2}
+\begin{pmatrix}
+(A + \overline{A}) + (B +\overline{B}) &-i(A-\overline{A}) +i(B-\overline{B})\\
+i(A-\overline{A}) + i(B-\overline{B})& -(A + \overline{A}) + (B +\overline{B})
+\end{pmatrix}\\
+=&\begin{pmatrix}
+\real A  + \real B & \imag A - \imag B\\
+-\imag A -\imag B & -(\real A+\real B)  
+\end{pmatrix}
+\in \sp_\bR
+\end{split}
+\]
+since $\real A$ is antisymmetric and $\imag A, \real B, \imag B$ is symmetric. 
+Hence this gives the Lie algebra isomorphism from the fix point of $\dagger$ 
+to $\sp_\bR$. 
 
 Hence 
 \[
@@ -1261,17 +1300,137 @@ A & -B\\
 \]
 Hence 
 \[
-\ftt_\bC = \begin{pmatrix}
+\fkk_\bC' = \Set{\begin{pmatrix}
 A & 0 \\
 0 & -A^T 
-\end{pmatrix} \simeq \agl_{n, \bC}  
+\end{pmatrix}} \simeq \agl_{n, \bC}  
 \]
 in a obvious way. 
+
+For the fix point of $\theta$, we consider the matrix in the following form
+\[
+X = \begin{pmatrix}
+  A & B & C & D\\
+  E & F & {D}^{T} & G\\
+  K & L & -{A}^{T} & -{E}^{T}\\
+  {L}^{T} & M & -{B}^{T} & -{F}^{T}
+\end{pmatrix}
+\]
+Then 
+\[
+\theta(X) = 
+\begin{pmatrix}
+  A & -B & -C & D\\
+  -E & F & {D}^{T} & -G\\
+  -K & L & -{A}^{T} & {E}^{T}\\
+  {L}^{T} & -M & {B}^{T} & -{F}^{T}
+\end{pmatrix}
+\]
+Hence $\fkk_\bC$ consisting elements in the following form
+\[
+\begin{pmatrix}
+  A & 0 & 0 & D\\
+  0 & F & {D}^{T} & 0\\
+  0 & L & -{A}^{T} & 0\\
+ {L}^{t} & 0 & 0 & -{F}^{T}
+\end{pmatrix}
+\Rightarrow
+\begin{pmatrix}
+  A & D & 0 & 0\\
+  {L}^{T} & -{F}^{T} & 0 & 0\\
+  0 & 0 & -{A}^{T} & -L\\
+  0 & 0 & -{D}^{T} & F
+\end{pmatrix}
+\]
+by conjugating the permutation matrix
+\[
+\begin{pmatrix}
+  1 & 0 & 0 & 0\\
+  0 & 0 & 0 & 1\\
+  0 & 0 & -1 & 0\\
+  0 & 1 & 0 & 0
+\end{pmatrix}
+\]
+This give a nature way to identify $\fkk_\bC$. to $\agl_n(\bC)$.
+Moreover 
+\[
+\fpp_\bC = \Set{
+\begin{pmatrix}
+  0 & B & C & 0\\
+ E & 0 & 0 & G\\
+ K & 0 & 0 & -{E}^{T}\\
+ 0 & M & -{B}^{T} & 0
+\end{pmatrix}
+|
+}
+\]
+
+
+We can see that $\fmm_\bC = \fkk_\bC \cap \fkk_\bC'$, i.e. 
+the fixed point of $\theta$ in $\ftt_\bC'$ is 
+\[
+\Set{\begin{pmatrix}
+    A & & & \\
+    & B & & \\
+    & & -A^T &\\
+    & & & -B^T 
+  \end{pmatrix}|
+  A\in \Mat_{r,r}(\bC), B\in \Mat_{s,s}(\bC)
+}
+\]
+
+Also , $\foo = \fpp_\bC'$ consists matrix in form 
+\[
+\begin{pmatrix}
+0 &  B \\
+C & 0 
+\end{pmatrix}
+\]
+and $B= B^T$, $C= C^T$.
+And 
+\[
+\foo^+ = \Set{\begin{pmatrix}
+0 &  B \\
+0 & 0 
+\end{pmatrix}
+| B = B^T \in \Mat_{n,n}(\bC)
+}
+\]
+\[
+\foo^- = \Set{\begin{pmatrix}
+0 &  0 \\
+C & 0 
+\end{pmatrix}
+| C = C^T \in \Mat_{n,n}(\bC)
+}
+\]
+\[
+\foo_k^+ =  \Set{\begin{pmatrix}
+0 &  0 &  0 &D \\
+0 & 0  & D^T & 0 \\
+0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 
+\end{pmatrix}
+| B = B^T \in \Mat_{n,n}(\bC)}
+\]
 
 
 
 
 \section{$W_{p,q}$}
+Define $\theta'$-stable parabolic $\fqq$ of $\fkk_\bC$ by weight
+\[
+\lambda_{p,q} = -(\eta_{r-q+1} +  \cdots + \eta_r)+(\eta_{r+1} + \eta_{r+p})
+ = \sum_{k=r-q+1}^{r+p} - \epsilon_{k}
+\]
+So the non-compact nilpotent part is 
+\[
+\fnn\cap fpp = \Set{g_{\alpha}|\alpha = -(\epsilon_k+\epsilon_l), 
+  k\geq r+1, l \leq r
+  \text{ and } (
+  k \leq r+p \text{ or } l \geq r-q+1)
+}
+\]
 
 \section{notation}
 
@@ -1309,7 +1468,7 @@ this means
 for any $x\in U(\fkk)$.
 
 \bibliography{bib/reppapers}{}
-\bibliographystyle{plain}
+\bibliographystyle{alpha}
 
 \end{document}
 
