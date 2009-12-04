@@ -36,9 +36,10 @@
 \begin{document}
 \maketitle
 \chapter{introduction}
-\section{Option}
+\section{option}
 
-An option is a contract which give the holder the right to buy or sell a underlying asset by a certain date at an agreed price. To get this right, the buyer should pay the seller. The price set in the contract is known as the strike price; the date is known as expiration date or maturity. There are always two sides involved in every option contract. On one side  is the investor who has bought the option. This side is known as the long position. Another side is the short position who has sold the option. A call option gives the holder the right to buy the underlying assets. While a put option gives the holder the right to sell the underlying asset. European options can be exercised only at the expiration date. American options on the other hand may be exercised at any time before the expiry date. 
+An {\it option} is a contract which gives the holder the right but not the obligation to buy or sell an underlying asset by a certain date at an agreed price, as mentioned in \cite{Hull2008}.
+To get this right, the buyer should pay the seller. The price set in the contract is known as the {\it strike price}; the date is known as {\it expiration date} or {\it maturity}. There are always two sides involved in every option contract. On one side is the investor who has bought the option. This side is known as the long position. Another side is the short position who has sold the option. A {\it call} option gives the holder the right to buy the underlying asset, while a {\it put} option gives the holder the right to sell the underlying asset. European options can be exercised only at the expiration date. American options on the other hand may be exercised at any time before the expiration date. 
 % add more Brodie option pricing: valuation models and applications and the market share from Value at risk
 
 Usually, there are five factors affecting the price of a stock option:
@@ -50,34 +51,35 @@ Usually, there are five factors affecting the price of a stock option:
 \item The risk-free interest rate, $r$
 \end{enumerate}
 
-For European option, the payoff from a long position is $(S_T - K)^+$. As for American option, the payoff function is
-similar, what is different is we should use the stock price when the option is executed to calculate payoff, instead of $S_T$ in European case. 
-
-Usually there are closed form price formulas for European. In addition numerical approach can solve this problem, such as binomial tree and Monte Carlo simulation. However, the pricing of    American is more complicate. A complete solution to American option pricing problem should address two aspects, option value and an optimal exercise strategy. Only in a few case analytic solutions are available. In most cases, numerical approach is needed. Lim and Lai \cite{Lim2004} propose to an approach to compute both the price and the optimal exercise boundary. 
+For European option, the payoff from a long position is $(S_T - K)^+$. As for American option, the payoff function is similar, what is different is we should use the stock price when the option is executed to calculate payoff, instead of $S_T$ in European case. 
 
 
 
-\section{Black-Shores model}   
-The most popular model to describe stock price behavior is known as Black--Shore model. Let $S_t$ be the stock price. Then under this model, $S_t$ satisfies this equation: 
+Usually there are closed form price formulas for European options. In addition numerical approaches can solve this problem, such as binomial tree and Monte Carlo simulation. We will give a brief introduction about these numerical methods later. Because we do not know when American option will be excised, the pricing of American option is more complicated. A complete solution to American option pricing problem should address two aspects, option value and an optimal exercise strategy. Only in a few cases are analytic solutions available. In most cases, numerical approach is needed. Lim and Lai \cite{Lim2004} propose an approach to compute both the price and the optimal exercise boundary. 
+
+
+
+\section{Black-Scholes model}   
+The most popular model to describe stock price behavior is known as Black-Scholes model. Let $S_t$ be the stock price. Then under this model, $S_t$ satisfies this equation: 
 \begin{equation}\label{eq:1}
-dS = \mu Sdt + \sigma SdB, 
+dS_t = \mu S_tdt + \sigma S_tdB_t, 
 \end{equation}
-with $\mu$ and $\sigma $ constant, $B$ a standard Brownian motion. This approach to model stock price was first introduced by Black, Shores and Morton. Denote $r$ as the constant continuously compounded risk-free interest rate. Under risk-neutral assumption, we can get $\mu = r $. 
+with $\mu$ and $\sigma $ constant, $B$ a standard Brownian motion. This approach to model stock price was first introduced by Black, Scholes and Merton. Denote $r$ as the constant continuously compounded risk-free interest rate. Under risk-neutral assumption, we can get $\mu = r $. 
 
-If we define $G = \ln S$. After some calculation, we get 
+If we define $G = \ln S$, after some calculation, we get 
 \begin{equation}\label{eq:2}
-dG = \frac{\mu - \sigma ^2 }{2} dt + \sigma dB.
+dG_t = \frac{\mu - \sigma ^2 }{2} dt + \sigma dB_t.
 \end{equation}
-From this we can see that the natural logarithm of stock price is Brownian motion with dift $\mu$, and variance $\sigma^2$. This model implies that the stock's price at a given time $T$ follows lognormal distribution. The standard deviation of the logarithm of the stock price is $\sigma \sqrt{T}$. 
+From this we can see that the natural logarithm of stock price is Brownian motion with drift $\mu$, and variance $\sigma^2$. This model implies that the stock's price at a given time $T$ follows lognormal distribution. The standard deviation of the logarithm of the stock price is $\sigma \sqrt{T}$. 
 
-Black etc. \cite{Black:1973} pointed out that the proper price of an option should be the expected present value of its payoff. Based on this idea, there are many studies about the pricing of options. For European plain vanilla option, its price can be priced in closed form. As for American plain vanilla option, because it can be executed at any time before maturity, the pricing is much more complicated. In this case, it is a optimal stopping problem. Comparing to vanilla option, there are another school of options called exotic options. Exotic options are nonstandard options created by financial engineers, which usually only traded in over-the- counter market. Although exotic options are a relatively small part of financial market in terms of volume, these options are important to investment banks because they are generally much more profitable than plain vanilla option. Usually, these options are path dependent. One typical exotic option is lookback option.
+Black et. al. \cite{Black:1973} pointed out that the proper price of an option should be the expected present value of its payoff. Based on this idea, there are many studies about the pricing of options. For European plain vanilla option, its price can be priced in closed form. As for American plain vanilla option, because it can be executed at any time before maturity, the pricing is much more complicated. In this case, it is a optimal stopping problem. Comparing to vanilla option, there are another school of options called exotic options. Exotic options are nonstandard options created by financial engineers, which usually only traded in over-the-counter market. Although exotic options are a relatively small part of financial market in terms of volume, these options are important to investment banks because they are generally much more profitable than plain vanilla option. Usually, these options are path dependent. One typical exotic option is lookback option.
 
 %In the this case, one can deduce that the optimal stopping time is given by some region. Precisely, the holder excise the option when stock price enter some region. 
 
 % add something about path dependent option, particularly Asian option. 
 
 \section{Lookback options}
-Lookback options give the hold the right to capture the difference between asset price when the option is execute and maximum or minimum asset price reached during the life of the option. For a European style lookback call option, the payoff is the amount that the final asset price exceeds the minimum asset price happened during the life of the option. As for the put option, the payoff is the amount by which the maximum asset price happened during the life of the option exceeds the final asset price. Goldman etl firstly provided the valuation formulas for European lookbacks. In Hull \cite{Hull2008}, the value of a this type call option is 
+Lookback options give the hold the right to capture the difference between asset price when the option is executed and maximum or minimum asset price reached during the life of the option. For a European style lookback call option, the payoff is the amount that the final asset price exceeds the minimum asset price attained during the life of the option. As for the put option, the payoff is the amount by which the maximum asset price attained during the life of the option exceeds the final asset price. Goldman etl firstly provided the valuation formulas for European lookbacks. In Hull \cite{Hull2008}, the value of a this type call option is 
 \begin{equation}\label{eq:3}
 S_0e^{-qt}N(a_1) - S_0 e^{-qT}\frac{\sigma ^2}{2(r-q)} N(-a_1) - S_{\min} e^{-rT}(N(a_2) - \frac{\sigma^2}{2(r-q)} e ^{Y_1} N(-a_3) 
 \end{equation}
@@ -302,11 +304,11 @@ S'_t = S_{\alpha T+t} - S_{\alpha_T}.
 For Brownian motion case, this formular were proved in many differet ways
 and original due to Dassios\cite{Dassios1995}. 
 
-\subsection{an estimate of discrete error}
+\subsection{an estimate of week discrete error}
 \cite{Janssen2008} gives a estimate of the difference of  expatations 
-between maximum of borwnian motion and associated random walk. 
-Since we just give a really rough estimate, we only list the first two term
-(for $B(t)$ is a Borwnian motion with drift $\mu$ and variance $1$
+between maximum of borwnian motion and associated random walk.  
+Since we just give a really rough estimate, we only list the first two term. 
+For $B_t$ a Borwnian motion with drift $\mu$ and variance $1$ on time interval $[0,1]$, that is $B_t = \mu t + W_t$, where $W_t$ is standard Brownian motion, we can get
 \begin{equation}\label{eq:est1}
 E\max_{0\leq t \leq 1} B(t) - E\max_{n=0,\cdots, N}B(n/N) 
 = -\frac{\zeta(1/2)}{\sqrt{2\pi N}}-\frac{2g(1)-\mu}{4N} + O(1/N^{3/2})
@@ -319,49 +321,49 @@ g(t) = \mu \Phi(\mu \sqrt{t}) + \frac{1}{\sqrt{2\pi t}} e^{-\frac{1}{2}\mu^2 t}.
 \zeta(1/2) \approx -3.92264613.
 \]
 
-For general Borwnian $\tB(t)$ motion with drift $\tmu$, variance $\tsigma$
+For general Borwnian $\tB(t)$ motion on time interval $[0,T]$ with drift $\tmu$, variance $\tsigma$, 
 we use following transform
 \begin{align*}
 \tB_t &= \tsigma \sqrt{T} B_{t/T} = \tsigma \sqrt{T} \mu t/T 
-+ \sqrt{T}\tsigma B_{t/T}\\
++ \sqrt{T}\tsigma W_{t/T}\\
 \mu &= \tmu \sqrt{T}/\tsigma 
 \end{align*}
 do derive the follwoing formula:
 \begin{equation}\label{eq:maxest}
-E\max_{0\leq t\leq T} B(t) - E \max_{0\leq n \leq N} B(nT/N) = 
+E\max_{0\leq t\leq T} \tB(t) - E \max_{0\leq n \leq N} \tB(nT/N) = 
  -\frac{\zeta(1/2)}{\sqrt{2\pi}}\tsigma \sqrt{T/N}
- -\frac{2g(1)-\tmu\sqrt{T}}{4N}\tsigma\sqrt{T} + 
+ -\frac{2g(1)-\tmu\sqrt{T} / \tsigma}{4N}\tsigma\sqrt{T} + 
 O(\sqrt{T}/N^{3/2})
 \end{equation}
 
-Now combine $(\ref{eq:cpathdec})$ $(\ref{eq:dpathdec})$ and $(\ref{eq:maxest})$,
+Now combine $(\ref{eq:cpathdec})$ $(\ref{eq:dpathdec})$ and $(\ref{eq:maxest})$, for $0 < \alpha < 1$, 
 we get an very rough estimate of the apporximation order:
 \begin{equation}
 \begin{split}
 \E (M_{\alpha,T}) - \E (M_{k,N})
 =& \EE{\sup_{t\leq \alpha{T}} S_t +\inf_{t \leq (1-\alpha)T}S'_t} 
-- \EE{\sup_{i\leq k} S_i+\inf_{i\leq n-k} S'_i}\\
+- \EE{\sup_{i\leq k} S_i+\inf_{i\leq N-k} S'_i}\\
 =& \EE{\sup_{t\leq \alpha{T}} S_t +\inf_{t \leq (1-\alpha)T}S'_t
--  \sup_{i\leq k} S_i-\inf_{i\leq n-k} S'_i} \\
+-  \sup_{i\leq k} S_i-\inf_{i\leq N-k} S'_i} \\
 = &  \EE{\sup_{t\leq \alpha{T}} S_t - \sup_{i\leq k} S_i} +
-\EE{\inf_{i\leq n-k} S'_i-\inf_{i\leq n-k} S'_i}\\
-=& -\frac{\zeta(1/2)}{\sqrt{2\pi}}\left(\sqrt{T/\alpha N} 
+\EE{\inf_{t \leq (1-\alpha)T} S'_t-\inf_{i\leq N-k} S'_i}\\
+=& -\frac{\zeta(1/2) \tsigma}{\sqrt{2\pi}}\left(\sqrt{T/\alpha N} 
 \sqrt{\alpha} - \sqrt{T/(1-\alpha)N}\sqrt{1-\alpha}\right) \\
-& + \frac{2g(1)}{4}\sqrt{t}
+& - \frac{2g(1)}{4}\sqrt{T} \tsigma
 \left(\frac{1}{\alpha N} \sqrt{\alpha} 
   - \frac{1}{(1-\alpha)N}\sqrt{1-\alpha}\right) \\
 & + \tmu \left( \frac{1}{4\alpha N}\alpha
   +\frac{1}{4(1-\alpha)N}(1-\alpha)\right)T
-+ O(\sqrt{T}/N^2) \\
-=& \frac{2g(1)\sqrt{T}}{4N}
++ O(\sqrt{T}/N^{\frac{3}{2}}) \\
+=& - \frac{2g(1)\sqrt{T}\tsigma}{4N}
 \left(\frac{1}{\sqrt{\alpha}} 
   - \frac{1}{\sqrt{1-\alpha}}\right) \\
 & + \frac{\tmu T}{2 N}
-+ O(1/N^{3/2}) \\
++ O(1/N^{\frac{3}{2}}) 
 \end{split}
 \end{equation}
 where $k = \alpha N$.
-The last equality holds by view $\inf_{t\leq (1-\alpha)T} S'_t$ as 
+The second last equality holds by view $\inf_{t\leq (1-\alpha)T} S'_t$ as 
 $-\max_{t\leq (1-\alpha)T} (-S'_t)$.
 
 This estimate shows that the convergence order 
@@ -369,7 +371,7 @@ are all $\frac{1}{2}$ when $\alpha \neq 1/2$. If $\alpha=1/2$ and the
 Brownian motion does not have  drift ($\mu=0$), it is easy to see 
 (by noting that 
 $\E M_{1/2,T} = \E -M_{1/2,T}$) $\E M_{1/2,T} = \E M_{k,n} = 0$. 
-When the Brownian moton has drift, the order becomes $1$. 
+When the Brownian motion has drift, the order becomes $1$. 
 
 Now, suppose that $f$ is an monotone Lipschitz continous function.
 WLOG, asuume 
@@ -470,5 +472,5 @@ where domain $D' = \Set{x' \leq m', x-x'\leq m'-m, m'>0, m'-m>0}$.
 
 
 \bibliography{prob}{}
-\bibliographystyle{plain}
+\bibliographystyle{apa}
 \end{document}  
