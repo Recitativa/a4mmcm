@@ -74,6 +74,7 @@
 \def\abs#1{\left|{#1}\right|}
 \def\norm#1{{\left\|{#1}\right\|}}
 \def\Sp{{\rm Sp}}
+\def\det{{\rm det}}
 
 \def\tJ{{\widetilde{J}}}
 \def\barZ{{\overline{Z}}}
@@ -1148,6 +1149,53 @@ We can summerize the result:
 \]
 as representation of $K$. 
 \end{lemma}
+
+\subsection{Lie algebra actions on $\chh(K)$ }
+Now take $\fkk_\bC = \agl(V)$, 
+
+\[
+r(X) = \frac{d}{dt} f(M \exp(tX)) 
+= \sum_{kl} \frac{\partial}{\partial m_{kl}} f (M) (MX)_{kl}
+= \sum_{kl} \frac{\partial}{\partial m_{kl}} f (M) m_{ks} x_{sl}
+\]
+Hence 
+\[
+E_{sl} \mapsto \sum_{k} m_{ks} \frac{\partial}{\partial m_{kl}}.
+\]
+
+Define 
+\[
+D_v(f)(x) = \frac{d}{dt}f(x+tv)
+\]
+\[
+M_{v^*}(f) = v^* f.
+\]
+
+Then 
+\[
+v^*\otimes u \in \agl(V) \to  M_{v^*} D_v.
+\]
+
+Here identify $E_{sl} = $
+
+\[
+\frac{d}{dt} \det(M\exp tX) = \frac{d}{dt}\det(M)\det(tX) 
+ = \det(M)  \frac{d}{dt} e^{t\tr(X)} = \tr(X) \det(M) 
+\]
+Same,
+\[
+\frac{d}{dt} \det^{-1}(M\exp tX) = \det^{-1}(M) \frac{d}{dt}e^{-t\tr(X)}
+=-\tr(X) \det^{-1}(M).
+\]
+
+Hence for function $f\det^{-n} \in \chh(K)$ where $f\in \cpp(M_{n,n})$ and
+$X \in \agl$, we have, 
+\[
+r(X) f\det^{-n}
+\]
+ 
+
+
 
 \section{sp}
 
