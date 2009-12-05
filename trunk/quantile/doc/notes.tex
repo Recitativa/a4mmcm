@@ -11,8 +11,6 @@
 \usepackage{eufrak}
 \usepackage{amscd}
 
-
-
 \title{Notes}
 \author{Zhu Yong Ting}
 \def\bE{{\mathbb{E}}}
@@ -33,7 +31,15 @@
 \def\tx{{\widetilde{x}}}
 \def\tm{{\widetilde{m}}}
 
+
+\usepackage{hyperref}
+\usepackage{harvard}
+\usepackage{mycje}
+
+
 \begin{document}
+ \bibliographystyle{cje}
+ 
 \maketitle
 \chapter{introduction}
 \section{option}
@@ -148,7 +154,7 @@ M(\alpha, t) \eqlaw \sup_{s \leq \alpha t} X_s + \inf_{s\leq (1-\alpha)t} X'_s ,
 \end{equation}
 where $X'$ is a independent copy of $X$. Later in 1995, Embrechts, Rogers and Yor \cite{EmRoge1995} gave two proofs of this theorem without using Feynman-Kac computations. 
 \subsection{The advantage of $\alpha$-quantile option}
-\cite{Ballotta}
+\cite{Ballotta2001}
 \subsection{The distribution function of $\alpha$-quantile of Brownian motion}
 In 1995, Yor gave the distribution function of the $\alpha$-quantile of Brownian motion without drift in \cite{Yor1995}. He obtained this result by simplifying related integral expressions on Miura \cite{Miura}. When $\mu = 0$, that is Brownian motion $B_t$ is without drift, define $\theta = ((1 - \alpha)/(\alpha))^{1/2}$, for the Brownian quantiles on time interval $[0, 1]$,  in \cite{Yor1995} we find:
 \begin{equation}
@@ -469,8 +475,6 @@ P_{\alpha t}(x', m') P_{(1-\alpha)t}(x-x',m'-m) dx' dm',
 where domain $D' = \Set{x' \leq m', x-x'\leq m'-m, m'>0, m'-m>0}$.
 
 
+\bibliography{prob}
 
-
-\bibliography{prob}{}
-\bibliographystyle{apa}
 \end{document}  
