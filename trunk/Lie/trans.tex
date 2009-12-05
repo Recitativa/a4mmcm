@@ -101,6 +101,7 @@
 \def\fkk{\mathfrak{k}}
 \def\chh{\mathcal{H}}
 \def\crr{\mathcal{R}}
+\def\cpp{\mathcal{P}}
 \def\fmm{\mathfrak{m}}
 \def\GL{\mathrm{GL}}
 \def\SO{\mathrm{SO}}
@@ -1191,11 +1192,14 @@ Same,
 Hence for function $f\det^{-n} \in \chh(K)$ where $f\in \cpp(M_{n,n})$ and
 $X \in \agl$, we have, 
 \[
-r(X) f\det^{-n}
+\begin{split}
+r(X) f\det^{-n}(M) &= \det^{-n}(M) r(X) f(M) + f(M) r(X) \det^{-n}(M)\\
+ &= \det^{-n}(M) 
+(\sum_{sl} x_{sl} (\sum_{k} m_{ks} \frac{\partial}{\partial m_{kl}} f(M) 
+- \delta_{sl}f(M)))
+\end{split}
 \]
  
-
-
 
 \section{sp}
 
@@ -1473,7 +1477,7 @@ Define $\theta'$-stable parabolic $\fqq$ of $\fkk_\bC$ by weight
 \]
 So the non-compact nilpotent part is 
 \[
-\fnn\cap fpp = \Set{g_{\alpha}|\alpha = -(\epsilon_k+\epsilon_l), 
+\fnn\cap \fpp = \Set{g_{\alpha}|\alpha = -(\epsilon_k+\epsilon_l), 
   k\geq r+1, l \leq r
   \text{ and } (
   k \leq r+p \text{ or } l \geq r-q+1)
