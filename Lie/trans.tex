@@ -343,7 +343,7 @@ Hence
 The special element is 
 \[
 \sigma = \begin{pmatrix}
-0 & 1
+0 & 1\\
 1 & 0
 \end{pmatrix} \in \Sp(W)
 \]
@@ -1493,7 +1493,7 @@ Give $(\fgg_\bC, M)$-module $(\pi, V)$.
 In this situation. 
 Consider 
 \[
-\Gamma^i (V) = \Hom_{\fkk}(\fkk/\fmm, V\otimes \chh(K))
+\Gamma^i (V) = \Hom_{M}(\bigwedge^i(\fkk_\bC/\fmm_\bC), V\otimes \chh(K))
 \]
 
 
@@ -1508,16 +1508,43 @@ Give $\fgg$ action on $\chh(K,V)$ by
 \[
 (\mu(X)F)(k) = \pi(\Ad(k) X) F(k)
 \]
-This $\fgg$ structure compact with the $K$ structure, i.e. 
+
+Choose a basis $\Set{X_1, \cdots, X_n}$ of $\fgg$ and 
+let $\lambda_1, \cdots,\lambda_n$ be the dual basis of $\fgg^*$.
+
+Then (denote $\pi(X)$ $X$ here). 
 \[
-\pi(\Ad(k) X) F(k) = (r_X F)(k).
+\mu(X) (v\otimes f)(k) = \Ad(k) X v f(k) = 
+\sum_{l} \lambda_l(\Ad(k)X) X_l v f(k) 
+= \sum_{l} (X_l v \otimes c_{\lambda_l,X} f)(k),
 \]
-Take $k=1$, 
-this means 
+where $c_{\lambda,X} = \lambda(\Ad(k)X)$.
+Same as \cite{BorelWallach2000}
 \[
-\pi(x)v \otimes f = v \otimes r_x f
+\mu(X) (v\otimes f) = \sum_l X_l v \otimes c_{\lambda_l,X} f. 
 \]
-for any $x\in U(\fkk)$.
+
+This $\fgg$ structure compatible with the $K$ structure on $\Gamma^i$, i.e. 
+\[
+\pi(\Ad(k) X) F(k) = (r_X F)(k)\quad \forall X\in \fkk, k\in K.
+\]
+
+Let $Y=\Ad(k)X$, then $X = \Ad(k^{-1})Y$,
+\[
+YF(k) = \frac{d}{dt} F(k\exp(t\Ad k^{-1}Y))
+= \frac{d}{dt} F(\exp(tY)k)
+= l(Y)F (k). 
+\]
+
+This means the image of $\Hom_\fmm(W_{p,q},V\otimes \chh(K))$ is in 
+$(V\otimes \chh(K))^\fkk$, where the $\fkk$ act by $\pi\otimes l$.
+
+But, if restrict everyting in $(V\otimes \chh(K))^\fkk$, 
+\[
+\Gamma_{p,q} = \Hom_M(W_{p,q}, (V\otimes \chh(K))^\fkk)
+=(W_{p,q}^*)^M \otimes (V\otimes \chh(K))^\fkk=0?
+\] 
+
 
 \bibliography{bib/reppapers}{}
 \bibliographystyle{alpha}
