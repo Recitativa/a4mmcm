@@ -33,14 +33,12 @@
 
 
 \usepackage{hyperref}
-%\usepackage{harvard}
-%\usepackage{mycje}
 
-\usepackage{netbib}
+\usepackage{natbib}
 
 
 \begin{document}
- \bibliographystyle{te}
+ \bibliographystyle{cje}
  
 \maketitle
 \chapter{introduction}
@@ -83,7 +81,7 @@ Usually there are closed form price formulas for European options. In addition n
 \section{European Option}
 \subsection{No-Aribitrage Valuation}
 
-The no-aribitrage principle is the fundamental of pricing of options. Black and Scholes (1972) \cite{Black:1973} is the landmark paper in this field. Merton (1973) \cite{merton1973} was the first to expand the mathematical understanding of this options pricing model and coined the term "Black-Scholes" options pricing model.  
+The no-aribitrage principle is the fundamental of pricing of options. \citet*{Black:1973} is the landmark paper in this field. Merton (1973) \cite{merton1973} was the first to expand the mathematical understanding of this options pricing model and coined the term "Black-Scholes" options pricing model.  
 
 \subsubsection{Black-Scholes framework}   
 The most popular model to describe stock price behavior is known as Black-Scholes model.  
@@ -128,7 +126,7 @@ dR = d_v - \frac{\partial V}{\partial S} dS
 
 Substituting equation (\ref{ito}) in above we get
 \begin{equation}
-dR= (\frac{\partial V}{\partial t} + \frac{1}{2}\frac{{\partial}^2}{\partial S^2} {S^2}_t {\sigma}^2 ) dt
+dR= (\frac{\partial V}{\partial t} + \frac{1}{2}\frac{{\partial}^2 V }{\partial S^2} {S^2}_t {\sigma}^2 ) dt
 \end{equation}
 
 This equation does not contain $dB_t$ part, which means that the return of the portfolio is entirely riskless. Black and Scholes interpret this equation as under their ideal conditions, the rate of return on this portfolio must be equal at all times to the rate of return on any other riskless instrument; otherwise, there would exist opportunities for arbitrage. Assuming the risk free rate of return is $r$,  over the time period [t, t + dt] now we have 
@@ -138,7 +136,8 @@ r \Pi dt = dR =  (\frac{\partial V}{\partial t} + \frac{1}{2}\frac{{\partial}^2}
 
 From this, we then get the Black Schole PDE
 \begin{equation}
-
+\frac{\partial V}{\partial t} + \frac{\partial V }{\partial S} S_t r + \frac{1}{2} \frac{{\partial}^2}{\partial S^2} {S^2}_t {\sigma}^2 -rV=0
+\end{equation}
 
 
 If we define $G = \ln S$, after some calculation, we get 
