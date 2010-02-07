@@ -77,6 +77,7 @@
 \def\det{{\rm det}}
 
 \def\tJ{{\widetilde{J}}}
+\def\tDelta{\widetilde{\Delta}}
 \def\barZ{{\overline{Z}}}
 
 
@@ -1954,11 +1955,71 @@ For $X=E_{r+p,q}$,$p\leq s, q\leq r$, we have
 \[
 \begin{split}
 X = E_{r+p,q} \mapsto& \sum_{v=1}^m y_{p,v}\otimes x_{q,v}^*\\
-\mapsto& \sum_{v=1}^m \partial_{y_{p,v}}\partial_{x_{q,v}}
+\mapsto& \sum_{v=1}^m \partial_{y_{p,v}}\partial_{x_{q,v}}=\Delta_{q,p}
 \end{split}
 \]
 
-\subsection{explicit $U(r,s)$\~ $U(m)$ duality}
+\subsection{explicit $U(r,s) \sim U(m)$ duality}
+For $\fuu_\bC(r,s)$ and $\fuu_\bC(m)$,
+ we choose $E_{p,q}$, $p>q$ to span the nilpotent part,
+i.e. the lower triangle matrixs. 
+
+Consider $k \leq r, m$
+\[
+\Delta_{k} = \begin{vmatrix}
+  x_{r-k+1,1}& \cdots& x_{r-k+1,k}\\
+  \cdots & \cdots & \cdots \\
+  x_{r,1} & \cdots & x_{r,k}
+\end{vmatrix}
+\]
+\[
+\tDelta_{k} = \begin{vmatrix}
+  y_{1,m-k+1}& \cdots& y_{1,m}\\
+  \cdots & \cdots & \cdots \\
+  y_{k,m-k+1} & \cdots & y_{k,m}
+\end{vmatrix}
+\]
+It is easy to see that $\Delta_k$ and $\tDelta_k$ both are 
+highest weight with respect to the positive system we choose
+in the joint harmonic space
+\[
+\sH = \Set{f\in \sP(V)|\Delta_{p,q}f = 0 , p\leq r, q\leq s}. 
+\]
+
+The wight of $\Delta_k$ repsct to $\fuu_\bC(r)\oplus\fuu_\bC(s)$ and $\fuu_\bC(m)$ are
+\[
+((0,\cdots, 0, \underbrace{1,\cdots,1}_{k})+\frac{m}{2})\otimes((0,\cdots, 0)-\frac{m}{2} 
+\]
+and
+\[
+(\underbrace{-1,\cdots, -1}_{k},0,\dots, 0)-\frac{r-s}{2}
+\]
+
+The wight of $\tDelta_k$ repsct to $\fuu_\bC(r)\oplus\fuu_\bC(s)$ and $\fuu_\bC(m)$ are
+\[
+((0,\cdots, 0)+\frac{m}{2})\otimes(-(\underbrace{1,\dots,1}_k,0,\cdots, 0)-\frac{m}{2}) 
+\]
+and
+\[
+(0,\dots, 0,\underbrace{1,\cdots, 1}_k)-\frac{r-s}{2}
+\]
+
+Now choose $a_1, \cdots, a_u$ and $b_1, \cdots, b_v$ s.t.$ a_1\geq a_2\geq\cdots \geq a_u>0$
+and $ b_1\geq a_2\geq\cdots \geq b_v>0$. Moreover $u\leq r, v\leq s$, $u+v\leq m$. 
+Consider 
+\[
+f = \Delta^{a_1-a_2}\cdots \Delta^{a_{u-1}-a_u}\Delta^{a_u} \tDelta^{b_1-b_2}\cdots \tDelta^{b_{u-1}-b_u}\tDelta^{b_u}
+\]
+$f$ is joint hieghest weight in $\sH$, and we have correspondence:
+\[
+\begin{split}
+& ((0, \cdots, 0, a_u, \cdots, a_1)+\frac{m}{2})\otimes (-(b_1, \cdots, b_v, 0, \cdots, 0)-\frac{m}{2})\\
+\leftrightarrow& (-a_1,\cdots, -a_u, 0,\cdots,0, b_v, \cdots, b_1)-\frac{r-s}{2}
+\end{split}
+\]
+
+
+
 
 \bibliography{bib/reppapers}{}
 \bibliographystyle{alpha}
