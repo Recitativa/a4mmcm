@@ -1679,6 +1679,9 @@ A-A^T + i(C-B) & -(A+A^T)-i(C+B) \\
 \end{pmatrix}
 \]
 
+
+Regard $\sp_\bR$ as $S^2(X\oplus X^*)$, we can see the maps:
+
 \subsection{embedding of $U(r,s)$ into $\Sp_\bR$}
 Since $U(r,s)$ is the isometric matrix for 
 \[
@@ -1877,6 +1880,7 @@ y_i\otimes y_j^* \mapsto&
 y_i\otimes x_j^* \mapsto&
 \partial_{y_i}\partial_{x_j}
 \end{align*}
+
 \subsection{$U(r,s)\times U(m)$ embedding}
 Let $V = \Mat_{r+s,m}(\bC) = \otimes^m \bC_{r,s}$ with $U(r,s)$ act by left multiplication, $U(m)$ 
 act by right multiplication, i.e. 
@@ -2019,7 +2023,227 @@ $f$ is joint hieghest weight in $\sH$, and we have correspondence:
 \]
 
 
+\subsection{Theta corresponedce for $\Sp(2n,\bR)\sim O(m)$}
+Note that 
+\[
+O(m,\bR) = \Set{g|g^T g=1}.
+\]
+For $m=2k$, let 
+\[
+c = \frac{1}{\sqrt{2}}\begin{pmatrix}
+1 & i\\
+1 & -i
+\end{pmatrix}
+\]
+\[
+S = \begin{pmatrix}
+0 & 1\\
+1 & 0
+\end{pmatrix}
+\]
+Then 
+\[
+c^TSc = 1,\quad cc^T = S
+\]
+So 
+\[
+\begin{array}{ccl}
+O(m,\bR) &\to & O(m,\bC)=\Set{g| g^TSg = S}\\
+g &\mapsto &cgc^T
+\end{array},
+\]
+gives an embedding. It also gives the Lie algebra embedding.
 
+Consider the $\bC$ vector space $W = V_1\otimes V_2$, where $V_1$ 
+with symplectic form $J$, $V_2$ with symmetric form $S$.
+Choose standard basis $\Set{e_1,\cdots ,e_2n}$ of $V_1$, 
+$\Set{f_1, \cdots, f_m}$ of $V_2$.
+
+Identify $\Mat_{2n,m}(\bC)$ with $W$ by $x_{ij}$ be the $e_i\otimes f_j^*$.
+The symplectic form on $\Mat_{2n,m}(\bC)$ is $\inn{x}{y} = \tr(y^TJxS)$.
+
+Choose a Lagrangian space $V$ spaned by
+$\Set{e_i\otimes f_j|0\leq i\leq n, 0\leq j \leq m}$.
+Then the dual basis of $e_i\otimes f_j$ is 
+$e_{n+i}\otimes f_{l+j}$ or $e_{n+i} \otimes f_{j-l}$ if $j\leq l$ or $j>l$. 
+
+Embed $\Sp(V_1)$ into $\Sp(W)$. View the $\fpp^-$ part,
+we have, 
+\begin{align*}
+ E_{n+i,j}+ E_{n+j,i} = (e_{j}\mapsto e_{n+i}, e_{i}\mapsto e_{n+j})  
+\mapsto& (e_j\otimes f_v \mapsto e_{n+i}\otimes f_v,
+ e_i\otimes f_v \mapsto e_{n+j}\otimes f_v)\\
+ =&( x_{j,v}\mapsto x_{n+i,l+v}\text{ or } x_{n+i,v-l}, \\
+ &x_{i,v}\mapsto x_{n+j,l+v}\text{ or } x_{n+j,v-l})\\
+\mapsto& -[
+\sum_{v=1}^l\partial_{x_{i,l+v}}\partial_{x_{j,v}} 
++ \partial_{x_{i,v-l}}\partial_{x_{j,v}}]
+\end{align*}
+
+Let $y_{i,v} = x_{i,l+v}$ for $v\leq l$.
+Then we can see 
+\[
+\Delta_{i,j} = \sum_{v=1}^l \partial_{y_{iv}}\partial_{x_{jv}}
++ \partial_{x_{iv}}\partial_{y_{jv}}
+\] 
+
+\[
+\begin{split}
+E_{i,j} =& (e_j\mapsto e_i) \mapsto (e_j\otimes f_v \mapsto e_i\otimes f_v)\\
+ \mapsto& \frac{1}{2}(\sum_{v=1}^m x_{iv}\partial_{x_{jv}}+ \partial_{x_{jv}}x_{iv}) 
+\end{split}
+\]
+
+\[
+\aso(m,\bC) = \Set{
+\begin{pmatrix}
+A & B\\
+C & -A^T
+\end{pmatrix}| B+B^T=0, C+C^T=0}
+\]
+
+Note that $O(m)$ act on $\Mat_{2n,m}$ on right as usual,
+i.e. $g\dot x = xg^T$.
+
+\[
+\begin{split}
+E_{ij} - E_{l+j,l+i} \mapsto & E_{ji}-E_{l+i,l+j}
+\mapsto (x_{vj}\mapsto -x_{vi}, x_{v,l+i}\mapsto x_{v,l+j})\\
+\mapsto & 
++\frac{1}{2}(\sum_{v=1}^l x_{vi}\partial_{x_{vj}}+ \partial_{x_{vj}}x_{vi})
+-\frac{1}{2}(\sum_{v=1}^l x_{v,l+j}\partial_{x_{v,l+i}}+ \partial_{x_{v,l+i}} x_{v,l+j})
+\\
+=&
++\frac{1}{2}(\sum_{v=1}^l x_{vi}\partial_{x_{vj}}+ \partial_{x_{vj}}x_{vi})
+-\frac{1}{2}(\sum_{v=1}^l y_{vj}\partial_{y_{vi}}+ \partial_{y_{vi}} y_{vj})
+\end{split}
+\] 
+
+\[
+\begin{split}
+E_{i+l,j}-E_{j+l,i}\mapsto &E_{j,i+l}- E_{i,j+l} \\
+\mapsto &
++\frac{1}{2}(\sum_{v=1}^l x_{v,i+l}\partial_{x_{vj}}+\partial_{x_{vj}}x_{v,i+l})
+-\frac{1}{2}(\sum_{v=1}^l x_{v,j+l}\partial_{x_{vi}}+\partial_{x_{vi}}x_{v,j+l})\\
+=&
++\frac{1}{2}(\sum_{v=1}^l y_{v,i}\partial_{x_{vj}}+\partial_{x_{vj}}y_{v,i})
+-\frac{1}{2}(\sum_{v=1}^l y_{v,j}\partial_{x_{vi}}+\partial_{x_{vi}}y_{v,j})
+\end{split}
+\]
+
+Always choose lower trivangle as Boral subalgebra. 
+
+Let 
+\begin{align*}
+\Delta_s =& \det\begin{pmatrix}
+y_{n-s+1,1} & \cdots & y_{n-s+1, s} \\
+\cdots & \cdots & \cdots \\
+y_{n,1} & \cdots & y_{n,s}
+\end{pmatrix}\\
+\tDelta_s = & \det\begin{pmatrix}
+x_{n-s-l+1, n-s+1} & \cdots & x_{n-s-l+1,l} & y_{n-s-l+1,1} & \cdots & y_{n-s-l+1,l}\\
+\cdots&\cdots&\cdots&\cdots&\cdots&\cdots \\
+x_{n, n-s+1} & \cdots & x_{n,l} & y_{n,1} & \cdots & y_{n,l}
+\end{pmatrix}
+\end{align*}
+
+$\Delta_s$ has $\asp(2n,\bC)\oplus \aso(m,\bC)$ weight 
+\[
+(0, \cdots, 0, \underbrace{1, \cdots, 1}_s)+\frac{m}{2}
+\leftrightarrow
+(\underbrace{-1,\cdots, -1}_s, 0,\cdots, 0) .
+\]
+
+$\tDelta_s$ has weight
+\[
+(0, \cdots, 0, \underbrace{1,\cdots, 1}_{s+l})
+\leftrightarrow (-1,\cdots, -1, \underbrace{0,\cdots, 0}_s)
+\]
+
+
+Consider 
+\[
+f=\prod_{s=1}^r\Delta_s^{a_s-a_{s-1}} 
+\]
+
+
+\subsubsection{m=2l+1}
+
+For $m=2l+1$, let $t_v = x_{2l+1,v}$.  
+we have 
+the $\fpp^-$ part is 
+\[
+\Delta_{i,j} = 
+\sum_{v=1}^l \partial_{y_{iv}}\partial_{x_{jv}}
++ \partial_{x_{iv}}\partial_{y_{jv}} + \partial_{t_v}\partial_{t_v}
+\]
+
+
+\[
+E_{i,j} \in \asp(W)  
+ \mapsto \frac{1}{2}(\sum_{v=1}^m x_{iv}\partial_{x_{jv}}+ \partial_{x_{jv}}x_{iv}) 
+\]
+
+\[
+\aso(m,\bC) = \Set{
+\begin{pmatrix} 
+A & B & D\\
+C & -A^T &F \\
+-F^T& -D^T& 0
+\end{pmatrix} |
+B+B^T=C+C^T=0}
+\]
+
+\[
+E_{i,j}-E_{j+l,i+l} \in \aso \mapsto 
+ \frac{1}{2}(\sum_{v=1}^l x_{vi}\partial_{x_{vj}}+ \partial_{x_{vj}}x_{vi})
+-\frac{1}{2}(\sum_{v=1}^l y_{vj}\partial_{y_{vi}}+ \partial_{y_{vi}}y_{vj})
+\]
+
+\[
+E_{i+l,j}-E_{j+l,i}\mapsto 
+ \frac{1}{2}(\sum_{v=1}^l y_{v,i}\partial_{x_{vj}}+\partial_{x_{vj}}y_{v,i})
+-\frac{1}{2}(\sum_{v=1}^l y_{v,j}\partial_{x_{vi}}+\partial_{x_{vi}}y_{v,j})
+\]
+
+\[
+\begin{split}
+-E_{2l+1,j}+ E_{l+j,2l+1} \mapsto&
+-E_{j,2l+1}+E_{2l+1,l+j} \\
+\mapsto&
+(x_{vj}\mapsto -t_v, t_v\mapsto y_{vj})\\
+\mapsto&
+-\frac{1}{2}\sum_{v=1}^n (t_v\partial_{x_{vj}}+\partial_{x_{vj}}t_v)
++\frac{1}{2}\sum_{v=1}^n (y_{vj}\partial_{t_v}+\partial_{t_v}y_{vj})
+\end{split}
+\]
+
+Let 
+\begin{align*}
+\Delta_s =& \det\begin{pmatrix}
+y_{n-s+1,1} & \cdots & y_{n-s+1, s} \\
+\cdots & \cdots & \cdots \\
+y_{n,1} & \cdots & y_{n,s}
+\end{pmatrix}\\
+\tDelta_s = & \det\begin{pmatrix}
+x_{n-2l+s, s+1} & \cdots & x_{n-2l+s,l} & y_{n-2l+s,1} & \cdots & y_{n-2l+s,l}&t_{n-2l+s}\\
+\cdots&\cdots&\cdots&\cdots&\cdots&\cdots &\cdots \\
+x_{n, s+1} & \cdots & x_{n,l} & y_{n,1} & \cdots & y_{n,l}& t_n
+\end{pmatrix}
+\end{align*}
+
+$\Delta_s$ has $\asp(2n,\bC)\oplus \aso(m,\bC)$ weight 
+\[
+(0, \cdots, 0, \underbrace{1, \cdots, 1}_s)+\frac{m}{2}
+\leftrightarrow
+(\underbrace{-1,\cdots, -1}_s, 0,\cdots, 0) .
+\]
+
+$\tDelta_s$ has weight
+\[
+(0, \cdots, 0, \underbrace{1,\cdots, 1}_{2l+1-s=m-s})
+\leftrightarrow (\underbrace{-1,\cdots, -1}_s, 0,\cdots, 0)
+\]
 
 \bibliography{bib/reppapers}{}
 \bibliographystyle{alpha}
