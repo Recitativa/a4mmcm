@@ -2241,9 +2241,55 @@ $\Delta_s$ has $\asp(2n,\bC)\oplus \aso(m,\bC)$ weight
 
 $\tDelta_s$ has weight
 \[
-(0, \cdots, 0, \underbrace{1,\cdots, 1}_{2l+1-s=m-s})
+(0, \cdots, 0, \underbrace{1,\cdots, 1}_{2l+1-s=m-s})+\frac{m}{2}
 \leftrightarrow (\underbrace{-1,\cdots, -1}_s, 0,\cdots, 0)
 \]
+
+The difference between $\Delta_s$ and $\tDelta_s$ is the $-I_m$ action.
+When $m=2l+1$, $O(m) \cong SO(m)\times \bZ_2$, where $g_0=-I_m\in O(m)$ 
+is the nontrivial element in $\bZ_2$. It is easy to see that, 
+\begin{align*}
+g_0\cdot \Delta_s &= (-1)^s\\
+g_0\cdot \tDelta_s & = (-1)^{s+1}
+\end{align*}
+
+It is clear that $\widehat{O(m)} = \widehat{SO(m)}\times \widehat{\bZ_2}$. 
+So we parametrize $\widehat{O(m)}$ by $(\lambda; \epsilon)$, where $\lambda$
+is $SO(m)$ hightest weight, $\epsilon=1$ if $g_0$ act trivially, $\epsilon=-1$
+if $g_0$ action is non-trivial.   
+
+Hence we got the following corresponence by letting $f$ be the joint hightest weight:
+\begin{align*}
+f &= \Delta_1^{\alpha_1}\Delta_2^{\alpha_2} \cdots \Delta_j^{\alpha_j}\\
+\epsilon &= (-1)^{\sum_{s=1}^j s\alpha_s} = (-1)^{}\\
+n_s &= \sum_{t=1}^s \alpha_t\\
+\text{i.e. } \alpha_s &= n_s-n_{s+1}
+\end{align*}
+
+\[
+(0,\cdots, 0, n_j, \cdots, n_1)+\frac{m}{2}
+\leftrightarrow
+((-n_1, \cdots, -n_j); \epsilon)
+\]
+ 
+Similary, let
+\begin{align*}
+f &= \Delta_1^{\alpha_1}\Delta_2^{\alpha_2} \cdots \Delta_{j-1}^{\alpha_{j-1}}\tDelta_j^{\alpha_j}\\
+\epsilon &= (-1)^{\sum_{s=1}^j s\alpha_s} = (-1)^{}\\
+n_s &= \sum_{t=s}^j \alpha_t\\
+\text{i.e. } \alpha_s &= n_s-n_{s+1}
+\end{align*}
+
+\[
+(0,\cdots, 0, n_j, \cdots, n_1)+\frac{m}{2}
+\leftrightarrow
+((-n_1, \cdots, -n_j); \epsilon)
+\]
+
+
+
+
+
 
 \bibliography{bib/reppapers}{}
 \bibliographystyle{alpha}
