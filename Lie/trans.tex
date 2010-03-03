@@ -107,6 +107,7 @@
 \def\fmm{\mathfrak{m}}
 \def\GL{\mathrm{GL}}
 \def\SO{\mathrm{SO}}
+\def\OO{\mathrm{O}}
 \def\rad{\mathrm{rad}}
 \def\SL{\mathrm{SL}}
 \def\tr{\mathrm{tr}}
@@ -2141,31 +2142,88 @@ y_{n-s+1,1} & \cdots & y_{n-s+1, s} \\
 y_{n,1} & \cdots & y_{n,s}
 \end{pmatrix}\\
 \tDelta_s = & \det\begin{pmatrix}
-x_{n-s-l+1, n-s+1} & \cdots & x_{n-s-l+1,l} & y_{n-s-l+1,1} & \cdots & y_{n-s-l+1,l}\\
+x_{n+1-(2l-s), s+1} & \cdots & x_{n+1-(2l-s),l} & y_{n-s-l+1,1} & \cdots 
+& y_{n+1-(2l-s),l}\\
 \cdots&\cdots&\cdots&\cdots&\cdots&\cdots \\
-x_{n, n-s+1} & \cdots & x_{n,l} & y_{n,1} & \cdots & y_{n,l}
+x_{n, s+1} & \cdots & x_{n,l} & y_{n,1} & \cdots & y_{n,l}
 \end{pmatrix}
 \end{align*}
 
 $\Delta_s$ has $\asp(2n,\bC)\oplus \aso(m,\bC)$ weight 
 \[
-(0, \cdots, 0, \underbrace{1, \cdots, 1}_s)+\frac{m}{2}
+(0, \cdots, 0, \underbrace{1, \cdots, 1}_{s})+\frac{m}{2}
 \leftrightarrow
 (\underbrace{-1,\cdots, -1}_s, 0,\cdots, 0) .
 \]
 
 $\tDelta_s$ has weight
 \[
-(0, \cdots, 0, \underbrace{1,\cdots, 1}_{s+l})
-\leftrightarrow (-1,\cdots, -1, \underbrace{0,\cdots, 0}_s)
+(0, \cdots, 0, \underbrace{1,\cdots, 1}_{2l-s=m-s})
+\leftrightarrow (\underbrace{-1,\cdots, -1}_s, 0,\cdots, 0)
 \]
+
+
+In this case 
+\[
+\OO(m) =\SO(m) \rtimes \bZ_2.
+\]
+
+Parametrize irr $\SO(m)$ representation by highest weight
+$(-n_l, \cdots, -n_1)$. If $n_l\neq 0$, 
+Choose 
+\[
+g_0 = \begin{pmatrix}
+  I_{l-1} & 0 & 0 & 0\cr
+  0 & 1 & 0 & 0\cr
+  0 & 0 & -I_{l-1} & 0\cr
+  0 & 0 & 0 & 1
+\end{pmatrix}
+\in \OO(m,\bR)\setminus \SO(m,\bR).
+\]
+Then 
+\[
+\sigma = c g_0 c^T = \begin{pmatrix}
+  I_{l-1} & 0 & 0 & 0\cr
+  0 & 0 & 0 & 1\cr
+  0 & 0 & I_{l-1} & 0\cr
+  0 & 1 & 0 & 0\end{pmatrix}
+\]
+normalize the Borel subalgebra, hence $\sigma \lambda$ has highest weight
+$(-n_1,\cdots,n_l)$.
+$\Ind_{\SO(m)}^{\OO(m)}\lambda$ will be irreducible. 
+If $n_l=0$, $\Ind_{\SO(m)}^{\OO(m)}\lambda$ decompose into $\lambda$ 
+and $\lambda\otimes \det$. 
+
+So parameterize irreducible $O(m)$ representation as 
+$(-n_1, \cdots, -n_{l-1},|n_1|;\epsilon)$,$\epsilon$ is $\pm 1$ dependes on the action 
+of $\sigma$ is trivial or not.
+$(-n_1,\cdots, -n_{l-1},|n_1|;\pm 1)$ are same if $n_l\neq 0$.   
 
 
 Consider 
 \[
-f=\prod_{s=1}^r\Delta_s^{a_s-a_{s-1}} 
+f = \Delta_1^{\alpha_1}\Delta_2^{\alpha_2} \cdots \Delta_{j-1}^{\alpha_{j-1}}
+\Delta_j^{\alpha_j},
+\]
+it gives the correspondence for 
+\[
+(0,\cdots, 0, n_j, \cdots, n_1) + \frac{m}{2}
+\leftrightarrow 
+(-n_1, \cdots, -n_j, 0, \cdots, 0;1), \quad j\leq n, l
 \]
 
+Note that $\sigma \tDelta_s = -\tDelta_s$. Let
+\[
+f=\Delta_1^{\alpha_1}\Delta_2^{\alpha_2} \cdots \Delta_{j-1}^{\alpha_{j-1}}
+\Delta_j^{\alpha_j-1}\tDelta_j,
+\]
+it gives the correspondence for 
+\[
+(0,\cdots, 0,\underbrace{1,\cdots, 1, n_j, \cdots, n_1}_{m-j}) + \frac{m}{2}
+\leftrightarrow 
+(-n_1, \cdots, -n_j, 0, \cdots, 0;-1), \quad l\leq j \leq m-n
+\]
+Note that, if $j=l$, on extra $1$ can appear in $\sp(2n)$ representation.
 
 \subsubsection{m=2l+1}
 
@@ -2261,21 +2319,7 @@ if $g_0$ action is non-trivial.
 Hence we got the following corresponence by letting $f$ be the joint hightest weight:
 \begin{align*}
 f &= \Delta_1^{\alpha_1}\Delta_2^{\alpha_2} \cdots \Delta_j^{\alpha_j}\\
-\epsilon &= (-1)^{\sum_{s=1}^j s\alpha_s} = (-1)^{}\\
-n_s &= \sum_{t=1}^s \alpha_t\\
-\text{i.e. } \alpha_s &= n_s-n_{s+1}
-\end{align*}
-
-\[
-(0,\cdots, 0, n_j, \cdots, n_1)+\frac{m}{2}
-\leftrightarrow
-((-n_1, \cdots, -n_j); \epsilon)
-\]
- 
-Similary, let
-\begin{align*}
-f &= \Delta_1^{\alpha_1}\Delta_2^{\alpha_2} \cdots \Delta_{j-1}^{\alpha_{j-1}}\tDelta_j^{\alpha_j}\\
-\epsilon &= (-1)^{\sum_{s=1}^j s\alpha_s} = (-1)^{}\\
+\epsilon &= (-1)^{\sum_{s=1}^j s\alpha_s} = (-1)^{\sum_{s=1}^jn_s}\\
 n_s &= \sum_{t=s}^j \alpha_t\\
 \text{i.e. } \alpha_s &= n_s-n_{s+1}
 \end{align*}
@@ -2286,10 +2330,19 @@ n_s &= \sum_{t=s}^j \alpha_t\\
 ((-n_1, \cdots, -n_j); \epsilon)
 \]
 
+Similary, let
+\begin{align*}
+f &= \Delta_1^{\alpha_1}\Delta_2^{\alpha_2} \cdots \Delta_{j-1}^{\alpha_{j-1}}\Delta_j^{\alpha_j-1}\tDelta_j\\
+\epsilon &= (-1)^{\sum_{s=1}^j s\alpha_s} = (-1)^{\sum_{s=1}^j n_s+1}\\
+n_s &= \sum_{t=s}^j \alpha_t\\
+\text{i.e. } \alpha_s &= n_s-n_{s+1}
+\end{align*}
 
-
-
-
+\[
+(0,\cdots, 0,\underbrace{1, \cdots, 1, n_j, \cdots, n_1}_{m-j})+\frac{m}{2}
+\leftrightarrow
+((-n_1, \cdots, -n_j); \epsilon)
+\]
 
 \bibliography{bib/reppapers}{}
 \bibliographystyle{alpha}
