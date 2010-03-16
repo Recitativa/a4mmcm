@@ -312,12 +312,15 @@ By this correction,we can use continuous pricing formula
 to value discrete loolback. To get a more precise value for put,
 first we should inflate the predetermined max by a factor of
 $e^{\beta_1 \sigma \sqrt{T/m}}$,
-then deflate the expected maximum over $[0,T]$ by the same factor. For a lookback call, first deflate the predetermined min, then inflate the expected minimum.
+then deflate the expected maximum over $[0,T]$ by the same factor. For a lookback call, first deflate the predetermined minimum, then inflate the expected minimum.
+
+
+
 
 \subsection{fixed strike lookback option}
 Similar to plain vanilla options, lookback option's strike price also can be fixed. The difference, comparing with standard European option, is that fixed lookback is not exercised at the price at maturity.  Instead, the payoff is the optimal difference between the underlying asset price and strike price. 
 
-For a fixed lookback call option, the holder are allowed to calculate the payoff using the highest underlying asset price obtained before maturity. As for fixed lookback put option, the holder can use underlying asset's lowest price. The payoff functions for fixed Lookback call and  Lookback put respectively are:
+For a fixed lookback call option, the holder are allowed to calculate the payoff using the highest underlying asset price obtained before maturity. As for fixed lookback put option, the holder can use underlying asset's lowest price. One can find that the intrinsic value of fixed strike lookback in never decreasing as time passes. The payoff functions for fixed Lookback call and  Lookback put respectively are:
 \begin{equation}
 LC_{fixed} = \max\{S_{\max} - K, 0\} 
 \end{equation}
@@ -348,7 +351,6 @@ where
 \begin{equation}
 d = ( ln\frac{S_0}{K} + rT + \frac{1}{2} \sigma^2 T)/ {\sigma \sqrt{T}}.
 \end{equation}
-\includegraphics[]{notes.pdf}
 
 Similarly, the value of the put is 
 \begin{equation}
@@ -365,10 +367,7 @@ LP_{fixed} = & e^{-rT} (K-S_0) - S_0 N(-d) + e^{-rT}S_0 N (-d + \sigma \sqrt{T})
 \end{split}
 \end{equation}
  
-
-
-
-
+\subsection{American lookback option}
 
 As for American option, the complete solution should provide both the option value and an optimal exercise strategy. Due to this complicity, usually we need use numerical approach to solve the problem of pricing American style lookback option. In \cite{Lim2004}, for American \emph {fixed strike} lookback option they provide an full approach to compute the price and the optimal exercise boundary. In that paper, they first propose a space-time transformation which can reduce the valuation of a group of American lookback options to a single canonical optimal stopping problem for standard Brownian motion. Under this transformation, calendar time is scaled by square of volatility. Therefore, the canonical time horizon is only a small part of time to expiration. In addition, the transformation also removes the dependence on a prescribed root node which then make computing the entire early excise boundary by backward induction possible.
 
@@ -443,7 +442,7 @@ is defined by
 \[
 M(\alpha,t)(\omega) = \inf\Set{x:\int_0^t 1_{(X_s (\omega)\leq x)} > \alpha t}.
 \]
-Then we can see that $\inf_{0\leq s \leq t}  X_s = lim_{\alpha\to 0}M(\alpha,t)$ and $\sup_{(0\leq s \leq t})  X_s = lim_{\alpha\to 1} M(\alpha, t)$. In this sense $\alpha$-percentile option can be considered as a general class of lookback option. Unlike lookback option whose payoff depends on the maximum or minimum of the price of sock before maturity as mentioned before, $\alpha$-percentile option's payoff depends on the quantile of the stock price process. This option was first introduced by Miura\cite{Miura} in 1992. In 1995, Akahori\cite{Akahori1995} gave a generalized arc-sine law for this type of options by Feynman-Kac formula.
+Then we can see that $\inf_{0\leq s \leq t}  X_s = lim_{\alpha\to 0}M(\alpha,t)$ and $\sup_{(0\leq s \leq t})  X_s = lim_{\alpha\to 1} M(\alpha, t)$. In this sense $\alpha$-quantile option can be considered as a general class of lookback option. Unlike lookback option whose payoff depends on the maximum or minimum of the price of sock before maturity as mentioned before, $\alpha$-quantile option's payoff depends on the quantile of the stock price process. This option was first introduced by \cite{Miura} in 1992. \cite{Akahori1995} gave a generalized arc-sine law for this type of options by Feynman-Kac formula.
 When $X_{t}$ is a Brownian motion $B_t$, using similar mathematical tools, Dassios obtained the explicit density of quantile option and gave a exceptional representation of the distribution of quantile.  In \cite{Dassios1995}, for $\alpha\in[0,1]$, $t\leq 0$, Dassios proved that
 \begin{equation}\label{eq:Dassios}
 M(\alpha, t) \eqlaw \sup_{s \leq \alpha t} X_s + \inf_{s\leq (1-\alpha)t} X'_s ,
@@ -466,7 +465,34 @@ where
 with $N$ a standard Normal random variable.
 
 
-When $u \neq 0$, Dassios  in \cite{Dassios1995} addressed this question for a more general case.  As stated in equation (\ref{eq:Dassios}), the density of
+When $u \neq 0$,  \cite{Dassios1995} addressed this question for a more general case.  As stated in equation (\ref{eq:Dassios}), the distribution of $M(\alpha , t)$ can be represented in terms of the maximum and minimum of process $\{X_t\}$. Therefore we can get the density function of $M(\alpha, t)$ expressed as the convolution of other two density functions.
+
+Denote $g(x; \alpha , t)$ as the density function of $M(\alpha , t)$, in \cite{Dassios1995}, we find that
+\begin{equation}\label{eq:fulldensity}
+g(x; \alpha , t) = \int^{\infty}_{-\infty} g_1 (x-y; \alpha t) g_2 (y; (1-\alpha) t)dy ,
+\end{equation}
+where
+\begin{equation}
+g_1 (x;t) = \begin{cases}
+\frac{1}{\sigma}({\frac{2}{\pi t}})^{1/2}exp\{-\frac{(x-\mu t)^2}{2\sigma ^2 t}\} \\
+\quad - \frac{2\mu}{\sigma ^2} exp(\frac{2\mu x}{\sigma ^2})[1- \Phi (\frac{x+\mu t}{\sigma \sqrt{t}})], & x \geq 0 \\
+0 , & x  < 0 
+\end{cases}
+\end{equation}
+
+\begin{equation}
+g_2 (x;t) = \begin{cases}
+0, & x > 0 \\
+\frac{1}{\sigma}({\frac{2}{\pi t}})^{1/2}exp\{-\frac{(x-\mu t)^2}{2\sigma ^2 t}\} \\
+\quad + \frac{2\mu}{\sigma ^2} exp(\frac{2\mu x}{\sigma ^2}) \Phi (\frac{x+\mu t}{\sigma \sqrt{t}}) , & x \leq 0
+\end{cases}
+\end{equation}
+
+
+
+
+
+
 
 
 \subsection{Tree method for European Option}
@@ -563,7 +589,11 @@ the numerical values of option are plotted against varying $\Delta t$. The value
 
 \section{Discrite v.s. continous}
 \subsection{Euler scheme and randon walk}
-approximate brownian by random walk through Euler scheme.
+%%Another approach to price quantile option is Monte Carlo simulation. In this method, we need to use the inverse function of the cumulative distribution function of $\alpha$-quantile. When the brownian motion is without drift, 
+Sometimes to get the integration of certain stochastic process, we are only able to get the value numerically. For example, if we need to know $\int^T_{0} M(\alpha , t)dt$. Usually we need to simulate a discretized version of the Brownian motion $\{B_t\}$. And the do the calculation based on the simulated sample. Obviously,  the accuracy of this approximation is closely related to the length of the discretized time increment, which we denote as $\Delta t$. Then the questions arise: how fine should the discretization length should be in order to get a satisfied approximation and whether we can quantify the accuracy of this type of simulation. 
+
+
+
 
 
 \subsection{path transform}
@@ -578,14 +608,13 @@ Define
 \[S'_i = S_{i+k}-S_k\]
 for fixed $k, n$.
 
-In Wendel's paper\cite{Wendel1960}, an identity about randon walk with
+In \cite{Wendel1960}, an identity about randon walk with
 i.i.d increasment was dirived:
 \begin{equation}\label{eq:dpathdec}
 (M_{k,n}, S_n) \eqlaw (\sup_{i\leq k} S_i +\inf_{i\leq n-k} S'_i, S_n)
 \end{equation}
 
-In
-\cite{Chaumont1999}, Chaumont provide a combinatorics treatment.
+In \cite{Chaumont1999}, the author provide a combinatorics treatment.
 He constructed a explicit path transform for $S$ to $\tS$, such that
 \[
 (M_{k,n}, S_n) = (\sup_{i\leq k} \tS_i+\inf_{i\leq n-k} \tS'_i, \tS_n)
@@ -604,7 +633,7 @@ S'_t = S_{\alpha T+t} - S_{\alpha_T}.
 \]
 
 For Brownian motion case, this formular were proved in many differet ways
-and original due to Dassios\cite{Dassios1995}.
+and original due to \cite{Dassios1995}.
 
 \subsection{an estimate of week discrete error}
 \cite{Janssen2008} gives a estimate of the difference of  expatations
@@ -685,7 +714,7 @@ where some counstant $C$. This aways the case when $f$ the
 
 Then it is easy to see
 \[
--C\left( \sup_{i\leq n-k} (-S'_i)-\sup_{i\leq n-k} (-S'_i)\right)
+-C\left( \sup_{t\leq (1-\alpha)T} (-S'_i)-\sup_{i\leq n-k} (-S'_i)\right)
  \leq f(M_{\alpha,T}) - f(M_{k,N})
 \leq  C \left(\sup_{t\leq \alpha{T}} S_t - \sup_{i\leq k} S_i\right)
 \]
