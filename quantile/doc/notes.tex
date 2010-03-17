@@ -704,10 +704,17 @@ and back to the grandparient.
 \section{Discrite v.s. continous}
 \subsection{Euler scheme and randon walk}
 %%Another approach to price quantile option is Monte Carlo simulation. In this method, we need to use the inverse function of the cumulative distribution function of $\alpha$-quantile. When the brownian motion is without drift, 
-Sometimes to get the integration of certain stochastic process, we are only able to get the value numerically. For example, if we need to know $\int^T_{0} M(\alpha , t)dt$. Usually we need to simulate a discretized version of the Brownian motion $\{B_t\}$. And the do the calculation based on the simulated sample. Obviously,  the accuracy of this approximation is closely related to the length of the discretized time increment, which we denote as $\Delta t$. Then the questions arise: how fine should the discretization length should be in order to get a satisfied approximation and whether we can quantify the accuracy of this type of simulation. 
+Sometimes to get the integration of certain stochastic process, we are only able to get the value numerically. For example, if we need to know $\int^T_{0} M(\alpha , t)dt$. Usually we need to simulate a discretized version of the Brownian motion $\{B_t\}$. And the do the calculation based on the simulated sample. Obviously,  the accuracy of this approximation is closely related to the length of the discretized time increment, which we denote as $\Delta t= \frac{T}{N}$. Then the questions arise: how fine should the discretization length should be in order to get a satisfied approximation and whether we can quantify the accuracy of this type of simulation. 
 
-
-
+The most straightforward approach to get a simulation of $M(\alpha , T)$ is to apply the Euler approximation. In this method, we first get a sample of $\{B_{n \Delta t}\}$, $0\leq n \leq N$. Then we arrange the sample in ascending order and find the $k= \lfloor \alpha  N\rfloor$-th number as an discretized approximation of $M(\alpha , T)$. We denote $M(k, N)$ the approximation of $\alpha$-quantile under Euler scheme.The absolute error 
+\begin{equation}\label{strong}
+E\|M(\alpha, T)-M(k,N)\|_2
+\end{equation}
+is one popular measure of the quality of estimation and here $\|\;\| _2$ is the Euclidean distance. If (\ref{strong}) is $O(\Delta t^\gamma)$ as $\Delta t \downarrow 0$ , this approximation is claimed to converge strongly with order $\gamma > 0 $. Strong convergency is important when fine pathwise approximation is need. Meanwhile, an approximation converges weakly with order $\beta > 0 $ if, for any function continuous and $g: \bR \to \bR$ such that all derivatives up to and inlcuding $\lceil 2(\beta + 1) \rceil$ exsit and have polynomial growth, 
+\begin{equation}
+|Eg(M(\alpha,T)) - Eg(M(k, N))| = O (h^\beta) 
+\end{equation}
+as $h \downarrow 0$. Weak approximation is of importance when only an estimation of the probability distribution of $M(\alpha, T)$ is essential.
 
 
 \subsection{path transform}
