@@ -242,6 +242,51 @@ Above is the basic idea of a important derivative pricing principle called {\it 
 
 
 \section{American Options}
+In the risk nutural world, the price of American Options has a fairly easy 
+expression. At time $t$, the price of American Option is
+\[
+V_t(S_t) =\sup_{t\leq \tau\leq  T}Ee^{-r(\tau-t)}f(S_\tau),
+\]
+where $\tau$ are any stopping time stops before $T$ and
+\[
+f(s,t) = 
+\begin{cases}
+(s-K)^+ & \text{for call option}\\
+(K-s)^+ & \text{for put option}
+\end{cases}
+\]
+is the payoff function as usual.
+This is an optimal stopping problem. 
+
+We can understand this formula by noticing that $\tau$ correspond to possible 
+stratige to execute the option. 
+More pricisely, the holder will execute the option at time $\tau$.
+The price is given by the optimal stratiage. 
+
+It can be proved that the optimal stratiage is
+given by some region $D$ in $(S,t)$ 
+plane, i.e. $\tau<t$ if and only if $(S_t,t)\in D$. This domain $D$ is called
+the execute region. 
+
+It has a syetematic way to translate this optimal stopping problem into PDE. 
+However it is also interesting to derive the PDE directly, just as how we 
+derive the Black-Scholes equation.
+
+Let $V(S,t)$ be the price of the american option. 
+Let us consider call option. Before execute the option, $C(S,t)$ should 
+satisfy the usual Black-Scholes equation. When, the stock price is high,
+especially, $(S-K)^+\geq V(S,t)$, the holder should execute the option, 
+otherwise there will be an arbitrage optunity.
+We get a free boundary problem:
+\[
+\begin{cases}
+\frac{\partial V}{\partial t} + \frac{\partial V }{\partial S} S_t r + \frac{1}{2} \frac{{\partial}^2 V}{\partial S^2} {S^2}_t {\sigma}^2 -rV=0\\
+V(S, T) = f(S)\\
+\frac{\partial V}{\partial S}(S,t) = +1 \text{ at the boundary} 
+\end{cases}
+\]
+In fact $\frac{\partial V}{\partial S}(S,t) = +1$ is a smoothness condition, 
+since we have $\frac{\partial}{\partial S}(S-K)^+ = 1$ when $S$ big enough.  
 
 \section{Lookback options}
 
@@ -573,20 +618,89 @@ the numerical values of option are plotted against varying $\Delta t$. The value
 
 
 \subsection{ an exponential time tree for American $\alpha$-quantile option}
-% to be add
+Non-markov property of  the quantile of Brownian motion cause seirous problem 
+when we want to use tree method. We need to record all the information alone the
+path, at least, we have to record the occupation time of $X_k$.
+ 
+In risk nutrual world, we always can write the price of 
+American option in following way:
+\[
+C = \sup_{\tau\leq T} Ef(X_\tau^\alpha,\tau),
+\]
+where $\tau$ are any stopping time stops before $T$, 
+\[
+f(x,t) = 
+\begin{cases}
+e^{-rt}(x-K)^+ & \text{for call option}\\
+e^{-rt}(K-x)^+ & \text{for put option}
+\end{cases}
+\]
+as usual.
+This is an optimal stopping problem. 
 
+The obvious way to slove this numerically, is using tree methord. 
+Discrete the time, i.e. let $0=t_0< t_1, \cdots, t_n$.
+Let $P_k=(X_0, \cdots, X_k)$ be a path of Geometric Brownian motion, 
+Then $X_{k+1}$ can only be $X_{k}+u$ , $X_k$ and $X_{k}-d$ in probility
+$p^+,p^0,p^-$  where $u,d,p^+,p^0$ and $p^-$ are prefixed 
+constants in usual trinomial tree methord, each will .
+Then let 
+\[
+\mathrm{Pay}_{P_j} = e^{rt_j}f(X_{P_j}^\alpha, t_j)=
+\begin{cases}
+(x-K)^+ & \text{for call option}\\
+(K-x)^+ & \text{for put option}
+\end{cases}
+\] 
+be the payoff if the option hold execute the option at time $t_j$, 
+where $X_{P_n}^\alpha$ denots the $\alpha$ quntaile of path $P_n$. 
+For $n$, let 
+\[
+C_{P_n} = \mathrm{Pay}_{P_n}
+\]
+For $j< n$, 
+let 
+\[
+C_{P_j} = \max\Set{E_{P_j}, \mathrm{Pay}_{P_j}}
+\]
+where
+\[
+E_{P_j} = e^{-r(t_{j+1}-t_j)}(p^+C_{(P_j,X_j+u)} + p^0C_{(P_j,X_j)}+ p^-C_{(P_j,X_j-d)})
+\]
+is the expectation return if the hold of the option
+do not exectue his right at time $t_j$, provide the history data of 
+the stock price is given by $P_j$. 
 
+Now the optimal stopping time is given by 
+\[
+\tau(P_n) = \inf\Set{t_j| Pay_{P_j}\geq E_{P_j}}
+\]
+here $P_j$ is the restriction of $P_n$ at $(t_0, \cdots, t_j)$, i.e. 
+\[
+P_j = (X_0, \cdots, X_j) \text{ if } P_n=(X_0, \cdots, X_n). 
+\] 
 
+Now the price of American $\alpha$-quantile option at time $t_0$ is $C_{(0)}$.
 
+Based on this observation, we have a recurace relation for computing $C_{(0)}$.
 
+It is nature to realize this schemes by using the
+``Deep First Search'' algorithm. 
+In pratical, we build the tree with depth $n+1$, each non-leaves nods has three
+children correspond to $\Set{X_j+u,X_j, X_j-d}$. Hence the complaxity of this 
+``brute force'' methord is $O(3^n)$. 
+It is clear that all the nodes at depth $j$ correspond to one and only one path
+$P_j$. So we label the node by $N_{P_j}$. 
+For any node, say $N_{P_j}$, we first compute $C_{P_{j+1}}$, where $P_{j+1}$ are 
+all of its three children. 
+After visited all its children and computed $C_{P_{j+1}}$, it will back to 
+node $N_{P_j}$, and compute $E_{P_j}, Pay_{P_j}$ and then $C_{P_j}$. After that, 
+it will back to the parient of $N_{P_j}$. Now $N_{P_{j-1}}$ will do same as 
+$N_{P_{j}}$, i.e. if it does not finish visiting all its children,
+ it will visit the next one; if it is finished, compute $C_{P_{j+1}}$ as above 
+and back to the grandparient. 
 
-
-
-
-
-
-
-
+ 
 \section{Discrite v.s. continous}
 \subsection{Euler scheme and randon walk}
 %%Another approach to price quantile option is Monte Carlo simulation. In this method, we need to use the inverse function of the cumulative distribution function of $\alpha$-quantile. When the brownian motion is without drift, 
