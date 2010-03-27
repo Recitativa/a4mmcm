@@ -1,35 +1,34 @@
-#include<iostream>
-#include<list>
+#include <omp.h>
+#include <iostream>
+#include <list>
 #include <cmath>
 #include <algorithm>
 #include <cassert>
 #include <fstream>
+#include <sstream>
+
 
 using namespace std;
 
 typedef double Real;
 
-Real K; 
-Real su, sdelta, dis, rho, alpha;
-Real dt;
-
-
-list<Real> OrderedPath;
-
-Real payfun(Real Walpha) {
-  return max(rho*exp(Walpha)-1., .0);
-}
-
-enum node_stat {no, up, down};
-
-typedef struct{
-  list<Real>::iterator in_it;
-  list<Real>::iterator qu_it;
-  node_stat st;
-  Real g1, g2;
-  Real Walpha;
-  int qth;
-} Node;
+class Option {
+public:
+  Option(Real rr, Real ssigma, Real aalpha ):
+    r(rr),sigma(ssigma),alpha(aalpha) {};
+  Real r,sigma,alpha; 
+  ~Option() {
+    OrderedPath.clear();
+  }
+  Real EPrice(Real S0, Real K, Real T, int n);
+  Real payfun(Real Walpha) {
+    return max(rho*exp(Walpha)-1., .0); }
+  Real su, sdelta, dis, rho, mu;
+  Real dt;
+private:
+  list<Real> OrderedPath;
+  Real pprice(int steps, Real ZZ);
+};
 
 #define PRINT_LIST       do {				\
     list<Real>::iterator iit;				\
@@ -42,14 +41,29 @@ typedef struct{
 
 
 
-Real pprice(int steps, Real ZZ) {
+enum node_stat {no, up, down};
+
+typedef struct{
+  list<Real>::iterator in_it;
+  list<Real>::iterator qu_it;
+  node_stat st;
+  Real g1, g2;
+  Real Walpha;
+  int qth;
+} Node;
+
+
+Real Option::pprice(int steps, Real ZZ) {
   list<Real>::iterator it;
   Real g1,g2,g3, pay;
   Real Walpha;
   
   Node *STACK = new Node[steps+1];
   int nstack = 1;
-  cout << alpha << endl;
+#pragma omp critical
+  {
+  cout << steps <<" alpha " << alpha << endl;
+  }
   OrderedPath.clear();
   OrderedPath.push_back(ZZ);
   STACK[0].in_it = OrderedPath.begin();
@@ -129,25 +143,63 @@ Real pprice(int steps, Real ZZ) {
   return pay;
 }
 
-ofstream of;
+Real Option::EPrice(Real S0, Real K, Real T, int n)
+{
+  mu=r-sigma*sigma/2;
+  dt = T/n;
+  su = mu*dt;
+  sdelta= sigma*sqrt(dt);
+  dis = exp(-r*dt);
+  rho = S0/K;
+  OrderedPath.clear();
+  return K*pprice(n+1,0);
+}
+
+
 
 int main()
 {
-  Real S0, K, r, sigma,T, mu;
+  Real S0, K, alpha, r, sigma, T;
   int n,i;
-  S0=100, K=95, alpha=0.8, r=0.05, sigma=0.2, T=.25, mu=r-sigma*sigma/2;
+  int Bn, En;
+  S0=100, K=95, alpha=0.8, r=0.05, sigma=0.2, T=.25, 
   n = 32;
+  Bn=10;En=20;
 
-  dt = T/n;
-  su = mu*dt;// su=.5;
-  sdelta= sigma*sqrt(dt); //sdelta=1;
-  dis = exp(-r*dt);
-  rho = S0/K;
-  cout<< su << " " << sdelta <<" "<< alpha << " " << dis <<" " << rho << endl;
-  OrderedPath.clear();
-  Real A = K*pprice(n+1,0);
-  cout << dt <<" " << n << " " << A << endl;
- 
+  // FileName format nout_Rb_Re_.bin, a binary file. 
+  ostringstream SoutFilename;
+  SoutFilename << "bitree_S0" << S0 << "_K_"<< K << "_alpha"<< alpha << "_r" << r << "_sigma_" << sigma << "_T_" << T<< "_Bn_"<< Bn <<"_En_"<< En;
+  SoutFilename << ".txt";
+
+  
+  ofstream of;
+  
+  of.open(SoutFilename.str().c_str(),ios::app);
+  of << "Pricing S0:" << S0 << " K:"<< K << " alpha:"<< alpha << " r:" << r << " sigma:" << sigma << " T:" << T << endl;
+
+  Option A(r, sigma, alpha);
+  
+#pragma omp parallel
+  {
+    for(n=Bn;n<= En; n++)
+      {
+#pragma omp task firstprivate(A)
+	{
+#pragma omp critical
+	  {
+	    cout<< "n:" << n << endl;
+	  }
+	  Real price = A.EPrice(S0,K,T,n);
+#pragma omp critical
+	  {
+	    of << A.su << " " << A.sdelta <<" "<< A.alpha << " " << A.dis <<" " << A.rho << endl;
+	    of << A.dt <<" " << n << " " << price << endl;
+	  }
+	}
+      }
+  }
+  of.close();
+
   return 0;
 }
 
