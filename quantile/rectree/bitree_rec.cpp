@@ -62,7 +62,7 @@ Real Option::pprice(int steps, Real ZZ) {
   int nstack = 1;
 #pragma omp critical
   {
-  cout << steps <<" alpha " << alpha << endl;
+  cerr << steps <<" alpha " << alpha << endl;
   }
   OrderedPath.clear();
   OrderedPath.push_back(ZZ);
@@ -157,49 +157,63 @@ Real Option::EPrice(Real S0, Real K, Real T, int n)
 
 
 
-int main()
+int main(int argc,      
+          char *argv[],  
+          char *envp[] )
 {
   Real S0, K, alpha, r, sigma, T;
   int n,i;
   int Bn, En;
-  S0=100, K=95, alpha=0.8, r=0.05, sigma=0.2, T=.25, 
-  n = 32;
-  Bn=10;En=20;
+ 
+  if(argc != 9) {cerr << "bitree S0 K alpha r sigma T Bn En" << endl; return 1;}
+  stringstream ss (stringstream::in | stringstream::out);
+  for(i=1;i<9;i++) { ss << argv[i] << " ";}
+  ss >> S0 >> K >> alpha >> r >> sigma >> T >> Bn >> En;
 
-  // FileName format nout_Rb_Re_.bin, a binary file. 
+  //  S0=100, K=95, alpha=0.5, r=0.05, sigma=0.2, T=1, 
+  //Bn=20;En=40;
+
+
   ostringstream SoutFilename;
   SoutFilename << "bitree_S0" << S0 << "_K_"<< K << "_alpha"<< alpha << "_r" << r << "_sigma_" << sigma << "_T_" << T<< "_Bn_"<< Bn <<"_En_"<< En;
   SoutFilename << ".txt";
 
   
-  ofstream of;
+  ofstream outf;
   
-  of.open(SoutFilename.str().c_str(),ios::app);
-  of << "Pricing S0:" << S0 << " K:"<< K << " alpha:"<< alpha << " r:" << r << " sigma:" << sigma << " T:" << T << endl;
+  outf.open(SoutFilename.str().c_str(),ios::app);
+  outf << "Pricing S0:" << S0 << " K:"<< K << " alpha:"<< alpha << " r:" << r << " sigma:" << sigma << " T:" << T << endl;
 
   Option A(r, sigma, alpha);
-  
-#pragma omp parallel
+ 
+  Real price;
+
+#pragma omp parallel shared(outf) firstprivate(A) num_threads(10)
   {
-    for(n=Bn;n<= En; n++)
+#pragma omp single 
+    {
+    cerr << "num threads:"<<omp_get_num_threads()<<endl;
+    }
+#pragma omp for 
+  for(n=Bn;n<= En; n+=2)
+    {
+
       {
-#pragma omp task firstprivate(A)
+#pragma omp critical
 	{
+	  cerr<< "n:" << n << endl;
+	}
+	price = A.EPrice(S0,K,T,n);
 #pragma omp critical
-	  {
-	    cout<< "n:" << n << endl;
-	  }
-	  Real price = A.EPrice(S0,K,T,n);
-#pragma omp critical
-	  {
-	    of << A.su << " " << A.sdelta <<" "<< A.alpha << " " << A.dis <<" " << A.rho << endl;
-	    of << A.dt <<" " << n << " " << price << endl;
-	  }
+	{
+	  outf << A.su << " " << A.sdelta <<" "<< A.alpha << " " << A.dis <<" " << A.rho << endl;
+	  outf << A.dt <<" " << n << " " << price << endl;
 	}
       }
+    }
   }
-  of.close();
 
+  outf.close();
   return 0;
 }
 
