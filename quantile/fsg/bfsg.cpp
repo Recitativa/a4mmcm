@@ -19,38 +19,42 @@ double forwardST( double S, //spot price
   double R = exp(-r*dt); 	//discount rate at each step
   double dw = sigma*sqrt(dt); // up movement
   double du = (r-sigma*sigma/2)*dt; // up per unit time
-  double D = alpha*(steps);  //barrier
+  double D = alpha*(steps+1);  //barrier
   double pu = .5;  //probability of upward
   double pd = .5;   //downward
   double p0 = 0;
   int m = steps;
   double bar = log(B/S); //barrier
   const int N = (m+1)*(2*m+1);
-  double data[2*N];
+
+  double odd[m+1][2*m+1];
+  double even[m+1][2*m+1];
 
 #define g(k,j) ((dw*(j)+du*i<=bar)?((k)+1):(k))
-#define IND(k,j)  ((k)*(2*m+1)+(j)+m)
 	
-  double * even, * odd, *tmp;
-  even  = data;
-  odd = data+N;
-
-  for(int k=0; k<m+1;k++)
+  for(int k=0; k<m+1;k++) {
     for(int j=-m; j<m+1;j++) {
-      if (k<D) even[IND(k,j)]=1;
-      else even[IND(k,j)]=0;
+      if (k<D) even[k][j+m]=1;
+      else even[k][j+m]=0;
     }
+  }
 	
   for(int i=m-1;i >=0; i--) {
-    tmp = even; even = odd; odd = tmp;
     for(int k=0; k<i+1;k++)
+      if((m-i)%2==1) {
 	for(int j=-i; j<i+1;j++) {
-	  even[IND(k,j)] = (  pu*odd[IND(g(k,j+1),j+1)]			\
-			      + p0*odd[IND(g(k,j),j)]			\
-			      + pd*odd[IND(g(k,j-1),j-1)])*R;
+	  odd[k][j+m]=(pu*even[g(k,j+1)][j+1+m]+p0*even[g(k,j)][j+m]+pd*even[g(k,j-1)][j-1+m])*R; }
+      }
+      else{ 
+	for(int j=-i; j<i+1;j++) {
+	  even[k][j+m]=(pu*odd[g(k,j+1)][j+1+m]+p0*odd[g(k,j)][j+m]+pd*odd[g(k,j-1)][j-1+m])*R;
 	}
+      }
   }  
-  return even[IND(0,0)];
+  if (m%2 ==1) 
+    return odd[0][m];
+  else
+    return even[0][m];
 }
 
 int main() {
@@ -70,8 +74,7 @@ int main() {
   fp.open("bfsg.dat");
 
 
-
-  for( steps=160; steps<=200; steps+=10)
+  for( steps=10; steps<=50; steps+=10)
   {
     double dt = T/steps;
     double dw = sigma*sqrt(dt); // up movement
