@@ -2,7 +2,7 @@ phi <- function(t, x, u) {
   iphi <- function(s) {
     return((sqrt(2/(pi*s))*exp(-(u^2)*s/2)
             -2*u*(1-pnorm(u*sqrt(s))))
-           *((2*u+sqrt(2/(pi*(t-s))))*exp(-u^2/2*(t-s))
+           *(2*u+sqrt(2/(pi*(t-s)))*exp(-u^2/2*(t-s))
               - 2*u*(1-pnorm(u*sqrt(t-s)))))
   }
   return(0.5*integrate(iphi,0,t*x)$value)

@@ -50,7 +50,10 @@ double forward_shorting_grid_cumulative_parisian_binary_option( double S, //spot
 	  }
       }
    }  
-  return (m%2)==1?even[0][m]:odd[0][m];
+  if (m%2 ==1) 
+    return odd[0][m];
+  else
+    return even[0][m];
 }
 
 int main() {
@@ -69,7 +72,7 @@ int main() {
   //fp.open("fsg.dat", ofstream::app);
   fp.open("fsg.dat");
   valp[0]=exp(-r*T);
-  for( steps=130; steps<=190; steps+=10)
+  for( steps=100; steps<=150; steps+=10)
   {
     double up=sigma*sqrt(T/steps)/factor; // up movement
     for(int j= -steps; j<steps+1; j++) {
@@ -82,6 +85,7 @@ int main() {
     for(int j=-steps; j<steps+1;j++)
       value=value+max(exp(j*up)*S-X,0.0)*(valp[j+steps]-valp[j+steps+1]);
     fp << steps << "  " << up << " " <<  value << endl;
+    cerr << steps << " " << value << endl;
   }		
   fp.close();
   return 0;
