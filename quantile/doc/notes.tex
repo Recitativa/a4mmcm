@@ -726,7 +726,23 @@ $N_{P_{j}}$, i.e. if it does not finish visiting all its children,
  it will visit the next one; if it is finished, compute $C_{P_{j+1}}$ as above 
 and back to the grandparient. 
 
- 
+If we get some results by binomail tree of European Option.
+With 
+\[
+K=100, r=0.05, \sigma=0.2, \alpha=0.5, T=1
+\]
+
+\begin{tabular}{l|llll}
+$S_0$ & $90$ & $95$ & $100$ & $105$ & $110$ & $115$ & $120$\\
+\hline
+  30 & 1.80059 & 3.46444 & 5.98097 & 9.35544 & 13.3482 & 17.7490 & 22.3748 \\
+  32 & 1.78771 & 3.44615 & 5.95781 & 9.32707 & 13.3219 & 17.7186 & 22.3409 \\
+  34 & 1.77631 & 3.43422 & 5.93868 & 9.30442 & 13.2968 & 17.6906 & 22.3096 \\
+  36 & 1.76377 & 3.42090 & 5.92051 & 9.28269 & 13.2762 & 17.6641 & 22.2809 \\
+  38 & 1.75524 & 3.41137 & 5.90549 & 9.26586 & 13.2571 & 17.6396 & 22.2588 \\
+ Paper & 1.6588 & 3.2695 & 5.7501 & 9.0895 & 13.0213 & 17.4030 & 22.0456\\
+\end{tabular}
+
 \section{Discrite v.s. Continous}
 \subsection{Euler scheme and randon walk}
 %%Another approach to price quantile option is Monte Carlo simulation. In this method, we need to use the inverse function of the cumulative distribution function of $\alpha$-quantile. When the brownian motion is without drift, 
