@@ -631,7 +631,7 @@ By (\ref{eq:initiate})  (\ref{eq:fsg}) and backward induction, we can get the pr
 
 Recall what we get by equation (\ref{eq:kowk2}). In order to get the price of $\alpha$-quantile option, we can use the prices of $2M + 1$ cumulative Parisian binary options to approximate $\alpha$-quantile option's value. Hence using the FSG method we described above to calculate the prices of cumulative Parisian option  and doing a simple math work by equation (\ref{eq:kowk2}), we can get the approximated price for $\alpha$-quantile option with $M$ time steps.
 
-Recall we defined earlier $\Delta t = T / M$. We compute the approximated option price of an $\alpha$-quantile call option with different time steps using equation (\ref{eq:kowk2}). As you can see in Figure % add figure ,
+Recall we defined earlier $\Delta t = T / M$. We compute the approximated option price of an $\alpha$-quantile call option with different time steps using equation (\ref{eq:kowk2}). As you can see in Figure (\ref{fig:2}),
 the numerical values of option are plotted against varying $\Delta t$. The values of parameters of the $\alpha$-quantile call option are set as: $ \alpha = 0.8$, $S_0 = 100$, $X = 95$, $r = 5\%$, $\sigma = 20\%$, and $T = 0.25$.
 \begin{figure}[htbp]
    \centering
@@ -639,6 +639,16 @@ the numerical values of option are plotted against varying $\Delta t$. The value
    \caption{FSG result}
    \label{fig:2}
 \end{figure}
+
+
+
+
+\subsection{A static hedging for $\alpha$-quantile put option}
+Inspired by the approximation of quantile option using cumulative Parisian options, we here propose a static hedging of quantile options using cumulative binary Parisian options. As we discussed earlier, the payoff of a cumulative binary Parisian option is that: only if the price of stock spend enough time under a predetermined barrier, its payoff is \$1; otherwise, its payoff is 0, it is worth nothing. We explicitly account for the discreteness of the tick size. That is the value of stock price only can be multiples of 1/8. Then for a put quantile option, the intuition for our hedging lies in the ability to rephrase the question, “what was the certain quantile of stock price” as several questions. 
+
+For example, for 40$\%$-quantile put option with stock price started from 1 and strike price 2, we can replicate its payoff using cumulative Parisian options which are alive only if they spend more than $0.4*T$ time under their barrier. For the quantile option, it has payoff only if the $40$ percentile is less than 2, the strike price. Also it is obvious that $40$ percentile must be larger than 0. In this sense, we hold 0.125 share of each cumulative binary Parisian binary option with barrier raging from $0.125. 0.250, 0.375.…, 2$.  If in the end of maturity, the 40 percentile of stock price is larger than 2, the quantile option gets nothing. Since the 40 percentile is lager than 2, then the stock price must be under 2 for less than 40$\%$ of the time before maturity. In this case all the binary option get nothing. But if the quantile is $1.750$, the quantile option gets a payoff of $0.250=2-1.750$. While for the binary options, in this case, options with barrier $2$ and $1.875$ are alive. The payoff you can get from binary options is $0.125*2=0.250$. That is the payoff of the collections of binary options is identical to your quantile option. These are true for other scenarios of the value of quantile.  In other words, by holding a collection of cumulative Parisian binary option, we can realize a static hedging.
+
+Probably, you have already found out that this scheme only works for European puts, because that you can find the two sides boundary of effective quantile. This condition is not true for calls. 
 
 
 \subsection{ A tree for American $\alpha$-quantile option}
@@ -840,7 +850,12 @@ we use following transform
 + \sqrt{T}\tsigma W_{t/T}\\
 \mu &= \tmu \sqrt{T}/\tsigma
 \end{align*}
-do derive the follwoing formula:
+We denote
+\begin{equation}
+g'(\mu)=\mu \Phi(\mu) + \frac{1}{\sqrt{2\pi}} e^{-\frac{1}{2}\mu^2 }
+\end{equation}
+
+we derive the follwoing formula:
 \begin{equation}\label{eq:maxest}
 E\max_{0\leq t\leq T} \tB(t) - E \max_{0\leq n \leq N} \tB(nT/N) =
  -\frac{\zeta(1/2)}{\sqrt{2\pi}}\tsigma \sqrt{T/N}
@@ -859,6 +874,8 @@ we get an very rough estimate of the apporximation order:
 -  \sup_{i\leq k} S_i-\inf_{i\leq N-k} S'_i} \\
 = &  \EE{\sup_{t\leq \alpha{T}} S_t - \sup_{i\leq k} S_i} +
 \EE{\inf_{t \leq (1-\alpha)T} S'_t-\inf_{i\leq N-k} S'_i}\\
+=-\frac{\zata(1/2)}{\sqrt{2\pi}}
+
 =& -\frac{\zeta(1/2) \tsigma}{\sqrt{2\pi}}\left(\sqrt{T/\alpha N}
 \sqrt{\alpha} - \sqrt{T/(1-\alpha)N}\sqrt{1-\alpha}\right) \\
 & - \frac{2g(1)}{4}\sqrt{T} \tsigma
@@ -879,7 +896,7 @@ The second last equality holds by view $\inf_{t\leq (1-\alpha)T} S'_t$ as
 $-\max_{t\leq (1-\alpha)T} (-S'_t)$.
 
 This estimate shows that the convergence order
-are all $\frac{1}{2}$ when $\alpha \neq 1/2$. If $\alpha=1/2$ and the
+are all $1$ when $\alpha \neq 1/2$. If $\alpha=1/2$ and the
 Brownian motion does not have  drift ($\mu=0$), it is easy to see
 (by noting that
 $\E M_{1/2,T} = \E -M_{1/2,T}$) $\E M_{1/2,T} = \E M_{k,n} = 0$.
