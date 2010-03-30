@@ -14,7 +14,7 @@ richard <- function(d,p=.5) {
 
 aitken <- function(v) {
   n <- length(v)
-  return(v[1:(n-2)]-diff(v)[-n+1]^2/diff(diff(v)))
+  return(v[1:(n-2)]-diff(v)[-n+1]^2/diff(v,differences=2))
 }
 
 ind <- seq(30,38,by=2)
