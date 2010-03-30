@@ -67,20 +67,19 @@ readFile <- function(inFilename) {
 
 
 ## main function to treat the data
-run <- function(inFilename) {
+run <- function(inFilename,ttt=8) {
   ## file name pattern: ?????.bin, then get ????? part. 
   boutname <- sub(".bin$","", inFilename)
   ## read data from file
   ret <- readFile(inFilename)
   attach(ret)
-  ttt <- 4
 
   ## Formula: AdErr = X_k -  X_Dense
   dErr <- adat[,1:(Re-Rb+1),] - adat[,rep("Dense",Re-Rb+1),]
   AdErr <- dErr
   ## Formula: mAdErr = |mean(X_k -  X_Dense)|
   ## mAdErr is a 2-dim array, 1st-dimension is k, 2nd-dim is Quantile
-  mAdErr <- abs(apply(AdErr, c(2,3), mean,trim=.05))[1:(Re-Rb+1-ttt)]
+  mAdErr <- abs(apply(AdErr, c(2,3), mean,trim=.05))[1:(Re-Rb+1-ttt),]
 
   ## plot the lines of mAdErr for different Quantile
   pdf(paste(boutname,".lines.pdf",sep=""),pointsize=8)
@@ -92,7 +91,7 @@ run <- function(inFilename) {
   legend(x="topright", paste("",RQuantiles),
          col=cols, lty=1, ncol=3)
   for(i in 1:nRQ) {
-    lines(Rb:(Re-ttt), mAdErr[1:(Re-Rb-ttt+1),i], type="b",col=cols[i])
+    lines(Rb:(Re-ttt), mAdErr[,i], type="b",col=cols[i])
   }
   dev.off()
 
@@ -108,7 +107,7 @@ run <- function(inFilename) {
          col=cols, lty=1,ncol=3)
  
   for(i in 1:nRQ) {
-    lines(Rb:(Re-ttt), l2mAdErr[1:(Re-Rb-ttt+1),i],  type="b",col=cols[i])
+    lines(Rb:(Re-ttt), l2mAdErr[,i],  type="b",col=cols[i])
   }
   dev.off()
   
@@ -148,8 +147,8 @@ run <- function(inFilename) {
       }
       dev.off()
     }
-    detach(ret)
     dev.off()
   }
+  detach(ret)
   return(0)
 }
