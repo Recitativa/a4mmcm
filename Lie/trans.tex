@@ -1,9 +1,10 @@
-\documentclass[12pt]{amsart}
+\documentclass[12pt]{article}
 \usepackage[margin=3cm]{geometry}
 
 \usepackage{hyperref}
 
 \usepackage{amssymb}
+\usepackage{amsmath, amsthm}
 \usepackage{graphicx}
 %\usepackage{amscd}
 \usepackage{braket}
@@ -64,6 +65,7 @@
 \def\sH{\mathcal{H}}
 \def\sU{\mathcal{U}}
 \def\sC{\mathcal{C}}
+\def\sS{\mathcal{S}}
 \def\Stab{{\rm Stab}}
 \def\ad{{\rm ad}}
 \def\Ad{{\rm Ad}}
@@ -470,7 +472,7 @@ We check the holomorphic condition becomes
 \]
 where 
 \[
-(\theta_X \phi)(w) = \frac{d}{dt}\phi(w+tX) \quad \for X\in W.
+(\theta_X \phi)(w) = \frac{d}{dt}\phi(w+tX) \quad \forall X\in W.
 \]
 
 In fact, 
@@ -669,7 +671,7 @@ We check the holomorphic condition becomes
 \]
 where 
 \[
-(\theta_X \phi)(w) = \frac{d}{dt}\phi(w+tX) \quad \for X\in W.
+(\theta_X \phi)(w) = \frac{d}{dt}\phi(w+tX) \quad \forall X\in W.
 \]
 
 In fact, 
@@ -1399,7 +1401,7 @@ Hence $\fkk_\bC$ consisting elements in the following form
 \]
 by conjugating the permutation matrix
 \[
-b\begin{pmatrix}
+b=\begin{pmatrix}
   1 & 0 & 0 & 0\\
   0 & 0 & 0 & 1\\
   0 & 0 & -1 & 0\\
@@ -1420,7 +1422,23 @@ Moreover
 }
 \]
 
-
+In fact, 
+\[
+\Ad(b) 
+\begin{pmatrix}
+A & B & C & D\cr
+E & F & {D}^{T} & G\cr
+K & L & -{A}^{T} & -{E}^{T}\cr 
+{L}^{T} & M & -{B}^{T} & -{F}^{T}
+\end{pmatrix}
+=
+\begin{pmatrix}
+A & D & -C & B\cr 
+{L}^{T} & -{F}^{T} & {B}^{T} & M\cr
+ -K & {E}^{T} & -{A}^{T} & -L\cr
+ E & G & -{D}^{T} & F
+\end{pmatrix}
+\]
 We can see that $\fmm_\bC = \fkk_\bC \cap \fkk_\bC'$, i.e. 
 the fixed point of $\theta$ in $\ftt_\bC'$ is 
 \[
@@ -1772,7 +1790,7 @@ A-A^T + i(I_{r,s}B + BI_{r,s}) & - (A+A^T) - i(I_{r,s}B-BI_{r,s})\\
 \]
 by $I_{r,s} A + A^TI_{r,s} = 0$
 
-\subsection{cases}
+\section{cases}
 When $s=0$, then $I_{r,s} = I$, $A=-A^T$, $B=B^T$.
 We have 
 \[
@@ -1882,7 +1900,7 @@ y_i\otimes x_j^* \mapsto&
 \partial_{y_i}\partial_{x_j}
 \end{align*}
 
-\subsection{$U(r,s)\times U(m)$ embedding}
+\section{$U(r,s)\times U(m)$ embedding}
 Let $V = \Mat_{r+s,m}(\bC) = \otimes^m \bC_{r,s}$ with $U(r,s)$ act by left multiplication, $U(m)$ 
 act by right multiplication, i.e. 
 \[
@@ -1908,7 +1926,7 @@ y_{s,1} & \cdots & y_{s,m}
 Choose a ordered basis of $V$ by $x_{1,1}, \cdots, x_{1,m}, x_{2,1}, \cdots, x_{r,m}, y_{1,1},
 \cdots, y_{s,m}$, i.e. $e_{(i-1)m+j}=x_{i,j}$, $e_{(r+i-1)m+j}=y_{i,j}$. 
 
-\subsection{$\fuu_\bC(m) = \agl_m$ action}
+\section{$\fuu_\bC(m) = \agl_m$ action}
 For $X \in \agl_m$, it act on $V$ by $X.v = -vX$.
 Hence ($\fuu_\bC(m) \to \fuu_\bC(m(r+s) \to \sp_\bC(2m(r+s))\to \lww$
 \[
@@ -1926,7 +1944,7 @@ X = E_{p,q}\mapsto& -(\sum_{v=1}^r x_{v,q}\otimes x_{v,p}^*
 \end{split}
 \]
 
-\subsection{$\fuu_\bC(r,s)$ action}
+\section{$\fuu_\bC(r,s)$ action}
 For $X=E_{p,q}$, $p,q \leq r$, we have, 
 \[
 \begin{split}
@@ -1964,7 +1982,7 @@ X = E_{r+p,q} \mapsto& \sum_{v=1}^m y_{p,v}\otimes x_{q,v}^*\\
 \end{split}
 \]
 
-\subsection{explicit $U(r,s) \sim U(m)$ duality}
+\section{explicit $U(r,s) \sim U(m)$ duality}
 For $\fuu_\bC(r,s)$ and $\fuu_\bC(m)$,
  we choose $E_{p,q}$, $p>q$ to span the nilpotent part,
 i.e. the lower triangle matrixs. 
@@ -2024,7 +2042,7 @@ $f$ is joint hieghest weight in $\sH$, and we have correspondence:
 \]
 
 
-\subsection{Theta corresponedce for $\Sp(2n,\bR)\sim O(m)$}
+\section{Theta corresponedce for $\Sp(2n,\bR)\sim O(m)$}
 Note that 
 \[
 O(m,\bR) = \Set{g|g^T g=1}.
@@ -2225,7 +2243,7 @@ it gives the correspondence for
 \]
 Note that, if $j=l$, on extra $1$ can appear in $\sp(2n)$ representation.
 
-\subsubsection{m=2l+1}
+\subsection{m=2l+1}
 
 For $m=2l+1$, let $t_v = x_{2l+1,v}$.  
 we have 
@@ -2343,6 +2361,117 @@ n_s &= \sum_{t=s}^j \alpha_t\\
 \leftrightarrow
 ((-n_1, \cdots, -n_j); \epsilon)
 \]
+
+\section{Computation for the transform of the Oscillator representation}
+Decomposit $\omega$ into $U(p,q)$ module, by see-saw pair.
+Choose positive system by lower triangle of $U(p,q)$
+We have
+$\omega = \otimes_{l} L_l$, 
+where $L_l$ is lowest weight module of $U(p,q)$ with lowest $U(p)\times U(q)$ 
+type
+\[
+\begin{split}
+&(\underbrace{\frac{1}{2},\cdots, \frac{1}{2}, \frac{1}{2}+l}_p, 
+\underbrace{-\frac{1}{2},\cdots, -\frac{1}{2}}_q)\\
+=&
+(\underbrace{0, \cdots, 0, l}_p, 
+\underbrace{-1,\cdots, -1}_q)+\frac{1}{2}
+\quad l \geq 0
+\end{split}
+\]
+\[
+\begin{split}
+&(\underbrace{\frac{1}{2},\cdots, \frac{1}{2}, \frac{1}{2}+l}_p, 
+\underbrace{-\frac{1}{2},\cdots, -\frac{1}{2}}_q)\\
+=&
+(\underbrace{0, \cdots,  0}_p, 
+\underbrace{-1+l,\cdots, -1}_q)+\frac{1}{2}
+\quad l < 0
+\end{split}
+\]
+Call the prameter $\Lambda_l$.
+
+Let \[s = (p,p+1,\cdots, p+q).\]
+Then 
+\[
+s\rho-\rho = (\underbrace{0,\cdots,0}_{p-1},+1,\cdots, +1, -q)
+\]
+
+Then 
+\[
+s(\Lambda_l+\rho)-\rho = (0, \cdots, 0, l-q) +\frac{1}{2}
+=F_{l-q}
+\]
+is the $K$ type of $\Gamma^q(L_l)$. 
+
+So 
+\[
+\Lambda_l =  s^{-1} F_{l-q} + (s^{-1}\rho -\rho)
+\]
+
+Let 
+\[
+W= s^{-1}\rho -\rho
+= (\underbrace{0,\cdots, 0, q}_p, \underbrace{-1, \cdots, -1}_q)
+\]
+ be the submodule of $\bigwedge^q \fqq$ (it is clear that $\Delta^+_M\subset s^{-1}\Delta^+$). 
+
+Now 
+\[
+s^{-1} F_{l-q} = (\underbrace{0, \cdots, 0,l-q}_p,\underbrace{0,\cdots, 0}_q) 
++\frac{1}{2}
+\]
+is the unique weight of $F_{l-q}$, assume one weight vector is $w_{l-q}$.
+
+The heighest weight vecter $w$ of $M$-module $W$ will map into the span of
+$v_l\otimes(w_{1-q})^*$, where $v_l$ is the heighest weight of $L_l$. 
+
+Since 
+\[
+\Hom_M(W\otimes F_{l-q},L_l)=\Hom_M(W, L_l\otimes F_{l-q}^*)\cong \bC
+\]
+is dimension $1$. 
+We only need to understand the immage of heighest weight vecter in 
+$L_l\otimes F_{l-q}^*$.
+
+\subsection{direct compute}
+Realize $F_{l}$ on $\sS^l(\bC^n)$. 
+I.e. $F_{l}$ is the space of degree $l$ homogeneous on $\bC^n$.
+$E_{i,j}\in \fuu(n)_\bC$ act by $x_i\partial_{x_j}$, for $i\neq j$.
+$E_{i,i}$ act by $x_i\partial_{x_i}+\frac{1}{2}$.
+
+Let $w^*$ denote the dual of $w\in F_{l}$ in $F_{l}^*$. 
+
+Now,
+for $X \asp(n,\bC)$,  
+we have 
+\[
+w\leftrightarrow 
+X(v_l\otimes \inn{w_{l-q}^*}{\cdot w})(k)
+ = p(\Ad(k)X v_l\otimes \inn{w_{l-q}^*}{kw}) 
+\]
+
+Let $k = (k_{i,j})\in U(n)$
+\begin{enumerate}[(i).]
+\item 
+\[
+X = \begin{pmatrix} 
+0 & E_{i,j}\\
+0 & 0
+\end{pmatrix}
+\]
+Then 
+\[
+\Ad(k) X = 
+\begin{pmatrix}
+0 & k E_{i,j} k^T\
+0 & 0
+\end{pmatrix}
+\]
+\end{enumerate}
+
+\subsection{emmbeding?}
+Let 
 
 \bibliography{bib/reppapers}{}
 \bibliographystyle{alpha}
