@@ -67,7 +67,7 @@ readFile <- function(inFilename) {
 
 
 ## main function to treat the data
-run <- function(inFilename,ttt=8) {
+run <- function(inFilename,ttt=8,AB=TRUE) {
   ## file name pattern: ?????.bin, then get ????? part. 
   boutname <- sub(".bin$","", inFilename)
   ## read data from file
@@ -76,7 +76,9 @@ run <- function(inFilename,ttt=8) {
 
   ## Formula: AdErr = X_k -  X_Dense
   dErr <- adat[,1:(Re-Rb+1),] - adat[,rep("Dense",Re-Rb+1),]
-  AdErr <- dErr
+
+  if(AB) AdErr <- abs(dErr)
+  else   AdErr <- dErr
   ## Formula: mAdErr = |mean(X_k -  X_Dense)|
   ## mAdErr is a 2-dim array, 1st-dimension is k, 2nd-dim is Quantile
   mAdErr <- abs(apply(AdErr, c(2,3), mean,trim=.05))[1:(Re-Rb+1-ttt),]
@@ -112,8 +114,8 @@ run <- function(inFilename,ttt=8) {
   dev.off()
   
   ## regression for each quantile & plot the result.
-  alm <- function(x) {return(lm(log(Q)~P, data.frame(Q=x[1:(Re-Rb-ttt+1)],P=Rb:(Re-ttt))))}
-  rLM <- apply(mAdErr, c(2), alm)
+  alm <- function(x) {return(lm(Q~P, data.frame(Q=x[1:(Re-Rb-ttt+1)],P=Rb:(Re-ttt))))}
+  rLM <- apply(l2mAdErr, c(2), alm)
   getp <- function(x) {return(coef(x)["P"])}
   PrLM <- sapply(rLM, getp)
   pdf(paste(boutname,".rato.pdf",sep=""))
@@ -121,6 +123,7 @@ run <- function(inFilename,ttt=8) {
        main=sprintf(
          "Empirical discrete Error Rato under different Quantiles, sim=%g",
          ndata))
+  text(RQuantiles, -as.vector(PrLM), -as.vector(PrLM),pos=1,cex=.3,col="red",)
   dev.off()
 
   if(FALSE) {

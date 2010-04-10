@@ -152,7 +152,7 @@ Real Option::EPrice(Real S0, Real K, Real T, int n)
   dis = exp(-r*dt);
   rho = S0/K;
   OrderedPath.clear();
-  return K*pprice(n+1,0);
+  return K*pprice(n,0);
 }
 
 
@@ -175,7 +175,7 @@ int main(int argc,
 
 
   ostringstream SoutFilename;
-  SoutFilename << "bitree_S0" << S0 << "_K_"<< K << "_alpha"<< alpha << "_r" << r << "_sigma_" << sigma << "_T_" << T<< "_Bn_"<< Bn <<"_En_"<< En;
+  SoutFilename << "bitree2_S0" << S0 << "_K_"<< K << "_alpha"<< alpha << "_r" << r << "_sigma_" << sigma << "_T_" << T<< "_Bn_"<< Bn <<"_En_"<< En;
   SoutFilename << ".txt";
 
   
@@ -192,7 +192,7 @@ int main(int argc,
   {
 #pragma omp single 
     {
-    cerr << "num threads:"<<omp_get_num_threads()<<endl;
+      cerr << "num threads:"<<omp_get_num_threads()<<endl;
     }
 #pragma omp for 
   for(n=Bn;n<= En; n+=2)

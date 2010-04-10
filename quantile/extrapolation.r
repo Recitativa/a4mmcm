@@ -1,13 +1,15 @@
-richard <- function(d,p=.5) {
+richard <- function(d,p=.5, do_log=FALSE,f1=log,f2=exp) {
   n <- length(d$h)
   aa <- array(rep(0.0,n*n),dim=c(n,n))
   aa[,1] <- d$v;
-  tt <- d$h[2:n]/d$h[1:n-1]
+  if(do_log) aa[,1] <- f1(aa[,1])
+  tt <- d$h[2:n]/d$h[1:(n-1)]
   if( length(p)==1) p<- 1:n*p
   for(i in 1:(n-1))
     aa[1:(n-i),i+1] <- (tt[1:(n-i)]^p[i]*aa[1:(n-i),i]-
                         aa[2:(n-i+1)]
                         )/(tt[1:(n-i)]^p[i]-1)
+  if(do_log) aa <- f2(aa)
   d$aa <- aa
   return(d)
 }
