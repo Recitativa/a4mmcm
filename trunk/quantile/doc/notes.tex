@@ -12,26 +12,9 @@
 \usepackage{eufrak}
 \usepackage{amscd}
 
-\usepackage{multirow}
+
 \usepackage{indentfirst}
-\usepackage{float}
 
-
-\textwidth 14.8cm
-
-\textheight 21.8cm
-
-\hoffset 0cm
-
-\voffset 0cm
-
-\oddsidemargin 1.2cm
-
-\headsep 1.0cm
-
-\headheight 6pt
-
-\topmargin 0.5cm
 
 \title{Notes}
 \author{Zhu Yong Ting}
@@ -732,7 +715,7 @@ With
 K=100, r=0.05, \sigma=0.2, \alpha=0.5, T=1
 \]
 
-\begin{tabular}{l|llll}
+\begin{tabular}{l|lllllll}
 $S_0$ & $90$ & $95$ & $100$ & $105$ & $110$ & $115$ & $120$\\
 \hline
   30 & 1.80059 & 3.46444 & 5.98097 & 9.35544 & 13.3482 & 17.7490 & 22.3748 \\
@@ -742,6 +725,8 @@ $S_0$ & $90$ & $95$ & $100$ & $105$ & $110$ & $115$ & $120$\\
   38 & 1.75524 & 3.41137 & 5.90549 & 9.26586 & 13.2571 & 17.6396 & 22.2588 \\
  Paper & 1.6588 & 3.2695 & 5.7501 & 9.0895 & 13.0213 & 17.4030 & 22.0456\\
 \end{tabular}
+
+Data is from \cite{Laura2001}
 
 \section{Discrite v.s. Continous}
 \subsection{Euler scheme and randon walk}
@@ -800,6 +785,23 @@ The result:
    \caption{regression result of convergence rate}
 \end{figure}
 
+%\begin{figure}[htbp]
+ %  \centering
+  % \includegraphics{cnout_7_27_lines.pdf} % requires the graphicx package
+   %\caption{Absolute error }
+%\end{figure}
+ 
+ %\begin{figure}[htbp]
+   %\centering
+   %\includegraphics{cnout_7_27_llines.pdf} % requires the graphicx package
+   %\caption{Logarithm of error}
+%\end{figure}
+ 
+% \begin{figure}[htbp]
+ %  \centering
+  % \includegraphics{cnout_7_27_rato.pdf} % requires the graphicx package
+   %\caption{regression result of convergence rate}
+%\end{figure}
 
 
 
@@ -866,17 +868,20 @@ we use following transform
 + \sqrt{T}\tsigma W_{t/T}\\
 \mu &= \tmu \sqrt{T}/\tsigma
 \end{align*}
+
 We denote
 \begin{equation}
 g'(\mu)=\mu \Phi(\mu) + \frac{1}{\sqrt{2\pi}} e^{-\frac{1}{2}\mu^2 }
 \end{equation}
 
-we derive the follwoing formula:
+We derive the follwoing formula:
 \begin{equation}\label{eq:maxest}
-E\max_{0\leq t\leq T} \tB(t) - E \max_{0\leq n \leq N} \tB(nT/N) =
- -\frac{\zeta(1/2)}{\sqrt{2\pi}}\tsigma \sqrt{T/N}
+\begin{split}
+&E\max_{0\leq t\leq T} \tB(t) - E \max_{0\leq n \leq N} \tB(nT/N)\\ 
+= & -\frac{\zeta(1/2)}{\sqrt{2\pi}}\tsigma \sqrt{T/N}
  -\frac{2g(1)-\tmu\sqrt{T} / \tsigma}{4N}\tsigma\sqrt{T} +
 O(\sqrt{T}/N^{3/2})
+\end{split}
 \end{equation}
 
 Now combine $(\ref{eq:cpathdec})$ $(\ref{eq:dpathdec})$ and $(\ref{eq:maxest})$, for $0 < \alpha < 1$,
@@ -891,24 +896,17 @@ we get an very rough estimate of the apporximation order:
 = &  \EE{\sup_{t\leq \alpha{T}} S_t - \sup_{i\leq k} S_i} +
 \EE{\inf_{t \leq (1-\alpha)T} S'_t-\inf_{i\leq N-k} S'_i}\\
 =& -\frac{\zeta(1/2)}{\sqrt{2\pi}}\tsigma \sqrt{\frac{\alpha T}{\alpha N}} - \frac{2g'(\mu_1)-\mu_1}{4N}\tsigma\sqrt{\alpha T} +O(1/N^\frac{3}{2}) \\
-&-(\frac{\zeta(1/2)}{\sqrt{2\pi}}\tsigma \sqrt{\frac{(1-\alpha)T}{(1-\alpha)N}} - \frac{2g'(\mu_2) - \mu_2}{4N}\tsigma \sqrt{(1-\alpha)T} + O(1/N^\frac{3}{2})) \\
+&-\left(\frac{\zeta(1/2)}{\sqrt{2\pi}}\tsigma \sqrt{\frac{(1-\alpha)T}{(1-\alpha)N}} - \frac{2g'(\mu_2) - \mu_2}{4N}\tsigma \sqrt{(1-\alpha)T} + O(1/N^\frac{3}{2})\right) \\
 =& -\frac{\zeta(1/2) \tsigma}{\sqrt{2\pi}}\left(\sqrt{T/\alpha N}
 \sqrt{\alpha} - \sqrt{T/(1-\alpha)N}\sqrt{1-\alpha}\right) \\
-& - \frac{2g(1)}{4}\sqrt{T} \tsigma
-\left(\frac{1}{\alpha N} \sqrt{\alpha}
-  - \frac{1}{(1-\alpha)N}\sqrt{1-\alpha}\right) \\
-& + \tmu \left( \frac{1}{4\alpha N}\alpha
-  +\frac{1}{4(1-\alpha)N}(1-\alpha)\right)T
-+ O(\sqrt{T}/N^{\frac{3}{2}}) \\
-=& - \frac{2g(1)\sqrt{T}\tsigma}{4N}
-\left(\frac{1}{\sqrt{\alpha}}
-  - \frac{1}{\sqrt{1-\alpha}}\right) \\
-& + \frac{\tmu T}{2 N}
-+ O(1/N^{\frac{3}{2}})
+& - \frac{\tsigma\sqrt{T}}{4N}\left((2g'(\mu_1)-\mu_1)\sqrt\alpha - (2g'(\mu_2)-\mu_2)\sqrt{(1-\alpha)}\right) \\
+&+ O(1/N^\frac{3}{2}) \\
+=&- \frac{\tsigma\sqrt{T}}{4N}\left((2g'(\mu_1)-\mu_1)\sqrt\alpha - (2g'(\mu_2)-\mu_2)\sqrt{(1-\alpha)}\right) \\
+& + O(1/N^{\frac{3}{2}})
 \end{split}
 \end{equation}
-where $k = \alpha N$.
-The second last equality holds by view $\inf_{t\leq (1-\alpha)T} S'_t$ as
+where $k = \alpha N$, $\mu_1 =\tmu\sqrt{\alpha T}/\tsigma$, and $\mu_2 =\tmu\sqrt{(1-\alpha)T}/\tsigma$.
+The third last equality holds by view $\inf_{t\leq (1-\alpha)T} S'_t$ as
 $-\max_{t\leq (1-\alpha)T} (-S'_t)$.
 
 This estimate shows that the convergence order
@@ -918,8 +916,44 @@ Brownian motion does not have  drift ($\mu=0$), it is easy to see
 $\E M_{1/2,T} = \E -M_{1/2,T}$) $\E M_{1/2,T} = \E M_{k,n} = 0$.
 When the Brownian motion has drift, the order becomes $1$.
 
-Now, suppose that $f$ is an monotone Lipschitz continous function.
-WLOG, asuume
+Using the same algorithm in section Euler scheme and random walk, we ran a simulation to examine the above claim. 
+Here we first restate the parameter setting and algorithm.
+
+The parameter setting is : 
+\begin{equation}
+\mu = 0 ; \sigma = 1; T=1; N = 2^7 , 2 ^8 , ... 2 ^{27} ; X_0 = 0; \alpha =  \frac{1}{2} + \frac{j}{2^7} , j = 0, 1 , 2..., 2^6
+\end{equation}
+
+The algorithm: 
+\begin{enumerate}[1.]
+\item Generate $2^{27}$ normal random sample with $\mu =0$ , $\sigma = \sqrt {\frac{T}{2^27}}$  starting with $X_0 = 0$, add them up according to time and record them as $X_1$, $X_2 \cdots, X_{2^{27}}$
+\item Calculate the quantiles for sequence \{$X_j$, $j=1, 2, \cdots, 2^{27}$\}, use these quantiles as the continuous quantiles $M(\alpha , T)$
+\item Calculate the quantiles for sequence \{$X_j$, $j=k2^s$\}, $k=1, \cdots, 2^{27-s}$
+\item repeat the above for 1365 times and calculate the errors
+\end{enumerate}
+The result: 
+\begin{figure}[htbp]
+   \centering
+   \includegraphics{qnout_7_27_lines.pdf} % requires the graphicx package
+   \caption{ Errors }
+\end{figure}
+
+\begin{figure}[htbp]
+   \centering
+   \includegraphics{qnout_7_27_llines.pdf} % requires the graphicx package
+   \caption{ logarithm of Errors }
+\end{figure}
+
+\begin{figure}[htbp]
+   \centering
+   \includegraphics{qnout_7_27_rato.pdf} % requires the graphicx package
+   \caption{ convergence rate }
+\end{figure}
+
+
+
+Now, suppose that $f$ is an monotone Lipschitz continuos function.
+WLOG, asume 
 \begin{equation}\label{eq:lips}
 0 \leq f(x)-f(y) \leq C (x-y) \quad \forall x>y,
 \end{equation}
