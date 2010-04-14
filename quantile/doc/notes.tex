@@ -14,7 +14,7 @@
 
 
 \usepackage{indentfirst}
-
+\linespread{2.0}
 
 \title{Notes}
 \author{Zhu Yong Ting}
@@ -844,6 +844,7 @@ S'_t = S_{\alpha T+t} - S_{\alpha_T}.
 For Brownian motion case, this formular were proved in many differet ways
 and original due to \cite{Dassios1995}.
 
+
 \subsection{An estimate of week discrete error}
 \cite{Janssen2008} gives a estimate of the difference of  expatations
 between maximum of borwnian motion and associated random walk.
@@ -972,6 +973,98 @@ Hence
 \leq \max\Set{\sqrt{\alpha}, \sqrt{1-\alpha}}
 C\frac{-\zeta(1/2)}{\sqrt{2\pi}}\sqrt{T/N}  + O(1/N)
 \]
+
+\subsection{connecting the discrete and continous $\alpha$-quantile options}
+We follow \cite{Broadie1999}.
+
+In this section we omit the subscript $\alpha$ and $k$. Denote 
+$M$ and $M_m$ be the $\alpha$ quantile of Brownian motion with dirft $\mu$ 
+and variance $\sigma$ at time $T$ and its step lenght $T/m$ version
+ respectively. 
+
+From the provious section, we know the mean of discrete error satisfies
+\[
+E(M-M_m) = \beta /m + O(m^{-\frac{3}{2}}),
+\]
+where 
+\[
+\beta = - \frac{\tsigma\sqrt{T}}{4}\left((2g'(\mu_1)-\mu_1)\sqrt\alpha - 
+  (2g'(\mu_2)-\mu_2)\sqrt{(1-\alpha)}\right).
+\]
+
+\[
+\begin{split}
+ & E(e^{M_m} - x)^+ \\
+=& 
+E(e^M-x)^+ - E(e^M-e^{M_m}; e^M,e^{M_m}>x)\\
+&+E(e^{M_m}-x;e^{M_m}\geq k > e^M)
+-E(e^M-x;e^M\geq k > e^{M_m})\\
+=& A - B + C + D
+\end{split}
+\]
+
+Assume $m(e^M-e^{M_m})$ convergence in distribution to some random variable $U$.
+Then, 
+\[
+0 \leq C \leq E(e^{M_m}-e^M;e^{M_m}\geq k > e^M)
+\] 
+Since $P(e^{M_m}\geq k > e^M) \rightarrow 0$,
+\[
+E(m(e^{M_m}-e^M);e^{M_m}\geq k > e^M) \rightarrow 0
+\]
+by the uniformly integrability. So $C$ and similary $D$ is $o(1/m)$.
+If the assumption is not true, if we can prove
+\begin{equation}
+E(e^{M_m}-e^M;e^{M_m}\geq k > e^M) \sim o(1/m) \label{eq:sp1}
+\end{equation}
+it is also OK. 
+
+Now, 
+\begin{align}
+  B =&  E(e^M-e^{M_m}; e^M,e^{M_m}>x) \notag \\
+  =& E(e^M-e^{M_m}; e^M>x) -  E(e^M-e^{M_m}; e^{M_m}<x<e^M) \notag \\
+  =& E(e^M-e^{M_m}; e^M>x) + o(1/m) \notag \\
+  =& E(e^M \beta/m;e^M>x) +o(1/m) \label{eq:sp2}
+\end{align}
+
+Hence,
+\begin{align}
+ & E((e^{M_m}-x)^+) \notag\\
+=& E((e^M-x);e^M>x) + E(e^M \beta/m;e^M>x) + o(1/m) \notag\\
+=& E(e^M(1+\beta/m)-x;e^M>x) + o(1/m) \notag \\
+=& E(e^{M+\beta/m}-x;e^M>x) + o(1/m) \label{eq:cor1}\\
+=& e^{\beta/m}E(e^M-xe^{-\beta/m};e^M>x) + o(1/m) \notag\\
+=& e^{\beta/m}E(e^M-xe^{-\beta/m};e^M>xe^{-\beta/m})  \notag\\
+ & +e^{\beta/m}E(e^M-xe^{-\beta/m};e^M\in [xe^{-\beta/m}, x]) \label{eq:sp3} 
+o(1/m)\\
+= &  e^{\beta/m}E(e^M-xe^{-\beta/m};e^M>xe^{-\beta/m} + o(1/m) \label{eq:cor2}
+\end{align}
+
+For equation (\ref{eq:sp3}), 
+\[
+\begin{split}
+|E(e^M-xe^{-\beta/m};e^M\in [xe^{-\beta/m}, x])|
+\leq x|1-e^{-\beta/m}|P(M \in [\log x,\log x -\beta/m])
+= O(1/m)O(1/m) = o(1/m) 
+\end{split}
+\]
+
+\def\bM{\overline{M}}
+\def\darrow{\xrightarrow{\mathcal{D}}}
+Now we disscuse the equation (\ref{eq:sp2}).
+Use Taylor expension, we get
+\[
+e^M-e^{M_m} = e^M(M-M_m) + \frac{1}{2}e^{\bM_m}(M-M_m)^2
+\]
+For some $\bM_m$ between $M$ and $M_m$.
+Now assume 
+\[
+m^\gamma(M-M_m) \darrow W
+\]
+
+
+Now both equation (\ref{eq:cor1}) and (\ref{eq:cor2}) 
+are correction formulars.
 
 
 \subsection{A study of the joint distribution of Brownian motion and its $\alpha$-quantile}
