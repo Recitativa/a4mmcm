@@ -11,7 +11,7 @@
 \usepackage{paralist}
 \usepackage{eufrak}
 \usepackage{amscd}
-
+%%\usepackage{eucal}
 
 \usepackage{indentfirst}
 \linespread{2.0}
@@ -988,8 +988,8 @@ E(M-M_m) = \beta /m + O(m^{-\frac{3}{2}}),
 \]
 where 
 \[
-\beta = - \frac{\tsigma\sqrt{T}}{4}\left((2g'(\mu_1)-\mu_1)\sqrt\alpha - 
-  (2g'(\mu_2)-\mu_2)\sqrt{(1-\alpha)}\right).
+\beta = - \frac{\tsigma\sqrt{T}}{4}\left((2g'(\mu_1)-\mu_1)\sqrt{\alpha} 
+  -(2g'(\mu_2)-\mu_2)\sqrt{(1-\alpha)}\right).
 \]
 
 \[
@@ -1032,25 +1032,30 @@ Hence,
  & E((e^{M_m}-x)^+) \notag\\
 =& E((e^M-x);e^M>x) + E(e^M \beta/m;e^M>x) + o(1/m) \notag\\
 =& E(e^M(1+\beta/m)-x;e^M>x) + o(1/m) \notag \\
-=& E(e^{M+\beta/m}-x;e^M>x) + o(1/m) \label{eq:cor1}\\
+=& E[(e^{M+\beta/m}-x)^+] + o(1/m) \label{eq:cor1}\\
 =& e^{\beta/m}E(e^M-xe^{-\beta/m};e^M>x) + o(1/m) \notag\\
 =& e^{\beta/m}E(e^M-xe^{-\beta/m};e^M>xe^{-\beta/m})  \notag\\
  & +e^{\beta/m}E(e^M-xe^{-\beta/m};e^M\in [xe^{-\beta/m}, x]) \label{eq:sp3} 
 o(1/m)\\
-= &  e^{\beta/m}E(e^M-xe^{-\beta/m};e^M>xe^{-\beta/m} + o(1/m) \label{eq:cor2}
+= &  e^{\beta/m}E[e^M-xe^{-\beta/m};e^M>xe^{-\beta/m}] + o(1/m) 
+= & e^{\beta/m}E[(e^M-xe^{-\beta/m})^+] + o(1/m) \label{eq:cor2}
 \end{align}
+Now both equation (\ref{eq:cor1}) and (\ref{eq:cor2}) 
+are correction formulars.
+
 
 For equation (\ref{eq:sp3}), 
 \[
 \begin{split}
-|E(e^M-xe^{-\beta/m};e^M\in [xe^{-\beta/m}, x])|
-\leq x|1-e^{-\beta/m}|P(M \in [\log x,\log x -\beta/m])
-= O(1/m)O(1/m) = o(1/m) 
+&|E(e^M-xe^{-\beta/m};e^M\in [xe^{-\beta/m}, x])|\\
+\leq& x|1-e^{-\beta/m}|P(M \in [\log x,\log x -\beta/m])\\
+=& O(1/m)O(1/m) = o(1/m) 
 \end{split}
 \]
 
 \def\bM{\overline{M}}
 \def\darrow{\xrightarrow{\mathcal{D}}}
+\def\Cov{\mathrm{Cov}}
 Now we disscuse the equation (\ref{eq:sp2}).
 Use Taylor expension, we get
 \[
@@ -1059,12 +1064,51 @@ e^M-e^{M_m} = e^M(M-M_m) + \frac{1}{2}e^{\bM_m}(M-M_m)^2
 For some $\bM_m$ between $M$ and $M_m$.
 Now assume 
 \[
-m^\gamma(M-M_m) \darrow W
+m^\gamma(M-M_m)=W_m \darrow W,
 \]
+where $\gamma > \frac{1}{2}$ as we see in the simulation.
+As later, we will prove $e^{\bM_m}m^{2\gamma}(M-M_m)^2$ is uniformly integrable.
+So 
+\[
+m^{2\gamma}(E[e^M]-E[e^{M_m}] - E[e^M(M-M_m)])\darrow C,
+\]
+for some constant. 
+Hence, 
+\begin{align}
+&E[e^M]-E[e^{M_m}] \notag \\
+=& E[e^M(M-M_m)] + C m^{-2\gamma} +o(m^{-2\gamma}) \notag\\
+=& E[e^M]E[M-M_m] + \Cov(e^M,M-M_m) + o(1/m) \notag\\
+=& E[e^M]\beta/m +  \Cov(e^M,M-M_m) + o(1/m)\notag\\
+=& E[e^M]\beta/m + o(1/m) \label{eq:sp4}
+\end{align}
+To varify equation (\ref{eq:sp4}) we need to justify 
+\[
+\Cov(e^M,M-M_m)\sim o(1/m),
+\]
+by uniformly integrability argument? 
 
+To check the uniformly integrability of $e^{\bM_m}m^{2\gamma}(M-M_m)^2$,
+we use the Schwarz ineuality.
+\[
+E[(e^{\bM_m}m^{2\gamma}(M-M_m)^2)^2]
+\leq E[e^{4\bM_m}] E[(m^{2\gamma}(M-M_m))^4]
+\]
+But, we have 
+\[
+\sup_mE[e^{p\bM_m}] \leq E[e^p\max_{0\leq t\leq T}B_t] < \infty \quad \forall p>0.
+\]
+If we have 
+\[
+\sup_m E[|m^{2\gamma}(M-M_m)|^4] \leq \infty
+\]
+we can prove the uinformly integrability. 
 
-Now both equation (\ref{eq:cor1}) and (\ref{eq:cor2}) 
-are correction formulars.
+In fact, we can modify this proof by using H\"older's inequality, then 
+we only need
+\[
+\sup_m E[|m^{2\gamma}(M-M_m)|^p] < \infty 
+\]
+for some $p>2$. 
 
 
 \subsection{A study of the joint distribution of Brownian motion and its $\alpha$-quantile}
