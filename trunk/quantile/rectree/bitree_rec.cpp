@@ -6,7 +6,7 @@
 #include <cassert>
 #include <fstream>
 #include <sstream>
-
+#include "cdf.hpp"
 
 using namespace std;
 
@@ -155,7 +155,12 @@ Real Option::EPrice(Real S0, Real K, Real T, int n)
   return K*pprice(n,0);
 }
 
+# define M_PI 3.14159265358979323846 /* pi */
 
+Real gg(Real mu) 
+{
+  return mu*CDF(mu)+ 1.0/sqrt(2*M_PI)*exp(-mu*mu/2);
+}
 
 int main(int argc,      
           char *argv[],  
@@ -185,17 +190,18 @@ int main(int argc,
   outf << "Pricing S0:" << S0 << " K:"<< K << " alpha:"<< alpha << " r:" << r << " sigma:" << sigma << " T:" << T << endl;
 
   Option A(r, sigma, alpha);
- 
-  Real price;
 
-#pragma omp parallel shared(outf) firstprivate(A) num_threads(10)
+  Real price,price2;
+  Real mu1,mu2,gam;
+
+#pragma omp parallel shared(outf) firstprivate(A) num_threads(1)
   {
 #pragma omp single 
     {
       cerr << "num threads:"<<omp_get_num_threads()<<endl;
     }
 #pragma omp for 
-  for(n=Bn;n<= En; n+=2)
+  for(n=Bn;n<= En; n+=1)
     {
 
       {
@@ -203,11 +209,20 @@ int main(int argc,
 	{
 	  cerr<< "n:" << n << endl;
 	}
+	
 	price = A.EPrice(S0,K,T,n);
+
+	mu1=A.mu*sqrt(alpha*T)/sigma;			
+	mu2= -A.mu*sqrt((1-A.alpha)*T)/A.sigma;
+	gam = sigma*sqrt(T)/4*((2*gg(mu1)-mu1)*sqrt(alpha)	\
+			       -(2*gg(mu2)-mu2)*sqrt(1-alpha))/n;
+	gam = exp(gam);
+	cerr  << mu1 << " "<< mu2 << " " << gam << endl;
+
+	price2 = A.EPrice(S0, K*gam,T,n)/gam;
 #pragma omp critical
 	{
-	  outf << A.su << " " << A.sdelta <<" "<< A.alpha << " " << A.dis <<" " << A.rho << endl;
-	  outf << A.dt <<" " << n << " " << price << endl;
+	  outf << n << " " << price << " " << price2<< endl;
 	}
       }
     }
