@@ -1,4 +1,3 @@
-#include <omp.h>
 #include <iostream>
 #include <list>
 #include <cmath>
@@ -66,7 +65,7 @@ Real Option::EPrice(Real S0, Real K, Real T, int n)
   rho = S0/K;
   OrderedPath.clear();
   p= K*ppprice(n,0.0,n);
-  assert(OrderedPath.empty())
+  assert(OrderedPath.empty());
   return p;
 }
 
@@ -100,24 +99,11 @@ int main(int argc,
  
   Real price;
 
-#pragma omp parallel shared(outf) firstprivate(A) num_threads(10)
-  {
-#pragma omp single 
-    {
-    cerr << "num threads:"<<omp_get_num_threads()<<endl;
-    }
-#pragma omp for 
-  for(n=Bn;n<= En; n+=1)
-    {
-      {
-	price = A.EPrice(S0,K,T,n);
-#pragma omp critical
-	{
-	  outf << n << " " << price << endl;
-	}
-      }
-    }
+  for(n=Bn;n<= En; n+=1) {
+    price = A.EPrice(S0,K,T,n);
+    outf << n << " " << price << endl;  
   }
+
   outf.close();
   return 0;
 }
