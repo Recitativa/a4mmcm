@@ -37,18 +37,20 @@ Real Option::ppprice(int steps, Real ZZ,int n) {
   OrderedPath.push_front(ZZ);
   it = OrderedPath.begin();
   if(steps==0) {
-    Real Walpha;
+    Real Walpha,Z1,Z2;
     list<Real>::iterator iit;
     int i;
     OrderedPath.sort();
     for(iit = OrderedPath.begin(), i=0;
-	i<=n*alpha; i++,iit++) NULL;
-    Walpha = *(--iit);
+	i<n*alpha; i++,iit++) NULL;
+    Z2 = *iit;
+    Z1 = *(--iit);
+    Walpha = Z1+(Z2-Z1)*(alpha*n-i+1);
     OrderedPath.erase(it);
     return payfun(Walpha);
   }
-  g1 = ppprice(steps-1,ZZ+su-sdelta, n);
-  g2 = ppprice(steps-1,ZZ+su+sdelta, n);
+  g1 = ppprice(steps-1,ZZ+su+sdelta, n);
+  g2 = ppprice(steps-1,ZZ+su-sdelta, n);
   OrderedPath.erase(it);
   return dis*(g1+g2)*.5;
 }
@@ -63,9 +65,8 @@ Real Option::EPrice(Real S0, Real K, Real T, int n)
   dis = exp(-r*dt);
   rho = S0/K;
   OrderedPath.clear();
-  OrderedPath.push_front(0);
-  p= K*ppprice(n-1,0.0,n);
-  OrderedPath.clear();
+  p= K*ppprice(n,0.0,n);
+  assert(OrderedPath.empty());
   return p;
 }
 
@@ -99,28 +100,15 @@ int main(int argc,
  
   Real price;
 
-#pragma omp parallel shared(outf) firstprivate(A) num_threads(10)
+#pragma omp parallel shared(outf)  num_threads(10)
   {
-#pragma omp single 
-    {
-    cerr << "num threads:"<<omp_get_num_threads()<<endl;
-    }
-#pragma omp for 
-  for(n=Bn;n<= En; n+=1)
-    {
-      {
-#pragma omp critical
-	{
-	  cerr<< "n:" << n << endl;
-	}
-	price = A.EPrice(S0,K,T,n);
-#pragma omp critical
-	{
-	  outf << n << " " << price << endl;
-	}
-      }
+#pragma omp for
+    for(n=Bn;n<= En; n+=1) {
+      price = A.EPrice(S0,K,T,n);
+      outf << n << " " << price << endl;  
     }
   }
+
   outf.close();
   return 0;
 }
