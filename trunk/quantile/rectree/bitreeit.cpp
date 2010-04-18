@@ -167,7 +167,7 @@ int main(int argc,
 
 
   ostringstream SoutFilename;
-  SoutFilename << "biit_S0" << S0 << "_K_"<< K << "_alpha"<< alpha << "_r" << r << "_sigma_" << sigma << "_T_" << T<< "_Bn_"<< Bn <<"_En_"<< En;
+  SoutFilename << "bi_S0" << S0 << "_K_"<< K << "_alpha"<< alpha << "_r" << r << "_sigma_" << sigma << "_T_" << T<< "_Bn_"<< Bn <<"_En_"<< En;
   SoutFilename << ".txt";
 
   
@@ -176,15 +176,21 @@ int main(int argc,
   outf.open(SoutFilename.str().c_str(),ios::app);
   outf << "Pricing S0:" << S0 << " K:"<< K << " alpha:"<< alpha << " r:" << r << " sigma:" << sigma << " T:" << T << endl;
 
-  Option A(r, sigma, alpha);
-
-  Real price;
-
-  for(n=Bn;n<= En; n+=1)
+#pragma omp parallel shared(outf)  num_threads(10)
+  {
+#pragma omp single
     {
-      price = A.EPrice(S0,K,T,n);
-      outf << n << " " << price << endl;  
+      cerr << "num threads:"<<omp_get_num_threads()<<endl;
     }
+#pragma omp for
+    for(n=Bn;n<= En; n+=1)
+      {
+	Option A(r, sigma, alpha);
+	Real price;
+	price = A.EPrice(S0,K,T,n);
+	outf << n << " " << price << endl;  
+      }
+  }
 
   outf.close();
   return 0;
