@@ -1,10 +1,8 @@
-
 #include <gsl/gsl_cdf.h>
 #include <gsl/gsl_integration.h>
 #include <cstdio>
 #include <iostream>
 
-//#include <stl_relops.h>
 
 using namespace std;
 
@@ -257,6 +255,6 @@ struct StepIter :
   bool operator <= (const StepIter<T> & rhs) const { return !(rhs < *this);}
   bool operator >= (const StepIter<T> & rhs) const { return rhs <= *this;}
   bool operator== (const StepIter<T> & rhs) const {
-    return p == rhs.p && step==rhs.step;}
-  bool operator != (const StepIter<T> & rhs) const { return !(*this == rhs); }
+    return (p == rhs.p) && (step==rhs.step);}
+  bool operator != (const StepIter<T> & rhs) const { return !((*this) == rhs); }
 };
