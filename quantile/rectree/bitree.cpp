@@ -96,14 +96,14 @@ int main(int argc,
   outf.open(SoutFilename.str().c_str(),ios::app);
   outf << "Pricing S0:" << S0 << " K:"<< K << " alpha:"<< alpha << " r:" << r << " sigma:" << sigma << " T:" << T << endl;
 
-  Option A(r, sigma, alpha);
  
-  Real price;
 
 #pragma omp parallel shared(outf)  num_threads(10)
   {
 #pragma omp for
     for(n=Bn;n<= En; n+=1) {
+      Option A(r, sigma, alpha);
+      Real price;
       price = A.EPrice(S0,K,T,n);
       outf << n << " " << price << endl;  
     }
