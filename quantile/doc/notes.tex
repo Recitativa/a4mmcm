@@ -486,22 +486,22 @@ The convergence of Monte Carlo is guaranteed by large number theory. Now the foc
 
 
 
-\chapter{$\alpha$-quantile}
-For a stochastic prcess $X_t$,
+\chapter{$\alpha$-quantile and $\alpha$-quantile option}
+For a stochastic process $X_t$,
 the $\alpha$-quantile $( 0 \leq \alpha \leq 1)$
 is defined by
 \[
 M(\alpha,t)(\omega) = \inf\Set{x:\int_0^t 1_{(X_s (\omega)\leq x)} > \alpha t}.
 \]
-Then we can see that $\inf_{0\leq s \leq t}  X_s = lim_{\alpha\to 0}M(\alpha,t)$ and $\sup_{(0\leq s \leq t})  X_s = lim_{\alpha\to 1} M(\alpha, t)$. In this sense $\alpha$-quantile option can be considered as a general class of lookback option. Unlike lookback option whose payoff depends on the maximum or minimum of the price of sock before maturity as mentioned before, $\alpha$-quantile option's payoff depends on the quantile of the stock price process. This option was first introduced by \cite{Miura} in 1992. \cite{Akahori1995} gave a generalized arc-sine law for this type of options by Feynman-Kac formula.
-When $X_{t}$ is a Brownian motion $B_t$, using similar mathematical tools, Dassios obtained the explicit density of quantile option and gave a exceptional representation of the distribution of quantile.  In \cite{Dassios1995}, for $\alpha\in[0,1]$, $t\leq 0$, Dassios proved that
+Then we can see that $\inf_{0\leq s \leq t}  X_s = lim_{\alpha\to 0}M(\alpha,t)$ and $\sup_{(0\leq s \leq t})  X_s = lim_{\alpha\to 1} M(\alpha, t)$. %In this sense $\alpha$-quantile option can be considered as a general class of lookback option. Unlike lookback option whose payoff depends on the maximum or minimum of the price of stock before maturity as mentioned before, $\alpha$-quantile option's payoff depends on the quantile of the stock price process. This option was first introduced by \cite{Miura} in 1992. \cite{Akahori1995} gave a generalized arc-sine law for this type of options by Feynman-Kac formula.
+When $X_{t}$ is a Brownian motion $B_t$, using Feynman-Kac Dassios obtained the explicit density of $\alpha$-quantile and gave a exceptional representation of the distribution of quantile. In \cite{Dassios1995}, for $\alpha\in[0,1]$, $t\leq 0$, Dassios proved that
 \begin{equation}\label{eq:Dassios}
 M(\alpha, t) \eqlaw \sup_{s \leq \alpha t} X_s + \inf_{s\leq (1-\alpha)t} X'_s ,
 \end{equation}
-where $X'$ is a independent copy of $X$. Later in 1995, Embrechts, Rogers and Yor \cite{EmRoge1995} gave two proofs of this theorem without using Feynman-Kac computations.
+where $X'$ is a independent copy of $X$. Later \cite{EmRoge1995} gave two proofs of this theorem without using Feynman-Kac computations.
 
-
-\section{The distribution function of $\alpha$-quantile of Brownian motion}
+\section{$\alpha$-quantile option}
+\subsection{The distribution function of $\alpha$-quantile of Brownian motion}
 In 1995, Yor gave the distribution function of the $\alpha$-quantile of Brownian motion without drift in \cite{Yor1995}. He obtained this result by simplifying related integral expressions in \cite{Miura}. When $\mu = 0$, that is Brownian motion $B_t$ is without drift, define $\theta = ((1 - \alpha)/(\alpha))^{1/2}$, for the Brownian quantiles on time interval $[0, 1]$,  in \cite{Yor1995} we find:
 \begin{equation}
 P(M(\alpha,1)\in dx)= \begin{cases}
@@ -540,196 +540,80 @@ g_2 (x;t) = \begin{cases}
 \end{equation}
 
 
-\section{The advantage of $\alpha$-quantile option}
-As we discussed before, lookback option is a path-dependent option with payoff calculated with the maximum or minimum price of the underlying asset during the life of the option. For example, a fixed strike lookback call opition get the highest value obtained within the option's lifetime. In this case, to the holder, it can be viewed as a protecation against large drop of stock price. This can be regarded as a method to deal with the unfavor movement of a particular stock. The release of an prolonged lawsuit which may have a strong negative effect on the stock price. On the other side, lookback put option provides an insurance against large rises. But these characters also make lookback options too expensive. Quantile option is one product that overcome this shortcoming of lookbacks. Quantile option is cheaper than lookbacks. While it still provide partial protection against market movements. This property of quantile option was first discussed by \cite{Ballotta2001}.
-
-
-Another advantage of quantile option is that the strong path dependence of its payoff make it immunize to possible market manipulation. Because the payoff of lookback using the maximum of stock price during option's lifetime. Particularly for at the money option close to maturity, which in this case are most vulnerable to the stock movement closing to maturity. Firms have influence on market price can use this advantage to leading market price move to their favor direction. But since quantile option are strongly dependent, the manipulation effect is limited. 
-
-
-\subsection{Tree method for European Option}
-Like lookback option, quantile option is also path-dependent. What makes things difficult is that quantile option is not markov. Normal tree methods which usually involve backward induction do not work in this case. We need to record all the information of the path because of lack of markov property, which will lead the tree to explosion computationally.
-Kwok and Lau in \cite{Kwok2001} proposed a special way to apply tree method to price quantile option. In this paper, they find a relation between the price of quantile option and the price of cumulative Parisian option. By this approximation, they can simplify the pricing of quantile option. In their paper, they assume that there are $M$ time steps for the whole monitoring period $[0,T]$, and they define ${S^M}_j$, $j = - M$, ...$0$,$1$,...,$M$ as the discrete asset prices at maturity. Under trinomial tree method, the possible prices happened in one tree are limited to ${S^M}_j$,  $j = - M$, ...$0$,$1$, ...,$M$, which is also true for the value taken by quantile of brownian motion. Therefore they derived that
-\begin{equation}\label{eq:kowk1}
-V(\alpha, T) = e^{-rT} \sum^{M}_{j=-M}P[M(\alpha,T)=S^{M}_{j}]\max(S^{M}_{j}-X,0),
-\end{equation}
-where $V(\alpha,T)$ is for the value of $\alpha$-quantile option whose maturity it $T$, $P[M(\alpha,T)=S^{M}_{j}]$ is the probability that the quantile of Brownian motion achieve the value ${S^M}_j$,  $j = - M$, ...$0$,$1$, ...,$M$. In their paper, they observed that the difference between the prices of two cumulative Parisian binary options is a good approximation for $P[M(\alpha,T)=S^{M}_{j}]$ multiplies discount factor $e^{-rT}$, ie.
-\begin{equation}\label{eq:kowk2}
-e^{-rT}P[M(\alpha,T)=S^{M}_{j}] \approx V^{bin}_{cum}[(1-\alpha)T, S^{M}_{j-1}]-V_{cum}^{bin}[(1-\alpha)T, S_{j}^{M}]
-\text{ for }j=-M, ... , 0, 1, ... , M
-\end{equation}
-where $V^{bin}_{cum}[d,B]$ is denoted as the price of continuously monitored cumulative Parisian binary option with down barrier $B$, and $d$ be the minimum cumulative time staying above the down barrier to avoid knock-out.
-
-
-Combining equation (\ref{eq:kowk1})and (\ref{eq:kowk2}), they get
-\begin{equation}\label{eq:kowk3}
-V_{alp} = \sum^M_{j=-M} \max (S^M_j - X,0) \times \{V_{cum}^{bin}[(1-\alpha)T, S^M_{j-1}] - V^{bin}_{cum}[(1-\alpha)T, S^M_j]\} ,
-\end{equation}
-where $V^{bin}_{cum}[(1-\alpha)T, S_{-(M+1)}^M] = e^{-rT}$. By this result, we can turn pricing of quantile option into pricing of $2M+1$ cumulative Parisian option.
-
-
-Parisian option is like an advanced version of barrier option. We know barrier option are options where the payoff depends on whether the underlying asset's price reaches a certain level (barrier) during the option's life. Barrier options usually trade in the over-the counter market. This kind of option is attractive because it is usually cheaper than similar option without barrier. Like vanilla option, barrier options also authorize holders the right to buy or sell, but  long sides of barrier options do not need to pay for scenarios they think is unlikely to happen in the future. One good example I find from wikipedia is about IBM. If you believe that IBM will go up this year, but are willing to bet that it won't go above \$100, then you can buy the barrier and pay less premium than the vanilla option. But in this one-touch knock-out or knock can bring difficulties to option writers when asset price is close to barrier. Particularly in the foreign exchange market where manipulation of underlying asset price is not impossible. To overcome short period price manipulation, various adjustments to one-touch knock out or knock in have been performed in practice. Parisian option is one solution.  In order to get activated, the underlying assets of parisian option need to stay in the knout out or knout in region for certain period of time. The payoff of a cumulative Parisian option is dependent on the total amount of time the underlying asset price has spent above or below barrier. As for binary option, the payoff is either some fixed amount of some asset or nothing at all.
-
-\subsection{Pricing cumulative parisian binary option by FSG}
-Kwok and Lau also proposed a forward shorting grid(FSG) to price cumulative parisian option in \cite{Kwok2001}. The character of FSG is that this approach need add additional information at each node of  a lattice tree. Commonly in pricing path-dependent option, at each node we should add state vector to represent the path-dependent attribute, such as the extreme value of the underlying asset price achieved in lookback option case. As we know Hull and White \cite{Hull1993} and Ritchken, Sankarasubramanian and Vijh \cite{Vijh1993} were the first authors suggested this approach. In 1996, Barraquand and Pudet \cite{Barraquand1996} introduced a comprehensive framework for FSG. In this paper they indicated that the FSG method is unconditionally convergent. Further, they showed that when the covariance matrix is degenerate, the FSG method can outperform finite difference methods. The convergence of the FSG algorithm in pricing of Asian options was studied by Forsyth, Verzal and Zvan \cite{Forsyth1999}. Foesyth et al. pointed out that
-
- In Kwok and Lau's paper\cite{Kwok2001}, they constructed a trinomial tree to get the price of cumulative parisian option. But due to the fact that the result is not steady according to the setting of the length of up movement between each immediate steps, we modify their method to binomial tree.
-
-In building binomial tree, we start by cutting the entire life of one option into many small time intervals of length $\Delta t = T / M$.
-Our tree is build to mimic the the logarithm process of underlying asset price. Denote $x=\ln S$. In each step, the logarithm of the price of underlying asset is assumed to move from its initial value of $x_0$ to one of the two new values, $x_0 + d + u$ and $x_0 + d - u$ with equal probability,that is $p_{up} = p_{down} = 0.5$ , where $u = \sigma \sqrt{\Delta t}$ and $d = (r - {\sigma}^2 /2)\Delta t$. Here $\sigma$, and $r$ are volatility and riskless interest rate, respectively. The model is illustrated in Figure~\ref{fig:tree1}.
-\begin{figure}[htbp]
-   \centering
-   \includegraphics{trees.pdf} % requires the graphicx package
-   \caption{Forward shooting}
-   \label{fig:tree1}
-\end{figure}
-
-Like the notation used in \cite{Kwok2001}, we denote $V[m,j;k]$ as the numerical option value of the cumulative parisian option at the $m$-th time interval,  $j$ upward jumps from the initial underlying asset value and $k$ times breaches so far. Let $g(k,j)$ be the grid function that describes the correlated evolution of number of breaches $k$ and price indicate $j$. Denote $x_j$ be the value of $x$ corresponding to $j$ upward movements on the binomial tree. Then we should add $1$ to the indicator $k$ if the underlying asset price $S$ is no more than the barrier $B$; i.e $x_j \leq \ln B$. Hence we can see that a suitable setting of the grid evolution function $g(k,j)$ should be
-\begin{equation}\label{eq:grid}
-g(k,j) = k + 1_{\Set{x_j \leq B}}
-\end{equation}
-where $1_{\set{x_j \leq B}}$ is the indicator function. It is defined as
-\begin{equation}\label{eq:grid-indicator}
-1_{\Set{x_j \leq B}} =  \begin{cases}
-1 & \text{if } x_j \leq \ln B \\
-0 & \text{if } x_j > \ln B
-\end{cases}
-\end{equation}
-Then the FSG method for pricing the cumulative Parisian binary option can be expressed as
-\begin{equation}\label{eq:fsg}
-V[m-1,j;k] =\set{0.5V[m,j+1;g(k,j+1)]+0.5V[m,j-1,g(k,j-1)]}e^{-r\Delta t}
-\end{equation}
-for $m-1 < M$.
-
-
-Let $N$ be the predetermined number of breaches recored for the all duration of the life of an option that is desired to activate   the contract.
-Considering the binary feature of the option, we should initiate our algorithm with
-\begin{equation}\label{eq:initiate}
-V[M,j;k] = \begin {cases}
-1 & \text{if }  k < N \\
-0 & \text{if }  k \geq N
-\end{cases}
-\end{equation}
-By (\ref{eq:initiate})  (\ref{eq:fsg}) and backward induction, we can get the price of cumulative Parisian binary option with any prescribed times of breaches and barrier.
-
-Recall what we get by equation (\ref{eq:kowk2}). In order to get the price of $\alpha$-quantile option, we can use the prices of $2M + 1$ cumulative Parisian binary options to approximate $\alpha$-quantile option's value. Hence using the FSG method we described above to calculate the prices of cumulative Parisian option  and doing a simple math work by equation (\ref{eq:kowk2}), we can get the approximated price for $\alpha$-quantile option with $M$ time steps.
-
-Recall we defined earlier $\Delta t = T / M$. We compute the approximated option price of an $\alpha$-quantile call option with different time steps using equation (\ref{eq:kowk2}). As you can see in Figure (\ref{fig:2}),
-the numerical values of option are plotted against varying $\Delta t$. The values of parameters of the $\alpha$-quantile call option are set as: $ \alpha = 0.8$, $S_0 = 100$, $X = 95$, $r = 5\%$, $\sigma = 20\%$, and $T = 0.25$.
-\begin{figure}[htbp]
-   \centering
-   \includegraphics{bfsg.pdf} % requires the graphicx package
-   \caption{FSG result}
-   \label{fig:2}
-\end{figure}
-
-
-
-
-\subsection{A static hedging for $\alpha$-quantile put option}
-Inspired by the approximation of quantile option using cumulative Parisian options, we here propose a static hedging of quantile options using cumulative binary Parisian options. As we discussed earlier, the payoff of a cumulative binary Parisian option is that: only if the price of stock spend enough time under a predetermined barrier, its payoff is \$1; otherwise, its payoff is 0, it is worth nothing. We explicitly account for the discreteness of the tick size. That is the value of stock price only can be multiples of 1/8. Then for a put quantile option, the intuition for our hedging lies in the ability to rephrase the question, Òwhat was the certain quantile of stock priceÓ as several questions. 
-
-For example, for 40$\%$-quantile put option with stock price started from 1 and strike price 2, we can replicate its payoff using cumulative Parisian options which are alive only if they spend more than $0.4*T$ time under their barrier. For the quantile option, it has payoff only if the $40$ percentile is less than 2, the strike price. Also it is obvious that $40$ percentile must be larger than 0. In this sense, we hold 0.125 share of each cumulative binary Parisian binary option with barrier raging from $0.125. 0.250, 0.375.É, 2$.  If in the end of maturity, the 40 percentile of stock price is larger than 2, the quantile option gets nothing. Since the 40 percentile is lager than 2, then the stock price must be under 2 for less than 40$\%$ of the time before maturity. In this case all the binary option get nothing. But if the quantile is $1.750$, the quantile option gets a payoff of $0.250=2-1.750$. While for the binary options, in this case, options with barrier $2$ and $1.875$ are alive. The payoff you can get from binary options is $0.125*2=0.250$. That is the payoff of the collections of binary options is identical to your quantile option. These are true for other scenarios of the value of quantile.  In other words, by holding a collection of cumulative Parisian binary option, we can realize a static hedging.
-
-Probably, you have already found out that this scheme only works for European puts, because that you can find the two sides boundary of effective quantile. This condition is not true for calls. 
-
-
-\subsection{ A tree for American $\alpha$-quantile option}
-Non-markov property of  the quantile of Brownian motion cause seirous problem 
-when we want to use tree method. We need to record all the information alone the
-path, at least, we have to record the occupation time of $X_k$.
- 
-In risk neutral world, we always can write the price of 
-American option in following way:
+\subsection{The joint distribution of Brownian motion and its $\alpha$-quantile}
+In this section we are going to provide a give the joint distribution of Brownian motion and its quantile. When the Brownian motion is without drift,
+ie $\mu = 0 $,
+As we know the joint distribution of runing maximal and end point of
+standard Brownian motion at time $\tau$ is
 \[
-C = \sup_{\tau\leq T} Ef(X_\tau^\alpha,\tau),
-\]
-where $\tau$ are any stopping time stops before $T$, 
-\[
-f(x,t) = 
-\begin{cases}
-e^{-rt}(x-K)^+ & \text{for call option}\\
-e^{-rt}(K-x)^+ & \text{for put option}
-\end{cases}
-\]
-as usual.
-This is an optimal stopping problem. 
-
-The obvious way to slove this numerically, is using tree methord. 
-Discrete the time, i.e. let $0=t_0< t_1, \cdots, t_n$.
-Let $P_k=(X_0, \cdots, X_k)$ be a path of Geometric Brownian motion, 
-Then $X_{k+1}$ can only be $X_{k}+u$ , $X_k$ and $X_{k}-d$ in probility
-$p^+,p^0,p^-$  where $u,d,p^+,p^0$ and $p^-$ are prefixed 
-constants in usual trinomial tree methord, each will .
-Then let 
-\[
-\mathrm{Pay}_{P_j} = e^{rt_j}f(X_{P_j}^\alpha, t_j)=
-\begin{cases}
-(x-K)^+ & \text{for call option}\\
-(K-x)^+ & \text{for put option}
-\end{cases}
-\] 
-be the payoff if the option holder execute the option at time $t_j$, 
-where $X_{P_n}^\alpha$ denots the $\alpha$ quntaile of path $P_n$. 
-For $n$, let 
-\[
-C_{P_n} = \mathrm{Pay}_{P_n}
-\]
-For $j< n$, 
-let 
-\[
-C_{P_j} = \max\Set{E_{P_j}, \mathrm{Pay}_{P_j}}
-\]
-where
-\[
-E_{P_j} = e^{-r(t_{j+1}-t_j)}(p^+C_{(P_j,X_j+u)} + p^0C_{(P_j,X_j)}+ p^-C_{(P_j,X_j-d)})
-\]
-is the expectation return if the holder of the option
-do not exectue his right at time $t_j$, providing the historical data of 
-the stock price is given by $P_j$. 
-
-Now the optimal stopping time is given by 
-\[
-\tau(P_n) = \inf\Set{t_j| Pay_{P_j}\geq E_{P_j}}
-\]
-here $P_j$ is the restriction of $P_n$ at $(t_0, \cdots, t_j)$, i.e. 
-\[
-P_j = (X_0, \cdots, X_j) \text{ if } P_n=(X_0, \cdots, X_n). 
-\] 
-
-Now the price of American $\alpha$-quantile option at time $t_0$ is $C_{(0)}$.
-
-Based on this observation, we have a recurrence relation for computing $C_{(0)}$.
-
-It is nature to realize this scheme by using the ``Deep First Search'' algorithm.  In pratical, we build the tree with depth $n+1$, each non-leaves nods has three children correspond to $\Set{X_j+u,X_j, X_j-d}$. Hence the complaxity of this  ``brute force'' methord is $O(3^n)$. It is clear that all the nodes at depth $j$ correspond to one and only one path $P_j$. So we label the node by $N_{P_j}$.  For any node, say $N_{P_j}$, we first compute $C_{P_{j+1}}$, where the possible $N_{P_{j+1}}$ are all of its three children. 
-After visited all its children and computed $C_{P_{j+1}}$, it will back to 
-node $N_{P_j}$, and compute $E_{P_j}, Pay_{P_j}$ and then $C_{P_j}$. After that, 
-it will back to the parient of $N_{P_j}$. Now $N_{P_{j-1}}$ will do same as 
-$N_{P_{j}}$, i.e. if it does not finish visiting all its children,
- it will visit the next one; if it is finished, compute $C_{P_{j+1}}$ as above 
-and back to the grandparient. 
-
-If we get some results by binomail tree of European Option.
-With 
-\[
-K=100, r=0.05, \sigma=0.2, \alpha=0.5, T=1
+P(X_\tau\in da, M_\tau\in db) =
+\frac{2(2b-a)}{\sqrt{2\pi \tau^3}} \exp(-\frac{(2b-a)^2}{2\tau})
+I_{\Set{a\leq b, b\geq 0}} (a,b) da db \triangleq p_\tau(a,b)
 \]
 
-\begin{tabular}{l|lllllll}
-$S_0$ & $90$ & $95$ & $100$ & $105$ & $110$ & $115$ & $120$\\
-\hline
-  30 & 1.80059 & 3.46444 & 5.98097 & 9.35544 & 13.3482 & 17.7490 & 22.3748 \\
-  32 & 1.78771 & 3.44615 & 5.95781 & 9.32707 & 13.3219 & 17.7186 & 22.3409 \\
-  34 & 1.77631 & 3.43422 & 5.93868 & 9.30442 & 13.2968 & 17.6906 & 22.3096 \\
-  36 & 1.76377 & 3.42090 & 5.92051 & 9.28269 & 13.2762 & 17.6641 & 22.2809 \\
-  38 & 1.75524 & 3.41137 & 5.90549 & 9.26586 & 13.2571 & 17.6396 & 22.2588 \\
- Paper & 1.6588 & 3.2695 & 5.7501 & 9.0895 & 13.0213 & 17.4030 & 22.0456\\
-\end{tabular}
+To deal with the distribution of $\alpha$-quantile, we usetwo copy of
+Brownian motion and denote corresponding value at
+$\tau=\alpha t$(respectively $\tau=(1-\alpha) t$) by $X_1$(resp. $X_2$) and
+maxiamal $M_1$(resp. $M_2$).
+Then
+\[
+\begin{split}
+(X_1,M_1, X_2, M_2) \sim& P(X_1\in dx_1, M_1\in dm_1, X_2\in dx_2, M_2\in dm_2)\\
+&= P_{\alpha t}(x_1, m_1) P_{(1-\alpha)t}(x_2,m_2) dx_1dm_1dx_2dm_2
+\end{split}
+\]
 
-Data is from \cite{Laura2001}
 
-\section{Discrite v.s. Continous}
-\subsection{Euler scheme and randon walk}
+Use the transform
+\[
+\begin{pmatrix}
+X_1\\ X_2\\ M_1\\ M_2\\
+\end{pmatrix}
+\overset{
+\begin{pmatrix}
+1 & 1 & 0 &0 \\
+1 & -1 & 0 & 0 \\
+0 & 0 & 1 & 1\\
+0 & 0 & 1 & -1\\
+\end{pmatrix}
+}{\longrightarrow}
+\begin{pmatrix}
+X_1+X_2\\
+X_1 - X_2 \\
+M_1 + M_2 \\
+M_1 - M_2 \\
+\end{pmatrix}
+\triangleq
+\begin{pmatrix}
+X \\ \tX\\ \tM \\M
+\end{pmatrix}
+\]
+
+And
+\[
+(X, \tX, M, \tM) \sim \frac{1}{4} P_{\alpha t}(\frac{x+\tx}{2},\frac{m+\tm}{2})
+P_{(1-\alpha)t}(\frac{x-\tx}{2},\frac{\tm-m}{2}) I_D,
+\]
+where $D$ is the domain $\Set{x_1\leq m_1, x_2\leq m_2, m_1 >0, m_2>0}$
+
+
+Hence (use change of variable $x' = (x+\tx)/2$ and $m' = (m+\tm)/2$
+\[
+\begin{split}
+&P(M_{\alpha,t}\in dm, X_t \in dx) = P(M_1-M_2\in dm, X_1+X_2\in dx) \\
+=& \frac{1}{4} \int_{-\infty}^{\infty}\int_{-\infty}^\infty
+P_{\alpha t}(\frac{x+\tx}{2},\frac{m+\tm}{2})
+P_{(1-\alpha)t}(\frac{x-\tx}{2},\frac{\tm-m}{2}) I_D d\tx d\tm\\
+= & \int_{-\infty}^{\infty}\int_{-\infty}^\infty
+P_{\alpha t}(x',m')
+P_{(1-\alpha)t}(x-x',m-m') I_{D'} d\tx d\tm\\
+= & \int_{\max\Set{0,m}}^{\infty} \int_{x+m-m'}^{m'}
+P_{\alpha t}(x', m') P_{(1-\alpha)t}(x-x',m'-m) dx' dm',
+\end{split}
+\]
+where domain $D' = \Set{x' \leq m', x-x'\leq m'-m, m'>0, m'-m>0}$.
+
+\subsection{Euler scheme and random walk}
 %%Another approach to price quantile option is Monte Carlo simulation. In this method, we need to use the inverse function of the cumulative distribution function of $\alpha$-quantile. When the brownian motion is without drift, 
 
 Sometimes to get the integration of certain stochastic process, we are only able to get the value numerically. For example, if we need to know $\int^T_{0} M(\alpha , t)dt$. Usually we need to simulate a discretized version of the Brownian motion $\{B_t\}$. And the do the calculation based on the simulated sample. Obviously,  the accuracy of this approximation is closely related to the length of the discretized time increment, which we denote as $\Delta t= \frac{T}{N}$. Then the questions arise: how fine should the discretization length should be in order to get a satisfied approximation and whether we can quantify the accuracy of this type of simulation. 
@@ -804,8 +688,8 @@ The result:
 %\end{figure}
 
 
+\subsection{An estimate of week discrete error}
 
-\subsection{Path transform}
 Let $S_k$ be a randon walk (assume $S_0=0$)
 with i.i.d increasment, i.e.
 $\Delta S_k = S_k -  S_{k-1}$ is i.i.d.
@@ -845,11 +729,10 @@ For Brownian motion case, this formular were proved in many differet ways
 and original due to \cite{Dassios1995}.
 
 
-\subsection{An estimate of week discrete error}
-\cite{Janssen2008} gives a estimate of the difference of  expatations
-between maximum of borwnian motion and associated random walk.
+\cite{Janssen2008} gives a estimate of the difference of  expectations
+between maximum of Brownian motion and associated random walk.
 Since we just give a really rough estimate, we only list the first two term.
-For $B_t$ a Borwnian motion with drift $\mu$ and variance $1$ on time interval $[0,1]$, that is $B_t = \mu t + W_t$, where $W_t$ is standard Brownian motion, we can get
+For $B_t$ a Brownian motion with drift $\mu$ and variance $1$ on time interval $[0,1]$, that is $B_t = \mu t + W_t$, where $W_t$ is standard Brownian motion, we can get
 \begin{equation}\label{eq:est1}
 E\max_{0\leq t \leq 1} B(t) - E\max_{n=0,\cdots, N}B(n/N)
 = -\frac{\zeta(1/2)}{\sqrt{2\pi N}}-\frac{2g(1)-\mu}{4N} + O(1/N^{3/2})
@@ -862,7 +745,7 @@ g(t) = \mu \Phi(\mu \sqrt{t}) + \frac{1}{\sqrt{2\pi t}} e^{-\frac{1}{2}\mu^2 t}.
 \zeta(1/2) \approx -3.92264613.
 \]
 
-For general Borwnian $\tB(t)$ motion on time interval $[0,T]$ with drift $\tmu$, variance $\tsigma$,
+For general Brownian $\tB(t)$ motion on time interval $[0,T]$ with drift $\tmu$, variance $\tsigma$,
 we use following transform
 \begin{align*}
 \tB_t &= \tsigma \sqrt{T} B_{t/T} = \tsigma \sqrt{T} \mu t/T
@@ -875,7 +758,7 @@ We denote
 g'(\mu)=\mu \Phi(\mu) + \frac{1}{\sqrt{2\pi}} e^{-\frac{1}{2}\mu^2 }
 \end{equation}
 
-We derive the follwoing formula:
+We derive the following formula:
 \begin{equation}\label{eq:maxest}
 \begin{split}
 &E\max_{0\leq t\leq T} \tB(t) - E \max_{0\leq n \leq N} \tB(nT/N)\\ 
@@ -974,7 +857,210 @@ Hence
 C\frac{-\zeta(1/2)}{\sqrt{2\pi}}\sqrt{T/N}  + O(1/N)
 \]
 
-\subsection{connecting the discrete and continous $\alpha$-quantile options}
+
+\section{$\alpha$-quantile option}
+\subsection{The advantage of $\alpha$-quantile option}
+As we discussed before, lookback option is a path-dependent option with payoff calculated with the maximum or minimum price of the underlying asset during the life of the option. For example, a fixed strike lookback call opition get the highest value obtained within the option's lifetime. In this case, to the holder, it can be viewed as a protecation against large drop of stock price. This can be regarded as a method to deal with the unfavor movement of a particular stock. The release of an prolonged lawsuit which may have a strong negative effect on the stock price. On the other side, lookback put option provides an insurance against large rises. But these characters also make lookback options too expensive. Quantile option is one product that overcome this shortcoming of lookbacks. Quantile option is cheaper than lookbacks. While it still provide partial protection against market movements. This property of quantile option was first discussed by \cite{Ballotta2001}.
+
+
+Another advantage of quantile option is that the strong path dependence of its payoff make it immunize to possible market manipulation. Because the payoff of lookback using the maximum of stock price during option's lifetime. Particularly for at the money option close to maturity, which in this case are most vulnerable to the stock movement closing to maturity. Firms have influence on market price can use this advantage to leading market price move to their favor direction. But since quantile option are strongly dependent, the manipulation effect is limited. 
+
+
+\subsection{Tree method for European $\alpha$-quantile option}
+
+
+Like lookback option, quantile option is also path-dependent. What makes things difficult is that quantile option is not markov. Normal tree methods which usually involve backward induction do not work in this case. We need to record all the information of the path because of lack of markov property, which will lead the tree to explosion computationally.
+\cite{Kwok2001} proposed a special way to apply tree method to price quantile option. In this paper, they find a relation between the price of quantile option and the price of cumulative Parisian option. By this approximation, they can simplify the pricing of quantile option. In their paper, they assume that there are $M$ time steps for the whole monitoring period $[0,T]$, and they define ${S^M}_j$, $j = - M$, ...$0$,$1$,...,$M$ as the discrete asset prices at maturity. Under trinomial tree method, the possible prices happened in one tree are limited to ${S^M}_j$,  $j = - M$, ...$0$,$1$, ...,$M$, which is also true for the value taken by quantile of brownian motion. Therefore they derived that
+\begin{equation}\label{eq:kowk1}
+V(\alpha, T) = e^{-rT} \sum^{M}_{j=-M}P[M(\alpha,T)=S^{M}_{j}]\max(S^{M}_{j}-X,0),
+\end{equation}
+where $V(\alpha,T)$ is for the value of $\alpha$-quantile option whose maturity it $T$, $P[M(\alpha,T)=S^{M}_{j}]$ is the probability that the quantile of Brownian motion achieve the value ${S^M}_j$,  $j = - M$, ...$0$,$1$, ...,$M$. In their paper, they observed that the difference between the prices of two cumulative Parisian binary options is a good approximation for $P[M(\alpha,T)=S^{M}_{j}]$ multiplies discount factor $e^{-rT}$, ie.
+\begin{equation}\label{eq:kowk2}
+e^{-rT}P[M(\alpha,T)=S^{M}_{j}] \approx V^{bin}_{cum}[(1-\alpha)T, S^{M}_{j-1}]-V_{cum}^{bin}[(1-\alpha)T, S_{j}^{M}]
+\text{ for }j=-M, ... , 0, 1, ... , M
+\end{equation}
+where $V^{bin}_{cum}[d,B]$ is denoted as the price of continuously monitored cumulative Parisian binary option with down barrier $B$, and $d$ be the minimum cumulative time staying above the down barrier to avoid knock-out.
+
+
+Combining equation (\ref{eq:kowk1})and (\ref{eq:kowk2}), they get
+\begin{equation}\label{eq:kowk3}
+V_{alp} = \sum^M_{j=-M} \max (S^M_j - X,0) \times \{V_{cum}^{bin}[(1-\alpha)T, S^M_{j-1}] - V^{bin}_{cum}[(1-\alpha)T, S^M_j]\} ,
+\end{equation}
+where $V^{bin}_{cum}[(1-\alpha)T, S_{-(M+1)}^M] = e^{-rT}$. By this result, we can turn pricing of quantile option into pricing of $2M+1$ cumulative Parisian option.
+
+
+Parisian option is like an advanced version of barrier option. We know barrier option are options where the payoff depends on whether the underlying asset's price reaches a certain level (barrier) during the option's life. Barrier options usually trade in the over-the counter market. This kind of option is attractive because it is usually cheaper than similar option without barrier. Like vanilla option, barrier options also authorize holders the right to buy or sell, but  long sides of barrier options do not need to pay for scenarios they think is unlikely to happen in the future. One good example I find from wikipedia is about IBM. If you believe that IBM will go up this year, but are willing to bet that it won't go above \$100, then you can buy the barrier and pay less premium than the vanilla option. But in this one-touch knock-out or knock can bring difficulties to option writers when asset price is close to barrier. Particularly in the foreign exchange market where manipulation of underlying asset price is not impossible. To overcome short period price manipulation, various adjustments to one-touch knock out or knock in have been performed in practice. Parisian option is one solution.  In order to get activated, the underlying assets of parisian option need to stay in the knout out or knout in region for certain period of time. The payoff of a cumulative Parisian option is dependent on the total amount of time the underlying asset price has spent above or below barrier. As for binary option, the payoff is either some fixed amount of some asset or nothing at all.
+
+
+
+Kwok and Lau also proposed a forward shorting grid(FSG) to price cumulative parisian option in \cite{Kwok2001}. The character of FSG is that this approach need add additional information at each node of  a lattice tree. Commonly in pricing path-dependent option, at each node we should add state vector to represent the path-dependent attribute, such as the extreme value of the underlying asset price achieved in lookback option case. As we know \cite{Hull1993} and \cite{Vijh1993} were the first authors suggested this approach. \cite{Barraquand1996} introduced a comprehensive framework for FSG. In this paper they indicated that the FSG method is unconditionally convergent. Further, they showed that when the covariance matrix is degenerate, the FSG method can outperform finite difference methods. The convergence of the FSG algorithm in pricing of Asian options was studied by \cite{Forsyth1999}.
+
+In \cite{Kwok2001}, they constructed a trinomial tree to get the price of cumulative parisian option. But due to the fact that the result is not steady according to the setting of the length of up movement between each immediate steps, we modify their method to binomial tree.
+
+In building binomial tree, we start by cutting the entire life of one option into many small time intervals of length $\Delta t = T / M$.
+Our tree is build to mimic the the logarithm process of underlying asset price. Denote $x=\ln S$. In each step, the logarithm of the price of underlying asset is assumed to move from its initial value of $x_0$ to one of the two new values, $x_0 + d + u$ and $x_0 + d - u$ with equal probability,that is $p_{up} = p_{down} = 0.5$ , where $u = \sigma \sqrt{\Delta t}$ and $d = (r - {\sigma}^2 /2)\Delta t$. Here $\sigma$, and $r$ are volatility and riskless interest rate, respectively. The model is illustrated in Figure~\ref{fig:tree1}.
+\begin{figure}[htbp]
+   \centering
+   \includegraphics{trees.pdf} % requires the graphicx package
+   \caption{Forward shooting}
+   \label{fig:tree1}
+\end{figure}
+
+Like the notation used in \cite{Kwok2001}, we denote $V[m,j;k]$ as the numerical option value of the cumulative parisian option at the $m$-th time interval,  $j$ upward jumps from the initial underlying asset value and $k$ times breaches so far. Let $g(k,j)$ be the grid function that describes the correlated evolution of number of breaches $k$ and price indicate $j$. Denote $x_j$ be the value of $x$ corresponding to $j$ upward movements on the binomial tree. Then we should add $1$ to the indicator $k$ if the underlying asset price $S$ is no more than the barrier $B$; i.e $x_j \leq \ln B$. Hence we can see that a suitable setting of the grid evolution function $g(k,j)$ should be
+\begin{equation}\label{eq:grid}
+g(k,j) = k + 1_{\Set{x_j \leq B}}
+\end{equation}
+where $1_{\set{x_j \leq B}}$ is the indicator function. It is defined as
+\begin{equation}\label{eq:grid-indicator}
+1_{\Set{x_j \leq B}} =  \begin{cases}
+1 & \text{if } x_j \leq \ln B \\
+0 & \text{if } x_j > \ln B
+\end{cases}
+\end{equation}
+Then the FSG method for pricing the cumulative Parisian binary option can be expressed as
+\begin{equation}\label{eq:fsg}
+V[m-1,j;k] =\set{0.5V[m,j+1;g(k,j+1)]+0.5V[m,j-1,g(k,j-1)]}e^{-r\Delta t}
+\end{equation}
+for $m-1 < M$.
+
+
+Let $N$ be the predetermined number of breaches recored for the all duration of the life of an option that is desired to activate   the contract.
+Considering the binary feature of the option, we should initiate our algorithm with
+\begin{equation}\label{eq:initiate}
+V[M,j;k] = \begin {cases}
+1 & \text{if }  k < N \\
+0 & \text{if }  k \geq N
+\end{cases}
+\end{equation}
+By (\ref{eq:initiate})  (\ref{eq:fsg}) and backward induction, we can get the price of cumulative Parisian binary option with any prescribed times of breaches and barrier.
+
+Recall what we get by equation (\ref{eq:kowk2}). In order to get the price of $\alpha$-quantile option, we can use the prices of $2M + 1$ cumulative Parisian binary options to approximate $\alpha$-quantile option's value. Hence using the FSG method we described above to calculate the prices of cumulative Parisian option  and doing a simple math work by equation (\ref{eq:kowk2}), we can get the approximated price for $\alpha$-quantile option with $M$ time steps.
+
+Recall we defined earlier $\Delta t = T / M$. We compute the approximated option price of an $\alpha$-quantile call option with different time steps using equation (\ref{eq:kowk2}). As you can see in Figure (\ref{fig:2}),
+the numerical values of option are plotted against varying $\Delta t$. The values of parameters of the $\alpha$-quantile call option are set as: $ \alpha = 0.8$, $S_0 = 100$, $X = 95$, $r = 5\%$, $\sigma = 20\%$, and $T = 0.25$.
+\begin{figure}[htbp]
+   \centering
+   \includegraphics{bfsg.pdf} % requires the graphicx package
+   \caption{FSG result}
+   \label{fig:2}
+\end{figure}
+
+
+
+
+%\subsection{A static hedging for $\alpha$-quantile put option}
+Inspired by the approximation of quantile option using cumulative Parisian options, we here propose a static hedging of quantile options using cumulative binary Parisian options. As we discussed earlier, the payoff of a cumulative binary Parisian option is that: only if the price of stock spend enough time under a predetermined barrier, its payoff is \$1; otherwise, its payoff is 0, it is worth nothing. We explicitly account for the discreteness of the tick size. That is the value of stock price only can be multiples of 1/8. Then for a put quantile option, the intuition for our hedging lies in the ability to rephrase the question, Òwhat was the certain quantile of stock priceÓ as several questions. 
+
+For example, for 40$\%$-quantile put option with stock price started from 1 and strike price 2, we can replicate its payoff using cumulative Parisian options which are alive only if they spend more than $0.4*T$ time under their barrier. For the quantile option, it has payoff only if the $40$ percentile is less than 2, the strike price. Also it is obvious that $40$ percentile must be larger than 0. In this sense, we hold 0.125 share of each cumulative binary Parisian binary option with barrier raging from $0.125. 0.250, 0.375.É, 2$.  If in the end of maturity, the 40 percentile of stock price is larger than 2, the quantile option gets nothing. Since the 40 percentile is lager than 2, then the stock price must be under 2 for less than 40$\%$ of the time before maturity. In this case all the binary option get nothing. But if the quantile is $1.750$, the quantile option gets a payoff of $0.250=2-1.750$. While for the binary options, in this case, options with barrier $2$ and $1.875$ are alive. The payoff you can get from binary options is $0.125*2=0.250$. That is the payoff of the collections of binary options is identical to your quantile option. These are true for other scenarios of the value of quantile.  In other words, by holding a collection of cumulative Parisian binary option, we can realize a static hedging.
+
+Probably, you have already found out that this scheme only works for European puts, because that you can find the two sides boundary of effective quantile. This condition is not true for calls. 
+
+
+\subsection{A tree method for American $\alpha$-quantile option}
+Non-markov property of  the quantile of Brownian motion cause seirous problem 
+when we want to use tree method. We need to record all the information alone the
+path, at least, we have to record the occupation time of $X_k$.
+ 
+In risk neutral world, we always can write the price of 
+American option in following way:
+\[
+C = \sup_{\tau\leq T} Ef(X_\tau^\alpha,\tau),
+\]
+where $\tau$ are any stopping time stops before $T$, 
+\[
+f(x,t) = 
+\begin{cases}
+e^{-rt}(x-K)^+ & \text{for call option}\\
+e^{-rt}(K-x)^+ & \text{for put option}
+\end{cases}
+\]
+as usual.
+This is an optimal stopping problem. 
+
+The obvious way to slove this numerically, is using tree methord. 
+Discrete the time, i.e. let $0=t_0< t_1, \cdots, t_n$.
+Let $P_k=(X_0, \cdots, X_k)$ be a path of Geometric Brownian motion, 
+Then $X_{k+1}$ can only be $X_{k}+u$ , $X_k$ and $X_{k}-d$ in probility
+$p^+,p^0,p^-$  where $u,d,p^+,p^0$ and $p^-$ are prefixed 
+constants in usual trinomial tree methord, each will .
+Then let 
+\[
+\mathrm{Pay}_{P_j} = e^{rt_j}f(X_{P_j}^\alpha, t_j)=
+\begin{cases}
+(x-K)^+ & \text{for call option}\\
+(K-x)^+ & \text{for put option}
+\end{cases}
+\] 
+be the payoff if the option holder execute the option at time $t_j$, 
+where $X_{P_n}^\alpha$ denots the $\alpha$ quntaile of path $P_n$. 
+For $n$, let 
+\[
+C_{P_n} = \mathrm{Pay}_{P_n}
+\]
+For $j< n$, 
+let 
+\[
+C_{P_j} = \max\Set{E_{P_j}, \mathrm{Pay}_{P_j}}
+\]
+where
+\[
+E_{P_j} = e^{-r(t_{j+1}-t_j)}(p^+C_{(P_j,X_j+u)} + p^0C_{(P_j,X_j)}+ p^-C_{(P_j,X_j-d)})
+\]
+is the expectation return if the holder of the option
+do not exectue his right at time $t_j$, providing the historical data of 
+the stock price is given by $P_j$. 
+
+Now the optimal stopping time is given by 
+\[
+\tau(P_n) = \inf\Set{t_j| Pay_{P_j}\geq E_{P_j}}
+\]
+here $P_j$ is the restriction of $P_n$ at $(t_0, \cdots, t_j)$, i.e. 
+\[
+P_j = (X_0, \cdots, X_j) \text{ if } P_n=(X_0, \cdots, X_n). 
+\] 
+
+Now the price of American $\alpha$-quantile option at time $t_0$ is $C_{(0)}$.
+
+Based on this observation, we have a recurrence relation for computing $C_{(0)}$.
+
+It is nature to realize this scheme by using the ``Deep First Search'' algorithm.  In practic, we build the tree with depth $n+1$, each non-leaves nods has three children correspond to $\Set{X_j+u,X_j, X_j-d}$. Hence the complexity of this  ``brute force'' method is $O(3^n)$. It is clear that all the nodes at depth $j$ correspond to one and only one path $P_j$. So we label the node by $N_{P_j}$.  For any node, say $N_{P_j}$, we first compute $C_{P_{j+1}}$, where the possible $N_{P_{j+1}}$ are all of its three children. 
+After visited all its children and computed $C_{P_{j+1}}$, it will back to 
+node $N_{P_j}$, and compute $E_{P_j}, Pay_{P_j}$ and then $C_{P_j}$. After that, 
+it will back to the parent of $N_{P_j}$. Now $N_{P_{j-1}}$ will do same as 
+$N_{P_{j}}$, i.e. if it does not finish visiting all its children,
+ it will visit the next one; if it is finished, compute $C_{P_{j+1}}$ as above 
+and back to the grandparent. 
+
+Because the computational time of this method is going exponentially as the steps increasing. It is very time consuming to obtain an result with large steps. To solve this question, we propose an extrapolation method to improve the converge speed. 
+
+Richardson extrapolation is a method to accelerate the sequence convergence rate first studied by \cite{Richardson}.
+Suppose 
+ 
+If we get some results by binomial tree of European Option.
+With 
+\[
+K=100, r=0.05, \sigma=0.2, \alpha=0.5, T=1
+\]
+
+\begin{tabular}{l|lllllll}
+$S_0$ & $90$ & $95$ & $100$ & $105$ \\
+\hline
+28 & 1.60216 & 3.17876 & 5.61323 & 8.92661\\
+30 & 1.60443 & 3.17806 & 5.61404 & 8.92702\\
+32 & 1.60637 & 3.18346 & 5.61678 & 8.92718\\ 
+34 & 1.60435 & 3.18426 & 5.61758 & 8.92875\\
+36 & 1.60411 & 3.18846 & 5.61940 & 8.92925\\
+Extrapolation & 1.61   &  &  &  \\
+Paper & 1.6588 & 3.2695 & 5.7501 & 9.0895\\
+\end{tabular}
+
+
+Data in last line is from \cite{Laura2001}.
+ 
+
+
+
+\section{Connect the discrete and continuos $\alpha$-quantile options}
 We follow \cite{Broadie1999}.
 
 In this section we omit the subscript $\alpha$ and $k$. Denote 
@@ -992,13 +1078,14 @@ where
   -(2g'(\mu_2)-\mu_2)\sqrt{(1-\alpha)}\right).
 \]
 
+We find 
 \[
 \begin{split}
  & E(e^{M_m} - x)^+ \\
 =& 
 E(e^M-x)^+ - E(e^M-e^{M_m}; e^M,e^{M_m}>x)\\
-&+E(e^{M_m}-x;e^{M_m}\geq k > e^M)
--E(e^M-x;e^M\geq k > e^{M_m})\\
+&+E(e^{M_m}-x;e^{M_m}\geq x > e^M)
+-E(e^M-x;e^M\geq x > e^{M_m})\\
 =& A - B + C + D
 \end{split}
 \]
@@ -1006,16 +1093,16 @@ E(e^M-x)^+ - E(e^M-e^{M_m}; e^M,e^{M_m}>x)\\
 Assume $m(e^M-e^{M_m})$ convergence in distribution to some random variable $U$.
 Then, 
 \[
-0 \leq C \leq E(e^{M_m}-e^M;e^{M_m}\geq k > e^M)
+0 \leq C \leq E(e^{M_m}-e^M;e^{M_m}\geq x > e^M)
 \] 
-Since $P(e^{M_m}\geq k > e^M) \rightarrow 0$,
+Since $P(e^{M_m}\geq x > e^M) \rightarrow 0$,
 \[
-E(m(e^{M_m}-e^M);e^{M_m}\geq k > e^M) \rightarrow 0
+E(m(e^{M_m}-e^M);e^{M_m}\geq x > e^M) \rightarrow 0
 \]
 by the uniformly integrability. So $C$ and similary $D$ is $o(1/m)$.
 If the assumption is not true, if we can prove
 \begin{equation}
-E(e^{M_m}-e^M;e^{M_m}\geq k > e^M) \sim o(1/m) \label{eq:sp1}
+E(e^{M_m}-e^M;e^{M_m}\geq x > e^M) \sim o(1/m) \label{eq:sp1}
 \end{equation}
 it is also OK. 
 
@@ -1030,21 +1117,20 @@ Now,
 Hence,
 \begin{align}
  & E((e^{M_m}-x)^+) \notag\\
-=& E((e^M-x);e^M>x) + E(e^M \beta/m;e^M>x) + o(1/m) \notag\\
-=& E(e^M(1+\beta/m)-x;e^M>x) + o(1/m) \notag \\
-=& E[(e^{M+\beta/m}-x)^+] + o(1/m) \label{eq:cor1}\\
-=& e^{\beta/m}E(e^M-xe^{-\beta/m};e^M>x) + o(1/m) \notag\\
-=& e^{\beta/m}E(e^M-xe^{-\beta/m};e^M>xe^{-\beta/m})  \notag\\
- & +e^{\beta/m}E(e^M-xe^{-\beta/m};e^M\in [xe^{-\beta/m}, x]) \label{eq:sp3} 
-o(1/m)\\
-= &  e^{\beta/m}E[e^M-xe^{-\beta/m};e^M>xe^{-\beta/m}] + o(1/m) 
-= & e^{\beta/m}E[(e^M-xe^{-\beta/m})^+] + o(1/m) \label{eq:cor2}
+=& E((e^M-x);e^M>x) - E(e^M \beta/m;e^M>x) + o(1/m) \notag\\
+=& E(e^M(1-\beta/m)-x;e^M>x) + o(1/m) \notag \\
+=& E[e^{M-\beta/m}-x;e^M>x] + o(1/m) \label{eq:cor1}\\
+=& e^{-\beta/m}E(e^M-xe^{\beta/m};e^M>x) + o(1/m) \notag\\
+=& e^{-\beta/m}E(e^M-xe^{\beta/m};e^M>xe^{\beta/m})  \notag\\
+ & +e^{-\beta/m}E(e^M-xe^{\beta/m};e^M\in [xe^{\beta/m}, x])  + o(1/m)\label{eq:sp3}\\
+= & e^{-\beta/m}E[e^M-xe^{\beta/m};e^M>xe^{\beta/m}] + o(1/m) \\
+= & e^{-\beta/m}E[(e^M-xe^{\beta/m})^+] + o(1/m) \label{eq:cor2}
 \end{align}
 Now both equation (\ref{eq:cor1}) and (\ref{eq:cor2}) 
-are correction formulars.
+are correction formulas.
 
 
-For equation (\ref{eq:sp3}), 
+For equation (\ref{eq:sp3}),
 \[
 \begin{split}
 &|E(e^M-xe^{-\beta/m};e^M\in [xe^{-\beta/m}, x])|\\
@@ -1052,16 +1138,25 @@ For equation (\ref{eq:sp3}),
 =& O(1/m)O(1/m) = o(1/m) 
 \end{split}
 \]
+The inequality is obtained by observation. The second is because the density function is finite and CauchyÐSchwarz inequality.
 
 \def\bM{\overline{M}}
 \def\darrow{\xrightarrow{\mathcal{D}}}
 \def\Cov{\mathrm{Cov}}
-Now we disscuse the equation (\ref{eq:sp2}).
-Use Taylor expension, we get
+Now we discuss the equation (\ref{eq:sp2}).
+Use Taylor expansion, we get
 \[
-e^M-e^{M_m} = e^M(M-M_m) + \frac{1}{2}e^{\bM_m}(M-M_m)^2
+e^{M_m}-e^M = e^M(M_m-M) + \frac{1}{2}e^{\bM_m}(M_m-M)^2
 \]
-For some $\bM_m$ between $M$ and $M_m$.
+for some $\bM_m$ between $M$ and $M_m$.
+
+Similarly, to get equation (\ref{eq:cor1}), using Taylor expansion, we find
+\[
+e^{M-\frac{\beta}{m}}= e^{M} - e^M(M-\frac{\beta}{m}-M) + \frac{1}{2}e^{\tM_m}(M-\frac{\beta}{m}-M)^2
+\]
+for some $\tM_m$ between $M-\frac{\beta}{m}$ and $M$. 
+
+
 Now assume 
 \[
 m^\gamma(M-M_m)=W_m \darrow W,
@@ -1110,79 +1205,6 @@ we only need
 \]
 for some $p>2$. 
 
-
-\subsection{A study of the joint distribution of Brownian motion and its $\alpha$-quantile}
-In this section we are going to provide a give the joint distribution of Brownian motion and its quantile. When the Brownian motion is without drift,
-ie $\mu = 0 $,
-As we know the joint distribution of runing maximal and end point of
-standard Brownian motion at time $\tau$ is
-\[
-P(X_\tau\in da, M_\tau\in db) =
-\frac{2(2b-a)}{\sqrt{2\pi \tau^3}} \exp(-\frac{(2b-a)^2}{2\tau})
-I_{\Set{a\leq b, b\geq 0}} (a,b) da db \triangleq p_\tau(a,b)
-\]
-
-To deal with the distribution of $\alpha$-quantile, we usetwo copy of
-Brownian motion and denote corresponding value at
-$\tau=\alpha t$(respectively $\tau=(1-\alpha) t$) by $X_1$(resp. $X_2$) and
-maxiamal $M_1$(resp. $M_2$).
-Then
-\[
-\begin{split}
-(X_1,M_1, X_2, M_2) \sim& P(X_1\in dx_1, M_1\in dm_1, X_2\in dx_2, M_2\in dm_2)\\
-&= P_{\alpha t}(x_1, m_1) P_{(1-\alpha)t}(x_2,m_2) dx_1dm_1dx_2dm_2
-\end{split}
-\]
-
-
-Use the transform
-\[
-\begin{pmatrix}
-X_1\\ X_2\\ M_1\\ M_2\\
-\end{pmatrix}
-\overset{
-\begin{pmatrix}
-1 & 1 & 0 &0 \\
-1 & -1 & 0 & 0 \\
-0 & 0 & 1 & 1\\
-0 & 0 & 1 & -1\\
-\end{pmatrix}
-}{\longrightarrow}
-\begin{pmatrix}
-X_1+X_2\\
-X_1 - X_2 \\
-M_1 + M_2 \\
-M_1 - M_2 \\
-\end{pmatrix}
-\triangleq
-\begin{pmatrix}
-X \\ \tX\\ \tM \\M
-\end{pmatrix}
-\]
-
-And
-\[
-(X, \tX, M, \tM) \sim \frac{1}{4} P_{\alpha t}(\frac{x+\tx}{2},\frac{m+\tm}{2})
-P_{(1-\alpha)t}(\frac{x-\tx}{2},\frac{\tm-m}{2}) I_D,
-\]
-where $D$ is the domain $\Set{x_1\leq m_1, x_2\leq m_2, m_1 >0, m_2>0}$
-
-
-Hence (use change of variable $x' = (x+\tx)/2$ and $m' = (m+\tm)/2$
-\[
-\begin{split}
-&P(M_{\alpha,t}\in dm, X_t \in dx) = P(M_1-M_2\in dm, X_1+X_2\in dx) \\
-=& \frac{1}{4} \int_{-\infty}^{\infty}\int_{-\infty}^\infty
-P_{\alpha t}(\frac{x+\tx}{2},\frac{m+\tm}{2})
-P_{(1-\alpha)t}(\frac{x-\tx}{2},\frac{\tm-m}{2}) I_D d\tx d\tm\\
-= & \int_{-\infty}^{\infty}\int_{-\infty}^\infty
-P_{\alpha t}(x',m')
-P_{(1-\alpha)t}(x-x',m-m') I_{D'} d\tx d\tm\\
-= & \int_{\max\Set{0,m}}^{\infty} \int_{x+m-m'}^{m'}
-P_{\alpha t}(x', m') P_{(1-\alpha)t}(x-x',m'-m) dx' dm',
-\end{split}
-\]
-where domain $D' = \Set{x' \leq m', x-x'\leq m'-m, m'>0, m'-m>0}$.
 
 
 \bibliography{prob}
