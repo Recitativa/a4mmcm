@@ -12,14 +12,14 @@ int main(int argc,
           char *argv[],  
           char *envp[] )
 {
-  BrownSim S;
+  const int Narg = 6;
 
-  if(argc != 4) {
-    cerr << argv[0] << " Terms Rb Re" << endl; 
+  if(argc != Narg) {
+    cerr << argv[0] << " Terms Rb Re sigma mu" << endl; 
     return 1;
   }
   stringstream ss (stringstream::in | stringstream::out);
-  for(int i=1;i<9;i++) { ss << argv[i] << " ";}
+  for(int i=1;i<Narg;i++) { ss << argv[i] << " ";}
 
   time_t seconds = time (NULL); // Get time as random seed. 
 
@@ -34,6 +34,9 @@ int main(int argc,
   ss >> Para.Re;
   // Seed for random number generator
   Para.Rseed = seconds;
+  double sigma, mu;
+  ss >> sigma >> mu;
+  BrownSim S(sigma,mu);
   S.Sim(Para);
 }
 
