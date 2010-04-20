@@ -167,7 +167,7 @@ int main(int argc,
 
 
   ostringstream SoutFilename;
-  SoutFilename << "biit_S0" << S0 << "_K_"<< K << "_alpha"<< alpha << "_r" << r << "_sigma_" << sigma << "_T_" << T<< "_Bn_"<< Bn <<"_En_"<< En;
+  SoutFilename << "biam_S0" << S0 << "_K_"<< K << "_alpha"<< alpha << "_r" << r << "_sigma_" << sigma << "_T_" << T<< "_Bn_"<< Bn <<"_En_"<< En;
   SoutFilename << ".txt";
 
   
