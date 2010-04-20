@@ -4,6 +4,8 @@
 #include <sstream>
 #include <fstream>
 
+#include <algorithm>
+
 #include <gsl/gsl_rng.h>
 #include <gsl/gsl_randist.h>
 
@@ -71,13 +73,13 @@ int BrownSim::Sim(SimPara Para) {
   int i; 
   
   int n= 1<<Re; // total number of segements
-  double hsigma = sqrt(T/n); // corresponding sigma for each step; 
-
+  double hsigma = sigma*sqrt(T/n); // corresponding sigma for each step; 
+  Real hmu = (Real)mu/n; // corresponding mu for each step;
  
   // FileName format nout_Rb_Re_.bin, a binary file. 
   ostringstream SoutFilename;
-  SoutFilename << "nout_" << Rb << "_" << Re << "_";
-  SoutFilename << ".bin";
+  SoutFilename << "nout_" << Rb << "_" << Re << "_"	\
+	       << sigma << "_" << mu << "_.bin";
   
   string outFilename = SoutFilename.str();
   ifstream testf;
@@ -136,7 +138,7 @@ int BrownSim::Sim(SimPara Para) {
  
     // generate the path
     for(i=0; i< (1<< Re); i++) {
-      B += (Real)gsl_ran_gaussian(r, hsigma);
+      B += (Real)gsl_ran_gaussian(r, hsigma)+hmu;
       Record[i] = B;
     } 
     
