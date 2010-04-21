@@ -689,6 +689,7 @@ The result:
 
 
 \subsection{An estimate of week discrete error}
+\label{sec:de}
 
 Let $S_k$ be a randon walk (assume $S_0=0$)
 with i.i.d increasment, i.e.
@@ -1034,13 +1035,52 @@ and back to the grandparent.
 Because the computational time of this method is going exponentially as the steps increasing. It is very time consuming to obtain an result with large steps. To solve this question, we propose an extrapolation method to improve the converge speed. 
 
 Richardson extrapolation is a method to accelerate the sequence convergence rate first studied by \cite{Richardson}.
-Suppose 
- 
-If we get some results by binomial tree of European Option.
-With 
+Let $v(h)$ be the approximate price of the option get from the tree methord 
+with step length $h$. 
+Suppose the tree methord is of order $\gamma$.  
+We have 
+\[
+v(h) = v_0 + Ch^\gamma + o(h^\gamma)
+\]
+where $v_0$ is the true value of the $\alpha$-quantaile option.
+Now we compute for two different step length $h_1, h_2$. 
+Then 
+\begin{align}
+h_1^\gamma v(h_2) &= v_0 h_1^\gamma + C(h_1h_2)^\gamma + o(h_2^\gamma) \label{eq:exs1}\\
+h_2^\gamma v(h_1) &= v_0 h_2^\gamma + C(h_1h_2)^\gamma + o(h_1^\gamma) \label{eq:exs2}
+\end{align}
+Considre (\ref{eq:exs1})-(\ref{eq:exs2}),
+we get
+\[
+v_0(h_1^\gamma - h_2^\gamma) \approx h_1^\gamma v(h_2) - h_2^\gamma v(h_1)
+\]
+i.e. 
+\[
+v_0 \approx \frac{ h_1^\gamma v(h_2) - h_2^\gamma v(h_1)}{
+  h_1^\gamma - h_2^\gamma}
+= \frac{\eta^\gamma v(h_2) - v(h_1)}{\eta^\gamma -1 },
+\]
+where $\eta = h_1/h_2$.
+
+In our case, dnote $C_n$ be the value correspond to $n$ steps.Based on the conlusion in section \ref{sec:de}, it is reasonable to assume that our tree method convergs on order 1. That is $\gamma = 1$. 
+Then the ture value of $\alpha$-quantile option 
+\[
+C_\infty \approx \frac{\eta C_{n_2} - C_{n_1}}{\eta-1},
+\]
+where $\eta = (T/n_1)/(T/n_2) = n_2/n_1$.
+This is the general form of Richardson extraplation.
+If take $n_2=2n, n_1=n$, we get the usual Richardson extraplation formula
+\[
+C_\infty \approx 2 C_{2n} - C_n. 
+\]
+
+Because the is no other method to price American $\alpha$-quantile option so far. In other words, there does not exist direct result acting as an comparing standard. However, since conceptly our tree should also work for European $\alpha$-quantile option, here we first compare the results using this tree mehtod with value obtained by other method.
+
+For parameters setting as
 \[
 K=100, r=0.05, \sigma=0.2, \alpha=0.5, T=1
 \]
+we get: 
 
 \begin{tabular}{l|lllllll}
 $S_0$ & $90$ & $95$ & $100$ & $105$ \\
@@ -1050,13 +1090,14 @@ $S_0$ & $90$ & $95$ & $100$ & $105$ \\
 32 & 1.60637 & 3.18346 & 5.61678 & 8.92718\\ 
 34 & 1.60435 & 3.18426 & 5.61758 & 8.92875\\
 36 & 1.60411 & 3.18846 & 5.61940 & 8.92925\\
-Extrapolation & 1.61   &  &  &  \\
+Extrapolation & 1.61094   & 3.22241 & 5.64100 &  8.938490 \\
 Paper & 1.6588 & 3.2695 & 5.7501 & 9.0895\\
 \end{tabular}
 
-
 Data in last line is from \cite{Laura2001}.
  
+
+\begin{tabular}{}
 
 
 
