@@ -653,19 +653,19 @@ The algorithm:
 The results are showed in Figure \ref{f:ab}. It is well know that the convergence rate of Euler scheme for Brownian motion is $1$. While the convergence rate of Euler Scheme for the maximum of Brownian motion is $\frac{1}{2}$. Then it seems reasonable to guess that the convergence rate for $\alpha$-quantiles of Brownian motion decrease from $1$ to $\frac{1}{2}$ as the value of $\alpha$ vary from $100\%$ to $50\%$. However, numerical results shows that the convergence rate for $\alpha$-quantile do not work that way. Numerical results shows that for 
 
 
-\begin{figure}[htbp]\label{f:ab}
+\begin{figure}[hbp]\label{f:ab}
    \centering
    \includegraphics{nout_7_27_lines.pdf} % requires the graphicx package
    \caption{Absolute error }
 \end{figure}
  
- \begin{figure}[htbp]
+ \begin{figure}[hbp]
    \centering
    \includegraphics{nout_7_27_llines.pdf} % requires the graphicx package
    \caption{Logarithm of error}
 \end{figure}
  
- \begin{figure}[htbp]
+ \begin{figure}[hbp]
    \centering
    \includegraphics{nout_7_27_rato.pdf} % requires the graphicx package
    \caption{regression result of convergence rate}
@@ -773,6 +773,7 @@ O(\sqrt{T}/N^{3/2})
 
 Now combine $(\ref{eq:cpathdec})$ $(\ref{eq:dpathdec})$ and $(\ref{eq:maxest})$, for $0 < \alpha < 1$,
 we get an very rough estimate of the apporximation order:
+
 \begin{equation}
 \begin{split}
 \E (M_{\alpha,T}) - \E (M_{k,N})
@@ -800,38 +801,52 @@ This estimate shows that the convergence order
 are all $1$ when $\alpha \neq 1/2$. If $\alpha=1/2$ and the
 Brownian motion does not have  drift ($\mu=0$), it is easy to see
 (by noting that
-$\E M_{1/2,T} = \E -M_{1/2,T}$) $\E M_{1/2,T} = \E M_{k,n} = 0$.
+$\E M_{1/2,T} = \E -M_{1/2,T}$) $\E M_{1/2,T} = \E M_{k,N} = 0$.
 When the Brownian motion has drift, the order becomes $1$.
 
-Using the same algorithm in section Euler scheme and random walk, we ran a simulation to examine the above claim. 
+Using the same algorithm in section Euler scheme and random walk,
+we ran a simulation to examine the above claim. 
 Here we first restate the parameter setting and algorithm.
 
 The parameter setting is : 
 \begin{equation}
-\mu = 0 ; \sigma = 1; T=1; N = 2^7 , 2 ^8 , ... 2 ^{27} ; X_0 = 0; \alpha =  \frac{1}{2} + \frac{j}{2^7} , j = 0, 1 , 2..., 2^6
+\mu = 0 ; \sigma = 1; T=1; N = 2^b , 2^{b+1} , ... 2^{d} ; X_0 = 0; 
+\alpha_j =  \frac{1}{2} + \frac{j}{2^b} , j = 0, 1 , 2..., 2^{b-1}
 \end{equation}
 
 The algorithm: 
 \begin{enumerate}[1.]
-\item Generate $2^{27}$ normal random sample with $\mu =0$ , $\sigma = \sqrt {\frac{T}{2^27}}$  starting with $X_0 = 0$, add them up according to time and record them as $X_1$, $X_2 \cdots, X_{2^{27}}$
-\item Calculate the quantiles for sequence \{$X_j$, $j=1, 2, \cdots, 2^{27}$\}, use these quantiles as the continuous quantiles $M(\alpha , T)$
-\item Calculate the quantiles for sequence \{$X_j$, $j=k2^s$\}, $k=1, \cdots, 2^{27-s}$
-\item repeat the above for 1365 times and calculate the errors
+\item Generate $2^{d}$ normal random sample $\Set{X_i}$ 
+  with drift $\tmu=\mu/2^d$ ,
+  $\tsigma = \sigma \sqrt {\frac{T}{2^b}}$  starting with $B_0 = 0$,
+  add them up according to time and record them as
+  $B_k = \sum_{1\leq i \leq k} X_i$.
+\item Calculate the $\alpha_j$ quantiles 
+  $M_{j,s}\triangleq M_{\alpha_j 2^s,2^s}$ for sequence 
+  $\Set{B_k|k=i 2^{d-s}, 1\leq i\leq 2^{s}}$, where $b\leq s \leq d$. 
+\item Use $M_{j,d}$ as the continuous quantiles $M(\alpha_j , T)$.
+\item repeat the above for $L$ times,
+  get a sequence of data $\Set{M_{j,s}^{(l)}}_{1\leq l\leq L}$
+\item calculate the mean of errors in two way for $s < d$:
+\begin{align}
+Err^{abs}_{j,s} &= \frac{1}{L}\sum_{1\leq l \leq L} \abs{M_{j,s}^{(l)}- M_{j,d}^{(l)}}\\
+Err_{j,s} &= \abs{\frac{1}{L}\sum_{1\leq l \leq L} M_{j,s}^{(l)}- M_{j,d}^{(l)}}
+\end{align}
 \end{enumerate}
 The result: 
-\begin{figure}[htbp]
+\begin{figure}[hbp]
    \centering
    \includegraphics{qnout_7_27_lines.pdf} % requires the graphicx package
    \caption{ Errors }
 \end{figure}
 
-\begin{figure}[htbp]
+\begin{figure}[hbp]
    \centering
    \includegraphics{qnout_7_27_llines.pdf} % requires the graphicx package
    \caption{ logarithm of Errors }
 \end{figure}
 
-\begin{figure}[htbp]
+\begin{figure}[hbp]
    \centering
    \includegraphics{qnout_7_27_rato.pdf} % requires the graphicx package
    \caption{ convergence rate }
