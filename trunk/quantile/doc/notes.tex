@@ -494,13 +494,13 @@ is defined by
 M(\alpha,t)(\omega) = \inf\Set{x:\int_0^t 1_{(X_s (\omega)\leq x)} > \alpha t}.
 \]
 Then we can see that $\inf_{0\leq s \leq t}  X_s = lim_{\alpha\to 0}M(\alpha,t)$ and $\sup_{(0\leq s \leq t})  X_s = lim_{\alpha\to 1} M(\alpha, t)$. %In this sense $\alpha$-quantile option can be considered as a general class of lookback option. Unlike lookback option whose payoff depends on the maximum or minimum of the price of stock before maturity as mentioned before, $\alpha$-quantile option's payoff depends on the quantile of the stock price process. This option was first introduced by \cite{Miura} in 1992. \cite{Akahori1995} gave a generalized arc-sine law for this type of options by Feynman-Kac formula.
-When $X_{t}$ is a Brownian motion $B_t$, using Feynman-Kac Dassios obtained the explicit density of $\alpha$-quantile and gave a exceptional representation of the distribution of quantile. In \cite{Dassios1995}, for $\alpha\in[0,1]$, $t\leq 0$, Dassios proved that
+When $X_{t}$ is a Brownian motion $B_t$, using Feynman-Kac, Dassios obtained the explicit density of $\alpha$-quantile and gave a exceptional representation of the distribution of quantile. In \cite{Dassios1995}, for $\alpha\in[0,1]$, $t\leq 0$, Dassios proved that
 \begin{equation}\label{eq:Dassios}
 M(\alpha, t) \eqlaw \sup_{s \leq \alpha t} X_s + \inf_{s\leq (1-\alpha)t} X'_s ,
 \end{equation}
 where $X'$ is a independent copy of $X$. Later \cite{EmRoge1995} gave two proofs of this theorem without using Feynman-Kac computations.
 
-\section{$\alpha$-quantile option}
+\section{$\alpha$-quantile}
 \subsection{The distribution function of $\alpha$-quantile of Brownian motion}
 In 1995, Yor gave the distribution function of the $\alpha$-quantile of Brownian motion without drift in \cite{Yor1995}. He obtained this result by simplifying related integral expressions in \cite{Miura}. When $\mu = 0$, that is Brownian motion $B_t$ is without drift, define $\theta = ((1 - \alpha)/(\alpha))^{1/2}$, for the Brownian quantiles on time interval $[0, 1]$,  in \cite{Yor1995} we find:
 \begin{equation}
@@ -540,10 +540,10 @@ g_2 (x;t) = \begin{cases}
 \end{equation}
 
 
-\subsection{The joint distribution of Brownian motion and its $\alpha$-quantile}
-In this section we are going to provide a give the joint distribution of Brownian motion and its quantile. When the Brownian motion is without drift,
+\subsection{The joint distribution of Brownian motion and $\alpha$-quantile}
+In this section we are going to provide the joint distribution of Brownian motion and its quantile. When the Brownian motion is without drift,
 ie $\mu = 0 $,
-As we know the joint distribution of runing maximal and end point of
+As we know the joint distribution of running maximum and end point of
 standard Brownian motion at time $\tau$ is
 \[
 P(X_\tau\in da, M_\tau\in db) =
@@ -551,10 +551,10 @@ P(X_\tau\in da, M_\tau\in db) =
 I_{\Set{a\leq b, b\geq 0}} (a,b) da db \triangleq p_\tau(a,b)
 \]
 
-To deal with the distribution of $\alpha$-quantile, we usetwo copy of
+To deal with the distribution of $\alpha$-quantile, we use two copy of
 Brownian motion and denote corresponding value at
-$\tau=\alpha t$(respectively $\tau=(1-\alpha) t$) by $X_1$(resp. $X_2$) and
-maxiamal $M_1$(resp. $M_2$).
+$\tau=\alpha t$(respectively $\tau=(1-\alpha) t$) by $X_1$(respectively $X_2$) and
+the corresponding maximum as $M_1$(respectively $M_2$).
 Then
 \[
 \begin{split}
@@ -597,7 +597,7 @@ P_{(1-\alpha)t}(\frac{x-\tx}{2},\frac{\tm-m}{2}) I_D,
 where $D$ is the domain $\Set{x_1\leq m_1, x_2\leq m_2, m_1 >0, m_2>0}$
 
 
-Hence (use change of variable $x' = (x+\tx)/2$ and $m' = (m+\tm)/2$
+Hence 
 \[
 \begin{split}
 &P(M_{\alpha,t}\in dm, X_t \in dx) = P(M_1-M_2\in dm, X_1+X_2\in dx) \\
@@ -616,13 +616,13 @@ where domain $D' = \Set{x' \leq m', x-x'\leq m'-m, m'>0, m'-m>0}$.
 \subsection{Euler scheme and random walk}
 %%Another approach to price quantile option is Monte Carlo simulation. In this method, we need to use the inverse function of the cumulative distribution function of $\alpha$-quantile. When the brownian motion is without drift, 
 
-Sometimes to get the integration of certain stochastic process, we are only able to get the value numerically. For example, if we need to know $\int^T_{0} M(\alpha , t)dt$. Usually we need to simulate a discretized version of the Brownian motion $\{B_t\}$. And the do the calculation based on the simulated sample. Obviously,  the accuracy of this approximation is closely related to the length of the discretized time increment, which we denote as $\Delta t= \frac{T}{N}$. Then the questions arise: how fine should the discretization length should be in order to get a satisfied approximation and whether we can quantify the accuracy of this type of simulation. 
+Sometimes to get the integration of certain stochastic process, we are only able to get the value numerically. For example, if we need to know $\int^T_{0} M(\alpha , t)dt$. Usually we need to simulate a discretized version of the Brownian motion $\{B_t\}$. And the do the calculation based on the simulated sample. Obviously, the accuracy of this approximation is closely related to the length of the discretized time increment, which we denote as $\Delta t= \frac{T}{N}$. Then the questions arise: how fine should the discretization length should be in order to get a satisfied approximation and whether we can quantify the accuracy of this type of simulation. 
 
-The most straightforward approach to get a simulation of $M(\alpha , T)$ is to apply the Euler approximation. In this method, we first get a sample of $\{B_{n \Delta t}\}$, $0\leq n \leq N$. Then we arrange the sample in ascending order and find the $k= \lfloor \alpha  N\rfloor$-th number as an discretized approximation of $M(\alpha , T)$. We denote $M(k, N)$ the approximation of $\alpha$-quantile under Euler scheme.The absolute error 
+The most straightforward approach to get a simulation of $M(\alpha , T)$ is to apply the Euler approximation. In this method, we first get a sample of $\{B_{n \Delta t}\}$, $0\leq n \leq N$. Then we arrange the sample in ascending order and find the $k= \lfloor \alpha  N\rfloor$-th number as an discretized approximation of $M(\alpha , T)$. We denote $M(k, N)$ the approximation of $\alpha$-quantile under Euler scheme. The absolute error 
 \begin{equation}\label{strong}
 E\|M(\alpha, T)-M(k,N)\|_2
 \end{equation}
-is one popular measure of the quality of estimation and here $\|\;\| _2$ is the Euclidean distance. If (\ref{strong}) is $O(\Delta t^\gamma)$ as $\Delta t \downarrow 0$ , this approximation is claimed to {\it converge strongly} with order $\gamma > 0 $. Strong convergency is important when fine pathwise approximation is need. Meanwhile, an approximation {\it converges} weakly with order $\beta > 0 $ if, for any function continuous and $g: \bR \to \bR$ such that all derivatives up to and inlcuding $\lceil 2(\beta + 1) \rceil$ exsit and have polynomial growth, 
+is one popular measure of the quality of estimation and here $\|\;\| _2$ is the Euclidean distance. If (\ref{strong}) is $O(\Delta t^\gamma)$ as $\Delta t \downarrow 0$, this approximation is claimed to {\it converge strongly} with order $\gamma > 0 $. Strong convergency is important when fine pathwise approximation is need. Meanwhile, an approximation {\it converges} weakly with order $\beta > 0$ if, for any function continuous and $g: \bR \to \bR$ such that all derivatives up to and inlcuding $\lceil 2(\beta + 1) \rceil$ exsit and have polynomial growth, 
 \begin{equation}
 |Eg(M(\alpha,T)) - Eg(M(k, N))| = O (h^\beta) 
 \end{equation}
@@ -630,13 +630,13 @@ as $h \downarrow 0$. Weak approximation is of importance when only an estimation
 
 We are interested in the discretization error of Euler scheme for $\alpha$-quantile. Here we present a numerical study of the convergency of Euler scheme. 
 %Since usually the knowledge of distribution is already enough to solve many questions, we focus on the weak convergency. 
-For our one dimensional  problem, the strong convergence measure can be restated as 
+For our one dimensional problem, the strong convergence measure can be restated as 
 \begin{equation}
 E|M(\alpha, T)-M(k,N)|
 \end{equation}
 Because the lack of theoretical study on the discretized quantile, we are not able to give a theoretical conclusion on the strong convergency. Instead, here we present a numerical study of the strong convergency. 
 
-The most challenging part of the design of this experiment is that the samplings of continuous $\alpha$-quantile $M(\alpha, T)$ and the discretized $\alpha$-quantile obtained under Euler scheme $M(k,N)$ should share the same path. The reason is because the discretized error is a expectation. Therefore the traditional method to get sample continuos random variable, Monte Carlo simulation, are not helpful any more. To address this phenomenon, we use a much finer Euler approximation, in our example $\Delta t = \frac{1}{2^{27}}$,  as an approximation of the continuous  $\alpha$-quantile $M(\alpha, T)$. 
+The most challenging part of the design of this experiment is that the samplings of continuous $\alpha$-quantile $M(\alpha, T)$ and the discretized $\alpha$-quantile obtained under Euler scheme $M(k,N)$ should share the same path. The reason is because the discretized error is an expectation. Therefore the traditional method to get samples for continuos random variable, Monte Carlo simulation, are not helpful any more. To address this phenomenon, we use a much finer Euler approximation, in our example $\Delta t = \frac{1}{2^{27}}$, as an approximation of the continuous  $\alpha$-quantile $M(\alpha, T)$. 
 
 The parameter setting is : 
 \begin{equation}
@@ -645,13 +645,15 @@ The parameter setting is :
 
 The algorithm: 
 \begin{enumerate}[1.]
-\item Generate $2^{27}$ normal random sample with $\mu =0$ , $\sigma = \sqrt {\frac{T}{2^27}}$  starting with $X_0 = 0$, add them up according to time and record them as $X_1$, $X_2 \cdots, X_{2^{27}}$
+\item Generate $2^{27}$ normal random sample with $\mu =0$ , $\sigma = \sqrt {\frac{T}{2^{27}}}$  starting with $X_0 = 0$, add them up according to time and record them as $X_1$, $X_2 \cdots, X_{2^{27}}$
 \item Calculate the quantiles for sequence \{$X_j$, $j=1, 2, \cdots, 2^{27}$\}, use these quantiles as the continuous quantiles $M(\alpha , T)$
 \item Calculate the quantiles for sequence \{$X_j$, $j=k2^s$\}, $k=1, \cdots, 2^{27-s}$
-\item repeat the above for 1365 times and calculate the discretization errors
+\item Repeat the above for 1365 times and calculate the discretization errors
 \end{enumerate}
-The result: 
-\begin{figure}[htbp]
+The results are showed in Figure \ref{f:ab}. It is well know that the convergence rate of Euler scheme for Brownian motion is $1$. While the convergence rate of Euler Scheme for the maximum of Brownian motion is $\frac{1}{2}$. Then it seems reasonable to guess that the convergence rate for $\alpha$-quantiles of Brownian motion decrease from $1$ to $\frac{1}{2}$ as the value of $\alpha$ vary from $100\%$ to $50\%$. However, numerical results shows that the convergence rate for $\alpha$-quantile do not work that way. Numerical results shows that for 
+
+
+\begin{figure}[htbp]\label{f:ab}
    \centering
    \includegraphics{nout_7_27_lines.pdf} % requires the graphicx package
    \caption{Absolute error }
@@ -726,7 +728,7 @@ where as above:
 S'_t = S_{\alpha T+t} - S_{\alpha_T}.
 \]
 
-For Brownian motion case, this formular were proved in many differet ways
+For Brownian motion case, this formula were proved in many different ways
 and original due to \cite{Dassios1995}.
 
 
@@ -868,6 +870,7 @@ Another advantage of quantile option is that the strong path dependence of its p
 
 
 \subsection{Tree method for European $\alpha$-quantile option}
+\label{se:fsg}
 
 
 Like lookback option, quantile option is also path-dependent. What makes things difficult is that quantile option is not markov. Normal tree methods which usually involve backward induction do not work in this case. We need to record all the information of the path because of lack of markov property, which will lead the tree to explosion computationally.
@@ -938,7 +941,7 @@ By (\ref{eq:initiate})  (\ref{eq:fsg}) and backward induction, we can get the pr
 Recall what we get by equation (\ref{eq:kowk2}). In order to get the price of $\alpha$-quantile option, we can use the prices of $2M + 1$ cumulative Parisian binary options to approximate $\alpha$-quantile option's value. Hence using the FSG method we described above to calculate the prices of cumulative Parisian option  and doing a simple math work by equation (\ref{eq:kowk2}), we can get the approximated price for $\alpha$-quantile option with $M$ time steps.
 
 Recall we defined earlier $\Delta t = T / M$. We compute the approximated option price of an $\alpha$-quantile call option with different time steps using equation (\ref{eq:kowk2}). As you can see in Figure (\ref{fig:2}),
-the numerical values of option are plotted against varying $\Delta t$. The values of parameters of the $\alpha$-quantile call option are set as: $ \alpha = 0.8$, $S_0 = 100$, $X = 95$, $r = 5\%$, $\sigma = 20\%$, and $T = 0.25$.
+the numerical values of option are plotted against varying $\Delta t$. The values of parameters of the $\alpha$-quantile call option are set as: $\alpha = 0.8$, $S_0 = 100$, $X = 95$, $r = 5\%$, $\sigma = 20\%$, and $T = 0.25$.
 \begin{figure}[htbp]
    \centering
    \includegraphics{bfsg.pdf} % requires the graphicx package
@@ -1074,30 +1077,89 @@ If take $n_2=2n, n_1=n$, we get the usual Richardson extraplation formula
 C_\infty \approx 2 C_{2n} - C_n. 
 \]
 
-Because the is no other method to price American $\alpha$-quantile option so far. In other words, there does not exist direct result acting as an comparing standard. However, since conceptly our tree should also work for European $\alpha$-quantile option, here we first compare the results using this tree mehtod with value obtained by other method.
+Because the is no other method to price American $\alpha$-quantile option so far. In other words, there does not exist direct result acting as an comparing standard. However, since conceptly our tree should also work for European $\alpha$-quantile option, here we first compare the results using this tree method with value obtained by other method.
 
-For parameters setting as
+
+For the results with parameters 
 \[
 K=100, r=0.05, \sigma=0.2, \alpha=0.5, T=1
 \]
-we get: 
+see Table~\ref{fig:euro5}
 
+
+\begin{table}[htdp]
+\caption{European $\alpha$-quantile option, with parameter
+	$K=100, r=5\%, \sigma=0.2, \alpha=0.5, T=1$. 
+	The extrapolation is based on results got at 28 steps and 36 steps. Data in last line is from \cite{Laura2001}.}
+\begin{center}
+\begin{tabular}{l|lllllll}
+ $S_0$ & $90$ & $95$ & $100$ & $105$ \\
+\hline
+28 steps & 1.60216 & 3.17876 & 5.61323 & 8.92661\\
+30 steps & 1.60443 & 3.17806 & 5.61404 & 8.92702\\
+32 steps & 1.60637 & 3.18346 & 5.61678 & 8.92718\\ 
+34 steps & 1.60435 & 3.18426 & 5.61758 & 8.92875\\
+36 steps & 1.60411 & 3.18846 & 5.61940 & 8.92925\\
+\hline
+Extrapolation & 1.61094 & 3.22241 & 5.64100 & 8.938490 \\
+\hline
+Paper & 1.6588 & 3.2695 & 5.7501 & 9.0895\\
+\end{tabular}
+\end{center}
+\label{fig:euro5}
+\end{table}%
+
+For parameter setting as $\alpha = 0.8$, $K = 95$, $r = 5\%$, $\sigma = 20\%$, and $T = 0.25$. In Table~\ref{fig:euro8} ,we present the results got by our tree method and Forward Shooting Grid discussed in section \ref{se:fsg}.
+
+
+\begin{table}[htdp]
+\caption{European $\alpha$-quantile option, with parameter
+	$K=95, r=5\%, \sigma=0.2, \alpha=0.8, T=0.25$. 
+	The extrapolation is based on results got at 26 steps and 34 steps.}
+\begin{center}
+\begin{tabular}{l|lllllll}
+$S_0$ & $95$ & $100$ & $105$        \\
+\hline
+26 & 4.59876 & 9.10824 & 14.1838  \\
+28 & 4.60931 & 9.11777 & 14.1954  \\
+30 & 4.61547 & 9.12485 & 14.2030  \\
+32 & 4.61816 & 9.12648 & 14.2054  \\
+34 &   & 9.12676 & 14.2051  \\
+extrapolation & & 9.18695 & 14.2743\\
+FSG & 4.66082 & 9.16298 & 14.2309
+\end{tabular}
+\end{center}
+\label{fig:euro8}
+\end{table}%
+
+Comparing the results by our tree method with extrapolation, Forward shooting grid and Monte Carlo method, we think our tree method is correct and efficient. Since, as we checked,it works well for European $\alpha$-quantile option, it should also work for American style $\alpha$ quantile option. 
+
+For parameters setting as
+
+\[
+K=100, r=0.05, \sigma=0.2, \alpha=0.5, T=1
+\]
+, with our tree method, we get the price of American $\alpha$-quantile option in Table \ref{fig:amer5}. Comparing data in Table \ref{fig:euro5} and Table \ref{fig:amer5}, we can see price for American option is more expensive European option with same feature. This again insure that our method is correct. 
+ 
+\begin{table}[htdp]
+\caption{American $\alpha$-quantile option, with parameter
+	$K=95, r=5\%, \sigma=0.2, \alpha=0.8, T=0.25$. 
+	The extrapolation is based on results got at 28 steps and 36 steps.}
+\begin{center}
 \begin{tabular}{l|lllllll}
 $S_0$ & $90$ & $95$ & $100$ & $105$ \\
 \hline
-28 & 1.60216 & 3.17876 & 5.61323 & 8.92661\\
-30 & 1.60443 & 3.17806 & 5.61404 & 8.92702\\
-32 & 1.60637 & 3.18346 & 5.61678 & 8.92718\\ 
-34 & 1.60435 & 3.18426 & 5.61758 & 8.92875\\
-36 & 1.60411 & 3.18846 & 5.61940 & 8.92925\\
-Extrapolation & 1.61094   & 3.22241 & 5.64100 &  8.938490 \\
-Paper & 1.6588 & 3.2695 & 5.7501 & 9.0895\\
+26steps & 1.69411 & 3.43582 & 6.19546 & 10.2276 \\
+28steps & 1.70066 & 3.44695 & 6.21365 & 10.2465 \\
+30steps & 1.70434 & 3.45157 & 6.22887 & 10.2624 \\
+32steps & 1.70651 & 3.45927 & 6.24320 & 10.2738  \\
+34steps & 1.70590 & 3.46373 & 6.25529 & 10.2831 \\
+36steps & 1.70711 & 3.47019 & 6.26644 & 10.2891 \\
+Extrapolation & 1.729685 & 3.551530 & 6.451205 & 10.43820 \\
 \end{tabular}
-
-Data in last line is from \cite{Laura2001}.
- 
-
-\begin{tabular}{}
+\end{center}
+\label{fig:amer5}
+\end{table}%
 
 
 
@@ -1105,11 +1167,11 @@ Data in last line is from \cite{Laura2001}.
 We follow \cite{Broadie1999}.
 
 In this section we omit the subscript $\alpha$ and $k$. Denote 
-$M$ and $M_m$ be the $\alpha$ quantile of Brownian motion with dirft $\mu$ 
-and variance $\sigma$ at time $T$ and its step lenght $T/m$ version
+$M$ and $M_m$ be the $\alpha$ quantile of Brownian motion with drift $\mu$ 
+and variance $\sigma$ at time $T$ and its step length $T/m$ version
  respectively. 
 
-From the provious section, we know the mean of discrete error satisfies
+From the previous section, we know the mean of discrete error satisfies
 \[
 E(M-M_m) = \beta /m + O(m^{-\frac{3}{2}}),
 \]
