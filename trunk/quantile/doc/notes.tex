@@ -37,6 +37,8 @@
 \def\tm{{\widetilde{m}}}
 
 
+\allowdisplaybreaks[1]
+ 
 \usepackage{hyperref}
 
 \usepackage{natbib}
@@ -44,6 +46,7 @@
 
 \begin{document}
  \bibliographystyle{cje}
+
 
 \maketitle
 
@@ -613,7 +616,7 @@ P_{\alpha t}(x', m') P_{(1-\alpha)t}(x-x',m'-m) dx' dm',
 \]
 where domain $D' = \Set{x' \leq m', x-x'\leq m'-m, m'>0, m'-m>0}$.
 
-\subsection{Euler scheme and random walk}
+\subsection{Euler scheme and random walk}\label{s:euler}
 %%Another approach to price quantile option is Monte Carlo simulation. In this method, we need to use the inverse function of the cumulative distribution function of $\alpha$-quantile. When the brownian motion is without drift, 
 
 Sometimes to get the integration of certain stochastic process, we are only able to get the value numerically. For example, if we need to know $\int^T_{0} M(\alpha , t)dt$. Usually we need to simulate a discretized version of the Brownian motion $\{B_t\}$. And the do the calculation based on the simulated sample. Obviously, the accuracy of this approximation is closely related to the length of the discretized time increment, which we denote as $\Delta t= \frac{T}{N}$. Then the questions arise: how fine should the discretization length should be in order to get a satisfied approximation and whether we can quantify the accuracy of this type of simulation. 
@@ -663,9 +666,10 @@ Err^{abs}_{j,s} &= \frac{1}{L}\sum_{1\leq l \leq L} \abs{M_{j,s}^{(l)}- M_{j,d}^
 \end{align}
 \end{enumerate}
 
-We realize this algorithm for $d=18$,$b=6$ and generate more than 1300 sampled paths. The results are showed in Figure \ref{f:ab}. We are dealing with $\mu = 0$ currently. By the symmetric effect of Brownian motion without drift. We only examine $\alpha$-quantiles where $\alpha$ vary from $[50\%,100\%]$. It is well know that the convergence rate of Euler scheme for Brownian motion is $1$. While the convergence rate of Euler Scheme for the maximum of Brownian motion is $\frac{1}{2}$. Then it seems reasonable to guess that the convergence rate for $\alpha$-quantiles of Brownian motion decrease from $1$ to $\frac{1}{2}$ as the value of $\alpha$ vary from $100\%$ to $50\%$. However, numerical results shows that the convergence rate for $\alpha$-quantile do not work that way. Figure \ref{f:ab} shows that there exists a big difference between the convergence pattens for the maximum of Brownian motion and other $\alpha$-quantiles of Brownian motion. On the other hand, the convergence pattens for different $\alpha$-quantiles are quite similar when $\alpha$ varies from $[50\%, 100\%)$. 
+We realize this algorithm for $d=27$,$b=6$ and generate more than 2000 sampled paths. The results are showed in Figure \ref{f:ab}. We are dealing with $\mu = 0$ currently. By the symmetric effect of Brownian motion without drift. We only examine $\alpha$-quantiles where $\alpha$ vary from $[50\%,100\%]$. It is well know that the convergence rate of Euler scheme for Brownian motion is $1$. While the convergence rate of Euler Scheme for the maximum of Brownian motion is $\frac{1}{2}$. Then it seems reasonable to guess that the convergence rate for $\alpha$-quantiles of Brownian motion decrease from $1$ to $\frac{1}{2}$ as the value of $\alpha$ vary from $100\%$ to $50\%$. However, numerical results shows that the convergence rate for $\alpha$-quantile do not work that way. Figure \ref{f:ab} shows that there exists a big difference between the convergence pattens for the maximum of Brownian motion and other $\alpha$-quantiles of Brownian motion. On the other hand, the convergence pattens for different $\alpha$-quantiles are quite similar when $\alpha$ varies from $[50\%, 100\%)$. 
 
 In Figure \ref{f:ab}, the horizontal index $s$ means that the result is obtained on a path in which we divid the whole path on time interval $[0,T]$ into $2^{j}$ equal small intervals. Then to examine the convergence patterns for the increase of denseness on a apple to apple case, we should take logarithm of the errors. The similarity of convergence pattens of $\alpha$-quantiles when $\alpha$ is between $[50\%, 100\%)$ is more obvious after we take the logarithm. 
+
 In Figure \ref{f:lab}, you can see that except for the maximum, i.e the $100\%$-quantile, the convergence rates of other $\alpha$-quantiles of Brownian motion are close to each other. This is reflected as the lines parallel to each other. Figure \ref{f:ratio} is the convergence rate for different $\alpha$-quantiles. You can see that the convergence rate for $100\%$-quantile is close to $\frac{1}{2}$, while convergence rates for other quantile are centered around $0.75$.  
 
 \begin{figure}[hbp]\label{f:ab}
@@ -674,18 +678,19 @@ In Figure \ref{f:lab}, you can see that except for the maximum, i.e the $100\%$-
    \caption{Absolute error}
 \end{figure}
  
- \begin{figure}[hbp]\label{f:lab}
+ \begin{figure}[hp]\label{f:lab}
    \centering
    \includegraphics{nout_7_27alog.pdf} % requires the graphicx package
    \caption{Logarithm of error} 
 \end{figure}
  
- \begin{figure}[hbp]\label{f:ratio}
+ \begin{figure}[hp]\label{f:ratio}
    \centering
    \includegraphics{nout_7_27arato.pdf} % requires the graphicx packagem 
    \caption{regression result of convergence rate}
 \end{figure}
 
+\clearpage
 %\begin{figure}[htbp]
  %  \centering
   % \includegraphics{cnout_7_27_lines.pdf} % requires the graphicx package
@@ -719,8 +724,8 @@ Define
 \[S'_i = S_{i+k}-S_k\]
 for fixed $k, n$.
 
-In \cite{Wendel1960}, an identity about randon walk with
-i.i.d increasment was dirived:
+In \cite{Wendel1960}, an identity about random walk with
+i.i.d increment was derived:
 \begin{equation}\label{eq:dpathdec}
 (M_{k,n}, S_n) \eqlaw (\sup_{i\leq k} S_i +\inf_{i\leq n-k} S'_i, S_n)
 \end{equation}
@@ -731,7 +736,7 @@ He constructed a explicit path transform for $S$ to $\tS$, such that
 (M_{k,n}, S_n) = (\sup_{i\leq k} \tS_i+\inf_{i\leq n-k} \tS'_i, \tS_n)
 \]
 Here $\tS$ has same distribution with $S$ and each path $S$
- one-one corresponed to $\tS$.
+ one-one correspondence to $\tS$.
 
 By using path transform, Chaumont proved
 following continous version of path decomposition:
@@ -747,9 +752,9 @@ For Brownian motion case, this formula were proved in many different ways
 and original due to \cite{Dassios1995}.
 
 
-\cite{Janssen2008} gives a estimate of the difference of  expectations
+\cite{Janssen2008} give an estimate of the difference of  expectations
 between maximum of Brownian motion and associated random walk.
-Since we just give a really rough estimate, we only list the first two term.
+Since we just give a really rough estimate, we only list the first two terms.
 For $B_t$ a Brownian motion with drift $\mu$ and variance $1$ on time interval $[0,1]$, that is $B_t = \mu t + W_t$, where $W_t$ is standard Brownian motion, we can get
 \begin{equation}\label{eq:est1}
 E\max_{0\leq t \leq 1} B(t) - E\max_{n=0,\cdots, N}B(n/N)
@@ -771,9 +776,10 @@ we use following transform
 \mu &= \tmu \sqrt{T}/\tsigma
 \end{align*}
 
+\def\tg{\widetilde{g}}
 We denote
 \begin{equation}
-g'(\mu)=\mu \Phi(\mu) + \frac{1}{\sqrt{2\pi}} e^{-\frac{1}{2}\mu^2 }
+\tg(\mu)=\mu \Phi(\mu) + \frac{1}{\sqrt{2\pi}} e^{-\frac{1}{2}\mu^2 }
 \end{equation}
 
 We derive the following formula:
@@ -781,16 +787,15 @@ We derive the following formula:
 \begin{split}
 &E\max_{0\leq t\leq T} \tB(t) - E \max_{0\leq n \leq N} \tB(nT/N)\\ 
 = & -\frac{\zeta(1/2)}{\sqrt{2\pi}}\tsigma \sqrt{T/N}
- -\frac{2g(1)-\tmu\sqrt{T} / \tsigma}{4N}\tsigma\sqrt{T} +
+ -\frac{2\tg(\mu)-\tmu\sqrt{T} / \tsigma}{4N}\tsigma\sqrt{T} +
 O(\sqrt{T}/N^{3/2})
 \end{split}
 \end{equation}
 
 Now combine $(\ref{eq:cpathdec})$ $(\ref{eq:dpathdec})$ and $(\ref{eq:maxest})$, for $0 < \alpha < 1$,
-we get an very rough estimate of the apporximation order:
-
-\begin{equation}
-\begin{split}
+we get an very rough estimate of the approximation order:
+\allowdisplaybreaks
+\begin{align*}
 \E (M_{\alpha,T}) - \E (M_{k,N})
 =& \EE{\sup_{t\leq \alpha{T}} S_t +\inf_{t \leq (1-\alpha)T}S'_t}
 - \EE{\sup_{i\leq k} S_i+\inf_{i\leq N-k} S'_i}\\
@@ -798,28 +803,22 @@ we get an very rough estimate of the apporximation order:
 -  \sup_{i\leq k} S_i-\inf_{i\leq N-k} S'_i} \\
 = &  \EE{\sup_{t\leq \alpha{T}} S_t - \sup_{i\leq k} S_i} +
 \EE{\inf_{t \leq (1-\alpha)T} S'_t-\inf_{i\leq N-k} S'_i}\\
-=& -\frac{\zeta(1/2)}{\sqrt{2\pi}}\tsigma \sqrt{\frac{\alpha T}{\alpha N}} - \frac{2g'(\mu_1)-\mu_1}{4N}\tsigma\sqrt{\alpha T} +O(1/N^\frac{3}{2}) \\
-&-\left(\frac{\zeta(1/2)}{\sqrt{2\pi}}\tsigma \sqrt{\frac{(1-\alpha)T}{(1-\alpha)N}} - \frac{2g'(\mu_2) - \mu_2}{4N}\tsigma \sqrt{(1-\alpha)T} + O(1/N^\frac{3}{2})\right) \\
+=& -\frac{\zeta(1/2)}{\sqrt{2\pi}}\tsigma \sqrt{\frac{\alpha T}{\alpha N}} - \frac{2\tg(\mu_1)-\mu_1}{4N}\tsigma\sqrt{\alpha T} +O(1/N^\frac{3}{2}) \\
+&-\left(\frac{\zeta(1/2)}{\sqrt{2\pi}}\tsigma \sqrt{\frac{(1-\alpha)T}{(1-\alpha)N}} - \frac{2\tg(\mu_2) - \mu_2}{4N}\tsigma \sqrt{(1-\alpha)T} + O(1/N^\frac{3}{2})\right) \\
 =& -\frac{\zeta(1/2) \tsigma}{\sqrt{2\pi}}\left(\sqrt{T/\alpha N}
 \sqrt{\alpha} - \sqrt{T/(1-\alpha)N}\sqrt{1-\alpha}\right) \\
-& - \frac{\tsigma\sqrt{T}}{4N}\left((2g'(\mu_1)-\mu_1)\sqrt\alpha - (2g'(\mu_2)-\mu_2)\sqrt{(1-\alpha)}\right) \\
+& - \frac{\tsigma\sqrt{T}}{4N}\left((2\tg(\mu_1)-\mu_1)\sqrt\alpha - (2\tg(\mu_2)-\mu_2)\sqrt{(1-\alpha)}\right) \\
 &+ O(1/N^\frac{3}{2}) \\
-=&- \frac{\tsigma\sqrt{T}}{4N}\left((2g'(\mu_1)-\mu_1)\sqrt\alpha - (2g'(\mu_2)-\mu_2)\sqrt{(1-\alpha)}\right) \\
-& + O(1/N^{\frac{3}{2}})
-\end{split}
-\end{equation}
+=&- \frac{\tsigma\sqrt{T}}{4N}\left((2\tg(\mu_1)-\mu_1)\sqrt\alpha - (2\tg(\mu_2)-\mu_2)\sqrt{(1-\alpha)}\right) \\
+& + O(1/N^{\frac{3}{2}}),
+\end{align*}
 where $k = \alpha N$, $\mu_1 =\tmu\sqrt{\alpha T}/\tsigma$, and $\mu_2 =\tmu\sqrt{(1-\alpha)T}/\tsigma$.
 The third last equality holds by view $\inf_{t\leq (1-\alpha)T} S'_t$ as
 $-\max_{t\leq (1-\alpha)T} (-S'_t)$.
 
-This estimate shows that the convergence order
-are all $1$ when $\alpha \neq 1/2$. If $\alpha=1/2$ and the
-Brownian motion does not have  drift ($\mu=0$), it is easy to see
-(by noting that
-$\E M_{1/2,T} = \E -M_{1/2,T}$) $\E M_{1/2,T} = \E M_{k,N} = 0$.
-When the Brownian motion has drift, the order becomes $1$.
+This proof shows that the convergence order are all $1$ when $0<\alpha < 1$. When $\alpha = 0$ or $\alpha = 1$, the convergence rate is ${\frac{1}{2}}$. This partially explains the phenomenon that the strong convergence rate we dissccusd in section \ref{s:euler}.   %If $\alpha=1/2$ and the Brownian motion does not have  drift ($\mu=0$), it is easy to see (by noting that $\E M_{1/2,T} = \E -M_{1/2,T}$) $\E M_{1/2,T} = \E M_{k,N} = 0$.When the Brownian motion has drift, the order becomes $1$.
 
-Using the same algorithm in section Euler scheme and random walk,
+Using the same algorithm in section \ref{s:euler} Euler scheme and random walk,
 we ran a simulation to examine the above claim. 
 Here we first restate the parameter setting and algorithm.
 
@@ -844,32 +843,33 @@ The algorithm:
   get a sequence of data $\Set{M_{j,s}^{(l)}}_{1\leq l\leq L}$
 \item Calculate the mean of errors for $s < d$:
 \begin{align}
-Err_{j,s} &= \abs{\frac{1}{L}\sum_{1\leq l \leq L} M_{j,s}^{(l)}- M_{j,d}^{(l)}}
+Err_{j,s} &= {\frac{1}{L}\left(\sum_{1\leq l \leq L} M_{j,d}^{(l)} - M_{j,s}^{(l)}\right)}
 \end{align}
 \end{enumerate}
 
-The result: 
-\begin{figure}[hbp]
+We realize this algorithm for $d=27$,$b=6$ and generate more than 2000 sampled paths. As you can see in Figure \ref{f:err}, Figure \ref{f:lerr} and Figure \ref{f:rate}, the simulation results are coincident with our theoretical conclusion. 
+
+\begin{figure}[hbp]\label{f:err}
    \centering
    \includegraphics{nout_7_27.pdf} % requires the graphicx package
    \caption{ Errors }
 \end{figure}
 
-\begin{figure}[hbp]
+\begin{figure}[hbp]\label{f:lerr}
    \centering
    \includegraphics{nout_7_27log.pdf} % requires the graphicx package
-   \caption{ logarithm of Errors }
+   \caption{ Logarithm of Errors }
 \end{figure}
 
-\begin{figure}[hbp]
+\begin{figure}[hbp]\label{f:rate}
    \centering
    \includegraphics{nout_7_27rato.pdf} % requires the graphicx package
-   \caption{ convergence rate }
+   \caption{ Convergence rate }
 \end{figure}
 
+\clearpage
 
-
-Now, suppose that $f$ is an monotone Lipschitz continuos function.
+Now, suppose that $f$ is an monotone Lipschitz continuous function.
 WLOG, asume 
 \begin{equation}\label{eq:lips}
 0 \leq f(x)-f(y) \leq C (x-y) \quad \forall x>y,
@@ -884,19 +884,20 @@ Then it is easy to see
 \leq  C \left(\sup_{t\leq \alpha{T}} S_t - \sup_{i\leq k} S_i\right)
 \]
 Hence
-\[
+\begin{equation}\label{eq:liperr}
 \abs{\E f(M_{\alpha,T}) - \E f(M_{k,N})}
 \leq \max\Set{\sqrt{\alpha}, \sqrt{1-\alpha}}
 C\frac{-\zeta(1/2)}{\sqrt{2\pi}}\sqrt{T/N}  + O(1/N)
-\]
+\end{equation}
 
+%By this, we can say the convergence rate of $\alpha$-quantile European option is at least 1/2.
 
 \section{$\alpha$-quantile option}
 \subsection{The advantage of $\alpha$-quantile option}
-As we discussed before, lookback option is a path-dependent option with payoff calculated with the maximum or minimum price of the underlying asset during the life of the option. For example, a fixed strike lookback call opition get the highest value obtained within the option's lifetime. In this case, to the holder, it can be viewed as a protecation against large drop of stock price. This can be regarded as a method to deal with the unfavor movement of a particular stock. The release of an prolonged lawsuit which may have a strong negative effect on the stock price. On the other side, lookback put option provides an insurance against large rises. But these characters also make lookback options too expensive. Quantile option is one product that overcome this shortcoming of lookbacks. Quantile option is cheaper than lookbacks. While it still provide partial protection against market movements. This property of quantile option was first discussed by \cite{Ballotta2001}.
+As we discussed before, lookback option is a path-dependent option with payoff calculated with the maximum or minimum price of the underlying asset during the life of the option. For example, a fixed strike lookback call option get the highest value obtained within the option's lifetime. In this case, to the holder, it can be viewed as a protection against large drop of stock price. This can be regarded as a method to deal with the unfavorable movement of a particular stock. The release of an prolonged lawsuit which may have a strong negative effect on the stock price. On the other side, lookback put option provides an insurance against large rises. But these characters also make lookback options too expensive. Quantile option is one product that overcome this shortcoming of lookbacks. Quantile option is cheaper than lookbacks, while it still provide partial protection against market movements. This property of quantile option was first discussed by \cite{Ballotta2001}.
 
 
-Another advantage of quantile option is that the strong path dependence of its payoff make it immunize to possible market manipulation. Because the payoff of lookback using the maximum of stock price during option's lifetime. Particularly for at the money option close to maturity, which in this case are most vulnerable to the stock movement closing to maturity. Firms have influence on market price can use this advantage to leading market price move to their favor direction. But since quantile option are strongly dependent, the manipulation effect is limited. 
+Another advantage of quantile option is that the strong path dependence of its payoff make it immunize to possible market manipulation. Because the payoff of lookback using the maximum of stock price during option's lifetime. Particularly for at the money option close to maturity, which in this case are most vulnerable to the stock movement closing to maturity. Firms have influence on market price can use this advantage to leading market price move to their favorable direction. But since quantile option are strongly dependent, the manipulation effect is limited. 
 
 
 \subsection{Tree method for European $\alpha$-quantile option}
@@ -904,7 +905,7 @@ Another advantage of quantile option is that the strong path dependence of its p
 
 
 Like lookback option, quantile option is also path-dependent. What makes things difficult is that quantile option is not markov. Normal tree methods which usually involve backward induction do not work in this case. We need to record all the information of the path because of lack of markov property, which will lead the tree to explosion computationally.
-\cite{Kwok2001} proposed a special way to apply tree method to price quantile option. In this paper, they find a relation between the price of quantile option and the price of cumulative Parisian option. By this approximation, they can simplify the pricing of quantile option. In their paper, they assume that there are $M$ time steps for the whole monitoring period $[0,T]$, and they define ${S^M}_j$, $j = - M$, ...$0$,$1$,...,$M$ as the discrete asset prices at maturity. Under trinomial tree method, the possible prices happened in one tree are limited to ${S^M}_j$,  $j = - M$, ...$0$,$1$, ...,$M$, which is also true for the value taken by quantile of brownian motion. Therefore they derived that
+\cite{Kwok2001} proposed a special way to apply tree method to price quantile option. In this paper, they find a relation between the price of quantile option and the price of cumulative Parisian option. By this approximation, they can simplify the pricing of quantile option. In their paper, they assume that there are $M$ time steps for the whole monitoring period $[0,T]$, and they define ${S^M}_j$, $j = - M$, ...$0$,$1$,...,$M$ as the discrete asset prices at maturity. Under trinomial tree method, the possible prices happened in one tree are limited to $S^M_j$,  $j = - M$, ...$0$,$1$, ...,$M$, which is also true for the value taken by quantile of Brownian motion. Therefore they derived that
 \begin{equation}\label{eq:kowk1}
 V(\alpha, T) = e^{-rT} \sum^{M}_{j=-M}P[M(\alpha,T)=S^{M}_{j}]\max(S^{M}_{j}-X,0),
 \end{equation}
@@ -923,7 +924,7 @@ V_{alp} = \sum^M_{j=-M} \max (S^M_j - X,0) \times \{V_{cum}^{bin}[(1-\alpha)T, S
 where $V^{bin}_{cum}[(1-\alpha)T, S_{-(M+1)}^M] = e^{-rT}$. By this result, we can turn pricing of quantile option into pricing of $2M+1$ cumulative Parisian option.
 
 
-Parisian option is like an advanced version of barrier option. We know barrier option are options where the payoff depends on whether the underlying asset's price reaches a certain level (barrier) during the option's life. Barrier options usually trade in the over-the counter market. This kind of option is attractive because it is usually cheaper than similar option without barrier. Like vanilla option, barrier options also authorize holders the right to buy or sell, but  long sides of barrier options do not need to pay for scenarios they think is unlikely to happen in the future. One good example I find from wikipedia is about IBM. If you believe that IBM will go up this year, but are willing to bet that it won't go above \$100, then you can buy the barrier and pay less premium than the vanilla option. But in this one-touch knock-out or knock can bring difficulties to option writers when asset price is close to barrier. Particularly in the foreign exchange market where manipulation of underlying asset price is not impossible. To overcome short period price manipulation, various adjustments to one-touch knock out or knock in have been performed in practice. Parisian option is one solution.  In order to get activated, the underlying assets of parisian option need to stay in the knout out or knout in region for certain period of time. The payoff of a cumulative Parisian option is dependent on the total amount of time the underlying asset price has spent above or below barrier. As for binary option, the payoff is either some fixed amount of some asset or nothing at all.
+Parisian option is like an advanced version of barrier option. We know barrier option are options where the payoff depends on whether the underlying asset's price reaches a certain level (barrier) during the option's life. Barrier options usually trade in the over-the counter market. This kind of option is attractive because it is usually cheaper than similar option without barrier. Like vanilla option, barrier options also authorize holders the right to buy or sell, but  long sides of barrier options do not need to pay for scenarios they think is unlikely to happen in the future. One good example I find from wikipedia is about IBM. If you believe that IBM will go up this year, but are willing to bet that it won't go above \$100, then you can buy the barrier and pay less premium than the vanilla option. But in this one-touch knock-out or knock-in can bring difficulties to option writers when asset price is close to barrier. Particularly in the foreign exchange market where manipulation of underlying asset price is not impossible. To overcome short period price manipulation, various adjustments to one-touch knock out or knock-in have been performed in practice. Parisian option is one solution.  In order to get activated, the underlying assets of parisian option need to stay in the knout out or knout in region for certain period of time. The payoff of a cumulative Parisian option is dependent on the total amount of time the underlying asset price has spent above or below barrier. As for binary option, the payoff is either some fixed amount of some asset or nothing at all.
 
 
 
@@ -932,7 +933,7 @@ Kwok and Lau also proposed a forward shorting grid(FSG) to price cumulative pari
 In \cite{Kwok2001}, they constructed a trinomial tree to get the price of cumulative parisian option. But due to the fact that the result is not steady according to the setting of the length of up movement between each immediate steps, we modify their method to binomial tree.
 
 In building binomial tree, we start by cutting the entire life of one option into many small time intervals of length $\Delta t = T / M$.
-Our tree is build to mimic the the logarithm process of underlying asset price. Denote $x=\ln S$. In each step, the logarithm of the price of underlying asset is assumed to move from its initial value of $x_0$ to one of the two new values, $x_0 + d + u$ and $x_0 + d - u$ with equal probability,that is $p_{up} = p_{down} = 0.5$ , where $u = \sigma \sqrt{\Delta t}$ and $d = (r - {\sigma}^2 /2)\Delta t$. Here $\sigma$, and $r$ are volatility and riskless interest rate, respectively. The model is illustrated in Figure~\ref{fig:tree1}.
+Our tree is build to mimic the the logarithm process of underlying asset price. Denote $x=\ln S$. In each step, the logarithm of the price of underlying asset is assumed to move from its initial value of $x_0$ to one of the two new values, $x_0 + d + u$ and $x_0 + d - u$ with equal probability,that is $p_{up} = p_{down} = 0.5$ , where $u = \sigma \sqrt{\Delta t}$ and $d = (r - {\sigma}^2 /2)\Delta t$. Here $\sigma$, and $r$ are volatility and risk free interest rate, respectively. The model is illustrated in Figure~\ref{fig:tree1}.
 \begin{figure}[htbp]
    \centering
    \includegraphics{trees.pdf} % requires the graphicx package
