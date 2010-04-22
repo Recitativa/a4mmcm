@@ -640,34 +640,49 @@ The most challenging part of the design of this experiment is that the samplings
 
 The parameter setting is : 
 \begin{equation}
-\mu = 0 ; \sigma = 1; T=1; N = 2^7 , 2 ^8 , ... 2 ^{27} ; X_0 = 0; \alpha =  \frac{1}{2} + \frac{j}{2^7} , j = 0, 1 , 2..., 2^6
+\mu = 0 ; \sigma = 1; T=1; N = 2^b , 2^{b+1} , ... 2^{d} ; X_0 = 0; 
+\alpha_j =  \frac{1}{2} + \frac{j}{2^b} , j = 0, 1 , 2..., 2^{b-1}
 \end{equation}
 
 The algorithm: 
 \begin{enumerate}[1.]
-\item Generate $2^{27}$ normal random sample with $\mu =0$ , $\sigma = \sqrt {\frac{T}{2^{27}}}$  starting with $X_0 = 0$, add them up according to time and record them as $X_1$, $X_2 \cdots, X_{2^{27}}$
-\item Calculate the quantiles for sequence \{$X_j$, $j=1, 2, \cdots, 2^{27}$\}, use these quantiles as the continuous quantiles $M(\alpha , T)$
-\item Calculate the quantiles for sequence \{$X_j$, $j=k2^s$\}, $k=1, \cdots, 2^{27-s}$
-\item Repeat the above for 1365 times and calculate the discretization errors
+\item Generate $2^{d}$ normal random sample $\Set{X_i}$ 
+  with mean $\tmu=\mu/2^d$ ,
+  $\tsigma = \sigma \sqrt {\frac{T}{2^b}}$  starting with $B_0 = 0$,
+  add them up according to time and record them as
+  $B_k = \sum_{1\leq i \leq k} X_i$.
+\item Calculate the $\alpha_j$ quantiles 
+  $M_{j,s}\triangleq M_{\alpha_j 2^s,2^s}$ for sequence 
+  $\Set{B_k|k=i 2^{d-s}, 1\leq i\leq 2^{s}}$, where $b\leq s \leq d$. 
+\item Use $M_{j,d}$ as the continuous quantiles $M(\alpha_j , T)$.
+\item Repeat the above for $L$ times,
+  get a sequence of data $\Set{M_{j,s}^{(l)}}_{1\leq l\leq L}$
+\item Calculate the mean of errors for $s < d$ using:
+\begin{align}
+Err^{abs}_{j,s} &= \frac{1}{L}\sum_{1\leq l \leq L} \abs{M_{j,s}^{(l)}- M_{j,d}^{(l)}}
+\end{align}
 \end{enumerate}
-The results are showed in Figure \ref{f:ab}. It is well know that the convergence rate of Euler scheme for Brownian motion is $1$. While the convergence rate of Euler Scheme for the maximum of Brownian motion is $\frac{1}{2}$. Then it seems reasonable to guess that the convergence rate for $\alpha$-quantiles of Brownian motion decrease from $1$ to $\frac{1}{2}$ as the value of $\alpha$ vary from $100\%$ to $50\%$. However, numerical results shows that the convergence rate for $\alpha$-quantile do not work that way. Numerical results shows that for 
 
+We realize this algorithm for $d=18$,$b=6$ and generate more than 1300 sampled paths. The results are showed in Figure \ref{f:ab}. We are dealing with $\mu = 0$ currently. By the symmetric effect of Brownian motion without drift. We only examine $\alpha$-quantiles where $\alpha$ vary from $[50\%,100\%]$. It is well know that the convergence rate of Euler scheme for Brownian motion is $1$. While the convergence rate of Euler Scheme for the maximum of Brownian motion is $\frac{1}{2}$. Then it seems reasonable to guess that the convergence rate for $\alpha$-quantiles of Brownian motion decrease from $1$ to $\frac{1}{2}$ as the value of $\alpha$ vary from $100\%$ to $50\%$. However, numerical results shows that the convergence rate for $\alpha$-quantile do not work that way. Figure \ref{f:ab} shows that there exists a big difference between the convergence pattens for the maximum of Brownian motion and other $\alpha$-quantiles of Brownian motion. On the other hand, the convergence pattens for different $\alpha$-quantiles are quite similar when $\alpha$ varies from $[50\%, 100\%)$. 
+
+In Figure \ref{f:ab}, the horizontal index $s$ means that the result is obtained on a path in which we divid the whole path on time interval $[0,T]$ into $2^{j}$ equal small intervals. Then to examine the convergence patterns for the increase of denseness on a apple to apple case, we should take logarithm of the errors. The similarity of convergence pattens of $\alpha$-quantiles when $\alpha$ is between $[50\%, 100\%)$ is more obvious after we take the logarithm. 
+In Figure \ref{f:lab}, you can see that except for the maximum, i.e the $100\%$-quantile, the convergence rates of other $\alpha$-quantiles of Brownian motion are close to each other. This is reflected as the lines parallel to each other. Figure \ref{f:ratio} is the convergence rate for different $\alpha$-quantiles. You can see that the convergence rate for $100\%$-quantile is close to $\frac{1}{2}$, while convergence rates for other quantile are centered around $0.75$.  
 
 \begin{figure}[hbp]\label{f:ab}
    \centering
    \includegraphics{nout_7_27_lines.pdf} % requires the graphicx package
-   \caption{Absolute error }
+   \caption{Absolute error}
 \end{figure}
  
- \begin{figure}[hbp]
+ \begin{figure}[hbp]\label{f:lab}
    \centering
    \includegraphics{nout_7_27_llines.pdf} % requires the graphicx package
-   \caption{Logarithm of error}
+   \caption{Logarithm of error} 
 \end{figure}
  
- \begin{figure}[hbp]
+ \begin{figure}[hbp]\label{f:ratio}
    \centering
-   \includegraphics{nout_7_27_rato.pdf} % requires the graphicx package
+   \includegraphics{nout_7_27_rato.pdf} % requires the graphicx packagem 
    \caption{regression result of convergence rate}
 \end{figure}
 
@@ -693,8 +708,8 @@ The results are showed in Figure \ref{f:ab}. It is well know that the convergenc
 \subsection{An estimate of week discrete error}
 \label{sec:de}
 
-Let $S_k$ be a randon walk (assume $S_0=0$)
-with i.i.d increasment, i.e.
+Let $S_k$ be a random walk (assume $S_0=0$)
+with i.i.d increment, i.e.
 $\Delta S_k = S_k -  S_{k-1}$ is i.i.d.
 Define the ordered statistics $M_{k,n}$ be the $k$th smallest value in
 $\Set{S_i}_{i=0}^n$.
@@ -817,7 +832,7 @@ The parameter setting is :
 The algorithm: 
 \begin{enumerate}[1.]
 \item Generate $2^{d}$ normal random sample $\Set{X_i}$ 
-  with drift $\tmu=\mu/2^d$ ,
+  with mean $\tmu=\mu/2^d$ ,
   $\tsigma = \sigma \sqrt {\frac{T}{2^b}}$  starting with $B_0 = 0$,
   add them up according to time and record them as
   $B_k = \sum_{1\leq i \leq k} X_i$.
@@ -825,14 +840,14 @@ The algorithm:
   $M_{j,s}\triangleq M_{\alpha_j 2^s,2^s}$ for sequence 
   $\Set{B_k|k=i 2^{d-s}, 1\leq i\leq 2^{s}}$, where $b\leq s \leq d$. 
 \item Use $M_{j,d}$ as the continuous quantiles $M(\alpha_j , T)$.
-\item repeat the above for $L$ times,
+\item Repeat the above for $L$ times,
   get a sequence of data $\Set{M_{j,s}^{(l)}}_{1\leq l\leq L}$
-\item calculate the mean of errors in two way for $s < d$:
+\item Calculate the mean of errors for $s < d$:
 \begin{align}
-Err^{abs}_{j,s} &= \frac{1}{L}\sum_{1\leq l \leq L} \abs{M_{j,s}^{(l)}- M_{j,d}^{(l)}}\\
 Err_{j,s} &= \abs{\frac{1}{L}\sum_{1\leq l \leq L} M_{j,s}^{(l)}- M_{j,d}^{(l)}}
 \end{align}
 \end{enumerate}
+
 The result: 
 \begin{figure}[hbp]
    \centering
