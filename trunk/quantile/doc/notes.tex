@@ -410,6 +410,10 @@ where
 \begin{equation}
 d = ( ln\frac{S_0}{K} + rT + \frac{1}{2} \sigma^2 T)/ {\sigma \sqrt{T}}.
 \end{equation}
+and
+\begin{equation}
+d'=(rT + \frac{1}{2} \sigma^2 T)/ {\sigma \sqrt{T}}
+\end{equation}
 
 Similarly, the value of the put is 
 \begin{equation}
@@ -1126,6 +1130,8 @@ can be seen in Table~\ref{fig:euro5}
 Extrapolation & 1.61094 & 3.22241 & 5.64100 & 8.938490 \\
 \hline
 Paper & 1.6588 & 3.2695 & 5.7501 & 9.0895\\
+\hline
+lookback & 5.876317 &  12.97765 & 19.16763 & 24.43289
 \end{tabular}
 \end{center}
 \label{fig:euro5}
@@ -1149,7 +1155,8 @@ $S_0$ & $95$ & $100$ & $105$        \\
 34 & 4.61785 & 9.12676 & 14.2051 \\
 36 & 4.62050 & 9.12908 & 14.2079 \\
 extrapolation & 4.659665 & 9.168665 & 14.25165\\
-FSG & 4.66082 & 9.16298 & 14.2309
+FSG & 4.66082 & 9.16298 & 14.2309 \\
+lookback & 8.381566 & 12.81988 & 16.06060
 \end{tabular}
 \end{center}
 \label{fig:euro8}
@@ -1165,7 +1172,7 @@ K=100, r=0.05, \sigma=0.2, \alpha=0.5, T=1
  
 \begin{table}[htdp]
 \caption{American $\alpha$-quantile option, with parameter
-	$K=95, r=5\%, \sigma=0.2, \alpha=0.8, T=0.25$. 
+	$K=100, r=0.05, \sigma=0.2, \alpha=0.5, T=1$. 
 	The extrapolation is based on results got at 28 steps and 36 steps.}
 \begin{center}
 \begin{tabular}{l|lllllll}
