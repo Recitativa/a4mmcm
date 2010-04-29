@@ -16,8 +16,7 @@
 
 \begin{document}
 
-\setbeamercolor{background canvas}{fg=white,bg=black}
-\color{white}
+\setbeamercolor{background canvas}{fg=white,bg=black} \color{white}
 
 \def\gg{{\mathfrak{g}}}
 \def\kk{{\mathfrak{k}}}
@@ -33,6 +32,7 @@
 \def\inn#1#2{\left\langle{#1},{#2}\right\rangle}
 \def\innc#1#2{\left({#1},{#2}\right)}
 
+\def\tt#1{{\color{yellow}#1}}
 \begin{frame}[t]
 \begin{center} 
 \large Transfer of unitary representations
@@ -42,57 +42,62 @@
 \end{center}
 \end{frame}
 
-% \begin{frame}[t]
-% By Harish-Chandra all $G$ representation corresponed to 
-% \end{frame}
-
 \begin{frame}[t]
-Notation: $G,G'$ real reductive group with maximal compact subgroup
+\tt{Notation:} $G_\bC$ simply connected, semi-simple Lie group over $\bC$.
+$G,G'$ real reductive group with cartan involution 
+$\theta,\theta'$ and maximal compact subgroup
 $K,K'$, $M=K\cap K'$,
-$\gg=(\gg_0)_\bC=(\gg'_0)_\bC$, $\theta,\theta'$ cartan involution,
 $\sigma,\sigma'$ complex conjugation respect to $\gg_0, \gg'_0$.
 \end{frame}
 
-\begin{frame}[t] $(\gg,K)$-module: $\bC$-vector spece with $\gg$ action and finite $K$ action
-satisfing certain compatability condition. Admissible:
-$\dim V_\tau < \infty, \forall \tau\in \hK$. Study irr. $G$-rep can be reduce to study adm. $(g,K)$-module.
+\begin{frame}[t] \tt{$(\gg,K)$-module:} $\bC$-vector spece with $\gg$ action and finite $K$ action
+satisfing certain compatibility condition. Admissible:
+$\dim \Hom_K(\tau,V) < \infty, \forall \tau\in \hK$. 
+Study irr. $G$-rep can be reduce to study adm. 
+$(\gg,K)$-module. $(\gg,K)$-module form a categray $\cC(\gg,K)$.
 \end{frame}
 
 \begin{frame}[t]
-Zuckerman functors: $\Gamma:\cC(\gg,M)\to \cC(\gg,K)$ 
+\tt{Zuckerman functors:} $\Gamma:\cC(\gg,M)\to \cC(\gg,K)$ 
 \[
 \Gamma(V) = \Set{K\text{ finite vectors in V}}
-\quad
-(\Gamma_M^K)^i=R^i\Gamma: \cC(\gg,M)\to \cC(\gg,K)
+\]
+\[
+(\Gamma_{M,K})^i=R^i\Gamma: \cC(\gg,M)\to \cC(\gg,K)
 \]
 \end{frame}
 
 \begin{frame}[t]
-Give Unitary $(\kk,M)$-module $(\rho,L)$, f.d. $K_1$-module 
-$(\tau,F)$:
-\begin{itemize}
-\item[\color{white} a).] \color{white} If $\rho(C) \neq \tau(C)$, 
-$H^j(\kk,M; L\otimes F)=0, \forall j$
-\item[\color{white} b).] \color{white} If $\rho(C) \neq \tau(C)$, 
-   $H^j(\kk,M; L\otimes E) =\Hom_K(\wedge^j(\kk/\mm),L\otimes F)$
-\end{itemize}
+(A1) $\kk$ hase a real form $\kk_1$ and $(K_1,M)$ is a symmetric pair.\\
+(A2) $V = \bigoplus_j L_j$, $L_j$ irreducible unitarizable $(\kk,M)$-module.
+\end{frame}
+
+\begin{frame}[t]
+\tt{Vanishing Thm:} 
+Giving unitary $(\kk,M)$-module $(\rho,L)$, finite dimensional $K_1$-module 
+$(\tau,F)$,\\
+a). if $\rho(C) \neq \tau(C)$, 
+  $H^j(\kk,M; L\otimes F)=0$, for $\forall j$;\\
+b). If $\rho(C) = \tau(C)$, 
+  $H^j(\kk,M; L\otimes E) =\Hom_K(\wedge^j(\kk/\mm),L\otimes F)$.
 \end{frame}
 
 \begin{frame}[t]
 (A1) $\kk$ hase a real form $\kk_1$ and $(K_1,M)$ is a symmetric pair.\\
-(A2) $V = \bigoplus_j L_j$, $L_j$ unitarizable $(\kk,M)$-module.\\
-(A3) $V$ has a $(\gg,M)$-invariant non-degenerate Hermition form $\inn{}{}$
+(A2) $V = \bigoplus_j L_j$, $L_j$ irreducible unitarizable $(\kk,M)$-module.\\
+(A3) $V$ has a $(\gg_0,M)$-invariant non-degenerate Hermition form $\inn{}{}$
 \end{frame}
 
 \begin{frame}[t]
-$L=L(B)$ is unitary highest weight $(\kk_1,M)$-module, 
+\tt{More:} $L=L(E)$ is unitary highest weight $(\kk_1,M)$-module, $E$ with h.w. $\lambda$ 
 $\lambda+\rho$ integral and regular,
-$s(\lambda+\rho)$ dominate $\Rightarrow$ exist $W$ only depends on $s$, 
-$\Hom_M(W,L(F)\otimes F^*) = \Hom_M(W,B\otimes F^*)$
+$s(\lambda+\rho)$ dominant $\Rightarrow$ 
+$\exists W\in \bigwedge^{l(s)}\kk/\mm$, 
+$\Hom_M(W,L\otimes F^*) = \Hom_M(W,E\otimes F^*)$
 \end{frame}
 
 \begin{frame}[t]
-Transfer of unitary structure: Suppose $(\pi, V)$ -irr. unitary. $(\gg',K')$
+\tt{Transfer of unitary structure:} Suppose $(\pi, V)$-irr. unitary. $(\gg',K')$
 module. $\exists$ operator $T$, s.t. 
 $\pi(\theta\theta'(X))=T \pi(X)T^{-1}$,
 $T\pi(m)=\pi(m)T\quad \forall X\in\gg, m\in M$
@@ -102,16 +107,28 @@ is the form making $\Gamma_W^jV$ unitary.
 \end{frame}
 
 \begin{frame}[t]
-Theorem: When $V=L(F)$ be a unitarizable highest weight $(\gg',K')$-module.
+\tt{Theorem:} When $V=L(F)$ be a unitarizable highest weight $(\gg',K')$-module.
 $\theta(\oo^+) = \oo^+$, 
 $\theta(k')f=k'f, \quad k'\in K', f\in F$
 $\Gamma_W(V)$ is either zero or unitarizable.
 \end{frame}
 
 \begin{frame}[t]
-Examples: $(\gg,K)\simeq(\gg',K')\simeq Sp(2n,\bR)$.
-$V=\theta^{m,0}(1)$ for dual pair $(O(m),Sp(2n,\bR))$, $m<n$.
+\tt{Examples:} $(\gg,K)\simeq(\gg',K')\simeq Sp(2n,\bR)$.
+$V=\theta^{0,m}(1)$ for dual pair $(O(0,m),Sp(2n,\bR))$, $m<n$.
 Conjecture $\Gamma_{W_{p,q}}(V) \simeq \theta^{p,q}(1^{\xi,\eta})$
+\end{frame}
+
+\begin{frame}[t]
+\begin{center}
+\large Go further. 
+\end{center}
+\end{frame}
+
+\begin{frame}[t]
+\begin{center}
+\large Thank you!
+\end{center}
 \end{frame}
 
 \end{document}
