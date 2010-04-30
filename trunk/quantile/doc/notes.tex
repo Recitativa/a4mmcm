@@ -17,7 +17,6 @@
 \pagestyle{fancy}
 \renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter.\ #1}{}}
 \renewcommand{\sectionmark}[1]{\markright{\thesection.\ #1}}
-
 \newcommand{\helv}{\fontfamily{phv}\fontseries{b}\fontsize{12}{12}\selectfont}
 
 \fancyhf{}
@@ -31,10 +30,8 @@
 }
 
 \usepackage{indentfirst}
-\linespread{2.0}
+%%\linespread{2.0}
 
-\title{Notes}
-\author{Zhu Yong Ting}
 \def\bE{{\mathbb{E}}}
 \def\bR{{\mathbb{R}}}
 
@@ -62,18 +59,26 @@
 
 
 \begin{document}
- \bibliographystyle{cje}
+\bibliographystyle{cje}
+\frontmatter
 
-\pagestyle{empty}
-\maketitle
+\include{title}
+\include{acknow}
 
-\pagestyle{fancy}
-\pagenumbering{roman}
+%\pagestyle{fancy}
+%\pagenumbering{roman}
+\setcounter{tocdepth}{3}
 \tableofcontents 
+
+\include{abstract}
+
 \listoftables 
 \listoffigures
 \indent
 
+\mainmatter
+
+\renewcommand{\baselinestretch}{2}\small\normalsize
 
 \chapter{Introduction}
 \pagenumbering{arabic}
