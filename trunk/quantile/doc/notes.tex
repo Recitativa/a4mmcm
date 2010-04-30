@@ -1,4 +1,4 @@
-\documentclass[12pt,twoside,titlepage]{book}
+\documentclass[12pt,twoside,titlepage,a4paper]{book}
 
 \usepackage{amsmath}
 \usepackage[top=1.0in,bottom=1.0in,left=1.5in,right=1.5in]{geometry}
@@ -396,19 +396,19 @@ which leads to
 \begin{equation}
 \begin{split}
 LC_{fixed} =& S_0 N(d) - e^{-rT}KN(d-\sigma \sqrt{T}) \\
-&+ e^{-rT} \frac{\sigma^2}{2r} S_0 [ -{\frac{S_0}{K}}^{-\frac{2r}{\sigma^2}} N(d-\frac{2r}{\sigma}\sqrt{T}) + e^{rT}N(d)] 
+&+ e^{-rT} \frac{\sigma^2}{2r} S_0 [ -{(\frac{S_0}{K})}^{-\frac{2r}{\sigma^2}} N(d-\frac{2r}{\sigma}\sqrt{T}) + e^{rT}N(d)] 
 \end{split}
 \end{equation}
 in the case that $K\geq S_0$, or otherwise
 \begin{equation}
 \begin{split}
-LC_{fixed} = & e^{-rT}(S_0 - K) + S_0 N(d) - e^{-rT}S_0 N(d-\sigma \sqrt{T}) \\
-&+ e^{-rT} \frac{\sigma ^2}{2r} S_0 [ -N(d-\frac{2r}{\sigma}\sqrt{T}) + e^{rT}N(d)]
+LC_{fixed} = & e^{-rT}(S_0 - K) + S_0 N(d') - e^{-rT}S_0 N(d'-\sigma \sqrt{T}) \\
+&+ e^{-rT} \frac{\sigma ^2}{2r} S_0 [ -N(d'-\frac{2r}{\sigma}\sqrt{T}) + e^{rT}N(d')]
 \end{split}
 \end{equation}
 where
 \begin{equation}
-d = ( ln\frac{S_0}{K} + rT + \frac{1}{2} \sigma^2 T)/ {\sigma \sqrt{T}}.
+d = (ln\frac{S_0}{K} + rT + \frac{1}{2} \sigma^2 T)/ {\sigma \sqrt{T}}.
 \end{equation}
 and
 \begin{equation}
@@ -419,14 +419,14 @@ Similarly, the value of the put is
 \begin{equation}
 \begin{split}
 LP_{fixed} =& -S_0 N(-d) + e^{-rT} KN(-d + \sigma \sqrt{T})  \\
-&+ e^{-rT} \frac{\sigma^2}{2r} S_0 [ (\frac{S_0}{K}^{-\frac{2r}{\sigma^2}}N(-d+\frac{2r}{\sigma}) - e^{rT}N(-d)]
+&+ e^{-rT} \frac{\sigma^2}{2r} S_0 [ (\frac{S_0}{K})^{-\frac{2r}{\sigma^2}}N(-d+\frac{2r}{\sigma}) - e^{rT}N(-d)]
 \end{split}
 \end{equation}
 if $K\leq S_0$, otherwise
 \begin{equation}
 \begin{split}
-LP_{fixed} = & e^{-rT} (K-S_0) - S_0 N(-d) + e^{-rT}S_0 N (-d + \sigma \sqrt{T}) \\
-&+ e{-rT} \frac{\sigma^2}{2r} S_0 [ N(-d + \frac{2r}{\sigma} \sqrt{T}) -e^{rT}N(-d)]
+LP_{fixed} = & e^{-rT} (K-S_0) - S_0 N(-d') + e^{-rT}S_0 N (-d' + \sigma \sqrt{T}) \\
+&+ e{-rT} \frac{\sigma^2}{2r} S_0 [ N(-d' + \frac{2r}{\sigma} \sqrt{T}) -e^{rT}N(-d')]
 \end{split}
 \end{equation}
  
@@ -1113,7 +1113,7 @@ K=100, r=0.05, \sigma=0.2, \alpha=0.5, T=1
 can be seen in Table~\ref{fig:euro5}
 
 
-\begin{table}[htdp]
+\begin{table}[p]
 \caption{European $\alpha$-quantile option, with parameter
 	$K=100, r=5\%, \sigma=0.2, \alpha=0.5, T=1$. 
 	The extrapolation is based on results got at 28 steps and 36 steps. Data in last line is from \cite{Laura2001}.}
@@ -1131,7 +1131,7 @@ Extrapolation & 1.61094 & 3.22241 & 5.64100 & 8.938490 \\
 \hline
 Paper & 1.6588 & 3.2695 & 5.7501 & 9.0895\\
 \hline
-lookback & 5.876317 &  12.97765 & 19.16763 & 24.43289
+lookback & 9.45696 & 13.86499 & 19.16763 & 24.88215
 \end{tabular}
 \end{center}
 \label{fig:euro5}
@@ -1140,7 +1140,7 @@ lookback & 5.876317 &  12.97765 & 19.16763 & 24.43289
 In Table~\ref{fig:euro8}, for parameter setting as $\alpha = 0.8$, $K = 95$, $r = 5\%$, $\sigma = 20\%$, and $T = 0.25$, we present the results got by our tree method and Forward Shooting Grid discussed in section \ref{se:fsg}.
 
 
-\begin{table}[htdp]
+\begin{table}[p]
 \caption{European $\alpha$-quantile option, with parameter
 	$K=95, r=5\%, \sigma=0.2, \alpha=0.8, T=0.25$. 
 	The extrapolation is based on results got at 28 steps and 36 steps.}
@@ -1156,7 +1156,7 @@ $S_0$ & $95$ & $100$ & $105$        \\
 36 & 4.62050 & 9.12908 & 14.2079 \\
 extrapolation & 4.659665 & 9.168665 & 14.25165\\
 FSG & 4.66082 & 9.16298 & 14.2309 \\
-lookback & 8.381566 & 12.81988 & 16.06060
+lookback & 8.381566 &  13.76059 & 19.13961
 \end{tabular}
 \end{center}
 \label{fig:euro8}
@@ -1170,7 +1170,7 @@ K=100, r=0.05, \sigma=0.2, \alpha=0.5, T=1
 \]
 , with our tree method, we get the price of American $\alpha$-quantile option in Table \ref{fig:amer5}. Comparing data in Table \ref{fig:euro5} and Table \ref{fig:amer5}, we can see price for American option is more expensive than European option with same feature. This again insure that our method is correct. 
  
-\begin{table}[htdp]
+\begin{table}[p]
 \caption{American $\alpha$-quantile option, with parameter
 	$K=100, r=0.05, \sigma=0.2, \alpha=0.5, T=1$. 
 	The extrapolation is based on results got at 28 steps and 36 steps.}
@@ -1190,7 +1190,7 @@ Extrapolation & 1.729685 & 3.551530 & 6.451205 & 10.43820 \\
 \label{fig:amer5}
 \end{table}%
 
-\begin{table}[htdp]
+\begin{table}[p]
 \caption{American $\alpha$-quantile option, with parameter
 	$K=95, r=5\%, \sigma=0.2, \alpha=0.8, T=0.25$. 
 	The extrapolation is based on results got at 28 steps and 36 steps.}
@@ -1252,7 +1252,7 @@ Since $P(e^{M_m}\geq x > e^M) \rightarrow 0$,
 \[
 E(m(e^{M_m}-e^M);e^{M_m}\geq x > e^M) \rightarrow 0
 \]
-by the uniformly integrability. So $C$ and similary $D$ is $o(1/m)$.
+by the uniformly integrability. So $C$ and similarly $D$ is $o(1/m)$.
 If the assumption is not true, if we can prove
 \begin{equation}
 E(e^{M_m}-e^M;e^{M_m}\geq x > e^M) \sim o(1/m) \label{eq:sp1}
