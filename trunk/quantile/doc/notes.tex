@@ -1,4 +1,4 @@
-\documentclass[12pt,twoside,titlepage,a4paper]{book}
+\documentclass[a4paper,12pt]{book}
 
 \usepackage{amsmath}
 \usepackage[top=1.0in,bottom=1.0in,left=1.5in,right=1.5in]{geometry}
@@ -11,7 +11,6 @@
 \usepackage{paralist}
 \usepackage{eufrak}
 \usepackage{amscd}
-%%\usepackage{eucal}
 
 %% Page Style
 \usepackage{fancyhdr}
@@ -83,17 +82,17 @@
 An {\it option} is a contract which gives the holder the right but not the obligation to buy or sell an underlying asset at or before a certain date at an agreed price, as mentioned in \citeauthor{Hull2008}.
 To get this right, the buyer should pay the seller. The price set in the contract is known as the {\it strike price}; the date is known as {\it expiration date} or {\it maturity}. There are always two sides involved in every option contract. On one side is the investor who has bought the option. This side is known as the long position. Another side is the short position who has sold the option. A {\it call} option gives the holder the right to buy the underlying asset, while a {\it put} option gives the holder the right to sell the underlying asset. European options can be exercised only at the expiration date. American options on the other hand may be exercised at any time before the expiration date.
 
-To help the understanding of option, here we can give an example of the use of an option. Suppose that it is now January 15. A copper fabricator expects it will need 100,000 pounds of copper on May 15 to meet a certain contract. The spot price of copper is 140 cents per pound. To fixed the expense of raw material, the fabricator may take a long position of a call option, for example, a call option with a strike price of \$120,000 for 100,000 pounds of copper expired in four month. Holding this option, the fabricator eliminate its risk exposure to the changes of copper price. This example is using an option as a hedging instrument. There are other purposes of using of options.
+To help the understanding of option, here we can give an example of the use of an option. Suppose that it is now January 15. A copper fabricator expects it will need 100,000 pounds of copper on May 15 to meet a certain contract. The spot price of copper is 140 cents per pound. To fix the expense of raw material, the fabricator may take a long position of a call option, for example, a call option with a strike price of \$120,000 for 100,000 pounds of copper expired in four month. Holding this option, the fabricator eliminates its risk exposure to the changes of copper price. This example is using an option as a hedging instrument. There are other purposes of using of options.
 
-Generally, there are tree broad categories of traders of options: {\it hedgers}, {\it speculators}, and {\it arbitrageurs}. Hedgers use options to reduce the risk that they face from potential future movements in a market variable. Speculators use options to bet on the future direction of an asset. Taking advantage of a discrepancy between prices in two different markets, arbitrageurs lock in risk free profits by concurrently taking offsetting positions in two or more markets. Options market have been extraordinary successful. One main reason is that they meet the needs of different types of traders.
+Generally, there are three broad categories of traders of options: {\it hedgers}, {\it speculators}, and {\it arbitrageurs}. Hedgers use options to reduce the risk that they face from potential future movements in a market variable. Speculators use options to bet on the future direction of an asset. Taking advantage of a discrepancy between prices in two different markets, arbitrageurs lock in risk free profits by concurrently taking offsetting positions in two or more markets. Options market have been extraordinary successful. One main reason is that they meet the needs of different types of traders.
 
 Options have a long history. There is evidence that Romans and Phoenicians used similar contracts in shipping.  It is also convinced that Thales, a mathematician and philosopher in ancient Greece, used options to secure a low price for olive presses in advance of the harvest. In the 17th century the Dutch bought and sold options structured on tulip. However, the trading of option actually took off in the later 1970s. The Chicago Board of Trade established the Chicago Board Options Exchange (CBOE) and began trading listed call options on 16 stocks on April 26, 1973.
-From this moment on, innovation has bred the creation of copious products tailored to fill the needs of different types of investors. Path-Dependent options, such as Asian options, barrier options and lookbacks are traded in market routinely.
+From this moment on, innovation has bred the creation of copious products tailored to fill the needs of different types of investors. Path-Dependent options, such as Asian options, barrier options and lookback options are traded in market routinely.
 Recently, even more exotic types of option such as Parisian option and ${\alpha}$-quantile option have appeared and have attracted interest. Although exotic options are a relatively small part of financial market in terms of volume, these options are important to investment banks because they are generally much more profitable than plain vanilla option.
 
-Options are bought and sold in two ways. Options with standardized terms are traded on organized exchanges. This kind of options are more standard and liquid than over-the-counter options. Over-the-counter options are not listed in exchanges and instead only quoted by financial institutions. According to the statistics published by Bank for International Settlements, the central bankers' central bank, in June 2009, the amounts outstanding of options traded in organized exchange were 43.75 trillion and the figure for over-the-counter options is 68.19 trillion.
+Options are bought and sold in two ways. Options with standardized terms are traded on organized exchanges. This kinds of options are more standard and liquid than over-the-counter options. Over-the-counter options are not listed in exchanges and instead only quoted by financial institutions. According to the statistics published by Bank for International Settlements, the central bankers' central bank, in June 2009, the amounts outstanding of options traded in organized exchange were 43.75 trillion and the figure for over-the-counter options is 68.19 trillion.
 
-The prosperousness of option market call for valuation methods of options. While in return, the success of pricing model also boost the development of options. In chapter 2, we review the fundamental pricing principal for European and American options. The popular numerical methods are surveyed in this chapter 3. In chapter 4, we give an extensive study of $\alpha$-quantile and $\alpha$-quantile option. This is the main focus of our research.
+The prosperousness of option market calls for valuation methods of options. While in return, the success of pricing model also boosts the development of options. In chapter 2, we review the fundamental pricing principal for European and American options. The popular numerical methods are surveyed in this chapter 3. In chapter 4, we give an extensive study of $\alpha$-quantile and $\alpha$-quantile option. This is the main focus of our research.
 
 \chapter{Principles of option pricing}
 
@@ -111,7 +110,7 @@ Because exercise is a right but not an obligation, the payoff of an option is al
 
 Usually there are closed form price formulas for European options. In addition numerical approaches can solve this problem, such as binomial tree and Monte Carlo simulation. We will give a brief introduction about these numerical methods later. Because we do not know when American option will be excised, the pricing of American option is more complicated. A complete solution to American option pricing problem should address two aspects, option value and an optimal exercise strategy. Only in a few cases are analytic solutions available. In most cases, numerical approach is needed. For example, \cite{Lim2004} propose an approach to compute both the price and the optimal exercise boundary for American style lookback options.
 
-In this chapter, we give a detailed review about the two major option pricing principles, no arbitrage valuation and risk neutral valuation. The valuation of American options are discussed. Interested reader can find more exhaustive reviews about option valuation models and applications in \cite{2004Broadie}. In addition, because of the similarity between lookback option and $\alpha$-quantile option, the pricing of lookback option is summarized. 
+In this chapter, we give a detailed review about the two major option pricing principles, no arbitrage valuation and risk neutral valuation. The valuation of American options is discussed. Interested reader can find more exhaustive reviews about option valuation models and applications in \cite{2004Broadie}. In addition, because of the similarity between lookback option and $\alpha$-quantile option, the pricing of lookback option is summarized. 
 
 \section{European Options}
 \subsection{No-Arbitrage Valuation}
@@ -128,7 +127,7 @@ with $\mu$ and $\sigma $ constant, which represent the expected return on the st
 
 \begin{enumerate}[1.]
 \item It is possible to borrow and lend cash at a known constant risk-free interest rate.
-\item There are no transaction or tax costs.
+\item There is no transaction or tax costs.
 \item The stock does not pay a dividend.
 \item All securities are perfectly divisible. In other words, it is possible to buy any fraction of a share.
 \item There are no restrictions on short selling.
@@ -142,7 +141,7 @@ These assumptions are usually referred as Black-Scholes framework. Further studi
 % Denote $r$ as the constant continuously compounded risk-free interest rate. Under risk-neutral assumption, we can get $\mu = r $.
 
 \subsubsection{Black-Scholes PDE}
-Let $V(S, t)$ be the value of an option at time $t$. The at maturity $T$, $V(S,T)$ is the payoff. To get its value at an earlier time, we should know how it changes as a function of $S$ and $t$. Suppose $V(S,t)$ is twice differential, applying It$\breve{o}$'s lemma to $V$ we get:
+Let $V(S, t)$ be the value of an option at time $t$. The value at maturity $T$, $V(S,T)$ is the payoff. To get its value at an earlier time, we should know how it changes as a function of $S$ and $t$. Suppose $V(S,t)$ is twice differential, applying It$\breve{o}$'s lemma to $V$ we get:
 \begin{equation}\label{ito}
 dV_t = ( \frac{\partial V}{\partial t} + \frac{\partial V}{\partial S} S_t \mu + \frac{1}{2}\frac{{\partial}^2}{\partial S^2} {S^2}_t {\sigma}^2 ) dt + \frac{\partial V}{\partial S} S_t \sigma d B_t
 \end{equation}
@@ -218,7 +217,7 @@ where $N(.)$ is the cumulative distribution function of standard normal and
 \begin{equation}
 d(S_t;K,T-t)=\frac{1}{\sigma \sqrt{T-t}} [\log(\frac{S_t}{K}) + (r+\frac{1}{2}\sigma ^2)(T-t)].
 \end{equation}
-This formula is know as Black Scholes formula for European call option with strike $K$ and maturity date $T$.
+This formula is known as Black Scholes formula for European call option with strike $K$ and maturity date $T$.
 
 Similarly , the pricing formula for European put option is
 \begin{equation}
@@ -233,10 +232,10 @@ The above relationship between European put and call is called put-call parity. 
 \begin{equation}
 \max(S_T,K).
 \end{equation}
-Since European option can not be exercised before maturity, the two portfolios must have the same value at the beginning. This is the reason why put-call parity holds. Thanks to put-call parity, if we know the price of an European call option, we can deduce the price of put with the same strike price and maturity date, and vice versa.
+Since European option cannot be exercised before maturity, the two portfolios must have the same value at the beginning. This is the reason why put-call parity holds. Thanks to put-call parity, if we know the price of an European call option, we can deduce the price of put with the same strike price and maturity date, and vice versa.
 
 
-Further study suggests that some conditions about Black Scholes Model can be extended. Models with transaction fees, short sale constrains and other extension are available.
+Further study suggests that some conditions about Black Scholes Model can be extended. Models with transaction fees, short sale constrains and other extensions are available.
 %
 %% If we define $G = \ln S$, after some calculation, we get
 %\begin{equation}\label{eq:2}
@@ -244,8 +243,8 @@ Further study suggests that some conditions about Black Scholes Model can be ext
 %\end{equation}
 %%From this we can see that the natural logarithm of stock price is Brownian motion with drift $\mu$, and variance $\sigma^2$. This model implies that the stock's price at a given time $T$ follows lognormal distribution. The standard deviation of the logarithm of the stock price is $\sigma \sqrt{T}$.
 %%
-%%Black et. al. \cite{Black:1973} pointed out that the proper price of an option should be the expected present value of its payoff. Based on this idea, there are many studies about the pricing of options. For European plain vanilla option, its price can be priced in closed form. As for American plain vanilla option, because it can be executed at any time before maturity, the pricing is much more complicated. In this case, it is a optimal stopping problem. Comparing to vanilla option, there are another school of options called exotic options. Exotic options are nonstandard options created by financial engineers, which usually only traded in over-the-counter market.
-%%%In the this case, one can deduce that the optimal stopping time is given by some region. Precisely, the holder excise the option when stock price enter some region.
+%%Black et. al. \cite{Black:1973} pointed out that the proper price of an option should be the expected present value of its payoff. Based on this idea, there are many studies about the pricing of options. For European plain vanilla option, its price can be priced in closed form. As for American plain vanilla option, because it can be executed at any time before maturity, the pricing is much more complicated. In this case, it is an optimal stopping problem. Comparing to vanilla option, there are another school of options called exotic options. Exotic options are nonstandard options created by financial engineers, which usually only traded in over-the-counter market.
+%%%In this case, one can deduce that the optimal stopping time is given by some region. Precisely, the holder excises the option when stock price enter some region.
 
 
 
@@ -254,7 +253,7 @@ As revealed in Black-Scholes partial differential equation and corresponding bou
 
 Risk neutral valuation, first introduced by \citet*{cox-ross1976}, is a very important pricing tool. As a powerful and frequently used pricing theory, risk neutral valuation has been a source of confusion. But the underlying principle can be easily expressed in the binomial case. 
 
-Assume a risky asset whose price is currently $S$ and its price at next period is either $Su$ with probability $q$ or $Sd$ with probability $1-q$. Factors $u$ and $d$ indicate one plus the percentage change in asset price. The real world we live in is risk averse, that is we require extra reward for taking risk. Under this guideline, in risk averse world, any risky asset is priced as discounted value of its future expectation. In our example, the expected future price of this asset is $qSu+(1-q)Sd$. Therefore, the current price of this asset should be 
+Assume a risky asset whose price is currently $S$ and its price at next period is either $Su$ with probability $q$ or $Sd$ with probability $1-q$. Factors $u$ and $d$ indicate one plus the percentage change in asset price. The real world we live in are risk averse, which is we require extra reward for taking risk. Under this guideline, in risk averse world, any risky asset is priced as discounted value of its future expectation. In our example, the expected future price of this asset is $qSu+(1-q)Sd$. Therefore, the current price of this asset should be 
 \begin{equation}
 S=\frac{qSu+(1-q)Sd}{1+k}
 \end{equation}
@@ -268,7 +267,7 @@ S=\frac{pSu+(1-p)Sd}{1+r}
 \end{equation}
 
 This can be easily proved. Just divide both sides of the above equation by $S$ and multiply with $1+r$. We can get $1+r = pu +(1-p)d$, or its equivalent statement $p=(1+r-d)/(u-d)$. This expression shows that we can 
-restate the price of stock by adjusting the probability and discounting it at the risk free rate and what is more,     the only information we need to know in this process is only the volatility and risk free rate. We need make no assumption about investors attitude towards risk. This method works on risk aversion, risk neutral and risk seeking investors, regardless their risk preference. A world where all individuals are indifferent to risk is called {\it risk neutral world}. In this world investors do not demand compensation for taking risk and the expected return for any financial product in risk neutral world is the risk free rate.
+restate the price of stock by adjusting the probability and discounting it at the risk free rate and what is more,     the only information we need to know in this process is only the volatility and risk free rate. We need make no assumption about investors' attitude towards risk. This method works on risk aversion, risk neutral and risk seeking investors, regardless their risk preference. A world where all individuals are indifferent to risk is called {\it risk neutral world}. In this world investors do not demand compensation for taking risk and the expected return for any financial product in risk neutral world is the risk free rate.
 
 Above is the basic idea of a important derivative pricing principle called {\it risk neutral valuation}. The probability $p$ used to calculate expectation in risk neutral world is known as {\it equivalent martingale probability}. With the help of more advanced mathematics, risk neutral valuation remains valid and useful in the situation with stochastic interest rate and volatility. Interesting study about this model can be found in \cite{HarrisonKreps1979}, \cite{Harrison1981} and \cite{Kreps1981}.
 
@@ -307,11 +306,11 @@ V(S, T) = f(S)\\
 In fact $\frac{\partial V}{\partial S}(S,t) = +1$ is a smoothness condition, since we have $\frac{\partial}{\partial S}(S-K)^+ = 1$ when $S$ big enough.  
 
 \section{Lookback options}
-Lookback option is a type of exotic options whose price have path dependency effects. 
+Lookback option is a type of exotic options whose prices have path dependency effects. 
 Lookback options give the hold the right to capture the difference between asset price when the option is executed and maximum or minimum asset price reached during the life of the option.  According to the difference in the selection of strike price, you can find two styles of Lookback options : floating strike lookback and fixed strike lookback.
 
 \subsection{Floating strike lookback option}
-As you can see from the name, the strike price of this kind lookback is floating and is determined at the end of the option's life, that is at maturity. For a European style lookback call option with floating strike, the payoff is the amount that the final asset price exceeds the minimum asset price attained during the life of the option.The payoff function is 
+As you can see from the name, the strike price of this kind lookback is floating and is determined at the end of the option's life, which is at maturity. For a European style lookback call option with floating strike, the payoff is the amount that the final asset price exceeds the minimum asset price attained during the life of the option. The payoff function is 
 \begin{equation}
 LC_{floating} = S_T - S_{\min}
 \end{equation}
@@ -370,8 +369,8 @@ V(S_{\pm}e^{\mp\beta _1 \sigma \sqrt{\frac{T}{m}}}) +
 \end{equation}
 where, in $\pm$ and $\mp$, the top case applies for puts and the bottom for calls, and $\beta_1 = \lim_{m\to\infty} \frac{\sqrt{m}E[\max_{0\leq t \leq T} B_t - \max_{0\leq k \leq m} B_{kT/m}]}{\sigma \sqrt{T}}$.
 
-By this correction,we can use continuous pricing formula
-to value discrete loolback. To get a more precise value for put,
+By this correction, we can use continuous pricing formula
+to value discrete lookback. To get a more precise value for put,
 first we should inflate the predetermined max by a factor of
 $e^{\beta_1 \sigma \sqrt{T/m}}$,
 then deflate the expected maximum over $[0,T]$ by the same factor. For a lookback call, first deflate the predetermined minimum, then inflate the expected minimum.
@@ -390,16 +389,16 @@ where $K$ is the strike price.
 
 The pricing formula of fixed strike lookback is given by \cite{Conze1991} using risk neutral pricing valuation method. Under risk neutral pricing frame, the value of a call is 
 \begin{equation}
-LC_{fixed} = e^{-rT}E[(S_{\max}-K)^{+}]
+LC_{fixed} = e^{-rT}E[(S_{\max}-K)^{+}].
 \end{equation}
-which leads to 
+This leads to 
 \begin{equation}
 \begin{split}
 LC_{fixed} =& S_0 N(d) - e^{-rT}KN(d-\sigma \sqrt{T}) \\
-&+ e^{-rT} \frac{\sigma^2}{2r} S_0 [ -{(\frac{S_0}{K})}^{-\frac{2r}{\sigma^2}} N(d-\frac{2r}{\sigma}\sqrt{T}) + e^{rT}N(d)] 
+&+ e^{-rT} \frac{\sigma^2}{2r} S_0 [ -{(\frac{S_0}{K})}^{-\frac{2r}{\sigma^2}} N(d-\frac{2r}{\sigma}\sqrt{T}) + e^{rT}N(d)].
 \end{split}
 \end{equation}
-in the case that $K\geq S_0$, or otherwise
+In the case that $K\geq S_0$, or otherwise
 \begin{equation}
 \begin{split}
 LC_{fixed} = & e^{-rT}(S_0 - K) + S_0 N(d') - e^{-rT}S_0 N(d'-\sigma \sqrt{T}) \\
@@ -408,11 +407,11 @@ LC_{fixed} = & e^{-rT}(S_0 - K) + S_0 N(d') - e^{-rT}S_0 N(d'-\sigma \sqrt{T}) \
 \end{equation}
 where
 \begin{equation}
-d = (ln\frac{S_0}{K} + rT + \frac{1}{2} \sigma^2 T)/ {\sigma \sqrt{T}}.
+d = (ln\frac{S_0}{K} + rT + \frac{1}{2} \sigma^2 T)/ {\sigma \sqrt{T}}
 \end{equation}
 and
 \begin{equation}
-d'=(rT + \frac{1}{2} \sigma^2 T)/ {\sigma \sqrt{T}}
+d'=(rT + \frac{1}{2} \sigma^2 T)/ {\sigma \sqrt{T}}.
 \end{equation}
 
 Similarly, the value of the put is 
@@ -432,7 +431,7 @@ LP_{fixed} = & e^{-rT} (K-S_0) - S_0 N(-d') + e^{-rT}S_0 N (-d' + \sigma \sqrt{T
  
 \subsection{American lookback option}
 
-As for American option, the complete solution should provide both the option value and an optimal exercise strategy. Due to this complicity, usually we need use numerical approach to solve the problem of pricing American style lookback option. In \cite{Lim2004}, for American \emph {fixed strike} lookback option they provide an full approach to compute the price and the optimal exercise boundary. In that paper, they first propose a space-time transformation which can reduce the valuation of a group of American lookback options to a single canonical optimal stopping problem for standard Brownian motion. Under this transformation, calendar time is scaled by square of volatility. Therefore, the canonical time horizon is only a small part of time to expiration. In addition, the transformation also removes the dependence on a prescribed root node which then make computing the entire early excise boundary by backward induction possible.
+As for American option, the complete solution should provide both the option value and an optimal exercise strategy. Due to this complicity, usually we need use numerical approach to solve the problem of pricing American style lookback option. In \cite{Lim2004}, for American \emph {fixed strike} lookback option they provide an full approach to compute the price and the optimal exercise boundary. In that paper, they first propose a space-time transformation which can reduce the valuation of a group of American lookback options to a single canonical optimal stopping problem for standard Brownian motion. Under this transformation, calendar time is scaled by square of volatility. Therefore, the canonical time horizon is only a small part of time to expiration. In addition, the transformation also removes the dependence on a prescribed root node which then makes computing the entire early excise boundary by backward induction possible.
 
 %Fix a process $X_t$, define $M_t = \max_{0\leq s\leq t} X_s$.
 %When $X_t$ is a standard brownian motion without drift,
@@ -446,10 +445,9 @@ As for American option, the complete solution should provide both the option val
 For American, and path-dependent options, generally closed form pricing formulaes are not available. In this case,usually numerical methods may be required. Even for Black Scholes formula, in practice, integration and the normal probability are obtained numerically. In this chapter, we provide a brief summary of the major numerical methods for option pricing. The most popular numerical approaches are lattice method, finite difference and Monte Carlo simulation. Generally speaking, different numerical methods are applicable in different situations. 
 
 \section{Lattice Methods}
-Lattice methods, also known as tree methods, use discrete time and discrete state approximations of the evolvements of underlying assets to calculate option prices. Lattice methods was originally proposed in \cite{cox1979}. Lattice approaches are popular because lattice methods are easy to understand and implement. In risk neutral valuation framework, as we discussed, the underlying price follows $S_{t+h} = S_t e^{Z}$, and $Z\sim N((r-\frac{1}{2} \sigma ^2)h,\sigma ^2 h)$. In lattice method, over a discrete time interval, one discrete random variable $X$ is used to approximate $Z$. $X$ takes value as $x_i$ with probability $p_i$ $i=1,2,...,m$. If $m=2$, it is binomial tree; If $m=3$, it is trinomial method. The value of the parameters of the distribution of the discrete random variable $X$ are chosen to approximate the distribution of continuous random variable $Z$ exactly or consistently. Under risk neutral method, the value of an option is the discounted present value of the expectation of the option's payoff. In lattice method we first use discrete diagram to approximate the continuous path of the price of underlying asset. Then calculate the discrete expectation of payoff as an approximation of option price. Due to the simplicity of lattice method, adjusted lattice methods for models with dividends, barriers and other complicated features can be easily constructed. However, the key issue of lattice method is the trade off between speed and accuracy. 
+Lattice methods, also known as tree methods, use discrete time and discrete state approximations of the evolvements of underlying assets to calculate option prices. The lattice method was originally proposed in \cite{cox1979}. Lattice approaches are popular because lattice methods are easy to understand and implement. In risk neutral valuation framework, as we discussed, the underlying price follows $S_{t+h} = S_t e^{Z}$, and $Z\sim N((r-\frac{1}{2} \sigma ^2)h,\sigma ^2 h)$. In lattice method, over a discrete time interval, one discrete random variable $X$ is used to approximate $Z$. $X$ takes value as $x_i$ with probability $p_i$ $i=1,2,...,m$. If $m=2$, it is binomial tree; If $m=3$, it is trinomial method. The value of the parameters of the distribution of the discrete random variable $X$ are chosen to approximate the distribution of continuous random variable $Z$ exactly or consistently. Under risk neutral method, the value of an option is the discounted present value of the expectation of the option's payoff. In lattice method we first use discrete diagram to approximate the continuous path of the price of underlying asset. Then calculate the discrete expectation of payoff as an approximation of option price. Due to the simplicity of lattice method, adjusted lattice methods for models with dividends, barriers and other complicated features can be easily constructed. However, the key issue of lattice method is the tradeoff between speed and accuracy. 
 
 There are plenty of proposals for tree methods. The popularly used are \cite{cox1979},\cite{jarrow1983},\cite{Boyle1986} and \cite{Amin1991}. 
-
 \begin{table}[htdp]
 \caption{Well known Lattice Methods}
 \begin{center}
@@ -476,7 +474,7 @@ Lattice & Approximation   & Probabilty \\
 \end{table}%
 
 \section{Monte Carlo Simulation}
-As we discussed in Risk Neutral pricing method, option valuation often end to the calculation of an expected value of a certain discounted payoff. For some cases, we can do this computation explicitly. The Black Scholes formula is a example of this class. But for most of the time, we need the help of numerical methods. Monte Carlo simulation is a natural proposal to calculate expectation. Monte Carlo method is very useful to price options with multiple underlying assets. This method is first used to valuate a European option by \cite{Boyle1977}. 
+As we discussed in Risk Neutral pricing method, option valuation often end to the calculation of an expected value of a certain discounted payoff. For some cases, we can do this computation explicitly. The Black Scholes formula is a example of this class. But for most of the time, we need the help of numerical methods. Monte Carlo simulation is a natural proposal to calculate expectation. Monte Carlo method is very useful to price options with multiple underlying assets. This method is first used to evaluate a European option by \cite{Boyle1977}. 
 
 Generally, Monte Carlo method is done in following steps: 
 \begin{enumerate}[1.]
@@ -629,7 +627,7 @@ The most straightforward approach to get a simulation of $M(\alpha , T)$ is to a
 \begin{equation}\label{strong}
 E\|M(\alpha, T)-M(k,N)\|_2
 \end{equation}
-is one popular measure of the quality of estimation and here $\|\;\| _2$ is the Euclidean distance. If (\ref{strong}) is $O(\Delta t^\gamma)$ as $\Delta t \downarrow 0$, this approximation is claimed to {\it converge strongly} with order $\gamma > 0 $. Strong convergency is important when fine pathwise approximation is need. Meanwhile, an approximation {\it converges} weakly with order $\beta > 0$ if, for any function continuous and $g: \bR \to \bR$ such that all derivatives up to and inlcuding $\lceil 2(\beta + 1) \rceil$ exsit and have polynomial growth, 
+is one popular measure of the quality of estimation and here $\|\;\| _2$ is the Euclidean distance. If (\ref{strong}) is $O(\Delta t^\gamma)$ as $\Delta t \downarrow 0$, this approximation is claimed to {\it converge strongly} with order $\gamma > 0 $. Strong convergency is important when fine pathwise approximation is need. Meanwhile, an approximation {\it converges} weakly with order $\beta > 0$ if, for any function continuous and $g: \bR \to \bR$ such that all derivatives up to and including $\lceil 2(\beta + 1) \rceil$ exsit and have polynomial growth, 
 \begin{equation}
 |Eg(M(\alpha,T)) - Eg(M(k, N))| = O (h^\beta) 
 \end{equation}
@@ -643,7 +641,7 @@ E|M(\alpha, T)-M(k,N)|
 \end{equation}
 Because the lack of theoretical study on the discretized quantile, we are not able to give a theoretical conclusion on the strong convergency. Instead, here we present a numerical study of the strong convergency. 
 
-The most challenging part of the design of this experiment is that the samplings of continuous $\alpha$-quantile $M(\alpha, T)$ and the discretized $\alpha$-quantile obtained under Euler scheme $M(k,N)$ should share the same path. The reason is because the discretized error is an expectation. Therefore the traditional method to get samples for continuos random variable, Monte Carlo simulation, are not helpful any more. To address this phenomenon, we use a much finer Euler approximation, in our example $\Delta t = \frac{1}{2^{27}}$, as an approximation of the continuous  $\alpha$-quantile $M(\alpha, T)$. 
+The most challenging part of the design of this experiment is that the samplings of continuous $\alpha$-quantile $M(\alpha, T)$ and the discretized $\alpha$-quantile obtained under Euler scheme $M(k,N)$ should share the same path. The reason is because the discretized error is an expectation. Therefore the traditional method to get samples for continuous random variable, Monte Carlo simulation, is not helpful any more. To address this phenomenon, we use a much finer Euler approximation, in our example $\Delta t = \frac{1}{2^{27}}$, as an approximation of the continuous  $\alpha$-quantile $M(\alpha, T)$. 
 
 The parameter setting is : 
 \begin{equation}
@@ -670,49 +668,28 @@ Err^{abs}_{j,s} &= \frac{1}{L}\sum_{1\leq l \leq L} \abs{M_{j,s}^{(l)}- M_{j,d}^
 \end{align}
 \end{enumerate}
 
-We realize this algorithm for $d=27$,$b=6$ and generate more than 2000 sampled paths. The results are showed in Figure \ref{f:ab}. We are dealing with $\mu = 0$ currently. By the symmetric effect of Brownian motion without drift. We only examine $\alpha$-quantiles where $\alpha$ vary from $[50\%,100\%]$. It is well know that the convergence rate of Euler scheme for Brownian motion is $1$. While the convergence rate of Euler Scheme for the maximum of Brownian motion is $\frac{1}{2}$. Then it seems reasonable to guess that the convergence rate for $\alpha$-quantiles of Brownian motion decrease from $1$ to $\frac{1}{2}$ as the value of $\alpha$ vary from $100\%$ to $50\%$. However, numerical results shows that the convergence rate for $\alpha$-quantile do not work that way. Figure \ref{f:ab} shows that there exists a big difference between the convergence pattens for the maximum of Brownian motion and other $\alpha$-quantiles of Brownian motion. On the other hand, the convergence pattens for different $\alpha$-quantiles are quite similar when $\alpha$ varies from $[50\%, 100\%)$. 
+We realize this algorithm for $d=27$,$b=6$ and generate more than 2000 sampled paths. The results are showed in Figure \ref{f:ab}. We are dealing with $\mu = 0$ currently. By the symmetric effect of Brownian motion without drift. We only examine $\alpha$-quantiles where $\alpha$ vary from $[50\%,100\%]$. It is well known that the convergence rate of Euler scheme for Brownian motion is $1$. While the convergence rate of Euler Scheme for the maximum of Brownian motion is $\frac{1}{2}$. Then it seems reasonable to guess that the convergence rate for $\alpha$-quantiles of Brownian motion decrease from $1$ to $\frac{1}{2}$ as the value of $\alpha$ vary from $100\%$ to $50\%$. However, numerical results shows that the convergence rate for $\alpha$-quantile do not work that way. Figure \ref{f:ab} shows that there exists a big difference between the convergence patterns for the maximum of Brownian motion and other $\alpha$-quantiles of Brownian motion. On the other hand, the convergence patterns for different $\alpha$-quantiles are quite similar when $\alpha$ varies from $[50\%, 100\%)$. 
 
-In Figure \ref{f:ab}, the horizontal index $s$ means that the result is obtained on a path in which we divid the whole path on time interval $[0,T]$ into $2^{j}$ equal small intervals. Then to examine the convergence patterns for the increase of denseness on a apple to apple case, we should take logarithm of the errors. The similarity of convergence pattens of $\alpha$-quantiles when $\alpha$ is between $[50\%, 100\%)$ is more obvious after we take the logarithm. 
+In Figure \ref{f:ab}, the horizontal index $s$ means that the result is obtained on a path in which we divide the whole path on time interval $[0,T]$ into $2^{j}$ equal small intervals. Then to examine the convergence patterns for the increase of denseness on a apple to apple case, we should take logarithm of the errors. The similarity of convergence patterns of $\alpha$-quantiles when $\alpha$ is between $[50\%, 100\%)$ is more obvious after we take the logarithm. 
 
-In Figure \ref{f:lab}, you can see that except for the maximum, i.e the $100\%$-quantile, the convergence rates of other $\alpha$-quantiles of Brownian motion are close to each other. This is reflected as the lines parallel to each other. Figure \ref{f:ratio} is the convergence rate for different $\alpha$-quantiles. You can see that the convergence rate for $100\%$-quantile is close to $\frac{1}{2}$, while convergence rates for other quantile are centered around $0.75$.  
-
-\begin{figure}[hbp]\label{f:ab}
-   \centering
-   \includegraphics{nout_7_27a.pdf} % requires the graphicx package
+In Figure \ref{f:lab}, you can see that except for the maximum, i.e. the $100\%$-quantile, the convergence rates of other $\alpha$-quantiles of Brownian motion are close to each other. This is reflected as the lines parallel to each other. Figure \ref{f:ratio} is the convergence rate for different $\alpha$-quantiles. You can see that the convergence rate for $100\%$-quantile is close to $\frac{1}{2}$, while convergence rates for other quantile are centered on $0.75$.  
+\begin{figure}[p]\label{f:ab}
+   %\centering
+   \includegraphics[scale=0.8]{nout_7_27a.pdf}
    \caption{Absolute error}
 \end{figure}
  
- \begin{figure}[hp]\label{f:lab}
-   \centering
-   \includegraphics{nout_7_27alog.pdf} % requires the graphicx package
+ \begin{figure}[p]\label{f:lab}
+   %\centering
+   \includegraphics[scale=0.8]{nout_7_27alog.pdf}
    \caption{Logarithm of error} 
 \end{figure}
  
- \begin{figure}[hp]\label{f:ratio}
-   \centering
-   \includegraphics{nout_7_27arato.pdf} % requires the graphicx packagem 
+ \begin{figure}[p]\label{f:ratio}
+   %\centering
+   \includegraphics[scale=0.8]{nout_7_27arato.pdf} % requires the graphicx packagem 
    \caption{regression result of convergence rate}
 \end{figure}
-
-\clearpage
-%\begin{figure}[htbp]
- %  \centering
-  % \includegraphics{cnout_7_27_lines.pdf} % requires the graphicx package
-   %\caption{Absolute error }
-%\end{figure}
- 
- %\begin{figure}[htbp]
-   %\centering
-   %\includegraphics{cnout_7_27_llines.pdf} % requires the graphicx package
-   %\caption{Logarithm of error}
-%\end{figure}
- 
-% \begin{figure}[htbp]
- %  \centering
-  % \includegraphics{cnout_7_27_rato.pdf} % requires the graphicx package
-   %\caption{regression result of convergence rate}
-%\end{figure}
-
 
 \subsection{An estimate of week discrete error}
 \label{sec:de}
@@ -734,7 +711,7 @@ i.i.d increment was derived:
 (M_{k,n}, S_n) \eqlaw (\sup_{i\leq k} S_i +\inf_{i\leq n-k} S'_i, S_n)
 \end{equation}
 
-In \cite{Chaumont1999}, the author provide a combinatorics treatment.
+In \cite{Chaumont1999}, the author provides a combinatory treatment.
 He constructed a explicit path transform for $S$ to $\tS$, such that
 \[
 (M_{k,n}, S_n) = (\sup_{i\leq k} \tS_i+\inf_{i\leq n-k} \tS'_i, \tS_n)
@@ -743,11 +720,11 @@ Here $\tS$ has same distribution with $S$ and each path $S$
  one-one correspondence to $\tS$.
 
 By using path transform, Chaumont proved
-following continous version of path decomposition:
+following continuous version of path decomposition:
 \begin{equation}\label{eq:cpathdec}
 (M_{\alpha,T}, S_T) \eqlaw (\sup_{t\leq \alpha{T}} S_T +\inf_{t \leq (1-\alpha)T} S'_t, S_T)
 \end{equation}
-where as above:
+where
 \[
 S'_t = S_{\alpha T+t} - S_{\alpha_T}.
 \]
@@ -820,7 +797,7 @@ where $k = \alpha N$, $\mu_1 =\tmu\sqrt{\alpha T}/\tsigma$, and $\mu_2 =\tmu\sqr
 The third last equality holds by view $\inf_{t\leq (1-\alpha)T} S'_t$ as
 $-\max_{t\leq (1-\alpha)T} (-S'_t)$.
 
-This proof shows that the convergence order are all $1$ when $0<\alpha < 1$. When $\alpha = 0$ or $\alpha = 1$, the convergence rate is ${\frac{1}{2}}$. This partially explains the phenomenon that the strong convergence rate we dissccusd in section \ref{s:euler}.   %If $\alpha=1/2$ and the Brownian motion does not have  drift ($\mu=0$), it is easy to see (by noting that $\E M_{1/2,T} = \E -M_{1/2,T}$) $\E M_{1/2,T} = \E M_{k,N} = 0$.When the Brownian motion has drift, the order becomes $1$.
+This proof shows that the convergence order are all $1$ when $0<\alpha < 1$. When $\alpha = 0$ or $\alpha = 1$, the convergence rate is ${\frac{1}{2}}$. This partially explains the phenomenon that the strong convergence rate we discussed in section \ref{s:euler}.   %If $\alpha=1/2$ and the Brownian motion does not have  drift ($\mu=0$), it is easy to see (by noting that $\E M_{1/2,T} = \E -M_{1/2,T}$) $\E M_{1/2,T} = \E M_{k,N} = 0$.When the Brownian motion has drift, the order becomes $1$.
 
 Using the same algorithm in section \ref{s:euler} Euler scheme and random walk,
 we ran a simulation to examine the above claim. 
@@ -853,32 +830,31 @@ Err_{j,s} &= {\frac{1}{L}\left(\sum_{1\leq l \leq L} M_{j,d}^{(l)} - M_{j,s}^{(l
 
 We realize this algorithm for $d=27$,$b=6$ and generate more than 2000 sampled paths. As you can see in Figure \ref{f:err}, Figure \ref{f:lerr} and Figure \ref{f:rate}, the simulation results are coincident with our theoretical conclusion. 
 
-\begin{figure}[hbp]\label{f:err}
+\begin{figure}[p]\label{f:err}
    \centering
-   \includegraphics{nout_7_27.pdf} % requires the graphicx package
+   \includegraphics[scale=0.8]{nout_7_27.pdf} % requires the graphicx package
    \caption{ Errors }
 \end{figure}
 
-\begin{figure}[hbp]\label{f:lerr}
+\begin{figure}[p]\label{f:lerr}
    \centering
-   \includegraphics{nout_7_27log.pdf} % requires the graphicx package
+   \includegraphics[scale=0.8]{nout_7_27log.pdf} % requires the graphicx package
    \caption{ Logarithm of Errors }
 \end{figure}
 
-\begin{figure}[hbp]\label{f:rate}
+\begin{figure}[p]\label{f:rate}
    \centering
-   \includegraphics{nout_7_27rato.pdf} % requires the graphicx package
+   \includegraphics[scale=0.8]{nout_7_27rato.pdf} % requires the graphicx package
    \caption{ Convergence rate }
 \end{figure}
 
-\clearpage
 
 Now, suppose that $f$ is an monotone Lipschitz continuous function.
-WLOG, asume 
+Without loss of generality, ssume 
 \begin{equation}\label{eq:lips}
 0 \leq f(x)-f(y) \leq C (x-y) \quad \forall x>y,
 \end{equation}
-where some counstant $C$. This aways the case when $f$ the
+where some constant $C$. This always the case when $f$ the
 (truncated) payoff of a $\alpha$-quantile option.
 
 Then it is easy to see
@@ -898,10 +874,10 @@ C\frac{-\zeta(1/2)}{\sqrt{2\pi}}\sqrt{T/N}  + O(1/N)
 
 \section{$\alpha$-quantile option}
 \subsection{The advantage of $\alpha$-quantile option}
-As we discussed before, lookback option is a path-dependent option with payoff calculated with the maximum or minimum price of the underlying asset during the life of the option. For example, a fixed strike lookback call option get the highest value obtained within the option's lifetime. In this case, to the holder, it can be viewed as a protection against large drop of stock price. This can be regarded as a method to deal with the unfavorable movement of a particular stock. The release of an prolonged lawsuit which may have a strong negative effect on the stock price. On the other side, lookback put option provides an insurance against large rises. But these characters also make lookback options too expensive. Quantile option is one product that overcome this shortcoming of lookbacks. Quantile option is cheaper than lookbacks, while it still provide partial protection against market movements. This property of quantile option was first discussed by \cite{Ballotta2001}.
+As we discussed before, lookback option is a path-dependent option with payoff calculated with the maximum or minimum price of the underlying asset during the life of the option. For example, a fixed strike lookback call option get the highest value obtained within the option's lifetime. In this case, to the holder, it can be viewed as a protection against large drop of stock price. This can be regarded as a method to deal with the unfavorable movement of a particular stock. The release of a prolonged lawsuit which may have a strong negative effect on the stock price. On the other side, lookback put option provides an insurance against large rises. But these characters also makes lookback options too expensive. Quantile option is one product that overcomes this shortcoming of lookbacks. Quantile option is cheaper than lookbacks, while it still provide partial protection against market movements. This property of quantile option was first discussed by \cite{Ballotta2001}.
 
 
-Another advantage of quantile option is that the strong path dependence of its payoff make it immunize to possible market manipulation. Because the payoff of lookback using the maximum of stock price during option's lifetime. Particularly for at the money option close to maturity, which in this case are most vulnerable to the stock movement closing to maturity. Firms have influence on market price can use this advantage to leading market price move to their favorable direction. But since quantile option are strongly dependent, the manipulation effect is limited. 
+Another advantage of quantile option is that the strong path dependence of its payoff make it immunize to possible market manipulation. Because the payoff of lookback using the maximum of stock price during option's lifetime. Particularly for at the money option close to maturity, which in this case are most vulnerable to the stock movement closing to maturity. Firms have influence on market price can use this advantage to leading market price move to their favorable direction. But since quantile option is strongly dependent, the manipulation effect is limited. 
 
 
 \subsection{Tree method for European $\alpha$-quantile option}
@@ -928,24 +904,24 @@ V_{alp} = \sum^M_{j=-M} \max (S^M_j - X,0) \times \{V_{cum}^{bin}[(1-\alpha)T, S
 where $V^{bin}_{cum}[(1-\alpha)T, S_{-(M+1)}^M] = e^{-rT}$. By this result, we can turn pricing of quantile option into pricing of $2M+1$ cumulative Parisian option.
 
 
-Parisian option is like an advanced version of barrier option. We know barrier option are options where the payoff depends on whether the underlying asset's price reaches a certain level (barrier) during the option's life. Barrier options usually trade in the over-the counter market. This kind of option is attractive because it is usually cheaper than similar option without barrier. Like vanilla option, barrier options also authorize holders the right to buy or sell, but  long sides of barrier options do not need to pay for scenarios they think is unlikely to happen in the future. One good example I find from wikipedia is about IBM. If you believe that IBM will go up this year, but are willing to bet that it won't go above \$100, then you can buy the barrier and pay less premium than the vanilla option. But in this one-touch knock-out or knock-in can bring difficulties to option writers when asset price is close to barrier. Particularly in the foreign exchange market where manipulation of underlying asset price is not impossible. To overcome short period price manipulation, various adjustments to one-touch knock out or knock-in have been performed in practice. Parisian option is one solution.  In order to get activated, the underlying assets of parisian option need to stay in the knout out or knout in region for certain period of time. The payoff of a cumulative Parisian option is dependent on the total amount of time the underlying asset price has spent above or below barrier. As for binary option, the payoff is either some fixed amount of some asset or nothing at all.
+Parisian option is like an advanced version of barrier option. We know barrier options are options where the payoff depends on whether the underlying asset's price reaches a certain level (barrier) during the option's life. Barrier options usually trade in the over-the counter market. This kind of option is attractive because it is usually cheaper than similar option without barrier. Like vanilla option, barrier options also authorize holders the right to buy or sell, but  long sides of barrier options do not need to pay for scenarios they think is unlikely to happen in the future. One good example I find from Wikipedia is about IBM. If you believe that IBM will go up this year, but are willing to bet that it won't go above \$100, then you can buy the barrier and pay fewer premium than the vanilla option. But in this one-touch knock-out or knock-in can bring difficulties to option writers when asset price is close to barrier. Particularly in the foreign exchange market where manipulation of underlying asset price is not impossible. To overcome short period price manipulation, various adjustments to one-touch knock out or knock-in have been performed in practice. Parisian option is one solution.  In order to get activated, the underlying assets of Parisian option need to stay in the knout out or knout in region for certain period of time. The payoff of a cumulative Parisian option is dependent on the total amount of time the underlying asset price has spent above or below barrier. As for binary option, the payoff is either some fixed amount of some asset or nothing at all.
 
 
 
-Kwok and Lau also proposed a forward shorting grid(FSG) to price cumulative parisian option in \cite{Kwok2001}. The character of FSG is that this approach need add additional information at each node of  a lattice tree. Commonly in pricing path-dependent option, at each node we should add state vector to represent the path-dependent attribute, such as the extreme value of the underlying asset price achieved in lookback option case. As we know \cite{Hull1993} and \cite{Vijh1993} were the first authors suggested this approach. \cite{Barraquand1996} introduced a comprehensive framework for FSG. In this paper they indicated that the FSG method is unconditionally convergent. Further, they showed that when the covariance matrix is degenerate, the FSG method can outperform finite difference methods. The convergence of the FSG algorithm in pricing of Asian options was studied by \cite{Forsyth1999}.
+Kwok and Lau also proposed a forward shorting grid(FSG) to price cumulative Parisian option in \cite{Kwok2001}. The character of FSG is that this approach need add additional information at each node of  a lattice tree. Commonly in pricing path-dependent option, at each node we should add state vector to represent the path-dependent attribute, such as the extreme value of the underlying asset price achieved in lookback option case. As we know \cite{Hull1993} and \cite{Vijh1993} were the first authors suggested this approach. \cite{Barraquand1996} introduced a comprehensive framework for FSG. In this paper they indicated that the FSG method is unconditionally convergent. Further, they showed that when the covariance matrix is degenerate, the FSG method can outperform finite difference methods. The convergence of the FSG algorithm in pricing of Asian options was studied by \cite{Forsyth1999}.
 
-In \cite{Kwok2001}, they constructed a trinomial tree to get the price of cumulative parisian option. But due to the fact that the result is not steady according to the setting of the length of up movement between each immediate steps, we modify their method to binomial tree.
+In \cite{Kwok2001}, they constructed a trinomial tree to get the price of cumulative Parisian option. But due to the fact that the result is not steady according to the setting of the length of up movement between each immediate step, we modify their method to binomial tree.
 
 In building binomial tree, we start by cutting the entire life of one option into many small time intervals of length $\Delta t = T / M$.
-Our tree is build to mimic the the logarithm process of underlying asset price. Denote $x=\ln S$. In each step, the logarithm of the price of underlying asset is assumed to move from its initial value of $x_0$ to one of the two new values, $x_0 + d + u$ and $x_0 + d - u$ with equal probability,that is $p_{up} = p_{down} = 0.5$ , where $u = \sigma \sqrt{\Delta t}$ and $d = (r - {\sigma}^2 /2)\Delta t$. Here $\sigma$, and $r$ are volatility and risk free interest rate, respectively. The model is illustrated in Figure~\ref{fig:tree1}.
-\begin{figure}[htbp]
+Our tree is build to mimic the logarithm process of underlying asset price. Denote $x=\ln S$. In each step, the logarithm of the price of underlying asset is assumed to move from its initial value of $x_0$ to one of the two new values, $x_0 + d + u$ and $x_0 + d - u$ with equal probability, that is $p_{up} = p_{down} = 0.5$ , where $u = \sigma \sqrt{\Delta t}$ and $d = (r - {\sigma}^2 /2)\Delta t$. Here $\sigma$, and $r$ are volatility and risk free interest rate, respectively. The model is illustrated in Figure~\ref{fig:tree1}.
+\begin{figure}[p]
    \centering
    \includegraphics{trees.pdf} % requires the graphicx package
    \caption{Forward shooting}
    \label{fig:tree1}
 \end{figure}
 
-Like the notation used in \cite{Kwok2001}, we denote $V[m,j;k]$ as the numerical option value of the cumulative parisian option at the $m$-th time interval,  $j$ upward jumps from the initial underlying asset value and $k$ times breaches so far. Let $g(k,j)$ be the grid function that describes the correlated evolution of number of breaches $k$ and price indicate $j$. Denote $x_j$ be the value of $x$ corresponding to $j$ upward movements on the binomial tree. Then we should add $1$ to the indicator $k$ if the underlying asset price $S$ is no more than the barrier $B$; i.e $x_j \leq \ln B$. Hence we can see that a suitable setting of the grid evolution function $g(k,j)$ should be
+Like the notation used in \cite{Kwok2001}, we denote $V[m,j;k]$ as the numerical option value of the cumulative Parisian option at the $m$-th time interval,  $j$ upward jumps from the initial underlying asset value and $k$ times breaches so far. Let $g(k,j)$ be the grid function that describes the correlated evolution of number of breaches $k$ and price indicate $j$. Denote $x_j$ be the value of $x$ corresponding to $j$ upward movements on the binomial tree. Then we should add $1$ to the indicator $k$ if the underlying asset price $S$ is no more than the barrier $B$; i.e $x_j \leq \ln B$. Hence we can see that a suitable setting of the grid evolution function $g(k,j)$ should be
 \begin{equation}\label{eq:grid}
 g(k,j) = k + 1_{\Set{x_j \leq B}}
 \end{equation}
@@ -963,7 +939,7 @@ V[m-1,j;k] =\set{0.5V[m,j+1;g(k,j+1)]+0.5V[m,j-1,g(k,j-1)]}e^{-r\Delta t}
 for $m-1 < M$.
 
 
-Let $N$ be the predetermined number of breaches recored for the all duration of the life of an option that is desired to activate   the contract.
+Let $N$ be the predetermined number of breaches recoreded for the all duration of the life of an option that is desired to activate   the contract.
 Considering the binary feature of the option, we should initiate our algorithm with
 \begin{equation}\label{eq:initiate}
 V[M,j;k] = \begin {cases}
@@ -988,15 +964,15 @@ the numerical values of option are plotted against varying $\Delta t$. The value
 
 
 %\subsection{A static hedging for $\alpha$-quantile put option}
-Inspired by the approximation of quantile option using cumulative Parisian options, we here propose a static hedging of quantile options using cumulative binary Parisian options. As we discussed earlier, the payoff of a cumulative binary Parisian option is that: only if the price of stock spend enough time under a predetermined barrier, its payoff is \$1; otherwise, its payoff is 0, it is worth nothing. We explicitly account for the discreteness of the tick size. That is the value of stock price only can be multiples of 1/8. Then for a put quantile option, the intuition for our hedging lies in the ability to rephrase the question, Òwhat was the certain quantile of stock priceÓ as several questions. 
+Inspired by the approximation of quantile option using cumulative Parisian options, we here propose a static hedging of quantile options using cumulative binary Parisian options. As we discussed earlier, the payoff of a cumulative binary Parisian option is that: only if the price of stock spend enough time under a predetermined barrier, its payoff is \$1; otherwise, its payoff is 0, it is worth nothing. We explicitly account for the discreteness of the tick size. That is the value of stock price only can be multiples of 1/8. Then for a put quantile option, the intuition for our hedging lies in the ability to rephrase the question, what was the certain quantile of stock price as several questions. 
 
-For example, for 40$\%$-quantile put option with stock price started from 1 and strike price 2, we can replicate its payoff using cumulative Parisian options which are alive only if they spend more than $0.4*T$ time under their barrier. For the quantile option, it has payoff only if the $40$ percentile is less than 2, the strike price. Also it is obvious that $40$ percentile must be larger than 0. In this sense, we hold 0.125 share of each cumulative binary Parisian binary option with barrier raging from $0.125. 0.250, 0.375.É, 2$.  If in the end of maturity, the 40 percentile of stock price is larger than 2, the quantile option gets nothing. Since the 40 percentile is lager than 2, then the stock price must be under 2 for less than 40$\%$ of the time before maturity. In this case all the binary option get nothing. But if the quantile is $1.750$, the quantile option gets a payoff of $0.250=2-1.750$. While for the binary options, in this case, options with barrier $2$ and $1.875$ are alive. The payoff you can get from binary options is $0.125*2=0.250$. That is the payoff of the collections of binary options is identical to your quantile option. These are true for other scenarios of the value of quantile.  In other words, by holding a collection of cumulative Parisian binary option, we can realize a static hedging.
+For example, for $40\%$-quantile put option with stock price started from 1 and strike price 2, we can replicate its payoff using cumulative Parisian options which are alive only if they spend more than $0.4*T$ time under their barrier. For the quantile option, it has payoff only if the $40$ percentile is less than 2, the strike price. Also it is obvious that $40$ percentile must be larger than 0. In this sense, we hold 0.125 share of each cumulative binary Parisian binary option with barrier raging from $0.125. 0.250, 0.375.É, 2$.  If in the end of maturity, the 40 percentile of stock price is larger than 2, the quantile option gets nothing. Since the 40 percentile is larger than 2, then the stock price must be under 2 for less than 40$\%$ of the time before maturity. In this case all the binary option gets nothing. But if the quantile is $1.750$, the quantile option gets a payoff of $0.250=2-1.750$. While for the binary options, in this case, options with barrier $2$ and $1.875$ are alive. The payoff you can get from binary options is $0.125*2=0.250$. That is the payoff of the collections of binary options is identical to your quantile option. These are true for other scenarios of the value of quantile.  In other words, by holding a collection of cumulative Parisian binary option, we can realize a static hedging.
 
-Probably, you have already found out that this scheme only works for European puts, because that you can find the two sides boundary of effective quantile. This condition is not true for calls. 
+Probably, you have already found out that this scheme only works for European puts, because that you can find the two side boundary of effective quantile. This condition is not true for calls. 
 
 
 \subsection{A tree method for American $\alpha$-quantile option}
-Non-markov property of  the quantile of Brownian motion cause seirous problem 
+Non-markov property of  the quantile of Brownian motion cause serious problem 
 when we want to use tree method. We need to record all the information alone the
 path, at least, we have to record the occupation time of $X_k$.
  
@@ -1168,7 +1144,7 @@ For parameters setting as
 \[
 K=100, r=0.05, \sigma=0.2, \alpha=0.5, T=1
 \]
-, with our tree method, we get the price of American $\alpha$-quantile option in Table \ref{fig:amer5}. Comparing data in Table \ref{fig:euro5} and Table \ref{fig:amer5}, we can see price for American option is more expensive than European option with same feature. This again insure that our method is correct. 
+, with our tree method, we get the price of American $\alpha$-quantile option in Table \ref{fig:amer5}. Comparing data in Table \ref{fig:euro5} and Table \ref{fig:amer5}, we can see price for American option is more expensive than European option with same feature. This again insures that our method is correct. 
  
 \begin{table}[p]
 \caption{American $\alpha$-quantile option, with parameter
@@ -1213,7 +1189,7 @@ extrapolation & 4.990725 & 9.867650&  15.07185
 
 
 
-\section{Connect the discrete and continuos $\alpha$-quantile options}
+\section{Connect the discrete and continuous $\alpha$-quantile options}
 We follow \cite{Broadie1999}.
 
 In this section we omit the subscript $\alpha$ and $k$. Denote 
@@ -1291,7 +1267,7 @@ For equation (\ref{eq:sp3}),
 =& O(1/m)O(1/m) = o(1/m) 
 \end{split}
 \]
-The inequality is obtained by observation. The second is because the density function is finite and CauchyÐSchwarz inequality.
+The inequality is obtained by observation. The second is because the density function is finite and Cauchy-Schwarz inequality.
 
 \def\bM{\overline{M}}
 \def\darrow{\xrightarrow{\mathcal{D}}}
