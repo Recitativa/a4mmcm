@@ -1,5 +1,5 @@
 \documentclass[12pt]{article}
-\usepackage[margin=3cm]{geometry}
+\usepackage[margin=2cm]{geometry}
 
 \usepackage{hyperref}
 
@@ -2381,8 +2381,8 @@ type
 \]
 \[
 \begin{split}
-&(\underbrace{\frac{1}{2},\cdots, \frac{1}{2}, \frac{1}{2}+l}_p, 
-\underbrace{-\frac{1}{2},\cdots, -\frac{1}{2}}_q)\\
+&(\underbrace{\frac{1}{2},\cdots, \frac{1}{2}}_p,  
+\underbrace{-\frac{1}{2}+l,-\frac{1}{2},\cdots, -\frac{1}{2}}_q)\\
 =&
 (\underbrace{0, \cdots,  0}_p, 
 \underbrace{-1+l,\cdots, -1}_q)+\frac{1}{2}
@@ -2443,7 +2443,7 @@ $E_{i,i}$ act by $x_i\partial_{x_i}+\frac{1}{2}$.
 Let $w^*$ denote the dual of $w\in F_{l}$ in $F_{l}^*$. 
 
 Now,
-for $X \asp(n,\bC)$,  
+for $X \in \asp(n,\bC)$,  
 we have 
 \[
 w\leftrightarrow 
@@ -2464,14 +2464,77 @@ Then
 \[
 \Ad(k) X = 
 \begin{pmatrix}
-0 & k E_{i,j} k^T\
+0 & k E_{i,j} k^T\\
 0 & 0
 \end{pmatrix}
 \]
 \end{enumerate}
 
-\subsection{emmbeding?}
-Let 
+\subsection{intertwining operator}
+As $K$-module, $\Gamma_W \omega = \bigoplus_{l\geq 0} F_l$ and 
+$\omega = \bigoplus_{l\geq 0} S_l$
+Choose any intertwining operator $T_i \colon F_i \to S_i$ for $i=0,1$. 
+
+As far as we known, the $K$-type occurs in both $\omega$ and 
+$\pp^+\otimes S_l$ is $S_{l+1}$. In fact, $\pp^+\cong S^2(\bC_n)$ 
+as representation of $K=\widetilde{U(n)}$. 
+In fact, it's easy to see from the Littlewood-Richardson rule or 
+\cite{Humphreys1972}~24.4 exercise~12. Same statment is ture for $F_l$. 
+ 
+So we have a unique spliting for the $K$-module homomphism 
+$\pp^+\otimes S_l\to S_{l+2}$ defined by $X\otimes v \mapsto Xv$, 
+Hence we have a unique $T_l$ make the following diagram commutes
+\[
+\bfig
+\square[\pp^+\otimes S_l`S_{l+2}`\pp^+\otimes F_l`F_{l+2};`\id\otimes T_l`T_{l+2}`]
+\efig
+\]
+Similar argument and Schur's lemma give following commutative diagram
+\[
+\bfig
+\square[\pp^-\otimes S_{l+2}`S_{l}`\pp^-\otimes F_{l+2}`F_{l};`\id\otimes T_{l+2}`c_lT_{l}`]
+\efig
+\]
+for some $c_l\in \bC$. 
+
+Now we can define a intertwining map by $T= \otimes T_l$ if all $c_l=1$.
+
+To show $c_1=1$, we consider the diagram
+\[
+\bfig
+\square[\pp^-\otimes \pp^+ \otimes S_{l}`S_{l}`\pp^-\otimes \pp^+\otimes F_{l}`F_{l};`\id\otimes T_{l}`c_lT_{l}`]
+\efig
+\]
+Assume $S_l$, $F_l$ has highest weight vector $u,v$. For some element 
+$x\in \pp^-\otimes \pp^+$ if $xu=a u+ \cdots, xv=bu+\cdots$, with $a=b\neq 0$, 
+then $c_1=1$. 
+In fact $T_lu = dv$ for some $d\neq 0$ since $x$ is not trivial map by the 
+assumption.
+Now $adv +\cdots =T_l( a u +  \cdots)= T_l x u = c_l x T_l u = c_l bd v + \cdots$. Hence $c_1=1$ by $a=b\neq 0$ and $d\neq 0$. 
+
+In fact we consider the Casimir. Let $C_\gg$ and $C_\kk$ be the Casimir
+of $\gg$ and $\kk$. 
+Now 
+\[
+C_\gg = C_\kk + \sum_{\alpha\in \Delta(\pp^+)} X_\alpha X_{-\alpha} + X_{-\alpha} X_{\alpha}
+= C_\kk + \sum_{\alpha\in \Delta(\pp^+)}H_{\alpha} + 2 X_{-\alpha} X_\alpha.
+\]
+
+Take $x =  \sum_{\alpha\in \Delta(\pp^+)} X_{-\alpha} X_\alpha$.
+Since $C_\gg$ act on the whole space by fixed scalar, $C_\kk$ act on $S_l$
+and $F_l$ by same scalar and
+$\sum_{\alpha\in \Delta(\pp^+)}H_{\alpha}$ 
+act on the heighest weight vector by same scalar $\inn{\lambda_l}{\rho_{\pp^+}}$,
+ we know $x$ act on $u,v$ by scalar and $a=b$. 
+
+To varify $a\neq 0$, we just calculate $x$ action in $\omega$. 
+Now, some multiple of $x$ act by $\sum_{i,j} \partial_{x_i}\partial_{x_j} x_ix_j$,
+A highest weight vector in $S_l$ is $x_n^l$, so $a\geq 0$. 
+
+\section{For other cases}
+Now try to apply the method for $\theta^{p,q}(1^{\pm,\pm})$.
+For other cases we also have the multiplicity free of $\pp^\pm\otimes F$, 
+the point is to determine the $c$'s. 
 
 \bibliography{bib/reppapers}{}
 \bibliographystyle{alpha}
