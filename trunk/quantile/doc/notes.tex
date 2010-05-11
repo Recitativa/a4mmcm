@@ -1,9 +1,9 @@
 \documentclass[a4paper,12pt]{book}
 
 \usepackage{amsmath}
-\usepackage[top=1.0in,bottom=1.0in,left=1.5in,right=1.5in]{geometry}
+\usepackage[top=1.0in,bottom=1.0in,left=1.5in,right=1in]{geometry}
 \usepackage{epstopdf}
-\usepackage{hyperref}
+%\usepackage{hyperref}
 
 \usepackage{amssymb}
 \usepackage{graphicx}
@@ -53,24 +53,33 @@
 
 \allowdisplaybreaks[1]
  
-\usepackage{hyperref}
-
 \usepackage{natbib}
 
 
+\usepackage{hyperref}
+
+
 \begin{document}
-\bibliographystyle{cje}
+\bibliographystyle{mycje}
 \frontmatter
 
 \include{title}
+
+\renewcommand{\baselinestretch}{2}\normalsize
+
 \include{acknow}
 
+\renewcommand{\baselinestretch}{1}
 %\pagestyle{fancy}
 %\pagenumbering{roman}
 \setcounter{tocdepth}{3}
 \tableofcontents 
 
+\renewcommand{\baselinestretch}{2}
+
 \include{abstract}
+
+\renewcommand{\baselinestretch}{1}
 
 \listoftables 
 \listoffigures
@@ -84,25 +93,24 @@
 \pagenumbering{arabic}
 
 
-An {\it option} is a contract which gives the holder the right but not the obligation to buy or sell an underlying asset at or before a certain date at an agreed price, as mentioned in \citeauthor{Hull2008}.
-To get this right, the buyer should pay the seller. The price set in the contract is known as the {\it strike price}; the date is known as {\it expiration date} or {\it maturity}. There are always two sides involved in every option contract. On one side is the investor who has bought the option. This side is known as the long position. Another side is the short position who has sold the option. A {\it call} option gives the holder the right to buy the underlying asset, while a {\it put} option gives the holder the right to sell the underlying asset. European options can be exercised only at the expiration date. American options on the other hand may be exercised at any time before the expiration date.
+\cite{Hull2008} defines an {\it option} to be a contract which provides the holder the right to buy or sell an underlying asset at or before a certain date at an predetermined price. To get this right, the buyer should pay the seller. There are always two sides involved in every option contract. On one side is the investor who has bought the option. This side is known as the long position. Another side is the short position who has sold the option. If long side chooses to execute the right defined in the contract, the short side has the obligation to do the transaction specified in the contract. As you see, here exists a disparity of right and obligation. Then to get this right, the long side should pay a premium to the short side. The price determined in the contract is called the {\it strike price}; the date set in the contract is known as {\it expiration date} or {\it maturity}. A {\it call} option gives the holder the right to buy the underlying asset, while a {\it put} option gives the holder the right to sell the underlying asset. European options can be exercised only at the expiration date. American options on the other hand may be exercised at any time before the expiration date.
 
-To help the understanding of option, here we can give an example of the use of an option. Suppose that it is now January 15. A copper fabricator expects it will need 100,000 pounds of copper on May 15 to meet a certain contract. The spot price of copper is 140 cents per pound. To fix the expense of raw material, the fabricator may take a long position of a call option, for example, a call option with a strike price of \$120,000 for 100,000 pounds of copper expired in four month. Holding this option, the fabricator eliminates its risk exposure to the changes of copper price. This example is using an option as a hedging instrument. There are other purposes of using of options.
+To help the understanding of option, here we give an example of the use of an option. Suppose that it is now January 15. A copper fabricator expects it will need 100,000 pounds of copper on May 15 to meet a certain contract. The spot price of copper is 140 cents per pound. To fix the expense of raw material, the fabricator may take a long position of a call option, for example, a call option with a strike price of \$120,000 for 100,000 pounds of copper expired in four month. Holding this option, the fabricator eliminates its risk exposure to the changes of copper price. This example is using an option as a hedging instrument. There are other purposes of using of options.
 
-Generally, there are three broad categories of traders of options: {\it hedgers}, {\it speculators}, and {\it arbitrageurs}. Hedgers use options to reduce the risk that they face from potential future movements in a market variable. Speculators use options to bet on the future direction of an asset. Taking advantage of a discrepancy between prices in two different markets, arbitrageurs lock in risk free profits by concurrently taking offsetting positions in two or more markets. Options market have been extraordinary successful. One main reason is that they meet the needs of different types of traders.
+Generally, there are three broad categories of traders of options: {\it hedgers}, {\it speculators}, and {\it arbitrageurs}. Hedgers use options to reduce the risk that they face from potential future movements in a market variable. Speculators use options to bet on the future direction of an asset. Taking advantage of a discrepancy between prices in two different markets, arbitrageurs lock in risk free profits by concurrently taking offsetting positions in two or more markets. Option markets have been extraordinary successful. One main reason is that they meet the needs of different types of traders.
 
-Options have a long history. There is evidence that Romans and Phoenicians used similar contracts in shipping.  It is also convinced that Thales, a mathematician and philosopher in ancient Greece, used options to secure a low price for olive presses in advance of the harvest. In the 17th century the Dutch bought and sold options structured on tulip. However, the trading of option actually took off in the later 1970s. The Chicago Board of Trade established the Chicago Board Options Exchange (CBOE) and began trading listed call options on 16 stocks on April 26, 1973.
-From this moment on, innovation has bred the creation of copious products tailored to fill the needs of different types of investors. Path-Dependent options, such as Asian options, barrier options and lookback options are traded in market routinely.
-Recently, even more exotic types of option such as Parisian option and ${\alpha}$-quantile option have appeared and have attracted interest. Although exotic options are a relatively small part of financial market in terms of volume, these options are important to investment banks because they are generally much more profitable than plain vanilla option.
+Options have a long history. There is evidence that Romans and Phoenicians used similar contracts in shipping. In ancient Greece, a famous mathematician and philosopher, Thales, used options to obtain a low price for olive presses ahead of the harvest. In the 17th century the Dutch bought and sold options structured on tulip. However, the trading of option actually took off in the later 1970s. The Chicago Board of Trade established the Chicago Board Options Exchange (CBOE) and began trading listed call options on 16 stocks on April 26, 1973.
+From this moment on, innovation has bred the creation of copious products tailored to fill the needs of different types of investors. Path-dependent options, such as Asian options, barrier options and lookback options are traded routinely.
+Recently, even more exotic types of option such as Parisian option and ${\alpha}$-quantile option have appeared and have attracted interest. Although exotic options are a relatively small part of financial market in terms of volume, these options are important to investment banks because they are generally much more profitable than plain vanilla options.
 
-Options are bought and sold in two ways. Options with standardized terms are traded on organized exchanges. This kinds of options are more standard and liquid than over-the-counter options. Over-the-counter options are not listed in exchanges and instead only quoted by financial institutions. According to the statistics published by Bank for International Settlements, the central bankers' central bank, in June 2009, the amounts outstanding of options traded in organized exchange were 43.75 trillion and the figure for over-the-counter options is 68.19 trillion.
+Options are bought and sold in two ways. Options with standardized terms are traded on organized exchanges. These kinds of options are more standard and liquid than over-the-counter options. Over-the-counter options are not listed in exchanges and instead are only quoted by financial institutions. According to the statistics published by Bank for International Settlements, the central bankers' central bank, in June $2009$, the amounts outstanding of options traded in organized exchanges were $43.75$ trillion and the figure for over-the-counter options is $68.19$ trillion.
 
-The prosperousness of option market calls for valuation methods of options. While in return, the success of pricing model also boosts the development of options. In chapter 2, we review the fundamental pricing principal for European and American options. The popular numerical methods are surveyed in this chapter 3. In chapter 4, we give an extensive study of $\alpha$-quantile and $\alpha$-quantile option. This is the main focus of our research.
+The prosperity of option markets calls for valuation methods of options. While in return, the success of pricing model also boosts the development of options. In Chapter $2$, we review the fundamental pricing principles for European and American options. Popular numerical methods are surveyed in this Chapter $3$. In Chapter $4$, we give an extensive study of quantile of Brownian motion and quantile option. This is the main focus in this thesis.
 
 \chapter{Principles of option pricing}
 
 % add more Brodie option pricing: valuation models and applications and the
-Usually, there are five factors affecting the price of a stock option:
+In general, there are five factors affecting the price of a stock option:
 \begin{enumerate}[1.]
 \item The current stock price, $S_0$
 \item The strike price, $K$
@@ -111,16 +119,16 @@ Usually, there are five factors affecting the price of a stock option:
 \item The risk free interest rate, $r$
 \end{enumerate}
 
-Because exercise is a right but not an obligation, the payoff of an option is always non-negative. For European option, the exercise payoff from a long position is $(S_T - K)^+ = \max \{S_T-K,0\}$. As for American option, the payoff function is similar, what is different is that we should use the stock price when the option is executed to calculate payoff, instead of $S_T$ in European case. 
+Because exercise is a right but not an obligation, the payoff of an option is always non-negative. For a European option, the exercise payoff from a long position is $(S_T - K)^+ = \max \{S_T-K,0\}$. As for an American option, the payoff function is similar; what is different is that we should use the spot stock price $S_t$ when the option is executed to calculate payoff, instead of $S_T$ in European case. Because American style options can be executed at any time before maturity. It is not like European options which only can be executed at maturity time $T$.
 
-Usually there are closed form price formulas for European options. In addition numerical approaches can solve this problem, such as binomial tree and Monte Carlo simulation. We will give a brief introduction about these numerical methods later. Because we do not know when American option will be excised, the pricing of American option is more complicated. A complete solution to American option pricing problem should address two aspects, option value and an optimal exercise strategy. Only in a few cases are analytic solutions available. In most cases, numerical approach is needed. For example, \cite{Lim2004} propose an approach to compute both the price and the optimal exercise boundary for American style lookback options.
+In many cases there are closed form pricing formulas for European options. In addition, numerical approaches such as binomial tree and Monte Carlo simulation can solve this problem. We give a brief overview of these numerical methods In Chapter $3$. Because we do not know when an American option will be exercised, the pricing of American options is more complicated. A complete solution to American option pricing problem should address two aspects, option value and an optimal exercise strategy. Only in a few cases are analytic solutions available. In most cases, numerical approach is needed. For example, \cite{Lim2004} proposed an approach to compute both the price and the optimal exercise boundary for American-style lookback options.
 
-In this chapter, we give a detailed review about the two major option pricing principles, no arbitrage valuation and risk neutral valuation. The valuation of American options is discussed. Interested reader can find more exhaustive reviews about option valuation models and applications in \cite{2004Broadie}. In addition, because of the similarity between lookback option and $\alpha$-quantile option, the pricing of lookback option is summarized. 
+In this chapter, we review the two major option pricing principles, no arbitrage valuation and risk neutral valuation. The valuation of American options is also discussed. We refer the reader to \cite{2004Broadie} for a more exhaustive review of option valuation models and applications. Since lookback options are a SPECIAL case of $\alpha$-quantile options with $\alpha = 1$, the pricing of lookback option is summarized. 
 
-\section{European Options}
-\subsection{No-Arbitrage Valuation}
+\section{European options}
+\subsection{No-arbitrage valuation}
 
-The no-arbitrage principle is the fundamental of pricing of options. \citet*{Black:1973} is the landmark paper in this field. \citet*{merton1973} was the first to expand the mathematical understanding of this options pricing model and used the term "Black-Scholes" options pricing model.
+Absence of arbitrage is the fundamental principle of option pricing. \citet*{Black:1973} is the landmark paper in option pricing field. \citet*{merton1973} is the first to extend this valuation model to incorporate dividend payment. In this paper rationals of opting pricing are discussed. 
 
 \subsubsection{Black-Scholes framework}
 The most popular model to describe stock price behavior is known as Black-Scholes model.
@@ -213,7 +221,7 @@ e^{-\alpha x} \mu (x,0) = f(K \exp(x)) & \text{on } \bR \\
 
 Heat equation was originally used to describe the distribution of heat in a given medium over time, which has been well studied in Physics. If $\lim_{x\to \pm \infty} \mu (x, \tau)= 0$ , the Gaussian density function $\mu (x,t) = (2 \sqrt{\pi t} )^{-1} \exp(-x^2 /{4t})$ with mean $0$ and standard deviation $\sqrt {2t} $ is the fundamental solution.
 
-\subsubsection{Black Scholes Formula}
+\subsubsection{Black Scholes formula}
 For European call option, the payoff is $f(S)=(S-K)^+$. Then the valuation formula obtained by Black Scholes PDE is
 \begin{equation}
 c(S_t,t;K)=S_t N(d(S_t;K,T-t))-Ke^{-r(T-t)}N(d(S_t;K,T-t)-\sigma\sqrt{T-t}),
@@ -253,7 +261,7 @@ Further study suggests that some conditions about Black Scholes Model can be ext
 
 
 
-\subsection{Risk-Neutral Valuation}
+\subsection{Risk-neutral valuation}
 As revealed in Black-Scholes partial differential equation and corresponding boundary conditions, interest rate $r$, volatility $\sigma$, strike price $K$, stock price $S_0$ and time to maturity, $T$  are all the market parameters that relevant to the price of options. The expected return rate, very surprisingly, does not have any influence on option's price. The Black-Scholes PDE also does not involve any parameter regarding the risk preference of investors. This phenomenon brings hint to another approach of option valuation, risk neutral valuation. 
 
 Risk neutral valuation, first introduced by \citet*{cox-ross1976}, is a very important pricing tool. As a powerful and frequently used pricing theory, risk neutral valuation has been a source of confusion. But the underlying principle can be easily expressed in the binomial case. 
@@ -276,7 +284,7 @@ restate the price of stock by adjusting the probability and discounting it at th
 
 Above is the basic idea of a important derivative pricing principle called {\it risk neutral valuation}. The probability $p$ used to calculate expectation in risk neutral world is known as {\it equivalent martingale probability}. With the help of more advanced mathematics, risk neutral valuation remains valid and useful in the situation with stochastic interest rate and volatility. Interesting study about this model can be found in \cite{HarrisonKreps1979}, \cite{Harrison1981} and \cite{Kreps1981}.
 
-\section{American Options}
+\section{American options}
 In the risk neutral world, the price of American options has an easy 
 expression. At time $t$, the price of American Option is
 \[
@@ -434,7 +442,7 @@ LP_{fixed} = & e^{-rT} (K-S_0) - S_0 N(-d') + e^{-rT}S_0 N (-d' + \sigma \sqrt{T
 \end{split}
 \end{equation}
  
-\subsection{American lookback option}
+\subsection{American-style lookback options}
 
 As for American option, the complete solution should provide both the option value and an optimal exercise strategy. Due to this complicity, usually we need use numerical approach to solve the problem of pricing American style lookback option. In \cite{Lim2004}, for American \emph {fixed strike} lookback option they provide an full approach to compute the price and the optimal exercise boundary. In that paper, they first propose a space-time transformation which can reduce the valuation of a group of American lookback options to a single canonical optimal stopping problem for standard Brownian motion. Under this transformation, calendar time is scaled by square of volatility. Therefore, the canonical time horizon is only a small part of time to expiration. In addition, the transformation also removes the dependence on a prescribed root node which then makes computing the entire early excise boundary by backward induction possible.
 
@@ -445,11 +453,11 @@ As for American option, the complete solution should provide both the option val
 %P(X_t \in a+dx, M_t \in b+dm) =
 %\]
 
-\chapter{Numerical Methods}
+\chapter{Numerical methods}
 
 For American, and path-dependent options, generally closed form pricing formulaes are not available. In this case,usually numerical methods may be required. Even for Black Scholes formula, in practice, integration and the normal probability are obtained numerically. In this chapter, we provide a brief summary of the major numerical methods for option pricing. The most popular numerical approaches are lattice method, finite difference and Monte Carlo simulation. Generally speaking, different numerical methods are applicable in different situations. 
 
-\section{Lattice Methods}
+\section{Lattice methods}
 Lattice methods, also known as tree methods, use discrete time and discrete state approximations of the evolvements of underlying assets to calculate option prices. The lattice method was originally proposed in \cite{cox1979}. Lattice approaches are popular because lattice methods are easy to understand and implement. In risk neutral valuation framework, as we discussed, the underlying price follows $S_{t+h} = S_t e^{Z}$, and $Z\sim N((r-\frac{1}{2} \sigma ^2)h,\sigma ^2 h)$. In lattice method, over a discrete time interval, one discrete random variable $X$ is used to approximate $Z$. $X$ takes value as $x_i$ with probability $p_i$ $i=1,2,...,m$. If $m=2$, it is binomial tree; If $m=3$, it is trinomial method. The value of the parameters of the distribution of the discrete random variable $X$ are chosen to approximate the distribution of continuous random variable $Z$ exactly or consistently. Under risk neutral method, the value of an option is the discounted present value of the expectation of the option's payoff. In lattice method we first use discrete diagram to approximate the continuous path of the price of underlying asset. Then calculate the discrete expectation of payoff as an approximation of option price. Due to the simplicity of lattice method, adjusted lattice methods for models with dividends, barriers and other complicated features can be easily constructed. However, the key issue of lattice method is the tradeoff between speed and accuracy. 
 
 There are plenty of proposals for tree methods. The popularly used are \cite{cox1979},\cite{jarrow1983},\cite{Boyle1986} and \cite{Amin1991}. 
@@ -478,7 +486,7 @@ Lattice & Approximation   & Probabilty \\
 \label{default}
 \end{table}%
 
-\section{Monte Carlo Simulation}
+\section{Monte Carlo simulation}
 As we discussed in Risk Neutral pricing method, option valuation often end to the calculation of an expected value of a certain discounted payoff. For some cases, we can do this computation explicitly. The Black Scholes formula is a example of this class. But for most of the time, we need the help of numerical methods. Monte Carlo simulation is a natural proposal to calculate expectation. Monte Carlo method is very useful to price options with multiple underlying assets. This method is first used to evaluate a European option by \cite{Boyle1977}. 
 
 Generally, Monte Carlo method is done in following steps: 
@@ -1193,7 +1201,7 @@ extrapolation & 4.990725 & 9.867650&  15.07185
 
 \begin{table}[p]
 \caption{American $\alpha$-quantile option, with parameter
-	$S=100, K=100, r=5\%, \sigma=0.2, T=0.25$ and different $\alpha$. 
+	$S=100, K=100, r=5\%, \sigma=0.2, T=1$ and different $\alpha$. 
 	The extrapolation is based on results got at 26 steps and 36 steps.}
 \begin{center}
 \begin{tabular}{l|lllllll}
