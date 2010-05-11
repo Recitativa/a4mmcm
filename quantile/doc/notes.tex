@@ -1151,6 +1151,26 @@ lookback & 8.381566 &  13.76059 & 19.13961
 \label{fig:euro8}
 \end{table}%
 
+\begin{table}[p]
+\caption{European $\alpha$-quantile option, with parameter
+	$S=100, K=100, r=5\%, \sigma=0.2, T=1$. 
+	The extrapolation is based on results got at 28 steps and 36 steps.}
+\begin{center}
+\begin{tabular}{l|lllll}
+$\alpha$ & $0.5$ & $0.6$ & $0.7$ & $0.8$ & $0.9$       \\
+\hline
+26 & 5.60903 & 7.05787 & 8.69087 & 10.591 & 13.0201\\
+28 & 5.61323 & 7.05893 & 8.69607 & 10.61 & 13.018\\
+30 & 5.61404 & 7.06396 & 8.69385 & 10.6205 & 13.0101\\
+32 & 5.61678 & 7.0653 & 8.70373 & 10.6258 & 13.0394\\
+34 & 5.61758 & 7.06858 & 8.70801 & 10.6251 & 13.0625\\
+36 & 5.6194 & 7.07069 & 8.70835 & 10.6295 & 13.0804\\
+extrapolation &  5.646362 & 7.104022 & 8.753798 & 10.7296 & 13.23718
+\end{tabular}
+\end{center}
+\label{fig:euro8}
+\end{table}%
+
 Comparing the results by our tree method with extrapolation, Forward shooting grid and Monte Carlo method, we think our tree method is correct and efficient. Since, as we checked, it works well for European $\alpha$-quantile option, it should also work for American style $\alpha$ quantile option. 
 
 For parameters setting as
