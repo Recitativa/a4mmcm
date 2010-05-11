@@ -1,10 +1,10 @@
 \chapter{Abstract}
-Option is the most popluer derivetive trading in market. 
+Option is the one popular derivative traded in market. 
 %So evaluate the value of options is
 %a very important question in finicial industry.
 %However the return of options can only be determined when it is exercised.
 %So option pricing became a very difficult problem.
-In the most important model, Black-Schore model, for option princing, 
+In the most important model, Black-Scholes model, for option pricing, 
 the price of underling asset is assumed to 
 satisfy the geometric Brownian motion, 
 which is a very interesting object itself. 
@@ -12,29 +12,23 @@ We will have a quick review about the theory of option pricing
 in the fist part of this thesis.
 %So option priceing is a  very interesting and important problem
 %both in practical and theratical. 
-It is well know that Black-Schore formula solve pricing problem 
+It is well known that Black-Scholes formula solves pricing problem 
 for European option.
-However for other types of options, usually there is no such nice formula. 
+However, for other types of options, usually there is no such nice formula. 
 Numerical methods are developed to solve these problems. 
-In this article, we are consider the $\alpha$-quantile options. 
+In this thesis, we consider the $\alpha$-quantile options. 
 Partially because the $\alpha$-quantiles of Brownian motion 
-are highly path-dependent, 
-there still many fundamental problems are open now.
-One problem is the discrete error between the $\alpha$-quantile 
-of Brownian motion and Gaussian random walk. 
-This is the first step to find the approximation order of numerical 
+are highly path-dependent, many fundamental problems are still open.
+One problem is the discretization error between the $\alpha$-quantile 
+of Brownian motion and that of Gaussian random walk. 
+This is the first step to find the order of approximation for numerical 
 methods based on Gaussian random walk.
-We have find a very different 
-convergence pattern of the discrete error for genuine $\alpha$-quantiles
-and the maximal($\alpha=1$) by simulation. 
+We have found a big difference between the
+convergence patterns of the discrete error for genuine $\alpha$-quantiles $(0< \alpha < 1)$
+and the maximum ($\alpha=1$) by simulation. 
 Moreover we show these differences theoretically.
-Another problem is using tree methods to pricing 
-$\alpha$-quantile options. We will discuss two different approchs for pricing
-European type $\alpha$-quantile options.
-Although the second method is non efficency, 
-it propose a method to deal American type $\alpha$-quantile options. 
-Enlightening by the results of the convergence pattern,
-we considered methods accelerateing the convergence rate by Richardson extrpolation.  
+Another problem is using tree methods to price 
+$\alpha$-quantile options. A forward shooting method for European-style $\alpha$-quantile option originally proposed by \cite{Kwok2001} are studied. We propose a tree method which can price both European and American-style of $\alpha$-quantile options. Richardson extrapolation is applied to accelerate the convergence speed of our lattice method. 
 \vspace{1cm}
 
-\noindent{\bf Keywords}: Option Pricing, $\alpha$-quantile Options, Discrete error, Tree Methord, Lattice Method, American option, Optimal Stopping Problem, Richardson extropolation
+\noindent{\bf Keywords}: Option Pricing, $\alpha$-quantile Options, Discretization error, Tree Method, American option, Optimal Stopping Problem, Richardson Extrapolation
