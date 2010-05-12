@@ -11,3 +11,4 @@ label("$x_0 + d+u$",Nod1,E);
 label("$x_0 + d-u$",Nod2,E);
 label("$\frac{1}{2}$",.5*Nod1,NW);
 label("$\frac{1}{2}$", .5*Nod2,SW);
+
