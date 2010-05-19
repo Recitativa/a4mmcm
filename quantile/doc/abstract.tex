@@ -1,34 +1,11 @@
 \chapter{Abstract}
-Option is the one popular derivative traded in market. 
+Option is one of the most popular derivative traded in the market. 
 %So evaluate the value of options is
 %a very important question in finicial industry.
 %However the return of options can only be determined when it is exercised.
 %So option pricing became a very difficult problem.
-In the most important model, Black-Scholes model, for option pricing, 
-the price of underling asset is assumed to 
-satisfy the geometric Brownian motion, 
-which is a very interesting object itself. 
-We will have a quick review about the theory of option pricing
-in the fist part of this thesis.
-%So option priceing is a  very interesting and important problem
-%both in practical and theratical. 
-It is well known that Black-Scholes formula solves pricing problem 
-for European option.
-However, for other types of options, usually there is no such nice formula. 
-Numerical methods are developed to solve these problems. 
-In this thesis, we consider the $\alpha$-quantile options. 
-Partially because the $\alpha$-quantiles of Brownian motion 
-are highly path-dependent, many fundamental problems are still open.
-One problem is the discretization error between the $\alpha$-quantile 
-of Brownian motion and that of Gaussian random walk. 
-This is the first step to find the order of approximation for numerical 
-methods based on Gaussian random walk.
-We have found a big difference between the
-convergence patterns of the discrete error for genuine $\alpha$-quantiles $(0< \alpha < 1)$
-and the maximum ($\alpha=1$) by simulation. 
-Moreover we show these differences theoretically.
-Another problem is using tree methods to price 
-$\alpha$-quantile options. A forward shooting method for European-style $\alpha$-quantile option originally proposed by \cite{Kwok2001} are studied. We propose a tree method which can price both European and American-style of $\alpha$-quantile options. Richardson extrapolation is applied to accelerate the convergence speed of our lattice method. 
+In the most important model, the Black-Scholes model, for option pricing, the price of the underlying asset is assumed to satisfy the geometric Brownian motion, which is a very interesting object itself. In this thesis, we provide a quick review about the theory of option pricing in the first part of this thesis. It is well known that the Black-Scholes formula solves the pricing problem for a European option. However, for other types of options, usually there is no such closed-form formula. Numerical methods are developed to solve these problems. In this thesis, we consider the $\alpha$-quantile options. Partially because the $\alpha$-quantiles of Brownian motion are highly path-dependent, many fundamental problems are still open. One problem is the discretization error between the $\alpha$-quantile of Brownian motion and that of the Gaussian random walk. This is the first step to find the order of approximation for numerical 
+methods based on Gaussian random walk. We have found a difference between the convergence patterns of the discretization error for genuine $\alpha$-quantiles $(0< \alpha < 1)$ and the maximum ($\alpha=1$) by simulation. Moreover we establish this result theoretically. Another problem is with using tree methods to price $\alpha$-quantile options. Although a forward shooting method proposed by \cite{Kwok2001} can be used to price European-style $\alpha$-quantile options, the method can not be extended to price the American-style option.  We propose a tree method which can price both European-style and American-style $\alpha$-quantile options. We show how Richardson extrapolation can be applied to accelerate the convergence speed of our lattice method. 
 \vspace{1cm}
 
-\noindent{\bf Keywords}: Option Pricing, $\alpha$-quantile Options, Discretization error, Tree Method, American option, Optimal Stopping Problem, Richardson Extrapolation
+\noindent{\bf Keywords}: Option Pricing, $\alpha$-quantile Options, Discretization Error, Tree Method, Euler Scheme, Richardson Extrapolation
