@@ -485,7 +485,13 @@ V(S_{\min},t;K) = & e^{-r(T-t)} (K-S_{\min}^t) - S_t \Phi(-d'') + S_{\min}^t e^{
  
 \subsection{American-style lookback options}
 
-For the American-style lookback option, one should provide both the option price and the optimal exercise strategy to completely solve the pricing problem. Due to this complexity, usually we need to use a numerical approach to solve the problem of pricing American-style lookback options. In \cite{Lim2004}, they provide a complete solution to compute the price and the optimal exercise boundary. In that paper, they proposed a space-time transformation which can help the pricing of options of this type Under this transformation, calendar time is scaled by the square of volatility $\sigma^2$. Therefore, the canonical time horizon is much smaller than time to expiration $T-t$. In addition, the dependence on a prescribed root node which then makes computing the entire early excise boundary by backward induction possible.
+For the American-style lookback option, one should provide both the option price and the optimal exercise strategy to completely solve the pricing problem. Due to this complexity, usually we need numerical approachs to price American-style lookback options. 
+
+\cite{Lim2004} provided two numerical methods to compute the price and the optimal exercise boundary. In their paper, they proposed a space-time transformation which can simplify the pricing of options of this type. Under this transformation, calendar time is scaled by the square of volatility $\sigma^2$. Therefore, the canonical time horizon is much smaller than time to expiration $T-t$.
+The first numerical method described in \cite{Lim2004} is a backward induction scheme using bernoulli walks. Moreover Chernoff-Petkau correction was involved to improve the approximation of the continous-time optimal stopping boundary. 
+By finding the decomposition formula for American lookback put option, 
+\cite{Lim2004} written done a integral equation for the optimal stopping boundary.
+Then they developed the second method by solving that integral equation numerically. 
 
 %Fix a process $X_t$, define $M_t = \max_{0\leq s\leq t} X_s$.
 %When $X_t$ is a standard brownian motion without drift,
