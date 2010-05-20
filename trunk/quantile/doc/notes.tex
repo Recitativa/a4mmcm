@@ -135,9 +135,9 @@ Let $S_t$ be the stock price. Then under this model, $S_t$ satisfies
 \begin{equation}\label{eq:1}
 dS_t = \mu S_tdt + \sigma S_tdB_t,
 \end{equation}
-with $\mu$ and $\sigma $ constant, which represent the expected return on the stock and the volatility respectively. The process $\{B_t\}$ is a standard Brownian motion under statistical measure $\mathbb{Q}$ which represents the underlying uncertainty of the market. With initial stock price $S_0$ at time $0$, the solution to (\ref{eq:1}) is 
+with $\mu$ and $\sigma $ constant, which represent the expected return on the stock and the volatility respectively. The process $\{B_t\}$ is a standard Brownian motion on probability space $(\Omega,\mathcal{F}, \mathbb{Q})$ which represents the underlying uncertainty of the market. With initial stock price $S_0$ at time $0$, the solution to (\ref{eq:1}) is 
 \begin{equation}
-S_t=S_0\exp((r-\sigma^2 /2)t + \sigma B_t)
+S_t=S_0\exp((\mu-\sigma^2 /2)t + \sigma B_t)
 \end{equation}
 Thus stochastic process $S_t$ is also known as that it follows a geometric Brownian motion(GBM). 
 
@@ -194,46 +194,47 @@ From (\ref{dR3}), we then get the Black-Scholes partial differential equation (P
 
 
 Let $f(S)$ be the payoff function of an option, then the boundary conditions for this option is
-\begin{equation}\label{Black-boundary}
-\begin{cases}
-\displaystyle V(S_T,T) =f(S_T)  & \text{on } \bR_+ \\
-\displaystyle V(0,t)=f(0)e^{-r(T-t)} & \text{on } [0,T) \\
-\displaystyle\lim_{S \to \infty} V(S,t)= f(\infty)e^{-r(T-t)} & \text{on } [0,T).
-\end{cases}
-\end{equation}
 
-The second equation in (\ref{Black-boundary}) means that if stock price $S_t$ is $0$ all the time in its life, then the price of the option at any time should be the discounted pay off at risk-free rate. The last equation in (\ref{Black-boundary}) is obtained under the same logic. 
 
-PDE (\ref{black-pde}) is the fundamental valuation equation for the standard normal option. More over, this PDE applies to both European and  American plain vanilla options, regardless payoff functions. For different options, what should change is equation (\ref{Black-boundary}), i.e., boundary conditions.
+\begin{align}
+&V(S_T,T) =f(S_T)   \quad \text{on } \bR_+ ,\label{final}\\
+&V(0,t) =f(0)e^{-r(T-t)} \quad \text{on } [0,T), \label{final-a} \\
+&\lim_{S \to \infty} V(S,t)= f(\infty)e^{-r(T-t)} \quad \text{on } [0,T). \label{final-b}
+\end{align}
 
-There are many transformations that can convert the Black-Scholes PDE into a heat equation. In this thesis, we present the transformation suggested in \cite{Wilmot1994}. 
+
+(\ref{final}) is the final condition, it is obvious that option price at maturity $V(S_T,T)$ should equal the payoff $F(S_T)$.  PDE (\ref{black-pde}) is a backward parabolic. To get the solution to (\ref{black-pde}), we need boundary conditions at $S_t = 0, t \in [0,T]$ and $S_t=\infty, t \in [0,T]$ additionally. For a call, if $S_t = 0, t \in [0,T]$, then this contract is deep out of money and has no value all the time. Condition (\ref{final-a}) coincides with this situation. If $S_t$ is big enough that it is deep in the money in the life of an option, the holder will certainly exercise this contact at maturity. Thus this contract is similar to a forward contract and should has the same price $f(\infty)e^{-r(T-t)}$ with a identical forward contract. This is expressed in condition (\ref{final-b}). One can find that boundary conditions (\ref{final-a}) and (\ref{final-b}) also work for put options. %The second equation in (\ref{Black-boundary}) means that if stock price $S_t$ is $0$ all the time in its life, then the price of the option at any time should be the discounted pay off at risk-free rate. The last equation in (\ref{Black-boundary}) is obtained under the same logic. 
+
+PDE (\ref{black-pde}) is the fundamental valuation equation for the standard normal option. More over, this PDE applies to both European and  American plain vanilla options, regardless payoff functions. For different options, what should change are boundary conditions.
+
+There are many transformations that can convert the Black-Scholes PDE into a heat or diffusion equation. In this thesis, we present the transformation suggested in \cite{2004Broadie}. 
 
 Under transformation
 \begin{equation}
 \begin{cases}
  S=Ke^x \\
-\displaystyle t=T-2\tau/\sigma^2 \\
-\displaystyle V(S,t)=e^{-\alpha x - \beta \tau } v(x, \tau)\\
-\displaystyle \alpha=(r- \sigma ^2 / 2) / \sigma ^2 \\
-\displaystyle \beta= \alpha^2 + 2r/{\sigma}^2, 
+\displaystyle t=T-2\iota/\sigma^2 \\
+\displaystyle V(S,t)=e^{-a_1 x - b_1 \iota } v(x, \iota)\\
+\displaystyle a_1=(r- \sigma ^2 / 2) / \sigma ^2 \\
+\displaystyle b_1= a_1^2 + 2r/{\sigma}^2, 
 \end{cases}
 \end{equation}
 
-$v(x,\tau)$ satisfies the heat equation
+$v(x,\iota)$ satisfies the heat equation
 \begin{equation}
-\frac{\partial v}{\partial \tau} = \frac{\partial ^2 v}{\partial x^2},
+\frac{\partial v}{\partial \iota} = \frac{\partial ^2 v}{\partial x^2},
 \end{equation}
 
 with the boundary conditions 
 \begin{equation}
 \begin{cases}
-e^{-\alpha x} v (x,0) = f(K e^x) & \text{on } \bR \\
-\displaystyle \lim_{x \to -\infty}e^{-\alpha x- \beta \tau } v(x,\tau) = f(0)e^{-2r\tau / \sigma ^2} &\text{on } \tau \in [0,\sigma ^2 T /2] \\
-\displaystyle \lim_{x \to \infty} e^{-\alpha x -\beta \tau } v(x,\tau) = f(\infty) e^{-2r\tau / \sigma ^2} & \text{on } \tau \in [0, \sigma ^2 T /2].
+\displaystyle e^{-a_1 x} v (x,0) = f(K e^x) & \text{on } \bR \\
+\displaystyle \lim_{x \to -\infty}e^{-a_1 x- b_1 \iota } v(x,\iota) = f(0)e^{-2r\iota / \sigma ^2} &\text{on } \iota \in [0,\sigma ^2 T /2] \\
+\displaystyle \lim_{x \to \infty} e^{-a_1 x -b_1 \iota } v(x,\iota) = f(\infty) e^{-2r\iota / \sigma ^2} & \text{on } \iota \in [0, \sigma ^2 T /2].
 \end{cases}
 \end{equation}
 
-The heat equation was originally used to describe the distribution of heat in a given medium as time passes. It is a well known subject in Physics and has been thoroughly studied. If $\lim_{x\to \pm \infty} v(x, \tau)= 0$, the normal density function $v(x,t) = (2 \sqrt{\pi t} )^{-1} \exp(-x^2 /{4t})$ with mean $0$ and standard deviation $\sqrt{2t}$ is the fundamental solution.
+The heat equation was originally used to describe the distribution of heat in a continuous medium as time passes. It is a well known subject in Physics and has been thoroughly studied. If $\lim_{x\to \pm \infty} v(x, \tau)= 0$, the normal density function $v(x,t) = (2 \sqrt{\pi t} )^{-1} \exp(-x^2 /{4t})$ with mean $0$ and standard deviation $\sqrt{2t}$ is the fundamental solution.
 
 %\subsubsection{Black-Scholes formula}
 For the European call option, the payoff is $f(S)=(S-K)^+$. Then the valuation formula obtained form the Black-Scholes PDE is
@@ -296,7 +297,7 @@ S=\frac{pSu+(1-p)Sd}{1+r}.
 
 This can be easily proven. Just divide both sides of the above equation (\ref{r-n-s}) by $S$ and multiply with $1+r$, we get $1+r = pu +(1-p)d$, or its equivalent statement $p=(1+r-d)/(u-d)$. This expression shows that we can restate the price of stock by firstly adjusting the probability measure in real world and then discounting the expectation of asset value obtained under the adjusted probability measure at the risk-free rate. The only information we need to know in this process is the volatility and risk-free rate. We need make no assumption about investors' attitude towards risk. This method works on risk-averse, risk-neutral and risk-seeking investors, regardless their risk preference. A world where all individuals are indifferent to risk is called a {\it risk-neutral world}. In this world investors do not demand compensation for taking risk and the expected return for any financial product in a risk-neutral world is the risk-free rate.
 
-We have described above the basic idea of an important derivative pricing principle called the {\it risk-neutral valuation}. The probability $p$ used to calculate expectation in a risk-neutral world is known as the {\it equivalent martingale probability}. With the help of more advanced mathematics, the risk-neutral valuation method remains valid and powerful to deal with the pricing problems for continuous time model. 
+We have described above the basic idea of an important derivative pricing principle called the {\it risk-neutral valuation}. The probability $p$ used to calculate expectation in a risk-neutral world is known as the {\it risk-neutral probability measure} or {\it equivalent martingale probability}. With the help of more advanced mathematics, the risk-neutral valuation method remains valid and powerful to deal with the pricing problems for continuous time model. 
 
 In risk-neutral method for continuous time model, the option price $S_t$ follows 
 \begin{equation}
@@ -306,11 +307,17 @@ where $B_t^{*}$ is a standard Brownian motion under the equivalent martingale me
 \begin{equation}
 d\mathbb P = \exp{\left(-\left(\frac{(\mu-r)^2}{2\sigma^2}\right)-\frac{\mu-r}{\sigma}B_t \right) }d\mathbb Q.
 \end{equation}
-Under the equivalent martingale measure $\mathbb P$, the price of a European option can be stated as 
+
+Thus $S(t)$ follows GBM 
 \begin{equation}
-V(S_t,t)=e^{-r(T-t)}\mathbb E[f(S_T)|\mathcal{F}_t],
+S_t=S_0\exp((r-\sigma^2 /2)t + \sigma B_t^*)
 \end{equation}
-where $\mathcal {F}_t$ is the natural filtration corresponding to the Brownian motion $\{B_t\}$. Readers can refer to \cite{Bingham1998} to get a deep understanding. 
+
+Under the risk-neutral measure $\mathbb P$, the price of a European option can be stated as 
+\begin{equation}
+V(S_t,t)=e^{-r(T-t)}\mathbb E[f(S_T)|\mathcal{F}_t], \quad 0\leq t\leq T
+\end{equation}
+where $\mathcal {F}_t$ is the filtration which contains all the information up to time $t$. Readers can refer to \cite{steven} for the detailed information. 
 %Interesting study about this model can be found in \cite{HarrisonKreps1979}, \cite{Harrison1981} and \cite{Kreps1981}.
 
 \section{American options}
@@ -318,9 +325,9 @@ In the risk-neutral valuation model, the price the American options can be defin
 
 At time $t$, the price of an American option can be given by
 \begin{equation}\label{Am-rn-equation}
-V(S,t) =\sup_{t\leq \tau\leq  T}\mathbb E[e^{-r(\tau-t)}f(S_\tau)|\mathcal{F}_t],
+V(S,t) =\sup_{t\leq \tau\leq  T}\mathbb E[e^{-r(\tau-t)}f(S_\tau)|\mathcal{F}_t], \quad 0\leq t\leq T
 \end{equation}
-where $\tau$ denotes a stopping time taking values in $[t,T]$ and
+where $\tau$ denotes a stopping time taking values in $[t,T]$, ${\mathcal{F}_t}$ is the filtration containing all the information up to time $t$ and 
 \[
 f(S,t) = 
 \begin{cases}
@@ -333,16 +340,30 @@ This is an optimal stopping problem.
 
 We can understand (\ref{Am-rn-equation}) by noticing that $\tau$ corresponds to possible strategies to exercise the option. More precisely, the holder will exercise the option at time $\tau$. The American option price corresponds using the optimal strategy. It can be shown that the optimal exercise strategy is represented by some exercise region $D$ in $(S,t)$-plane, i.e. $\tau<t$ if and only if $(S_t,t)\in D$. This domain $D$ is called as exercise region. 
 
-There is a systematic way to translate optimal stopping problem (\ref{Am-rn-equation}) into a PDE. However it is also possible to derive the PDE directly, the same way we derived the Black-Scholes PDE (\ref{black-pde}).
+%There is a systematic way to translate optimal stopping problem (\ref{Am-rn-equation}) into a PDE. However it is also possible to derive the PDE directly, the same way we derived the Black-Scholes PDE (\ref{black-pde}).
 
-Let $V(S,t)$ be the price of an American option. Let us consider an American call option. Before the option has been exercised, $V(S,t)$ should satisfy the usual Black-Scholes PDE (\ref{black-pde}). When the stock price is sufficiently high, the holder should exercise the option, otherwise there will be an arbitrage opportunity. We get a free boundary problem:
+We also can price an American option under the Black-Scholes frame work. Suppose we hold the same riskless portfolio 
 \begin{equation}
-\begin{cases}
-\displaystyle\frac{\partial V}{\partial t} + \frac{\partial V }{\partial S} S r + \frac{1}{2} \frac{{\partial}^2 V}{\partial S^2} {S^2} {\sigma}^2 -rV=0\\
-V(S, T) = f(S,T)\\
-\displaystyle\frac{\partial V}{\partial S}(S,t) = +1 \text{ at the boundary}. 
-\end{cases}
+\Pi_t = V_t - \frac{\partial V}{\partial S} S_t.
+\end{equation} 
+The instantly return is still 
+\begin{equation}
+d\Pi_t= \left(\frac{\partial V}{\partial t} + \frac{1}{2}\frac{{\partial}^2 V }{\partial S^2} S_t^2 {\sigma}^2 \right) dt.
 \end{equation}
+However, due to the early-exercise feature is only available to a option's holder, the long and short relationship in an American option is asymmetrical. Then the holder of an American option can not earn more than the risk-free rate $r$. Thus for an American option, we get a inequality 
+\begin{equation}\label{black-in}
+\frac{\partial V}{\partial t} + \frac{\partial V }{\partial S} S r + \frac{1}{2} \frac{{\partial}^2 V}{\partial S^2} S^2 {\sigma}^2 -rV \leq 0.
+\end{equation}
+
+ 
+%Let $V(S,t)$ be the price of an American option. Let us consider an American call option. Before the option has been exercised, $V(S,t)$ should satisfy the usual Black-Scholes PDE (\ref{black-pde}). When the stock price is sufficiently high, the holder should exercise the option, otherwise there will be an arbitrage opportunity. We get a free boundary problem:
+%\begin{equation}
+%\begin{cases}
+%\displaystyle\frac{\partial V}{\partial t} + \frac{\partial V }{\partial S} S r + \frac{1}{2} \frac{{\partial}^2 V}{\partial S^2} {S^2} {\sigma}^2 -rV=0\\
+%V(S, T) = f(S,T)\\
+%\displaystyle\frac{\partial V}{\partial S}(S,t) = +1 \text{ at the boundary}. 
+%\end{cases}
+%\end{equation}
 
 In fact ${\partial V(S,t)}/{\partial S}= +1$ is a smoothness condition, since we have $({\partial}/{\partial S})(S-K)^+ = 1$ when $S>K$.  
 
@@ -433,10 +454,10 @@ Similar to plain vanilla options, a lookback option's strike price also can be f
    
 For a fixed-strike lookback call option, the holder is allowed to calculate the payoff using the highest underlying asset price attained before maturity. As for a fixed lookback put option, the holder can use the underlying asset's lowest price. One finds that the intrinsic value of a fixed-strike strike lookback option is nondecreasing as time passes. The payoff functions for fixed-strike lookback call and put options respectively are:
 \begin{equation}
-LC_{fixed} = \max\{S_{\max} - K, 0\}, 
-\end{equation}
-\begin{equation}
-LP_{fixed}= \max\{K-S_{\min},0\},
+\begin{split}
+&LC_{fixed} = \max\{S_{\max} - K, 0\}, \\
+&LP_{fixed} = \max\{K-S_{\min},0\},
+\end{split}
 \end{equation}
 where $K$ is the strike price.
 
@@ -454,14 +475,16 @@ d' &=(\ln (S_t / S_{\max}^t) + (r + \sigma^2 /2)(T-t))/ ({\sigma \sqrt{T-t}}), \
 Under the risk-neutral pricing frame work of section \ref{risk-neutral frame}, the value of a call option of this type at time $t$ is 
 \begin{equation}
 \begin{split}\displaystyle
-V(S_{\max},t;K) &= S_t \Phi(d) - Ke^{-r(T-t)}\Phi(d-\sigma \sqrt{T-t}) \\
+&V(S_{\max},t;K) \\
+= &\, S_t \Phi(d) - Ke^{-r(T-t)}\Phi(d-\sigma \sqrt{T-t}) \\
 &+ S_t e^{-r(T-t)} \frac{\sigma^2}{2r} \left[ -\left(\frac{S_t}{K}\right)^{-{2r/\sigma^2}} \Phi\left(d-\frac{2r}{\sigma}\sqrt{T-t}\right) + e^{r(T-t)}\Phi(d)\right], \quad K\geq S_{\max}^t ,
 \end{split}
 \end{equation}
 and
 \begin{equation}
 \begin{split}
-V(S_{\max},t;K) = & e^{-r(T-t)}(S_{\max}^t - K) + S_t \Phi(d') - S_{\min}^t e^{-r(T-t)} \Phi(d'-\sigma \sqrt{T-t}) \\
+&V(S_{\max},t;K)\\ 
+= &\, e^{-r(T-t)}(S_{\max}^t - K) + S_t \Phi(d') - S_{\min}^t e^{-r(T-t)} \Phi(d'-\sigma \sqrt{T-t}) \\
 &+ S_t e^{-r(T-t)} \frac{\sigma ^2}{2r}\left[ -\left(\frac{S_t}{S_{\max}^t}\right)^{-{2r/\sigma^2}}\Phi\left(d'-\frac{2r}{\sigma}\sqrt{T-t}\right) + e^{r(T-t)}\Phi(d')\right], \quad K<S_{\max}^t .
 \end{split}
 \end{equation}
@@ -470,14 +493,16 @@ V(S_{\max},t;K) = & e^{-r(T-t)}(S_{\max}^t - K) + S_t \Phi(d') - S_{\min}^t e^{-
 Similarly, the value of the put is 
 \begin{equation}
 \begin{split}
-V(S_{\min},t;K)=& -S_t \Phi(-d) + Ke^{-r(T-t)} \Phi(-d + \sigma \sqrt{T-t})  \\
+& V(S_{\min},t;K)\\
+=&\, -S_t \Phi(-d) + Ke^{-r(T-t)} \Phi(-d + \sigma \sqrt{T-t})  \\
 &+ S_t e^{-r(T-t)} \frac{\sigma^2}{2r}\left[ \left(\frac{S_t}{K}\right)^{-2r /\sigma^2}\Phi\left(-d+\frac{2r}{\sigma}\sqrt{T-t}\right) - e^{r(T-t)}\Phi(-d)\right], \quad K\leq S_{\min}^t,
 \end{split}
 \end{equation}
 and
 \begin{equation}
 \begin{split}
-V(S_{\min},t;K) = & e^{-r(T-t)} (K-S_{\min}^t) - S_t \Phi(-d'') + S_{\min}^t e^{-r(T-t)} N (-d'' + \sigma \sqrt{T-t}) \\
+& V(S_{\min},t;K) \\
+=&\, e^{-r(T-t)} (K-S_{\min}^t) - S_t \Phi(-d'') + S_{\min}^t e^{-r(T-t)} N (-d'' + \sigma \sqrt{T-t}) \\
 &+ S_t e^{-r(T-t)} \frac{\sigma^2}{2r} \left[\left(\frac{S_t}{S_{\max}^t}\right)^{-2r/\sigma^2}\Phi\left(-d'' + \frac{2r}{\sigma} \sqrt{T-t}\right) -e^{r(T-t)}\Phi(-d'')\right], \quad K > S_{\min}^t.
 \end{split}
 \end{equation}
@@ -507,7 +532,7 @@ For American and path-dependent options, generally closed form pricing formulas 
 \section{Lattice methods}
 Lattice methods, also known as tree methods, use discrete time and discrete state approximations of the evolvements of underlying assets to calculate option prices. The lattice method was originally proposed in \cite{cox1979}. Lattice approaches are popular because they are easy to understand and implement. In the risk-neutral valuation framework for geometric Brownian motion, the underlying asset price follows $S_{t+h} = S_t e^{Z}$, and $Z\sim \Phi((r-\sigma ^2 /2)h,\sigma ^2 h)$. In the lattice method, over a discrete time interval, a discrete random variable $X$ is used to approximate $Z$: $X$ takes value as $x_i$ with probability $p_i$, $i=1,2,...,m$. If $m=2$, we have a binomial tree; If $m=3$, we have a trinomial tree. The value of the parameters of the distribution of the discrete random variable $X$ are chosen to approximate the distribution of continuous random variable $Z$ exactly or consistently. Since the value of an option is the discounted present value of the expectation of the option's payoff, we first use a discrete diagram to approximate the continuous path of the price of underlying asset in the lattice method and then calculate the discrete expectation of the payoff as an approximation of the option price. Due to the simplicity of lattice method, modified lattice methods for models with dividends, barriers and other complicated features can be easily constructed. However, the key issue of lattice method is the tradeoff between speed and accuracy. 
 
-There are plenty of proposals for tree methods. The popularly used are \cite{cox1979},\cite{jarrow1983},\cite{Boyle1986} and \cite{Amin1991}. We present them in Table \ref{well-know-lattic-methods}.
+There are plenty of proposals for tree methods. We present the popularly used approximations in Table \ref{well-know-lattic-methods}.
 \begin{table}[htdp]\label{well-know-lattic-methods}
 \caption{Well known Lattice Methods}
 \begin{center}
