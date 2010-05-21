@@ -5,9 +5,11 @@
 \usepackage{epstopdf}
 %\usepackage{hyperref}
 
+
 \usepackage{amssymb}
 \usepackage{graphicx}
 \usepackage{braket}
+\usepackage{cases}
 \usepackage{paralist}
 \usepackage{eufrak}
 \usepackage{amscd}
@@ -195,15 +197,25 @@ From (\ref{dR3}), we then get the Black-Scholes partial differential equation (P
 
 Let $f(S)$ be the payoff function of an option, then the boundary conditions for this option is
 
+%\begin{numcases}{}
+%\begin{equation}
+ 
+%\end{equation}\\
+%\begin{equation}
+% & \text{on}  [0,T),
+%\end{equation}
+%\label{final-b}$ & on $[0,T)$. 
+%\end{numcases}
 
-\begin{align}
-&V(S_T,T) =f(S_T)   \quad \text{on } \bR_+ ,\label{final}\\
-&V(0,t) =f(0)e^{-r(T-t)} \quad \text{on } [0,T), \label{final-a} \\
-&\lim_{S \to \infty} V(S,t)= f(\infty)e^{-r(T-t)} \quad \text{on } [0,T). \label{final-b}
-\end{align}
+\begin{subequations}\label{eq:EuF}
+\begin{numcases}{}
+V(S_T,T)=f(S_T) & when  $S_T\in \bR^+$, \label{eq:EuFa}\\
+V(0,t) =f(0)e^{-r(T-t)} & on $t\in [0,T)$, \label{eq:EuFb}\\
+\lim_{S \to \infty} V(S,t)= f(\infty)e^{-r(T-t)} & on $t\in [0,T)$. \label{eq:EuFc}
+\end{numcases}
+\end{subequations}
 
-
-(\ref{final}) is the final condition, it is obvious that option price at maturity $V(S_T,T)$ should equal the payoff $F(S_T)$.  PDE (\ref{black-pde}) is a backward parabolic. To get the solution to (\ref{black-pde}), we need boundary conditions at $S_t = 0, t \in [0,T]$ and $S_t=\infty, t \in [0,T]$ additionally. For a call, if $S_t = 0, t \in [0,T]$, then this contract is deep out of money and has no value all the time. Condition (\ref{final-a}) coincides with this situation. If $S_t$ is big enough that it is deep in the money in the life of an option, the holder will certainly exercise this contact at maturity. Thus this contract is similar to a forward contract and should has the same price $f(\infty)e^{-r(T-t)}$ with a identical forward contract. This is expressed in condition (\ref{final-b}). One can find that boundary conditions (\ref{final-a}) and (\ref{final-b}) also work for put options. %The second equation in (\ref{Black-boundary}) means that if stock price $S_t$ is $0$ all the time in its life, then the price of the option at any time should be the discounted pay off at risk-free rate. The last equation in (\ref{Black-boundary}) is obtained under the same logic. 
+(\ref{eq:EuFa}) is the final condition, it is obvious that option price at maturity $V(S_T,T)$ should equal the payoff $F(S_T)$.  PDE (\ref{black-pde}) is a backward parabolic. To get the solution to (\ref{black-pde}), we need boundary conditions at $S_t = 0, t \in [0,T]$ and $S_t=\infty, t \in [0,T]$ additionally. For a call, if $S_t = 0, t \in [0,T]$, then this contract is deep out of money and has no value all the time. Condition (\ref{final-a}) coincides with this situation. If $S_t$ is big enough that it is deep in the money in the life of an option, the holder will certainly exercise this contact at maturity. Thus this contract is similar to a forward contract and should has the same price $f(\infty)e^{-r(T-t)}$ with a identical forward contract. This is expressed in condition (\ref{final-b}). One can find that boundary conditions (\ref{final-a}) and (\ref{final-b}) also work for put options. %The second equation in (\ref{Black-boundary}) means that if stock price $S_t$ is $0$ all the time in its life, then the price of the option at any time should be the discounted pay off at risk-free rate. The last equation in (\ref{Black-boundary}) is obtained under the same logic. 
 
 PDE (\ref{black-pde}) is the fundamental valuation equation for the standard normal option. More over, this PDE applies to both European and  American plain vanilla options, regardless payoff functions. For different options, what should change are boundary conditions.
 
