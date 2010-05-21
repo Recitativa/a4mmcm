@@ -350,7 +350,7 @@ f(S,t) =
 is the usual payoff function.
 This is an optimal stopping problem. 
 
-We can understand (\ref{Am-rn-equation}) by noticing that $\tau$ corresponds to possible strategies to exercise the option. More precisely, the holder will exercise the option at time $\tau$. The American option price corresponds using the optimal strategy. It can be shown that the optimal exercise strategy is represented by some exercise region $D$ in $(S,t)$-plane, i.e. $\tau<t$ if and only if $(S_t,t)\in D$. This domain $D$ is called as exercise region. 
+We can understand (\ref{Am-rn-equation}) by noticing that $\tau$ corresponds to possible strategies to exercise the option. More precisely, the holder will exercise the option at time $\tau$. The American option price corresponds using the optimal strategy. It can be shown that the optimal exercise strategy is represented by some {\it exercise region} $\mathcal D$ in $(S,t)$-plane, i.e. the optimal stopping time is given by $\tau^*=\min\Set{\xi \in[t,T]|(S_\xi,\xi)\in \mathcal D}\wedge T$. In domain $D$ it is optimal for the holder to exercise the contract. The complement of $D$ is called the {\it continuation region}. 
 
 %There is a systematic way to translate optimal stopping problem (\ref{Am-rn-equation}) into a PDE. However it is also possible to derive the PDE directly, the same way we derived the Black-Scholes PDE (\ref{black-pde}).
 
@@ -358,16 +358,34 @@ We also can price an American option under the Black-Scholes frame work. Suppose
 \begin{equation}
 \Pi_t = V_t - \frac{\partial V}{\partial S} S_t.
 \end{equation} 
-The instantly return is still 
+The instantaneous return is still 
 \begin{equation}
 d\Pi_t= \left(\frac{\partial V}{\partial t} + \frac{1}{2}\frac{{\partial}^2 V }{\partial S^2} S_t^2 {\sigma}^2 \right) dt.
 \end{equation}
-However, due to the early-exercise feature is only available to a option's holder, the long and short relationship in an American option is asymmetrical. Then the holder of an American option can not earn more than the risk-free rate $r$. Thus for an American option, we get a inequality 
+
+However, due to the early-exercise feature is only available to a option's holder, the long and short relationship in an American option is asymmetrical. Then the holder of an American option can not earn more than the risk-free rate $r$. Thus for an American option, we get an inequality 
 \begin{equation}\label{black-in}
 \frac{\partial V}{\partial t} + \frac{\partial V }{\partial S} S r + \frac{1}{2} \frac{{\partial}^2 V}{\partial S^2} S^2 {\sigma}^2 -rV \leq 0.
 \end{equation}
 
- 
+Since the holder has the early-exercise right, the price of an American option $V(S,t)$ should never be less than the immediate payoff $f(S,t)$. Otherwise there will exist an arbitrage opportunity. Because one can borrow money to buy this contract at the price $V(S,t)$ and immediate exercise it to get a payoff $f(S,t)$. If $V(S,t)<f(S,t)$, this strategy ensures a profit at nothing. To prevent arbitrage, we must have
+\begin{equation}\label{Am-a}
+V(S,t)\geq f(S,t),  \quad t\in [0,T].
+\end{equation}
+
+At maturity we have final condition
+\begin{equation}\label{Am-b}
+V(S,T)=f(S,T).
+\end{equation} 
+
+In \cite{Paul2006}, it is stated that an American option value is maximized if the holder exercises such that 
+\begin{equation}\label{Am-c}
+\frac{\partial V}{\partial S} \quad  \text{is continuous}. 
+\end{equation}
+
+The pricing of an American option in Black-Scholes frame contains (\ref{black-in}), (\ref{Am-a}), (\ref{Am-b}) and (\ref{Am-c}).
+
+
 %Let $V(S,t)$ be the price of an American option. Let us consider an American call option. Before the option has been exercised, $V(S,t)$ should satisfy the usual Black-Scholes PDE (\ref{black-pde}). When the stock price is sufficiently high, the holder should exercise the option, otherwise there will be an arbitrage opportunity. We get a free boundary problem:
 %\begin{equation}
 %\begin{cases}
@@ -377,7 +395,7 @@ However, due to the early-exercise feature is only available to a option's holde
 %\end{cases}
 %\end{equation}
 
-In fact ${\partial V(S,t)}/{\partial S}= +1$ is a smoothness condition, since we have $({\partial}/{\partial S})(S-K)^+ = 1$ when $S>K$.  
+%In fact ${\partial V(S,t)}/{\partial S}= +1$ is a smoothness condition, since we have $({\partial}/{\partial S})(S-K)^+ = 1$ when $S>K$.  
 
 \section{Lookback options}
 Lookback options are a type of exotic options whose payoffs are path-dependent. A lookback option gives the holder the right to look back in time to use the maximum or minimum asset price achieved up to the time the option was exercised to calculate the option's payoff. Depending on the selection of the strike price, you can find two styles of lookback options: floating-strike lookback options and fixed-strike lookback options.
@@ -525,7 +543,7 @@ and
 For the American-style lookback option, one should provide both the option price and the optimal exercise strategy to completely solve the pricing problem. Due to this complexity, usually we need numerical approachs to price American-style lookback options. 
 
 \cite{Lim2004} provided two numerical methods to compute the price and the optimal exercise boundary. In their paper, they proposed a space-time transformation which can simplify the pricing of options of this type. Under this transformation, calendar time is scaled by the square of volatility $\sigma^2$. Therefore, the canonical time horizon is much smaller than time to expiration $T-t$.
-The first numerical method described in \cite{Lim2004} is a backward induction scheme using bernoulli walks. Moreover Chernoff-Petkau correction was involved to improve the approximation of the continous-time optimal stopping boundary. 
+The first numerical method described in \cite{Lim2004} is a backward induction scheme using bernoulli walks. Moreover, Chernoff-Petkau correction was involved to improve the approximation of the continous-time optimal stopping boundary. 
 By finding the decomposition formula for American lookback put option, 
 \cite{Lim2004} written done a integral equation for the optimal stopping boundary.
 Then they developed the second method by solving that integral equation numerically. 
