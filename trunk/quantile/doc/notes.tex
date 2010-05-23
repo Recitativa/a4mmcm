@@ -792,21 +792,21 @@ In Figure \ref{f:lab}, you can see that except for the maximum, i.e. the $100\%$
 \begin{figure}[p]
    %\centering
    \includegraphics[scale=0.8]{nout_7_27a.pdf}
-   \caption{Absolute error}
+   \caption{Absolute error for drift $\mu=0$}
 \label{f:ab}
 \end{figure}
  
  \begin{figure}[p]
     %\centering
    \includegraphics[scale=0.8]{nout_7_27alog.pdf}
-   \caption{Logarithm of error} 
+   \caption{Logarithm of error for drift $\mu=0$} 
    \label{f:lab}
 \end{figure}
  
  \begin{figure}[p]
    %\centering
    \includegraphics[scale=0.8]{nout_7_27arato.pdf} % requires the graphicx packagem 
-   \caption{regression result of convergence rate}
+   \caption{regression result of convergence rate for drift $\mu=0$}
    \label{f:ratio}
 \end{figure}
 
@@ -950,26 +950,73 @@ Err_{j,s} &= {\frac{1}{L}\left(\sum_{1\leq l \leq L} M_{j,d}^{(l)} - M_{j,s}^{(l
 
 We realize this algorithm for $d=27$, $b=6$, $\mu = 0$, $\sigma^2=1$, $T=1$, $X_0=0$ and generate more than 2000 sampled paths. As you can see in Figure \ref{f:err}, Figure \ref{f:lerr} and Figure \ref{f:rate}, the simulation results are coincident with our theoretical conclusion. 
 
+%Drift 0, sim=6455
 \begin{figure}[p]
    \centering
    \includegraphics[scale=0.8]{nout_7_27.pdf} % requires the graphicx package
-   \caption{ Errors }
+   \caption{ Errors for drift $\mu=0$ }
    \label{f:err}
 \end{figure}
 
 \begin{figure}[p]
    \centering
    \includegraphics[scale=0.8]{nout_7_27log.pdf} % requires the graphicx package
-   \caption{ Logarithm of Errors }
+   \caption{ Logarithm of Errors for drift $\mu=0$}
    \label{f:lerr}
 \end{figure}
 
 \begin{figure}[p]
    \centering
    \includegraphics[scale=0.8]{nout_7_27rato.pdf} % requires the graphicx package
-   \caption{ Convergence rate }
+   \caption{ Convergence rate for drift $\mu=0$}
    \label{f:rate}
 \end{figure}
+
+
+%% Drift 0.4, sim=8000
+\begin{figure}[p]
+   \centering
+   \includegraphics[scale=0.8]{nout_7_27_1_04.pdf} % requires the graphicx package
+   \caption{ Errors for drift $\mu=0.4$ }
+   \label{f:err}
+\end{figure}
+
+\begin{figure}[p]
+   \centering
+   \includegraphics[scale=0.8]{nout_7_27_1_04log.pdf} % requires the graphicx package
+   \caption{ Logarithm of Errors for drift $\mu=0.4$}
+   \label{f:lerr}
+\end{figure}
+
+\begin{figure}[p]
+   \centering
+   \includegraphics[scale=0.8]{nout_7_27_1_04rato.pdf} % requires the graphicx package
+   \caption{ Convergence rate for drift $\mu=0.4$}
+   \label{f:rate}
+\end{figure}
+
+%% Drift 1.5, sim=3796
+\begin{figure}[p]
+   \centering
+   \includegraphics[scale=0.8]{nout_7_27_1_15.pdf} % requires the graphicx package
+   \caption{ Errors for drift $\mu=1.5$ }
+   \label{f:err}
+\end{figure}
+
+\begin{figure}[p]
+   \centering
+   \includegraphics[scale=0.8]{nout_7_27_1_15log.pdf} % requires the graphicx package
+   \caption{ Logarithm of Errors for drift $\mu=1.5$}
+   \label{f:lerr}
+\end{figure}
+
+\begin{figure}[p]
+   \centering
+   \includegraphics[scale=0.8]{nout_7_27_1_15rato.pdf} % requires the graphicx package
+   \caption{ Convergence rate for drift $\mu=1.5$}
+   \label{f:rate}
+\end{figure}
+
 
 %Now, suppose that $f$ is an monotone Lipschitz continuous function.Without loss of generality, assume 
 %\begin{equation}\label{eq:lips}
