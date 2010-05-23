@@ -67,67 +67,64 @@ readFile <- function(inFilename) {
 
 
 ## main function to treat the data
-run <- function(inFilename,ttt=8,AB=TRUE) {
+run <- function(inFilename,ttt=8,AB=TRUE,DQ=FALSE) {
   ## file name pattern: ?????.bin, then get ????? part. 
   boutname <- sub(".bin$","", inFilename)
   ## read data from file
   ret <- readFile(inFilename)
   attach(ret)
 
-  ## Formula: AdErr = X_k -  X_Dense
+  ## Formula: (A)dErr = X_k -  X_Dense
   dErr <- adat[,1:(Re-Rb+1),] - adat[,rep("Dense",Re-Rb+1),]
-
-  if(AB) AdErr <- abs(dErr)
-  else   AdErr <- dErr
-  ## Formula: mAdErr = |mean(X_k -  X_Dense)|
+  AdErr <- abs(dErr);
+  ## Formula: m(A)dErr = |mean(X_k -  X_Dense)|
   ## mAdErr is a 2-dim array, 1st-dimension is k, 2nd-dim is Quantile
-  mAdErr <- abs(apply(AdErr, c(2,3), mean,trim=.05))[1:(Re-Rb+1-ttt),]
-
-  ## plot the lines of mAdErr for different Quantile
-  pdf(paste(boutname,".lines.pdf",sep=""),pointsize=8)
-  plot(c(Rb,Re-ttt),
-       c(min(mAdErr),max(mAdErr)),
-       type="n", xlab = "k", ylab="|Err|",
-       main=sprintf("|Err| v.s. k, under different Quantiles sim=%g",Nrows))
-  cols <- rainbow(nRQ)
-  legend(x="topright", paste("",RQuantiles),
-         col=cols, lty=1, ncol=3)
-  for(i in 1:nRQ) {
-    lines(Rb:(Re-ttt), mAdErr[,i], type="b",col=cols[i])
-  }
-  dev.off()
-
-  ## plot log(|Err|)/log(2)
-  pdf(paste(boutname,".l.lines.pdf",sep=""),pointsize=8)
-  l2mAdErr <- log(mAdErr)/log(2)
-  plot(c(Rb,Re-ttt),
-       c(min(l2mAdErr),max(l2mAdErr)),
-       type="n", xlab = "k", ylab="log(|Err|)/log(2)",
-       main=sprintf("log(|Err|) v.s. k, under different Quantiles sim=%g",Nrows)
-       )
-  cols <- rainbow(2*nRQ)[(nRQ+1):(2*nRQ)]
-  legend(x = "topright", paste("",RQuantiles),
-         col=cols, lty=1,ncol=3)
+  mdErr <- apply(dErr, c(2,3), mean)[1:(Re-Rb+1-ttt),]
+  mdErr <- abs(mdErr);
+  mAdErr <- apply(AdErr, c(2,3), mean)[1:(Re-Rb+1-ttt),]
  
-  for(i in 1:nRQ) {
-    lines(Rb:(Re-ttt), l2mAdErr[,i],  type="b",col=cols[i])
+  plotlines <- function(fname,Dat,xlab="s",ylab="Error") {
+    pdf(fname,pointsize=8)
+    plot(c(Rb,Re-ttt),
+         c(min(Dat),max(Dat)),
+         type="n", xlab = xlab, ylab=ylab)
+    cols <- rainbow(nRQ)
+    legend(x="topright", paste("",RQuantiles),
+           col=cols, lty=1, ncol=3)
+    for(i in 1:nRQ) {
+      lines(Rb:(Re-ttt), Dat[,i], type="b",col=cols[i])
+    }
+    dev.off()
   }
-  dev.off()
   
-  ## regression for each quantile & plot the result.
-  alm <- function(x) {return(lm(Q~P, data.frame(Q=x[1:(Re-Rb-ttt+1)],P=Rb:(Re-ttt))))}
-  rLM <- apply(l2mAdErr, c(2), alm)
-  getp <- function(x) {return(coef(x)["P"])}
-  PrLM <- sapply(rLM, getp)
-  pdf(paste(boutname,".rato.pdf",sep=""))
-  plot(RQuantiles, -as.vector(PrLM), ylab="Quantile", xlab="Empirical rato",
-       main=sprintf(
-         "Empirical discrete Error Rato under different Quantiles, sim=%g",
-         Nrows))
-  text(RQuantiles, -as.vector(PrLM), -as.vector(PrLM),pos=1,cex=.3,col="red",)
-  dev.off()
+  ## plot the lines of mAdErr for different Quantile
+  plotlines(paste(boutname, ".pdf"),mdErr,ylab="Error");
+  plotlines(paste(boutname, "_abs.pdf"), mAdErr, ylab="|Error|");
+  l2mdErr <- log(mdErr)/log(2);
+  l2mAdErr <- log(mAdErr)/log(2);
+  plotlines(paste(boutname, "_log.pdf"), l2mdErr, ylab="log(|Error|)/log(2)");
+  plotlines(paste(boutname, "_abs_log.pdf"), l2mAdErr, ylab="log(|Error|)/log(2)");
 
-  if(FALSE) {
+
+  ## regression for each quantile & plot the result.
+  plotrate <- function(fname, Dat,
+                       xlab="Quantile",
+                       ylab="Empirical convergence rate") {
+    alm <- function(x) {return(lm(Q~P, data.frame(Q=x[1:(Re-Rb-ttt+1)],P=Rb:(Re-ttt))))}
+    rLM <- apply(Dat, c(2), alm)
+    getp <- function(x) {return(coef(x)["P"])}
+    PrLM <- sapply(rLM, getp)
+    PrLM <- -as.vector(PrLM)
+    PSrLM <- sapply(PrLM,format,digits=3)
+    pdf(fname)
+    plot(RQuantiles, PrLM, xlab=xlab, ylab=ylab)
+    text(RQuantiles, PrLM, labels=PSrLM,pos=1,cex=.3,col="red",)
+    dev.off()
+  }
+  plotrate(paste(boutname,"rato.pdf",sep=""), l2mdErr);
+  plotrate(paste(boutname,"abs_rato.pdf",sep=""), l2mAdErr);
+
+  if(DQ) {
     ## compare the empirical distribution and theoretical distribution.
     ## each alpha a pdf file, and for each k a line.
     ## The black line is theoretic and blue line is the "dense" one.
@@ -154,5 +151,5 @@ run <- function(inFilename,ttt=8,AB=TRUE) {
     dev.off()
   }
   detach(ret)
-  return(0)
+  return(ret$Nrows)
 }
