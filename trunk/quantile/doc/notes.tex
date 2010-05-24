@@ -1086,7 +1086,15 @@ We realize this algorithm for $d=27$, $b=6$, $\mu = 0$, $\sigma^2=1$, $T=1$, $X_
 
 \section{$\alpha$-quantile option}
 \subsection{The advantage of $\alpha$-quantile options}
-$\alpha$-quantile options, also known as quantile options, are a type of options whose payoff are functions of the quantiles of underlying asset price process. For 
+$\alpha$-quantile options, also known as quantile options, are a type of options whose payoff are functions of the quantiles of underlying asset price process. Firstly proposed in \cite{Miura}, the payoff function at maturity for a European-style $\alpha$-quantile call option with strike $K$ is 
+\begin{equation}
+M(\alpha,T)-K,
+\end{equation}
+and the payoff for a put option of this type is 
+\begin{equation}
+K-M(\alpha,T).
+\end{equation}
+
 
 As we discussed before, lookback option is a path-dependent option with payoff calculated with the maximum or minimum price of the underlying asset achieved during the life of the option. For example, a fixed strike lookback call option get the highest value obtained within the option's lifetime. In this case, to the holder, it can be viewed as a protection against large drop of stock price. This can be regarded as a method to deal with the unfavorable movement of a particular stock, such as the release of a prolonged lawsuit which may have a strong negative effect on the stock price. On the other side, lookback put option provides an insurance against large rises. But these characters also makes lookback options too expensive. A $\alpha$-quantile option is one product that overcomes this shortcoming of lookbacks. Quantile option is cheaper than lookbacks, while it still provide partial protection against market movements. This property of quantile option was first discussed by \cite{Ballotta2001}.
 
