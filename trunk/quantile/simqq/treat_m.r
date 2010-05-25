@@ -89,21 +89,22 @@ run <- function(inFilename,ttt=8,AB=TRUE,DQ=FALSE) {
          c(min(Dat),max(Dat)),
          type="n", xlab = xlab, ylab=ylab)
     cols <- rainbow(nRQ)
-    legend(x="topright", paste("",RQuantiles),
-           col=cols, lty=1, ncol=3)
-    for(i in 1:nRQ) {
+    PRQ <- c(seq(1,nRQ,by=4),nRQ); PRQ <- unique(PRQ);
+    legend(x="topright", paste("",RQuantiles[PRQ]),
+           col=cols[PRQ], lty=1, ncol=3)
+    for(i in PRQ) {
       lines(Rb:(Re-ttt), Dat[,i], type="b",col=cols[i])
     }
     dev.off()
   }
   
   ## plot the lines of mAdErr for different Quantile
-  plotlines(paste(boutname, ".pdf"),mdErr,ylab="Error");
-  plotlines(paste(boutname, "_abs.pdf"), mAdErr, ylab="|Error|");
+  plotlines(paste(boutname, ".pdf",seq=""),mdErr,ylab="Error");
+  plotlines(paste(boutname, "_abs.pdf",seq=""), mAdErr, ylab="|Error|");
   l2mdErr <- log(mdErr)/log(2);
   l2mAdErr <- log(mAdErr)/log(2);
-  plotlines(paste(boutname, "_log.pdf"), l2mdErr, ylab="log(|Error|)/log(2)");
-  plotlines(paste(boutname, "_abs_log.pdf"), l2mAdErr, ylab="log(|Error|)/log(2)");
+  plotlines(paste(boutname, "_log.pdf",seq=""), l2mdErr, ylab="log(|Error|)/log(2)");
+  plotlines(paste(boutname, "_abs_log.pdf",seq=""), l2mAdErr, ylab="log(|Error|)/log(2)");
 
 
   ## regression for each quantile & plot the result.
