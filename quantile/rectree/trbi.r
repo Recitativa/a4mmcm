@@ -23,8 +23,8 @@ extr <- function(name="S90",sep=2) {
 ## ops <- c("S90","S95","S100","S105");
 ## ddb <- dd[10:38,c("STEP",ops)]
 
-extra <- function(ddb, ops) {
-  lam <- seq(.2,.5,length.out=10); #set{0.1,.2,.3...1}
+extra <- function(ddb, ops,tor=0.001) {
+  lam <- seq(.2,2.1,length.out=20); #set{0.1,.2,.3...1}
   n <- length(ddb$STEP)
   seps <- seq(2,20,by=1);# seq gives a sequence
   dn <- list(ddb$STEP, ops, seps, lam); # give a jogged structure
@@ -44,7 +44,7 @@ extra <- function(ddb, ops) {
       }
     }
   }
-  bbb <- array(c(1.6588,3.2695,5.7501,9.0895),dimnames=list(ops)) # dimnames must be a list 
+  bbb <- array(c(1.62866,3.21382,5.65519,8.96151),dimnames=list(ops)) # dimnames must be a list 
   for(name in ops)
     err[,name,,] <- res[,name,,] - bbb[name] # if indicator not specified, operator acordingly
   err <- err^2; 
@@ -55,10 +55,10 @@ extra <- function(ddb, ops) {
     for(s in paste(ddb$STEP))
       for(ll in paste(lam)) {
         v <- merr[s,sep,ll]
-        if (!is.na(v) && v< 0.015 && as.integer(s)>35)
-          rp <- append(rp,paste(sep,s,ll,merr[s,sep,ll]))
+        if (!is.na(v) && v< tor && as.integer(s)>35)
+          rp <- append(rp,paste(sep, as.integer(s)-as.integer(sep),s,ll,paste(err[s,,sep,ll]),merr[s,sep,ll]))
       }
-  return(list(res=res,merr=merr,rp=rp))
+  return(list(res=res,err=err,merr=merr,rp=rp))
 }
 
 ## treat res
