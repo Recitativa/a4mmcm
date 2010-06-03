@@ -25,27 +25,15 @@ FppX <- function(end=Inf,alpha=.6) {
 
 
 ## read data from binary file
-readFile <- function(inFilename) {
+readFile <- function(inFilename,NN=200000) {
   fin <- file(inFilename, open="rb")
   Rb <- readBin(fin,integer())
+  Rm <- readBin(fin,integer())
   Re <- readBin(fin,integer())
-  P2 <- readBin(fin,integer())
   Nseg <- readBin(fin,integer())
   nRQ <- 2**(Rb-1) + 1
   RQuantiles <- (2**(Rb-1)):(2**Rb)/(2**Rb)
-
-  rawdat <- vector() 
-  Nrows <- 0;
-  cat("Reading data file...\n")
-  repeat {
-    n = nRQ*(Re-Rb+1+1) # length of each record
-    v <- readBin(fin, double(), n=n)
-    if(length(v)!=n) break;
-    Nrows <- Nrows+1
-    rawdat <- append(rawdat, v)
-  }
-  cat("I have read the file...\n")
-  adat <- array(rawdat, dim=c(nRQ,Re-Rb+1+1,Nrows),
+  adat <- array(dim=c(nRQ,Rm-Rb+2,NN),
                 dimnames = list(
                   paste("Q",
                         formatC(RQuantiles*100,
@@ -53,14 +41,24 @@ readFile <- function(inFilename) {
                         sep = "_"),
                   c(paste("A", Rb:Re,sep = "_"),"Dense"),
                   NULL
-                  )
-                )
-  ## adat is a three dimentional array of data with [i,j,k]
+                  ))
+  Nrows <- 0;
+  cat("Reading data file...\n");flush(stdout());
+  repeat {
+    n = nRQ*(Rm-Rb+2) # length of each record
+    v <- readBin(fin, double(), n=n)
+    if(length(v)!=n) break;
+    Nrows <- Nrows+1
+    adat[,,Nrows] <- v
+    if(Nrows == NN) break;
+  }
+  cat("I have read the file...\n");flush(stdout())
+   ## adat is a three dimentional array of data with [i,j,k]
   ## i -- i-th record
   ## j -- different k: Rb, Rb+1, Rb+2, ..., Re, Dense(see below)
   ## k -- Quantiles 2^(Rb-1)/2^Rb, 2^(Rb-1)+1/2^Rb, ...., 1
-  adat <- aperm(adat,perm=c(3,2,1))
-  ret <- list(adat = adat, Rb=Rb, Re=Re, P2 = P2, Nseg = Nseg, 
+  adat <- aperm(adat[,,1:Nrows],perm=c(3,2,1))
+  ret <- list(adat = adat, Rb=Rb, Re=Rm, P2 = P2, Nseg = Nseg, 
               nRQ=nRQ, ndata=n, Nrows=Nrows, RQuantiles =RQuantiles)
   close(fin)
   return(ret)
