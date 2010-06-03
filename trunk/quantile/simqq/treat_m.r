@@ -34,9 +34,9 @@ readFile <- function(inFilename) {
   nRQ <- 2**(Rb-1) + 1
   RQuantiles <- (2**(Rb-1)):(2**Rb)/(2**Rb)
 
-    
   rawdat <- vector() 
-  Nrows <- 0; 
+  Nrows <- 0;
+  cat("Reading data file...\n")
   repeat {
     n = nRQ*(Re-Rb+1+1) # length of each record
     v <- readBin(fin, double(), n=n)
@@ -44,6 +44,7 @@ readFile <- function(inFilename) {
     Nrows <- Nrows+1
     rawdat <- append(rawdat, v)
   }
+  cat("I have read the file...\n")
   adat <- array(rawdat, dim=c(nRQ,Re-Rb+1+1,Nrows),
                 dimnames = list(
                   paste("Q",
@@ -67,13 +68,16 @@ readFile <- function(inFilename) {
 
 
 ## main function to treat the data
-run <- function(inFilename,ttt=8,AB=TRUE,DQ=FALSE) {
+run <- function(inFilename,ttt=8,SP=1,AB=TRUE,DQ=FALSE,ZEE=TRUE) {
   ## file name pattern: ?????.bin, then get ????? part. 
   boutname <- sub(".bin$","", inFilename)
   ## read data from file
   ret <- readFile(inFilename)
   attach(ret)
 
+  if(ZEE)
+    adat[,"Dense","Q_50"] <- 0;
+  
   ## Formula: (A)dErr = X_k -  X_Dense
   dErr <- adat[,1:(Re-Rb+1),] - adat[,rep("Dense",Re-Rb+1),]
   AdErr <- abs(dErr);
@@ -82,14 +86,15 @@ run <- function(inFilename,ttt=8,AB=TRUE,DQ=FALSE) {
   mdErr <- apply(dErr, c(2,3), mean)[1:(Re-Rb+1-ttt),]
   mdErr <- abs(mdErr);
   mAdErr <- apply(AdErr, c(2,3), mean)[1:(Re-Rb+1-ttt),]
- 
+
+  PRQ <- c(seq(1,nRQ,by=SP),nRQ); PRQ <- unique(PRQ);
+
   plotlines <- function(fname,Dat,xlab="s",ylab="Error") {
     pdf(fname,pointsize=8)
     plot(c(Rb,Re-ttt),
          c(min(Dat),max(Dat)),
          type="n", xlab = xlab, ylab=ylab)
     cols <- rainbow(nRQ)
-    PRQ <- c(seq(1,nRQ,by=4),nRQ); PRQ <- unique(PRQ);
     legend(x="topright", paste("",RQuantiles[PRQ]),
            col=cols[PRQ], lty=1, ncol=3)
     for(i in PRQ) {
@@ -116,10 +121,10 @@ run <- function(inFilename,ttt=8,AB=TRUE,DQ=FALSE) {
     getp <- function(x) {return(coef(x)["P"])}
     PrLM <- sapply(rLM, getp)
     PrLM <- -as.vector(PrLM)
-    PSrLM <- sapply(PrLM,format,digits=3)
+    PSrLM <- sapply(PrLM,formatC,digits=3,format="f")
     pdf(fname)
-    plot(RQuantiles, PrLM, xlab=xlab, ylab=ylab)
-    text(RQuantiles, PrLM, labels=PSrLM,pos=1,cex=.3,col="red",)
+    plot(RQuantiles[PRQ], PrLM[PRQ], xlab=xlab, ylab=ylab)
+    text(RQuantiles[PRQ], PrLM[PRQ], labels=PSrLM[PRQ],pos=1,col="red",)
     dev.off()
   }
   plotrate(paste(boutname,"rato.pdf",sep=""), l2mdErr);
@@ -154,3 +159,4 @@ run <- function(inFilename,ttt=8,AB=TRUE,DQ=FALSE) {
   detach(ret)
   return(ret$Nrows)
 }
+
