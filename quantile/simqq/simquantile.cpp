@@ -15,7 +15,7 @@ int main(int argc,
   const int Narg = 6;
 
   if(argc != Narg) {
-    cerr << argv[0] << " Terms Rb Re sigma mu" << endl; 
+    cerr << argv[0] << " Terms Rb Rm Re sigma mu" << endl; 
     return 1;
   }
   stringstream ss (stringstream::in | stringstream::out);
@@ -26,10 +26,11 @@ int main(int argc,
   SimPara Para; // The class for Parameters 
   Para.T = 1; // Brownian motion from 0 to time T.
   ss >> Para.Terms; // simulate how many times.  
-  Para.P2 = 23; // Never use, for compatible.
   Para.Nseg = 27; // Never use, for compatible.
   // begin of the segements.
   ss >> Para.Rb;
+  // middle of the segments.
+  ss >> Para.Rm;
   // maximal segements, i.e. the end one. 
   ss >> Para.Re;
   // Seed for random number generator

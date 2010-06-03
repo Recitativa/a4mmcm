@@ -197,10 +197,10 @@ Num QRCounter<Num, C>::nQuantile(C aim) {
 // Structure of parameters for simulation.
 
 typedef struct {
-  double T;
-  int P2; 
+  double T; 
   int Terms; // How many loops times 
   int Rb; // records begin with 2^Rb+1 points 
+  int Rm; // the quantile computation ends at 2^Rm
   int Re; // records end with 2^Re+1 points
   int Nseg;
   unsigned long int Rseed; // Random seed

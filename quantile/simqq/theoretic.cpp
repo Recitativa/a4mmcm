@@ -63,13 +63,12 @@ int BrownSim::Sim(SimPara Para) {
   const double T = Para.T;
   const int Terms = Para.Terms;
   const int Rb = Para.Rb;
+  const int Rm = Para.Rm;
   const int Re = Para.Re;
-  const int P2 = Para.P2;
   const int Nseg = Para.Nseg;
   const unsigned long int Rseed = Para.Rseed;
 
-
-  int i; 
+  int i;
   
   int n= 1<<Re; // total number of segements
   double hsigma = sigma*sqrt(T/n); // corresponding sigma for each step; 
@@ -77,7 +76,7 @@ int BrownSim::Sim(SimPara Para) {
  
   // FileName format nout_Rb_Re_.bin, a binary file. 
   ostringstream SoutFilename;
-  SoutFilename << "nout_" << Rb << "_" << Re << "_"	\
+  SoutFilename << "nout_" << Rb << "_" << Rm << "_" << Re << "_"	\
 	       << sigma << "_" << mu << "_.bin";
   
   string outFilename = SoutFilename.str();
@@ -102,8 +101,8 @@ int BrownSim::Sim(SimPara Para) {
     fout.open(outFilename.c_str(), ios::app| ios::binary);
     fout.write((char *)&Rb, sizeof(int));
     int tRe = Re-1;
-    fout.write((char *)&tRe, sizeof(int));    
-    fout.write((char *)&P2, sizeof(int));    
+    fout.write((char *)&Rm, sizeof(int));    
+    fout.write((char *)&Re, sizeof(int));    
     fout.write((char *)&Nseg, sizeof(int));
     fout.flush();
     cerr << "Output file " << outFilename << ": Head has written" << endl;
@@ -155,7 +154,7 @@ int BrownSim::Sim(SimPara Para) {
     //  *         *         *         *         *         *         *     
     //  o                   o                   o                   o
     // as Np = 1<<g +1 points path
-    for(int g=Rb; g<= Re; g++) {
+    for(int g=Rb; g<= Rm ||g==Re; g++) {
       int Np = 1<<g+1;
       // following the example, nStep=2, when g = Re-1; 
       // nStep=4, when g= Re-2;
@@ -179,8 +178,8 @@ int BrownSim::Sim(SimPara Para) {
 	if(nQ+1== Np) Q = max(0.,Q);
 	fout.write((char *)&Q, sizeof(double));	
       }
+     if(g==Rm) g=Re-1;
     }
-
     fout.flush();
     cerr << "Adding " << l << "th records" << endl;
   }
