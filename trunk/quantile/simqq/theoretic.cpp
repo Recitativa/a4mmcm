@@ -77,7 +77,7 @@ int BrownSim::Sim(SimPara Para) {
   // FileName format nout_Rb_Re_.bin, a binary file. 
   ostringstream SoutFilename;
   SoutFilename << "nout_" << Rb << "_" << Rm << "_" << Re << "_"	\
-	       << sigma << "_" << mu << "_.bin";
+	       << sigma << "_" << mu << "_"<< Nseg <<".bin";
   
   string outFilename = SoutFilename.str();
   ifstream testf;
