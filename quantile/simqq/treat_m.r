@@ -25,78 +25,88 @@ FppX <- function(end=Inf,alpha=.6) {
 
 
 ## read data from binary file
-readFile <- function(inFilename,NN=200000) {
-  fin <- file(inFilename, open="rb")
-  Rb <- readBin(fin,integer())
-  Rm <- readBin(fin,integer())
-  Re <- readBin(fin,integer())
-  Nseg <- readBin(fin,integer())
-  nRQ <- 2**(Rb-1) + 1
-  RQuantiles <- (2**(Rb-1)):(2**Rb)/(2**Rb)
-  adat <- array(dim=c(nRQ,Rm-Rb+2,NN),
-                dimnames = list(
-                  paste("Q",
-                        formatC(RQuantiles*100,
-                                width=2, flag="0"),
-                        sep = "_"),
-                  c(paste("A", Rb:Re,sep = "_"),"Dense"),
-                  NULL
-                  ))
+readFile <- function(inFilenames,NN=200000) {
+  #Rb =Rm=Re=nRQ=RQuantiles=adat=NULL;
   Nrows <- 0;
-  cat("Reading data file...\n");flush(stdout());
-  repeat {
-    n = nRQ*(Rm-Rb+2) # length of each record
-    v <- readBin(fin, double(), n=n)
-    if(length(v)!=n) break;
-    Nrows <- Nrows+1
-    adat[,,Nrows] <- v
-    if(Nrows == NN) break;
+  for(i in 1:length(inFilenames)) {
+    name <- inFilenames[i]
+    fin <- file(name , open="rb")
+    Rb <- readBin(fin,integer())
+    Rm <- readBin(fin,integer())
+    Re <- readBin(fin,integer())
+    Nseg <- readBin(fin,integer())
+    if(i==1) {
+      nRQ <- 2**(Rb-1) + 1
+      RQuantiles <- (2**(Rb-1)):(2**Rb)/(2**Rb)
+      adat <- array(dim=c(nRQ,Rm-Rb+2,NN),
+                    dimnames = list(
+                      paste("Q",
+                            formatC(RQuantiles*100,
+                                    width=2, flag="0"),
+                            sep = "_"),
+                      c(paste("A", Rb:Rm,sep = "_"),"Dense"),
+                      NULL
+                      ))
+    }
+    cat("Nseg",Nseg,"\n")
+    cat("Reading data file...",name,"\n");flush(stdout());
+    repeat {
+      n = nRQ*(Rm-Rb+2) # length of each record
+      v <- readBin(fin, double(), n=n)
+      if(length(v)!=n) break;
+      if(Nrows+1 == NN) break;
+      Nrows <- Nrows+1
+      adat[,,Nrows] <- v
+    }
+    close(fin)
+    cat("I have read the file...\n");flush(stdout())
   }
-  cat("I have read the file...\n");flush(stdout())
-   ## adat is a three dimentional array of data with [i,j,k]
+  ## adat is a three dimentional array of data with [i,j,k]
   ## i -- i-th record
-  ## j -- different k: Rb, Rb+1, Rb+2, ..., Re, Dense(see below)
+  ## j -- different k: Rb, Rb+1, Rb+2, ..., Rm, Dense(see below)
   ## k -- Quantiles 2^(Rb-1)/2^Rb, 2^(Rb-1)+1/2^Rb, ...., 1
   adat <- aperm(adat[,,1:Nrows],perm=c(3,2,1))
-  ret <- list(adat = adat, Rb=Rb, Re=Rm, P2 = P2, Nseg = Nseg, 
+  ret <- list(adat = adat, Rb=Rb, Rm=Rm, Re = Re, Nseg = Nseg, 
               nRQ=nRQ, ndata=n, Nrows=Nrows, RQuantiles =RQuantiles)
-  close(fin)
   return(ret)
 }
 
+## ns <- c(paste("nout_4_16_25_1_0_",10:24,".bin",sep=""))
+
 
 ## main function to treat the data
-run <- function(inFilename,ttt=8,SP=1,AB=TRUE,DQ=FALSE,ZEE=TRUE) {
-  ## file name pattern: ?????.bin, then get ????? part. 
-  boutname <- sub(".bin$","", inFilename)
+run <- function(inFilenames,ttt=8,SP=1,AB=TRUE,DQ=FALSE,ZEE=FALSE) {
   ## read data from file
-  ret <- readFile(inFilename)
+  inFilenames <- c(inFilenames)
+  ret <- readFile(c(inFilenames))
   attach(ret)
+  ## file name pattern: ?????.bin, then get ????? part. 
+  boutname <- sub(".bin$","", inFilenames[1])
 
   if(ZEE)
     adat[,"Dense","Q_50"] <- 0;
   
   ## Formula: (A)dErr = X_k -  X_Dense
-  dErr <- adat[,1:(Re-Rb+1),] - adat[,rep("Dense",Re-Rb+1),]
+  dErr <- adat[,1:(Rm-Rb+1),] - adat[,rep("Dense",Rm-Rb+1),]
   AdErr <- abs(dErr);
   ## Formula: m(A)dErr = |mean(X_k -  X_Dense)|
   ## mAdErr is a 2-dim array, 1st-dimension is k, 2nd-dim is Quantile
-  mdErr <- apply(dErr, c(2,3), mean)[1:(Re-Rb+1-ttt),]
+  mdErr <- apply(dErr, c(2,3), mean)[1:(Rm-Rb+1-ttt),]
   mdErr <- abs(mdErr);
-  mAdErr <- apply(AdErr, c(2,3), mean)[1:(Re-Rb+1-ttt),]
+  mAdErr <- apply(AdErr, c(2,3), mean)[1:(Rm-Rb+1-ttt),]
 
   PRQ <- c(seq(1,nRQ,by=SP),nRQ); PRQ <- unique(PRQ);
 
   plotlines <- function(fname,Dat,xlab="s",ylab="Error") {
     pdf(fname,pointsize=8)
-    plot(c(Rb,Re-ttt),
+    plot(c(Rb,Rm-ttt),
          c(min(Dat),max(Dat)),
          type="n", xlab = xlab, ylab=ylab)
     cols <- rainbow(nRQ)
     legend(x="topright", paste("",RQuantiles[PRQ]),
            col=cols[PRQ], lty=1, ncol=3)
     for(i in PRQ) {
-      lines(Rb:(Re-ttt), Dat[,i], type="b",col=cols[i])
+      lines(Rb:(Rm-ttt), Dat[,i], type="b",col=cols[i])
     }
     dev.off()
   }
@@ -114,7 +124,7 @@ run <- function(inFilename,ttt=8,SP=1,AB=TRUE,DQ=FALSE,ZEE=TRUE) {
   plotrate <- function(fname, Dat,
                        xlab="Quantile",
                        ylab="Empirical convergence rate") {
-    alm <- function(x) {return(lm(Q~P, data.frame(Q=x[1:(Re-Rb-ttt+1)],P=Rb:(Re-ttt))))}
+    alm <- function(x) {return(lm(Q~P, data.frame(Q=x[1:(Rm-Rb-ttt+1)],P=Rb:(Rm-ttt))))}
     rLM <- apply(Dat, c(2), alm)
     getp <- function(x) {return(coef(x)["P"])}
     PrLM <- sapply(rLM, getp)
@@ -132,7 +142,7 @@ run <- function(inFilename,ttt=8,SP=1,AB=TRUE,DQ=FALSE,ZEE=TRUE) {
     ## compare the empirical distribution and theoretical distribution.
     ## each alpha a pdf file, and for each k a line.
     ## The black line is theoretic and blue line is the "dense" one.
-    PPP <- Re-Rb+2
+    PPP <- Rm-Rb+2
     cols <- heat.colors(2*PPP)[1:PPP]
     cols[PPP] = "blue"
                                         # draw the distribution of quantdiles
@@ -144,7 +154,7 @@ run <- function(inFilename,ttt=8,SP=1,AB=TRUE,DQ=FALSE,ZEE=TRUE) {
       pdf(paste(boutname,'_',alpha, '.quantile.pdf',sep=""))
       plot(tt,FX,type='l',col='black',
            main=sprintf('compare with Bb=%g Be=%g,alpha=%g, sim=%g',
-             Rb,Re,alpha,Nrows),
+             Rb,Rm,alpha,Nrows),
            ylab="Empirical Cumulative Distribution Function",xlab='X')
       for(j in 1:PPP) {
         EeulerSim <- ecdf(adat[,j,i])

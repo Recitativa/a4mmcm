@@ -12,10 +12,10 @@ int main(int argc,
           char *argv[],  
           char *envp[] )
 {
-  const int Narg = 7;
+  const int Narg = 8;
 
   if(argc != Narg) {
-    cerr << argv[0] << " Terms Rb Rm Re sigma mu" << endl; 
+    cerr << argv[0] << " Terms Rb Rm Re sigma mu OutputIndex" << endl; 
     return 1;
   }
   stringstream ss (stringstream::in | stringstream::out);
@@ -26,7 +26,6 @@ int main(int argc,
   SimPara Para; // The class for Parameters 
   Para.T = 1; // Brownian motion from 0 to time T.
   ss >> Para.Terms; // simulate how many times.  
-  Para.Nseg = 27; // Never use, for compatible.
   // begin of the segements.
   ss >> Para.Rb;
   // middle of the segments.
@@ -37,6 +36,7 @@ int main(int argc,
   Para.Rseed = seconds;
   double sigma, mu;
   ss >> sigma >> mu;
+  ss >> Para.Nseg; // index of the name of outputfile
   BrownSim S(sigma,mu);
   S.Sim(Para);
 }
