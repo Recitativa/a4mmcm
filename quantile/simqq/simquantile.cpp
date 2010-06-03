@@ -12,7 +12,7 @@ int main(int argc,
           char *argv[],  
           char *envp[] )
 {
-  const int Narg = 6;
+  const int Narg = 7;
 
   if(argc != Narg) {
     cerr << argv[0] << " Terms Rb Rm Re sigma mu" << endl; 
