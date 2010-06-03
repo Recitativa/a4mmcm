@@ -125,7 +125,10 @@ int BrownSim::Sim(SimPara Para) {
   double Q; // temporary varible for Quantile
   
   // the array store the Brownian path
-  Real * Record = new Real[1<<Re]; 
+  Real * Record = new Real[1<<Re+1<<Rb];
+  for(int i=0;i< i<< Rb; i++)
+    Record[i] = 0;
+  Record = Record+1<<Rb;
   
   if(Record == NULL) {
     cerr << "no enough memory!" << endl;
@@ -177,7 +180,7 @@ int BrownSim::Sim(SimPara Para) {
       //                         nQ                 nQ                  nQ
      for(k=0, nQ = 1<< (g-1);
 	  k<= 1<<(Rb-1); k++, nQ += (1<< (g-Rb))) {
-	nth_element (Sp, Sp+(nQ-1), Sp+Np);
+	nth_element (Sp-1, Sp+nQ, Sp+Np);
 	Q = (double)(Sp[nQ-1]);
 	if(nQ == Np) Q = max(0.,Q);
 	fout.write((char *)&Q, sizeof(double));	
