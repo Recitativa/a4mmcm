@@ -52,7 +52,6 @@ double Quantile::mean() {
 
 
 
-
 // Number of points recorded for the Brownian motion is 2<<Re
 int BrownSim::Sim(SimPara Para) {
   // Type of real number, it should be long double if Re>20 since double 
@@ -125,25 +124,20 @@ int BrownSim::Sim(SimPara Para) {
   double Q; // temporary varible for Quantile
   
   // the array store the Brownian path
-  Real * Record = new Real[1<<Re+1<<Rb];
-  for(int i=0;i< i<< Rb; i++)
-    Record[i] = 0;
-  Record = Record+1<<Rb;
+  Real * Record = new Real[1<<Re+1];
   
   if(Record == NULL) {
     cerr << "no enough memory!" << endl;
     return 1;
   }
+  
 
   // Simulation
   for(int l = 0 ; l< Terms; l++) {
-    B = 0; 
- 
     // generate the path
-    for(i=0; i< (1<< Re); i++) {
-      B += (Real)gsl_ran_gaussian(r, hsigma)+hmu;
-      Record[i] = B;
-    } 
+    Record[0]=0;
+    for(i=1; i<= (1<< Re); i++) 
+      Record[i] = Record[i-1]+(Real)gsl_ran_gaussian(r, hsigma)+hmu;
     
     cerr << "coumputing Q" << endl;
     int nQ;
@@ -156,33 +150,33 @@ int BrownSim::Sim(SimPara Para) {
     //      g = Re-2, consider points labeled by "o"
     // index means the index for the array. 
     // 
-    // index 0    1    2    3                                     1<<Re-1
+    //  0    1    2    3                                           1<<Re
     //  0----|----|----|----|----|----|----|----|----|----|----|----|
-    //            *         *         *         *         *         *     
-    //                      o                   o                   o
+    //  *         *         *         *         *         *         *     
+    //  o                   o                   o                   o
     // as Np = 1<<g +1 points path
     for(int g=Rb; g<= Re; g++) {
-      int Np = 1<<g;
+      int Np = 1<<g+1;
       // following the example, nStep=2, when g = Re-1; 
       // nStep=4, when g= Re-2;
       int nStep = 1<<(Re-g);
       // StepIter is a Random Access Iterator which help STL 
       // consider Record as array with step nStep 
-      StepIter<Real> Sp(Record+(nStep-1), nStep);
+      StepIter<Real> Sp(Record, nStep);
       // compute Quantiles for alpha: 1/2= 1<<(Rb-1)/1<<Rb, 
       //                                   1<<(Rb-1)/1<<Rb + 1/1<<Rb,
       //                                   .......
       //                              1  =  1<<Rb / 1<<Rb.
       // nQ is the index of Quantile when consider Record as a 1<<g path
-      //       0    1     ...1<<(g-1)-1     1<<(g-1)-1+1<<(g-Rb)       1<<g-1
+      //  0    1    2    3 ...1<<(g-1)        1<<(g-1)+1<<(g-Rb)       1<<g
       //  0----|----|----|...----|----|----|----|----|----|----|----|----|
       //                         *                   *                   *
       //                         nQ                 nQ                  nQ
      for(k=0, nQ = 1<< (g-1);
 	  k<= 1<<(Rb-1); k++, nQ += (1<< (g-Rb))) {
-	nth_element (Sp-1, Sp+nQ, Sp+Np);
-	Q = (double)(Sp[nQ-1]);
-	if(nQ == Np) Q = max(0.,Q);
+	nth_element (Sp, Sp+nQ, Sp+Np);
+	Q = (double)(Sp[nQ]);
+	if(nQ+1== Np) Q = max(0.,Q);
 	fout.write((char *)&Q, sizeof(double));	
       }
     }
