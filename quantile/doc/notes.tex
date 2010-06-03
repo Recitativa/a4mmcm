@@ -97,7 +97,7 @@
 
 \cite{Hull2008} defines an {\it option} to be a contract which provides the holder the right to buy or sell an underlying asset at or before a certain date at an predetermined price. The price determined in the contract is called the {\it strike price}. To get this right, the buyer should pay the seller. Every option contract involves tow sides of investors. One side is known as the long side. On the long side is the investor who has bought the option.  Another side is called the short position who has sold the option. If the long side chooses to exercise the right defined in the contract, the short side has the obligation to perform the transaction with the long side at the specified price set in the contract. Since there exists a disparity of right and obligation, the long side should pay a premium to the short side to obtain this right. However, this contract is only in effect before certain date. This date set in the contract is called {\it expiration date} or {\it maturity}. Basically, there are two types of option contracts. A holder of a {\it call} option has the right to buy the underlying asset at a predetermined price, while a holder of a {\it put} option has the right to sell the underlying asset at the predetermined price. European options can be exercised only at the expiration date. American options on the other hand can be exercised at any time before the expiration date.
 
-To help the understanding of options, here we give an example of the use of an option. Suppose that it is now January 15. A copper fabricator expects it will need 100,000 pounds of copper on May 15 to meet a certain contract. The spot price of copper is 140 cents per pound. To fix the expense of raw material, the fabricator may take a long position of a call option, for example, a call option with a strike price of \$120,000 for 100,000 pounds of copper expired in four month. Holding this option, the fabricator eliminates its risk exposure to the changes of copper price. This example is using an option as a hedging instrument. There are other purposes of using of options.
+To help the understanding of options, here we give an example of the use of an option. Suppose that it is now January 15. A copper fabricator expects it will need 100,000 pounds of copper on May 15 to meet a certain contract. The spot price of copper is 140 cents per pound. To fix the expense of raw material, the fabricator may take a long position of a call option, for example, a call option with a strike price of \$120,000 for 100,000 pounds of copper expired in four month. Holding this option, the fabricator eliminates its risk exposure to the changes of copper price. This example is using an option as a hedging instrument. There are other purposes of using options.
 
 Generally, there are three broad categories of traders of options: {\it hedgers}, {\it speculators}, and {\it arbitrageurs}. Hedgers are the group of investors who use options to reduce the risk associated with potential future movements of the price for a certain asset. Speculators bet on the future direction of an asset using options. Taking advantage of a discrepancy between prices in two different markets, arbitrageurs lock in risk-free profits by concurrently taking offsetting positions in two or more markets. One main reason contributing to the success of option markets is that they meet the needs of different types of traders.
 
@@ -174,7 +174,7 @@ At time $t$, the value of this portfolio is
 \Pi_t = V_t - \frac{\partial V}{\partial S} S_t.
 \end{equation}
 
-The instantaneous profit or loss $dR$ over time interval $[t, t+dt]$ is
+The instantaneous profit or loss $d\Pi_t$ over time interval $[t, t+dt]$ is
 \begin{equation}\label{dR}
 d\Pi_t = dV_t - \frac{\partial V}{\partial S} dS_t.
 \end{equation}
@@ -215,7 +215,7 @@ V(0,t) =f(0)e^{-r(T-t)} & on $t\in [0,T)$, \label{eq:EuFb}\\
 \end{numcases}
 \end{subequations}
 
-(\ref{eq:EuFa}) is the final condition, it is obvious that option price at maturity $V(S_T,T)$ should equal the payoff $F(S_T)$.  PDE (\ref{black-pde}) is a backward parabolic. To get the solution to (\ref{black-pde}), we need boundary conditions at $S_t = 0, t \in [0,T]$ and $S_t=\infty, t \in [0,T]$ additionally. For a call, if $S_t = 0, t \in [0,T]$, then this contract is deep out of money and has no value all the time. Condition (\ref{eq:EuFb}) coincides with this situation. If $S_t$ is big enough that it is deep in the money in the life of an option, the holder will certainly exercise this contact at maturity. Thus this contract is similar to a forward contract and should has the same price $f(\infty)e^{-r(T-t)}$ with a identical forward contract. This is expressed in condition (\ref{eq:EuFc}). One can find that boundary conditions (\ref{eq:EuFb}) and (\ref{eq:EuFc}) also work for put options. %The second equation in (\ref{Black-boundary}) means that if stock price $S_t$ is $0$ all the time in its life, then the price of the option at any time should be the discounted pay off at risk-free rate. The last equation in (\ref{Black-boundary}) is obtained under the same logic. 
+(\ref{eq:EuFa}) is the final condition, it is obvious that option price at maturity $V(S_T,T)$ should equal the payoff $F(S_T)$.  PDE (\ref{black-pde}) is a backward parabolic. To get the solution to (\ref{black-pde}), we need boundary conditions at $S_t = 0, t \in [0,T]$ and $S_t=\infty, t \in [0,T]$ additionally. For a call, if $S_t = 0, t \in [0,T]$, then this contract is deep out of money and has no value all the time. Condition (\ref{eq:EuFb}) coincides with this situation. If $S_t$ is big enough that it is deep in the money in the life of an option, the holder will certainly exercise this contract at maturity. Thus this contract is similar to a forward contract and should has the same price $f(\infty)e^{-r(T-t)}$ with a identical forward contract. This is expressed in condition (\ref{eq:EuFc}). One can find that boundary conditions (\ref{eq:EuFb}) and (\ref{eq:EuFc}) also work for put options. %The second equation in (\ref{Black-boundary}) means that if stock price $S_t$ is $0$ all the time in its life, then the price of the option at any time should be the discounted pay off at risk-free rate. The last equation in (\ref{Black-boundary}) is obtained under the same logic. 
 
 PDE (\ref{black-pde}) is the fundamental valuation equation for the standard normal option. There are many transformations that can convert the Black-Scholes PDE into a heat or diffusion equation. In this thesis, we present the transformation suggested in \cite{2004Broadie}. 
 
@@ -398,7 +398,7 @@ The pricing of an American option in the Black-Scholes frame contains (\ref{blac
 \section{Lookback options}
 Lookback options are a type of exotic options whose payoffs are path-dependent. A lookback option gives the holder the right to look back in time to use the maximum or minimum asset price achieved up to the time the option was exercised to calculate the option's payoff. Depending on the selection of the strike price, you can find two styles of lookback options: floating-strike lookback options and fixed-strike lookback options.
 
-\subsection{Floating-strike lookback option}
+\subsection{Floating-strike lookback options}
 As you can see from the name, the strike price of this kind of lookback option is floating and is determined until the end of the option's life, i.e., at maturity if early exercise is not allowed. Denote $S_{\min}^t$ and $S_{\max}^t$ as the minimum and maximum underlying asset price achieved over $[0,t]$. Then for a European-style lookback call option with floating strike, the payoff is the amount that the final asset price $S_T$ exceeds the minimum asset price $S_{\min}^{T}$ attained during the life of the option. The payoff function for floating-strike lookbcak call option is 
 \begin{equation}
 LC_{floating} = S_T - S_{\min}^T.
@@ -450,7 +450,7 @@ b_3 &= \frac{\ln(S_{\max}^t / S_t) + (r-\sigma^2 /2)T}{\sigma\sqrt{(T-t)}}\\
 We should notice that at the initiation of the contract, i.e., at time $0$, $S_{\max}^0=S_{\min}^0=S_0$.
 Formulas (\ref{eq:3}) and (\ref{eq:5}) are obtained under the assumption that the underlying asset price is observed continuously. However, in real life, the asset price is observed discretely. \cite{Broadie1999} provided a correction to these formulas to deal with discrete situation.
 
-For the discretely monitored options, let $m$ be the number of price-fixing dates and $\Delta t= T/m$ be the interval between fixings. In this section we denote $\tS_{\min{}}^t$ as the discretely monitored realized minimum over $[0,t]$, $\tS_{\max{}}^t$ as the discretely monitored realized maximum over $[0,t]$. In addition, denote $V_d(S,t;\tS_{\max{}})$ as the price of a discretely monitored European-style lookback put option at time $t$ and $V_d(S,t;\tS_{\min{}}^t)$ as the price of a discretely monitored call option of this style. In \cite{Broadie1999}, the price of a discretely monitored lookback option put option at the $k$-th fixing date and the price of a corresponding continuously monitored lookback put option at time $t = k\Delta t$ satisfies
+For the discretely monitored options, let $m$ be the number of price-fixing dates and $h= T/m$ be the interval between fixings. In this section we denote $\tS_{\min{}}^t$ as the discretely monitored realized minimum over $[0,t]$, $\tS_{\max{}}^t$ as the discretely monitored realized maximum over $[0,t]$. In addition, denote $V_d(S,t;\tS_{\max{}})$ as the price of a discretely monitored European-style lookback put option at time $t$ and $V_d(S,t;\tS_{\min{}}^t)$ as the price of a discretely monitored call option of this style. In \cite{Broadie1999}, the price of a discretely monitored lookback option put option at the $k$-th fixing date and the price of a corresponding continuously monitored lookback put option at time $t = kh$ satisfies
 \begin{equation}\label{eq:7}
 V_d(S,t;\tS_{\max{}})
 =[e^{-\beta_1 \sigma \sqrt{{T/m}}}
@@ -477,7 +477,7 @@ where function $V(\cdot)$ in the right hand side is the valuation formula (\ref{
 
 By this correction, we can use pricing formulas for continuously monitored lookback options to value discretely monitored ones. We know that at time $t$, the value for the discretely monitored running maximum $\tS_{\max{}}$ is known and available. To get the value for a discretely monitored lookback put option, first we should inflate the discretely monitored running maximum $\tS_{\max{}}$ by a factor of $e^{\beta_1 \sigma \sqrt{T/m}}$; second using this value as the strike price when use formula (\ref{eq:5}) to get a price; then deflate this price by the same factor; finally add $(e^{-\beta_1 \sigma \sqrt{{T/m}}} -1)S_t$ to the deflated price and this value is the price for the discretely monitored lookback put option. For a discretely monitored lookback call option, we can get its price by applying the similar procedure as indicated in (\ref{eq:8}).
 
-\subsection{Fixed strike lookback option}
+\subsection{Fixed strike lookback options}
 Similar to plain vanilla options, a lookback option's strike price also can be fixed. The difference, compared with the standard European option, is that a fixed strike lookback option is not exercised at the underlying asset price at maturity. Instead, the payoff is the difference between the extreme underlying asset price and the strike price, if the difference is positive, and zero otherwise. 
    
 For a fixed-strike lookback call option, the holder is allowed to calculate the payoff using the highest underlying asset price attained before maturity. As for a fixed lookback put option, the holder can use the underlying asset's lowest price. One finds that the intrinsic value of a fixed-strike strike lookback option is nondecreasing as time passes. The payoff functions for fixed-strike lookback call and put options respectively are:
@@ -569,14 +569,14 @@ There are plenty of proposals for tree methods. We present the popularly used ap
 Lattice & Approximation   & Probabilty \\
 \hline
 \cite{cox1979} & $x_1= \sigma\sqrt{h}$ & $p_1 =\frac{e^{rh}-e^{-\sigma\sqrt{h}}}{e^{\sigma\sqrt{h}}-e^{-\sigma\sqrt{h}}}$ \\
-   &  $x_2=-\sigma\sqrt{h}$& $1-p_1$ \\
+   &  $x_2=-\sigma\sqrt{h}$& $p_2 = 1-p_1$ \\
 \hline
 \cite{jarrow1983} & $x_1 = (r-\sigma^2 /2)h+\sigma\sqrt{h}$ & $p_1 = \frac{e^{\sigma^2 h/2}-e^{-\sigma\sqrt{h}}}{e^{\sigma\sqrt{h}}-e^{-\sigma\sqrt{h}}}$ \\   
 & $x_2 =(r-\sigma^2 /2)h - \sigma\sqrt{h}$ & $p_2 = 1- p_1$ \\
 \hline
-\cite{Boyle1986} & $x_1 = \lambda\sigma\sqrt{h}$ & $p_1 = \frac{1}{2\lambda^2} + \frac{(r-\sigma^2 /2)\sqrt{h}}{2\lambda\sigma}$ \\
- & $x_2 = 0$ & $p_2 = 1-\frac{1}{\lambda^2}$ \\
- & $x_3 = -\lambda\sigma\sqrt{h}$ & $p_3 = \frac{1}{2\lambda^2} - \frac{(r-\sigma^2 /2)\sqrt{h}}{2\lambda\sigma}$\\
+\cite{Boyle1986} & $x_1 = l\sigma\sqrt{h}$ & $p_1 = \frac{1}{2l^2} + \frac{(r-\sigma^2 /2)\sqrt{h}}{2l\sigma}$ \\
+ & $x_2 = 0$ & $p_2 = 1-\frac{1}{l^2}$ \\
+ & $x_3 = -l\sigma\sqrt{h}$ & $p_3 = \frac{1}{2l^2} - \frac{(r-\sigma^2 /2)\sqrt{h}}{2l\sigma}$\\
 \hline
 \cite{Amin1991} & $x_1 =(r-\ln(cosh(\sigma\sqrt{h})))h + \sigma\sqrt{h}$ & $p_1 = 1/2$ \\
 & $x_2 = (r-\ln(\cosh(\sigma\sqrt{h})))h-\sigma\sqrt{h}$ & $p_2 = 1/2$ \\
@@ -589,7 +589,7 @@ Lattice & Approximation   & Probabilty \\
 \section{Monte Carlo simulation}
 As we discussed in risk-neutral pricing method, option valuation often end to the calculation of an expected value of a certain discounted payoff. For some cases, we can do this computation explicitly. The Black-Scholes formula is a example of this class. But for most of the time, we need the help of numerical methods. Monte Carlo simulation is a natural proposal to calculate expectation. Monte Carlo method is very useful to price options with multiple underlying assets. This method is first used to evaluate a European option by \cite{Boyle1977}. 
 
-Generally, Monte Carlo method is done in following steps: 
+Generally, the Monte Carlo method is done in following steps: 
 \begin{enumerate}[1.]
 \item 
 Generate sample paths for the underlying random variables in question according to the risk-neutral measure. 
@@ -599,41 +599,42 @@ Calculate the corresponding discounted payoff for each sample path.
 Calculate the average discounted payoff on all the samples.
 \end{enumerate}
 
-The sharp advantage of Monte Carlo method lies in its convenience in calculation high dimensional integrations. 
-The convergence of Monte Carlo is guaranteed by large number theory. Now the focus of the study in this field is on improving the  computational efficiency. Interested readers can find detailed survey on this method in \cite{Boyle1997} and \cite{Glasserman2004}. 
+The sharp advantage of the Monte Carlo method lies in its convenience in calculation high dimensional integrations. 
+The convergence of Monte Carlo is guaranteed by large number theory. Now the focus of the study in this field is on improving the computational efficiency. Interested readers can find detailed survey on this method in \cite{Boyle1997} and \cite{Glasserman2004}. 
 
 
 
-\chapter{$\alpha$-quantile and $\alpha$-quantile option}
-For a stochastic process $X_t$,
-the $\alpha$-quantile $( 0 \leq \alpha \leq 1)$
+\chapter{Quantile and quantile options}
+For a stochastic process \{$X_t$\} on $(\Omega, \mathbb Q, \mathcal F)$, the $\alpha$-quantile $(0 \leq \alpha \leq 1)$
 is defined by
 \[
-M(\alpha,t)(\omega) = \inf\Set{x:\int_0^t 1_{(X_s (\omega)\leq x)} > \alpha t}.
+M(\alpha,t)(\omega) = \inf\Set{x:\int_0^t ds1_{(X_s (\omega)\leq x)} > \alpha t}.
 \]
-Then we can see that $\inf_{0\leq s \leq t}  X_s = lim_{\alpha\to 0}M(\alpha,t)$ and $\sup_{(0\leq s \leq t})  X_s = lim_{\alpha\to 1} M(\alpha, t)$. %In this sense $\alpha$-quantile option can be considered as a general class of lookback option. Unlike lookback option whose payoff depends on the maximum or minimum of the price of stock before maturity as mentioned before, $\alpha$-quantile option's payoff depends on the quantile of the stock price process. This option was first introduced by \cite{Miura} in 1992. \cite{Akahori1995} gave a generalized arc-sine law for this type of options by Feynman-Kac formula.
-When $X_{t}$ is a Brownian motion defined as $ X_t = \sigma B_t + \mu t$, using Feynman-Kac formula, \cite{Dassios1995} obtained the explicit density of $\alpha$-quantile and gave an exceptional representation of the distribution of quantile. In \cite{Dassios1995}, for $\alpha\in[0,1]$, $t\leq 0$, Dassios proved that
+Then we can see that $\displaystyle\inf_{0\leq s \leq t}  X_s = \lim_{\alpha\to 0}M(\alpha,t)$ and $\displaystyle\sup_{0\leq s \leq t} X_s = \lim_{\alpha\to 1} M(\alpha, t)$. %In this sense $\alpha$-quantile option can be considered as a general class of lookback option. Unlike lookback option whose payoff depends on the maximum or minimum of the price of stock before maturity as mentioned before, $\alpha$-quantile option's payoff depends on the quantile of the stock price process. This option was first introduced by \cite{Miura} in 1992. \cite{Akahori1995} gave a generalized arc-sine law for this type of options by Feynman-Kac formula.
+When $\{X_{t}\}$ is a Brownian motion defined as $X_t = \sigma B_t + \mu t$, where $B_t$ is a standard Brownian motion,  using Feynman-Kac formula, \cite{Dassios1995} obtained the explicit density of the $\alpha$-quantile of $\{X_t\}$ and gave a striking representation of the distribution of quantile. One focus of this chapter is about the discretization error between the $\alpha$-quantile of a Brownian motion and that of a Gaussian random walk. We find that the the strong  order of convergence for a genuine $\alpha$-quantile with $\alpha \in (0,1)$ is different from that for the extreme cases with $\alpha=0$ or $\alpha=1$. Based on our numerical study, we find that the strong order of convergence of the discretely sampled $\alpha$-quantile from a Gaussian random walk to the $\alpha$-quantile of a Brownian motion is around $0.76$. However, it is well known that the strong order of convergence for the maximum of a Gaussian random walk to the maximum of a Brownian motion is $0.5$. Our theoretical study also shows that there are differences between the expectations of the discretization error of the Euler approximation for the maximum and other $\alpha$-quantiles. Another focus of this chapter is about the pricing problem of $\alpha$-quantile options. We propose a tree method which is the only available pricing method for American-style $\alpha$-quantile options. We show how Richardson extrapolation can be applied to improve the accuracy of our pricing approach. 
+
+In section \ref{4-1} related previous study about the distribution of $\alpha$-quantile of a Brownian motion is summarized. %In section \ref{4-2}, we provide a study about the joint distribution of a Brownian motion and its $\alpha$-quantile. 
+In section \ref{s:euler}, the numerical study about the strong order of convergence between the $\alpha$-quantile of a Gaussian random walk and that of a Brownian motion is provided. In section \ref{sec:de} we present an estimate about the expectation of the discretization error between the discretely sampled $\alpha$-quantile from a Gaussian random walk and the $\alpha$-quantile of a Brownian motion. In section \ref{4-3}, $\alpha$-quantile options and the advantages of this type of options are introduced. In section \ref{American-tree}, we propose a tree method which is useful to price American-style $\alpha$-quantile options. 
+
+
+ 
+
+\section{The quantile of a Brownian motion}\label{4-1}
+%\subsection{The distribution function of a quantile}
+The distribution function of the $\alpha$-quantile of a Brownian motion without drift is given in \cite{Yor1995}. He obtained this result by simplifying related integral expressions in \cite{Miura}.  Define $\theta = ((1 - \alpha)/\alpha)^{1/2}$. When $\mu=0$, $X_t=\sigma B_t$. For the $\alpha$-quantile $M(\alpha,t)$ of $\{X_t\}$ on time interval $[0,t]$,  in \cite{Yor1995}, we find
+\begin{equation}
+P(M(\alpha,t)\in dx)= \begin{cases}
+\displaystyle 2\sqrt\frac{2}{\sigma^2\pi t}\exp\left(\frac{-x^2} {2\sigma^2 t}\right)\left(1-\Phi\left(\frac{|x|} {\sigma^2 t\theta}\right)\right)dx  &  \text{if } x \leq 0 ,\\
+\displaystyle 2\sqrt\frac{2}{\sigma^2\pi t}\exp\left(\frac{-x^2} {2\sigma^2 t}\right)\left(1-\Phi\left(\frac{\theta x}{\sigma^2 t}\right)\right)dx  & \text{if } x \geq 0,
+\end{cases}
+\end{equation}
+where $\Phi(x)=\int^{x}_{-\infty}(2\pi)^{(-1/2)}\exp(-y^2 /2)dy$ is the cumulative distribution function of a standard normal random variable.
+
+For the Brownian motion $\{X_t\}$ with $X_t = \sigma B_t + \mu t$, for $\alpha\in[0,1]$, $t\geq 0$, \cite{Dassios1995} proved that
 \begin{equation}\label{eq:Dassios}
 M(\alpha, t) \eqlaw \sup_{s \leq \alpha t} X_s + \inf_{s\leq (1-\alpha)t} X'_s ,
 \end{equation}
-where $X'$ is a independent copy of $X$. Later \cite{EmRoge1995} gave two proofs of this theorem without using Feynman-Kac computations.
-
-\section{$\alpha$-quantile}
-\subsection{The distribution function of $\alpha$-quantile of Brownian motion}
-In 1995, Yor gave the distribution function of the $\alpha$-quantile of Brownian motion without drift in \cite{Yor1995}. He obtained this result by simplifying related integral expressions in \cite{Miura}. When $\mu = 0$, that is Brownian motion $B_t$  without drift, define $\theta = ((1 - \alpha)/(\alpha))^{1/2}$, for the Brownian quantiles on time interval $[0, 1]$,  in \cite{Yor1995} we find:
-\begin{equation}
-P(M(\alpha,1)\in dx)= \begin{cases}
-\sqrt{2 / \pi}exp(-x^2 / 2) \Phi(|x| / \theta)dx  &  \text{if } x \leq 0 \\
-\sqrt{2 / \pi}exp(-x^2 / 2) \Phi(\theta x)dx  &  \text{if } x \geq 0
-\end{cases}
-\end{equation}
-where
-\begin{equation}\label{eq:density}
-\widetilde{\Phi} (x) = \sqrt{2/ \pi} \int^{\infty}_x dy \exp(-y^2 / 2)  \quad   (x \geq 0).
-\end{equation}
-
-
-When $u \neq 0$,  \cite{Dassios1995} addressed this question for a more general case.  As stated in equation (\ref{eq:Dassios}), the distribution of $M(\alpha , t)$ can be represented in terms of the maximum and minimum of process $\{X_t\}$. Therefore we can get the density function of $M(\alpha, t)$ expressed as the convolution of the other two density functions.
+where $X'$ is a independent copy of $X$. Later \cite{EmRoge1995} gave two proofs of this theorem without using Feynman-Kac computations. As stated in equation (\ref{eq:Dassios}), the distribution of $M(\alpha , t)$ can be represented in terms of the maximum of a Brownian motion $\{X_t\}$ on $[0,\alpha t]$ and the minimum of an independent Brownian motion  $\{X'_t\}$ on $[0,(1-\alpha)t]$. Therefore we can get the density function of $M(\alpha, t)$ expressed as the convolution of the other two density functions.
 
 Denote $g(x; \alpha , t)$ as the density function of $M(\alpha , t)$, in \cite{Dassios1995}, we find that
 \begin{equation}\label{eq:fulldensity}
@@ -652,227 +653,284 @@ g_1 (x;t) = \begin{cases}
 g_2 (x;t) = \begin{cases}
 0, & x \geq 0 \\
 \displaystyle\frac{1}{\sigma}\left({\frac{2}{\pi t}}\right)^{1/2}\exp\left\{-\frac{(x-\mu t)^2}{2\sigma ^2 t}\right\} \\
-\displaystyle\quad + \frac{2\mu}{\sigma ^2} \exp\left(\frac{2\mu x}{\sigma ^2}\right) \Phi \left(\frac{x+\mu t}{\sigma \sqrt{t}}\right) , & x < 0,
+\displaystyle\quad + \frac{2\mu}{\sigma ^2} \exp\left(\frac{2\mu x}{\sigma ^2}\right) \Phi \left(\frac{x+\mu t}{\sigma \sqrt{t}}\right) , & x < 0.
 \end{cases}
 \end{equation}
-and $\Phi(x)=\int^{x}_{-\infty}(2\pi)^{(-1/2)}\exp(-y^2 /2)dy$ is the cumulative distribution function of a standard normal random variable. 
-
-\subsection{The joint distribution of a Brownian motion and $\alpha$-quantile}
-In this section we are going to provide the joint distribution of a Brownian motion and its quantile. When the Brownian motion is without drift,
-i.e. $\mu = 0 $,
-as we know the joint density function of running maximum and the end point of
-a standard Brownian motion at time $\tau$ is
-\[
-P(X_\tau\in da, M_\tau\in db) =
-\frac{2(2b-a)}{\sqrt{2\pi \tau^3}} \exp\left(-\frac{(2b-a)^2}{2\tau}\right)
-I_{\Set{a\leq b, b\geq 0}} (a,b) da db \triangleq p_\tau(a,b)
-\]
-
-To deal with the distribution of $\alpha$-quantile, we use two copy of
-Brownian motion and denote corresponding value at
-$\tau=\alpha t$ (respectively $\tau=(1-\alpha) t$) by $X_1$ (respectively $X_2$) and
-the corresponding maximum as $M_1$ (respectively $M_2$).
-Then
-\[
-\begin{split}
-(X_1,M_1, X_2, M_2) \sim& P(X_1\in dx_1, M_1\in dm_1, X_2\in dx_2, M_2\in dm_2)\\
-&= P_{\alpha t}(x_1, m_1) P_{(1-\alpha)t}(x_2,m_2) dx_1dm_1dx_2dm_2
-\end{split}
-\]
 
 
-Use the transform
-\[
-\begin{pmatrix}
-X_1\\ X_2\\ M_1\\ M_2\\
-\end{pmatrix}
-\overset{
-\begin{pmatrix}
-1 & 1 & 0 &0 \\
-1 & -1 & 0 & 0 \\
-0 & 0 & 1 & 1\\
-0 & 0 & 1 & -1\\
-\end{pmatrix}
-}{\longrightarrow}
-\begin{pmatrix}
-X_1+X_2\\
-X_1 - X_2 \\
-M_1 + M_2 \\
-M_1 - M_2 \\
-\end{pmatrix}
-\triangleq
-\begin{pmatrix}
-X \\ \tX\\ \tM \\M
-\end{pmatrix}
-\]
+%\subsection{The joint distribution of Brownian motion and its quantile}\label{4-2}
+%In this section we provide the joint distribution of a Brownian motion and its quantile. When the Brownian motion is without drift,
+%i.e. $\mu = 0 $,
+%as we know the joint density function of running maximum and the end point of
+%a standard Brownian motion at time $\tau$ is
+%\[
+%P(X_\tau\in da, M_\tau\in db) =
+%\frac{2(2b-a)}{\sqrt{2\pi \tau^3}} \exp\left(-\frac{(2b-a)^2}{2\tau}\right)
+%I_{\Set{a\leq b, b\geq 0}} (a,b) da db \triangleq P_\tau(a,b)
+%\]
 
-And
-\[
-(X, \tX, M, \tM) \sim \frac{1}{4} P_{\alpha t}(\frac{x+\tx}{2},\frac{m+\tm}{2})
-P_{(1-\alpha)t}(\frac{x-\tx}{2},\frac{\tm-m}{2}) I_D,
-\]
-where $D$ is the domain $\Set{x_1\leq m_1, x_2\leq m_2, m_1 >0, m_2>0}$
+%To deal with the distribution of $\alpha$-quantile, we use two copy of
+%Brownian motion and denote corresponding value at
+%$\tau=\alpha t$ (respectively $\tau=(1-\alpha) t$) by $X_1$ (respectively $X_2$) and
+%the corresponding maximum as $M_1$ (respectively $M_2$).
+%Then
+%\[
+%\begin{split}
+%(X_1,M_1, X_2, M_2) \sim& P(X_1\in dx_1, M_1\in dm_1, X_2\in dx_2, M_2\in dm_2)\\
+%&= P_{\alpha t}(x_1, m_1) P_{(1-\alpha)t}(x_2,m_2) dx_1dm_1dx_2dm_2
+%\end{split}
+%\]
 
 
-Hence 
-\[
-\begin{split}
-&P(M_{\alpha,t}\in dm, X_t \in dx) = P(M_1-M_2\in dm, X_1+X_2\in dx) \\
-=& \frac{1}{4} \int_{-\infty}^{\infty}\int_{-\infty}^\infty
-P_{\alpha t}(\frac{x+\tx}{2},\frac{m+\tm}{2})
-P_{(1-\alpha)t}(\frac{x-\tx}{2},\frac{\tm-m}{2}) I_D d\tx d\tm\\
-= & \int_{-\infty}^{\infty}\int_{-\infty}^\infty
-P_{\alpha t}(x',m')
-P_{(1-\alpha)t}(x-x',m-m') I_{D'} dx' dm'\\
-= & \int_{\max\Set{0,m}}^{\infty} \int_{x+m-m'}^{m'}
-P_{\alpha t}(x', m') P_{(1-\alpha)t}(x-x',m'-m) dx' dm',
-\end{split}
-\]
-where domain $D' = \Set{x' \leq m', x-x'\leq m'-m, m'>0, m'-m>0}$.
+%Use the transform
+%\[
+%\begin{pmatrix}
+%X_1\\ X_2\\ M_1\\ M_2\\
+%\end{pmatrix}
+%\overset{
+%\begin{pmatrix}
+%1 & 1 & 0 &0 \\
+%1 & -1 & 0 & 0 \\
+%0 & 0 & 1 & 1\\
+%0 & 0 & 1 & -1\\
+%\end{pmatrix}
+%}{\longrightarrow}
+%\begin{pmatrix}
+%X_1+X_2\\
+%X_1 - X_2 \\
+%M_1 + M_2 \\
+%M_1 - M_2 \\
+%\end{pmatrix}
+%\triangleq
+%\begin{pmatrix}
+%X \\ \tX\\ \tM \\M
+%\end{pmatrix}
+%\]
+
+%And
+%\[
+%(X, \tX, M, \tM) \sim \frac{1}{4} P_{\alpha t}(\frac{x+\tx}{2},\frac{m+\tm}{2})
+%P_{(1-\alpha)t}(\frac{x-\tx}{2},\frac{\tm-m}{2}) I_D,
+%\]
+%where $D$ is the domain $\Set{x_1\leq m_1, x_2\leq m_2, m_1 >0, m_2>0}$
+
+
+%Hence 
+%\[
+%\begin{split}
+%&P(M_{\alpha,t}\in dm, X_t \in dx) = P(M_1-M_2\in dm, X_1+X_2\in dx) \\
+%=& \frac{1}{4} \int_{-\infty}^{\infty}\int_{-\infty}^\infty
+%P_{\alpha t}(\frac{x+\tx}{2},\frac{m+\tm}{2})
+%P_{(1-\alpha)t}(\frac{x-\tx}{2},\frac{\tm-m}{2}) I_D d\tx d\tm\\
+%= & \int_{-\infty}^{\infty}\int_{-\infty}^\infty
+%P_{\alpha t}(x',m')
+%P_{(1-\alpha)t}(x-x',m-m') I_{D'} dx' dm'\\
+%= & \int_{\max\Set{0,m}}^{\infty} \int_{x+m-m'}^{m'}
+%P_{\alpha t}(x', m') P_{(1-\alpha)t}(x-x',m'-m) dx' dm',
+%\end{split}
+%\]
+%where domain $D' = \Set{x' \leq m', x-x'\leq m'-m, m'>0, m'-m>0}$.
+
+\section{Discretization error in simulation of the quantile of a Brownian motion}
 
 \subsection{Euler scheme and random walk}\label{s:euler}
 %%Another approach to price quantile option is Monte Carlo simulation. In this method, we need to use the inverse function of the cumulative distribution function of $\alpha$-quantile. When the brownian motion is without drift, 
 
-Sometimes to get the integration of a certain stochastic process, we are only able to get the value numerically. For example, if we need to know $\int^T_{0} M(\alpha , t)dt$, usually we need to simulate a discretized version of the Brownian motion $\{B_t\}$ and then do the calculation based on the simulated sample. Obviously, the accuracy of this approximation is closely related to the length of the discretized time increment, which we denote as $\Delta t= \frac{T}{N}$. Then the questions arise: how fine should the discretization length be in order to get a satisfied approximation and whether we can quantify the accuracy of this type of simulation. 
-
-The most straightforward approach to get a simulation of $M(\alpha , T)$ is to apply the Euler approximation. In this method, we first get a sample of $\{X_{n \Delta t}\}$, $0\leq n \leq N$. Then we arrange the sample in ascending order and find the $k= \lfloor \alpha  N\rfloor$-th number as an discretized approximation of $M(\alpha , T)$. We denote $M(k, N)$ the approximation of $\alpha$-quantile under Euler scheme. The absolute error 
-\begin{equation}\label{strong}
-E\|M(\alpha, T)-M(k,N)\|_2
-\end{equation}
-is one popular measure of the quality of estimation and here $\|\;\| _2$ is the Euclidean distance. If (\ref{strong}) is $O(\Delta t^\gamma)$ as $\Delta t \downarrow 0$, this approximation is claimed to {\it converge strongly} with order $\gamma > 0 $. Strong convergency is important when fine path-wise approximation is need. Meanwhile, an approximation {\it converges weakly} with order $\beta > 0$ if, for any function $g: \bR \to \bR$ such that all derivatives up to and including $\lceil 2(\beta + 1) \rceil$ exsit, are continuous and have polynomial growth, 
+%Sometimes to get the integration of a certain stochastic process, we are only able to get the value numerically. For example, if we need to know $\int^T_{0} M(\alpha , t)dt$, usually we need to simulate a discretized version of the Brownian motion $\{B_t\}$ and then do the calculation based on the simulated sample. Obviously, the accuracy of this approximation is closely related to the length of the discretized time increment, which we denote as $\Delta t= \frac{T}{N}$. Then the questions arise: how fine should the discretization length be in order to get a satisfied approximation and whether we can quantify the accuracy of this type of simulation. 
+Euler scheme is a straight forward method to approximate the solution to a Stochastic Differential Equation(SDE). For a process $Y=\{Y(t)\}_{t\geq 0}$ satisfying the SDE 
 \begin{equation}
-|Eg(M(\alpha,T)) - Eg(M(k, N))| = O (\Delta t^\beta) 
+dY(t)= b(Y(t))dt + \sigma (Y(t))dB_t,
 \end{equation}
-as $\Delta t \downarrow 0$. Weak approximation is of importance when only an estimation of the probability distribution of $M(\alpha, T)$ is essential. 
+with initial condition $Y(0)=y$, the approximation $Y_h = \{Y_h (t)\}_{t\geq 0}$ to $Y$ in the Euler scheme is defined as
+\begin{equation}
+Y_h ((k+1)h) = Y_h (kh) + b(Y_h(kh))h + \sigma(Y_h(kh))(B_{(k+1)h}-B_{kh}),
+\end{equation}
+on the grid $h\mathbb N$, $Y_h (t) = Y_h (\lfloor t/h \rfloor h)$ off the grid and $Y_h (0) = y$.
 
-We are interested in the discretization error of Euler scheme for $\alpha$-quantile. Here we present a numerical study of the convergency of Euler scheme. 
+Obviously, the accuracy of this approximation is closely related to the length of the discretized time increment $h$. Then the questions arise: how fine should the discretized time increment be in order to get a satisfactory approximation and whether we can quantify the accuracy of this type of simulation. To address this question, the discretization error is introduced. 
+
+The discretization error at time $t$ is defined as $\varepsilon_h(t)= Y(t)-Y_h(t)$. The quality of a path-wise approximation at time $t$ can be measured by 
+\begin{equation}\label{strong-g}
+\mathbb E|Y_h(t)-Y(t)| .
+\end{equation}
+If (\ref{strong-g}) is $O(h^\gamma)$ as $h \downarrow 0$, this approximation is said to {\it converge strongly} with order $\gamma > 0 $ at time $t$. Meanwhile, an approximation {\it converges weakly} with order $\beta > 0$ at time $t$ if, for any function $g: \bR \to \bR$ such that all derivatives up to and including $\lceil 2(\beta + 1) \rceil$ exist, are continuous and have polynomial growth, 
+\begin{equation}
+|Eg(Y_h (t)) - Eg(Y(t))| = O (h^\beta) 
+\end{equation}
+as $h \downarrow 0$. Weak convergence is of importance when only an estimation of the probability distribution of $Y(t)$ is essential. 
+
+In the first step to get the Euler approximation of the $\alpha$-quantile of a Brownian motion at time $T$, we divide the time interval $[0,T]$ into $N$ equal small time intervals. Then the Euler approximation for the $\alpha$-quantile $M(\alpha, T)$ of the Brownian motion $\{X_t\}_{t\leq T}$ is the $k$-th order statistic of the set $\{X_{nh},n=0,1,\cdots,N\}$ with $k= \lfloor \alpha  N\rfloor$. Since $h$ and $N$ are related by $h=T/N$, we denote the Euler approximation of $M(\alpha, T)$ with $h=T/N$ as $M(k,N)$. Then the discretization error for the Euler approximation of the $\alpha$-quantile of a Brownian motion at time $T$ is 
+\begin{equation}
+\varepsilon_N =M(\alpha, T)-M(k,N).
+\end{equation}
+Using an identity from \cite{Wendel1960} about random walks with independent and identically distributed increments, it can be established that 
+\begin{equation}\label{eq:dpathdec}
+M(k,N)\stackrel{\rm(law)}{=}\max_{i\le k}X_{ih} + \min_{i\le N-k}X'_{ih},
+\end{equation}
+where $X'$ is an independent copy of $X$. 
+
+
+\cite{A-G-P-1995} studied the discretization error for the Euler approximation of the maximum of a Brownian motion. They found that both the strong and weak order of convergence associated with the simulation of the maximum of a Brownian motion with the Euler scheme is $1/2$. Specifically, \[E[M(1,T)-M(N,N)] = O(1/N^{1/2})\] as $N\to\infty$. In fact, \cite{Janssen2008} provided a series expansion of $E[M(1,T) -M(N,N)]$ to arbitrary order, the leading two terms of which are 
+\begin{equation}\label{eq:maxest}
+\begin{split}
+E[M(1,T]-M(N,N)]
+=& -\frac{\zeta(1/2)}{\sqrt{2\pi}}\sigma\sqrt{T/N} 
+ -\frac{2g(\mu\sqrt{T}/\sigma)-\mu\sqrt{T}/ \sigma}{4N}\sigma\sqrt{T} \\
+ &+O(\sqrt{T}/N^{3/2}),
+\end{split}
+\end{equation}
+where 
+\[
+\zeta(1/2) \approx -3.92264613,
+\]
+and 
+\begin{equation}
+g(x)=x \Phi(x) + \frac{1}{\sqrt{2\pi}} e^{-{x^2 /2 }}.
+\end{equation}
+
+
+
+Since the maximum of a Brownian motion is a special case of the quantile of a Brownian motion, we are interested to generalize the results in \cite{A-G-P-1995} on the simulation of the extreme of a Brownian motion to its quantiles. In next section, we provide a numerical study to shed light on the order of convergence of the Euler approximation of $\alpha$-quantiles of a Brownian motion.  
+
+%The most straightforward approach to get a simulation of $M(\alpha , T)$ is to apply the Euler approximation. 
+
+
+%We are interested in the strong order of the convergence associated with the Euler scheme for an $\alpha$-quantile of a Brownian motion. Here we present a numerical study of the strong order of convergence. 
 %Since usually the knowledge of distribution is already enough to solve many questions, we focus on the weak convergency. 
-For our one dimensional problem, the strong convergence measure can be restated as 
-\begin{equation}
-E|M(\alpha, T)-M(k,N)|.
-\end{equation}
-Because the lack of theoretical study on the discretized quantile, we are not able to give a theoretical conclusion on the strong convergency. Instead, here we present a numerical study of the strong convergency. 
+%For our one dimensional problem, the strong convergence measure can be restated as 
 
-The most challenging part of the design of this experiment is that the samplings of continuous $\alpha$-quantile $M(\alpha, T)$ and the discretized $\alpha$-quantile obtained under Euler scheme $M(k,N)$ should share the same path. The reason is because the discretized error is an expectation. Therefore the traditional method to get samples for continuous random variables, Monte Carlo simulation, is not helpful any more. To address this phenomenon, we use a much finer Euler approximation, in our example $\Delta t = \frac{1}{2^{27}}$, as an approximation of the continuous  $\alpha$-quantile $M(\alpha, T)$. 
+%Because the lack of theoretical study on the discretized quantile, we are not able to give a theoretical conclusion on the strong convergency. Instead, here we present a numerical study of the strong convergency. 
+
+
+\subsection{Strong order of convergence}\label{strong-order-convergence}
+Because the strong order is related with the expectation of the absolute value of the discretization error, the samplings of the continuous $\alpha$-quantile $M(\alpha, T)$ and the discretized $\alpha$-quantile $M(k,N)$ obtained under Euler scheme should share the same path. Thus we cannot simulate $M(\alpha, T)$ directly using (\ref{eq:Dassios}). Instead, we use a much finer Euler approximation as an approximation of the continuous $\alpha$-quantile $M(\alpha, T)$. 
 
 The parameter setting is : 
 \begin{equation}
- N = 2^b , 2^{b+1} , ... 2^{d} ; X_0 = 0; 
-\alpha_j =  \frac{1}{2} + \frac{j}{2^b} , j = 0, 1 , 2..., 2^{b-1}
+ N = 2^b , 2^{b+1} , ... 2^{d} ; 
+\alpha_j =  \frac{1}{2} + \frac{j}{2^b} , j = 0, 1 , 2..., 2^{b-1}.
 \end{equation}
 
 The algorithm: 
 \begin{enumerate}[1.]
 \item Generate $2^{d}$ normal random sample $\Set{x_i}$ 
-  with mean $\tmu=\mu/2^d$ ,
-  $\tsigma = \sigma \sqrt {\frac{T}{2^b}}$ ,
+  with mean $\tmu=\mu/2^d$,
+  and standard deviation $\tsigma = \sigma \sqrt {{T}/{2^d}}$,
   add them up according to time and record them as
-  $X_k = \sum_{1\leq i \leq k} x_i$ starting with $X_0$.
+  $X_m = \sum_{1\leq i \leq m} x_i$ starting with $X_0$.
 \item Calculate the $\alpha_j$ quantiles 
   $M_{j,s}\triangleq M_{\alpha_j 2^s,2^s}$ for sequence 
-  $\Set{X_k|k=i 2^{d-s}, 1\leq i\leq 2^{s}}$, where $b\leq s \leq d$. 
-\item Use $M_{j,d}$ as the continuous quantiles $M(\alpha_j , T)$.
+  \[
+  \Set{X_m|m=i 2^{d-s}, 1\leq i\leq 2^{s}},\quad \text{where }b\leq s \leq d.\] 
+\item Use $M_{j,d}$ as the continuous quantiles $M(\alpha_j,T)$.
 \item Repeat the above for $L$ times,
-  get a sequence of data $\Set{M_{j,s}^{(l)}}_{1\leq l\leq L}$
-\item Calculate the mean of errors for $s < d$ using:
+  get replicates $\Set{M_{j,s}^{(l)},{1\leq l\leq L}}$.
+\item Approximate the expectation of the absolute discretization error for $s < d$ using:
 \begin{align}
-Err^{abs}_{j,s} &= \frac{1}{L}\sum_{1\leq l \leq L} \abs{M_{j,s}^{(l)}- M_{j,d}^{(l)}}
+Err^{abs}_{j,s} &= \frac{1}{L}\sum_{1\leq l \leq L} \abs{M_{j,s}^{(l)}- M_{j,d}^{(l)}}.
 \end{align}
 \end{enumerate}
 
-We realize this algorithm for $d=27$,$b=6$,$\mu=0$, $\sigma^2=1$, $T=1$,$X_0=0$ and generate more than 2000 sampled paths. The results are showed in Figure \ref{f:ab}. We are dealing with $\mu = 0$ currently. By the symmetric effect of a Brownian motion without drift. We only examine $\alpha$-quantiles where $\alpha$ vary from $[50\%,100\%]$. %It is well known that the convergence rate of Euler scheme for Brownian motion is $1$. 
+We implement this algorithm for $d=27$, $b=6$, $\mu=0$, $\sigma=1$, $T=1$, $X_0=0$ and generate $L=6455$ replicates. The results are shown in Figure \ref{f:ab}. Since we are dealing with $\mu = 0$ currently, by the symmetric effect of a Brownian motion without drift, we only examine $\alpha$-quantiles where $\alpha$ vary from $[50\%,100\%]$. %It is well known that the convergence rate of Euler scheme for Brownian motion is $1$. 
 
-In \cite{Janssen2008}, we find that the strong convergence rate of Euler Scheme for the maximum of a Brownian motion is $1/2$. Then it seems reasonable to guess that the convergence rate for $\alpha$-quantiles of Brownian motion decrease from $1$ to ${1/2}$ as the value of $\alpha$ vary from $100\%$ to $50\%$. However, numerical results shows that the convergence rate for $\alpha$-quantile do not work that way. Figure \ref{f:ab} shows that there exists a big difference between the convergence patterns for the maximum of a Brownian motion and other $\alpha$-quantiles of a Brownian motion. On the other hand, the convergence patterns for different $\alpha$-quantiles are quite similar when $\alpha$ varies from $[50\%, 100\%)$. 
+In \cite{Janssen2008}, we find that the strong order of convergence of the Euler Scheme for the maximum of a Brownian motion is $1/2$. Then it seems reasonable to guess that the order of convergence for $\alpha$-quantiles of Brownian motion decrease from $1$ to ${1/2}$ as the value of $\alpha$ vary from $100\%$ to $50\%$. However, numerical results show that the convergence order for $\alpha$-quantile do not work that way. Figure \ref{f:ab} shows that there exists a big difference between the strong order of convergence for the maximum of a Brownian motion and that for other $\alpha$-quantile of a Brownian motion. On the other hand, the strong order of convergence for different $\alpha$-quantiles are quite similar when $\alpha$ varies from $[50\%, 100\%)$. 
 
-In Figure \ref{f:ab}, the horizontal index $s$ means that the result is obtained on a path in which we divide the whole path on time interval $[0,T]$ into $2^{s}$ equal small intervals. Then to examine the convergence patterns for the increase of denseness on a apple to apple case, we should take logarithm of the errors. The similarity of the convergence patterns of $\alpha$-quantiles when $\alpha$ is between $[50\%, 100\%)$ is more obvious after we take the logarithm. 
+Suppose the expectation of the absolute discretization error is $O(1/N^\lambda)$, then we get
+\begin{equation}\label{error-N-sim}
+E|\varepsilon_N| \sim C/N^\lambda,
+\end{equation}
+where $C$ is some constant. Considering in our simulation $N$ is expressed as $N = 2^s$, take logarithm to both sides of (\ref{error-N-sim}) and with easy math we get
+\begin{equation}
+\frac{\log E|\varepsilon_{2^s}|}{\log 2} = \frac{C}{\log 2} -\lambda s
+\end{equation}
 
-In Figure \ref{f:lab}, you can see that except for the maximum, i.e. the $100\%$-quantile, the convergence rates of other $\alpha$-quantiles of Brownian motion are close to each other. This is reflected as the lines parallel to each other. Figure \ref{f:ratio} is the convergence rate for different $\alpha$-quantiles. You can see that the convergence rate for $100\%$-quantile is close to ${1/2}$, while convergence rates for other quantile are centered on $0.75$.  
+The similarity of the order of convergence for $\alpha$-quantiles when $\alpha$ is between $[50\%, 100\%)$ is more obvious after we take the logarithm. In Figure \ref{f:lab}, you can see that except for the maximum, i.e., the $100\%$-quantile, the strong order of  convergence for other $\alpha$-quantiles of Brownian motion are close to each other. This is expressed as the lines parallel to each other. Figure \ref{f:ratio} shows the strong order of convergence for different $\alpha$-quantiles. You can see that the strong order of convergence for $100\%$-quantile is close to ${1/2}$, while strong order of convergence for other quantile are around $0.76$.  
 
 %sim=6455 mu=0
 \begin{figure}[p]
    %\centering
    \includegraphics[scale=0.8]{nout_7_27a.pdf}
-   \caption{Absolute error for drift $\mu=0$}
+   \caption{Expectation of the absolute discretization error for selected $\alpha$-quantiles ($\alpha = 0.5, 0.5625, \cdots, 1$) using the Euler scheme with $N = 2^s$ ($7\le s \le 18$). }
 \label{f:ab}
 \end{figure}
  
  \begin{figure}[p]
     %\centering
    \includegraphics[scale=0.8]{nout_7_27alog.pdf}
-   \caption{Logarithm of error for drift $\mu=0$} 
+   \caption{Logarithm of the absolute discretization error for selected $\alpha$-quantiles ($\alpha = 0.5, 0.5625, \cdots, 1$) using the Euler scheme with $N = 2^s$ ($7\le s \le 18$)} 
    \label{f:lab}
 \end{figure}
  
  \begin{figure}[p]
    %\centering
    \includegraphics[scale=0.8]{nout_7_27arato.pdf} % requires the graphicx packagem 
-   \caption{regression result of convergence rate for drift $\mu=0$}
+   \caption{The strong order of convergence for selected $\alpha$-quantiles ($\alpha = 0.5, 0.5625, \cdots, 1$) using the Euler scheme with $N = 2^s$ ($7\le s \le 18$)}
    \label{f:ratio}
 \end{figure}
 
 %sim=6455 mu=0.4
-\begin{figure}[p]
+%\begin{figure}[p]
    %\centering
-   \includegraphics[scale=0.8]{nout_7_27_1_04a.pdf}
-   \caption{Absolute error for drift $\mu=0.4$}
-\label{f:ab}
-\end{figure}
+ %  \includegraphics[scale=0.8]{nout_7_27_1_04a.pdf}
+  % \caption{Absolute error for drift $\mu=0.4$}
+%\label{f:ab}
+%\end{figure}
  
- \begin{figure}[p]
+ %\begin{figure}[p]
     %\centering
-   \includegraphics[scale=0.8]{nout_7_27_1_04alog.pdf}
-   \caption{Logarithm of error for drift $\mu=0.4$} 
-   \label{f:lab}
-\end{figure}
+  % \includegraphics[scale=0.8]{nout_7_27_1_04alog.pdf}
+   %\caption{Logarithm of error for drift $\mu=0.4$} 
+   %\label{f:lab}
+%\end{figure}
  
- \begin{figure}[p]
+% \begin{figure}[p]
    %\centering
-   \includegraphics[scale=0.8]{nout_7_27_1_04arato.pdf} % requires the graphicx packagem 
-   \caption{regression result of convergence rate for drift $\mu=0.4$}
-   \label{f:ratio}
-\end{figure}
+ %  \includegraphics[scale=0.8]{nout_7_27_1_04arato.pdf} % requires the graphicx packagem 
+  % \caption{regression result of convergence rate for drift $\mu=0.4$}
+  % \label{f:ratio}
+%\end{figure}
 
 %sim=3796 mu=1.5
-\begin{figure}[p]
+%\begin{figure}[p]
    %\centering
-   \includegraphics[scale=0.8]{nout_7_27_1_15a.pdf}
-   \caption{Absolute error for drift $\mu=1.5$}
-\label{f:ab}
-\end{figure}
+ %  \includegraphics[scale=0.8]{nout_7_27_1_15a.pdf}
+  % \caption{Absolute error for drift $\mu=1.5$}
+%\label{f:ab}
+%\end{figure}
  
- \begin{figure}[p]
+ %\begin{figure}[p]
     %\centering
-   \includegraphics[scale=0.8]{nout_7_27_1_15alog.pdf}
-   \caption{Logarithm of error for drift $\mu=1.5$} 
-   \label{f:lab}
-\end{figure}
+  % \includegraphics[scale=0.8]{nout_7_27_1_15alog.pdf}
+   %\caption{Logarithm of error for drift $\mu=1.5$} 
+   %\label{f:lab}
+%\end{figure}
  
- \begin{figure}[p]
+% \begin{figure}[p]
    %\centering
-   \includegraphics[scale=0.8]{nout_7_27_1_15arato.pdf} % requires the graphicx packagem 
-   \caption{regression result of convergence rate for drift $\mu=1.5$}
-   \label{f:ratio}
-\end{figure}
+ %  \includegraphics[scale=0.8]{nout_7_27_1_15arato.pdf} % requires the graphicx packagem 
+  % \caption{regression result of convergence rate for drift $\mu=1.5$}
+   %\label{f:ratio}
+%\end{figure}
 
-\subsection{An estimate of week discretization error}
+\subsection{An analysis of the discretization error}
 \label{sec:de}
 
-Let $X_k$ be a random walk (assume $X_0=0$)
-with i.i.d increment, i.e.
-$\Delta X_k = X_k -  X_{k-1}$ is i.i.d.
-Define the ordered statistics $M_{k,n}$ be the $k$-th smallest value in
-$\Set{X_i}_{i=0}^n$.
-Under this setting, clearly, $M_{0,n} = \inf_{0\leq i\leq n}X_i$
-and $M_{n,n} = \sup_{0\leq i\leq n}X_i$
-Define
-\[X'_i = X_{i+k}-X_k\]
-for fixed $k, n$.
+%Let $X_k$ be a random walk (assume $X_0=0$)
+%with i.i.d increment, i.e.
+%$\Delta X_k = X_k -  X_{k-1}$ is i.i.d.
+%Define the ordered statistics $M_{k,n}$ be the $k$-th smallest value in
+%$\Set{X_i}_{i=0}^n$.
+%Under this setting, clearly, $M_{0,n} = \inf_{0\leq i\leq n}X_i$
+%and $M_{n,n} = \sup_{0\leq i\leq n}X_i$
+%Define
+%\[X'_i = X_{i+k}-X_k\]
+%for fixed $k, n$.
 
-In \cite{Wendel1960}, an identity about random walk with
-i.i.d increment was derived:
-\begin{equation}\label{eq:dpathdec}
-(M_{k,n}, X_n) \eqlaw (\sup_{i\leq k} X_i +\inf_{i\leq n-k} X'_i, X_n).
-\end{equation}
+%In \cite{Wendel1960}, an identity about random walk with
+%i.i.d increment was derived:
+%\begin{equation}\label{eq:dpathdec}
+%(M_{k,n}, X_n) \eqlaw (\sup_{i\leq k} X_i +\inf_{i\leq n-k} X'_i, X_n).
+%\end{equation}
 
 %In \cite{Chaumont1999}, the author provided a combinatory treatment.
 %He constructed a explicit path transform for $S$ to $\tS$, such that
@@ -882,63 +940,66 @@ i.i.d increment was derived:
 %Here $\tS$ has same distribution with $S$ and each path $S$
 % one-one correspondence to $\tS$.
 
-By using path transform, in \cite{Chaumont1999}, they proved
-following continuous version of path decomposition
-\begin{equation}\label{eq:cpathdec}
-(M_{\alpha,T}, X_T) \eqlaw (\sup_{t\leq \alpha{T}} X_t +\inf_{t \leq (1-\alpha)T} X'_t, X_T),
-\end{equation}
-where
-\[
-X'_t = X_{\alpha T+t} - X_{\alpha_T}.
-\]
+%By using path transform, in \cite{Chaumont1999}, they proved
+%following continuous version of path decomposition
+%\begin{equation}\label{eq:cpathdec}
+%(M_{\alpha,T}, X_T) \eqlaw (\sup_{t\leq \alpha{T}} X_t +\inf_{t \leq (1-\alpha)T} X'_t, X_T),
+%\end{equation}
+%where
+%\[
+%X'_t = X_{\alpha T+t} - X_{\alpha_T}.
+%\]
 
-For the Brownian motion case, this formula were proved in many different ways
-and original due to \cite{Dassios1995}.
+%For the Brownian motion case, this formula were proved in many different ways
+%and original due to \cite{Dassios1995}.
 
 
-\cite{Janssen2008} provided an estimate of the difference of expectations
-between the maximum of a Brownian motion and that associated with Ganssian random walks.
-Since we just give a really rough estimate, we only list the first two terms.
-For $W_t$ a Brownian motion with drift $\mu$ and variance $1$ on time interval $[0,1]$, that is $W_t = \mu t + B_t$, where $B_t$ is a standard Brownian motion, we can get
-\begin{equation}\label{eq:est1}
-E\max_{0\leq t \leq 1} W(t) - E\max_{n=0,\cdots, N}W(n/N)
-= -\frac{\zeta(1/2)}{\sqrt{2\pi N}}-\frac{2g(1)-\mu}{4N} + O(1/N^{3/2}),
-\end{equation}
-where
-\[
-g(t) = \mu \Phi(\mu \sqrt{t}) + \frac{1}{\sqrt{2\pi t}} e^{-\frac{1}{2}\mu^2 t}.
-\]
-\[
-\zeta(1/2) \approx -3.92264613.
-\]
-\def\tW{\widetilde{W}}
+%\cite{Janssen2008} provided an estimate of the difference of expectations
+%between the maximum of a Brownian motion and that associated with Gaussian random walks.
+%Since we just give a really rough estimate, we only list the first two terms.
+%For $W_t$ a Brownian motion with drift $\mu$ and variance $1$ on time interval $[0,1]$, that is $W_t = \mu t + B_t$, where $B_t$ is a standard Brownian motion, from \cite{Janssen2008} we get
+%\begin{equation}\label{eq:est1}
+%E\max_{0\leq t \leq 1} W(t) - E\max_{n=0,\cdots, N}W(n/N)
+%= -\frac{\zeta(1/2)}{\sqrt{2\pi N}}-\frac{2g(1)-\mu}{4N} + O(1/N^{3/2}),
+%\end{equation}
+%where
+%\[
+%g(t) = \mu \Phi(\mu \sqrt{t}) + \frac{1}{\sqrt{2\pi t}} e^{-\frac{1}{2}\mu^2 t},
+%\]
+%and
+%\[
+%\zeta(1/2) \approx -3.92264613.
+%\]
+%\def\tW{\widetilde{W}}
 
-For general Brownian $\tW(t)$ motion on time interval $[0,T]$ with drift $\tmu$, variance $\tsigma$,
-we use following transform
-\begin{align*}
-\tW_t &= \tsigma \sqrt{T}W_{t/T} = \tsigma \sqrt{T} \mu t/T
-+ \sqrt{T}\tsigma B_{t/T}\\
-\mu &= \tmu \sqrt{T}/\tsigma
-\end{align*}
+%For general Brownian $\tW(t)$ motion on time interval $[0,T]$ with drift $\tmu$, variance $\tsigma$,
+%we use following transform
+%\begin{align*}
+%\tW_t &= \tsigma \sqrt{T}W_{t/T} = \tsigma \sqrt{T} \mu t/T
+%+ \sqrt{T}\tsigma B_{t/T},\\
+%\mu &= \tmu \sqrt{T}/\tsigma.
+%\end{align*}
 
-\def\tg{\widetilde{g}}
-We denote
-\begin{equation}
-\tg(\mu)=\mu \Phi(\mu) + \frac{1}{\sqrt{2\pi}} e^{-{1/2}\mu^2 }
-\end{equation}
+%\def\tg{\widetilde{g}}
+%We denote
+%\begin{equation}
+%\tg(\mu)=\mu \Phi(\mu) + \frac{1}{\sqrt{2\pi}} e^{-{1/2}\mu^2 }.
+%\end{equation}
 
-We derive the following formula:
-\begin{equation}\label{eq:maxest}
-\begin{split}
-&E\max_{0\leq t\leq T} \tW(t) - E \max_{0\leq n \leq N} \tW(nT/N)\\ 
-= & -\frac{\zeta(1/2)}{\sqrt{2\pi}}\tsigma \sqrt{T/N}
- -\frac{2\tg(\mu)-\tmu\sqrt{T} / \tsigma}{4N}\tsigma\sqrt{T} +
-O(\sqrt{T}/N^{3/2})
-\end{split}
-\end{equation}
+%We derive the following formula:
+%\begin{equation}\label{eq:maxest}
+%\begin{split}
+%&E\max_{0\leq t\leq T} \tW(t) - E \max_{0\leq n \leq N} \tW(nT/N)\\ 
+%= & -\frac{\zeta(1/2)}{\sqrt{2\pi}}\tsigma \sqrt{T/N}
+% -\frac{2\tg(\mu)-\tmu\sqrt{T} / \tsigma}{4N}\tsigma\sqrt{T} +
+%O(\sqrt{T}/N^{3/2}).
+%\end{split}
+%\end{equation}
 
-Now combine $(\ref{eq:cpathdec})$ $(\ref{eq:dpathdec})$ and $(\ref{eq:maxest})$, for $0 < \alpha < 1$,
-we get an very rough estimate of the approximation order:
+In this section we provide a theoretical analysis about the expectation of the discretization error of the Euler approximation for $\alpha$-quantiles. We find that the leading order of the expectation of the discretization error $E\varepsilon_N = E (M_{\alpha,T}) - \E (M_{k,N})$ is $1$ for $0 < \alpha < 1$. That it the expectation of the dissertation error is $O(1/N^{-1}$ when $0 < \alpha <1$. 
+
+Combine $(\ref{eq:Dassios})$ $(\ref{eq:dpathdec})$ and $(\ref{eq:maxest})$, for $0 < \alpha < 1$,
+we get an estimate of the expectation of the discretization error:
 \allowdisplaybreaks
 \begin{align*}
 \E (M_{\alpha,T}) - \E (M_{k,N})
@@ -948,45 +1009,45 @@ we get an very rough estimate of the approximation order:
 -  \sup_{i\leq k} X_i-\inf_{i\leq N-k} X'_i} \\
 = &  \EE{\sup_{t\leq \alpha{T}} X_t - \sup_{i\leq k} X_i} +
 \EE{\inf_{t \leq (1-\alpha)T} X'_t-\inf_{i\leq N-k} X'_i}\\
-=& -\frac{\zeta(1/2)}{\sqrt{2\pi}}\tsigma \sqrt{\frac{\alpha T}{\alpha N}} - \frac{2\tg(\mu_1)-\mu_1}{4N}\tsigma\sqrt{\alpha T} +O(1/N^\frac{3}{2}) \\
-&-\left(\frac{\zeta(1/2)}{\sqrt{2\pi}}\tsigma \sqrt{\frac{(1-\alpha)T}{(1-\alpha)N}} - \frac{2\tg(\mu_2) - \mu_2}{4N}\tsigma \sqrt{(1-\alpha)T} + O(1/N^\frac{3}{2})\right) \\
-=& -\frac{\zeta(1/2) \tsigma}{\sqrt{2\pi}}\left(\sqrt{T/\alpha N}
+=& -\frac{\zeta(1/2)}{\sqrt{2\pi}}\sigma \sqrt{\frac{\alpha T}{\alpha N}} - \frac{2g(\mu_1)-\mu_1}{4N}\sigma\sqrt{\alpha T} +O(1/N^{{3}/{2}}) \\
+&-\left(\frac{\zeta(1/2)}{\sqrt{2\pi}}\sigma \sqrt{\frac{(1-\alpha)T}{(1-\alpha)N}} - \frac{2g(\mu_2) - \mu_2}{4N}\sigma \sqrt{(1-\alpha)T} + O(1/N^{{3}/{2}})\right) \\
+=& -\frac{\zeta(1/2) \sigma}{\sqrt{2\pi}}\left(\sqrt{T/\alpha N}
 \sqrt{\alpha} - \sqrt{T/(1-\alpha)N}\sqrt{1-\alpha}\right) \\
-& - \frac{\tsigma\sqrt{T}}{4N}\left((2\tg(\mu_1)-\mu_1)\sqrt\alpha - (2\tg(\mu_2)-\mu_2)\sqrt{(1-\alpha)}\right) \\
-&+ O(1/N^\frac{3}{2}) \\
-=&- \frac{\tsigma\sqrt{T}}{4N}\left((2\tg(\mu_1)-\mu_1)\sqrt\alpha - (2\tg(\mu_2)-\mu_2)\sqrt{(1-\alpha)}\right) \\
-& + O(1/N^{\frac{3}{2}}),
+& - \frac{\sigma\sqrt{T}}{4N}\left((2g(\mu_1)-\mu_1)\sqrt\alpha - (2g(\mu_2)-\mu_2)\sqrt{(1-\alpha)}\right) \\
+&+ O(1/N^{{3}/{2}}) \\
+=&- \frac{\sigma\sqrt{T}}{4N}\left((2g(\mu_1)-\mu_1)\sqrt\alpha - (2g(\mu_2)-\mu_2)\sqrt{(1-\alpha)}\right) \\
+& + O(1/N^{{3}/{2}}),
 \end{align*}
-where $k = \alpha N$, $\mu_1 =\tmu\sqrt{\alpha T}/\tsigma$, and $\mu_2 =\tmu\sqrt{(1-\alpha)T}/\tsigma$.
-The third last equality holds by view $\inf_{t\leq (1-\alpha)T} S'_t$ as
-$-\max_{t\leq (1-\alpha)T} (-S'_t)$.
+where $k = \alpha N$, $\mu_1 =\mu\sqrt{\alpha T}/\sigma$, and $\mu_2 =\mu\sqrt{(1-\alpha)T}/\sigma$.
+The third last equality holds by view $\displaystyle\inf_{t\leq (1-\alpha)T} S'_t$ as
+$\displaystyle-\max_{t\leq (1-\alpha)T} (-S'_t)$.
 
-This proof shows that the convergence order are all $1$ when $0<\alpha < 1$. When $\alpha = 0$ or $\alpha = 1$, the convergence rate is ${1/2}$. This partially explains the phenomenon related with the strong convergence rate we discussed in section \ref{s:euler}.   %If $\alpha=1/2$ and the Brownian motion does not have  drift ($\mu=0$), it is easy to see (by noting that $\E M_{1/2,T} = \E -M_{1/2,T}$) $\E M_{1/2,T} = \E M_{k,N} = 0$.When the Brownian motion has drift, the order becomes $1$.
+This proof shows that the expectation of the discretization error is $O(N^{-1})$ when $0<\alpha < 1$. When $\alpha = 0$ or $\alpha = 1$, the expectation of the discretization error is $O(N^{1/2})$. This partially explains the phenomenon related with the strong order of convergence we discussed in section \ref{s:euler}.   %If $\alpha=1/2$ and the Brownian motion does not have  drift ($\mu=0$), it is easy to see (by noting that $\E M_{1/2,T} = \E -M_{1/2,T}$) $\E M_{1/2,T} = \E M_{k,N} = 0$.When the Brownian motion has drift, the order becomes $1$.
 
-Using the same algorithm in section \ref{s:euler},
-we have done a simulation to examine the above claim. 
-Here we first restate the parameter setting and algorithm.
+Using the same algorithm in section \ref{strong-order-convergence}, we have done a simulation to examine the above claim. 
+Here we restate the parameter setting and algorithm.
 
 The parameter setting is : 
 \begin{equation}
-N = 2^b , 2^{b+1} , ... 2^{d} ;
-\alpha_j =  \frac{1}{2} + \frac{j}{2^b} , j = 0, 1 , 2..., 2^{b-1}
+N = 2^b, 2^{b+1}, ... 2^{d};
+\alpha_j =  \frac{1}{2} + \frac{j}{2^b}, j = 0, 1, 2..., 2^{b-1}.
 \end{equation}
 
 The algorithm: 
 \begin{enumerate}[1.]
 \item Generate $2^{d}$ normal random sample $\Set{x_i}$ 
-  with mean $\tmu=\mu/2^d$ ,
-  $\tsigma = \sigma \sqrt {\frac{T}{2^b}}$,
+  with mean $\tmu=\mu/2^d$,
+  and standard deviation $\tsigma = \sigma \sqrt {{T}/{2^d}}$,
   add them up according to time and record them as
-  $X_k = \sum_{1\leq i \leq k} x_i$ with $X_1=X_0+x_1$.
+  $X_m = \sum_{1\leq i \leq m} x_i$ starting with $X_0$.
 \item Calculate the $\alpha_j$ quantiles 
   $M_{j,s}\triangleq M_{\alpha_j 2^s,2^s}$ for sequence 
-  $\Set{X_k|k=i 2^{d-s}, 1\leq i\leq 2^{s}}$, where $b\leq s \leq d$. 
-\item Use $M_{j,d}$ as the continuous quantiles $M(\alpha_j , T)$.
+  \[
+  \Set{X_m|m=i 2^{d-s}, 1\leq i\leq 2^{s}},\quad \text{where }b\leq s \leq d.\] 
+\item Use $M_{j,d}$ as the continuous quantiles $M(\alpha_j,T)$.
 \item Repeat the above for $L$ times,
-  get a sequence of data $\Set{M_{j,s}^{(l)}}_{1\leq l\leq L}$
-\item Calculate the mean of errors for $s < d$:
+  get replicates $\Set{M_{j,s}^{(l)},{1\leq l\leq L}}$.
+\item Approximate the expectation of the discretization error for $s < d$ using:
 \begin{align}
 Err_{j,s} &= {\frac{1}{L}\left(\sum_{1\leq l \leq L} M_{j,d}^{(l)} - M_{j,s}^{(l)}\right)}
 \end{align}
@@ -998,68 +1059,68 @@ We realize this algorithm for $d=27$, $b=6$, $\mu = 0$, $\sigma^2=1$, $T=1$, $X_
 \begin{figure}[p]
    \centering
    \includegraphics[scale=0.8]{nout_7_27.pdf} % requires the graphicx package
-   \caption{ Errors for drift $\mu=0$ }
+   \caption{Expectation of the discretization error for selected $\alpha$-quantile ($\alpha = 0.5, 0.5625, \cdots, 1$) using the Euler scheme with $N = 2^s$ ($7\le s \le 18$) }
    \label{f:err}
 \end{figure}
 
 \begin{figure}[p]
    \centering
    \includegraphics[scale=0.8]{nout_7_27log.pdf} % requires the graphicx package
-   \caption{ Logarithm of Errors for drift $\mu=0$}
+   \caption{Logarithm of the discretization error for selected $\alpha$-quantile ($\alpha = 0.5, 0.5625, \cdots, 1$) using the Euler scheme with $N = 2^s$ ($7\le s \le 18$)}
    \label{f:lerr}
 \end{figure}
 
 \begin{figure}[p]
    \centering
    \includegraphics[scale=0.8]{nout_7_27rato.pdf} % requires the graphicx package
-   \caption{ Convergence rate for drift $\mu=0$}
+   \caption{The order of convergence for selected $\alpha$-quantile ($\alpha = 0.5, 0.5625, \cdots, 1$) using the Euler scheme with $N = 2^s$ ($7\le s \le 18$)}
    \label{f:rate}
 \end{figure}
 
 
 %% Drift 0.4, sim=8000
-\begin{figure}[p]
-   \centering
-   \includegraphics[scale=0.8]{nout_7_27_1_04.pdf} % requires the graphicx package
-   \caption{ Errors for drift $\mu=0.4$ }
-   \label{f:err}
-\end{figure}
+%\begin{figure}[p]
+   %\centering
+   %\includegraphics[scale=0.8]{nout_7_27_1_04.pdf} % requires the graphicx package
+   %\caption{ Errors for drift $\mu=0.4$ }
+   %\label{f:err}
+%\end{figure}
 
-\begin{figure}[p]
-   \centering
-   \includegraphics[scale=0.8]{nout_7_27_1_04log.pdf} % requires the graphicx package
-   \caption{ Logarithm of Errors for drift $\mu=0.4$}
-   \label{f:lerr}
-\end{figure}
+%\begin{figure}[p]
+  % \centering
+   %\includegraphics[scale=0.8]{nout_7_27_1_04log.pdf} % requires the graphicx package
+   %\caption{ Logarithm of Errors for drift $\mu=0.4$}
+   %\label{f:lerr}
+%\end{figure}
 
-\begin{figure}[p]
-   \centering
-   \includegraphics[scale=0.8]{nout_7_27_1_04rato.pdf} % requires the graphicx package
-   \caption{ Convergence rate for drift $\mu=0.4$}
-   \label{f:rate}
-\end{figure}
+%\begin{figure}[p]
+ %  \centering
+  % \includegraphics[scale=0.8]{nout_7_27_1_04rato.pdf} % requires the graphicx package
+   %\caption{ Convergence rate for drift $\mu=0.4$}
+   %\label{f:rate}
+%\end{figure}
 
 %% Drift 1.5, sim=3796
-\begin{figure}[p]
-   \centering
-   \includegraphics[scale=0.8]{nout_7_27_1_15.pdf} % requires the graphicx package
-   \caption{ Errors for drift $\mu=1.5$ }
-   \label{f:err}
-\end{figure}
+%\begin{figure}[p]
+ %  \centering
+  % \includegraphics[scale=0.8]{nout_7_27_1_15.pdf} % requires the graphicx package
+  % \caption{ Errors for drift $\mu=1.5$ }
+   %\label{f:err}
+%\end{figure}
 
-\begin{figure}[p]
-   \centering
-   \includegraphics[scale=0.8]{nout_7_27_1_15log.pdf} % requires the graphicx package
-   \caption{ Logarithm of Errors for drift $\mu=1.5$}
-   \label{f:lerr}
-\end{figure}
+%\begin{figure}[p]
+ %  \centering
+  % \includegraphics[scale=0.8]{nout_7_27_1_15log.pdf} % requires the graphicx package
+   %\caption{ Logarithm of Errors for drift $\mu=1.5$}
+   %\label{f:lerr}
+%\end{figure}
 
-\begin{figure}[p]
-   \centering
-   \includegraphics[scale=0.8]{nout_7_27_1_15rato.pdf} % requires the graphicx package
-   \caption{ Convergence rate for drift $\mu=1.5$}
-   \label{f:rate}
-\end{figure}
+%\begin{figure}[p]
+ %  \centering
+  % \includegraphics[scale=0.8]{nout_7_27_1_15rato.pdf} % requires the graphicx package
+  % \caption{ Convergence rate for drift $\mu=1.5$}
+  % \label{f:rate}
+%\end{figure}
 
 
 %Now, suppose that $f$ is an monotone Lipschitz continuous function.Without loss of generality, assume 
@@ -1084,58 +1145,392 @@ We realize this algorithm for $d=27$, $b=6$, $\mu = 0$, $\sigma^2=1$, $T=1$, $X_
 
 %By this, we can say the convergence rate of $\alpha$-quantile European-style options at least 1/2.
 
-\section{$\alpha$-quantile option}
-\subsection{The advantage of $\alpha$-quantile options}
-$\alpha$-quantile options, also known as quantile options, are a type of options whose payoff are functions of the quantiles of underlying asset price process. Firstly proposed in \cite{Miura}, the payoff function at maturity for a European-style $\alpha$-quantile call option with strike $K$ is 
+\section{Quantile option}
+\subsection{The advantage of quantile options}\label{4-3}
+$\alpha$-quantile options, also known as quantile options, are a type of options whose payoff are functions of the quantiles of underlying asset price process. Firstly proposed in \cite{Miura}, the payoff function at maturity for a European-style $\alpha$-quantile call option with strike price $K$ and stock price at innitiation $S_0$ is 
 \begin{equation}
-M(\alpha,T)-K,
+(S_0e^{M(\alpha,T)}-K)^+,
 \end{equation}
 and the payoff for a put option of this type is 
 \begin{equation}
-K-M(\alpha,T).
+(K-S_0 e^{M(\alpha,T)})^+.
 \end{equation}
 
+As we discussed, the maximum and minimum of a process can be viewed as the extreme cases of the quantile when $\alpha=1$ and $\alpha=0$. Thus $\alpha$-quantile options are closely related to the lookback options. However, $\alpha$-quantile options have some advantages to lookback options. 
 
-As we discussed before, lookback option is a path-dependent option with payoff calculated with the maximum or minimum price of the underlying asset achieved during the life of the option. For example, a fixed strike lookback call option get the highest value obtained within the option's lifetime. In this case, to the holder, it can be viewed as a protection against large drop of stock price. This can be regarded as a method to deal with the unfavorable movement of a particular stock, such as the release of a prolonged lawsuit which may have a strong negative effect on the stock price. On the other side, lookback put option provides an insurance against large rises. But these characters also makes lookback options too expensive. A $\alpha$-quantile option is one product that overcomes this shortcoming of lookbacks. Quantile option is cheaper than lookbacks, while it still provide partial protection against market movements. This property of quantile option was first discussed by \cite{Ballotta2001}.
+As we discussed before, the lookback option is a path-dependent option with payoff calculated with the maximum or minimum price of the underlying asset achieved during the life of the option. For example, a fixed strike lookback call option get the highest value obtained within the option's lifetime. In this case, to the holder, it can be viewed as a protection against large drop of stock price. This can be regarded as a method to deal with the unfavorable movement of a particular stock, such as the release of a prolonged lawsuit which may have a strong negative effect on the stock price. On the other side, a lookback put option provides an insurance against large rises. But these characters also make lookback options too expensive. An $\alpha$-quantile option is one product that overcomes this shortcoming of lookback options. A quantile option is cheaper than the lookback options with other identical variables, while it still provides partial protection against market movements. This property of quantile options was first discussed by \cite{Ballotta2001}.
+
+Another advantage of a quantile option is that the strong path dependence of its payoff makes it immunize to possible market manipulation. Because the payoff of a lookback option only involves the maximum or minimum of a stock price during the option's lifetime. Particularly for an at the money option close to maturity, which in this case are most vulnerable to the stock price movement closing to maturity. Firms have influence on market price can use this advantage to lead market price move to their favorable direction. But since a quantile option is strongly path-dependent, the manipulation effect is limited.
+
+As for the pricing of quantile options, \cite{Dassios1995} provided the pricing formula for the European style $\alpha$-quantile call option. However, it is expressed in form of a triple improper integral which brings computational difficulty to realize the price numerically. Inspired by the decomposition (\ref{eq:Dassios}), \cite{Laura2001} proposed a Monte Carlo simulation approach to value the price of a European-style $\alpha$-quantile option. \cite{Kwok2001} proposed a special way to apply tree method to price quantile options. In this paper, they find a relation between the price of quantile options and the price of cumulative Parisian options. By this approximation, they can simplify the pricing of quantile options. The detail of this method is provided in Appendix. However, both of these two numerical approaches only can get the initiation price at time $t=0$. In addition, both method can not be extended to price American-style quantile options. In section (\ref{American-tree}), we propose a tree method which is capable to price both European-style and American-style ${\alpha}$-quantile options at any time $t\in [0,T]$ before maturity. 
 
 
-Another advantage of quantile option is that the strong path dependence of its payoff make it immunize to possible market manipulation. Because the payoff of lookback only involves the maximum of a stock price during option's lifetime. Particularly for at the money option close to maturity, which in this case are most vulnerable to the stock price movement closing to maturity. Firms have influence on market price can use this advantage to lead market price move to their favorable direction. But since quantile option is strongly path-dependent, the manipulation effect is limited. 
+\subsection{A tree method to price American-style quantile options}\label{American-tree}
+Non-Markovian property of the quantile of a Brownian motion causes serious problem 
+when we want to use tree method. We have to record all the information along the
+path.% at least, we have to record the occupation time of $X_k$.
+ 
+In risk-neutral world, we always can write the price of an
+American-style quantile option in following way:
+\[
+V(S,\alpha,t;K) = \sup_{\tau\leq T} E[f(S_0 M(\alpha, T),\tau,K)|\mathcal F_t],
+\]
+where $\tau$ are any stopping time stops taking value in $[t,T]$, $\mathcal F_t$ is the filtration contains all the information about stock price up to time $t$ and
+\[
+f(x,t,K) = 
+\begin{cases}
+e^{-rt}(x-K)^+ & \text{for call option},\\
+e^{-rt}(K-x)^+ & \text{for put option}.
+\end{cases}
+\]
+This is an optimal stopping problem. 
+
+The obvious way to solve this numerically, is using tree method. 
+Discrete the time, i.e. let $0=t_0< t_1, \cdots, t_N =T$. Let $P_k=(X_0, \cdots, X_k)$ be a path in a binomial tree approximating the movements of a Geometric Brownian motion till time ${t_k}$. 
+Then the possible value of the immediate next node $X_{k+1}$ along path $P_k$ can only be $X_{k}e^u$ and $X_{k}e^d$ with probability $p^+$ and $p^-$, where $u$, $d$, $p^+$ and $p^-$ are prefixed constants in the usual binomial tree method. We denote the two possible paths one step longer than path $P_k$ as $P_k^+ = (X_0,\cdots,X_k,X_{k+1}=X_{k}e^u)$ and $P_k^- = (X_0,\cdots,X_k,X_{k+1}=X_{k}e^d)$. 
+Then let 
+\[
+\mathrm{Pay}_{P_k} = e^{rt_k}f(X_{P_k}^\alpha, t_k;K)
+%=
+%\begin{cases}
+%(x-K)^+ & \text{for call option}\\
+%(K-x)^+ & \text{for put option}
+%\end{cases}
+\] 
+be the payoff if the option holder exercise the option at time $t_k$, 
+where $X_{P_k}^\alpha$ denotes the $\alpha$-quantile of path $P_k$. 
+
+Due to the early exercise right of an American-style option, the price of the American-style $\alpha$-quantile option along path $P_k$ at time $t_k$ for $k<N$ should be 
+\begin{equation}\label{AM-V-1}
+V_{P_k} = \max\Set{E_{P_k}, \mathrm{Pay}_{P_k}},
+\end{equation}
+where
+\begin{equation}\label{AM-V-2}
+E_{P_k} = e^{-r(t_{j+1}-t_j)}(p^+V_{P_k^+} + p^-V_{P_k^-})
+\end{equation}
+is the option value if we choose to keep the option instead of exercising it at $t_k$ along path $P_k$. 
+
+At the end of path $P_N=(X_0, \cdots, X_N)$, i.e, at maturity, the price of an option should be the immediate payoff. Then the option price corresponding to path ${P_N}$ at time $t_N$ 
+\begin{equation}\label{AM-V-3}
+V_{P_N} = \mathrm{Pay}_{P_N}.
+\end{equation}
+%For $j< n$, 
+%let 
+%\[
+%C_{P_j} = \max\Set{E_{P_j}, \mathrm{Pay}_{P_j}}
+%\]
+%where
+%\[
+%E_{P_j} = e^{-r(t_{j+1}-t_j)}(p^+C_{(P_j,X_j+u)} + p^-C_{(P_j,X_j-d)})
+%\]
+%is the expectation return if the holder of the option
+%do not exercise his right at time $t_j$, providing the historical data of 
+%the stock price is given by $P_j$. 
+
+By the recurrence relation in (\ref{AM-V-1}) (\ref{AM-V-2}) and the final condition in (\ref{AM-V-3}), we can compute the price of an American-style $\alpha$-quantile option at time $t_0$.
+
+Now the optimal stopping time is given by 
+\[
+\tau(P_n) = \inf\Set{t_j| Pay_{P_j}\geq E_{P_j}}
+\]
+here $P_j$ is the restriction of $P_n$ at $(t_0, \cdots, t_j)$, i.e. 
+\[
+P_j = (X_0, \cdots, X_j) \quad \text{ if } P_n=(X_0, \cdots, X_n). 
+\] 
+
+Because of the non-Markovian attribute of $\alpha$-quantile of a process, the tree we applied to price American-style quantile option is not recombining. We illustrate how our tree looks like in Figure (\ref{fig-bitree}). In Figure (\ref{fig-bitree}), we present a tree with depth $3$. Node $0$ is called the root of the tree and nodes $8,\cdots,15$ are called the leaves of this tree. Nodes $4$ and $5$ are the two children of node $2$, while node $2$ is the parent of node $4$ and $5$. 
+
+It is nature to realize the pricing algorithm by using the ``Depth First Search'' algorithm. Depth first search (DFS) is an standard algorithm for visiting all nodes and generating all possible paths in a tree. The character of this method is that we start from the root of a tree and explore as deep as possible until the end of each branch before backtracking. In practice, we build the tree with depth $N$, each non-leaves node $X_j$ has two children corresponding to $\Set{X_j e^u,X_j e^d}$. Hence the complexity of this ``brute force'' method is $O(2^n)$. It is clear that all the nodes at depth $j$ correspond to one and only one path $P_j$. So we label the node by $ND_{P_j}$.  For any node, say $ND_{P_j}$, we first compute $E_{P_{j}}$, where the possible $ND_{P_{j+1}}$ are all of its two children. After visiting all its children and computing the two possible $V_{P_{j+1}}$, it backtracks to node $N_{P_j}$, and computes $E_{P_j}, Pay_{P_j}$ and then $V_{P_j}$. After that, it goes back to the parent of $N_{P_j}$. Now we apply the same process to $N_{P_{j-1}}$  as we do to $N_{P_{j}}$. In other words, if it does not finish visiting all its children, it will visit the next one; if it finishes visiting all the children, it will compute the value of the node and goes back to its parent. 
 
 
-\subsection{Tree method for a European $\alpha$-quantile option}
+\begin{figure}[p]
+   \centering
+   \includegraphics{bitree.pdf} % requires the graphicx package
+   \caption{A tree to price American-style $\alpha$-quantile options}
+   \label{fig-bitree}
+\end{figure}
+
+We know that there is no other method to price American $\alpha$-quantile options so far. In other words, there does not exist direct result acting as a comparing standard. However, since conceptually our tree should also work for European $\alpha$-quantile options, here we first compare the price of European-style quantile options from our tree method with value obtained by other method.
+
+The results with parameters 
+\[
+K=100, r=0.05, \sigma=0.2, \alpha=0.5, T=1, 
+\]
+can be seen in Table~\ref{fig:euro5}
+
+
+\begin{table}[p]
+\caption{The price of European-style $\alpha$-quantile call options, with parameters
+	$K=100, r=5\%, \sigma=0.2, \alpha=0.5, T=1$. }
+	%The extrapolation is based on results got at 28 steps and 36 steps. Data for paper is from \cite{Laura2001}.
+\begin{center}
+\begin{tabular}{l|lllllll}
+ $S_0$ & $90$ & $95$ & $100$ & $105$ \\
+\hline
+28 steps & 1.60216 & 3.17876 & 5.61323 & 8.92661\\
+30 steps & 1.60443 & 3.17806 & 5.61404 & 8.92702\\
+32 steps & 1.60637 & 3.18346 & 5.61678 & 8.92718\\ 
+34 steps & 1.60435 & 3.18426 & 5.61758 & 8.92875\\
+36 steps & 1.60411 & 3.18846 & 5.61940 & 8.92925\\
+%\hline
+%Extrapolation & 1.61094 & 3.22241 & 5.64100 & 8.938490 \\
+%\hline
+%Paper & 1.6588 & 3.2695 & 5.7501 & 9.0895\\
+\hline
+Monte Carlo & 1.62450 & 3.21390 &  5.65385 & 8.96801 \\
+Standard error & 0.00141 & 0.00200 & 0.00262 & 0.00317 \\
+\hline
+lookback & 9.45696 & 13.86499 & 19.16763 & 24.88215
+\end{tabular}
+\end{center}
+\label{fig:euro5}
+\end{table}%
+
+In Table~\ref{fig:euro8}, for parameters set as $\alpha = 0.8$, $K = 95$, $r = 5\%$, $\sigma = 20\%$, and $T = 0.25$, we present the results got by our tree method and Forward Shooting Grid discussed in section \ref{se:fsg}.
+
+\begin{table}[p]
+\caption{The price of European-style $\alpha$-quantile call option,
+	with parameters
+	$K=95, r=5\%, \sigma=0.2, \alpha=0.8, T=0.25$. }
+	%The extrapolation is based on results got at 28 steps and 36 steps.
+\begin{center}
+\begin{tabular}{l|lllllll}
+$S_0$ & $95$ & $100$ & $105$        \\
+\hline
+26 steps & 4.59876 & 9.10824 & 14.1838 \\
+28 steps & 4.60931 & 9.11777 & 14.1954 \\
+30 steps & 4.61547 & 9.12485 & 14.2030 \\
+32 steps & 4.61816 & 9.12648 & 14.2054 \\
+34 steps & 4.61785 & 9.12676 & 14.2051 \\
+36 steps & 4.62050 & 9.12908 & 14.2079 \\
+%extrapolation & 4.659665 & 9.168665 & 14.25165\\
+\hline
+FSG & 4.66082 & 9.16298 & 14.2309 \\
+\hline
+Monte Carlo & 4.66740 & 9.18266 & 14.26175\\
+Standard error & 0.00168 & 0.00200 &  0.00214\\
+\hline
+lookback & 8.381566 &  13.76059 & 19.13961
+\end{tabular}
+\end{center}
+\label{fig:euro8}
+\end{table}%
+
+
+\begin{table}[p]
+\caption{The price of American-style $\alpha$-quantile call options, with parameter
+	$K=100, r=0.05, \sigma=0.2, \alpha=0.5, T=1$. 
+	%The extrapolation is based on results got at 28 steps and 36 steps.
+	}
+\begin{center}
+\begin{tabular}{l|lllllll}
+$S_0$ & $90$ & $95$ & $100$ & $105$ \\
+\hline
+26steps & 1.69411 & 3.43582 & 6.19546 & 10.2276 \\
+28steps & 1.70066 & 3.44695 & 6.21365 & 10.2465 \\
+30steps & 1.70434 & 3.45157 & 6.22887 & 10.2624 \\
+32steps & 1.70651 & 3.45927 & 6.24320 & 10.2738 \\
+34steps & 1.70590 & 3.46373 & 6.25529 & 10.2831 \\
+36steps & 1.70711 & 3.47019 & 6.26644 & 10.2891 \\
+%Extrapolation & 1.729685 & 3.551530 & 6.451205 & 10.43820 \\
+\end{tabular}
+\end{center}
+\label{fig:amer5}
+\end{table}%
+
+\begin{table}[p]
+\caption{The price of American-style $\alpha$-quantile call options, with parameters
+	$K=95, r=5\%, \sigma=0.2, \alpha=0.8, T=0.25$. 
+	%The extrapolation is based on results got at 28 steps and 36 steps.
+	}
+\begin{center}
+\begin{tabular}{l|lllllll}
+$S_0$ & $95$ & $100$ & $105$        \\
+\hline
+26 & 4.84702 &  9.68628 & 14.8771\\
+28 & 4.85892 &  9.70169 & 14.8932\\
+30 & 4.86696 &  9.71225 & 14.9049\\
+32 & 4.87621 &  9.72318 & 14.9164\\
+34 & 4.88228 &  9.73134 & 14.9251\\
+36 & 4.88821 &  9.73857 & 14.9329\\
+%extrapolation & 4.990725 & 9.867650&  15.07185
+\end{tabular}
+\end{center}
+\label{fig:amer8}
+\end{table}%
+
+
+Comparing the results by our tree method with Forward shooting grid and the Monte Carlo method, we think our tree method is correct. Since, as we checked, it works well for European-style $\alpha$-quantile options, it should also work for American-style $\alpha$ quantile option. The Monte Carlo method we adapted is resorting to the decomposition of the $\alpha$-quantile of a Brownian motion (\ref{eq:Dassios}). Different with the method proposed in \cite{Laura2001}, we simulate the maximum of a Brownian motion proposed in \cite{A-G-P-1995}. All the results for this Monte Carlo method is based on $10,000,000$ paths. The related standard errors are also reported. 
+
+
+For parameters set as
+\[
+K=100, r=0.05, \sigma=0.2, \alpha=0.5, T=1,
+\]
+with our tree method, we get the price of American $\alpha$-quantile call options in Table \ref{fig:amer5}. Comparing data in Table \ref{fig:euro5} and Table \ref{fig:amer5}, we can see American-style $\alpha$-quantile call options are more expensive than European-style options with same feature. This again insures that our method is correct. 
+
+For parameters set as 
+\[
+K = 95,\alpha = 0.8, r = 5\%, \sigma = 20\%, T = 0.2,
+\]
+comparing the American-style $\alpha$-quantile options price in Table \ref{fig:amer8} and the price for the European-style options of this type in Table \ref{fig:euro8}, we find that our tree method gives the right relation between these two styles of options.
+
+We also observe that in Figure \ref{fig:euro5} and \ref{fig:euro8}, in the European case, quantile options are cheaper than the lookback options. This feature makes quantile options meet the needs of a larger group of investors. 
+
+\subsection{A extrapolation method to improve the accuracy of our tree method}
+Because the computational time of this method is going exponentially as the steps increasing. It is very time consuming to obtain an result with large steps. To solve this question, we propose an extrapolation method to improve the accuracy of the price for quantile options based on our tree method. 
+
+Richardson extrapolation is a method to accelerate the sequence convergence rate first studied by \cite{Richardson}.
+Let $v(h)$ be the approximate price of the option got from the tree method with step length $h$. Suppose the tree method is of order $\vartheta$.  
+We have 
+\[
+v(h) = v_0 + Ch^\vartheta + O(h^{\vartheta'}),
+\]
+where $v_0$ is the true value of the $\alpha$-quantile option and $\vartheta' > \vartheta$ .
+Then for two different step length $h_1, h_2$ we have 
+\begin{equation}\label{v(h-1)}
+v(h_1) = v_0 + Ch_1^\vartheta + O(h_1^{\vartheta'}),
+\end{equation}
+and
+\begin{equation}
+v(h_2) = v_0 + Ch_2^\vartheta + O(h_2^{\vartheta'}).
+\end{equation}
+Let $\eta = h_1/h_2$, we have 
+\begin{equation}\label{v(h_2)}
+v(h_2) = v\left(\frac{h1}{\eta}\right) = v_0 + C\left(\frac{h1}{\eta}\right)^\vartheta + O(h_1^{\vartheta'}). 
+\end{equation}
+Multiplying (\ref{v(h_2)}) by ${\eta}^\vartheta$ we have 
+\begin{equation}\label{v(h-2-v)}
+{\eta}^\vartheta v\left(\frac{h_1}{\eta}\right) = {\eta}^\vartheta v_0 + Ch_1^\vartheta + O(h_1^{\vartheta'}).
+\end{equation}
+
+Subtracting (\ref{v(h-2-v)}) by (\ref{v(h-1)}),
+we get 
+\begin{equation}\label{v-1-eta}
+{\eta}^\vartheta v\left(\frac{h_1}{\eta}\right) - v(h_1) = v_0({\eta}^\vartheta  -1) + O(h_1^{\vartheta'}).
+\end{equation}
+From (\ref{v-1-eta}), we get 
+\begin{equation}
+v_0= \frac{{\eta}^\vartheta v({h_1}/{\eta}) - v(h_1)}{{\eta}^\vartheta -1} + O(h_1^{\vartheta'})
+\end{equation}
+which gives a higher order ${\vartheta}'$ approximation for $v_0$. 
+%we get
+%\[
+%v_0(h_1^\vartheta - h_2^\vartheta) \approx h_1^\vartheta v(h_2) - h_2^\vartheta v(h_1)
+%\]
+%i.e. 
+%\[
+%v_0 \approx \frac{ h_1^\vartheta v(h_2) - h_2^\vartheta v(h_1)}{
+%  h_1^\vartheta - h_2^\vartheta}
+%= \frac{\eta^\vartheta v(h_2) - v(h_1)}{\eta^\vartheta -1 },
+%\]
+%where $\eta = h_1/h_2$.
+
+%In our case, denote $C_n$ be the value corresponding to a $n$-steps tree. Based on the conclusion in section \ref{sec:de}, it is reasonable to assume that our tree method converges on order 1. That is $\gamma = 1$. 
+%Then the true value of $\alpha$-quantile option 
+%\[
+%C_\infty \approx \frac{\eta C_{n_2} - C_{n_1}}{\eta-1},
+%\]
+%where $\eta = (T/n_1)/(T/n_2) = n_2/n_1$.
+%This is the general form of Richardson extrapolation.
+%If take $n_2=2n, n_1=n$, we get the usual Richardson extrapolation formula
+%\[
+%C_\infty \approx 2 C_{2n} - C_n. 
+%\]
+
+To apply this method to our pricing problem, we need decide the extrapolation based on what order $\vartheta$ and which pair of price obtained from trees with different steps. Since the price of European-style $\alpha$-quantile options can be priced by the Monte Carlo simulation and conceptually our tree method also works for European-style $\alpha$-quantile options, we can apply the best fitted extrapolation method for European-style $\alpha$-quantile options to the identical American-style $\alpha$-quantile options. Suppose we get the price for a set of quantile options with $\{\alpha_i, i=1,\cdots,m\}$ and otherwise identical parameters using our tree method and extrapolation methods on various parameters. Denote $v_{(i,n1,n2,\vartheta)}$ as the price obtained from the extrapolation method based on the price getting from a $n1$-step tree and $n2$-step tree and on order $\vartheta$ for European-style $\alpha$-quantile option with $\alpha=\alpha_i$. Denote $v^\infty_i$ as the price for the European-style $\alpha_i$-quantile option obtained by the Monte Carlo method. We use mean error 
+\begin{equation}\label{mean-error}
+\sum_{1\leq m} (v_{(i,n1,n2,\vartheta)} -v^\infty_i)^2 /m 
+\end{equation}
+as the criterion to measure the accuracy for the extrapolation method based on the price from $n1$-step and $n_2$-step trees and with order $\vartheta$. Then the best fitted extrapolation method is the extrapolation method which gives the minimum mean error (\ref{mean-error}) among extrapolation methods with order $\vartheta$ in a given set $\mathcal A$ and $(n1,n2)$ in a given set $\mathcal B$.  After finding the best set of parameters $(\widetilde n1, \widetilde n2, \widetilde\vartheta)$, we can apply this best fitted extrapolation method to the price of American-style $\alpha$-quantile options obtained from our tree method. 
+
+We realize the extrapolation method to quantile options with parameters set as $S=100$, $K=100$, $r=5\%$, $\sigma=0.2$, $T=1$ and $\{\alpha = 0.5, 0.6, 0.7, 0.8, 0.9\}$. In this example the order $\vartheta$ lying in $\mathcal A = \{0.1, 0.2, \cdots, 2\}$ and $\{(n_1,n2)|n1<n2; n1=10, 11,\cdots, 36; n2= 10,11,\cdots, 36\}$. Our program shows that the best extrapolation approximation is based on $\vartheta = 0.9$ and price obtained from a $18$-steps tree and $36$-steps tree. We present the result in Figure \ref{fig:euro9}. Apply this extrapolation approximation to the price for American quantile options from our tree method, we get Figure \ref{fig:amerc}. From these two tables, we can see that both the price of European-style and American-style $\alpha$-quantile call options increases as the value of $\alpha$ increases. %One can observe that price of $\alpha$-quantile options are cheaper than lookback options constructed on identical market variables. This feature of $\alpha$-quantile options provide more choices to investors with various needs and perspectives of the market. 
+ 
+
+
+\begin{table}[p]
+\caption{The price of European-style $\alpha$-quantile call options, with parameters
+	$S=100, K=100, r=5\%, \sigma=0.2, T=1$ and different $\alpha$. }
+\begin{center}
+\begin{tabular}{l|lllll}
+$\alpha$ & $0.5$ & $0.6$ & $0.7$ & $0.8$ & $0.9$       \\
+\hline
+18 steps  & 5.58991 & 7.02836 & 8.64998 & 10.5450 & 12.9325\\
+36 steps  & 5.61940 & 7.07069 & 8.70835 & 10.6295 & 13.0804\\
+\hline
+Extrapolation  & 5.65345  & 7.11957  & 8.77575 & 10.72707 &13.25117 \\
+\hline
+Monte Carlo & 5.65519 &7.11064 & 8.77318 & 10.73129 & 13.24507\\
+Standard eror &  0.00262 & 0.00303 & 0.00344 & 0.00386 & 0.00430    
+\end{tabular}
+\end{center}
+\label{fig:euro9}
+\end{table}%
+
+
+\begin{table}[p]
+\caption{The price of American-style $\alpha$-quantile call options, with parameters
+	$S=100, K=100, r=5\%, \sigma=0.2, T=1$ and different $\alpha$. }
+\begin{center}
+\begin{tabular}{l|lllllll}
+$\alpha$ & $0.5$ & $0.6$ & $0.7$ & $0.8$ & $0.9$       \\
+\hline
+%26 & 6.19546 & 7.65852 & 9.26385 & 11.1028 & 13.3703\\
+%28 & 6.21365 & 7.67208 & 9.2838 & 11.1237 & 13.3911\\
+%30 & 6.22887 & 7.68475 & 9.29502 & 11.1397 & 13.4019\\
+%32 & 6.2432 & 7.69856 & 9.3113 & 11.1572 & 13.4248\\
+%34 & 6.25529 & 7.71023 & 9.32278 & 11.168 & 13.4488\\
+18 steps & 6.10629 & 7.57527 & 9.16086 & 10.9735 & 13.1843\\
+36 steps & 6.26644 & 7.72127 & 9.32848 & 11.1789 & 13.4651\\
+\hline
+Extrapolation & 6.451357 & 7.889848 & 9.522022 & 11.416064 & 13.789325 
+\end{tabular}
+\end{center}
+\label{fig:amerc}
+\end{table}%
+
+\chapter{Conclusion and future work}
+In this thesis, we provide a numerical study about the strong order of convergence of the Euler approximation associated with the simulation of the $\alpha$-quantile of Brownian motion. We find that the strong order of convergence for genuine $\alpha$-quantile of Brownian motion where $\alpha \in (0,1)$ is around $0.76$, while the strong order of convergence for the maximum or the minimum of Brownian motion is $0.5$. We provide an estimate about the expectation of  the discretization error for the Euler approximation of the $\alpha$-quantile of Brownian motion. This estimate can be used to connect the price of continuously and discretely monitored $\alpha$-quantile options in future work. 
+
+$\alpha$-quantile options, a type of strong path-dependent options, are discussed. Existing pricing methods (Monte Carlo method and forward shooting grid method) are only able to give the initiation price for European-style options of this type. We propose a tree method which can price both European-style and American-style $\alpha$-quantile options. Using the price of European-style $\alpha$-quantile options obtained from Monte Carlo method, we have shown how extrapolation method can be applied to improve the accuracy of our pricing method. Although we only discuss the pricing problem of the fixed-strike $\alpha$-quantile options, our tree method is also valid to price the floating-strike quantile options. We also notice that our tree can price the $\alpha$-quantile options at time $t$ after the initiation of a contract, since at time $t$ information about the stock price during $(0,t)$ is available.    
+
+\appendix
+\chapter{A forward shooting grid method for a European $\alpha$-quantile option}
 \label{se:fsg}
 
 
-Like lookback option, quantile option is also path-dependent. What makes things difficult is that quantile option is not Markov. Normal tree methods which usually involve backward induction do not work in this case. We need to record all the information of the path because of lack of Markov property, which will lead the tree to explosion computationally.
-\cite{Kwok2001} proposed a special way to apply tree method to price quantile option. In this paper, they find a relation between the price of quantile option and the price of cumulative Parisian option. By this approximation, they can simplify the pricing of quantile option. In their paper, they assume that there are $M$ time steps for the whole monitoring period $[0,T]$, and they define ${S^M}_j$, $j = - M$, ...$0$,$1$,...,$M$ as the discrete asset prices at maturity. Under trinomial tree method, the possible prices happened in one tree are limited to $S^M_j$,  $j = - M$, ...$0$,$1$, ...,$M$, which is also true for the value taken by quantile of Brownian motion. Therefore they derived that
+Like lookback options, quantile options are also path-dependent. What makes things difficult is that the quantile of a process is not Markovian. Normal tree methods which usually involve backward induction do not work in this case. We need to record all the information of the path because of lack of Markovian property, which will lead the tree to explosion computationally.
+\cite{Kwok2001} proposed a special way to apply tree method to price quantile options. In this paper, they find a relation between the price of quantile option and the price of cumulative Parisian option. By this approximation, they can simplify the pricing of quantile option. In their paper, they assume that there are $M$ time steps for the whole monitoring period $[0,T]$, and they define $S^M_j$, $j = - M$, ...$0$,$1$,...,$M$ as the set of all the possible value the asset prices value can be at maturity. Under trinomial tree method, the possible prices happened in one tree are limited to $S^M_j$,  $j = - M$, ...$0$,$1$, ...,$M$, which is also true for the value taken by the quantile of a stock price process $\{S_t\}, t \in[0,T]$. Therefore they derived that
 \begin{equation}\label{eq:kowk1}
-V(\alpha, T) = e^{-rT} \sum^{M}_{j=-M}P[M(\alpha,T)=S^{M}_{j}]\max(S^{M}_{j}-X,0),
+V(\alpha, T) = e^{-rT} \sum^{M}_{j=-M}P[S_0 M(\alpha,T)=S^{M}_{j}]\max(S^{M}_{j}-K,0),
 \end{equation}
-where $V(\alpha,T)$ is for the value of $\alpha$-quantile option whose maturity it $T$, $P[M(\alpha,T)=S^{M}_{j}]$ is the probability that the quantile of Brownian motion achieve the value ${S^M}_j$,  $j = - M$, ...$0$,$1$, ...,$M$. In their paper, they observed that the difference between the prices of two cumulative Parisian binary options is a good approximation for $P[M(\alpha,T)=S^{M}_{j}]$ multiplies discount factor $e^{-rT}$, ie.
+where $V(\alpha,T)$ is for the value of a  European-style fixed-strike $\alpha$-quantile option whose maturity is $T$, $P[S_0M(\alpha,T)=S^{M}_{j}]$ is the probability that the quantile of Brownian motion achieve the value $S^M_j$,  $j = - M$, ...$0$,$1$, ...,$M$. In their paper, they observed that the difference between the prices of two cumulative Parisian binary options is a good approximation for $P[S_0M(\alpha,T)=S^{M}_{j}]$ multiplies discount factor $e^{-rT}$, i.e.,
 \begin{equation}\label{eq:kowk2}
-e^{-rT}P[M(\alpha,T)=S^{M}_{j}] \approx V^{bin}_{cum}[(1-\alpha)T, S^{M}_{j-1}]-V_{cum}^{bin}[(1-\alpha)T, S_{j}^{M}]
-\text{ for }j=-M, ... , 0, 1, ... , M
+\begin{split}
+\displaystyle e^{-rT}P[S_0M(\alpha,T)&=S^{M}_{j}] \approx V^{bin}_{cum}[(1-\alpha)T, S^{M}_{j-1}]-V_{cum}^{bin}[(1-\alpha)T, S_{j}^{M}\\
+&\quad\text{ for }j=-M, ... , 0, 1, ... , M
+\end{split}
 \end{equation}
 where $V^{bin}_{cum}[d,B]$ is denoted as the price of continuously monitored cumulative Parisian binary option with down barrier $B$, and $d$ be the minimum cumulative time staying above the down barrier to avoid knock-out.
 
 
 Combining equation (\ref{eq:kowk1})and (\ref{eq:kowk2}), they get
 \begin{equation}\label{eq:kowk3}
-V_{alp} = \sum^M_{j=-M} \max (S^M_j - X,0) \times \{V_{cum}^{bin}[(1-\alpha)T, S^M_{j-1}] - V^{bin}_{cum}[(1-\alpha)T, S^M_j]\} ,
+V_{alp} = \sum^M_{j=-M} \max (S^M_j - K,0) \times \{V_{cum}^{bin}[(1-\alpha)T, S^M_{j-1}] - V^{bin}_{cum}[(1-\alpha)T, S^M_j]\} ,
 \end{equation}
-where $V^{bin}_{cum}[(1-\alpha)T, S_{-(M+1)}^M] = e^{-rT}$. By this result, we can turn pricing of quantile option into pricing of $2M+1$ cumulative Parisian option.
+where $V^{bin}_{cum}[(1-\alpha)T, S_{-(M+1)}^M] = e^{-rT}$. By this result, they turn pricing of a quantile option into pricing of $2M+1$ cumulative Parisian options.
 
 
-Parisian option is like an advanced version of barrier option. We know barrier options are options where the payoff depends on whether the underlying asset's price reaches a certain level (barrier) during the option's life. Barrier options usually trade in the over-the counter market. This kind of option is attractive because it is usually cheaper than similar option without barrier. Like vanilla option, barrier options also authorize holders the right to buy or sell, but  long sides of barrier options do not need to pay for scenarios they think is unlikely to happen in the future. One good example I find from Wikipedia is about IBM. If you believe that IBM will go up this year, but are willing to bet that it won't go above \$100, then you can buy the barrier and pay fewer premium than the vanilla option. But in this one-touch knock-out or knock-in can bring difficulties to option writers when asset price is close to barrier. Particularly in the foreign exchange market where manipulation of underlying asset price is not impossible. To overcome short period price manipulation, various adjustments to one-touch knock out or knock-in have been performed in practice. Parisian option is one solution.  In order to get activated, the underlying assets of Parisian option need to stay in the knout out or knout in region for certain period of time. The payoff of a cumulative Parisian option is dependent on the total amount of time the underlying asset price has spent above or below barrier. As for binary option, the payoff is either some fixed amount of some asset or nothing at all.
+Parisian option is like an advanced version of barrier option. We know barrier options are options where the payoff depends on whether the underlying asset's price reaches a certain level (barrier) during the option's life. Barrier options usually trade in the over-the-counter market. This kind of options are attractive because they are usually cheaper than similar options without barrier. Like vanilla option, barrier options also authorize holders the right to buy or sell, but  long sides of barrier options do not need to pay for scenarios they think is unlikely to happen in the future. One good example I find from Wikipedia is about IBM. If you believe that IBM will go up this year, but are willing to bet that it will not go above \$100, then you can buy the barrier and pay fewer premium than the coresponding vanilla option. But in this one-touch knock-out or knock-in can bring difficulties to option writers when asset price is close to barrier, particularly, in market where manipulation of underlying asset price is not impossible. To overcome short period price manipulation, various adjustments to one-touch knock out or knock-in have been applied in practice. The Parisian options is one solution. In order to get activated, the underlying assets of a Parisian option need to stay in the knout out or knout in region for certain period of time. The payoff of a cumulative Parisian option is dependent on the total amount of time the underlying asset price has spent above or below barrier. As for a binary option, the payoff is either some fixed amount of some asset or nothing at all.
 
 
+A forward shorting grid (FSG) has been proposed to price cumulative Parisian option in \cite{Kwok2001}. The character of FSG is that this approach need add additional information at each node of a lattice tree. Commonly in pricing path-dependent option, at each node we should add state vector to represent the path-dependent attribute, such as the extreme value of the underlying asset price achieved in the lookback option case. As we know \cite{Hull1993} and \cite{Vijh1993} were the first authors suggested this approach. \cite{Barraquand1996} introduced a comprehensive framework for FSG. In this paper they indicated that the FSG method is unconditionally convergent. %Further, they showed that when the covariance matrix is degenerate, the FSG method can outperform finite difference methods. 
+The convergence of the FSG algorithm in pricing of Asian options was studied by \cite{Forsyth1999}.
 
-Kwok and Lau also proposed a forward shorting grid(FSG) to price cumulative Parisian option in \cite{Kwok2001}. The character of FSG is that this approach need add additional information at each node of  a lattice tree. Commonly in pricing path-dependent option, at each node we should add state vector to represent the path-dependent attribute, such as the extreme value of the underlying asset price achieved in lookback option case. As we know \cite{Hull1993} and \cite{Vijh1993} were the first authors suggested this approach. \cite{Barraquand1996} introduced a comprehensive framework for FSG. In this paper they indicated that the FSG method is unconditionally convergent. Further, they showed that when the covariance matrix is degenerate, the FSG method can outperform finite difference methods. The convergence of the FSG algorithm in pricing of Asian options was studied by \cite{Forsyth1999}.
+In \cite{Kwok2001}, they constructed a trinomial tree to get the price of a cumulative Parisian option. But due to the fact that the result is not steady according to the setting of the length of up movement between each immediate step, we modify their method to binomial tree.
 
-In \cite{Kwok2001}, they constructed a trinomial tree to get the price of cumulative Parisian option. But due to the fact that the result is not steady according to the setting of the length of up movement between each immediate step, we modify their method to binomial tree.
-
-In building binomial tree, we start by cutting the entire life of one option into many small time intervals of length $\Delta t = T / M$.
-Our tree is build to mimic the logarithm process of underlying asset price. Denote $x=\ln S$. In each step, the logarithm of the price of underlying asset is assumed to move from its initial value of $x_0$ to one of the two new values, $x_0 + d + u$ and $x_0 + d - u$ with equal probability, that is $p_{up} = p_{down} = 0.5$ , where $u = \sigma \sqrt{\Delta t}$ and $d = (r - {\sigma}^2 /2)\Delta t$. Here $\sigma$, and $r$ are volatility and risk-free interest rate, respectively. The model is illustrated in Figure~\ref{fig:tree1}.
+In building binomial tree, we start by cutting the entire life of one option into many small time intervals of length $h = T / N$.
+Our tree is build to mimic the logarithm process of underlying asset price. Denote $s=\ln S$. In each step, the logarithm of the price of underlying asset is assumed to move from its initial value of $s_0$ to one of the two new values, $s_0 + d + u$ and $s_0 + d - u$ with equal probability, that is $p_{up} = p_{down} = 0.5$ , where $u = \sigma \sqrt{h}$ and $d = (r - {\sigma}^2 /2)h$. Here $\sigma$, and $r$ are volatility and risk-free interest rate, respectively. The model is illustrated in Figure~\ref{fig:tree1}.
 \begin{figure}[p]
    \centering
    \includegraphics{trees.pdf} % requires the graphicx package
@@ -1143,39 +1538,38 @@ Our tree is build to mimic the logarithm process of underlying asset price. Deno
    \label{fig:tree1}
 \end{figure}
 
-Like the notation used in \cite{Kwok2001}, we denote $V[m,j;k]$ as the numerical option value of the cumulative Parisian option at the $m$-th time interval,  $j$ upward jumps from the initial underlying asset value and $k$ times breaches so far. Let $g(k,j)$ be the grid function that describes the correlated evolution of number of breaches $k$ and price indicate $j$. Denote $x_j$ be the value of $x$ corresponding to $j$ upward movements on the binomial tree. Then we should add $1$ to the indicator $k$ if the underlying asset price $S$ is no more than the barrier $B$; i.e $x_j \leq \ln B$. Hence we can see that a suitable setting of the grid evolution function $g(k,j)$ should be
+Like the notation used in \cite{Kwok2001}, we denote $V[m,j;k]$ as the numerical option value of the cumulative Parisian option at the $m$-th time interval,  $j$ upward jumps from the initial underlying asset value and $k$ times breaches so far. Let $g(k,j)$ be the grid function that describes the correlated evolution of number of breaches $k$ and price indicate $j$. Denote $s_j$ be the value of $s$ corresponding to $j$ upward movements on the binomial tree. Then we should add $1$ to the indicator $k$ if the underlying asset price $S$ is no more than the barrier $B$; i.e $s_j \leq \ln B$. Hence we can see that a suitable setting of the grid evolution function $g(k,j)$ should be
 \begin{equation}\label{eq:grid}
-g(k,j) = k + 1_{\Set{x_j \leq B}}
+g(k,j) = k + 1_{\Set{s_j \leq \ln B}}
 \end{equation}
-where $1_{\set{x_j \leq B}}$ is the indicator function. It is defined as
+where $1_{\set{s_j \leq \ln B}}$ is the indicator function. It is defined as
 \begin{equation}\label{eq:grid-indicator}
-1_{\Set{x_j \leq B}} =  \begin{cases}
-1 & \text{if } x_j \leq \ln B \\
-0 & \text{if } x_j > \ln B
+1_{\Set{s_j \leq B}} =  \begin{cases}
+1 & \text{if } s_j \leq \ln B \\
+0 & \text{if } s_j > \ln B
 \end{cases}
 \end{equation}
 Then the FSG method for pricing the cumulative Parisian binary option can be expressed as
 \begin{equation}\label{eq:fsg}
-V[m-1,j;k] =\set{0.5V[m,j+1;g(k,j+1)]+0.5V[m,j-1,g(k,j-1)]}e^{-r\Delta t}
+V[m-1,j;k] =\set{0.5V[m,j+1;g(k,j+1)]+0.5V[m,j-1,g(k,j-1)]}e^{-rh}
 \end{equation}
-for $m-1 < M$.
+for $m-1 < N$.
 
-
-Let $N$ be the predetermined number of breaches recorded for the all duration of the life of an option that is desired to activate   the contract.
+Let $\widetilde N$ be the predetermined number of breaches recorded for the all duration of the life of an option that is desired to activate the contract.
 Considering the binary feature of the option, we should initiate our algorithm with
 \begin{equation}\label{eq:initiate}
 V[M,j;k] = \begin {cases}
-1 & \text{if }  k < N \\
-0 & \text{if }  k \geq N
+1 & \text{if }  k < \widetilde N\\
+0 & \text{if }  k \geq \widetilde N.
 \end{cases}
 \end{equation}
-By (\ref{eq:initiate})  (\ref{eq:fsg}) and backward induction, we can get the price of cumulative Parisian binary option with any prescribed times of breaches and barrier.
+By (\ref{eq:initiate}) , (\ref{eq:fsg}) and backward induction, we can get the price of cumulative Parisian binary option with any prescribed times of breaches and barrier.
 
-Recall what we get by equation (\ref{eq:kowk2}). In order to get the price of $\alpha$-quantile option, we can use the prices of $2M + 1$ cumulative Parisian binary options to approximate $\alpha$-quantile option's value. Hence using the FSG method we described above to calculate the prices of cumulative Parisian option  and doing a simple math work by equation (\ref{eq:kowk2}), we can get the approximated price for $\alpha$-quantile option with $M$ time steps.
+Recall what we get by equation (\ref{eq:kowk2}). In order to get the price of $\alpha$-quantile option, we can use the prices of $2M + 1$ cumulative Parisian binary options to approximate $\alpha$-quantile option's value. Hence using the FSG method we described above to calculate the prices of cumulative Parisian option and doing a simple math work by equation (\ref{eq:kowk2}), we can get the approximated price for $\alpha$-quantile option with $M$ time steps.
 
-Recall we defined earlier $\Delta t = T / M$. We compute the approximated option price of an $\alpha$-quantile call option with different time steps using equation (\ref{eq:kowk2}). As you can see in Figure (\ref{fig:2}),
-the numerical values of option are plotted against varying $\Delta t$. The values of parameters of the $\alpha$-quantile call option are set as: $\alpha = 0.8$, $S_0 = 100$, $X = 95$, $r = 5\%$, $\sigma = 20\%$, and $T = 0.25$.
-\begin{figure}[htbp]
+Recall we defined earlier $h = T / M$. We compute the approximated option price of an $\alpha$-quantile call option with different time steps using equation (\ref{eq:kowk2}). As you can see in Figure (\ref{fig:2}),
+the numerical values of option are plotted against varying $h$. The values of parameters of the $\alpha$-quantile call option are set as: $\alpha = 0.8$, $S_0 = 100$, $X = 95$, $r = 5\%$, $\sigma = 20\%$, and $T = 0.25$.
+\begin{figure}[p]
    \centering
    \includegraphics{bfsg.pdf} % requires the graphicx package
    \caption{FSG result}
@@ -1186,414 +1580,11 @@ the numerical values of option are plotted against varying $\Delta t$. The value
 
 
 %\subsection{A static hedging for $\alpha$-quantile put option}
-Inspired by the approximation of quantile option using cumulative Parisian options, we here propose a static hedging of quantile options using cumulative binary Parisian options. As we discussed earlier, the payoff of a cumulative binary Parisian option is that: only if the price of stock spend enough time under a predetermined barrier, its payoff is \$1; otherwise, its payoff is 0, it is worth nothing. We explicitly account for the discreteness of the tick size. That is the value of stock price only can be multiples of 1/8. Then for a put quantile option, the intuition for our hedging lies in the ability to rephrase the question, what was the certain quantile of stock price as several questions. 
+%Inspired by the approximation of quantile option using cumulative Parisian options, we here propose a static hedging of quantile options using cumulative binary Parisian options. As we discussed earlier, the payoff of a cumulative binary Parisian option is that: only if the price of stock spend enough time under a predetermined barrier, its payoff is \$1; otherwise, its payoff is 0, it is worth nothing. We explicitly account for the discreteness of the tick size. That is the value of stock price only can be multiples of 1/8. Then for a put quantile option, the intuition for our hedging lies in the ability to rephrase the question, what was the certain quantile of stock price as several questions. 
 
-For example, for $40\%$-quantile put option with stock price started from 1 and strike price 2, we can replicate its payoff using cumulative Parisian options which are alive only if they spend more than $0.4*T$ time under their barrier. For the quantile option, it has payoff only if the $40$ percentile is less than 2, the strike price. Also it is obvious that $40$ percentile must be larger than 0. In this sense, we hold 0.125 share of each cumulative binary Parisian binary option with barrier raging from $0.125. 0.250, 0.375.É, 2$.  If in the end of maturity, the 40 percentile of stock price is larger than 2, the quantile option gets nothing. Since the 40 percentile is larger than 2, then the stock price must be under 2 for less than 40$\%$ of the time before maturity. In this case all the binary option gets nothing. But if the quantile is $1.750$, the quantile option gets a payoff of $0.250=2-1.750$. While for the binary options, in this case, options with barrier $2$ and $1.875$ are alive. The payoff you can get from binary options is $0.125*2=0.250$. That is the payoff of the collections of binary options is identical to your quantile option. These are true for other scenarios of the value of quantile.  In other words, by holding a collection of cumulative Parisian binary option, we can realize a static hedging.
+%For example, for $40\%$-quantile put option with stock price started from 1 and strike price 2, we can replicate its payoff using cumulative Parisian options which are alive only if they spend more than $0.4*T$ time under their barrier. For the quantile option, it has payoff only if the $40$ percentile is less than 2, the strike price. Also it is obvious that $40$ percentile must be larger than 0. In this sense, we hold 0.125 share of each cumulative binary Parisian binary option with barrier raging from $0.125. 0.250, 0.375.É, 2$.  If in the end of maturity, the 40 percentile of stock price is larger than 2, the quantile option gets nothing. Since the 40 percentile is larger than 2, then the stock price must be under 2 for less than 40$\%$ of the time before maturity. In this case all the binary option gets nothing. But if the quantile is $1.750$, the quantile option gets a payoff of $0.250=2-1.750$. While for the binary options, in this case, options with barrier $2$ and $1.875$ are alive. The payoff you can get from binary options is $0.125*2=0.250$. That is the payoff of the collections of binary options is identical to your quantile option. These are true for other scenarios of the value of quantile.  In other words, by holding a collection of cumulative Parisian binary option, we can realize a static hedging.
 
-Probably, you have already found out that this scheme only works for European puts, because that you can find the two side boundary of effective quantile. This condition is not true for calls. 
-
-
-\subsection{A tree method for American $\alpha$-quantile option}
-Non-Markov property of  the quantile of Brownian motion cause serious problem 
-when we want to use tree method. We need to record all the information alone the
-path, at least, we have to record the occupation time of $X_k$.
- 
-In risk-neutral world, we always can write the price of 
-American option in following way:
-\[
-C = \sup_{\tau\leq T} Ef(X_\tau^\alpha,\tau),
-\]
-where $\tau$ are any stopping time stops before $T$, 
-\[
-f(x,t) = 
-\begin{cases}
-e^{-rt}(x-K)^+ & \text{for call option}\\
-e^{-rt}(K-x)^+ & \text{for put option}
-\end{cases}
-\]
-as usual.
-This is an optimal stopping problem. 
-
-The obvious way to solve this numerically, is using tree method. 
-Discrete the time, i.e. let $0=t_0< t_1, \cdots, t_n$.
-Let $P_k=(X_0, \cdots, X_k)$ be a path of Geometric Brownian motion, 
-Then $X_{k+1}$ can only be $X_{k}+u$ and $X_{k}-d$ in probability
-$p^+$ and $p^-$  where $u,d,p^+$ and $p^-$ are prefixed 
-constants in usual binomial tree method, each will .
-Then let 
-\[
-\mathrm{Pay}_{P_j} = e^{rt_j}f(X_{P_j}^\alpha, t_j)
-%=
-%\begin{cases}
-%(x-K)^+ & \text{for call option}\\
-%(K-x)^+ & \text{for put option}
-%\end{cases}
-\] 
-be the payoff if the option holder exercise the option at time $t_j$, 
-where $X_{P_n}^\alpha$ denotes the $\alpha$-quantile of path $P_n$. 
-For $n$, let 
-\[
-C_{P_n} = \mathrm{Pay}_{P_n}
-\]
-For $j< n$, 
-let 
-\[
-C_{P_j} = \max\Set{E_{P_j}, \mathrm{Pay}_{P_j}}
-\]
-where
-\[
-E_{P_j} = e^{-r(t_{j+1}-t_j)}(p^+C_{(P_j,X_j+u)} + p^-C_{(P_j,X_j-d)})
-\]
-is the expectation return if the holder of the option
-do not exercise his right at time $t_j$, providing the historical data of 
-the stock price is given by $P_j$. 
-
-Now the optimal stopping time is given by 
-\[
-\tau(P_n) = \inf\Set{t_j| Pay_{P_j}\geq E_{P_j}}
-\]
-here $P_j$ is the restriction of $P_n$ at $(t_0, \cdots, t_j)$, i.e. 
-\[
-P_j = (X_0, \cdots, X_j) \text{ if } P_n=(X_0, \cdots, X_n). 
-\] 
-
-Hence $C_{(0)}$ is the price of American $\alpha$-quantile option at time $t_0$. Based on this observation, we have a recurrence relation for computing $C_{(0)}$.
-
-It is nature to realize this scheme by using the ``Depth First Search'' algorithm. Depth first search (DFS) is an standard algorithm for visiting all nodes and generating all possible path in a tree. The character of this method is that we start form the root of a tree and explore as deep as possible until the end of each branch before backtracking. In practice, we build the tree with depth $n+1$, each non-leaves nod has two children corresponding to $\Set{X_j+u,X_j-d}$. Hence the complexity of this ``brute force'' method is $O(2^n)$. It is clear that all the nodes at depth $j$ correspond to one and only one path $P_j$. So we label the node by $N_{P_j}$.  For any node, say $N_{P_j}$, we first compute $C_{P_{j+1}}$, where the possible $N_{P_{j+1}}$ are all of its two children. After visiting all its children and computing $C_{P_{j+1}}$, it backtracks to node $N_{P_j}$, and computes $E_{P_j}, Pay_{P_j}$ and then $C_{P_j}$. After that, it goes back to the parent of $N_{P_j}$. Now we apply the same process to $N_{P_{j-1}}$  as we do to $N_{P_{j}}$. In other words, if it does not finish visiting all its children, it will visit the next one; if it finishes visiting all the children, it will compute the value of the note and go back to its parent. 
-
-Because the computational time of this method is going exponentially as the steps increasing. It is very time consuming to obtain an result with large steps. To solve this question, we propose an extrapolation method to improve the converge speed.
-
-Richardson extrapolation is a method to accelerate the sequence convergence rate first studied by \cite{Richardson}.
-Let $v(h)$ be the approximate price of the option got from the tree method with step length $h$. Suppose the tree method is of order $\gamma$.  
-We have 
-\[
-v(h) = v_0 + Ch^\gamma + o(h^\gamma)
-\]
-where $v_0$ is the true value of the $\alpha$-quantile option.
-Now we compute for two different step length $h_1, h_2$. 
-Then 
-\begin{align}
-h_1^\gamma v(h_2) &= v_0 h_1^\gamma + C(h_1h_2)^\gamma + o(h_2^\gamma) \label{eq:exs1}\\
-h_2^\gamma v(h_1) &= v_0 h_2^\gamma + C(h_1h_2)^\gamma + o(h_1^\gamma) \label{eq:exs2}
-\end{align}
-Consider (\ref{eq:exs1})-(\ref{eq:exs2}),
-we get
-\[
-v_0(h_1^\gamma - h_2^\gamma) \approx h_1^\gamma v(h_2) - h_2^\gamma v(h_1)
-\]
-i.e. 
-\[
-v_0 \approx \frac{ h_1^\gamma v(h_2) - h_2^\gamma v(h_1)}{
-  h_1^\gamma - h_2^\gamma}
-= \frac{\eta^\gamma v(h_2) - v(h_1)}{\eta^\gamma -1 },
-\]
-where $\eta = h_1/h_2$.
-
-In our case, denote $C_n$ be the value corresponding to $n$ steps. Based on the conclusion in section \ref{sec:de}, it is reasonable to assume that our tree method converges on order 1. That is $\gamma = 1$. 
-Then the true value of $\alpha$-quantile option 
-\[
-C_\infty \approx \frac{\eta C_{n_2} - C_{n_1}}{\eta-1},
-\]
-where $\eta = (T/n_1)/(T/n_2) = n_2/n_1$.
-This is the general form of Richardson extrapolation.
-If take $n_2=2n, n_1=n$, we get the usual Richardson extrapolation formula
-\[
-C_\infty \approx 2 C_{2n} - C_n. 
-\]
-
-Because there is no other method to price American $\alpha$-quantile option so far. In other words, there does not exist direct result acting as an comparing standard. However, since conceptually our tree should also work for European $\alpha$-quantile option, here we first compare the results using this tree method with value obtained by other method.
-
-
-The results with parameters 
-\[
-K=100, r=0.05, \sigma=0.2, \alpha=0.5, T=1
-\]
-can be seen in Table~\ref{fig:euro5}
-
-
-\begin{table}[p]
-\caption{European $\alpha$-quantile option, with parameter
-	$K=100, r=5\%, \sigma=0.2, \alpha=0.5, T=1$. 
-	The extrapolation is based on results got at 28 steps and 36 steps. Data in last line is from \cite{Laura2001}.}
-\begin{center}
-\begin{tabular}{l|lllllll}
- $S_0$ & $90$ & $95$ & $100$ & $105$ \\
-\hline
-28 steps & 1.60216 & 3.17876 & 5.61323 & 8.92661\\
-30 steps & 1.60443 & 3.17806 & 5.61404 & 8.92702\\
-32 steps & 1.60637 & 3.18346 & 5.61678 & 8.92718\\ 
-34 steps & 1.60435 & 3.18426 & 5.61758 & 8.92875\\
-36 steps & 1.60411 & 3.18846 & 5.61940 & 8.92925\\
-\hline
-Extrapolation & 1.61094 & 3.22241 & 5.64100 & 8.938490 \\
-\hline
-Paper & 1.6588 & 3.2695 & 5.7501 & 9.0895\\
-\hline
-lookback & 9.45696 & 13.86499 & 19.16763 & 24.88215
-\end{tabular}
-\end{center}
-\label{fig:euro5}
-\end{table}%
-
-In Table~\ref{fig:euro8}, for parameter setting as $\alpha = 0.8$, $K = 95$, $r = 5\%$, $\sigma = 20\%$, and $T = 0.25$, we present the results got by our tree method and Forward Shooting Grid discussed in section \ref{se:fsg}.
-
-
-\begin{table}[p]
-\caption{European $\alpha$-quantile option, with parameter
-	$K=95, r=5\%, \sigma=0.2, \alpha=0.8, T=0.25$. 
-	The extrapolation is based on results got at 28 steps and 36 steps.}
-\begin{center}
-\begin{tabular}{l|lllllll}
-$S_0$ & $95$ & $100$ & $105$        \\
-\hline
-26 & 4.59876 & 9.10824 & 14.1838  \\
-28 & 4.60931 & 9.11777 & 14.1954 \\
-30 & 4.61547 & 9.12485 & 14.2030 \\
-32 & 4.61816 & 9.12648 & 14.2054  \\
-34 & 4.61785 & 9.12676 & 14.2051 \\
-36 & 4.62050 & 9.12908 & 14.2079 \\
-extrapolation & 4.659665 & 9.168665 & 14.25165\\
-FSG & 4.66082 & 9.16298 & 14.2309 \\
-lookback & 8.381566 &  13.76059 & 19.13961
-\end{tabular}
-\end{center}
-\label{fig:euro8}
-\end{table}%
-
-\begin{table}[p]
-\caption{European $\alpha$-quantile option, with parameter
-	$S=100, K=100, r=5\%, \sigma=0.2, T=1$. 
-	The extrapolation is based on results got at 28 steps and 36 steps.}
-\begin{center}
-\begin{tabular}{l|lllll}
-$\alpha$ & $0.5$ & $0.6$ & $0.7$ & $0.8$ & $0.9$       \\
-\hline
-26 & 5.60903 & 7.05787 & 8.69087 & 10.591 & 13.0201\\
-28 & 5.61323 & 7.05893 & 8.69607 & 10.61 & 13.018\\
-30 & 5.61404 & 7.06396 & 8.69385 & 10.6205 & 13.0101\\
-32 & 5.61678 & 7.0653 & 8.70373 & 10.6258 & 13.0394\\
-34 & 5.61758 & 7.06858 & 8.70801 & 10.6251 & 13.0625\\
-36 & 5.6194 & 7.07069 & 8.70835 & 10.6295 & 13.0804\\
-extrapolation &  5.646362 & 7.104022 & 8.753798 & 10.7296 & 13.23718
-\end{tabular}
-\end{center}
-\label{fig:euro8}
-\end{table}%
-
-Comparing the results by our tree method with extrapolation, Forward shooting grid and Monte Carlo method, we think our tree method is correct and efficient. Since, as we checked, it works well for European $\alpha$-quantile option, it should also work for American style $\alpha$ quantile option. 
-
-For parameters setting as
-\[
-K=100, r=0.05, \sigma=0.2, \alpha=0.5, T=1
-\]
-, with our tree method, we get the price of American $\alpha$-quantile option in Table \ref{fig:amer5}. Comparing data in Table \ref{fig:euro5} and Table \ref{fig:amer5}, we can see price for American option is more expensive than European-style optionwith same feature. This again insures that our method is correct. 
- 
-\begin{table}[p]
-\caption{American $\alpha$-quantile option, with parameter
-	$K=100, r=0.05, \sigma=0.2, \alpha=0.5, T=1$. 
-	The extrapolation is based on results got at 28 steps and 36 steps.}
-\begin{center}
-\begin{tabular}{l|lllllll}
-$S_0$ & $90$ & $95$ & $100$ & $105$ \\
-\hline
-26steps & 1.69411 & 3.43582 & 6.19546 & 10.2276 \\
-28steps & 1.70066 & 3.44695 & 6.21365 & 10.2465 \\
-30steps & 1.70434 & 3.45157 & 6.22887 & 10.2624 \\
-32steps & 1.70651 & 3.45927 & 6.24320 & 10.2738  \\
-34steps & 1.70590 & 3.46373 & 6.25529 & 10.2831 \\
-36steps & 1.70711 & 3.47019 & 6.26644 & 10.2891 \\
-Extrapolation & 1.729685 & 3.551530 & 6.451205 & 10.43820 \\
-\end{tabular}
-\end{center}
-\label{fig:amer5}
-\end{table}%
-
-\begin{table}[p]
-\caption{American $\alpha$-quantile option, with parameter
-	$K=95, r=5\%, \sigma=0.2, \alpha=0.8, T=0.25$. 
-	The extrapolation is based on results got at 28 steps and 36 steps.}
-\begin{center}
-\begin{tabular}{l|lllllll}
-$S_0$ & $95$ & $100$ & $105$        \\
-\hline
-26 & 4.84702 &  9.68628 & 14.8771 \\
-28 & 4.85892 &  9.70169 & 14.8932\\
-30 & 4.86696 &  9.71225 & 14.9049\\
-32 & 4.87621 &  9.72318 & 14.9164\\
-34 & 4.88228 &  9.73134 & 14.9251\\
-36 & 4.88821 &  9.73857 & 14.9329\\
-extrapolation & 4.990725 & 9.867650&  15.07185
-\end{tabular}
-\end{center}
-\label{fig:amer8}
-\end{table}%
-
-\begin{table}[p]
-\caption{American $\alpha$-quantile option, with parameter
-	$S=100, K=100, r=5\%, \sigma=0.2, T=1$ and different $\alpha$. 
-	The extrapolation is based on results got at 26 steps and 36 steps.}
-\begin{center}
-\begin{tabular}{l|lllllll}
-$\alpha$ & $0.5$ & $0.6$ & $0.7$ & $0.8$ & $0.9$       \\
-\hline
-26 & 6.19546 & 7.65852 & 9.26385 & 11.1028 & 13.3703\\
-28 & 6.21365 & 7.67208 & 9.2838 & 11.1237 & 13.3911\\
-30 & 6.22887 & 7.68475 & 9.29502 & 11.1397 & 13.4019\\
-32 & 6.2432 & 7.69856 & 9.3113 & 11.1572 & 13.4248\\
-34 & 6.25529 & 7.71023 & 9.32278 & 11.168 & 13.4488\\
-36 & 6.26644 & 7.72127 & 9.32848 & 11.1789 & 13.4651\\
-extrapolation & 6.450988 & 7.88442 & 9.496518 & 11.37676 & 13.71158
-\end{tabular}
-\end{center}
-\label{fig:amerc}
-\end{table}%
-
-
-
-\section{Connect the discrete and continuous $\alpha$-quantile options}
-We follow \cite{Broadie1999}.
-
-In this section we omit the subscript $\alpha$ and $k$. Denote 
-$M$ and $M_m$ be the $\alpha$ quantile of Brownian motion with drift $\mu$ 
-and variance $\sigma$ at time $T$ and its step length $T/m$ version
- respectively. 
-
-From the previous section, we know the mean of discretization error satisfies
-\[
-E(M-M_m) = \beta /m + O(m^{-\frac{3}{2}}),
-\]
-where 
-\[
-\beta = - \frac{\tsigma\sqrt{T}}{4}\left((2g'(\mu_1)-\mu_1)\sqrt{\alpha} 
-  -(2g'(\mu_2)-\mu_2)\sqrt{(1-\alpha)}\right).
-\]
-
-We find 
-\[
-\begin{split}
- & E(e^{M_m} - x)^+ \\
-=& 
-E(e^M-x)^+ - E(e^M-e^{M_m}; e^M,e^{M_m}>x)\\
-&+E(e^{M_m}-x;e^{M_m}\geq x > e^M)
--E(e^M-x;e^M\geq x > e^{M_m})\\
-=& A - B + C + D
-\end{split}
-\]
-
-Assume $m(e^M-e^{M_m})$ convergence in distribution to some random variable $U$.
-Then, 
-\[
-0 \leq C \leq E(e^{M_m}-e^M;e^{M_m}\geq x > e^M)
-\] 
-Since $P(e^{M_m}\geq x > e^M) \rightarrow 0$,
-\[
-E(m(e^{M_m}-e^M);e^{M_m}\geq x > e^M) \rightarrow 0
-\]
-by the uniformly integrability. So $C$ and similarly $D$ is $o(1/m)$.
-If the assumption is not true, if we can prove
-\begin{equation}
-E(e^{M_m}-e^M;e^{M_m}\geq x > e^M) \sim o(1/m) \label{eq:sp1}
-\end{equation}
-it is also OK. 
-
-Now, 
-\begin{align}
-  B =&  E(e^M-e^{M_m}; e^M,e^{M_m}>x) \notag \\
-  =& E(e^M-e^{M_m}; e^M>x) -  E(e^M-e^{M_m}; e^{M_m}<x<e^M) \notag \\
-  =& E(e^M-e^{M_m}; e^M>x) + o(1/m) \notag \\
-  =& E(e^M \beta/m;e^M>x) +o(1/m) \label{eq:sp2}
-\end{align}
-
-Hence,
-\begin{align}
- & E((e^{M_m}-x)^+) \notag\\
-=& E((e^M-x);e^M>x) - E(e^M \beta/m;e^M>x) + o(1/m) \notag\\
-=& E(e^M(1-\beta/m)-x;e^M>x) + o(1/m) \notag \\
-=& E[e^{M-\beta/m}-x;e^M>x] + o(1/m) \label{eq:cor1}\\
-=& e^{-\beta/m}E(e^M-xe^{\beta/m};e^M>x) + o(1/m) \notag\\
-=& e^{-\beta/m}E(e^M-xe^{\beta/m};e^M>xe^{\beta/m})  \notag\\
- & +e^{-\beta/m}E(e^M-xe^{\beta/m};e^M\in [xe^{\beta/m}, x])  + o(1/m)\label{eq:sp3}\\
-= & e^{-\beta/m}E[e^M-xe^{\beta/m};e^M>xe^{\beta/m}] + o(1/m) \\
-= & e^{-\beta/m}E[(e^M-xe^{\beta/m})^+] + o(1/m) \label{eq:cor2}
-\end{align}
-Now both equation (\ref{eq:cor1}) and (\ref{eq:cor2}) 
-are correction formulas.
-
-
-For equation (\ref{eq:sp3}),
-\[
-\begin{split}
-&|E(e^M-xe^{-\beta/m};e^M\in [xe^{-\beta/m}, x])|\\
-\leq& x|1-e^{-\beta/m}|P(M \in [\log x,\log x -\beta/m])\\
-=& O(1/m)O(1/m) = o(1/m) 
-\end{split}
-\]
-The inequality is obtained by observation. The second is because the density function is finite and Cauchy-Schwarz inequality.
-
-\def\bM{\overline{M}}
-\def\darrow{\xrightarrow{\mathcal{D}}}
-\def\Cov{\mathrm{Cov}}
-Now we discuss the equation (\ref{eq:sp2}).
-Use Taylor expansion, we get
-\[
-e^{M_m}-e^M = e^M(M_m-M) + \frac{1}{2}e^{\bM_m}(M_m-M)^2
-\]
-for some $\bM_m$ between $M$ and $M_m$.
-
-Similarly, to get equation (\ref{eq:cor1}), using Taylor expansion, we find
-\[
-e^{M-\frac{\beta}{m}}= e^{M} - e^M(M-\frac{\beta}{m}-M) + \frac{1}{2}e^{\tM_m}(M-\frac{\beta}{m}-M)^2
-\]
-for some $\tM_m$ between $M-\frac{\beta}{m}$ and $M$. 
-
-
-Now assume 
-\[
-m^\gamma(M-M_m)=W_m \darrow W,
-\]
-where $\gamma > \frac{1}{2}$ as we see in the simulation.
-As later, we will prove $e^{\bM_m}m^{2\gamma}(M-M_m)^2$ is uniformly integrable.
-So 
-\[
-m^{2\gamma}(E[e^M]-E[e^{M_m}] - E[e^M(M-M_m)])\darrow C,
-\]
-for some constant. 
-Hence, 
-\begin{align}
-&E[e^M]-E[e^{M_m}] \notag \\
-=& E[e^M(M-M_m)] + C m^{-2\gamma} +o(m^{-2\gamma}) \notag\\
-=& E[e^M]E[M-M_m] + \Cov(e^M,M-M_m) + o(1/m) \notag\\
-=& E[e^M]\beta/m +  \Cov(e^M,M-M_m) + o(1/m)\notag\\
-=& E[e^M]\beta/m + o(1/m) \label{eq:sp4}
-\end{align}
-To verify equation (\ref{eq:sp4}) we need to justify 
-\[
-\Cov(e^M,M-M_m)\sim o(1/m),
-\]
-by uniformly integrability argument? 
-
-To check the uniformly integrability of $e^{\bM_m}m^{2\gamma}(M-M_m)^2$,
-we use the Schwarz inequality.
-\[
-E[(e^{\bM_m}m^{2\gamma}(M-M_m)^2)^2]
-\leq E[e^{4\bM_m}] E[(m^{2\gamma}(M-M_m))^4]
-\]
-But, we have 
-\[
-\sup_mE[e^{p\bM_m}] \leq E[e^p\max_{0\leq t\leq T}B_t] < \infty \quad \forall p>0.
-\]
-If we have 
-\[
-\sup_m E[|m^{2\gamma}(M-M_m)|^4] \leq \infty
-\]
-we can prove the uniformly integrability. 
-
-In fact, we can modify this proof by using H\"older's inequality, then 
-we only need
-\[
-\sup_m E[|m^{2\gamma}(M-M_m)|^p] < \infty 
-\]
-for some $p>2$. 
+%Probably, you have already found out that this scheme only works for European puts, because that you can find the two side boundary of effective quantile. This condition is not true for calls. 
 
 
 
