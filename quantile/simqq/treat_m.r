@@ -75,10 +75,10 @@ readFile <- function(inFilenames,NN=200000) {
 
 
 ## main function to treat the data
-run <- function(inFilenames,ttt=8,SP=1,AB=TRUE,DQ=FALSE,ZEE=FALSE) {
+run <- function(inFilenames,ttt=8,SP=1,AB=TRUE,DQ=FALSE,ZEE=FALSE,NN=200000) {
   ## read data from file
   inFilenames <- c(inFilenames)
-  ret <- readFile(c(inFilenames))
+  ret <- readFile(c(inFilenames),NN=NN)
   attach(ret)
   ## file name pattern: ?????.bin, then get ????? part. 
   boutname <- sub(".bin$","", inFilenames[1])
@@ -112,12 +112,12 @@ run <- function(inFilenames,ttt=8,SP=1,AB=TRUE,DQ=FALSE,ZEE=FALSE) {
   }
   
   ## plot the lines of mAdErr for different Quantile
-  plotlines(paste(boutname, ".pdf",seq=""),mdErr,ylab="Error");
-  plotlines(paste(boutname, "_abs.pdf",seq=""), mAdErr, ylab="|Error|");
+  plotlines(paste(boutname, ".pdf",sep=""),mdErr,ylab="Error");
+  plotlines(paste(boutname, "_abs.pdf",sep=""), mAdErr, ylab="|Error|");
   l2mdErr <- log(mdErr)/log(2);
   l2mAdErr <- log(mAdErr)/log(2);
-  plotlines(paste(boutname, "_log.pdf",seq=""), l2mdErr, ylab="log(|Error|)/log(2)");
-  plotlines(paste(boutname, "_abs_log.pdf",seq=""), l2mAdErr, ylab="log(|Error|)/log(2)");
+  plotlines(paste(boutname, "_log.pdf",sep=""), l2mdErr, ylab="log(|Error|)/log(2)");
+  plotlines(paste(boutname, "_abs_log.pdf",sep=""), l2mAdErr, ylab="log(|Error|)/log(2)");
 
 
   ## regression for each quantile & plot the result.
@@ -168,3 +168,18 @@ run <- function(inFilenames,ttt=8,SP=1,AB=TRUE,DQ=FALSE,ZEE=FALSE) {
   return(ret$Nrows)
 }
 
+gg <- function(x) {
+  return(x*pnorm(x)+1/sqrt(2*pi)*exp(-x^2/2))
+}
+
+CC <- function(mu=0.4,sigma=1,T=1,alpha=0.5) {
+  mu1 <- mu*sqrt(alpha*T)/sigma;
+  mu2 <- -mu*sqrt((1-alpha)*T)/sigma;
+  ret <- -sigma*sqrt(T)*( (2*gg(mu1)-mu1)*sqrt(alpha)
+                         -(2*gg(mu2)-mu2)*sqrt(1-alpha))
+  return(ret)
+}
+
+CCC <- function(mu=0, sigma=1,T=1,alpha=0.5,N=2^4) {
+  return(log(abs(CC(mu,sigma,T,alpha)/4/N))/log(2))
+}
