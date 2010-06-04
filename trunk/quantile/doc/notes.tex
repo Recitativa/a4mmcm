@@ -571,7 +571,7 @@ Lattice & Approximation   & Probabilty \\
 \cite{cox1979} & $x_1= \sigma\sqrt{h}$ & $p_1 =\frac{e^{rh}-e^{-\sigma\sqrt{h}}}{e^{\sigma\sqrt{h}}-e^{-\sigma\sqrt{h}}}$ \\
    &  $x_2=-\sigma\sqrt{h}$& $p_2 = 1-p_1$ \\
 \hline
-\cite{jarrow1983} & $x_1 = (r-\sigma^2 /2)h+\sigma\sqrt{h}$ & $p_1 = \frac{e^{\sigma^2 h/2}-e^{-\sigma\sqrt{h}}}{e^{\sigma\sqrt{h}}-e^{-\sigma\sqrt{h}}}$ \\   
+\cite{jarrow1983} & $x_1 = (r-\sigma^2 /2)h+\sigma\sqrt{h}$ & $p_1 = 1/2 $ \\%\frac{e^{\sigma^2 h/2}-e^{-\sigma\sqrt{h}}}{e^{\sigma\sqrt{h}}-e^{-\sigma\sqrt{h}}}$ \\   
 & $x_2 =(r-\sigma^2 /2)h - \sigma\sqrt{h}$ & $p_2 = 1- p_1$ \\
 \hline
 \cite{Boyle1986} & $x_1 = l\sigma\sqrt{h}$ & $p_1 = \frac{1}{2l^2} + \frac{(r-\sigma^2 /2)\sqrt{h}}{2l\sigma}$ \\
@@ -776,7 +776,7 @@ where $X'$ is an independent copy of $X$.
 E[M(1,T]-M(N,N)]
 =& -\frac{\zeta(1/2)}{\sqrt{2\pi}}\sigma\sqrt{T/N} 
  -\frac{2g(\mu\sqrt{T}/\sigma)-\mu\sqrt{T}/ \sigma}{4N}\sigma\sqrt{T} \\
- &+O(\sqrt{T}/N^{3/2}),
+ &+O(1/N^{3/2}),
 \end{split}
 \end{equation}
 where 
@@ -827,7 +827,7 @@ The algorithm:
   get replicates $\Set{M_{j,s}^{(l)},{1\leq l\leq L}}$.
 \item Approximate the expectation of the absolute discretization error for $s < d$ using:
 \begin{align}
-Err^{abs}_{j,s} &= \frac{1}{L}\sum_{1\leq l \leq L} \abs{M_{j,s}^{(l)}- M_{j,d}^{(l)}}.
+Err^{abs}_{j,s} &= \frac{1}{L}\sum_{1\leq l \leq L} \abs{M_{j,d}^{(l)}- M_{j,s}^{(l)}}.
 \end{align}
 \end{enumerate}
 
@@ -1009,16 +1009,15 @@ we get an estimate of the expectation of the discretization error:
 -  \sup_{i\leq k} X_i-\inf_{i\leq N-k} X'_i} \\
 = &  \EE{\sup_{t\leq \alpha{T}} X_t - \sup_{i\leq k} X_i} +
 \EE{\inf_{t \leq (1-\alpha)T} X'_t-\inf_{i\leq N-k} X'_i}\\
-=& -\frac{\zeta(1/2)}{\sqrt{2\pi}}\sigma \sqrt{\frac{\alpha T}{\alpha N}} - \frac{2g(\mu_1)-\mu_1}{4N}\sigma\sqrt{\alpha T} +O(1/N^{{3}/{2}}) \\
-&-\left(\frac{\zeta(1/2)}{\sqrt{2\pi}}\sigma \sqrt{\frac{(1-\alpha)T}{(1-\alpha)N}} - \frac{2g(\mu_2) - \mu_2}{4N}\sigma \sqrt{(1-\alpha)T} + O(1/N^{{3}/{2}})\right) \\
-=& -\frac{\zeta(1/2) \sigma}{\sqrt{2\pi}}\left(\sqrt{T/\alpha N}
-\sqrt{\alpha} - \sqrt{T/(1-\alpha)N}\sqrt{1-\alpha}\right) \\
-& - \frac{\sigma\sqrt{T}}{4N}\left((2g(\mu_1)-\mu_1)\sqrt\alpha - (2g(\mu_2)-\mu_2)\sqrt{(1-\alpha)}\right) \\
+=& -\frac{\zeta(1/2)}{\sqrt{2\pi}}\sigma \sqrt{\frac{\alpha T}{\alpha N}} - \frac{2g(\mu_1)-\mu_1}{4\alpha N}\sigma\sqrt{\alpha T} +O(1/N^{{3}/{2}}) \\
+&-\left(-\frac{\zeta(1/2)}{\sqrt{2\pi}}\sigma \sqrt{\frac{(1-\alpha)T}{(1-\alpha)N}} - \frac{2g(\mu_2) - \mu_2}{4(1-\alpha)N}\sigma \sqrt{(1-\alpha)T} + O(1/N^{{3}/{2}})\right) \\
+=& -\frac{\zeta(1/2) \sigma}{\sqrt{2\pi}}\left(\sqrt{T/N} - \sqrt{T/N} \right)\\
+& - \frac{\sigma\sqrt{T}}{4N}\left(\frac{(2g(\mu_1)-\mu_1)}{\sqrt\alpha} - \frac{(2g(\mu_2)-\mu_2)}{\sqrt{(1-\alpha)}}\right) \\
 &+ O(1/N^{{3}/{2}}) \\
-=&- \frac{\sigma\sqrt{T}}{4N}\left((2g(\mu_1)-\mu_1)\sqrt\alpha - (2g(\mu_2)-\mu_2)\sqrt{(1-\alpha)}\right) \\
+=&\frac{\sigma\sqrt{T}}{4N}\left(\frac{(\mu_1 - 2g(\mu_1))}{\sqrt\alpha} - \frac{(\mu_2 - 2g(\mu_2))}{\sqrt{(1-\alpha)}}\right) \\
 & + O(1/N^{{3}/{2}}),
 \end{align*}
-where $k = \alpha N$, $\mu_1 =\mu\sqrt{\alpha T}/\sigma$, and $\mu_2 =\mu\sqrt{(1-\alpha)T}/\sigma$.
+where $k = \alpha N$, $\mu_1 =\mu\sqrt{\alpha T}/\sigma$, and $\mu_2 =-\mu\sqrt{(1-\alpha)T}/\sigma$.
 The third last equality holds by view $\displaystyle\inf_{t\leq (1-\alpha)T} S'_t$ as
 $\displaystyle-\max_{t\leq (1-\alpha)T} (-S'_t)$.
 
