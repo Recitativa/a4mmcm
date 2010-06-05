@@ -21,7 +21,6 @@ int main(int argc,
   stringstream ss (stringstream::in | stringstream::out);
   for(int i=1;i<Narg;i++) { ss << argv[i] << " ";}
 
-  time_t seconds = time (NULL); // Get time as random seed. 
 
   SimPara Para; // The class for Parameters 
   Para.T = 1; // Brownian motion from 0 to time T.
@@ -33,11 +32,14 @@ int main(int argc,
   // maximal segements, i.e. the end one. 
   ss >> Para.Re;
   // Seed for random number generator
-  Para.Rseed = seconds;
   double sigma, mu;
   ss >> sigma >> mu;
   ss >> Para.Nseg; // index of the name of outputfile
   BrownSim S(sigma,mu);
+
+  time_t seconds = time (NULL); // Get time as random seed. 
+  Para.Rseed = seconds*Para.Nseg;
+
   S.Sim(Para);
 }
 

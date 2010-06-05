@@ -46,3 +46,16 @@ price <- function(S=100,K=100,r=0.05,sigma=0.2,T=1,alpha=0.5,n=100000) {
 }
 
 
+Xmean <- function(mu=0,alpha=0.625,sigma=1, T=1, n=100000) {
+  t1 <- alpha*T; t2 <- (1-alpha)*T;
+  QQ <- bpmn(t1,sigma,mu,n) - bpmn(t2,sigma,-mu,n)
+  C <- mean(QQ)
+  SD <- sd(QQ)/sqrt(n)
+  return(list(C=C,SD=SD))
+}
+
+Xkmean <- function(mu=0,alpha=0.625, N = 2^6, sigma=1, T=1, n=10000) {
+  k <- alpha*N;
+  
+}
+
