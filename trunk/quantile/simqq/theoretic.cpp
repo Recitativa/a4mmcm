@@ -4,6 +4,8 @@
 #include <sstream>
 #include <fstream>
 
+#include <cassert>
+
 #include <algorithm>
 
 #include <gsl/gsl_rng.h>
@@ -57,7 +59,7 @@ int BrownSim::Sim(SimPara Para) {
   // Type of real number, it should be long double if Re>20 since double 
   // has 53 bits for base, and approsimate 53/3 = 17 decimal digits, 
   // When Re>20, it need more than 17 digits in computation  
-  typedef long double Real; 
+  typedef double Real; 
   
   // Passing Parameters to local variables.  
   const double T = Para.T;
@@ -72,7 +74,7 @@ int BrownSim::Sim(SimPara Para) {
   
   int n= 1<<Re; // total number of segements
   double hsigma = sigma*sqrt(T/n); // corresponding sigma for each step; 
-  Real hmu = (Real)mu/n; // corresponding mu for each step;
+  Real hmu = (Real)mu/(Real)n; // corresponding mu for each step;
  
   // FileName format nout_Rb_Re_.bin, a binary file. 
   ostringstream SoutFilename;
@@ -100,7 +102,6 @@ int BrownSim::Sim(SimPara Para) {
     testf.close();
     fout.open(outFilename.c_str(), ios::app| ios::binary);
     fout.write((char *)&Rb, sizeof(int));
-    int tRe = Re-1;
     fout.write((char *)&Rm, sizeof(int));    
     fout.write((char *)&Re, sizeof(int));    
     fout.write((char *)&Nseg, sizeof(int));
@@ -119,11 +120,10 @@ int BrownSim::Sim(SimPara Para) {
   gsl_rng_set(r, Rseed);
 
   
-  Real B;
   double Q; // temporary varible for Quantile
   
   // the array store the Brownian path
-  Real * Record = new Real[1<<Re+1];
+  Real * Record = new Real[(1<<Re)+1];
   
   if(Record == NULL) {
     cerr << "no enough memory!" << endl;
@@ -154,8 +154,9 @@ int BrownSim::Sim(SimPara Para) {
     //  *         *         *         *         *         *         *     
     //  o                   o                   o                   o
     // as Np = 1<<g +1 points path
+    double M[Rm-Rb+2]; int ii=0;
     for(int g=Rb; g<= Rm ||g==Re; g++) {
-      int Np = 1<<g+1;
+      int Np = (1<<g)+1;
       // following the example, nStep=2, when g = Re-1; 
       // nStep=4, when g= Re-2;
       int nStep = 1<<(Re-g);
@@ -171,16 +172,19 @@ int BrownSim::Sim(SimPara Para) {
       //  0----|----|----|...----|----|----|----|----|----|----|----|----|
       //                         *                   *                   *
       //                         nQ                 nQ                  nQ
+      //sort(Sp, Sp+Np);
      for(k=0, nQ = 1<< (g-1);
 	  k<= 1<<(Rb-1); k++, nQ += (1<< (g-Rb))) {
-	nth_element (Sp, Sp+nQ, Sp+Np);
+       nth_element (Sp, Sp+nQ, Sp+Np);
 	Q = (double)(Sp[nQ]);
-	if(nQ+1== Np) Q = max(0.,Q);
+	if(nQ== 1<<g ) {Q = max(0.,Q); M[ii]=Q; ii++;}
 	fout.write((char *)&Q, sizeof(double));	
       }
      if(g==Rm) g=Re-1;
     }
     fout.flush();
+    for(ii=0;ii<Rm-Rb;ii++) {//cerr<< M[ii] << 0;
+      assert(M[ii]<=M[ii+1]);}
     cerr << "Adding " << l << "th records" << endl;
   }
   fout.close();
