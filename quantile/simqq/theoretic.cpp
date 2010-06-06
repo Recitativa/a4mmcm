@@ -59,7 +59,7 @@ int BrownSim::Sim(SimPara Para) {
   // Type of real number, it should be long double if Re>20 since double 
   // has 53 bits for base, and approsimate 53/3 = 17 decimal digits, 
   // When Re>20, it need more than 17 digits in computation  
-  typedef double Real; 
+  typedef long double Real; 
   
   // Passing Parameters to local variables.  
   const double T = Para.T;
@@ -153,8 +153,8 @@ int BrownSim::Sim(SimPara Para) {
     //  0----|----|----|----|----|----|----|----|----|----|----|----|
     //  *         *         *         *         *         *         *     
     //  o                   o                   o                   o
-    // as Np = 1<<g +1 points path
-    double M[Rm-Rb+2]; int ii=0;
+    // as Np = (1<<g) +1 points path
+    //double M[Rm-Rb+2]; int ii=0;
     for(int g=Rb; g<= Rm ||g==Re; g++) {
       int Np = (1<<g)+1;
       // following the example, nStep=2, when g = Re-1; 
@@ -176,15 +176,15 @@ int BrownSim::Sim(SimPara Para) {
      for(k=0, nQ = 1<< (g-1);
 	  k<= 1<<(Rb-1); k++, nQ += (1<< (g-Rb))) {
        nth_element (Sp, Sp+nQ, Sp+Np);
-	Q = (double)(Sp[nQ]);
-	if(nQ== 1<<g ) {Q = max(0.,Q); M[ii]=Q; ii++;}
-	fout.write((char *)&Q, sizeof(double));	
+       Q = (double)(Sp[nQ]);
+	//if(nQ== 1<<g ) {Q = max(0.,Q); M[ii]=Q; ii++;}
+       fout.write((char *)&Q, sizeof(double));	
       }
      if(g==Rm) g=Re-1;
     }
     fout.flush();
-    for(ii=0;ii<Rm-Rb;ii++) {//cerr<< M[ii] << 0;
-      assert(M[ii]<=M[ii+1]);}
+    //for(ii=0;ii<Rm-Rb;ii++) {//cerr<< M[ii] << 0;
+    //  assert(M[ii]<=M[ii+1]);}
     cerr << "Adding " << l << "th records" << endl;
   }
   fout.close();
