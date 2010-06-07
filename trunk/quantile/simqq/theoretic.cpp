@@ -72,9 +72,9 @@ int BrownSim::Sim(SimPara Para) {
 
   int i;
   
-  int n= 1<<Re; // total number of segements
+  int n=( 1<<Re); // total number of segements
   double hsigma = sigma*sqrt(T/n); // corresponding sigma for each step; 
-  Real hmu = (Real)mu/(Real)n; // corresponding mu for each step;
+  Real hmu = ((Real)mu)/((Real)n); // corresponding mu for each step;
  
   // FileName format nout_Rb_Re_.bin, a binary file. 
   ostringstream SoutFilename;
@@ -136,7 +136,7 @@ int BrownSim::Sim(SimPara Para) {
     // generate the path
     Record[0]=0;
     for(i=1; i<= (1<< Re); i++) 
-      Record[i] = Record[i-1]+(Real)gsl_ran_gaussian(r, hsigma)+hmu;
+      Record[i] = Record[i-1]+((Real)gsl_ran_gaussian(r, hsigma))+hmu;
     
     cerr << "coumputing Q" << endl;
     int nQ;
@@ -173,8 +173,8 @@ int BrownSim::Sim(SimPara Para) {
       //                         *                   *                   *
       //                         nQ                 nQ                  nQ
       //sort(Sp, Sp+Np);
-     for(k=0, nQ = 1<< (g-1);
-	  k<= 1<<(Rb-1); k++, nQ += (1<< (g-Rb))) {
+     for(nQ = 1<< (g-1);
+	  nQ < Np; nQ += (1<< (g-Rb))) {
        nth_element (Sp, Sp+nQ, Sp+Np);
        Q = (double)(Sp[nQ]);
 	//if(nQ== 1<<g ) {Q = max(0.,Q); M[ii]=Q; ii++;}
