@@ -566,20 +566,29 @@ There are plenty of proposals for tree methods. We present the popularly used ap
 \begin{center}
 \begin{tabular}{|l|l|l|}
 \hline
-Lattice & Approximation   & Probabilty \\
+Lattice & Approximation   \\
 \hline
-\cite{cox1979} & $x_1= \sigma\sqrt{h}$ & $p_1 =\frac{e^{rh}-e^{-\sigma\sqrt{h}}}{e^{\sigma\sqrt{h}}-e^{-\sigma\sqrt{h}}}$ \\
-   &  $x_2=-\sigma\sqrt{h}$& $p_2 = 1-p_1$ \\
+\cite{cox1979} & $x_1= \sigma\sqrt{h}$ \\
+ & $x_2=-\sigma\sqrt{h}$  \\
+ & $p_1 =\frac{e^{rh}-e^{-\sigma\sqrt{h}}}{e^{\sigma\sqrt{h}}-e^{-\sigma\sqrt{h}}}$ \\
+ & $p_2 = 1-p_1$ \\
 \hline
-\cite{jarrow1983} & $x_1 = (r-\sigma^2 /2)h+\sigma\sqrt{h}$ & $p_1 = 1/2 $ \\%\frac{e^{\sigma^2 h/2}-e^{-\sigma\sqrt{h}}}{e^{\sigma\sqrt{h}}-e^{-\sigma\sqrt{h}}}$ \\   
-& $x_2 =(r-\sigma^2 /2)h - \sigma\sqrt{h}$ & $p_2 = 1- p_1$ \\
+\cite{jarrow1983} & $x_1 = (r-\sigma^2 /2)h+\sigma\sqrt{h}$ \\
+& $x_2 =(r-\sigma^2 /2)h - \sigma\sqrt{h}$ \\
+& $p_1 = 1/2 $ \\%\frac{e^{\sigma^2 h/2}-e^{-\sigma\sqrt{h}}}{e^{\sigma\sqrt{h}}-e^{-\sigma\sqrt{h}}}$ \\   
+ & $p_2 = 1/2$ \\
 \hline
-\cite{Boyle1986} & $x_1 = l\sigma\sqrt{h}$ & $p_1 = \frac{1}{2l^2} + \frac{(r-\sigma^2 /2)\sqrt{h}}{2l\sigma}$ \\
- & $x_2 = 0$ & $p_2 = 1-\frac{1}{l^2}$ \\
- & $x_3 = -l\sigma\sqrt{h}$ & $p_3 = \frac{1}{2l^2} - \frac{(r-\sigma^2 /2)\sqrt{h}}{2l\sigma}$\\
+\cite{Boyle1986} & $x_1 = l\sigma\sqrt{h}$ \\
+ & $x_2 = 0$ \\
+ & $x_3 = -l\sigma\sqrt{h}$ \\
+ & $p_1 = \frac{1}{2l^2} + \frac{(r-\sigma^2 /2)\sqrt{h}}{2l\sigma}$ \\
+ & $p_2 = 1-\frac{1}{l^2}$ \\
+ & $p_3 = \frac{1}{2l^2} - \frac{(r-\sigma^2 /2)\sqrt{h}}{2l\sigma}$\\
 \hline
-\cite{Amin1991} & $x_1 =(r-\ln(cosh(\sigma\sqrt{h})))h + \sigma\sqrt{h}$ & $p_1 = 1/2$ \\
-& $x_2 = (r-\ln(\cosh(\sigma\sqrt{h})))h-\sigma\sqrt{h}$ & $p_2 = 1/2$ \\
+\cite{Amin1991} & $x_1 =(r-\ln(cosh(\sigma\sqrt{h})))h + \sigma\sqrt{h}$ \\
+& $x_2 = (r-\ln(\cosh(\sigma\sqrt{h})))h-\sigma\sqrt{h}$ \\
+& $p_1 = 1/2$ \\
+& $p_2 = 1/2$ \\
 \hline
 \end{tabular}
 \end{center}
@@ -613,8 +622,9 @@ M(\alpha,t)(\omega) = \inf\Set{x:\int_0^t ds1_{(X_s (\omega)\leq x)} > \alpha t}
 Then we can see that $\displaystyle\inf_{0\leq s \leq t}  X_s = \lim_{\alpha\to 0}M(\alpha,t)$ and $\displaystyle\sup_{0\leq s \leq t} X_s = \lim_{\alpha\to 1} M(\alpha, t)$. %In this sense $\alpha$-quantile option can be considered as a general class of lookback option. Unlike lookback option whose payoff depends on the maximum or minimum of the price of stock before maturity as mentioned before, $\alpha$-quantile option's payoff depends on the quantile of the stock price process. This option was first introduced by \cite{Miura} in 1992. \cite{Akahori1995} gave a generalized arc-sine law for this type of options by Feynman-Kac formula.
 When $\{X_{t}\}$ is a Brownian motion defined as $X_t = \sigma B_t + \mu t$, where $B_t$ is a standard Brownian motion,  using Feynman-Kac formula, \cite{Dassios1995} obtained the explicit density of the $\alpha$-quantile of $\{X_t\}$ and gave a striking representation of the distribution of quantile. One focus of this chapter is about the discretization error between the $\alpha$-quantile of a Brownian motion and that of a Gaussian random walk. We find that the the strong  order of convergence for a genuine $\alpha$-quantile with $\alpha \in (0,1)$ is different from that for the extreme cases with $\alpha=0$ or $\alpha=1$. Based on our numerical study, we find that the strong order of convergence of the discretely sampled $\alpha$-quantile from a Gaussian random walk to the $\alpha$-quantile of a Brownian motion is around $0.76$. However, it is well known that the strong order of convergence for the maximum of a Gaussian random walk to the maximum of a Brownian motion is $0.5$. Our theoretical study also shows that there are differences between the expectations of the discretization error of the Euler approximation for the maximum and other $\alpha$-quantiles. Another focus of this chapter is about the pricing problem of $\alpha$-quantile options. We propose a tree method which is the only available pricing method for American-style $\alpha$-quantile options. We show how Richardson extrapolation can be applied to improve the accuracy of our pricing approach. 
 
-In section \ref{4-1} related previous study about the distribution of $\alpha$-quantile of a Brownian motion is summarized. %In section \ref{4-2}, we provide a study about the joint distribution of a Brownian motion and its $\alpha$-quantile. 
-In section \ref{s:euler}, the numerical study about the strong order of convergence between the $\alpha$-quantile of a Gaussian random walk and that of a Brownian motion is provided. In section \ref{sec:de} we present an estimate about the expectation of the discretization error between the discretely sampled $\alpha$-quantile from a Gaussian random walk and the $\alpha$-quantile of a Brownian motion. In section \ref{4-3}, $\alpha$-quantile options and the advantages of this type of options are introduced. In section \ref{American-tree}, we propose a tree method which is useful to price American-style $\alpha$-quantile options. 
+In section \ref{4-1} related previous study about the distribution of $\alpha$-quantile of a Brownian motion is summarized. %In section \ref{4-2}, we provide a study about the joint distribution of a Brownian motion and its $\alpha$-quantile.  
+In section \ref{s:euler}, the Euler scheme to simulate $\alpha$-quantiles of Brownian motion is introduced.
+In section \ref{strong-order-convergence}, the numerical study about the strong order of convergence between the $\alpha$-quantile of a Gaussian random walk and that of a Brownian motion is provided. In section \ref{sec:de} we present an analysis about the expectation of the discretization error between the discretely sampled $\alpha$-quantile from a Gaussian random walk and the $\alpha$-quantile of a Brownian motion. In section \ref{4-3}, $\alpha$-quantile options and the advantages of this type of options are introduced. In section \ref{American-tree}, we propose a tree method which is useful to price American-style $\alpha$-quantile options. 
 
 
  
@@ -759,7 +769,7 @@ If (\ref{strong-g}) is $O(h^\gamma)$ as $h \downarrow 0$, this approximation is 
 \end{equation}
 as $h \downarrow 0$. Weak convergence is of importance when only an estimation of the probability distribution of $Y(t)$ is essential. 
 
-In the first step to get the Euler approximation of the $\alpha$-quantile of a Brownian motion at time $T$, we divide the time interval $[0,T]$ into $N$ equal small time intervals. Then the Euler approximation for the $\alpha$-quantile $M(\alpha, T)$ of the Brownian motion $\{X_t\}_{t\leq T}$ is the $k$-th order statistic of the set $\{X_{nh},n=0,1,\cdots,N\}$ with $k= \lfloor \alpha  N\rfloor$. Since $h$ and $N$ are related by $h=T/N$, we denote the Euler approximation of $M(\alpha, T)$ with $h=T/N$ as $M(k,N)$. Then the discretization error for the Euler approximation of the $\alpha$-quantile of a Brownian motion at time $T$ is 
+In the first step to get the Euler approximation of the $\alpha$-quantile of a Brownian motion at time $T$, we divide the time interval $[0,T]$ into $N$ equal small time intervals. Then the Euler approximation for the $\alpha$-quantile $M(\alpha, T)$ of the Brownian motion $\{X_t\}_{t\leq T}$ is the $k$-th order statistic of the set $\{X_{nh},n=0,1,\cdots,N\}$ with $k= \lceil \alpha  N\rceil$. Since $h$ and $N$ are related by $h=T/N$, we denote the Euler approximation of $M(\alpha, T)$ with $h=T/N$ as $M(k,N)$. Then the discretization error for the Euler approximation of the $\alpha$-quantile of a Brownian motion at time $T$ is 
 \begin{equation}
 \varepsilon_N =M(\alpha, T)-M(k,N).
 \end{equation}
@@ -770,7 +780,7 @@ M(k,N)\stackrel{\rm(law)}{=}\max_{i\le k}X_{ih} + \min_{i\le N-k}X'_{ih},
 where $X'$ is an independent copy of $X$. 
 
 
-\cite{A-G-P-1995} studied the discretization error for the Euler approximation of the maximum of a Brownian motion. They found that both the strong and weak order of convergence associated with the simulation of the maximum of a Brownian motion with the Euler scheme is $1/2$. Specifically, \[E[M(1,T)-M(N,N)] = O(1/N^{1/2})\] as $N\to\infty$. In fact, \cite{Janssen2008} provided a series expansion of $E[M(1,T) -M(N,N)]$ to arbitrary order, the leading two terms of which are 
+\cite{A-G-P-1995} studied the discretization error for the Euler approximation of the maximum of a Brownian motion. They found that both the strong and weak order of convergence associated with the simulation of the maximum of a Brownian motion with the Euler scheme is $1/2$. Specifically, \[E[M(1,T)-M(N,N)] = O(1/N^{1/2})\] as $N\to\infty$. In fact, for $|\mu /\sqrt{N}|<2\sqrt{\pi}$, \cite{Janssen2008} provided a series expansion of $E[M(1,T) -M(N,N)]$ to arbitrary order, the leading two terms of which are 
 \begin{equation}\label{eq:maxest}
 \begin{split}
 E[M(1,T]-M(N,N)]
@@ -787,10 +797,10 @@ and
 \begin{equation}
 g(x)=x \Phi(x) + \frac{1}{\sqrt{2\pi}} e^{-{x^2 /2 }}.
 \end{equation}
+\cite{Janssen2008} further pointed out that the expected discretization error of the maximum of a Brownian motion with drift $\mu$ is same as that for the maximum of a Brownian motion with drift $-\mu$.  
 
 
-
-Since the maximum of a Brownian motion is a special case of the quantile of a Brownian motion, we are interested to generalize the results in \cite{A-G-P-1995} on the simulation of the extreme of a Brownian motion to its quantiles. In next section, we provide a numerical study to shed light on the order of convergence of the Euler approximation of $\alpha$-quantiles of a Brownian motion.  
+Since the maximum of a Brownian motion is a special case of the quantile of a Brownian motion, we are interested to generalize the results in \cite{A-G-P-1995} on the simulation of the extreme of a Brownian motion to its quantiles. In next section, we provide a numerical study to shed light on the order of convergence of the Euler approximation for $\alpha$-quantiles of a Brownian motion.  
 
 %The most straightforward approach to get a simulation of $M(\alpha , T)$ is to apply the Euler approximation. 
 
@@ -831,20 +841,20 @@ Err^{abs}_{j,s} &= \frac{1}{L}\sum_{1\leq l \leq L} \abs{M_{j,d}^{(l)}- M_{j,s}^
 \end{align}
 \end{enumerate}
 
-We implement this algorithm for $d=27$, $b=6$, $\mu=0$, $\sigma=1$, $T=1$, $X_0=0$ and generate $L=6455$ replicates. The results are shown in Figure \ref{f:ab}. Since we are dealing with $\mu = 0$ currently, by the symmetric effect of a Brownian motion without drift, we only examine $\alpha$-quantiles where $\alpha$ vary from $[50\%,100\%]$. %It is well known that the convergence rate of Euler scheme for Brownian motion is $1$. 
+We implement this algorithm for $d=25$, $b=4$, $\mu=0$, $\sigma=1$, $T=1$, $X_0=0$ and generate $L=127052$ replicates. The results are shown in Figure \ref{f:ab}. Since we are dealing with $\mu = 0$ currently, by the symmetric effect of a Brownian motion without drift, we only examine $\alpha$-quantiles where $\alpha$ vary from $[50\%,100\%]$. %It is well known that the convergence rate of Euler scheme for Brownian motion is $1$. 
 
 In \cite{Janssen2008}, we find that the strong order of convergence of the Euler Scheme for the maximum of a Brownian motion is $1/2$. Then it seems reasonable to guess that the order of convergence for $\alpha$-quantiles of Brownian motion decrease from $1$ to ${1/2}$ as the value of $\alpha$ vary from $100\%$ to $50\%$. However, numerical results show that the convergence order for $\alpha$-quantile do not work that way. Figure \ref{f:ab} shows that there exists a big difference between the strong order of convergence for the maximum of a Brownian motion and that for other $\alpha$-quantile of a Brownian motion. On the other hand, the strong order of convergence for different $\alpha$-quantiles are quite similar when $\alpha$ varies from $[50\%, 100\%)$. 
 
-Suppose the expectation of the absolute discretization error is $O(1/N^\lambda)$, then we get
+Suppose the expectation of the absolute discretization error is $O(1/N^\gamma)$, then we get
 \begin{equation}\label{error-N-sim}
-E|\varepsilon_N| \sim C/N^\lambda,
+E|\varepsilon_N| \approx C/N^\gamma,
 \end{equation}
-where $C$ is some constant. Considering in our simulation $N$ is expressed as $N = 2^s$, take logarithm to both sides of (\ref{error-N-sim}) and with easy math we get
+where $C$ is some positive constant. Considering in our simulation $N$ is expressed as $N = 2^s$, take logarithm to both sides of (\ref{error-N-sim}) and with easy math we get
 \begin{equation}
-\frac{\log E|\varepsilon_{2^s}|}{\log 2} = \frac{C}{\log 2} -\lambda s
+\frac{\log E|\varepsilon_{2^s}|}{\log 2} = \frac{C}{\log 2} -\gamma s
 \end{equation}
 
-The similarity of the order of convergence for $\alpha$-quantiles when $\alpha$ is between $[50\%, 100\%)$ is more obvious after we take the logarithm. In Figure \ref{f:lab}, you can see that except for the maximum, i.e., the $100\%$-quantile, the strong order of  convergence for other $\alpha$-quantiles of Brownian motion are close to each other. This is expressed as the lines parallel to each other. Figure \ref{f:ratio} shows the strong order of convergence for different $\alpha$-quantiles. You can see that the strong order of convergence for $100\%$-quantile is close to ${1/2}$, while strong order of convergence for other quantile are around $0.76$.  
+The similarity of the order of convergence for $\alpha$-quantiles when $\alpha$ is between $[50\%, 100\%)$ is more obvious after we take this transform. In Figure \ref{f:lab}, you can see that except for the maximum, i.e., the $100\%$-quantile, the strong order of  convergence for other $\alpha$-quantiles of Brownian motion are close to each other. This is expressed as the lines parallel to each other. Figure \ref{f:ratio} shows that the approximated strong order of convergence for different $\alpha$-quantiles obtained from our simulation. You can see that the strong order of convergence for $100\%$-quantile is close to ${1/2}$, while strong order of convergence for other quantile are around $0.76$.  
 
 %sim=6455 mu=0
 \begin{figure}[p]
@@ -996,19 +1006,21 @@ The similarity of the order of convergence for $\alpha$-quantiles when $\alpha$ 
 %\end{split}
 %\end{equation}
 
-In this section we provide a theoretical analysis about the expectation of the discretization error of the Euler approximation for $\alpha$-quantiles. We find that the leading order of the expectation of the discretization error $E\varepsilon_N = E (M_{\alpha,T}) - \E (M_{k,N})$ is $1$ for $0 < \alpha < 1$. That it the expectation of the dissertation error is $O(1/N^{-1}$ when $0 < \alpha <1$. 
+In this section we provide a theoretical analysis about the expectation of the discretization error of the Euler approximation for $\alpha$-quantiles. We find that the leading order of the expectation of the discretization error $E\varepsilon_N = E (M_{\alpha,T}) - \E (M_{k,N})$ is $1$ for $0 < \alpha < 1$. That it the expectation of the dissertation error is $O(1/N^{-1})$ when $0 < \alpha <1$. 
 
 Combine $(\ref{eq:Dassios})$ $(\ref{eq:dpathdec})$ and $(\ref{eq:maxest})$, for $0 < \alpha < 1$,
 we get an estimate of the expectation of the discretization error:
 \allowdisplaybreaks
-\begin{align*}
-\E (M_{\alpha,T}) - \E (M_{k,N})
-=& \EE{\sup_{t\leq \alpha{T}} X_t +\inf_{t \leq (1-\alpha)T}X'_t}
-- \EE{\sup_{i\leq k} X_i+\inf_{i\leq N-k} X'_i}\\
+\begin{equation}\label{ex-dis-err-1}
+\begin{split}
+&\EE {M_{\alpha,T} -  M_{k,N}}\\
+=& \EE{\sup_{t\leq \alpha{T}} X_t +\inf_{t \leq (1-\alpha)T}X'_t} - \EE{\sup_{i\leq k} X_i+\inf_{i\leq N-k} X'_i}\\
 =& \EE{\sup_{t\leq \alpha{T}} X_t +\inf_{t \leq (1-\alpha)T}X'_t
 -  \sup_{i\leq k} X_i-\inf_{i\leq N-k} X'_i} \\
-= &  \EE{\sup_{t\leq \alpha{T}} X_t - \sup_{i\leq k} X_i} +
+=&   \EE{\sup_{t\leq \alpha{T}} X_t - \sup_{i\leq k} X_i} +
 \EE{\inf_{t \leq (1-\alpha)T} X'_t-\inf_{i\leq N-k} X'_i}\\
+=& \EE{\sup_{t\leq \alpha{T}} X_t - \sup_{i\leq k} X_i} +
+\EE{-\sup_{t \leq (1-\alpha)T} (-X'_t)+\sup_{i\leq N-k} (-X'_i)}\\
 =& -\frac{\zeta(1/2)}{\sqrt{2\pi}}\sigma \sqrt{\frac{\alpha T}{\alpha N}} - \frac{2g(\mu_1)-\mu_1}{4\alpha N}\sigma\sqrt{\alpha T} +O(1/N^{{3}/{2}}) \\
 &-\left(-\frac{\zeta(1/2)}{\sqrt{2\pi}}\sigma \sqrt{\frac{(1-\alpha)T}{(1-\alpha)N}} - \frac{2g(\mu_2) - \mu_2}{4(1-\alpha)N}\sigma \sqrt{(1-\alpha)T} + O(1/N^{{3}/{2}})\right) \\
 =& -\frac{\zeta(1/2) \sigma}{\sqrt{2\pi}}\left(\sqrt{T/N} - \sqrt{T/N} \right)\\
@@ -1016,41 +1028,51 @@ we get an estimate of the expectation of the discretization error:
 &+ O(1/N^{{3}/{2}}) \\
 =&\frac{\sigma\sqrt{T}}{4N}\left(\frac{(\mu_1 - 2g(\mu_1))}{\sqrt\alpha} - \frac{(\mu_2 - 2g(\mu_2))}{\sqrt{(1-\alpha)}}\right) \\
 & + O(1/N^{{3}/{2}}),
-\end{align*}
+\end{split}
+\end{equation}
 where $k = \alpha N$, $\mu_1 =\mu\sqrt{\alpha T}/\sigma$, and $\mu_2 =-\mu\sqrt{(1-\alpha)T}/\sigma$.
-The third last equality holds by view $\displaystyle\inf_{t\leq (1-\alpha)T} S'_t$ as
+The fourth last equality holds by view $\displaystyle\inf_{t\leq (1-\alpha)T} S'_t$ as
 $\displaystyle-\max_{t\leq (1-\alpha)T} (-S'_t)$.
 
-This proof shows that the expectation of the discretization error is $O(N^{-1})$ when $0<\alpha < 1$. When $\alpha = 0$ or $\alpha = 1$, the expectation of the discretization error is $O(N^{1/2})$. This partially explains the phenomenon related with the strong order of convergence we discussed in section \ref{s:euler}.   %If $\alpha=1/2$ and the Brownian motion does not have  drift ($\mu=0$), it is easy to see (by noting that $\E M_{1/2,T} = \E -M_{1/2,T}$) $\E M_{1/2,T} = \E M_{k,N} = 0$.When the Brownian motion has drift, the order becomes $1$.
-
-Using the same algorithm in section \ref{strong-order-convergence}, we have done a simulation to examine the above claim. 
-Here we restate the parameter setting and algorithm.
-
-The parameter setting is : 
-\begin{equation}
-N = 2^b, 2^{b+1}, ... 2^{d};
-\alpha_j =  \frac{1}{2} + \frac{j}{2^b}, j = 0, 1, 2..., 2^{b-1}.
+Since the discretization error for the maximum is axisymmetric with respect to $\mu=0$, we find that 
+\begin{equation}\label{a-symmetric-alpha}
+\begin{split}
+&\EE{M_{1-\alpha,T} - M_{N-k,N}} \\
+=&\EE{\sup_{t\leq(1- \alpha){T}} X_t - \sup_{i\leq N-k} X_i} -
+\EE{\sup_{t \leq \alpha T} (-X'_t)-\sup_{i\leq k} (-X'_i)}\\
+=&\EE{\sup_{t\leq(1- \alpha){T}}(- X_t )- \sup_{i\leq N-k}(-X_i)}
+-\EE{\sup_{t \leq \alpha T} (X'_t)-\sup_{i\leq k} (X'_i)}\\
+=&-\left(\EE{\sup_{t \leq \alpha T} (X'_t)-\sup_{i\leq k} (X'_i)} - \EE{\sup_{t\leq(1- \alpha){T}}(- X_t )- \sup_{i\leq N-k}- (X_i)}
+  \right)\\
+=&\EE {M_{\alpha,T} -  M_{k,N}}.
+\end{split}
 \end{equation}
+Equation (\ref{a-symmetric-alpha}) indicates that the expectation of discretization errors for $\alpha$-quantiles are  
+central symmetric with respect to $\alpha=1/2$ when other parameters other fixed. 
 
-The algorithm: 
-\begin{enumerate}[1.]
-\item Generate $2^{d}$ normal random sample $\Set{x_i}$ 
-  with mean $\tmu=\mu/2^d$,
-  and standard deviation $\tsigma = \sigma \sqrt {{T}/{2^d}}$,
-  add them up according to time and record them as
-  $X_m = \sum_{1\leq i \leq m} x_i$ starting with $X_0$.
-\item Calculate the $\alpha_j$ quantiles 
-  $M_{j,s}\triangleq M_{\alpha_j 2^s,2^s}$ for sequence 
-  \[
-  \Set{X_m|m=i 2^{d-s}, 1\leq i\leq 2^{s}},\quad \text{where }b\leq s \leq d.\] 
-\item Use $M_{j,d}$ as the continuous quantiles $M(\alpha_j,T)$.
-\item Repeat the above for $L$ times,
-  get replicates $\Set{M_{j,s}^{(l)},{1\leq l\leq L}}$.
-\item Approximate the expectation of the discretization error for $s < d$ using:
-\begin{align}
-Err_{j,s} &= {\frac{1}{L}\left(\sum_{1\leq l \leq L} M_{j,d}^{(l)} - M_{j,s}^{(l)}\right)}
-\end{align}
-\end{enumerate}
+We notice that when $\alpha=0.5$, the expected discretization error for the medium of a Brownian motion is 
+\begin{equation}\label{ex-dis-err-2}
+\begin{split}
+&\EE {M_{0.5,T}} - \EE {M_{N/2,N}}\\
+=& \EE{\sup_{t\leq 0.5{T}} X_t - \sup_{i\leq N/2} X_i} +
+\EE{\inf_{t \leq (1-0.5)T} X'_t - \inf_{i\leq N/2} X'_i}\\
+=& \EE{\sup_{t\leq 0.5{T}} X_t - \sup_{i\leq N/2} X_i} +
+\EE{-\sup_{t \leq 0.5T} (-X'_t)+\sup_{i\leq N/2} (-X'_i)}\\ 
+=& \EE{\sup_{t\leq 0.5{T}} X_t - \sup_{i\leq N/2} X_i} -
+\EE{\sup_{t \leq 0.5T} (-X'_t) - \sup_{i\leq N/2} (-X'_i)}\\ 
+=&0.
+\end{split}
+\end{equation}
+The last equation holds because the expected discretization error of the maximum of a Brownian motion is axisymmetric with respect to $\mu =0$. 
+
+From equation (\ref{ex-dis-err-1}) and (\ref{ex-dis-err-2}) and result in \cite{A-G-P-1995}, we find that the order of the expectation of the discretization error for $\alpha$-quantiles of Brownian motion can be classified into three groups. When $\alpha=0$ or $\alpha=1$, \cite{A-G-P-1995} shows that the expectation of the discretization error for $\alpha$-quantile is $O(1/N^{1/2})$; when $0<\alpha<1/2$ or $1/2<\alpha<1$, equation (\ref{ex-dis-err-1}) shows that the expectation of the discretization error for $\alpha$-quantile is $O(1/N)$; when $\alpha=1/2$, equation (\ref{ex-dis-err-2}) shows that the expectation of the discretization error for $0.5$-quantile is $0$. 
+
+%This proof shows that the expectation of the discretization error is $O(N^{-1})$ when $0<\alpha < 1$. When $\alpha = 0$ or $\alpha = 1$, the expectation of the discretization error is $O(N^{1/2})$. This partially explains the phenomenon related with the strong order of convergence we discussed in section \ref{s:euler}.   %If $\alpha=1/2$ and the Brownian motion does not have  drift ($\mu=0$), it is easy to see (by noting that $\E M_{1/2,T} = \E -M_{1/2,T}$) $\E M_{1/2,T} = \E M_{k,N} = 0$.When the Brownian motion has drift, the order becomes $1$.
+
+The algorithm in section \ref{strong-order-convergence} is also able to analysis the expectation of the discretization error. The difference is that at the final stage of the algorithm, we average the sample value of the discretization error instead of the absolute value of the sample value of the discretization error. That is in the last step of the simulation algorithm we approximate the expectation of the discretization error for $s < d$ using:
+\[
+Err_{j,s} = \frac{1}{L}\sum_{1\leq l \leq L} {M_{j,d}^{(l)}- M_{j,s}^{(l)}}.
+\]
 
 We realize this algorithm for $d=27$, $b=6$, $\mu = 0$, $\sigma^2=1$, $T=1$, $X_0=0$ and generate more than 2000 sampled paths. As you can see in Figure \ref{f:err}, Figure \ref{f:lerr} and Figure \ref{f:rate}, the simulation results are coincident with our theoretical conclusion. 
 
