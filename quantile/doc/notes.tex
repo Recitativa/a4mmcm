@@ -851,32 +851,32 @@ E|\varepsilon_N| \approx C/N^\gamma,
 \end{equation}
 where $C$ is some positive constant. Considering in our simulation $N$ is expressed as $N = 2^s$, take logarithm to both sides of (\ref{error-N-sim}) and with easy math we get
 \begin{equation}
-\frac{\log E|\varepsilon_{2^s}|}{\log 2} = \frac{C}{\log 2} -\gamma s
+\frac{\log E|\varepsilon_{2^s}|}{\log 2} = \frac{\log C}{\log 2} -\gamma s
 \end{equation}
 
 The similarity of the order of convergence for $\alpha$-quantiles when $\alpha$ is between $[50\%, 100\%)$ is more obvious after we take this transform. In Figure \ref{f:lab}, you can see that except for the maximum, i.e., the $100\%$-quantile, the strong order of  convergence for other $\alpha$-quantiles of Brownian motion are close to each other. This is expressed as the lines parallel to each other. Figure \ref{f:ratio} shows that the approximated strong order of convergence for different $\alpha$-quantiles obtained from our simulation. You can see that the strong order of convergence for $100\%$-quantile is close to ${1/2}$, while strong order of convergence for other quantile are around $0.75$.  
 
-To analyze the influence of drift $\mu$ on the strong order of convergence, we have done this simulation for parameters as $\mu$, $d=25$, $b=4$, $\mu=0$, $\sigma=1$, $T=1$, $X_0=0$, $L=35000$. Results are presented in Figure \ref{f:ab3}, \ref{f:lab3} and \ref{f:ratio3}. 
+To analyze the influence of drift $\mu$ on the strong order of convergence, we have done this simulation for parameters as $\mu$, $d=25$, $b=4$, $\mu=0$, $\sigma=1$, $T=1$, $X_0=0$, $L=500000$. Results are presented in Figure \ref{f:ab3}, \ref{f:lab3} and \ref{f:ratio3}. 
 
 % mu=0
 \begin{figure}[p]
    %\centering
-   \includegraphics[scale=0.8]{nout_7_27a.pdf}
+   \includegraphics[scale=0.8]{nout_0a.pdf}
    \caption{Expectation of the absolute discretization error for selected $\alpha$-quantiles ($\alpha = 0.5, 0.5625, \cdots, 1$) using the Euler scheme with $N = 2^s$ ($4\le s \le 16$), $\mu=0$, $\sigma=1$, $T=1$, $X_0=0$. }
 \label{f:ab}
 \end{figure}
  
  \begin{figure}[p]
     %\centering
-   \includegraphics[scale=0.8]{nout_7_27alog.pdf}
-   \caption{Logarithm of the absolute discretization error for selected $\alpha$-quantiles ($\alpha = 0.5, 0.5625, \cdots, 1$) using the Euler scheme with $N = 2^s$ ($4\le s \le 16$), $\mu=0$, $\sigma=1$, $T=1$, $X_0=0$, $L=35000$.} 
+   \includegraphics[scale=0.8]{nout_0alog.pdf}
+   \caption{Logarithm of the absolute discretization error for selected $\alpha$-quantiles ($\alpha = 0.5, 0.5625, \cdots, 1$) using the Euler scheme with $N = 2^s$ ($4\le s \le 16$), $\mu=0$, $\sigma=1$, $T=1$, $X_0=0$, $L=500000$.} 
    \label{f:lab}
 \end{figure}
  
  \begin{figure}[p]
    %\centering
-   \includegraphics[scale=0.8]{nout_7_27arato.pdf} % requires the graphicx packagem 
-   \caption{The strong order of convergence for selected $\alpha$-quantiles ($\alpha = 0.5, 0.5625, \cdots, 1$) using the Euler scheme with $N = 2^s$ ($4\le s \le 16$), $\mu=0$, $\sigma=1$, $T=1$, $X_0=0$, $L=35000$.}
+   \includegraphics[scale=0.8]{nout_0arato.pdf} % requires the graphicx packagem 
+   \caption{The strong order of convergence for selected $\alpha$-quantiles ($\alpha = 0.5, 0.5625, \cdots, 1$) using the Euler scheme with $N = 2^s$ ($4\le s \le 16$), $\mu=0$, $\sigma=1$, $T=1$, $X_0=0$, $L=500000$.}
    \label{f:ratio}
 \end{figure}
 
@@ -884,68 +884,34 @@ To analyze the influence of drift $\mu$ on the strong order of convergence, we h
 \begin{figure}[p]
    %\centering
    \includegraphics[scale=0.8]{nout_4_25_3a.pdf}
-   \caption{Expectation of the absolute discretization error for selected $\alpha$-quantiles ($\alpha = 0.5, 0.5625, \cdots, 1$) using the Euler scheme with $N = 2^s$ ($4\le s \le 16$), $\mu=3$, $\sigma=1$, $T=1$, $X_0=0$, $L=35000$. }
+   \caption{Expectation of the absolute discretization error for selected $\alpha$-quantiles ($\alpha = 0.5, 0.5625, \cdots, 1$) using the Euler scheme with $N = 2^s$ ($4\le s \le 16$), $\mu=3$, $\sigma=1$, $T=1$, $X_0=0$, $L=500000$. }
 \label{f:ab3}
 \end{figure}
  
  \begin{figure}[p]
     %\centering
    \includegraphics[scale=0.8]{nout_4_25_3alog.pdf}
-   \caption{Logarithm of the absolute discretization error for selected $\alpha$-quantiles ($\alpha = 0.5, 0.5625, \cdots, 1$) using the Euler scheme with $N = 2^s$ ($4\le s \le 16$), $\mu=3$, $\sigma=1$, $T=1$, $X_0=0$, $L=35000$.} 
+   \caption{Logarithm of the absolute discretization error for selected $\alpha$-quantiles ($\alpha = 0.5, 0.5625, \cdots, 1$) using the Euler scheme with $N = 2^s$ ($4\le s \le 16$), $\mu=3$, $\sigma=1$, $T=1$, $X_0=0$, $L=500000$.} 
    \label{f:lab3}
 \end{figure}
  
  \begin{figure}[p]
    %\centering
    \includegraphics[scale=0.8]{nout_4_25_3arato.pdf} % requires the graphicx packagem 
-   \caption{The strong order of convergence for selected $\alpha$-quantiles ($\alpha = 0.5, 0.5625, \cdots, 1$) using the Euler scheme with $N = 2^s$ ($4\le s \le 16$), $\mu=3$, $\sigma=1$, $T=1$, $X_0=0$, $L=35000$.}
+   \caption{The strong order of convergence for selected $\alpha$-quantiles ($\alpha = 0.5, 0.5625, \cdots, 1$) using the Euler scheme with $N = 2^s$ ($4\le s \le 16$), $\mu=3$, $\sigma=1$, $T=1$, $X_0=0$, $L=500000$.}
    \label{f:ratio3}
 \end{figure}
 
-Although approximated strong order of convergence for $\mu=0$ and $\mu=3$ are not the same, the influence of $\mu$ is not significant. 
-%sim=6455 mu=0.4
-%\begin{figure}[p]
-   %\centering
- %  \includegraphics[scale=0.8]{nout_7_27_1_04a.pdf}
-  % \caption{Absolute error for drift $\mu=0.4$}
-%\label{f:ab}
-%\end{figure}
- 
- %\begin{figure}[p]
-    %\centering
-  % \includegraphics[scale=0.8]{nout_7_27_1_04alog.pdf}
-   %\caption{Logarithm of error for drift $\mu=0.4$} 
-   %\label{f:lab}
-%\end{figure}
- 
-% \begin{figure}[p]
-   %\centering
- %  \includegraphics[scale=0.8]{nout_7_27_1_04arato.pdf} % requires the graphicx packagem 
-  % \caption{regression result of convergence rate for drift $\mu=0.4$}
-  % \label{f:ratio}
-%\end{figure}
-
-%sim=3796 mu=1.5
-%\begin{figure}[p]
-   %\centering
- %  \includegraphics[scale=0.8]{nout_7_27_1_15a.pdf}
-  % \caption{Absolute error for drift $\mu=1.5$}
-%\label{f:ab}
-%\end{figure}
- 
- %\begin{figure}[p]
-    %\centering
-  % \includegraphics[scale=0.8]{nout_7_27_1_15alog.pdf}
-   %\caption{Logarithm of error for drift $\mu=1.5$} 
-   %\label{f:lab}
-%\end{figure}
- 
-% \begin{figure}[p]
-   %\centering
- %  \includegraphics[scale=0.8]{nout_7_27_1_15arato.pdf} % requires the graphicx packagem 
-  % \caption{regression result of convergence rate for drift $\mu=1.5$}
-   %\label{f:ratio}
-%\end{figure}
+Although approximated strong order of convergence for $\mu=0$ and $\mu=3$ are not exactly the same, 
+the convergence pattern are similar. 
+As we expected, the convergence ratio of maximal is around $1/2$.
+Moreover, for other quantiles, the strong order of convergence is far away from $1/2$, all of them are around to $0.75$.
+These simulations reflected the huge difference of strong order of convergence for genuine quantiles and maximal.
+%It should be noticed, from these figures, it is hard to draw a conclusion of the role of $\mu$.
+%We saw, a slight drift or the rato(\ref{f:ratio}\ref{f:ratio3}). We guess, the strong order of convergence will be decreeing when $\mu$ increase. 
+%A "explanation" of this phenomenon is that when $\mu$ increase, the deterministic factor
+%becomes more important and the random factor becomes weaker. 
+%Since the discretization  error comes from the random part, it will decrease. 
 
 \subsection{An analysis of the discretization error}
 \label{sec:de}
@@ -1038,7 +1004,7 @@ we get an estimate of the expectation of the discretization error:
 \allowdisplaybreaks
 \begin{equation}\label{ex-dis-err-1}
 \begin{split}
-&\EE {M_(\alpha,T) -  M_(k,N)}\\
+&\EE {M(\alpha,T) -  M(k,N)}\\
 =& \EE{\sup_{t\leq \alpha{T}} X_t +\inf_{t \leq (1-\alpha)T}X'_t} - \EE{\sup_{i\leq k} X_i+\inf_{i\leq N-k} X'_i}\\
 =& \EE{\sup_{t\leq \alpha{T}} X_t +\inf_{t \leq (1-\alpha)T}X'_t
 -  \sup_{i\leq k} X_i-\inf_{i\leq N-k} X'_i} \\
@@ -1062,9 +1028,17 @@ $\displaystyle-\max_{t\leq (1-\alpha)T} (-S'_t)$.
 Denote the coefficient of the leading term 
 \[
 \frac{\sigma\sqrt{T}}{4}\left(\frac{(\mu_1 - 2g(\mu_1))}{\sqrt\alpha} - \frac{(\mu_2 - 2g(\mu_2))}{\sqrt{(1-\alpha)}}\right)\]
-as $\widetilde c(\mu,\alpha)$. In Figure \ref{}, we can see the influence of $\mu$ and $\alpha$ on the coefficient of the leading term $c(\mu,\alpha)$. Fixed $\mu$, we find that the closer $\alpha$ to $1/2$, the closer $c(\mu,\alpha)$ to $0$. Fixed $\alpha$, we find that the larger the value of $\mu$, the closer $c(\mu,\alpha)$ to $0$.
+as $\widetilde c(\mu,\alpha)$. In Figure \ref{plot-mu}, we can see the influence of $\mu$ and $\alpha$ on the coefficient of the leading term $\widetilde c(\mu,\alpha)$. Fixed $\mu$, we find that the closer $\alpha$ to $1/2$, the closer $c(\mu,\alpha)$ to $0$. Fixed $\alpha$, we find that the larger the value of $\mu$, the closer $\widetilde c(\mu,\alpha)$ to $0$.
 
-Since the discretization error for the maximum is axisymmetric with respect to $\mu=0$, we find that 
+\begin{figure}[p]
+   %\centering
+   \includegraphics[scale=0.8]{mu.pdf} % requires the graphicx packagem 
+   \caption{Coefficient of the leading term}
+   \label{plot-mu}
+\end{figure}
+
+
+Since the discretization error for the maximum is axisymmetric with respect to $\mu=0$(Section~\ref{s:euler}), we find that 
 \begin{equation}\label{a-symmetric-alpha}
 \begin{split}
 &\EE{M(1-\alpha,T) - M(N-k,N)} \\
@@ -1074,7 +1048,7 @@ Since the discretization error for the maximum is axisymmetric with respect to $
 -\EE{\sup_{t \leq \alpha T} (X'_t)-\sup_{i\leq k} (X'_i)}\\
 =&-\left(\EE{\sup_{t \leq \alpha T} (X'_t)-\sup_{i\leq k} (X'_i)} - \EE{\sup_{t\leq(1- \alpha){T}}(- X_t )- \sup_{i\leq N-k}- (X_i)}
   \right)\\
-=&\EE {M(\alpha,T) -  M(k,N)}.
+=&-\EE {M(\alpha,T) -  M(k,N)}.
 \end{split}
 \end{equation}
 Equation (\ref{a-symmetric-alpha}) indicates that the expectation of discretization errors for $\alpha$-quantiles are  
@@ -1101,10 +1075,52 @@ From equation (\ref{ex-dis-err-1}) and (\ref{ex-dis-err-2}) and result in \cite{
 
 The algorithm in section \ref{strong-order-convergence} is also able to analysis the expectation of the discretization error. The difference is that at the final stage of the algorithm, we average the sample value of the discretization error instead of the absolute value of the sample value of the discretization error. That is in the last step of the simulation algorithm we approximate the expectation of the discretization error for $s < d$ using:
 \[
-Err_{j,s} = \frac{1}{L}\sum_{1\leq l \leq L} {M_{j,d}^{(l)}- M_{j,s}^{(l)}}.
+Err_{j,s} = \frac{1}{L}\sum_{1\leq l \leq L} \left({M_{j,d}^{(l)}- M_{j,s}^{(l)}}\right).
 \]
 
-We realize this algorithm for $d=25$, $b=4$, $\mu = 0$, $\sigma^2=1$, $T=1$, $X_0=0$ and generate more than 2000 sampled paths. As you can see in Figure \ref{f:err}, Figure \ref{f:lerr} and Figure \ref{f:rate}, the simulation results are coincident with our theoretical conclusion. 
+We realize this algorithm for $d=25$, $b=4$, $\mu = 0$, $\sigma^2=1$, $T=1$, $X_0=0$ and generate $L=500000$ sampled paths. As you can see in Figure~\ref{f:err}, Figure \ref{f:lerr} and Figure \ref{f:rate}, the simulation results are coincident with our theoretical conclusion. 
+
+Figure \ref{f:err3}, \ref{f:lerr3}, and \ref{f:rate3} depict the simulation results for $\mu=3$, $d=25$, $b=4$, $\mu = 0$, $\sigma^2=1$, $T=1$, $X_0=0$ and $L=500000$. As we can see from the figures, the convergence orders for genuine quantiles are all around $1$. 
+Further more, we provide the comparison between the theoretical values and simulation results of $log(C(\mu,\alpha))/log(2)$ in Table~\ref{t:int0} and Table~\ref{t:int3}. We can see that they matched pretty well. 
+
+{\it Remark:} The reader may notice that lines are waving much heavily for $\alpha$ closed to $0.5$ 
+than $\alpha$ closed to $1$ in Figure~\ref{f:lerr} and Figure~\ref{f:lerr3}. Moreover, lines in Figure~\ref{f:lerr} 
+looks much smoother than which in Figure~\ref{f:lerr3}. These situations can be explained by Figure~\ref{plot-mu}.
+As we can seen, $\widetilde c(\mu,\alpha)$ decreased dramatically when $\alpha$ closing $0.5$ or $\mu$ increasing.  
+Noticing that  $\widetilde c(\mu,\alpha)$ controls the discretization error for fixed $N$, 
+so the results are more sensitive to the error introduced by simulation itself 
+when $\widetilde c(\mu,\alpha)$ is smaller. The results will be better if we do more simulations
+ and these trends had been observed when we compared the figures for different times of simulations. 
+However these simulations are really time consuming. 
+
+\begin{table}[p]
+\begin{center}
+\begin{tabular}{c|rrrrrrr}
+$\alpha$ & 0.5625 & 0.625 & 0.6875 & 0.75 & 0.8125 & 0.875 & 0.9375  \\
+\hline
+theoretical &  -4.811 & -3.767 & -3.104 & -2.568 & -2.062 & -1.51 & -0.756\\
+simulation & -5.09 &-3.755 & -2.919 & -2.635 & -2.053 & -1.550 & -0.743\\
+\end{tabular}
+\end{center}
+   \caption{Theoretical value and simulation results of $\widetilde{c}(\mu,\alpha)$ for $\mu = 0$
+    using the Euler scheme with $N = 2^s$ ($4\le s \le 16$), $\mu=0$, $\sigma=1$, $T=1$, $X_0=0$, $L=500000$}
+\label{t:int0}
+\end{table}%
+
+\begin{table}[p]
+\begin{center}
+\begin{tabular}{c|rrrrrrr}
+$\alpha$ & 0.5625 & 0.625 & 0.6875 & 0.75 & 0.8125 & 0.875 & 0.9375  \\
+\hline
+theoretical & -8.013 & -6.838 & -5.962 & -5.135 & -4.262 & -3.259 & -1.932\\
+simulation & -9.211 & -7.496 & -5.615 & -4.938 & -4.094 & -3.215 & -1.881 \\
+\end{tabular}
+\end{center}
+   \caption{Theoretical value and simulation results of $\widetilde{c}(\mu,\alpha)$ for $\mu = 3$
+    using the Euler scheme with $N = 2^s$ ($4\le s \le 16$), $\mu=0$, $\sigma=1$, $T=1$, $X_0=0$, $L=500000$}
+\label{t:int3}
+\end{table}%
+
 
 %Intersection
 %LSM:
@@ -1119,69 +1135,48 @@ We realize this algorithm for $d=25$, $b=4$, $\mu = 0$, $\sigma^2=1$, $T=1$, $X_
 %Drift 0, sim=127052
 \begin{figure}[p]
    \centering
-   \includegraphics[scale=0.8]{nout_7_27.pdf} % requires the graphicx package
-   \caption{Expectation of the discretization error for selected $\alpha$-quantile ($\alpha = 0.5, 0.5625, \cdots, 1$) using the Euler scheme with $N = 2^s$ ($7\le s \le 18$) }
+   \includegraphics[scale=0.8]{nout_0.pdf} % requires the graphicx package
+   \caption{Expectation of the discretization error for selected $\alpha$-quantile ($\alpha = 0.5625, 0.625, \cdots, 1$) using the Euler scheme with $N = 2^s$ ($4\le s \le 16$), $\mu=0$, $\sigma=1$, $T=1$, $X_0=0$, $L=500000$ }
    \label{f:err}
 \end{figure}
 
 \begin{figure}[p]
    \centering
-   \includegraphics[scale=0.8]{nout_7_27log.pdf} % requires the graphicx package
-   \caption{Logarithm of the discretization error for selected $\alpha$-quantile ($\alpha = 0.5, 0.5625, \cdots, 1$) using the Euler scheme with $N = 2^s$ ($7\le s \le 18$)}
+   \includegraphics[scale=0.8]{nout_0log.pdf} % requires the graphicx package
+   \caption{Logarithm of the discretization error for selected $\alpha$-quantile ($\alpha = 0.5625, 0.625, \cdots, 1$) using the Euler scheme with $N = 2^s$ ($4\le s \le 16$), $\mu=0$, $\sigma=1$, $T=1$, $X_0=0$, $L=500000$}
    \label{f:lerr}
 \end{figure}
 
 \begin{figure}[p]
    \centering
-   \includegraphics[scale=0.8]{nout_7_27rato.pdf} % requires the graphicx package
-   \caption{The order of convergence for selected $\alpha$-quantile ($\alpha = 0.5, 0.5625, \cdots, 1$) using the Euler scheme with $N = 2^s$ ($7\le s \le 18$)}
+   \includegraphics[scale=0.8]{nout_0rato.pdf} % requires the graphicx package
+   \caption{The order of convergence for selected $\alpha$-quantile ($\alpha = 0.5625, 0.625,  \cdots, 1$) using the Euler scheme with $N = 2^s$ ($4\le s \le 16$), $\mu=0$, $\sigma=1$, $T=1$, $X_0=0$, $L=500000$}
    \label{f:rate}
 \end{figure}
 
+%Drift 0, sim=127052
+\begin{figure}[p]
+   \centering
+   \includegraphics[scale=0.8]{nout_4_25_3.pdf} % requires the graphicx package
+   \caption{Expectation of the discretization error for selected $\alpha$-quantile ($\alpha = 0.5625, 0.625,  \cdots, 1$) using the Euler scheme with $N = 2^s$ ($4\le s \le 16$), $\mu=3$, $\sigma=1$, $T=1$, $X_0=0$, $L=500000$ }
+   \label{f:err3}
+\end{figure}
 
-%% Drift 0.4, sim=8000
-%\begin{figure}[p]
-   %\centering
-   %\includegraphics[scale=0.8]{nout_7_27_1_04.pdf} % requires the graphicx package
-   %\caption{ Errors for drift $\mu=0.4$ }
-   %\label{f:err}
-%\end{figure}
+\begin{figure}[p]
+   \centering
+   \includegraphics[scale=0.8]{nout_4_25_3log.pdf} % requires the graphicx package
+   \caption{Logarithm of the discretization error for selected $\alpha$-quantile ($\alpha = 0.5625, 0.625,  \cdots, 1$) using the Euler scheme with $N = 2^s$ ($4\le s \le 16$), $\mu=3$, $\sigma=1$, $T=1$, $X_0=0$, $L=500000$}
+   \label{f:lerr3}
+\end{figure}
 
-%\begin{figure}[p]
-  % \centering
-   %\includegraphics[scale=0.8]{nout_7_27_1_04log.pdf} % requires the graphicx package
-   %\caption{ Logarithm of Errors for drift $\mu=0.4$}
-   %\label{f:lerr}
-%\end{figure}
+\begin{figure}[p]
+   \centering
+   \includegraphics[scale=0.8]{nout_4_25_3rato.pdf} % requires the graphicx package
+   \caption{The order of convergence for selected $\alpha$-quantile ($\alpha = 0.5625, \cdots, 1$) using the Euler scheme with $N = 2^s$ ($4\le s \le 16$), $\mu=3$, $\sigma=1$, $T=1$, $X_0=0$, $L=500000$}
+   \label{f:rate3}
+\end{figure}
 
-%\begin{figure}[p]
- %  \centering
-  % \includegraphics[scale=0.8]{nout_7_27_1_04rato.pdf} % requires the graphicx package
-   %\caption{ Convergence rate for drift $\mu=0.4$}
-   %\label{f:rate}
-%\end{figure}
 
-%% Drift 1.5, sim=3796
-%\begin{figure}[p]
- %  \centering
-  % \includegraphics[scale=0.8]{nout_7_27_1_15.pdf} % requires the graphicx package
-  % \caption{ Errors for drift $\mu=1.5$ }
-   %\label{f:err}
-%\end{figure}
-
-%\begin{figure}[p]
- %  \centering
-  % \includegraphics[scale=0.8]{nout_7_27_1_15log.pdf} % requires the graphicx package
-   %\caption{ Logarithm of Errors for drift $\mu=1.5$}
-   %\label{f:lerr}
-%\end{figure}
-
-%\begin{figure}[p]
- %  \centering
-  % \includegraphics[scale=0.8]{nout_7_27_1_15rato.pdf} % requires the graphicx package
-  % \caption{ Convergence rate for drift $\mu=1.5$}
-  % \label{f:rate}
-%\end{figure}
 
 
 %Now, suppose that $f$ is an monotone Lipschitz continuous function.Without loss of generality, assume 
@@ -1223,7 +1218,7 @@ As we discussed before, the lookback option is a path-dependent option with payo
 
 Another advantage of a quantile option is that the strong path dependence of its payoff makes it immunize to possible market manipulation. Because the payoff of a lookback option only involves the maximum or minimum of a stock price during the option's lifetime. Particularly for an at the money option close to maturity, which in this case are most vulnerable to the stock price movement closing to maturity. Firms have influence on market price can use this advantage to lead market price move to their favorable direction. But since a quantile option is strongly path-dependent, the manipulation effect is limited.
 
-As for the pricing of quantile options, \cite{Dassios1995} provided the pricing formula for the European style $\alpha$-quantile call option. However, it is expressed in form of a triple improper integral which brings computational difficulty to realize the price numerically. Inspired by the decomposition (\ref{eq:Dassios}), \cite{Laura2001} proposed a Monte Carlo simulation approach to value the price of a European-style $\alpha$-quantile option. \cite{Kwok2001} proposed a special way to apply tree method to price quantile options. In this paper, they find a relation between the price of quantile options and the price of cumulative Parisian options. By this approximation, they can simplify the pricing of quantile options. The detail of this method is provided in Appendix. However, both of these two numerical approaches only can get the initiation price at time $t=0$. In addition, both method can not be extended to price American-style quantile options. In section (\ref{American-tree}), we propose a tree method which is capable to price both European-style and American-style ${\alpha}$-quantile options at any time $t\in [0,T]$ before maturity. 
+As for the pricing of quantile options, \cite{Dassios1995} provided the pricing formula for the European style $\alpha$-quantile call option. However, it is expressed in form of a triple improper integral which brings computational difficulty to realize the price numerically. Inspired by the decomposition (\ref{eq:Dassios}), \cite{Laura2001} proposed a Monte Carlo simulation approach to value the price of a European-style $\alpha$-quantile option. \cite{Kwok2001} proposed a special way to apply tree method to price quantile options. In that paper, they find a relation between the price of quantile options and the price of cumulative Parisian options. By this approximation, they can simplify the pricing of quantile options. The detail of this method is provided in Appendix. However, both of these two numerical approaches only can get the initiation price at time $t=0$. In addition, both method can not be extended to price American-style quantile options. In section (\ref{American-tree}), we propose a tree method which is capable to price both European-style and American-style ${\alpha}$-quantile options at any time $t\in [0,T]$ before maturity. 
 
 
 \subsection{A tree method to price American-style quantile options}\label{American-tree}
@@ -1247,7 +1242,7 @@ e^{-rt}(K-x)^+ & \text{for put option}.
 This is an optimal stopping problem. 
 
 The obvious way to solve this numerically, is using tree method. 
-Discrete the time, i.e. let $0=t_0< t_1, \cdots, t_N =T$. Let $P_k=(X_0, \cdots, X_k)$ be a path in a binomial tree approximating the movements of a Geometric Brownian motion till time ${t_k}$. 
+Discretize the time, i.e. let $0=t_0< t_1, \cdots, t_N =T$. Let $P_k=(X_0, \cdots, X_k)$ be a path in a binomial tree approximating the movements of a Geometric Brownian motion till time ${t_k}$. 
 Then the possible value of the immediate next node $X_{k+1}$ along path $P_k$ can only be $X_{k}e^u$ and $X_{k}e^d$ with probability $p^+$ and $p^-$, where $u$, $d$, $p^+$ and $p^-$ are prefixed constants in the usual binomial tree method. We denote the two possible paths one step longer than path $P_k$ as $P_k^+ = (X_0,\cdots,X_k,X_{k+1}=X_{k}e^u)$ and $P_k^- = (X_0,\cdots,X_k,X_{k+1}=X_{k}e^d)$. 
 Then let 
 \[
