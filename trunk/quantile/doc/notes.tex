@@ -783,7 +783,7 @@ where $X'$ is an independent copy of $X$.
 \cite{A-G-P-1995} studied the discretization error for the Euler approximation of the maximum of a Brownian motion. They found that both the strong and weak order of convergence associated with the simulation of the maximum of a Brownian motion with the Euler scheme is $1/2$. Specifically, \[E[M(1,T)-M(N,N)] = O(1/N^{1/2})\] as $N\to\infty$. In fact, for $|\mu /\sqrt{N}|<2\sqrt{\pi}$, \cite{Janssen2008} provided a series expansion of $E[M(1,T) -M(N,N)]$ to arbitrary order, the leading two terms of which are 
 \begin{equation}\label{eq:maxest}
 \begin{split}
-E[M(1,T]-M(N,N)]
+E[M(1,T)-M(N,N)]
 =& -\frac{\zeta(1/2)}{\sqrt{2\pi}}\sigma\sqrt{T/N} 
  -\frac{2g(\mu\sqrt{T}/\sigma)-\mu\sqrt{T}/ \sigma}{4N}\sigma\sqrt{T} \\
  &+O(1/N^{3/2}),
@@ -841,7 +841,7 @@ Err^{abs}_{j,s} &= \frac{1}{L}\sum_{1\leq l \leq L} \abs{M_{j,d}^{(l)}- M_{j,s}^
 \end{align}
 \end{enumerate}
 
-We implement this algorithm for $d=25$, $b=4$, $\mu=0$, $\sigma=1$, $T=1$, $X_0=0$ and generate $L=127052$ replicates. The results are shown in Figure \ref{f:ab}. Since we are dealing with $\mu = 0$ currently, by the symmetric effect of a Brownian motion without drift, we only examine $\alpha$-quantiles where $\alpha$ vary from $[50\%,100\%]$. %It is well known that the convergence rate of Euler scheme for Brownian motion is $1$. 
+We implement this algorithm for $d=25$, $b=4$, $\mu=0$, $\sigma=1$, $T=1$, $X_0=0$ and generate $L=350000$ replicates. The results are shown in Figure \ref{f:ab}. Since we are dealing with $\mu = 0$ currently, by the symmetric effect of a Brownian motion without drift, we only examine $\alpha$-quantiles where $\alpha$ vary from $[50\%,100\%]$. %It is well known that the convergence rate of Euler scheme for Brownian motion is $1$. 
 
 In \cite{Janssen2008}, we find that the strong order of convergence of the Euler Scheme for the maximum of a Brownian motion is $1/2$. Then it seems reasonable to guess that the order of convergence for $\alpha$-quantiles of Brownian motion decrease from $1$ to ${1/2}$ as the value of $\alpha$ vary from $100\%$ to $50\%$. However, numerical results show that the convergence order for $\alpha$-quantile do not work that way. Figure \ref{f:ab} shows that there exists a big difference between the strong order of convergence for the maximum of a Brownian motion and that for other $\alpha$-quantile of a Brownian motion. On the other hand, the strong order of convergence for different $\alpha$-quantiles are quite similar when $\alpha$ varies from $[50\%, 100\%)$. 
 
@@ -854,30 +854,55 @@ where $C$ is some positive constant. Considering in our simulation $N$ is expres
 \frac{\log E|\varepsilon_{2^s}|}{\log 2} = \frac{C}{\log 2} -\gamma s
 \end{equation}
 
-The similarity of the order of convergence for $\alpha$-quantiles when $\alpha$ is between $[50\%, 100\%)$ is more obvious after we take this transform. In Figure \ref{f:lab}, you can see that except for the maximum, i.e., the $100\%$-quantile, the strong order of  convergence for other $\alpha$-quantiles of Brownian motion are close to each other. This is expressed as the lines parallel to each other. Figure \ref{f:ratio} shows that the approximated strong order of convergence for different $\alpha$-quantiles obtained from our simulation. You can see that the strong order of convergence for $100\%$-quantile is close to ${1/2}$, while strong order of convergence for other quantile are around $0.76$.  
+The similarity of the order of convergence for $\alpha$-quantiles when $\alpha$ is between $[50\%, 100\%)$ is more obvious after we take this transform. In Figure \ref{f:lab}, you can see that except for the maximum, i.e., the $100\%$-quantile, the strong order of  convergence for other $\alpha$-quantiles of Brownian motion are close to each other. This is expressed as the lines parallel to each other. Figure \ref{f:ratio} shows that the approximated strong order of convergence for different $\alpha$-quantiles obtained from our simulation. You can see that the strong order of convergence for $100\%$-quantile is close to ${1/2}$, while strong order of convergence for other quantile are around $0.75$.  
 
-%sim=6455 mu=0
+To analyze the influence of drift $\mu$ on the strong order of convergence, we have done this simulation for parameters as $\mu$, $d=25$, $b=4$, $\mu=0$, $\sigma=1$, $T=1$, $X_0=0$, $L=35000$. Results are presented in Figure \ref{f:ab3}, \ref{f:lab3} and \ref{f:ratio3}. 
+
+% mu=0
 \begin{figure}[p]
    %\centering
    \includegraphics[scale=0.8]{nout_7_27a.pdf}
-   \caption{Expectation of the absolute discretization error for selected $\alpha$-quantiles ($\alpha = 0.5, 0.5625, \cdots, 1$) using the Euler scheme with $N = 2^s$ ($7\le s \le 18$). }
+   \caption{Expectation of the absolute discretization error for selected $\alpha$-quantiles ($\alpha = 0.5, 0.5625, \cdots, 1$) using the Euler scheme with $N = 2^s$ ($4\le s \le 16$), $\mu=0$, $\sigma=1$, $T=1$, $X_0=0$. }
 \label{f:ab}
 \end{figure}
  
  \begin{figure}[p]
     %\centering
    \includegraphics[scale=0.8]{nout_7_27alog.pdf}
-   \caption{Logarithm of the absolute discretization error for selected $\alpha$-quantiles ($\alpha = 0.5, 0.5625, \cdots, 1$) using the Euler scheme with $N = 2^s$ ($7\le s \le 18$)} 
+   \caption{Logarithm of the absolute discretization error for selected $\alpha$-quantiles ($\alpha = 0.5, 0.5625, \cdots, 1$) using the Euler scheme with $N = 2^s$ ($4\le s \le 16$), $\mu=0$, $\sigma=1$, $T=1$, $X_0=0$, $L=35000$.} 
    \label{f:lab}
 \end{figure}
  
  \begin{figure}[p]
    %\centering
    \includegraphics[scale=0.8]{nout_7_27arato.pdf} % requires the graphicx packagem 
-   \caption{The strong order of convergence for selected $\alpha$-quantiles ($\alpha = 0.5, 0.5625, \cdots, 1$) using the Euler scheme with $N = 2^s$ ($7\le s \le 18$)}
+   \caption{The strong order of convergence for selected $\alpha$-quantiles ($\alpha = 0.5, 0.5625, \cdots, 1$) using the Euler scheme with $N = 2^s$ ($4\le s \le 16$), $\mu=0$, $\sigma=1$, $T=1$, $X_0=0$, $L=35000$.}
    \label{f:ratio}
 \end{figure}
 
+% mu=0
+\begin{figure}[p]
+   %\centering
+   \includegraphics[scale=0.8]{nout_4_25_3a.pdf}
+   \caption{Expectation of the absolute discretization error for selected $\alpha$-quantiles ($\alpha = 0.5, 0.5625, \cdots, 1$) using the Euler scheme with $N = 2^s$ ($4\le s \le 16$), $\mu=3$, $\sigma=1$, $T=1$, $X_0=0$, $L=35000$. }
+\label{f:ab3}
+\end{figure}
+ 
+ \begin{figure}[p]
+    %\centering
+   \includegraphics[scale=0.8]{nout_4_25_3alog.pdf}
+   \caption{Logarithm of the absolute discretization error for selected $\alpha$-quantiles ($\alpha = 0.5, 0.5625, \cdots, 1$) using the Euler scheme with $N = 2^s$ ($4\le s \le 16$), $\mu=3$, $\sigma=1$, $T=1$, $X_0=0$, $L=35000$.} 
+   \label{f:lab3}
+\end{figure}
+ 
+ \begin{figure}[p]
+   %\centering
+   \includegraphics[scale=0.8]{nout_4_25_3arato.pdf} % requires the graphicx packagem 
+   \caption{The strong order of convergence for selected $\alpha$-quantiles ($\alpha = 0.5, 0.5625, \cdots, 1$) using the Euler scheme with $N = 2^s$ ($4\le s \le 16$), $\mu=3$, $\sigma=1$, $T=1$, $X_0=0$, $L=35000$.}
+   \label{f:ratio3}
+\end{figure}
+
+Although approximated strong order of convergence for $\mu=0$ and $\mu=3$ are not the same, the influence of $\mu$ is not significant. 
 %sim=6455 mu=0.4
 %\begin{figure}[p]
    %\centering
@@ -1006,14 +1031,14 @@ The similarity of the order of convergence for $\alpha$-quantiles when $\alpha$ 
 %\end{split}
 %\end{equation}
 
-In this section we provide a theoretical analysis about the expectation of the discretization error of the Euler approximation for $\alpha$-quantiles. We find that the leading order of the expectation of the discretization error $E\varepsilon_N = E (M_{\alpha,T}) - \E (M_{k,N})$ is $1$ for $0 < \alpha < 1$. That it the expectation of the dissertation error is $O(1/N^{-1})$ when $0 < \alpha <1$. 
+In this section we provide a theoretical analysis about the expectation of the discretization error of the Euler approximation for $\alpha$-quantiles. We find that the leading order of the expectation of the discretization error $E\varepsilon_N = E (M(\alpha,T)) - \E (M(k,N)$ is $1$ for $0 < \alpha<1/2$ or $0<\alpha<1/2$. That it the expectation of the dissertation error is $O(1/N^{-1})$ when $0 < \alpha<1/2$ or $0<\alpha<1/2$. 
 
 Combine $(\ref{eq:Dassios})$ $(\ref{eq:dpathdec})$ and $(\ref{eq:maxest})$, for $0 < \alpha < 1$,
 we get an estimate of the expectation of the discretization error:
 \allowdisplaybreaks
 \begin{equation}\label{ex-dis-err-1}
 \begin{split}
-&\EE {M_{\alpha,T} -  M_{k,N}}\\
+&\EE {M_(\alpha,T) -  M_(k,N)}\\
 =& \EE{\sup_{t\leq \alpha{T}} X_t +\inf_{t \leq (1-\alpha)T}X'_t} - \EE{\sup_{i\leq k} X_i+\inf_{i\leq N-k} X'_i}\\
 =& \EE{\sup_{t\leq \alpha{T}} X_t +\inf_{t \leq (1-\alpha)T}X'_t
 -  \sup_{i\leq k} X_i-\inf_{i\leq N-k} X'_i} \\
@@ -1032,19 +1057,24 @@ we get an estimate of the expectation of the discretization error:
 \end{equation}
 where $k = \alpha N$, $\mu_1 =\mu\sqrt{\alpha T}/\sigma$, and $\mu_2 =-\mu\sqrt{(1-\alpha)T}/\sigma$.
 The fourth last equality holds by view $\displaystyle\inf_{t\leq (1-\alpha)T} S'_t$ as
-$\displaystyle-\max_{t\leq (1-\alpha)T} (-S'_t)$.
+$\displaystyle-\max_{t\leq (1-\alpha)T} (-S'_t)$. 
+
+Denote the coefficient of the leading term 
+\[
+\frac{\sigma\sqrt{T}}{4}\left(\frac{(\mu_1 - 2g(\mu_1))}{\sqrt\alpha} - \frac{(\mu_2 - 2g(\mu_2))}{\sqrt{(1-\alpha)}}\right)\]
+as $\widetilde c(\mu,\alpha)$. In Figure \ref{}, we can see the influence of $\mu$ and $\alpha$ on the coefficient of the leading term $c(\mu,\alpha)$. Fixed $\mu$, we find that the closer $\alpha$ to $1/2$, the closer $c(\mu,\alpha)$ to $0$. Fixed $\alpha$, we find that the larger the value of $\mu$, the closer $c(\mu,\alpha)$ to $0$.
 
 Since the discretization error for the maximum is axisymmetric with respect to $\mu=0$, we find that 
 \begin{equation}\label{a-symmetric-alpha}
 \begin{split}
-&\EE{M_{1-\alpha,T} - M_{N-k,N}} \\
+&\EE{M(1-\alpha,T) - M(N-k,N)} \\
 =&\EE{\sup_{t\leq(1- \alpha){T}} X_t - \sup_{i\leq N-k} X_i} -
 \EE{\sup_{t \leq \alpha T} (-X'_t)-\sup_{i\leq k} (-X'_i)}\\
 =&\EE{\sup_{t\leq(1- \alpha){T}}(- X_t )- \sup_{i\leq N-k}(-X_i)}
 -\EE{\sup_{t \leq \alpha T} (X'_t)-\sup_{i\leq k} (X'_i)}\\
 =&-\left(\EE{\sup_{t \leq \alpha T} (X'_t)-\sup_{i\leq k} (X'_i)} - \EE{\sup_{t\leq(1- \alpha){T}}(- X_t )- \sup_{i\leq N-k}- (X_i)}
   \right)\\
-=&\EE {M_{\alpha,T} -  M_{k,N}}.
+=&\EE {M(\alpha,T) -  M(k,N)}.
 \end{split}
 \end{equation}
 Equation (\ref{a-symmetric-alpha}) indicates that the expectation of discretization errors for $\alpha$-quantiles are  
@@ -1053,7 +1083,7 @@ central symmetric with respect to $\alpha=1/2$ when other parameters other fixed
 We notice that when $\alpha=0.5$, the expected discretization error for the medium of a Brownian motion is 
 \begin{equation}\label{ex-dis-err-2}
 \begin{split}
-&\EE {M_{0.5,T}} - \EE {M_{N/2,N}}\\
+&\EE {M(0.5,T)} - \EE {M(N/2,N)}\\
 =& \EE{\sup_{t\leq 0.5{T}} X_t - \sup_{i\leq N/2} X_i} +
 \EE{\inf_{t \leq (1-0.5)T} X'_t - \inf_{i\leq N/2} X'_i}\\
 =& \EE{\sup_{t\leq 0.5{T}} X_t - \sup_{i\leq N/2} X_i} +
@@ -1074,7 +1104,7 @@ The algorithm in section \ref{strong-order-convergence} is also able to analysis
 Err_{j,s} = \frac{1}{L}\sum_{1\leq l \leq L} {M_{j,d}^{(l)}- M_{j,s}^{(l)}}.
 \]
 
-We realize this algorithm for $d=27$, $b=6$, $\mu = 0$, $\sigma^2=1$, $T=1$, $X_0=0$ and generate more than 2000 sampled paths. As you can see in Figure \ref{f:err}, Figure \ref{f:lerr} and Figure \ref{f:rate}, the simulation results are coincident with our theoretical conclusion. 
+We realize this algorithm for $d=25$, $b=4$, $\mu = 0$, $\sigma^2=1$, $T=1$, $X_0=0$ and generate more than 2000 sampled paths. As you can see in Figure \ref{f:err}, Figure \ref{f:lerr} and Figure \ref{f:rate}, the simulation results are coincident with our theoretical conclusion. 
 
 %Intersection
 %LSM:
