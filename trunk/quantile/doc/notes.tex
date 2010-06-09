@@ -19,7 +19,7 @@
 \pagestyle{fancy}
 \renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter.\ #1}{}}
 \renewcommand{\sectionmark}[1]{\markright{\thesection.\ #1}}
-\newcommand{\helv}{\fontfamily{phv}\fontseries{b}\fontsize{12}{12}\selectfont}
+\newcommand{\helv}{\fontfamily{phv}\fontseries{n}\fontsize{12}{12}\selectfont}
 
 \fancyhf{}
 \fancyhead[LE]{\helv \nouppercase{\rightmark}}
@@ -60,6 +60,39 @@
 
 \usepackage{hyperref}
 
+\usepackage{titletoc}
+
+\contentsmargin{2.55em}
+\titlecontents{section}
+	[3.5em]
+	{\vspace{\baselineskip}}
+	{\contentslabel{2.3em}}
+	{\hspace*{-2.3em}}
+	{\titlerule*[1pc]{.}\contentspage}
+
+\titlecontents{subsection}
+	[5.8em]
+	{\vspace{\baselineskip}}
+	{\contentslabel{3.2em}}
+	{\hspace*{-3.2em}}
+	{\titlerule*[1pc]{.}\contentspage}
+
+\titlecontents{figure} 
+	[2em]
+	{}
+	{\contentslabel{2.3em}}
+	{\hspace*{2.3em}}
+	{\titlerule*[1pc]{.}\contentspage\vspace{\baselineskip}}
+
+\titlecontents{table} 
+	[2em]
+	{}
+	{\contentslabel{2.3em}}
+	{\hspace*{2.3em}}
+	{\titlerule*[1pc]{.}\contentspage\vspace{\baselineskip}}
+
+	
+\usepackage{setspace}
 
 \begin{document}
 \bibliographystyle{mycje}
@@ -67,21 +100,27 @@
 
 \include{title}
 
-\renewcommand{\baselinestretch}{2}\normalsize
+%\renewcommand{\baselinestretch}{2}
+\doublespacing
+\normalsize
+
 
 \include{acknow}
 
-\renewcommand{\baselinestretch}{1}
+%\renewcommand{\baselinestretch}{1}
+\singlespacing
 %\pagestyle{fancy}
 %\pagenumbering{roman}
 \setcounter{tocdepth}{3}
 \tableofcontents 
 
-\renewcommand{\baselinestretch}{2}
+%\renewcommand{\baselinestretch}{2}
+\doublespacing
 
 \include{abstract}
 
-\renewcommand{\baselinestretch}{1}
+%\renewcommand{\baselinestretch}{1}
+\singlespacing
 
 \listoftables 
 \listoffigures
@@ -89,7 +128,9 @@
 
 \mainmatter
 
-\renewcommand{\baselinestretch}{2}\small\normalsize
+%\renewcommand{\baselinestretch}{2}
+\doublespacing
+\small\normalsize
 
 \chapter{Introduction}
 \pagenumbering{arabic}
@@ -876,7 +917,7 @@ To analyze the influence of drift $\mu$ on the strong order of convergence, we h
  \begin{figure}[p]
    %\centering
    \includegraphics[scale=0.8]{nout_0arato.pdf} % requires the graphicx packagem 
-   \caption{The strong order of convergence for selected $\alpha$-quantiles ($\alpha = 0.5, 0.5625, \cdots, 1$) using the Euler scheme with $N = 2^s$ ($4\le s \le 16$), $\mu=0$, $\sigma=1$, $T=1$, $X_0=0$, $L=500000$.}
+   \caption{The strong order of convergence for selected $\alpha$-quantiles ($\alpha $ $=$ $ 0.5,$ $0.5625,$ $\cdots, 1$) using the Euler scheme with $N = 2^s$ ($4\le s \le 16$), $\mu=0$, $\sigma=1$, $T=1$, $X_0=0$, $L=500000$.}
    \label{f:ratio}
 \end{figure}
 
@@ -1145,7 +1186,8 @@ simulation & -9.211 & -7.496 & -5.615 & -4.938 & -4.094 & -3.215 & -1.881 \\
 \begin{figure}[p]
    \centering
    \includegraphics[scale=0.8]{nout_0log.pdf} % requires the graphicx package
-   \caption{Logarithm of the discretization error for selected $\alpha$-quantile ($\alpha = 0.5625, 0.625, \cdots, 1$) using the Euler scheme with $N = 2^s$ ($4\le s \le 16$), $\mu=0$, $\sigma=1$, $T=1$, $X_0=0$, $L=500000$}
+   \caption{Logarithm of the discretization error for selected $\alpha$-quantile ($\alpha =$ $0.5625,$ $0.625,$ 
+   $\cdots, 1$) using the Euler scheme with $N = 2^s$ ($4\le s \le 16$), $\mu=0$, $\sigma=1$, $T=1$, $X_0=0$, $L=500000$}
    \label{f:lerr}
 \end{figure}
 
@@ -1167,7 +1209,7 @@ simulation & -9.211 & -7.496 & -5.615 & -4.938 & -4.094 & -3.215 & -1.881 \\
 \begin{figure}[p]
    \centering
    \includegraphics[scale=0.8]{nout_4_25_3log.pdf} % requires the graphicx package
-   \caption{Logarithm of the discretization error for selected $\alpha$-quantile ($\alpha = 0.5625, 0.625,  \cdots, 1$) using the Euler scheme with $N = 2^s$ ($4\le s \le 16$), $\mu=3$, $\sigma=1$, $T=1$, $X_0=0$, $L=500000$}
+   \caption{Logarithm of the discretization error for selected $\alpha$-quantile ($\alpha =$ $0.5625,$ $0.625,$  $\cdots, 1$) using the Euler scheme with $N = 2^s$ ($4\le s \le 16$), $\mu=3$, $\sigma=1$, $T=1$, $X_0=0$, $L=500000$}
    \label{f:lerr3}
 \end{figure}
 
@@ -1630,7 +1672,7 @@ the numerical values of option are plotted against varying $h$. The values of pa
 \begin{figure}[p]
    \centering
    \includegraphics{bfsg.pdf} % requires the graphicx package
-   \caption{FSG result}
+   \caption{FSG results}
    \label{fig:2}
 \end{figure}
 
