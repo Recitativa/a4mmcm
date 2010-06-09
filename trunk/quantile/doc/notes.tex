@@ -841,7 +841,7 @@ Err^{abs}_{j,s} &= \frac{1}{L}\sum_{1\leq l \leq L} \abs{M_{j,d}^{(l)}- M_{j,s}^
 \end{align}
 \end{enumerate}
 
-We implement this algorithm for $d=25$, $b=4$, $\mu=0$, $\sigma=1$, $T=1$, $X_0=0$ and generate $L=350000$ replicates. The results are shown in Figure \ref{f:ab}. Since we are dealing with $\mu = 0$ currently, by the symmetric effect of a Brownian motion without drift, we only examine $\alpha$-quantiles where $\alpha$ vary from $[50\%,100\%]$. %It is well known that the convergence rate of Euler scheme for Brownian motion is $1$. 
+We implement this algorithm for $d=25$, $b=4$, $\mu=0$, $\sigma=1$, $T=1$, $X_0=0$ and generate $L=500000$ replicates. The results are shown in Figure \ref{f:ab}. Since we are dealing with $\mu = 0$ currently, by the symmetric effect of a Brownian motion without drift, we only examine $\alpha$-quantiles where $\alpha$ vary from $[50\%,100\%]$. %It is well known that the convergence rate of Euler scheme for Brownian motion is $1$. 
 
 In \cite{Janssen2008}, we find that the strong order of convergence of the Euler Scheme for the maximum of a Brownian motion is $1/2$. Then it seems reasonable to guess that the order of convergence for $\alpha$-quantiles of Brownian motion decrease from $1$ to ${1/2}$ as the value of $\alpha$ vary from $100\%$ to $50\%$. However, numerical results show that the convergence order for $\alpha$-quantile do not work that way. Figure \ref{f:ab} shows that there exists a big difference between the strong order of convergence for the maximum of a Brownian motion and that for other $\alpha$-quantile of a Brownian motion. On the other hand, the strong order of convergence for different $\alpha$-quantiles are quite similar when $\alpha$ varies from $[50\%, 100\%)$. 
 
@@ -862,7 +862,7 @@ To analyze the influence of drift $\mu$ on the strong order of convergence, we h
 \begin{figure}[p]
    %\centering
    \includegraphics[scale=0.8]{nout_0a.pdf}
-   \caption{Expectation of the absolute discretization error for selected $\alpha$-quantiles ($\alpha = 0.5, 0.5625, \cdots, 1$) using the Euler scheme with $N = 2^s$ ($4\le s \le 16$), $\mu=0$, $\sigma=1$, $T=1$, $X_0=0$. }
+   \caption{Expectation of the absolute discretization error for selected $\alpha$-quantiles ($\alpha = 0.5, 0.5625, \cdots, 1$) using the Euler scheme with $N = 2^s$ ($4\le s \le 16$), $\mu=0$, $\sigma=1$, $T=1$, $X_0=0$ and $L=500000$. }
 \label{f:ab}
 \end{figure}
  
@@ -904,9 +904,9 @@ To analyze the influence of drift $\mu$ on the strong order of convergence, we h
 
 Although approximated strong order of convergence for $\mu=0$ and $\mu=3$ are not exactly the same, 
 the convergence pattern are similar. 
-As we expected, the convergence ratio of maximal is around $1/2$.
+As we expected, the strong order of convergence for the maximum is around $1/2$.
 Moreover, for other quantiles, the strong order of convergence is far away from $1/2$, all of them are around to $0.75$.
-These simulations reflected the huge difference of strong order of convergence for genuine quantiles and maximal.
+These simulations reflected the huge difference of strong order of convergence for genuine quantiles and the maximum of a Brownian motion.
 %It should be noticed, from these figures, it is hard to draw a conclusion of the role of $\mu$.
 %We saw, a slight drift or the rato(\ref{f:ratio}\ref{f:ratio3}). We guess, the strong order of convergence will be decreeing when $\mu$ increase. 
 %A "explanation" of this phenomenon is that when $\mu$ increase, the deterministic factor
@@ -997,7 +997,7 @@ These simulations reflected the huge difference of strong order of convergence f
 %\end{split}
 %\end{equation}
 
-In this section we provide a theoretical analysis about the expectation of the discretization error of the Euler approximation for $\alpha$-quantiles. We find that the leading order of the expectation of the discretization error $E\varepsilon_N = E (M(\alpha,T)) - \E (M(k,N)$ is $1$ for $0 < \alpha<1/2$ or $0<\alpha<1/2$. That it the expectation of the dissertation error is $O(1/N^{-1})$ when $0 < \alpha<1/2$ or $0<\alpha<1/2$. 
+In this section we provide a theoretical analysis about the expectation of the discretization error of the Euler approximation for $\alpha$-quantiles. We find that the leading order of the expectation of the discretization error \[\displaystyle E\varepsilon_N = \EE {M(\alpha,T) - M(k,N)}\] is $1$ for $0 < \alpha<1/2$ or $0<\alpha<1/2$. That it the expectation of the dissertation error is $O(1/N^{-1})$ when $0 < \alpha<1/2$ or $0<\alpha<1/2$. When $\alpha=1/2$, $E\varepsilon_N =0$. When $\alpha=1$ or $\alpha=0$, the expected discretization error is $O(1/N^{-1/2})$ 
 
 Combine $(\ref{eq:Dassios})$ $(\ref{eq:dpathdec})$ and $(\ref{eq:maxest})$, for $0 < \alpha < 1$,
 we get an estimate of the expectation of the discretization error:
@@ -1028,7 +1028,7 @@ $\displaystyle-\max_{t\leq (1-\alpha)T} (-S'_t)$.
 Denote the coefficient of the leading term 
 \[
 \frac{\sigma\sqrt{T}}{4}\left(\frac{(\mu_1 - 2g(\mu_1))}{\sqrt\alpha} - \frac{(\mu_2 - 2g(\mu_2))}{\sqrt{(1-\alpha)}}\right)\]
-as $\widetilde c(\mu,\alpha)$. In Figure \ref{plot-mu}, we can see the influence of $\mu$ and $\alpha$ on the coefficient of the leading term $\widetilde c(\mu,\alpha)$. Fixed $\mu$, we find that the closer $\alpha$ to $1/2$, the closer $c(\mu,\alpha)$ to $0$. Fixed $\alpha$, we find that the larger the value of $\mu$, the closer $\widetilde c(\mu,\alpha)$ to $0$.
+as $\widetilde c(\mu,\alpha)$. In Figure \ref{plot-mu}, we can see the influence of $\mu$ and $\alpha$ on the coefficient of the leading term $\widetilde c(\mu,\alpha)$. Fixed $\mu$, we find that the closer $\alpha$ is to $1/2$, the closer $c(\mu,\alpha)$ is to $0$. Fixed $\alpha$, we find that the larger the value of $\mu$ is, the closer $\widetilde c(\mu,\alpha)$ is to $0$.
 
 \begin{figure}[p]
    %\centering
@@ -1038,7 +1038,7 @@ as $\widetilde c(\mu,\alpha)$. In Figure \ref{plot-mu}, we can see the influence
 \end{figure}
 
 
-Since the discretization error for the maximum is axisymmetric with respect to $\mu=0$(Section~\ref{s:euler}), we find that 
+Since the discretization error for the maximum is axisymmetric with respect to $\mu=0$ (Section~\ref{s:euler}), we find that 
 \begin{equation}\label{a-symmetric-alpha}
 \begin{split}
 &\EE{M(1-\alpha,T) - M(N-k,N)} \\
@@ -1057,7 +1057,7 @@ central symmetric with respect to $\alpha=1/2$ when other parameters other fixed
 We notice that when $\alpha=0.5$, the expected discretization error for the medium of a Brownian motion is 
 \begin{equation}\label{ex-dis-err-2}
 \begin{split}
-&\EE {M(0.5,T)} - \EE {M(N/2,N)}\\
+&\EE {M(0.5,T) - M(N/2,N)}\\
 =& \EE{\sup_{t\leq 0.5{T}} X_t - \sup_{i\leq N/2} X_i} +
 \EE{\inf_{t \leq (1-0.5)T} X'_t - \inf_{i\leq N/2} X'_i}\\
 =& \EE{\sup_{t\leq 0.5{T}} X_t - \sup_{i\leq N/2} X_i} +
@@ -1081,12 +1081,12 @@ Err_{j,s} = \frac{1}{L}\sum_{1\leq l \leq L} \left({M_{j,d}^{(l)}- M_{j,s}^{(l)}
 We realize this algorithm for $d=25$, $b=4$, $\mu = 0$, $\sigma^2=1$, $T=1$, $X_0=0$ and generate $L=500000$ sampled paths. As you can see in Figure~\ref{f:err}, Figure \ref{f:lerr} and Figure \ref{f:rate}, the simulation results are coincident with our theoretical conclusion. 
 
 Figure \ref{f:err3}, \ref{f:lerr3}, and \ref{f:rate3} depict the simulation results for $\mu=3$, $d=25$, $b=4$, $\mu = 0$, $\sigma^2=1$, $T=1$, $X_0=0$ and $L=500000$. As we can see from the figures, the convergence orders for genuine quantiles are all around $1$. 
-Further more, we provide the comparison between the theoretical values and simulation results of $log(C(\mu,\alpha))/log(2)$ in Table~\ref{t:int0} and Table~\ref{t:int3}. We can see that they matched pretty well. 
+Further more, we provide the comparison between the theoretical values and simulation results of $\log (\widetilde c(\mu,\alpha))/\log(2)$ in Table~\ref{t:int0} and Table~\ref{t:int3}. We can see that they matched pretty well. 
 
 {\it Remark:} The reader may notice that lines are waving much heavily for $\alpha$ closed to $0.5$ 
 than $\alpha$ closed to $1$ in Figure~\ref{f:lerr} and Figure~\ref{f:lerr3}. Moreover, lines in Figure~\ref{f:lerr} 
 looks much smoother than which in Figure~\ref{f:lerr3}. These situations can be explained by Figure~\ref{plot-mu}.
-As we can seen, $\widetilde c(\mu,\alpha)$ decreased dramatically when $\alpha$ closing $0.5$ or $\mu$ increasing.  
+As we can seen, $\widetilde c(\mu,\alpha)$ decreased dramatically when $\alpha$ is closing $0.5$ or the absolute value of $\mu$ is increasing.  
 Noticing that  $\widetilde c(\mu,\alpha)$ controls the discretization error for fixed $N$, 
 so the results are more sensitive to the error introduced by simulation itself 
 when $\widetilde c(\mu,\alpha)$ is smaller. The results will be better if we do more simulations
@@ -1094,6 +1094,9 @@ when $\widetilde c(\mu,\alpha)$ is smaller. The results will be better if we do 
 However these simulations are really time consuming. 
 
 \begin{table}[p]
+\caption{Theoretical value and simulation results of $\widetilde{c}(\mu,\alpha)$ for $\mu = 0$
+    using the Euler scheme with $N = 2^s$ ($4\le s \le 16$), $\mu=0$, $\sigma=1$, $T=1$, $X_0=0$, $L=500000$}
+
 \begin{center}
 \begin{tabular}{c|rrrrrrr}
 $\alpha$ & 0.5625 & 0.625 & 0.6875 & 0.75 & 0.8125 & 0.875 & 0.9375  \\
@@ -1102,12 +1105,13 @@ theoretical &  -4.811 & -3.767 & -3.104 & -2.568 & -2.062 & -1.51 & -0.756\\
 simulation & -5.09 &-3.755 & -2.919 & -2.635 & -2.053 & -1.550 & -0.743\\
 \end{tabular}
 \end{center}
-   \caption{Theoretical value and simulation results of $\widetilde{c}(\mu,\alpha)$ for $\mu = 0$
-    using the Euler scheme with $N = 2^s$ ($4\le s \le 16$), $\mu=0$, $\sigma=1$, $T=1$, $X_0=0$, $L=500000$}
-\label{t:int0}
+   \label{t:int0}
 \end{table}%
 
 \begin{table}[p]
+\caption{Theoretical value and simulation results of $\widetilde{c}(\mu,\alpha)$ for $\mu = 3$
+    using the Euler scheme with $N = 2^s$ ($4\le s \le 16$), $\mu=0$, $\sigma=1$, $T=1$, $X_0=0$, $L=500000$}
+
 \begin{center}
 \begin{tabular}{c|rrrrrrr}
 $\alpha$ & 0.5625 & 0.625 & 0.6875 & 0.75 & 0.8125 & 0.875 & 0.9375  \\
@@ -1116,9 +1120,7 @@ theoretical & -8.013 & -6.838 & -5.962 & -5.135 & -4.262 & -3.259 & -1.932\\
 simulation & -9.211 & -7.496 & -5.615 & -4.938 & -4.094 & -3.215 & -1.881 \\
 \end{tabular}
 \end{center}
-   \caption{Theoretical value and simulation results of $\widetilde{c}(\mu,\alpha)$ for $\mu = 3$
-    using the Euler scheme with $N = 2^s$ ($4\le s \le 16$), $\mu=0$, $\sigma=1$, $T=1$, $X_0=0$, $L=500000$}
-\label{t:int3}
+   \label{t:int3}
 \end{table}%
 
 
@@ -1546,7 +1548,7 @@ Extrapolation & 6.451357 & 7.889848 & 9.522022 & 11.416064 & 13.789325
 \end{table}%
 
 \chapter{Conclusion and future work}
-In this thesis, we provide a numerical study about the strong order of convergence of the Euler approximation associated with the simulation of the $\alpha$-quantile of Brownian motion. We find that the strong order of convergence for genuine $\alpha$-quantile of Brownian motion where $\alpha \in (0,1)$ is around $0.76$, while the strong order of convergence for the maximum or the minimum of Brownian motion is $0.5$. We provide an estimate about the expectation of  the discretization error for the Euler approximation of the $\alpha$-quantile of Brownian motion. This estimate can be used to connect the price of continuously and discretely monitored $\alpha$-quantile options in future work. 
+In this thesis, we provide a numerical study about the strong order of convergence of the Euler approximation associated with the simulation of the $\alpha$-quantile of Brownian motion. We find that the strong order of convergence for genuine $\alpha$-quantile of Brownian motion where $\alpha \in (0,1)$ is around $0.75$, while the strong order of convergence for the maximum or the minimum of Brownian motion is $0.5$.  Strong order can be used to connect the price of continuously and discretely monitored $\alpha$-quantile options in future work.  We provide an analysis about the expectation of the discretization error for the Euler approximation of the $\alpha$-quantile of Brownian motion, which show that the order of the expected discretization error can be classified into three groups when $\alpha$ is at different levels.
 
 $\alpha$-quantile options, a type of strong path-dependent options, are discussed. Existing pricing methods (Monte Carlo method and forward shooting grid method) are only able to give the initiation price for European-style options of this type. We propose a tree method which can price both European-style and American-style $\alpha$-quantile options. Using the price of European-style $\alpha$-quantile options obtained from Monte Carlo method, we have shown how extrapolation method can be applied to improve the accuracy of our pricing method. Although we only discuss the pricing problem of the fixed-strike $\alpha$-quantile options, our tree method is also valid to price the floating-strike quantile options. We also notice that our tree can price the $\alpha$-quantile options at time $t$ after the initiation of a contract, since at time $t$ information about the stock price during $(0,t)$ is available.    
 
