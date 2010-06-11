@@ -1,10 +1,7 @@
 CC = g++-4
-run: bitree_rec bitreeit biam simqq bfsg
+run: biit biam simqq bfsg
 
-bitree_rec: bitree_rec.cpp
-	$(CC) -fopenmp -lgomp -o  $@ $<
-
-bitreeit: bitreeit.cpp
+biit: bitreeit.cpp
 	$(CC) -fopenmp -lgomp -o  $@ $<
 
 biam: biam.cpp
@@ -17,5 +14,3 @@ bfsg: bfsg.cpp
 	$(CC) -o $@ $< 
 clean:
 	rm -f *.o 
-
-.PHONY: clean bitree_rec test run
