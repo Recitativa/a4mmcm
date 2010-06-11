@@ -83,6 +83,7 @@ readFile <- function(inFilenames,NN=200000) {
 
 ## main function to treat the data
 run <- function(inFilenames,
+                mu=0,
                 bbb=0,ttt=0,SP=1,
                 AB=TRUE,DQ=FALSE, ZEE=FALSE,
                 NN=200000,PRQ=NA) {
@@ -96,7 +97,7 @@ run <- function(inFilenames,
   if(ZEE) {
     adat[1,"Dense",] <- 0;
   }
-  
+
   ## Formula: (A)dErr =   X_Dense - X_n
   ## Formula: m(A)dErr = |mean(X_k -  X_Dense)|
   ## mAdErr is a 2-dim array, 1st-dim is Quantile, 2ed-dimension is k, 
@@ -110,16 +111,17 @@ run <- function(inFilenames,
   if(is.na(PRQ))
      PRQ <- c(seq(1,nRQ,by=SP),nRQ); PRQ <- unique(PRQ);
 
+ 
   plotlines <- function(fname,Dat,sdDat=NULL,xlab="s",ylab="Error") {
     pdf(fname,pointsize=8)
-    plot(c(Rb,Rm-ttt),
-         range(Dat),
+    plot(c(Rb+bbb,Rm-ttt),
+         range(Dat[,(1+bbb):(Rm-Rb-ttt+1)]),
          type="n", xlab = xlab, ylab=ylab)
     cols <- rainbow(nRQ)
     legend(x="topright", paste("",RQuantiles[PRQ]),
            col=cols[PRQ], lty=1, ncol=3)
     for(i in PRQ) {
-      lines(Rb:(Rm-ttt), Dat[i,], type="b",col=cols[i])
+      lines((Rb+bbb):(Rm-ttt), Dat[i,(bbb+1):(Rm-Rb-ttt+1)], type="b",col=cols[i])
     }
     dev.off()
   }
@@ -182,7 +184,7 @@ run <- function(inFilenames,
       dev.off()
     }
   }
-  TrI <- CCC(alpha=RQuantiles[PRQ]);
+  TrI <- CCC(mu=mu,alpha=RQuantiles[PRQ]);
   ftxt <- file(paste(boutname,".txt",sep=""),"wt")
   write(Nrows,file=ftxt)
   write.table(l2mdErr,file=ftxt)
@@ -209,18 +211,16 @@ CCC <- function(mu=0, sigma=1,T=1,alpha=0.5,N=1) {
   return(log(CC(mu,sigma,T,alpha)/N)/log(2))
 }
 
-plotI <- function(mu=1:10,n=500,ylim=c(-1.5,1.5)) {
+# source("treat_m.r");pdf("mu.pdf");plotI();dev.off()
+
+plotI <- function(mu=1:10,n=1000,ylim=c(-1.5,1.5)) {
   plot(0,0, xlim=c(0,1), ylim=ylim,
        xlab=expression(alpha),
-       ylab="coefficient",
+       ylab=expression(c(mu,alpha)),
        type='n');
   cols <- rainbow(length(mu))
   alpha <- seq(0,1,length.out=n)
   for(i in 1:length(mu)) 
     lines(alpha,CC(mu=mu[i],alpha=alpha),type='l',col=cols[i])
-  legend(x="topleft",
-         as.expression(
-             lapply(mu, function(x) bquote(mu == .(x))),
-             col=cols,lty=1)
-         )
+  legend(x="topleft", paste("u=", mu),lty=1,lwd=1,col=cols)
 }
