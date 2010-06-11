@@ -89,7 +89,9 @@ int main(int argc,
 
   double *bars=new double[1024*1024];
 
-  for( steps=Bn; steps<=En; steps+=10)
+  int By=10; // steps from Be to En by By 
+
+  for( steps=Bn; steps<=En; steps+=By)
   {
     double dt = T/steps;
     double dw = sigma*sqrt(dt); // up movement
