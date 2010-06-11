@@ -68,7 +68,7 @@ int main(int argc,
 
   int Bn, En;
  
-  if(argc != 9) {cerr << "bitree S K alpha r sigma T Bn En" << endl; return 1;}
+  if(argc != 9) {cerr << argv[0] <<" S K alpha r sigma T Bn En" << endl; return 1;}
   stringstream ss (stringstream::in | stringstream::out);
   for(int i=1;i<9;i++) { ss << argv[i] << " ";}
   ss >> S >> K >> alpha >> r >> sigma >> T >> Bn >> En;
