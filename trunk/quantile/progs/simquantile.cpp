@@ -33,7 +33,8 @@ int main(int argc,
   ss >> Para.Re;
   // Seed for random number generator
   double sigma, mu;
-  ss >> sigma >> mu;
+  ss >> sigma;
+  ss >> mu;
   ss >> Para.Nseg; // index of the name of outputfile
   BrownSim S(sigma,mu);
 
@@ -42,5 +43,3 @@ int main(int argc,
 
   S.Sim(Para);
 }
-
-
