@@ -57,6 +57,7 @@ simEro.r: simulation methord to compute the quantile option.
 	  >>> source("brod.r");
 	  >>> rr<-price(S,K, r, sigma, T, alpha, n=10000000);
 
+treat_bitree.r: extrapolation relevant programs.
 
 Compile the c++ programs:
 
