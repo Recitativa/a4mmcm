@@ -37,19 +37,62 @@ quantile options}
 
 \section{Introduction} 
 \begin{frame}
-\frametitle{Definition of quantile of Brownian motion}
-For a stochastic process \{$X_t$\} on $(\Omega, \mathbb Q, \mathcal F)$, the $\alpha$-quantile $(0 \leq \alpha \leq 1)$
-is defined by
+\frametitle{Introduction}
+Definition of quantiles:
+for a stochastic process \{$X_t$\} on $(\Omega, \mathbb Q, \mathcal F)$, \\
 \[
 M(\alpha,t)(\omega) = \inf\Set{x:\int_0^t ds1_{(X_s (\omega)\leq x)} > \alpha t}.
 \]
-Special cases: 
+the $\alpha$-quantile $(0 \leq \alpha \leq 1)$ of this process at time $t$.\newline
 
-$\displaystyle\inf_{0\leq s \leq t}  X_s = \lim_{\alpha\to 0}M(\alpha,t)$ and $\displaystyle\sup_{0\leq s \leq t} X_s = \lim_{\alpha\to 1} M(\alpha, t)$.
+
+\pause
+Quantile options:
+Just replace the spot price by the quantiles.
+
+\pause
+E.g. pay off function of 
+\begin{itemize}
+\item 
+$\alpha$-quantile Eurpean call option: $(S(\alpha,T)-K)^+$;
+\item 
+$\alpha$-quantile Eurpean call option: $(S(\alpha,\tau)-K)^+$.
+% when execrice the option at time \tau
+\end{itemize}
 \end{frame}
 
-\section{quantile}
+\section{Quantile}
+\begin{frame}{Quantiles of Brownian motion}
+Properties:
+\begin{itemize}
+\item $\displaystyle\inf_{0\leq s \leq t}  X_s = \lim_{\alpha\to 0}M(\alpha,t)$
+\item $\displaystyle\sup_{0\leq s \leq t} X_s = \lim_{\alpha\to 1} M(\alpha, t)$.
+\end{itemize}
+\vspace{1em}
+\pause
 
+Now assume $X_t$ is a Brwonian motion.
+
+Key observation:
+\[
+(M(\alpha,T),X_T) 
+{\stackrel{\text{(law)}}{=}}
+ (\max_{t\leq \alpha T}X_t+\min_{t\leq (1-\alpha)T}X'_t, X_{\alpha T}+X'_{(1-\alpha)T}),
+\]
+where $X'_t$ is an independent copy of $X_t$. 
+\end{frame}
+
+\section{Discrete v.s. Continous}
+
+
+
+\section{Quantile Options}
+
+\subsection{European}
+
+\subsection{American}
+
+\section{Further directions}
 
 
 \end{document} 
