@@ -1,0 +1,55 @@
+\documentclass[cjk]{beamer}
+\usepackage{CJK}
+\usepackage{latexsym, amsfonts, amssymb, amsmath,  amsthm}
+\usepackage{amsopn, amstext, amscd,pifont}
+\usepackage{amssymb,bm}
+\usepackage{braket}
+\usepackage{cases}
+\usepackage{paralist}
+\usepackage{eufrak}
+\usepackage[all]{xy}
+\usepackage[overload]{textcase}
+\usetheme{Singapore}
+\usefonttheme{professionalfonts}
+
+\newtheorem{thm}[theorem]{Theorem}
+\newtheorem{exa}[theorem]{Example}
+
+\begin{document}
+
+\title{On quantiles of Brownian motion and \\
+quantile options}
+\author{Zhu Yong Ting}
+\date{} \frame{\titlepage}
+
+\section{Agenda}
+\begin{frame}
+\frametitle{Organization of this Thesis}
+
+\begin{itemize}
+\item Introduction  $\color{red}\surd$
+\item Principles of option pricing 
+\item Numerical methods
+\item Quantile and quantile options $\color{red}\surd$
+\item Conclusion and future work $\color{red}\surd$
+\end{itemize}
+\end{frame}
+
+\section{Introduction} 
+\begin{frame}
+\frametitle{Definition of quantile of Brownian motion}
+For a stochastic process \{$X_t$\} on $(\Omega, \mathbb Q, \mathcal F)$, the $\alpha$-quantile $(0 \leq \alpha \leq 1)$
+is defined by
+\[
+M(\alpha,t)(\omega) = \inf\Set{x:\int_0^t ds1_{(X_s (\omega)\leq x)} > \alpha t}.
+\]
+Special cases: 
+
+$\displaystyle\inf_{0\leq s \leq t}  X_s = \lim_{\alpha\to 0}M(\alpha,t)$ and $\displaystyle\sup_{0\leq s \leq t} X_s = \lim_{\alpha\to 1} M(\alpha, t)$.
+\end{frame}
+
+\section{quantile}
+
+
+
+\end{document} 
