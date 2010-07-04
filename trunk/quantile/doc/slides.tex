@@ -260,10 +260,6 @@ If (\ref{strong-g}) is $O(1/N^\gamma)$ as $N \uparrow \infty$, this approximatio
 \item
 \cite{A-G-P-1995} find that \[E[M(1,T)-M(N,N)] = O(1/N^{1/2})\] as $N\to\infty$. 
 \item
-For $|\mu /\sqrt{N}|<2\sqrt{\pi}$, \cite{Janssen2008} provided a series expansion of $E[M(1,T) -M(N,N)]$ to arbitrary order.
-\item
-\cite{Janssen2008} further pointed out that the expected discretization error of the maximum of a Brownian motion with drift $\mu$ is same as that for the maximum of a Brownian motion with drift $-\mu$.  
-\item
 {\color{red} Question:} What about the general $\alpha$-quantiles ($\alpha \in (0,1)$)? 
 \end{itemize}
 \end{frame}
@@ -409,51 +405,80 @@ Moreover, for other quantiles, the strong order of convergence is far away from 
 These simulations reflected the huge difference of strong order of convergence for genuine quantiles and the maximum of a Brownian motion.
 \end{itemize}
 \end{frame}
-%
-%\begin{frame}{An analysis about the expected discretization error}
-%Based on previous work 
-%\begin{itemize}
-%\item 
-%\cite{Dassios1995} 
-%\begin{equation}\label{eq:Dassios}
-%M(\alpha, t) \eqlaw \sup_{s \leq \alpha t} X_s + \inf_{s\leq (1-\alpha)t} X'_s.
-%\end{equation}
-%\item
-%\cite{Wendel1960}
-%\begin{equation}\label{eq:dpathdec}
-%M(k,N)\stackrel{\rm(law)}{=}\max_{i\le k}X_{ih} + \min_{i\le N-k}X'_{ih},
-%\end{equation}
-%\item
-%\cite{Janssen2008}
-%\begin{itemize}
-%\item
-%\begin{split}
-%E[M(1,T)-M(N,N)]
-%=& -\frac{\zeta(1/2)}{\sqrt{2\pi}}\sigma\sqrt{T/N} 
-% -\frac{2g(\mu\sqrt{T}/\sigma)-\mu\sqrt{T}/ \sigma}{4N}\sigma\sqrt{T} \\
-% &+O(1/N^{3/2}),
-%\end{split}
-%\end{equation}
-%where 
-%\[
-%\zeta(1/2) \approx -3.92264613,
-%\]
-%and 
-%\begin{equation}
-%g(x)=x \Phi(x) + \frac{1}{\sqrt{2\pi}} e^{-{x^2 /2 }}.
-%\end{equation}
-%\item
-%The expected discretization error of the maximum of a Brownian motion with drift $\mu$ is same as that for the maximum of a Brownian motion with drift $-\mu$.
-%\end{itemize}
-%\end{itemize}
-%\end{frame}
 
+\begin{frame}{An analysis about the expected discretization error}\small
+\begin{itemize}
+\item
+\cite{Wendel1960}
+\[
+M(k,N)\stackrel{\rm(law)}{=}\sup_{i\le k}X_{ih} + \inf_{i\le N-k}X'_{ih}.
+\]
+\item 
+\cite{Dassios1995} 
+\[
+M(\alpha, T) \eqlaw \sup_{s \leq \alpha T} X_s + \inf_{s\leq (1-\alpha)T} X'_s.
+\]
+\item
+\cite{Janssen2008}
+\begin{itemize}
+\item$\displaystyle
+E[M(1,T)-M(N,N)]
+= -\frac{\zeta(1/2)}{\sqrt{2\pi}}\sigma\sqrt{T/N} 
+ -\frac{2g(\mu\sqrt{T}/\sigma)-\mu\sqrt{T}/ \sigma}{4N}\sigma\sqrt{T} 
+ +O(1/N^{3/2}),$
+where 
+$
+\zeta(1/2) \approx -3.92264613,
+$
+and 
+$
+g(x)=x \Phi(x) + \frac{1}{\sqrt{2\pi}} e^{-{x^2 /2 }}.
+$
+\item
+The expected discretization error of the maximum of a Brownian motion is symmetric w.r.t drift $\mu$.
+\end{itemize}
+\end{itemize}
+\end{frame}
 
+\begin{frame}\small
+We find 
+\begin{itemize}
+\item
+\[
+\mathbb {E}({M(1-\alpha,T) - M(N-k,N)})
+=-\mathbb{E}({M(\alpha,T) -  M(k,N)}).
+\]
+\item
+The discretization error of $\alpha$-quantile of Brownian motion with drift $\mu$ is the same as that of Brownian motion with drift $-\mu$.
 
+\item
+for $\alpha=0.5$, 
+\[
+\mathbb{E} [{M(0.5,T) - M(N/2,N)}]=0.
+\] 
 
+\item
+for $0<\alpha<1$,
+\[
+\begin{split}
+&\mathbb{E} [{M(\alpha,T) -  M(k,N)}]\\
+=&\frac{\sigma\sqrt{T}}{4N}\left(\frac{(\mu_1 - 2g(\mu_1))}{\sqrt\alpha} - \frac{(\mu_2 - 2g(\mu_2))}{\sqrt{(1-\alpha)}}\right) \\
+& + O(1/N^{{3}/{2}}),
+\end{split}
+\]
+where $k = \alpha N$, $\mu_1 =\mu\sqrt{\alpha T}/\sigma$, and $\mu_2 =-\mu\sqrt{(1-\alpha)T}/\sigma$.
 
+\end{itemize}
+\end{frame}
 
-
+\begin{frame}{The coefficient}
+\begin{figure}[p]
+   %\centering
+   \includegraphics[scale=0.3]{mu.pdf} % requires the graphicx packagem 
+   \caption{Coefficient of the leading term}
+   \label{plot-mu}
+\end{figure}
+\end{frame}
 
 
 \begin{frame}{Numerical results for $\mu=0$}
@@ -465,7 +490,7 @@ These simulations reflected the huge difference of strong order of convergence f
 \end{figure}
 \end{frame}
 
-\begin{frame}
+\begin{frame}{Numerical results for $\mu=0$}
 \begin{figure}
    \centering
    \includegraphics[scale=0.3]{nout_0log.pdf} % requires the graphicx package
@@ -475,7 +500,7 @@ These simulations reflected the huge difference of strong order of convergence f
 \end{figure}
 \end{frame}
 
-\begin{frame}
+\begin{frame}{Numerical results for $\mu=0$}
 \begin{figure}
    \centering
    \includegraphics[scale=0.3]{nout_0rato.pdf} % requires the graphicx package
@@ -484,23 +509,45 @@ These simulations reflected the huge difference of strong order of convergence f
 \end{figure}
 \end{frame}
 
+\begin{frame}{Numerical results for $\mu=3$}
+\begin{figure}[p]
+   \centering
+   \includegraphics[scale=0.3]{nout_4_25_3.pdf} % requires the graphicx package
+   \caption{Expectation of the discretization error for selected $\alpha$-quantile ($\alpha = 0.5625, 0.625,  \cdots, 1$) using the Euler scheme with $N = 2^s$ ($4\le s \le 16$), $\mu=3$, $\sigma=1$, $T=1$, $X_0=0$, $L=500000$ }
+   \label{f:err3}
+\end{figure}
+\end{frame}
 
-\begin{frame}{Numerical results for strong convergence order}
-By numerical simulation, we also find a great differences of convergence pattens 
-between genuine $\alpha$-quantiles are different
-with the extrema case. 
+\begin{frame}{Numerical results for $\mu=3$}
+\begin{figure}[p]
+   \centering
+   \includegraphics[scale=0.3]{nout_4_25_3log.pdf} % requires the graphicx package
+   \caption{Logarithm of the discretization error for selected $\alpha$-quantile ($\alpha =$ $0.5625,$ $0.625,$  $\cdots, 1$) using the Euler scheme with $N = 2^s$ ($4\le s \le 16$), $\mu=3$, $\sigma=1$, $T=1$, $X_0=0$, $L=500000$}
+   \label{f:lerr3}
+\end{figure}
+\end{frame}
 
-\vspace{2em}
-{\color{red}\em Conjecture:} For $\alpha\neq 0,1$, 
+\begin{frame}{Numerical results for $\mu=3$}
+\begin{figure}[p]
+   \centering
+   \includegraphics[scale=0.3]{nout_4_25_3rato.pdf} % requires the graphicx package
+   \caption{The order of convergence for selected $\alpha$-quantile ($\alpha = 0.5625, \cdots, 1$) using the Euler scheme with $N = 2^s$ ($4\le s \le 16$), $\mu=3$, $\sigma=1$, $T=1$, $X_0=0$, $L=500000$}
+   \label{f:rate3}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Conclusion about the order of the expected discretization error}
+We have 
 \[
-\mathbb{E} |M(\alpha, T) - M_h(\alpha,T)|\sim O(h).
+\mathbb{E}\left( M(\alpha, T) - M(N,T)\right) 
+= 
+\begin{cases}
+O(1/N^{1/2}) & \alpha=0,1\\
+0 & \alpha=0.5\\
+O(1/N) & \text{otherwize}
+\end{cases} 
 \]
 \end{frame}
-
-\begin{frame}
-
-\end{frame}
-
 
 \section{Quantile Options}
 \begin{frame}{Setting}
