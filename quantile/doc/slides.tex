@@ -1,4 +1,4 @@
-\documentclass[cjk]{beamer}
+\documentclass[cjk,10pt]{beamer}
 \usepackage{CJK}
 \usepackage{latexsym, amsfonts, amssymb, amsmath,  amsthm}
 \usepackage{amsopn, amstext, amscd,pifont}
@@ -10,29 +10,38 @@
 \usepackage[all]{xy}
 \usepackage[overload]{textcase}
 
+\usepackage{chicago}
+\bibliographystyle{chicago}
+
 
 %\useoutertheme[height=1.5em]{sidebar}
 
 \logo{\includegraphics[scale=0.09]{nuslogo.pdf}}
 
 \usetheme{Berkeley}
+\useinnertheme{circles}
 \usecolortheme{seahorse}
 %\usecolortheme{dove}
 
-%\usefonttheme{professionalfonts}
+\usefonttheme{professionalfonts}
 
 \newtheorem{thm}[theorem]{Theorem}
 \newtheorem{exa}[theorem]{Example}
 
+\def\eqlaw{{\stackrel{\text{(law)}}{=}}}
+\def\tmu{{\widetilde{\mu}}}
+\def\tsigma{{\widetilde{\sigma}}}
+\def\abs#1{{\left|#1\right|}}
 
 \begin{document}
+\setbeamertemplate{itemize subitem}[triangle]
 
 \title{On quantiles of Brownian motion and \\
 quantile options}
 \author{Zhu Yong Ting}
 \date{} \frame{\titlepage}
 
-\section{Agenda}
+\section{Outline}
 \begin{frame}
 \frametitle{Organization of this Thesis}
 
@@ -46,133 +55,411 @@ quantile options}
 \end{frame}
 
 \section{Introduction} 
-\begin{frame}
-\frametitle{Introduction}
-Definition of quantiles:
-for a stochastic process \{$X_t$\} on $(\Omega, \mathbb Q, \mathcal F)$, \\
+\begin{frame}{Definition of the quantile of a stochastic process}
+\begin{itemize}
+\item
+For a stochastic process \{$X_t$\} on $(\Omega, \mathbb Q, \mathcal F)$, \\
 \[
-M(\alpha,t)(\omega) = \inf\Set{x:\int_0^t ds1_{(X_s (\omega)\leq x)} > \alpha t}.
+M(\alpha,t)(\omega) = \inf\Set{x:\int_0^t ds1_{(X_s (\omega)\leq x)} > \alpha t},
 \]
 is the corresponding $\alpha$-quantile $(0 \leq \alpha \leq 1)$ process.
-\vspace{1em}
-
-Quantile options:
-Just replace the spot price by the quantiles.
-
-E.g. pay off function of 
-\begin{itemize}
-\item 
-$\alpha$-quantile Eurpean call option: $(S(\alpha,T)-K)^+$;
-\item 
-$\alpha$-quantile Eurpean call option: $(S(\alpha,\tau)-K)^+$.
-% when execrice the option at time \tau
-\end{itemize}
-\end{frame}
-
-\section{Quantile}
-\begin{frame}{Quantiles of Brownian motion}
-Properties:
+\item
+Special cases:
 \begin{itemize}
 \item $\displaystyle\inf_{0\leq s \leq t}  X_s = \lim_{\alpha\to 0}M(\alpha,t)$
 \item $\displaystyle\sup_{0\leq s \leq t} X_s = \lim_{\alpha\to 1} M(\alpha, t)$.
 \end{itemize}
-\vspace{1em}
-
-Now assume $X_t$ is a Brwonian motion.
-
-Key property:
-\[
-(M(\alpha,T),X_T) 
-{\stackrel{\text{(law)}}{=}}
- (\max_{t\leq \alpha T}X_t+\min_{t\leq (1-\alpha)T}X'_t, X_{\alpha T}+X'_{(1-\alpha)T}),
-\]
-where $X'_t$ is an independent copy of $X_t$. 
-\end{frame}
-
-\section{Discrete v.s. Continous}
-\begin{frame}{Discretization}
-Discretize the continous stochstics proscess(Brownian motion)
-\[
-X_{i,h} = X_{ih}
-\]
-is a discrete stochastic process(Gaussian randon walk),
- where $h$ is the step length.
-
-
-$M_h(\alpha,T)$: the $k=\alpha T/h$-th order statistic of the set 
-$\Set{X_{i,h}|n=0,1,\cdots, T/h}$.
-
-Similar property ($h=T/N$,$k=\alpha N$)
-\[
-(M_h(1,T),X_{N,h}) 
-{\stackrel{\text{(law)}}{=}}
- (\max_{i\leq k}X_{i,h}+\min_{i\leq N-k}X'_{i,h}, X_{k,h}+X'_{N-k,h}),
-\]
-\end{frame}
-
-\begin{frame}{Discretization Error}
-$Y$ is a random variable, $Y_h$ is a series of random variables prametrized by $h$. 
-
-Different type of onvergence order: ($h\to 0$)
-\begin{itemize}
-\item {\em Strong order:} 
-  \[
-  \mathbb{E}\left|Y_h(t) - Y_h\right| \sim O(h^\gamma)
-  \]
-\item {\em Weak order:}
-  \[
-  \left|\mathbb{E} g(Y_h(t)) - g(Y_h)\right|  \sim O(h^\gamma), 
-  \quad \forall g\in C^{2(\gamma+1)}(\mathbb{R})
-  \]
+\item When $X_t = \sigma B_t + \mu t$ is a Brownian motion, many results are established. 
 \end{itemize}
+%Quantile options:
+%Just replace the spot price by the quantiles.
 
+%E.g. pay off function of 
+%\begin{itemize}
+%\item 
+%$\alpha$-quantile European call option: $(S(\alpha,T)-K)^+$;
+%\item 
+%$\alpha$-quantile European call option: $(S(\alpha,\tau)-K)^+$.
+% when execrice the option at time \tau
+%\end{itemize}
 \end{frame}
 
-\begin{frame}{Results for maximal}
-Running Maximal of Brownian motion: 
-i.e. 
-$\displaystyle Y = \max_{0\leq t\leq T} X_t, Y_h = \max_{0\leq i\leq T/h} X_{ih}$,\\
-\em Strong and weak order of convergence is $1/2$ \cite{A-G-P-1995}. 
+\begin{frame}{Motivation}
+\begin{itemize}
+\item
+\cite{A-G-P-1995} examine the convergence behavior of the discretely sampled maximum of a Brownian motion. ($\alpha$=1)
+\item
+How are about the general $\alpha$-quantiles? ($\alpha \in (0,1)$)
+\item
+Part I: Discretization error in simulation of the quantile of a Brownian motion.
+\end{itemize}
+%Key property:
+%\[
+%(M(\alpha,T),X_T) 
+%{\stackrel{\text{(law)}}{=}}
+% (\max_{t\leq \alpha T}X_t+\min_{t\leq (1-\alpha)T}X'_t, X_{\alpha T}+X'_{(1-\alpha)T}),
+%\]
+%where $X'_t$ is an independent copy of $X_t$. 
+\end{frame}
 
-Moreover\cite{Janssen2008}, 
-\[
-\begin{split}
- & E[M(1,T)-M_{T/N}(1,T)]\\
-=& -\frac{\zeta(1/2)}{\sqrt{2\pi}}\sigma\sqrt{T/N} 
- -\frac{2g(\mu\sqrt{T}/\sigma)-\mu\sqrt{T}/ \sigma}{4N}\sigma\sqrt{T} \\
- &+O(1/N^{3/2}),
-\end{split}
-\]
+\begin{frame}{Motivation}
+\begin{itemize}
+\item
+Black-Scholes model: stock price $S_t$ satisfies 
+\begin{equation}\label{eq:1}
+dS_t = (r-\sigma^2/2) S_tdt + \sigma S_tdB_t,
+\end{equation}
+with $r$ and $\sigma $ constant, which represent the risk free interest rate and the volatility respectively. 
+\item
+\begin{itemize}
+\item
+Vanilla option: stock price $S_t$
+\item
+Lookback option: maximum or minimum of stock price ($\alpha=0$ or $\alpha=1$)
+\item
+Quantile option: quantile of stock price ($\alpha \in (0,1)$)
+\end{itemize}
+\item
+Part II: Pricing of American-style $\alpha$-quantile option
+\end{itemize}
+\end{frame}
+
+\section{Quantile and quantile options}
+
+\subsection{The quantile of a Brownian motion}
+\begin{frame}{The distribution function}
+For a Brownian motion without drift ($\mu=0$, $X_t=\sigma B_t$), \cite{Yor1995} provides the distribution function:
+\vspace{1em}
+%For the $\alpha$-quantile $M(\alpha,t)$ of $\{X_t\}$ on time interval $[0,t]$
+{\small
+\begin{equation}
+P(M(\alpha,t)\in dx)= \begin{cases}
+\displaystyle 2\sqrt\frac{2}{\sigma^2\pi t}\exp\left(\frac{-x^2} {2\sigma^2 t}\right)\left(1-\Phi\left(\frac{|x|} {\sigma^2 t\theta}\right)\right)dx  &  \text{if } x \leq 0 ,\\
+\displaystyle 2\sqrt\frac{2}{\sigma^2\pi t}\exp\left(\frac{-x^2} {2\sigma^2 t}\right)\left(1-\Phi\left(\frac{\theta x}{\sigma^2 t}\right)\right)dx  & \text{if } x \geq 0,
+\end{cases}
+\end{equation}
+}
+where $\theta = ((1 - \alpha)/\alpha)^{1/2}$ and $\Phi(x)=\int^{x}_{-\infty}(2\pi)^{(-1/2)}\exp(-y^2 /2)dy$ is the cumulative distribution function of a standard normal random variable.
+\end{frame}
+
+\begin{frame}{The distribution function}
+For general Brownian motion, \cite{Dassios1995} proved that
+\begin{equation}\label{eq:Dassios}
+M(\alpha, t) \eqlaw \sup_{s \leq \alpha t} X_s + \inf_{s\leq (1-\alpha)t} X'_s ,
+\end{equation}
+where $X'$ is a independent copy of $X$.
+\end{frame}
+
+
+\begin{frame}{The distribution function}
+The distribution function of $\alpha$-quantile $M(\alpha,t)$ of a Brownian motion is 
+\begin{equation}\label{eq:fulldensity}
+g(x; \alpha , t) = \int^{\infty}_{-\infty} g_1 (x-y; \alpha t) g_2 (y; (1-\alpha) t)dy ,
+\end{equation}
 where
-$g(x)=x \Phi(x) + \frac{1}{\sqrt{2\pi}} e^{-{x^2 /2 }}$,
-and $\zeta$ is the Zeta-function, i.e. 
-$
-\zeta(1/2) \approx -3.92264613.
-$
+\begin{equation}
+g_1 (x;t) = \begin{cases}
+\displaystyle\frac{1}{\sigma}\left({\frac{2}{\pi t}}\right)^{1/2}\exp\left\{-\frac{(x-\mu t)^2}{2\sigma ^2 t}\right\} \\
+\displaystyle\quad - \frac{2\mu}{\sigma ^2} \exp\left(\frac{2\mu x}{\sigma ^2}\right)\left[1- \Phi \left(\frac{x+\mu t}{\sigma \sqrt{t}}\right)\right], & x > 0 ,\\
+0 , & x  \leq 0 ,
+\end{cases}
+\end{equation}
 
-{\color{red} Question:} What about the quantiles.
+\begin{equation}
+g_2 (x;t) = \begin{cases}
+0, & x \geq 0 \\
+\displaystyle\frac{1}{\sigma}\left({\frac{2}{\pi t}}\right)^{1/2}\exp\left\{-\frac{(x-\mu t)^2}{2\sigma ^2 t}\right\} \\
+\displaystyle\quad + \frac{2\mu}{\sigma ^2} \exp\left(\frac{2\mu x}{\sigma ^2}\right) \Phi \left(\frac{x+\mu t}{\sigma \sqrt{t}}\right) , & x < 0.
+\end{cases}
+\end{equation}
 \end{frame}
 
-\begin{frame}{One result}
-When $T/h \in \mathbb{N}$, we have 
-\[
-\mathbb{E}\left( M(\alpha, T) - M_h(\alpha,T)\right) 
-= 
-\begin{cases}
-O(h^{1/2}) & \alpha=0,1\\
-0 & \alpha=0.5\\
-O(h) & \text{otherwize}
-\end{cases} 
-\]
+%
+%\begin{frame}{Discretization}
+%Discretize the continuous stochastic process( Brownian motion)
+%\[
+%X_{i,h} = X_{ih}
+%\]
+%is a discrete stochastic process(Gaussian random walk),
+% where $h$ is the step length.
+%
+%
+%$M_h(\alpha,T)$: the $k=\alpha T/h$-th order statistic of the set 
+%$\Set{X_{i,h}|n=0,1,\cdots, T/h}$.
+%
+%Similar property ($h=T/N$,$k=\alpha N$)
+%\[
+%(M_h(1,T),X_{N,h}) 
+%{\stackrel{\text{(law)}}{=}}
+% (\max_{i\leq k}X_{i,h}+\min_{i\leq N-k}X'_{i,h}, X_{k,h}+X'_{N-k,h}),
+%\]
+%\end{frame}
 
-Conclusion: The convergence patten of genuine $\alpha$-quantiles are different
-with the extrema case. 
+
+\subsection{Discretization error}
+%\begin{frame}{Euler scheme and random walk}
+%For a process $Y=\{Y(t)\}_{t\geq 0}$ satisfying the SDE 
+%\begin{equation}
+%dY(t)= b(Y(t))dt + \sigma (Y(t))dB_t,
+%\end{equation}
+%with initial condition $Y(0)=y$, the approximation $Y_h = \{Y_h (t)\}_{t\geq 0}$ to $Y$ in the Euler scheme is defined as
+%\begin{equation}
+%Y_h ((k+1)h) = Y_h (kh) + b(Y_h(kh))h + \sigma(Y_h(kh))(B_{(k+1)h}-B_{kh}),
+%\end{equation}
+%on the grid $h\mathbb N$, $Y_h (t) = Y_h (\lfloor t/h \rfloor h)$ off the grid and $Y_h (0) = y$.
+
+%Obviously, the accuracy of this approximation is closely related to the length of the discretized time increment $h$. Then the questions arise: how fine should the discretized time increment be in order to get a satisfactory approximation and whether we can quantify the accuracy of this type of simulation. To address this question, the discretization error is introduced. 
+
+%\end{frame}
+
+\begin{frame}{Euler approximation of quantiles}
+\begin{itemize}
+\item
+Euler scheme:
+\begin{itemize}
+\item
+Divide the time interval $[0,T]$ into $N$ equal small time intervals. 
+\item
+The Euler approximation for the $\alpha$-quantile $M(\alpha, T)$ of the Brownian motion $\{X_t\}_{t\leq T}$ is the $k$-th order statistic of the set $\{X_{nh},n=0,1,\cdots,N\}$ with $k= \lceil \alpha  N\rceil$. 
+\end{itemize}
+\item
+Since $h=T/N$, denote $M(k,N)$ as the Euler approximation of $M(\alpha, T)$ with $h=T/N$. 
+\item
+How fine should the discretized time increment be in order to get a satisfactory approximation?
+\item
+How to quantify the accuracy of this type of approximation?
+\end{itemize}
 \end{frame}
 
-\begin{frame}
+\begin{frame}{Discretization error and order of convergence}
+\begin{itemize}
+\item
+The discretization error for the Euler approximation of the $\alpha$-quantile of a Brownian motion at time $T$ is 
+\begin{equation}
+\varepsilon_N =M(\alpha, T)-M(k,N).
+\end{equation}
+\item
+The quality of a path-wise approximation at time $T$ can be measured by 
+\begin{equation}\label{strong-g}
+\mathbb E|\varepsilon_N| =E|M(\alpha, T)-M(k,N)|.
+\end{equation}
+\item
+If (\ref{strong-g}) is $O(1/N^\gamma)$ as $N \uparrow \infty$, this approximation is said to {\it converge strongly} with order $\gamma > 0 $ at time $T$.
+%Using an identity from \cite{Wendel1960} about random walks with independent and identically distributed increments, it can be established that 
+%\begin{equation}\label{eq:dpathdec}
+%M(k,N)\stackrel{\rm(law)}{=}\max_{i\le k}X_{ih} + \min_{i\le N-k}X'_{ih},
+%\end{equation}
+%where $X'$ is an independent copy of $X$. 
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}{Results for maximum}
+\begin{itemize}
+\item
+\cite{A-G-P-1995} find that \[E[M(1,T)-M(N,N)] = O(1/N^{1/2})\] as $N\to\infty$. 
+\item
+For $|\mu /\sqrt{N}|<2\sqrt{\pi}$, \cite{Janssen2008} provided a series expansion of $E[M(1,T) -M(N,N)]$ to arbitrary order.
+\item
+\cite{Janssen2008} further pointed out that the expected discretization error of the maximum of a Brownian motion with drift $\mu$ is same as that for the maximum of a Brownian motion with drift $-\mu$.  
+\item
+{\color{red} Question:} What about the general $\alpha$-quantiles ($\alpha \in (0,1)$)? 
+\end{itemize}
+\end{frame}
+
+\begin{frame}{A numerical study about the strong order of convergence}
+\begin{itemize}
+\item
+The strong order is related to 
+\begin{equation}\label{strong-g}
+\mathbb E|\varepsilon_N| =E|M(\alpha, T)-M(k,N)|.
+\end{equation}
+\item
+Sampled $M(\alpha,T)$ and $M(k,N)$ should share the same path. 
+\item
+We use a much finer Euler approximation as an approximation of the continuous $\alpha$-quantile $M(\alpha, T)$. 
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{The algorithm}
+\small
+\begin{itemize}
+\item 
+The parameter setting is : 
+\begin{equation}
+ N = 2^b , 2^{b+1} , ... 2^{d}; 
+\alpha_j =  \frac{1}{2} + \frac{j}{2^b} , j = 0, 1 , 2..., 2^{b-1}.
+\end{equation}
+\item
+The algorithm: 
+\begin{itemize}
+\item Generate $2^{d}$ normal random sample $\Set{x_i}$ 
+  with mean $\tmu=\mu/2^d$,
+  and standard deviation $\tsigma = \sigma \sqrt {{T}/{2^d}}$,
+  add them up according to time and record them as
+  $X_m = \sum_{1\leq i \leq m} x_i$ starting with $X_0$.
+\item Calculate the $\alpha_j$ quantiles 
+  $M_{j,s}\triangleq M_{\alpha_j 2^s,2^s}$ for sequence 
+  \[
+  \Set{X_m|m=i 2^{d-s}, 1\leq i\leq 2^{s}},\quad \text{where }b\leq s \leq d.\] 
+\item Use $M_{j,d}$ as the continuous quantiles $M(\alpha_j,T)$.
+\item Repeat the above for $L$ times,
+  get replicates $\Set{M_{j,s}^{(l)},{1\leq l\leq L}}$.
+\item Approximate the expectation of the absolute discretization error for $s < d$ using:
+\begin{align}
+Err^{abs}_{j,s} &= \frac{1}{L}\sum_{1\leq l \leq L} \abs{M_{j,d}^{(l)}- M_{j,s}^{(l)}}.
+\end{align}
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+%\begin{frame}
+%When $T/h \in \mathbb{N}$, we have 
+%\[
+%\mathbb{E}\left( M(\alpha, T) - M_h(\alpha,T)\right) 
+%= 
+%\begin{cases}
+%O(h^{1/2}) & \alpha=0,1\\
+%0 & \alpha=0.5\\
+%O(h) & \text{otherwize}
+%\end{cases} 
+%\]
+%
+%Conclusion: The convergence patten of genuine $\alpha$-quantiles are different
+%with the extrema case. 
+%\end{frame}
+
+\begin{frame}{Numerical results for $\mu=0$}
+\begin{figure}
+   \includegraphics[scale=0.3]{nout_0a.pdf}
+   \caption{Expectation of the absolute discretization error for selected $\alpha$-quantiles ($\alpha = 0.5, 0.5625, \cdots, 1$) using the Euler scheme with $N = 2^s$ ($4\le s \le 16$), $\mu=0$, $\sigma=1$, $T=1$, $X_0=0$ and $L=500000$. }
+\label{f:ab}
+\end{figure}
+\end{frame}
+
+\begin{frame}{The logarithm treatment}
+\begin{itemize}
+\item
+Suppose the expectation of the absolute discretization error is $O(1/N^\gamma)$, then we get
+\begin{equation}\label{error-N-sim}
+E|\varepsilon_N| \approx C/N^\gamma,
+\end{equation}
+where $C$ is some positive constant. 
+\item
+Considering in our simulation $N$ is expressed as $N = 2^s$, take logarithm to both sides of (\ref{error-N-sim}) we get
+\begin{equation}
+\frac{\log E|\varepsilon_{2^s}|}{\log 2} \approx \frac{\log C}{\log 2} -\gamma s
+\end{equation}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Numerical results for $\mu=0$}
+ \begin{figure}
+   \includegraphics[scale=0.3]{nout_0alog.pdf}
+   \caption{Logarithm of the absolute discretization error for selected $\alpha$-quantiles ($\alpha = 0.5, 0.5625, \cdots, 1$) using the Euler scheme with $N = 2^s$ ($4\le s \le 16$), $\mu=0$, $\sigma=1$, $T=1$, $X_0=0$, $L=500000$.} 
+   \label{f:lab}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Numerical results for $\mu=0$}
+ \begin{figure}[p]
+   \includegraphics[scale=0.3]{nout_0arato.pdf} % requires the graphicx packagem 
+   \caption{The strong order of convergence for selected $\alpha$-quantiles ($\alpha $ $=$ $ 0.5,$ $0.5625,$ $\cdots, 1$) using the Euler scheme with $N = 2^s$ ($4\le s \le 16$), $\mu=0$, $\sigma=1$, $T=1$, $X_0=0$, $L=500000$.}
+   \label{f:ratio}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Numerical results for $\mu=3$}
+\begin{figure}[p]
+   %\centering
+   \includegraphics[scale=0.3]{nout_4_25_3a.pdf}
+   \caption{Expectation of the absolute discretization error for selected $\alpha$-quantiles ($\alpha = 0.5, 0.5625, \cdots, 1$) using the Euler scheme with $N = 2^s$ ($4\le s \le 16$), $\mu=3$, $\sigma=1$, $T=1$, $X_0=0$, $L=500000$. }
+\label{f:ab3}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Numerical results for $\mu=3$} 
+\begin{figure}[p]
+    %\centering
+   \includegraphics[scale=0.3]{nout_4_25_3alog.pdf}
+   \caption{Logarithm of the absolute discretization error for selected $\alpha$-quantiles ($\alpha = 0.5, 0.5625, \cdots, 1$) using the Euler scheme with $N = 2^s$ ($4\le s \le 16$), $\mu=3$, $\sigma=1$, $T=1$, $X_0=0$, $L=500000$.} 
+   \label{f:lab3}
+\end{figure}
+\end{frame}
+ 
+\begin{frame}{Numerical results for $\mu=3$} 
+\begin{figure}[p]
+   %\centering
+   \includegraphics[scale=0.3]{nout_4_25_3arato.pdf} % requires the graphicx packagem 
+   \caption{The strong order of convergence for selected $\alpha$-quantiles ($\alpha = 0.5, 0.5625, \cdots, 1$) using the Euler scheme with $N = 2^s$ ($4\le s \le 16$), $\mu=3$, $\sigma=1$, $T=1$, $X_0=0$, $L=500000$.}
+   \label{f:ratio3}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Conclusion from numerical study}
+\begin{itemize}
+\item
+The strong order of convergence for the maximum is around $1/2$.
+\item
+Moreover, for other quantiles, the strong order of convergence is far away from $1/2$, all of them are around to $0.75$.
+\item
+These simulations reflected the huge difference of strong order of convergence for genuine quantiles and the maximum of a Brownian motion.
+\end{itemize}
+\end{frame}
+%
+%\begin{frame}{An analysis about the expected discretization error}
+%Based on previous work 
+%\begin{itemize}
+%\item 
+%\cite{Dassios1995} 
+%\begin{equation}\label{eq:Dassios}
+%M(\alpha, t) \eqlaw \sup_{s \leq \alpha t} X_s + \inf_{s\leq (1-\alpha)t} X'_s.
+%\end{equation}
+%\item
+%\cite{Wendel1960}
+%\begin{equation}\label{eq:dpathdec}
+%M(k,N)\stackrel{\rm(law)}{=}\max_{i\le k}X_{ih} + \min_{i\le N-k}X'_{ih},
+%\end{equation}
+%\item
+%\cite{Janssen2008}
+%\begin{itemize}
+%\item
+%\begin{split}
+%E[M(1,T)-M(N,N)]
+%=& -\frac{\zeta(1/2)}{\sqrt{2\pi}}\sigma\sqrt{T/N} 
+% -\frac{2g(\mu\sqrt{T}/\sigma)-\mu\sqrt{T}/ \sigma}{4N}\sigma\sqrt{T} \\
+% &+O(1/N^{3/2}),
+%\end{split}
+%\end{equation}
+%where 
+%\[
+%\zeta(1/2) \approx -3.92264613,
+%\]
+%and 
+%\begin{equation}
+%g(x)=x \Phi(x) + \frac{1}{\sqrt{2\pi}} e^{-{x^2 /2 }}.
+%\end{equation}
+%\item
+%The expected discretization error of the maximum of a Brownian motion with drift $\mu$ is same as that for the maximum of a Brownian motion with drift $-\mu$.
+%\end{itemize}
+%\end{itemize}
+%\end{frame}
+
+
+
+
+
+
+
+
+
+\begin{frame}{Numerical results for $\mu=0$}
 \begin{figure}
    \centering
-   \includegraphics[scale=0.4]{nout_0.pdf} % requires the graphicx package
+   \includegraphics[scale=0.3]{nout_0.pdf} % requires the graphicx package
    \caption{Expectation of the discretization error for selected $\alpha$-quantile ($\alpha = 0.5625, 0.625, \cdots, 1$) using the Euler scheme with $N = 2^s$ ($4\le s \le 16$), $\mu=0$, $\sigma=1$, $T=1$, $X_0=0$, $L=500000$ }
    \label{f:err}
 \end{figure}
@@ -181,7 +468,7 @@ with the extrema case.
 \begin{frame}
 \begin{figure}
    \centering
-   \includegraphics[scale=0.4]{nout_0log.pdf} % requires the graphicx package
+   \includegraphics[scale=0.3]{nout_0log.pdf} % requires the graphicx package
    \caption{Logarithm of the discretization error for selected $\alpha$-quantile ($\alpha =$ $0.5625,$ $0.625,$ 
    $\cdots, 1$) using the Euler scheme with $N = 2^s$ ($4\le s \le 16$), $\mu=0$, $\sigma=1$, $T=1$, $X_0=0$, $L=500000$}
    \label{f:lerr}
@@ -191,7 +478,7 @@ with the extrema case.
 \begin{frame}
 \begin{figure}
    \centering
-   \includegraphics[scale=0.4]{nout_0rato.pdf} % requires the graphicx package
+   \includegraphics[scale=0.3]{nout_0rato.pdf} % requires the graphicx package
    \caption{The order of convergence for selected $\alpha$-quantile ($\alpha = 0.5625, 0.625,  \cdots, 1$) using the Euler scheme with $N = 2^s$ ($4\le s \le 16$), $\mu=0$, $\sigma=1$, $T=1$, $X_0=0$, $L=500000$}
    \label{f:rate}
 \end{figure}
@@ -211,29 +498,9 @@ with the extrema case.
 \end{frame}
 
 \begin{frame}
-\begin{figure}
-   \includegraphics[scale=0.4]{nout_0a.pdf}
-   \caption{Expectation of the absolute discretization error for selected $\alpha$-quantiles ($\alpha = 0.5, 0.5625, \cdots, 1$) using the Euler scheme with $N = 2^s$ ($4\le s \le 16$), $\mu=0$, $\sigma=1$, $T=1$, $X_0=0$ and $L=500000$. }
-\label{f:ab}
-\end{figure}
-\end{frame}
-
-\begin{frame}
- \begin{figure}
-   \includegraphics[scale=0.4]{nout_0alog.pdf}
-   \caption{Logarithm of the absolute discretization error for selected $\alpha$-quantiles ($\alpha = 0.5, 0.5625, \cdots, 1$) using the Euler scheme with $N = 2^s$ ($4\le s \le 16$), $\mu=0$, $\sigma=1$, $T=1$, $X_0=0$, $L=500000$.} 
-   \label{f:lab}
-\end{figure}
-\end{frame}
-
-\begin{frame}
- \begin{figure}[p]
-   \includegraphics[scale=0.4]{nout_0arato.pdf} % requires the graphicx packagem 
-   \caption{The strong order of convergence for selected $\alpha$-quantiles ($\alpha $ $=$ $ 0.5,$ $0.5625,$ $\cdots, 1$) using the Euler scheme with $N = 2^s$ ($4\le s \le 16$), $\mu=0$, $\sigma=1$, $T=1$, $X_0=0$, $L=500000$.}
-   \label{f:ratio}
-\end{figure}
 
 \end{frame}
+
 
 \section{Quantile Options}
 \begin{frame}{Setting}
@@ -341,8 +608,8 @@ V_t = \sup_{t \leq\tau\leq T}
 {\em Discuss:}
 \begin{itemize}
 \item Typical optimal stopping problem
-\item Discretized problem will give a an approximation solution of the original. 
-\item The binomail tree method is doable, but no efficient.
+\item Discretized problem will give an approximation solution of the original. 
+\item The binomil tree method is doable, but no efficient.
 \end{itemize}
 \end{frame}
 
@@ -426,7 +693,6 @@ Similar to the usual binormial tree, but not connect the neighbor nodes.
 
 \section{Reference}
 \begin{frame}[allowframebreaks]{Reference}
-\bibliographystyle{alpha}
 \bibliography{prob}
 \end{frame}
 
