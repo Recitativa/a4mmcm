@@ -106,6 +106,8 @@
 \def\crr{\mathcal{R}}
 \def\cpp{\mathcal{P}}
 \def\cww{\mathcal{W}}
+\def\cnn{\mathcal{N}}
+\def\cyy{\mathcal{Y}}
 \def\fmm{\mathfrak{m}}
 \def\GL{\mathrm{GL}}
 \def\SO{\mathrm{SO}}
@@ -2535,6 +2537,238 @@ A highest weight vector in $S_l$ is $x_n^l$, so $a\geq 0$.
 Now try to apply the method for $\theta^{p,q}(1^{\pm,\pm})$.
 For other cases we also have the multiplicity free of $\pp^\pm\otimes F$, 
 the point is to determine the $c$'s. 
+
+
+\section{Transfer of ladder/minimal representation of $O(2,2n-2)$}
+Work on double cover of all the groups. 
+\subsection{Ladder representation of $O(p,q)$}
+These representations only exists when $p-q$ or $p+q$ is even, denote by 
+$V_{p,q}$.
+It is the theta lift of trivial representation of the double cover of $SL(2,R)$.
+The $K=O(p)\otimes O(q)$-type appear in this representation is 
+\[
+\chh_a\otimes \chh_b
+\]
+where $\chh_a$ is the space of harmonic of degree $a$ and $a,b \geq 0$
+satisfies
+\[
+a+p/2 = b+q/2,
+\]
+or equivelently, 
+\[
+a = b + \frac{q-p}{2}.
+\]
+
+Hence the $K$-types of the ladder representation of $O(p,q)$ is supported on 
+a line, hence called ladder representation. More over 
+the non-compact part action of $O(p,q)$ will move the $K$-type up/down 
+for 1-step. More precisely, let $\aso(p,q)_\bC = \fkk\oplus \fpp$, where
+\[
+\fkk = \aso(p,\bC) \otimes \aso(q,\bC)
+\]
+and
+\[
+\fpp = \bC^p\otimes \bC^q
+\]
+as $\fkk$ representation. 
+By branching laws(Chapter~V, problems 15-23\cite{Knapp1996Lie},\cite{KimLee2010} ), $\fpp\otimes (\chh_a\otimes \chh_b) $ will be map into $\chh_{a+1}\otimes\chh_{b+1}\oplus \chh_{a-1}\otimes \chh_{b-1}$. 
+
+\subsection{decomposition of $V_{2,2n-2}$}
+Take 
+\[
+s = \begin{pmatrix}
+  I_p & 0 \\
+  0 & iI_q
+\end{pmatrix}
+\]
+Then we can have a explicit isomorphism 
+\[
+\begin{split}
+O(p,q)_\bC &\to O(p+q)\\
+X &\mapsto sXs^{-1}
+\end{split}
+\]
+
+By this isomorphism, we can see
+\[
+\theta_{p,q}(X)=-I_{p,q}X^T I_{p,q}
+\]
+ is an Cartan involution on $\aso(n,\bC)$ defining a real 
+Lie subagebra isomorphic to $\aso(p,q)$. 
+Moreover the complex conjugation $\sigma$ respect to $\aso(p,q)$ is 
+\[
+\sigma(X) = I_{p,q}\overline{X}I_{p,q}
+\] 
+
+Consider $V_{2,2n-2}$ as a $(\aso(n,\bC), O(2,2r-2)\times O(2n-2r))$-module,
+by take the drived functor, we will show that 
+\[
+\left(\Gamma_{\aso(n,\bC), O(2,2r-2)\times O(2n-2r)}^{\aso(n,\bC), O(2r)\times O(2n-2r)}\right)^j
+V_{2,2n-2} \simeq V_{2r,2n-2r}
+\]
+for certain $j\in \bN$.
+
+Now we will decompose $V_{2,2n-2}$ as $O(2,2r)\times O(2(n-r-1))$ module
+ by see-saw pair
+\[
+\xymatrix{
+O(2,2n-2) \ar@{-}[dr]& SL(2,\bR)\times SL(2,\bR) \\
+O(2,2r)\times O(2(n-r-1))\ar@{-}[ur] & SL(2,\bR)}
+\]
+
+Just as \cite{ZhuHuang1997}, suppose that $O(2,2r)\times O(2(n-r-1))$-module 
+$\mu \otimes \chh_l$ occure in $V_{2,2n-2}$.
+We will have a non-trivial map from 
+$\theta(\mu)\otimes \overline{D_{l+2(n-r-1)/2}}$ to $\bC$. 
+This means $\theta(\mu)\simeq D_{l+n-r-1}$. 
+
+Using the results in \cite{Howe1979Opq}, we will see that $\mu$ is a lowest 
+weight module. Then by the algebric version of Bott-Borel-Weil theorem, 
+we have $(\Gamma_{\aso(2r),O(2)\times O(2r-2)}^{O(2r})^j \mu = \chh_l$
+
+Consider see-saw pair 
+\[
+\xymatrix{
+O(2,2r) \ar@{-}[dr]& SL(2,\bR)\times SL(2,\bR) \\
+O(2)\times O(2r)\ar@{-}[ur] & SL(2,\bR)}
+\] 
+we get $O(2)\times O(2r)$-type
+ $\chh_a\otimes \chh_b$ appair in $\rho(D_{l+n-r-1})$ 
+iff $D_{a+1}\otimes \overline{D_{b+r}}$ has a $D_{l+n-r-1}$ quotient.
+From \cite{Howe1979Opq},
+this equivelent to $D_{l+n-r-1}$ appair in this tensor product. 
+By the results of \cite{Repka1976tensor}, we know this means
+\[
+a+1 - (b+r)\geq l + n-r-1
+\]
+i.e. 
+\[
+a -b \geq l+n-2.
+\]
+So $\rho(D_{l+n-r-1})$ is a unitary lowest weight $O(2)\times O(2r)$-module.
+
+\subsection{Uniquness of  the module}
+
+\appendix
+\section{Representations of $U(n)$}
+In the Fork module of oscillator representatoin,  
+$U(n)$ act on the ploynomail algebra. 
+
+
+Give the norm on $P(\bC^n)$ by
+\[
+\inn{f}{g} = C_n\int_\bC^nf(z)\overline{g(z)}e^{-\abs{z}^2}dzd\overline{z}
+\]
+
+\def\dd{\mathrm{d}}
+
+In fact, 
+\[
+\begin{split}
+ &\int_\bC z^a \overline{z^b} e^{-\abs{z}^2}dz\overline{dz} \\
+=& -2i \int_\bC z^a \overline{z^b} 2i\,\dd x\,\dd y\\
+=& -2i\int_{0}^\infty r^{a+b+1}e^{-r^2}\dd r \int_0^{2\pi} e^{i\theta(a-b)}d\theta\\
+=& \begin{cases}
+0 & a\neq b\\
+\begin{split}
+ &-4\pi i\int_0^\infty r^{2a+1} e^{-r^2} \dd r \\
+=& -2\pi i \int_0^\infty s^a e^{-s}\dd s \\
+=& -2\pi i a! 
+\end{split}
+& a=b 
+\end{cases}
+\end{split}
+\]
+
+Hence take $C_n = (i/2\pi)^n$, we have orthonrmal basis 
+\[
+\set{e_\alpha = \frac{x^\alpha}{\sqrt{\alpha!}}=\frac{\prod_i x^{\alpha_i}}{\sqrt{\prod_i \alpha_i!}}}
+\]
+under this inner product.
+
+The representation of $U(n)$ on $P(\bC^n)$ is given by  $k f(z)  =f(kz)$. 
+Fixing a $u\in V$, the map 
+\begin{align*}
+\phi\colon V &\to  \sH(K)\\
+v & \mapsto (F(k)=\inn{kv}{u})
+\end{align*}
+gives a imbedding of $V$ in to $\sH(K)$, 
+where $\sH(K)$ view as $K$ representation under right translation.
+
+We'd like to reconstruct $v$ by $F(k)$ by using Schur's orthogonality relation. 
+suppose $v = \sum_{\alpha} \inn{v}{e_\alpha} e_\alpha$, 
+\[
+\begin{split}
+\int_K F(k) \overline{\inn{ke_\alpha}{u}} \dd k \\
+= &\int_K  \inn{kv}{u}\overline{\inn{ke_\alpha}{u}}\dd k\\
+= &\inn{v}{e_\alpha}\inn{u}{u}/\dim V.
+\end{split}
+\]
+
+Hence we have 
+\[
+v = \int_K F(k) K(k) \dd k
+\]
+where 
+\[
+K(k) = \sum_{\alpha} \frac{\overline{\inn{ke_\alpha}{u}}\dim V}{\inn{u}{u}} e_\alpha 
+\]
+is a kernel function. 
+
+Back to previous section. $u_l = c_l z_p^l/\sqrt{l!}$, $V_l$ is the space of homogeneous polynomial of degree $l$.
+$\dim V_l  = \binom{n+l-1}{l}$.
+   
+So 
+\[
+f(z) = \int_K F(k) K(k,z) \dd k 
+\]
+where 
+\[
+\begin{split}
+K(k,z) =& \sum_{\alpha} \binom{n+l-1}{l} 
+\overline{\inn{k z^\alpha/\sqrt{\alpha!}}{c_lz_p^l}}\frac{1}{c_l^2l!}
+\frac{z^\alpha}{\sqrt{\alpha!}}\\
+= & \sum_\alpha \binom{n+l-1}{l}\frac{1}{c_l \alpha!}
+\prod_j k_{pj}^{\alpha_j} z^\alpha
+\end{split}
+\]
+for $k = (k_{ij}) \in U(n)$. 
+
+\section{See-saw pair and reciprocity law}
+Suppose we have see-saw pair
+\[
+\xymatrix{G \ar@{-}[dr] & H'\\
+H\ar@{-}[ur] & G'
+}
+\]
+where $H < G$, $H'> G'$. 
+
+For representation $\sigma$ of $G'$ which can be realized as a quotient of
+the Weil representation, by Howe we have
+\[
+ \omega/\cnn_\sigma= \rho(\sigma)\otimes \sigma
+\]
+for some representation $\rho(\sigma)$ of $G$ as $G\times G'$ representation.
+
+\[
+\cnn_\sigma = \bigcap_{\substack{\cnn\subset \omega\\ \omega/\cnn\simeq \sigma}}\cnn
+\]
+
+For any irreducible representation $\tau$ of $H$.
+\[
+\begin{split}
+&\Hom_{H}(\rho(\sigma), \tau)\\
+= & \Hom_{H\times G'}(\rho(\sigma)\otimes \sigma, \tau\otimes \sigma)
+=  \Hom_{H\times G'}(\omega/\cnn_\sigma, \tau\otimes \sigma)\\
+= & \Hom_{H\times G'}(\omega, \tau\otimes \sigma)\\
+= & \Hom_{H\times G'}(\omega/\cnn_\tau, \tau\otimes \sigma)
+= \Hom_{H\times G'}(\tau\otimes \rho(\tau), \tau\otimes \sigma)\\
+= & \Hom_{G'}(\rho(\tau), \sigma).
+\end{split}
+\]
+The third equality above valid by the definition of $\cnn_\sigma$. 
+
+
 
 \bibliography{bib/reppapers}{}
 \bibliographystyle{alpha}
