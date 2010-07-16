@@ -8,6 +8,10 @@
 #include <sstream>
 #include "cdf.hpp"
 
+#include <sys/time.h>
+#include <sys/times.h>
+#include <sys/types.h>
+
 using namespace std;
 
 typedef double Real;
@@ -187,8 +191,19 @@ int main(int argc,
       {
 	Option A(r, sigma, alpha);
 	Real price;
+
+	struct tms tBegin,tEnd;
+	long rBegin,rEnd;
+	rBegin = times(&tBegin);
 	price = A.EPrice(S0,K,T,n);
-	outf << n << " " << price << endl;  
+	rEnd = times(&tEnd);
+	outf << n << " " << price					\
+	     << " " << (double)(rEnd-rBegin)/CLOCKS_PER_SEC		\
+	     << " " << (double)(tEnd.tms_utime-tBegin.tms_utime)/CLOCKS_PER_SEC \
+	     << " " << (double)(tEnd.tms_stime-tBegin.tms_stime)/CLOCKS_PER_SEC \
+	     << " " << (double)(tEnd.tms_stime-tBegin.tms_stime		\
+				+tEnd.tms_utime-tBegin.tms_utime)/CLOCKS_PER_SEC \
+	     << endl;  
       }
   }
 
