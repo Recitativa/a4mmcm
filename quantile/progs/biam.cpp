@@ -8,9 +8,7 @@
 #include <sstream>
 #include "cdf.hpp"
 
-#include <sys/time.h>
-#include <sys/times.h>
-#include <sys/types.h>
+#include <ctime>
 
 using namespace std;
 
@@ -192,18 +190,12 @@ int main(int argc,
 	Option A(r, sigma, alpha);
 	Real price;
 
-	struct tms tBegin,tEnd;
-	long rBegin,rEnd;
-	rBegin = times(&tBegin);
+	time_t tBegin,tEnd;
+	time(&tBegin);
 	price = A.EPrice(S0,K,T,n);
-	rEnd = times(&tEnd);
+	time(&tEnd);
 	outf << n << " " << price					\
-	     << " " << (double)(rEnd-rBegin)/CLOCKS_PER_SEC		\
-	     << " " << (double)(tEnd.tms_utime-tBegin.tms_utime)/CLOCKS_PER_SEC \
-	     << " " << (double)(tEnd.tms_stime-tBegin.tms_stime)/CLOCKS_PER_SEC \
-	     << " " << (double)(tEnd.tms_stime-tBegin.tms_stime		\
-				+tEnd.tms_utime-tBegin.tms_utime)/CLOCKS_PER_SEC \
-	     << endl;  
+	     << " " << difftime(tEnd,tBegin) << endl;  
       }
   }
 

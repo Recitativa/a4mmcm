@@ -8,6 +8,8 @@
 #include <sstream>
 #include "cdf.hpp"
 
+#include <ctime>
+
 using namespace std;
 
 typedef double Real;
@@ -187,8 +189,14 @@ int main(int argc,
       {
 	Option A(r, sigma, alpha);
 	Real price;
+
+	time_t tBegin,tEnd;
+	time(&tBegin);
 	price = A.EPrice(S0,K,T,n);
-	outf << n << " " << price << endl;  
+	time(&tEnd);
+	outf << n << " " << price					\
+	     << " " << difftime(tEnd,tBegin) << endl;  
+
       }
   }
 
