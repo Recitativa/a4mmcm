@@ -67,9 +67,9 @@ readFile <- function(inFilenames,NN=200000) {
     if(Nrows==NN) break; # break if the number of records reach NN 
   }
   ## adat is a three dimentional array of data with [i,j,k]
-  ## i -- i-th record
+  ## i -- Quantiles 2^(Rb-1)/2^Rb, 2^(Rb-1)+1/2^Rb, ...., 1
   ## j -- different k: Rb, Rb+1, Rb+2, ..., Rm, Dense(see below)
-  ## k -- Quantiles 2^(Rb-1)/2^Rb, 2^(Rb-1)+1/2^Rb, ...., 1
+  ## k -- k-th record
  
 ## adat <- aperm(adat[,,1:Nrows],perm=c(3,2,1))
   adat <- adat[,,1:Nrows]
