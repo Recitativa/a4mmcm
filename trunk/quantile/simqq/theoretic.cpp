@@ -11,6 +11,8 @@
 #include <gsl/gsl_rng.h>
 #include <gsl/gsl_randist.h>
 
+#include <ctime>
+
 
 using namespace std;
 
@@ -56,6 +58,23 @@ double Quantile::mean() {
 
 // Number of points recorded for the Brownian motion is 2<<Re
 int BrownSim::Sim(SimPara Para) {
+  // Timeing
+  time_t start,end;
+  int ccc = 0;
+#define BEGINTIME do {			\
+    if(ccc ==0) time(&start);		\
+    ccc=(ccc+1)%5;			\
+  }while(0)
+  
+#define ENDTIME do {							\
+    if(ccc==0) {							\
+      time(&end);							\
+      cerr << " " << difftime(end,start)  << endl;			\
+    }}while(0)
+  
+
+
+
   // Type of real number, it should be long double if Re>20 since double 
   // has 53 bits for base, and approsimate 53/3 = 17 decimal digits, 
   // When Re>20, it need more than 17 digits in computation  
@@ -133,6 +152,7 @@ int BrownSim::Sim(SimPara Para) {
 
   // Simulation
   for(int l = 0 ; l< Terms; l++) {
+    BEGINTIME;
     // generate the path
     Record[0]=0;
     for(i=1; i<= (1<< Re); i++) 
@@ -140,7 +160,7 @@ int BrownSim::Sim(SimPara Para) {
     
     cerr << "coumputing Q" << endl;
     int nQ;
-    int k;
+    //int k;
 
     // compute Qunatiles from 1<<(Rb-1)/1<<Rb  to 1 step 1/1<<Rb
     // 
@@ -186,6 +206,7 @@ int BrownSim::Sim(SimPara Para) {
     //for(ii=0;ii<Rm-Rb;ii++) {//cerr<< M[ii] << 0;
     //  assert(M[ii]<=M[ii+1]);}
     cerr << "Adding " << l << "th records" << endl;
+    ENDTIME;
   }
   fout.close();
   delete Record;
