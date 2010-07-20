@@ -66,3 +66,4 @@ You can compile all the programs simply by using makefile.
 e.g.:
 c:\prog> make
 
+Or compile them on any linux system, for example, the HPC in NUS. 
