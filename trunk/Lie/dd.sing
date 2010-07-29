@@ -1,0 +1,54 @@
+LIB "ring.lib";
+LIB "nctools.lib";
+LIB "ncalg.lib";
+
+
+ring R = (0,i),(e,f,z,dz,l,v),Dp;
+minpoly=i^2+1;
+matrix D[6][6];
+D[1,2]=-l; D[3,4]=1;
+def W = nc_algebra(1,D);
+setring W;
+
+def E = e+i*v*f;
+def F = e-i*v*f;
+
+proc comm(x,y) {
+  return(x*y-y*x);  
+};
+
+proc picklinear(p,term) 
+{
+  def mm = coeffs(p,term);
+  if(nrows(mm)<=1)
+    {  return (0);
+    }
+  else 
+    {  return (mm[2,1]);}
+};
+
+proc cmat(OP)
+{
+  def ee=comm(OP,e);
+  def ff=comm(OP,f);
+  matrix mm[2][2];
+  mm[1,1] = picklinear(ee,e);
+  mm[2,1] = picklinear(ee,f);
+  mm[1,2] = picklinear(ee,e);
+  mm[2,2] = picklinear(ff,f);
+  return(mm);
+};
+
+
+proc sublv(A,a,b) 
+{
+  return (substitute(A,l,a,v,b));  
+};
+
+
+proc subrep(OP)
+{
+  return (substitute(OP,e,i*l*dz,f,z));
+};
+
+
