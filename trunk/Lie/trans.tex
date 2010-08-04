@@ -76,6 +76,9 @@
 \def\abs#1{\left|{#1}\right|}
 \def\norm#1{{\left\|{#1}\right\|}}
 \def\Sp{{\rm Sp}}
+\def\SL{{\rm SL}}
+\def\O{{\rm O}}
+\def\SO{{\rm SO}}
 \def\det{{\rm det}}
 
 \def\tJ{{\widetilde{J}}}
@@ -111,6 +114,7 @@
 \def\cpp{\mathcal{P}}
 \def\cww{\mathcal{W}}
 \def\cnn{\mathcal{N}}
+\def\cxx{\mathcal{X}}
 \def\cyy{\mathcal{Y}}
 \def\fmm{\mathfrak{m}}
 \def\GL{\mathrm{GL}}
@@ -2804,7 +2808,90 @@ r_{12} = & \frac{1}{2} h_1h_2 + f_1e_2 + e_1f_2
 \end{align*}
 
 
+
+\section{Fock model III}
+Assume $W_0$ is a symplectic space over $\bR$.
+Fix a complete polarization $W_0 = \cxx_0\oplus \cyy_0$.  
+$e_1,\cdots, e_n$ is basis of $\cxx_0$, and $f_1,\cdots, f_n$ is dual basis 
+of $e_j$'s in $\cyy_0$, i.e. $\inn{e_\alpha}{e_\beta}=\delta_{\alpha\beta}$.
+
+Now choose a chartor of $\bR$, i.e. $\phi(x) = \lambda x$. 
+For $\phi$ be unitary, choose $\lambda \in i\bR$. Usually, we set $\lambda=i$. 
+Let
+\[
+\Omega(W) = T(W) / \left\langle v\otimes w - w\otimes v - \phi(\inn{v}{w})\right\rangle.
+\]
+Now $\Omega(W)$ has a filtraction from $T(W)$, i.e. 
+$\Omega^k(W)$ is the image of $\bigoplus_{j\leq k}T^j(W)$.
+It is easy to see, 
+\[
+[\Omega^i(W),\Omega^j(W)] \subset \Omega^{i+j-2}(W).
+\]
+We have short exact sequence of Lie Algebras:
+\begin{align}
+0\to \Omega^0(W) \to &\Omega^1(W) \to W \to 0\\
+0\to \Omega^1(W) \to &\Omega^2(W) \to \sp(W)\to 0 
+\end{align}
+More over $\Omega^2(W) \cong \sp(W) \oplus \fhh$, 
+where $\fhh\cong \Omega^1(W)$ is a hisenberg Lie algebra.
+The identify cation of $\Omega^2(W)/\Omega^1(W)$ is given by
+consider the $\Omega^2(W)$ action of $\Omega^1(W)/\Omega^0(W)\cong W$. 
+
+Let $W=W_0\otimes_\bR\bC$ be the complexification of $W$. 
+Define $J$ as multiply by ``$i$'' on $W_0$. And define unitary structure
+\[
+U_J(x,y) = \inn{Jx}{y} + i\inn{x}{y}
+\]
+Consdier $W = X\oplus Y$, where $X$ and $Y$ are $\pm i$ eigen-space of $J$. 
+Now it's easy to see that $U_J$ structure is 
+invarient under $X\otimes Y$ action($v\in X, w\in Y, x,y\in W$):
+\[
+\begin{split}
+U_J(vw\cdot x,y) =& \inn{J(vw\cdot x)}{y} + i\inn{vw\cdot x}{y}\\
+=&\inn{-i\lambda\inn{v}{x} w}{y}
++\inn{i\lambda\inn{w}{x} v}{y}
+ - i \inn{x}{vw\cdot y}\\
+=& \inn{-i\lambda\inn{w}{y}v}{x}
++ \inn{i\lambda \inn{v}{y}w}{x}
+-i\inn{x}{vw\cdot y}\\
+=& \inn{x}{i\lambda{w}{y}v}
++ \inn{x}{-i\lambda{v}{y}w}
+-i\inn{x}{vw\cdot y}\\
+=& \inn{x}{J vw\cdot y} -i\inn{x}{vw\cdot y}\\
+=& -\inn{Jx}{vw\cdot y}  -i\inn{x}{vw\cdot y}= -U_J(x,vw\cdot y).
+\end{split}
+\]
+
+Note that, $\sp(n,\bC)\cong S^2(W)$ and the real form $\sp(n,\bR)$ is the 
+Lie subalgebra preserve the real symplectic space $W_0$. 
+
+
+
+Algebra $\Omega(W)$ act on $\Omega(W)/\Omega(W)X \cong \bC[z_1, \cdots,z_n]$ by differential operator:
+\begin{align*}
+e_i &\leftrightarrow \lambda \frac{\partial}{\partial z_i}\\
+f_i &\leftrightarrow z_i\\
+\end{align*}
+
+\subsection{$(\O(p,q),\SL(2,\bR)$ dual pair}
+Now choose another real subsapce $W_{p,q}$ of $W$, 
+which spaned by $e_1,\cdot, e_p, ie_{p+1},\cdot,ie_{n}, 
+f_1, \cdots, f_p, -if_{p+1}, -if_n$. We can view $W$ as $M_{n,2}$, 
+with $\O(n,\bC)$ act on left, $SL(2,\bC)$ act on right. 
+Give symplectic form on $W$ by tensoring the form 
+of $\O(n,\bC)$ and $\SL(2,\bC)$, so we have complex symplectic group act on $W$.
+$\O(n,\bC)$ and $\SL(2,\bC)$ are complex reductive dual pair 
+Choose real subgroup stablize $W_{p,q}$, we have $\O(p,q)$ and $\SL(2,\bR)$ 
+as real reductive dual pair subgroup in $\Sp(2n,\bR)$. 
+Note that the embedding of $\SL(2,\bR)$ in $\Sp(2n,\bC)$ is not change for
+different $W_{p,q}$.
+
+
+
+
 \subsection{Uniquness of  the module}
+
+
 
 \appendix
 \section{Some inveriant theory}
