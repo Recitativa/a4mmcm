@@ -1,12 +1,15 @@
 LIB "ring.lib";
 LIB "nctools.lib";
 LIB "ncalg.lib";
-
-
-ring R = (0,i),(e,f,z,dz,l,v),Dp;
+LIB "inout.lib";
+int n=2;
+ring R = (0,i),(e(1..n),f(1..n),z(1..n),dz(1..n),l,v),Dp;
 minpoly=i^2+1;
-matrix D[6][6];
-D[1,2]=-l; D[3,4]=1;
+matrix D[4*n+2][4*n+2];
+for(int t=1; t<=n;t++) {
+  D[t,n+t]=-l; 
+  D[2*n+t,3*n+t]=1;
+ }
 def W = nc_algebra(1,D);
 setring W;
 
@@ -29,13 +32,15 @@ proc picklinear(p,term)
 
 proc cmat(OP)
 {
-  def ee=comm(OP,e);
-  def ff=comm(OP,f);
-  matrix mm[2][2];
-  mm[1,1] = picklinear(ee,e);
-  mm[2,1] = picklinear(ee,f);
-  mm[1,2] = picklinear(ee,e);
-  mm[2,2] = picklinear(ff,f);
+  matrix mm[2*n][2*n];
+  for(int t=1;t<=n;t++) {
+    def ee=comm(OP,e(t));
+    def ff=comm(OP,f(t));
+    mm[t,t] = picklinear(ee,e(t));
+    mm[n+t,t] = picklinear(ee,f(t));
+    mm[t,n+t] = picklinear(ff,e(t));
+    mm[n+t,n+t] = picklinear(ff,f(t));
+  }
   return(mm);
 };
 
@@ -48,7 +53,39 @@ proc sublv(A,a,b)
 
 proc subrep(OP)
 {
-  return (substitute(OP,e,i*l*dz,f,z));
+  ideal vv = e(1..n),f(1..n);
+  ideal ff = l*dz(1..n),z(1..n);
+  return (substitute(OP,vv,ff));
 };
+
+
+proc putop(OP)
+{
+  pmat(sublv(cmat(OP),i,1));
+  print(sublv(subrep(OP),i,1));
+}
+
+
+// create SL(2,R);
+poly HH; HH= 0; 
+for(int t=1;t<=n;t++) {
+  HH = HH + e(t)*f(t)+f(t)*e(t);
+ }
+HH = HH*i/2;
+
+poly EE; EE = 0;
+for(int t=1;t<=n;t++) {
+  EE = EE + e(t)*e(t);
+ }
+EE = EE/2i;
+
+poly FF; FF = 0;
+for(int t=1;t<=n;t++) {
+  FF = FF + f(t)*f(t);
+ }
+FF = FF*i/2;
+
+def CC = HH*HH/2 + EE*FF + FF*EE;
+
 
 
