@@ -1,5 +1,6 @@
 \documentclass[12pt]{article}
 \usepackage[margin=2cm]{geometry}
+\usepackage{pdfsync}
 
 \usepackage{hyperref}
 
@@ -26,7 +27,6 @@
 \newtheorem{cor}{Corollary}
 \newenvironment{expl}{\it}{\color{black}\normalsize}
 \DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
-
 
 
 \def\Ker{{\rm Ker}}
@@ -114,6 +114,7 @@
 \def\cpp{\mathcal{P}}
 \def\cww{\mathcal{W}}
 \def\cnn{\mathcal{N}}
+\def\cuu{\mathcal{U}}
 \def\cxx{\mathcal{X}}
 \def\cyy{\mathcal{Y}}
 \def\fmm{\mathfrak{m}}
@@ -148,12 +149,12 @@
     pdftoolbar=true,        % show Acrobat’s toolbar?
     pdfmenubar=false,        % show Acrobat’s menu?
     pdffitwindow=false,      % page fit to window when opened
-    pdftitle={Qualify Examination Answers - Algebra},    % title
+    %pdftitle={},    % title
     pdfauthor={Ma Jia Jun},     % author
-    pdfsubject={Subject},   % subject of the document
-    pdfcreator={Creator},   % creator of the document
-    pdfproducer={Producer}, % producer of the document
-    pdfkeywords={keywords}, % list of keywords
+    %pdfsubject={Subject},   % subject of the document
+    pdfcreator={Hoxide},   % creator of the document
+    %pdfproducer={Producer}, % producer of the document
+    %pdfkeywords={keywords}, % list of keywords
     pdfnewwindow=true,      % links in new window
     colorlinks=true,       % false: boxed links; true: colored links
     linkcolor=blue,          % color of internal links
@@ -162,11 +163,6 @@
     urlcolor=cyan           % color of external links
 }
 
-
-\newcounter{ssection}
-\setcounter{ssection}{0}
-\renewcommand{\subsection}{
-  \addtocounter{ssection}{1}{\bf  \arabic{ssection}.\  }}
 
 \title{transfer of $K$ type}
 
@@ -2736,7 +2732,141 @@ is the highest weight of $K$-type occure in the both representation and
 \lambda + (m-1, m-2, \cdots, 0) = (-1, 0, \cdots, 0) 
 \]
 
-\subsection{$U(\fgg)^K$ action}
+
+
+\section{Fock model III}
+Assume $W_0$ is a symplectic space over $\bR$.
+Fix a complete polarization $W_0 = \cxx_0\oplus \cyy_0$.  
+$e_1,\cdots, e_n$ is basis of $\cxx_0$, and $f_1,\cdots, f_n$ is dual basis 
+of $e_j$'s in $\cyy_0$, i.e. $\inn{e_\alpha}{e_\beta}=\delta_{\alpha\beta}$.
+
+Now choose a chartor of $\bR$, i.e. $\phi(x) = \lambda x$. 
+For $\phi$ be unitary, choose $\lambda \in i\bR$. Usually, we set $\lambda=i$. 
+Let
+\[
+\Omega(W) = T(W) / \left\langle v\otimes w - w\otimes v - \phi(\inn{v}{w})\right\rangle.
+\]
+Now $\Omega(W)$ has a filtraction from $T(W)$, i.e. 
+$\Omega^k(W)$ is the image of $\bigoplus_{j\leq k}T^j(W)$.
+It is easy to see, 
+\[
+[\Omega^i(W),\Omega^j(W)] \subset \Omega^{i+j-2}(W).
+\]
+We have short exact sequence of Lie Algebras:
+\begin{align}
+0\to \Omega^0(W) \to &\Omega^1(W) \to W \to 0\\
+0\to \Omega^1(W) \to &\Omega^2(W) \to \sp(W)\to 0 
+\end{align}
+More over $\Omega^2(W) \cong \sp(W) \oplus \fhh$, 
+where $\fhh\cong \Omega^1(W)$ is a hisenberg Lie algebra.
+The identify cation of $\Omega^2(W)/\Omega^1(W)$ is given by
+consider the $\Omega^2(W)$ action of $\Omega^1(W)/\Omega^0(W)\cong W$. 
+
+Let $W=W_0\otimes_\bR\bC$ be the complexification of $W$. 
+Define $J$ as multiply by ``$i$'' on $W_0$. And define unitary structure
+\[
+U_J(x,y) = \inn{Jx}{y} + i\inn{x}{y}
+\]
+Consdier $W = X\oplus Y$, where $X$ and $Y$ are $\pm i$ eigen-space of $J$. 
+Now it's easy to see that $U_J$ structure is 
+invarient under $X\otimes Y$ action($v\in X, w\in Y, x,y\in W$):
+\[
+\begin{split}
+U_J(vw\cdot x,y) =& \inn{J(vw\cdot x)}{y} + i\inn{vw\cdot x}{y}\\
+=&\inn{-i\lambda\inn{v}{x} w}{y}
++\inn{i\lambda\inn{w}{x} v}{y}
+ - i \inn{x}{vw\cdot y}\\
+=& \inn{-i\lambda\inn{w}{y}v}{x}
++ \inn{i\lambda \inn{v}{y}w}{x}
+-i\inn{x}{vw\cdot y}\\
+=& \inn{x}{i\lambda{w}{y}v}
++ \inn{x}{-i\lambda{v}{y}w}
+-i\inn{x}{vw\cdot y}\\
+=& \inn{x}{J vw\cdot y} -i\inn{x}{vw\cdot y}\\
+=& -\inn{Jx}{vw\cdot y}  -i\inn{x}{vw\cdot y}= -U_J(x,vw\cdot y).
+\end{split}
+\]
+
+Note that, $\sp(n,\bC)\cong S^2(W)$ and the real form $\sp(n,\bR)$ is the 
+Lie subalgebra preserve the real symplectic space $W_0$. 
+
+
+
+Algebra $\Omega(W)$ act on $\Omega(W)/\Omega(W)X \cong \bC[z_1, \cdots,z_n]$ by differential operator:
+\begin{align*}
+e_i &\leftrightarrow \lambda \frac{\partial}{\partial z_i}\\
+f_i &\leftrightarrow z_i\\
+\end{align*}
+
+\subsection{$\cuu(\fgg)^K$}
+\subsubsection{Case $\fgg=\aso(n,\bC)$} 
+Consider $O(n,\bC)$ act on $V=\bC^n$ with orthorgnal basis $e_1, \cdots, e_n$, 
+Choese real subspace $V_{p,q} = \sspan{e_1, \cdots, e_p, ie_{p+1},\cdots, ie_n}$.
+Let $O(p,q)$ be the subgroup of $O(n,\bC)$ preserve $V_{p,q}$. We also have corresponding Lie algebra embedding. 
+Choose $K = O(p,\bC)\otimes O(q,\bC)$. Now consider a real form of 
+$K_0 = K\cap O(r,s) \cong O(r,p-r)\times O(q)$ (assume $r<p$).
+
+\begin{lemma} Under above notation.
+\[\cuu(\fgg)^{K} = \cuu(\fgg)^{K_0}\], 
+hence, $\cuu(\fgg)^{K_0}$ is independent with the real form $O(r,s)$. 
+\end{lemma}
+\proof Note that we can have $K=K'Z$, where $K' = SO(n,\bC)$ is the identity component of
+ $K$, $Z$ is some $2$ element subgroup of $K_0$ 
+for example $\Set{\diag{\pm 1,1, \cdots, 1}}$. Since $K_0\subset K$, 
+it is clear that $\cuu(\fgg)^K\subset \cuu(\fgg)^{K_0}$.
+On the other hand, $K$ act on $\cuu(\fgg)$ reductively
+and all irreducible subrepresentation of $K$ in $\cuu(\fgg)$ 
+are finite dimensional by the unitary trick. Hence, 
+$\cuu(\fgg)^K$ is the set of $\aso(n,\bC)$ and $Z$ invarint.
+Since $\aso(n,\bC)$ action is the competicification of $\aso(p,q)$ action.
+We have, $\cuu(\fgg)^{K_0} \subset (\cuu(\fgg)^{\aso(p,q)})^Z = \cuu(\fgg)^K$.
+\qed
+
+
+
+\subsection{$(\OO(p,q),\SL(2,\bR)$ dual pair}
+Now choose another real subsapce $W_{p,q}$ of $W$, 
+which spaned by $e_1,\cdot, e_p, ie_{p+1},\cdot,ie_{n}, 
+f_1, \cdots, f_p, -if_{p+1}, -if_n$. We can view $W$ as $M_{n,2}$, 
+with $\OO(n,\bC)$ act on left, $SL(2,\bC)$ act on right. 
+Give symplectic form on $W$ by tensoring the form 
+of $\OO(n,\bC)$ and $\SL(2,\bC)$, so we have complex symplectic group act on $W$.
+$\OO(n,\bC)$ and $\SL(2,\bC)$ are complex reductive dual pair 
+Choose real subgroup stablize $W_{p,q}$, we have $\OO(p,q)$ and $\SL(2,\bR)$ 
+as real reductive dual pair subgroup in $\Sp(2n,\bR)$. 
+Note that the embedding of $\SL(2,\bR)$ in $\Sp(2n,\bC)$ is not change for
+different $W_{p,q}$.
+
+\subsection{correspondence}
+Now we choose two real form $W_{2,n-2}$ and $W_{p,q}$ of $W$, we have
+$G_1, G_2$ as real subgroup of $\OO(n,\bC)$ and $G'_1=G'_2$ as real subgroup 
+of $SL(2,\bC)$. $\fgg$ is the complexification of both $\fgg_1$ and $\fgg_2$. 
+
+Now we can idenfity $\cuu(\fgg)^{O(2,p-2)\times O(q)}$ and
+$\cuu(\fgg)^{O(p)\times O(q)}$ as same subalgebra in $\cuu(\fgg)$.
+
+For the case of theta-correspondence, we know $\omega(\cuu(\fgg)^{O(p)\times O(q)})$
+is generated by image of $C,C_1,C_2$ the casimer operator in $O(n,\bC)$,
+$O(p)$ and $O(q)$. Note that Casimer is independence with real form!
+In fact, Casimer is determined by the Killing form, change real form of complex
+Lie algebra, just means change the basis of computation, the result will be 
+the same (c.f. Prop 5.24, \cite{Knapp1996Lie}).
+Hence $C, C_1, C_2$ also the Casimer of $O(2,p-2)$, $O(q)$ and $O(2,n-2)$.
+
+Now we know, the Casimers in othorgnal groups will corresponed to Casimers 
+in $\asl(2,\bC)$ under $\omega$ 
+from the realization of oscillator representation (c.f. \cite{Howe1979Opq}).
+In particular, 
+\[
+C = C' + \frac{(p+q)(p+q-4)}{16}.
+\]
+
+Now apply the knowledge about $\cuu(\fgg)^K$ action on 
+the derived functor module, in fact for the chain complex level.
+
+
+
+\subsection{$\cuu(\fgg)^K$ action}
 We do not assume $K$ is connected here.  
 Asseme there is a $(\fgg,K)$ module $(\pi,V)$.
 We would like to study the $U(\fgg)^K$ action on $(\pi,V)$. 
@@ -2807,84 +2937,6 @@ r_{22} = & \frac{1}{2} h_2^2 + f_2e_2 + e_2f_2 \\
 r_{12} = & \frac{1}{2} h_1h_2 + f_1e_2 + e_1f_2  
 \end{align*}
 
-
-
-\section{Fock model III}
-Assume $W_0$ is a symplectic space over $\bR$.
-Fix a complete polarization $W_0 = \cxx_0\oplus \cyy_0$.  
-$e_1,\cdots, e_n$ is basis of $\cxx_0$, and $f_1,\cdots, f_n$ is dual basis 
-of $e_j$'s in $\cyy_0$, i.e. $\inn{e_\alpha}{e_\beta}=\delta_{\alpha\beta}$.
-
-Now choose a chartor of $\bR$, i.e. $\phi(x) = \lambda x$. 
-For $\phi$ be unitary, choose $\lambda \in i\bR$. Usually, we set $\lambda=i$. 
-Let
-\[
-\Omega(W) = T(W) / \left\langle v\otimes w - w\otimes v - \phi(\inn{v}{w})\right\rangle.
-\]
-Now $\Omega(W)$ has a filtraction from $T(W)$, i.e. 
-$\Omega^k(W)$ is the image of $\bigoplus_{j\leq k}T^j(W)$.
-It is easy to see, 
-\[
-[\Omega^i(W),\Omega^j(W)] \subset \Omega^{i+j-2}(W).
-\]
-We have short exact sequence of Lie Algebras:
-\begin{align}
-0\to \Omega^0(W) \to &\Omega^1(W) \to W \to 0\\
-0\to \Omega^1(W) \to &\Omega^2(W) \to \sp(W)\to 0 
-\end{align}
-More over $\Omega^2(W) \cong \sp(W) \oplus \fhh$, 
-where $\fhh\cong \Omega^1(W)$ is a hisenberg Lie algebra.
-The identify cation of $\Omega^2(W)/\Omega^1(W)$ is given by
-consider the $\Omega^2(W)$ action of $\Omega^1(W)/\Omega^0(W)\cong W$. 
-
-Let $W=W_0\otimes_\bR\bC$ be the complexification of $W$. 
-Define $J$ as multiply by ``$i$'' on $W_0$. And define unitary structure
-\[
-U_J(x,y) = \inn{Jx}{y} + i\inn{x}{y}
-\]
-Consdier $W = X\oplus Y$, where $X$ and $Y$ are $\pm i$ eigen-space of $J$. 
-Now it's easy to see that $U_J$ structure is 
-invarient under $X\otimes Y$ action($v\in X, w\in Y, x,y\in W$):
-\[
-\begin{split}
-U_J(vw\cdot x,y) =& \inn{J(vw\cdot x)}{y} + i\inn{vw\cdot x}{y}\\
-=&\inn{-i\lambda\inn{v}{x} w}{y}
-+\inn{i\lambda\inn{w}{x} v}{y}
- - i \inn{x}{vw\cdot y}\\
-=& \inn{-i\lambda\inn{w}{y}v}{x}
-+ \inn{i\lambda \inn{v}{y}w}{x}
--i\inn{x}{vw\cdot y}\\
-=& \inn{x}{i\lambda{w}{y}v}
-+ \inn{x}{-i\lambda{v}{y}w}
--i\inn{x}{vw\cdot y}\\
-=& \inn{x}{J vw\cdot y} -i\inn{x}{vw\cdot y}\\
-=& -\inn{Jx}{vw\cdot y}  -i\inn{x}{vw\cdot y}= -U_J(x,vw\cdot y).
-\end{split}
-\]
-
-Note that, $\sp(n,\bC)\cong S^2(W)$ and the real form $\sp(n,\bR)$ is the 
-Lie subalgebra preserve the real symplectic space $W_0$. 
-
-
-
-Algebra $\Omega(W)$ act on $\Omega(W)/\Omega(W)X \cong \bC[z_1, \cdots,z_n]$ by differential operator:
-\begin{align*}
-e_i &\leftrightarrow \lambda \frac{\partial}{\partial z_i}\\
-f_i &\leftrightarrow z_i\\
-\end{align*}
-
-\subsection{$(\O(p,q),\SL(2,\bR)$ dual pair}
-Now choose another real subsapce $W_{p,q}$ of $W$, 
-which spaned by $e_1,\cdot, e_p, ie_{p+1},\cdot,ie_{n}, 
-f_1, \cdots, f_p, -if_{p+1}, -if_n$. We can view $W$ as $M_{n,2}$, 
-with $\O(n,\bC)$ act on left, $SL(2,\bC)$ act on right. 
-Give symplectic form on $W$ by tensoring the form 
-of $\O(n,\bC)$ and $\SL(2,\bC)$, so we have complex symplectic group act on $W$.
-$\O(n,\bC)$ and $\SL(2,\bC)$ are complex reductive dual pair 
-Choose real subgroup stablize $W_{p,q}$, we have $\O(p,q)$ and $\SL(2,\bR)$ 
-as real reductive dual pair subgroup in $\Sp(2n,\bR)$. 
-Note that the embedding of $\SL(2,\bR)$ in $\Sp(2n,\bC)$ is not change for
-different $W_{p,q}$.
 
 
 
@@ -3051,6 +3103,31 @@ For any irreducible representation $\tau$ of $H$.
 The third equality above valid by the definition of $\cnn_\sigma$. 
 
 
+Now suppose that $\dim \Hom_{H}(\rho(\sigma),\tau)=1$,
+Hence $T\circ x = c(x) T$ for any $x\in \Hom_{H}(\rho(\sigma),\rho(\sigma))$, where $c(x)\in \bC$.
+Since $\rho(\sigma)$ is $\fgg$ module, define a $\cuu(\fgg)^H$ action 
+on $\tau$ by $\rho(\sigma)$ as following.
+Choose any $0 \neq T\in \Hom_{H}(\rho(\sigma),\tau)$,
+\[
+x v = T(x w) \quad  \forall x\in \cuu(\fgg)^H, v=T(w) 
+\text{ where } w\in \rho(\sigma).
+\] 
+
+Since $\rho$ is irreducible, and $T\circ x = c(x) T$, 
+the action is well defined, independent of $T$. 
+Similarly, define $\cuu(\fhh')^{G'}$ action on $\sigma$.
+
+Note that $\omega(\cuu(\fgg)^H) = \omega(\cuu(\fhh')^{G'})$,
+for $x\in \cuu(\fgg)^H$, 
+there is a $y\in \cuu(\fhh')^{G'}$.
+such that $\omega(x) = \omega(y)$.
+
+Hence, 
+\[
+(x \cdot v)\otimes w 
+= T_1(x v') \otimes w
+= T_1(
+\]
 
 \bibliography{bib/reppapers}{}
 \bibliographystyle{alpha}
