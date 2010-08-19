@@ -326,12 +326,12 @@ Equation (\ref{blfc}) is known as the Black-Scholes formula for a European call 
 
 Similarly, the pricing formula for a European put option is
 \begin{equation}\label{blfp}
-p(S, t;K)= Ke^{-r(T-t)} \Phi(-d(S_t ; K,T-t) +\sigma \sqrt{T-t})-S_t \Phi(-d(S_t;K,T-t)).
+p(S, t;K)= Ke^{-r(T-t)} \Phi(-d(S ; K,T-t) +\sigma \sqrt{T-t})-S \Phi(-d(S;K,T-t)).
 \end{equation}
 
 Comparing the pricing formulas for put and call options, we find that equation (\ref{blfc}) and equation (\ref{blfp}) satisfy the relation:
 \begin{equation}
-c(S,t;K) + K e^{-r(T-t)} = p(S,t;K) + S_t.
+c(S,t;K) + K e^{-r(T-t)} = p(S,t;K) + S.
 \end{equation}
 
 The above relationship between the values of European put and call options is called the put-call parity. We can get the put-call parity by constructing two portfolios. One contains a European call option and $Ke^{-rT}$ in bond which yields the risk-free rate. Another contains a European put option and one share of the underlying stock. At maturity of the options, both portfolios are worth 
