@@ -624,9 +624,7 @@ where $\tau$ denotes a stopping time taking values in $[t,T]$.
 \item
 Also known as lattice method, originally proposed in \cite{cox1979}.
 \item
-Discrete time and discrete state approximations of the evolvements of underlying assets price process.
-\item
-Easy to understand and implement. 
+Discrete time and discrete state approximations of the underlying assets price process.
 \item
 In the risk-neutral, $S_{t+h} = S_t e^{Z}$, and $Z\sim \Phi((r-\sigma ^2 /2)h,\sigma ^2 h)$. 
 
@@ -861,9 +859,9 @@ Two different step length $h_1, h_2$, $\eta = h_1/h_2$,
 v_0= \frac{{\eta}^\vartheta v({h_1}/{\eta}) - v(h_1)}{{\eta}^\vartheta -1} + O(h_1^{\vartheta'}).
 \]
 \item
-In our case: $\vartheta$,$h1$, $h2$?
+In our case: $\vartheta$,$h_1$, $h_2$?
 \item
-Using European price as standard to find the best set of {$\vartheta$,$h1$, $h2$}.
+Using European price as standard to find the best set of {$\vartheta$,$h_1$, $h_2$}.
 \end{itemize} 
 
 \end{itemize}
@@ -898,7 +896,7 @@ Using European price as standard to find the best set of {$\vartheta$,$h1$, $h2$
 \begin{frame}{Computational results for $\alpha$-quantile American option}
 \begin{table}[p]
 \caption{The price of European-style $\alpha$-quantile call options, with parameters
-	$S=100, K=100, r=5\%, \sigma=0.2, T=1$ and different $\alpha$. }
+	$S=100, K=100, r=5\%, \sigma=0.2, T=1$ and different $\alpha$. For extrapolation, $\vartheta=0.9$.}
 \begin{center}
 \begin{tabular}{l|lllll}
 $\alpha$ & $0.5$ & $0.6$ & $0.7$ & $0.8$ & $0.9$       \\
@@ -920,7 +918,7 @@ Standard eror &  0.00262 & 0.00303 & 0.00344 & 0.00386 & 0.00430
 \begin{frame}{Computational results for $\alpha$-quantile American option}
 \begin{table}[p]
 \caption{The price of American-style $\alpha$-quantile call options, with parameters
-	$S=100, K=100, r=5\%, \sigma=0.2, T=1$ and different $\alpha$. }
+	$S=100, K=100, r=5\%, \sigma=0.2, T=1$ and different $\alpha$. For extrapolation, $\vartheta=0.9$.  }
 \begin{center}
 \begin{tabular}{l|lllllll}
 $\alpha$ & $0.5$ & $0.6$ & $0.7$ & $0.8$ & $0.9$       \\

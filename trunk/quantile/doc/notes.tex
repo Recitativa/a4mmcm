@@ -137,18 +137,18 @@
 \pagenumbering{arabic}
 
 
-\cite{Hull2008} defines an {\it option} to be a contract which provides the holder the right to buy or sell an underlying asset at or before a certain date at a predetermined price. The price determined in the contract is called the {\it strike price}. To get this right, the buyer should pay the seller. Every option contract involves two sides of investors. One side is known as the long side. On the long side is the investor who has bought the option.  Another side is called the short position who has sold the option. If the long side chooses to exercise the right defined in the contract, the short side has the obligation to perform the transaction with the long side at the specified price set in the contract. Since there exists a disparity of right and obligation, the long side should pay a premium to the short side to obtain this right. However, this contract is only in effect before certain date. This date set in the contract is called {\it expiration date} or {\it maturity}. Basically, there are two types of option contracts. A holder of a {\it call} option has the right to buy the underlying asset at a predetermined price, while a holder of a {\it put} option has the right to sell the underlying asset at the predetermined price. European options can be exercised only at the expiration date. American options on the other hand can be exercised at any time before the expiration date.
+\cite{Hull2008} defines an {\it option} to be a contract which provides the holder the right to buy or sell an underlying asset at or before a certain date at a predetermined price. The price determined in the contract is called the {\it strike price}. To get this right, the buyer should pay the seller. Every option contract involves two sides of investors. One side is known as the long side. On the long side is the investor who has bought the option.  Another side is called the short position who has sold the option. If the long side chooses to exercise the right defined in the contract, the short side has the obligation to perform the transaction with the long side at the specified price set in the contract. Since there exists a disparity of right and obligation, the long side should pay a premium to the short side to obtain this right. However, this contract is only in effect before a certain date. This date set in the contract is called the {\it expiration date} or {\it maturity}. Basically, there are two types of option contracts. A holder of a {\it call} option has the right to buy the underlying asset at the predetermined price, while a holder of a {\it put} option has the right to sell the underlying asset at the predetermined price. European options can be exercised only at the expiration date. American options on the other hand can be exercised at any time before the expiration date.
 
-To help the understanding of options, here we give an example of the use of an option. Suppose that it is now January 15. A copper fabricator expects it will need 100,000 pounds of copper on May 15 to meet a certain contract. The spot price of copper is 140 cents per pound. To fix the expense of raw material, the fabricator may take a long position of a call option, for example, a call option with a strike price of \$120,000 for 100,000 pounds of copper expired in four month. Holding this option, the fabricator eliminates its risk exposure to the changes of copper price. This example is using an option as a hedging instrument. There are other purposes of using options.
+To help the understanding of options, here we give an example of the use of an option. Suppose that it is now January 15. A copper fabricator expects it will need 100,000 pounds of copper on May 15 to meet a certain contract. The spot price of copper is 140 cents per pound. To fix the expense of raw material, the fabricator may take a long position of a call option, for example, a call option with a strike price of \$120,000 for 100,000 pounds of copper expiring in four months. Holding this option, the fabricator eliminates its risk exposure to the changes of copper price. This example shows an option being used as a hedging instrument. There are other purposes of using options.
 
 Generally, there are three broad categories of traders of options: {\it hedgers}, {\it speculators}, and {\it arbitrageurs}. Hedgers are the group of investors who use options to reduce the risk associated with potential future movements of the price for a certain asset. Speculators bet on the future direction of an asset using options. Taking advantage of a discrepancy between prices in two different markets, arbitrageurs lock in risk-free profits by concurrently taking offsetting positions in two or more markets. One main reason contributing to the success of option markets is that they meet the needs of different types of traders.
 
 Options have a long history. There is evidence that Romans and Phoenicians used similar contracts in shipping. In ancient Greece, a famous mathematician and philosopher, Thales, used options to obtain a low price for olive presses ahead of the harvest. In the 17th century the Dutch bought and sold options structured on tulip. However, the trading of options actually took off in the 1970s. The Chicago Board of Trade established the Chicago Board Options Exchange (CBOE) and began trading listed call options on 16 stocks on April 26, 1973. From then, innovation has bred the creation of copious products tailored to meet the needs of different types of investors. Exotic options, such as Asian options, barrier options and lookback options are traded routinely. One common character of these exotic options is that they are usually path-dependent. 
-Recently, even more exotic types of options such as Parisian options and ${\alpha}$-quantile options have appeared and attracted interest. Although exotic options are a relatively small part of financial market in terms of volume, these options are important to investment banks because they are generally much more profitable than plain vanilla options.
+Recently, even more exotic types of options such as Parisian options and ${\alpha}$-quantile options have appeared and attracted interest. Although exotic options are a relatively small part of the financial market in terms of volume, these options are important to investment banks because they are generally much more profitable than plain vanilla options.
 
-Options are bought and sold in two ways. Options with standardized terms are traded on organized exchanges. These kinds of options are more standard and liquid than over-the-counter options. Over-the-counter options are not listed in exchanges and instead are only quoted by financial institutions. According to the statistics published by Bank for International Settlements, the central bankers' central bank, in June $2009$, the amounts outstanding of options traded in organized exchanges were $\$43.75$ trillion and the figure for over-the-counter options is $\$68.19$ trillion.
+Options are bought and sold in two ways. Options with standardized terms are traded on organized exchanges. These kinds of options are more standard and liquid than over-the-counter options. Over-the-counter options are not listed in exchanges and instead are only quoted by financial institutions. According to the statistics published by the Bank for International Settlements, the central bankers' central bank, in June $2009$, the amounts outstanding on options traded in organized exchanges were $\$43.75$ trillion and the figure for over-the-counter options was $\$68.19$ trillion.
 
-The prosperity of option markets calls for valuation methods of options. While in return, the success of pricing model also boosts the development of options. In Chapter $2$, we review the fundamental pricing principles for both European and American options. Popular numerical methods are surveyed in Chapter $3$. In Chapter $4$, we give an extensive study of quantiles of Brownian motion and quantile options. This is the main focus in this thesis.
+The prosperity of option markets calls for valuation methods of options. While in return, the success of pricing model also boosts the development of options. In Chapter $2$, we review the fundamental pricing principles for both European and American options. Popular numerical methods are outlined in Chapter $3$. In Chapter $4$, we give an extensive study of quantiles of Brownian motion and quantile options. This is the main focus in this thesis.
 
 \chapter{Principles of option pricing}
 
@@ -162,16 +162,16 @@ In general, the price of a stock option is influenced by five factors:
 \item The risk-free interest rate, $r$
 \end{enumerate}
 
-Because a holder of an option contract has the right but not an obligation to exercise the option, the payoff of an option is always non-negative. For a European option, the exercise payoff from a long position is $(S_T - K)^+ = \max \{S_T-K,0\}$. As for an American option, the payoff function is similar; what is different is that we should use the spot stock price $S_t$ when the option is exercised to calculate the payoff, instead of $S_T$ in a European case. 
+Because a holder of an option contract has the right but not an obligation to exercise the option, the payoff of an option is always non-negative. For a European option, the exercise payoff from a long position is $(S_T - K)^+ = \max \{S_T-K,0\}$. As for an American option, the payoff function is similar; what is different is that we should use the spot stock price $S_t$ when the option is exercised to calculate the payoff, instead of $S_T$ in the European case. 
 
-In many cases there are closed-form pricing formulas for European options. In addition, numerical approaches such as binomial tree and Monte Carlo simulation can solve this problem. We give a brief overview of these numerical methods in Chapter $3$. Because we do not know when an American option will be exercised, the pricing of American options is more complicated. A complete solution to an American option pricing problem should address two aspects, option value and an optimal exercise strategy. However, only in a few cases are analytic solutions available. In most cases, a numerical approach is needed. For example, \cite{Lim2004} proposed an approach to compute both the price and the optimal exercise boundary for American-style lookback options.
+In many cases there are closed-form pricing formulas for European options. In addition, numerical approaches such as the binomial tree and Monte Carlo simulation can solve this problem. We give a brief overview of these numerical methods in Chapter $3$. Because we do not know when an American option will be exercised, the pricing of American options is more complicated. A complete solution to an American option pricing problem should address two aspects, option value and an optimal exercise strategy. However, only in a few cases are analytic solutions available. In most cases, a numerical approach is needed. For example, \cite{Lim2004} proposed an approach to compute both the price and the optimal exercise boundary for American-style lookback options.
 
 In this chapter, we review the two major option pricing principles, no-arbitrage valuation and risk-neutral valuation. The valuation of American options is also discussed. We refer the reader to \cite{2004Broadie} for a more exhaustive review of option valuation models and applications. Since lookback options are special cases of $\alpha$-quantile options with $\alpha = 1$, the pricing methods of lookback options are summarized. 
 
 \section{European options}
 \subsection{No-arbitrage valuation}
 
-Absence of arbitrage is the fundamental principle of option pricing. \citet*{Black:1973} is the landmark paper in the field of option pricing. \citet*{merton1973} was the first to extend this valuation model to incorporate dividend payments. In his paper, the rationality of option pricing was also discussed. 
+Absence of arbitrage is the fundamental principle of option pricing. \citet*{Black:1973} provided the landmark paper in the field of option pricing. \citet*{merton1973} was the first to extend this valuation model to incorporate dividend payments. In his paper, the rationality of option pricing was also discussed. 
 
 %\subsubsection{Black-Scholes framework}
 The Black-Scholes model is one of the most extensively used models to describe stock price behavior.
@@ -183,48 +183,48 @@ with $\mu$ and $\sigma $ constant, which represent the expected return on the st
 \begin{equation}
 S_t=S_0\exp((\mu-\sigma^2 /2)t + \sigma B_t)
 \end{equation}
-Thus stochastic process $S_t$ is also known as that it follows a geometric Brownian motion(GBM). 
+Thus the stochastic process $S_t$ is also knownn as a geometric Brownian motion (GBM). 
 
-There are other assumptions in this model follows:
+There are other assumptions in this model as follows:
 
 \begin{enumerate}[1.]
-\item Investors are able to borrow and lend cash at the same risk-free interest rate $r$. This risk-free interest rate is supposed to be known and constant. 
+\item Investors are able to borrow and lend cash at the same risk-free interest rate $r$. This risk-free interest rate is known and constant. 
 \item There are no transaction fees.
 \item There are no tax costs. 
 \item The stock does not pay a dividend. 
 \item Investors can buy any fraction of a share. 
 \item Short selling is allowed without limitations and restrictions. 
-\item Market is absent of arbitrage opportunity. That is no one can profit from nothing.  
-\item Security is trading continuously. This means you can sell or buy security at any time.
+\item The market is absent of arbitrage opportunities. That is, no one can profit from nothing.  
+\item Securities trade continuously. This means you can sell or buy a security at any time.
 \end{enumerate}
 
-These assumptions are usually referred to the Black-Scholes framework. Further studies show that many conditions can be relaxed. For simplicity, we follow the Black-Scholes framework in this section.
+These assumptions are usually referred to as the Black-Scholes framework. Further studies show that many conditions can be relaxed. For simplicity, we follow the Black-Scholes framework in this section.
 
 % This approach to model stock price was first introduced by Black, Scholes and Merton.
 % Denote $r$ as the constant continuously compounded risk-free interest rate. Under risk-neutral assumption, we can get $\mu = r $.
 
 %\subsubsection{Black-Scholes PDE}
-Let $V(S, t)$ be the price of a European vanilla option at time $t$ when stock price is $S$. The value $V(S,T)$ at maturity $T$ is the payoff. To get the value of a option at an earlier time, we should know how its price changes as a function of stock price $S$ and time $t$. Suppose $V(S,t)$ is twice differentiable, applying It\^o's formula (\cite{Steven}~(4.4.24)) to $V$ we get
+Let $V(S, t)$ be the price of a European vanilla option at time $t$ when the stock price is $S$. The value $V(S,T)$ at maturity $T$ is the payoff. Suppose $V(S,t)$ is twice differentiable, applying It\^o's formula (\cite{Steven}~(4.4.24)) to $V$ we get
 \begin{equation}\label{ito}
-dV_t = \left( \frac{\partial V}{\partial t} + \frac{\partial V}{\partial S} S_t \mu + \frac{1}{2}\frac{{\partial}^2}{\partial S^2} {S_t^2} {\sigma}^2 \right) dt + \frac{\partial V}{\partial S} S_t \sigma d B_t,
+dV_t = \left( \frac{\partial V}{\partial t} + \frac{\partial V}{\partial S} S_t \mu + \frac{1}{2}\frac{{\partial}^2V}{\partial S^2} {S_t^2} {\sigma}^2 \right) dt + \frac{\partial V}{\partial S} S_t \sigma d B_t,
 \end{equation}
-where $V_t = V(S_t,t)$. 
+where $V_t = V(S_t,t)$. The partial derivatives in (\ref{ito}) and in the sequel are evaluated at $(S_t,t)$.
 
-More precisely, a stochastic process $X_t$ is called It\^o process (\cite{Steven}~Definition~4.4.3) if
+More precisely, a stochastic process $X_t$ is called an It\^o process (\cite{Steven}~Definition~4.4.3) if
 \[
-dX_t = \mu_t dt +\sigma_t dB_t
+dX_t = \mu_t dt +\sigma_t dB_t,
 \]
 where $\mu_t$ and $\sigma_t$ are adapted stochastic processes 
 satisfying $E(\int_0^t \sigma_u^2 du) <\infty$ and $\int_0^t |\mu_u|du<\infty$ for any $t>0$.
 
-For any function $f(t,x)$ with continuous partial derivatives 
+For any function $f(x,t)$ with continuous partial derivatives 
 $\partial{f}/\partial t, \partial f/\partial x$ and $\partial^2 f/\partial x^2$,
- the It\^o's formula for It\^o process is given by
+ $f(X_t,t)$ is an It\^o process satisfying
 \[
-d f(t,X_t) = \frac{\partial f}{\partial t}(t,X_t) dt +\frac{\partial f}{\partial x}(t,X_t) dX_t
-+ \frac{1}{2} \frac{\partial^2 f}{\partial x^2}(t,X_t) \sigma_t^2 dt
+d f(X_t,t) = \frac{\partial f}{\partial t}(X_t,t) dt +\frac{\partial f}{\partial x}(X_t,t) dX_t
++ \frac{1}{2} \frac{\partial^2 f}{\partial x^2}(X_t,t) \sigma_t^2 dt.
 \]
-Note that the stochastic process $S_t$ is a It\^o process. Applying above result we get equation~(\ref{ito}).
+Since the stochastic process $S_t$ is an It\^o process. Applying the above result we get equation~(\ref{ito}).
 
 As $V_t$ and $S_t$ share the same underlying uncertainty, we can eliminate Brownian motion $B_t$ by constructing a certain portfolio with stocks and options. The appropriate trading strategy is holding one option and $-{\partial V}/{\partial S}$ shares of stock.
 
@@ -238,12 +238,12 @@ The instantaneous profit or loss $d\Pi_t$ over time interval $[t, t+dt]$ is
 d\Pi_t = dV_t - \frac{\partial V}{\partial S} dS_t.
 \end{equation}
 
-Substituting equation (\ref{eq:1}) and (\ref{ito}) in (\ref{dR}), we get
+Substituting equations (\ref{eq:1}) and (\ref{ito}) in (\ref{dR}), we get
 \begin{equation}\label{dR2}
 d\Pi_t= \left(\frac{\partial V}{\partial t} + \frac{1}{2}\frac{{\partial}^2 V }{\partial S^2} S_t^2 {\sigma}^2 \right) dt.
 \end{equation}
 
-Equation (\ref{dR2}) does not contain $dB_t$, which means that the return of the portfolio is entirely riskless. Since we suppose the market is absent of arbitrage, the rate of return on this portfolio must be the same as risk-free rate. If the return rate of the portfolio $\Pi$ is larger than the risk-free rate, a investor can borrow at risk-free rate to long the portfolio. By this strategy, the investor can instantly make a profit from nothing. If the return rate of portfolio is smaller than risk-free rate, a investor can short the portfolio and invest the money in risk-free rate. Then again the investor can make a profit from nothing. To reduce the opportunity of arbitrage, the return rate of the riskless portfolio must be equal to the risk-free rate $r$. Then over time period $[t, t + dt]$ we have
+Equation (\ref{dR2}) does not contain $dB_t$, which means that the return of the portfolio is entirely riskless. Since we suppose the market is absent of arbitrage, the rate of return on this portfolio must be the same as  the risk-free rate. If the return rate of the portfolio $\Pi$ is larger than the risk-free rate, an investor can borrow at the risk-free rate to go long on the portfolio. By this strategy, a investor can instantly make a profit from nothing. If the return rate of portfolio is smaller than risk-free rate, a investor can short the portfolio and invest the money at the risk-free rate. Then again the investor can make a profit from nothing. To eliminate the opportunity of arbitrage, the return rate of the riskless portfolio must be equal to the risk-free rate $r$. Then over time period $[t, t + dt]$ we have
 \begin{equation}\label{dR3}
 r \Pi dt = d\Pi_t =  \left(\frac{\partial V}{\partial t} + \frac{1}{2}\frac{{\partial}^2}{\partial S^2} S_t^2 {\sigma}^2 \right) dt.
 \end{equation}
@@ -254,7 +254,15 @@ From (\ref{dR3}), we then get the Black-Scholes partial differential equation (P
 \end{equation}
 
 
-Let $f(S)$ be the payoff function of an option, then the boundary conditions for this option are
+Let $f(S)$ be the payoff function of an option, i.e., 
+\[
+f(S) = 
+\begin{cases}
+(S-K)^+ & \text{for vanilla call options},\\
+(K-S)^+ & \text{for vanilla put options}.
+\end{cases}
+\]
+Then the boundary conditions for this option are
 
 %\begin{numcases}{}
 %\begin{equation}
@@ -274,17 +282,17 @@ V(0,t) =f(0)e^{-r(T-t)} & on $t\in [0,T)$, \label{eq:EuFb}\\
 \end{numcases}
 \end{subequations}
 
-(\ref{eq:EuFa}) is the final condition, it is obvious that option price at maturity $V(S_T,T)$ should equal the payoff $F(S_T)$.  PDE (\ref{black-pde}) is a backward parabolic. To get the solution to (\ref{black-pde}), we need boundary conditions at $S_t = 0, t \in [0,T]$ and $S_t=\infty, t \in [0,T]$ additionally. For a call, if $S_t = 0, t \in [0,T]$, then this contract is deep out of money and has no value all the time. Condition (\ref{eq:EuFb}) coincides with this situation. If $S_t$ is big enough that it is deep in the money in the life of an option, the holder will certainly exercise this contract at maturity. Thus this contract is similar to a forward contract and should has the same price $f(\infty)e^{-r(T-t)}$ with a identical forward contract. This is expressed in condition (\ref{eq:EuFc}). One can find that boundary conditions (\ref{eq:EuFb}) and (\ref{eq:EuFc}) also work for put options. %The second equation in (\ref{Black-boundary}) means that if stock price $S_t$ is $0$ all the time in its life, then the price of the option at any time should be the discounted pay off at risk-free rate. The last equation in (\ref{Black-boundary}) is obtained under the same logic. 
+The terminal condition (\ref{eq:EuFa}) states that the option price at maturity $V(S_T,T)$ should equal the payoff $f(S_T)$.  PDE (\ref{black-pde}) is a backward parabolic PDE. To get the solution to (\ref{black-pde}), we need boundary conditions at $S_t = 0, t \in [0,T)$ and $S_t=\infty, t \in [0,T)$ additionally. For a call, if $S_t = 0, t \in [0,T]$, then this contract is deep out of money and has no value all the time. Condition (\ref{eq:EuFb}) coincides with this situation. If $S_t$ is big enough that it is deep in the money in the life of an option, the holder will certainly exercise this contract at maturity. Thus this contract is similar to a forward contract and should has the same price $f(\infty)e^{-r(T-t)}$ with a identical forward contract. This is expressed in condition (\ref{eq:EuFc}). One can find that boundary conditions (\ref{eq:EuFb}) and (\ref{eq:EuFc}) also work for put options. %The second equation in (\ref{Black-boundary}) means that if stock price $S_t$ is $0$ all the time in its life, then the price of the option at any time should be the discounted pay off at risk-free rate. The last equation in (\ref{Black-boundary}) is obtained under the same logic. 
 
-PDE (\ref{black-pde}) is the fundamental valuation equation for the standard normal option. There are many transformations that can convert the Black-Scholes PDE into a heat or diffusion equation. In this thesis, we present the transformation suggested in \cite{2004Broadie}. 
+PDE (\ref{black-pde}) is the fundamental valuation equation for the vanilla option. There are many transformations that can convert the Black-Scholes PDE into a heat or diffusion equation. In this thesis, we present the transformation suggested in \cite{2004Broadie}. 
 
-Under transformation
+Under the transformations
 \begin{equation}
 \begin{cases}
- S=Ke^x \\
-\displaystyle t=T-2\iota/\sigma^2 \\
-\displaystyle V(S,t)=e^{-a_1 x - b_1 \iota } v(x, \iota)\\
-\displaystyle a_1=(r- \sigma ^2 / 2) / \sigma ^2 \\
+ S=Ke^x, \\
+\displaystyle t=T-2\iota/\sigma^2, \\
+\displaystyle V(S,t)=e^{-a_1 x - b_1 \iota } v(x, \iota),\\
+\displaystyle a_1=(r- \sigma ^2 / 2) / \sigma ^2 ,\\
 \displaystyle b_1= a_1^2 + 2r/{\sigma}^2, 
 \end{cases}
 \end{equation}
@@ -297,22 +305,22 @@ $v(x,\iota)$ satisfies the heat equation
 with the boundary conditions 
 \begin{equation}\label{heat_condition}
 \begin{cases}
-\displaystyle  v (x,0) = e^{a_1 x}f(K e^x) & \text{on } \bR \\
-\displaystyle \lim_{x \to -\infty}e^{-a_1 x- b_1 \iota } v(x,\iota) = f(0)e^{-2r\iota / \sigma ^2} &\text{on } \iota \in [0,\sigma ^2 T /2] \\
+\displaystyle  v (x,0) = e^{a_1 x}f(K e^x) & \text{on } \bR ,\\
+\displaystyle \lim_{x \to -\infty}e^{-a_1 x- b_1 \iota } v(x,\iota) = f(0)e^{-2r\iota / \sigma ^2} &\text{on } \iota \in [0,\sigma ^2 T /2] ,\\
 \displaystyle \lim_{x \to \infty} e^{-a_1 x -b_1 \iota } v(x,\iota) = f(\infty) e^{-2r\iota / \sigma ^2} & \text{on } \iota \in [0, \sigma ^2 T /2].
 \end{cases}
 \end{equation}
 
-The heat equation was originally used to describe the distribution of heat in a continuous medium as time passes. It is a well known subject in Physics and has been thoroughly studied. If $\lim_{x\to \pm \infty} v(x, \tau)= 0$, the normal density function $v_0(x,t) = (2 \sqrt{\pi t} )^{-1} \exp(-x^2 /{4t})$ with mean $0$ and standard deviation $\sqrt{2t}$ is the fundamental solution, i.e., the solution to (\ref{heat}) with boundary condition $v(x,0)=\delta(x)$, here $\delta(x)$ is the Dirac delta function. Then the solution to (\ref{heat}) with boundary condition (\ref{heat_condition}) is the convolution of the fundamental solution $v_0(x,t)$ and the initial boundary condition $v(x,0) = e^{a_1 x}f(K e^x)$ with respect to $x$.
+The heat equation was originally used to describe the distribution of heat in a continuous medium as time passes. It is a well known subject in Physics and has been thoroughly studied. If $\lim_{x\to \pm \infty} v(x, \tau)= 0$, the normal density function $v_0(x,t) = (2 \sqrt{\pi t} )^{-1} \exp(-x^2 /{4t})$ with mean $0$ and standard deviation $\sqrt{2t}$ is the fundamental solution, i.e., the solution to (\ref{heat}) with boundary condition $v(x,0)=\delta(x)$, where $\delta(x)$ is the Dirac delta function. Then the solution to (\ref{heat}) with boundary condition (\ref{heat_condition}) is the convolution of the fundamental solution $v_0(x,t)$ and the initial boundary condition $v(x,0) = e^{a_1 x}f(K e^x)$ with respect to $x$.
 
 %\subsubsection{Black-Scholes formula}
 For the European call option, the payoff is $f(S)=(S-K)^+$. Then the valuation formula obtained form the Black-Scholes PDE is
 \begin{equation}\label{blfc}
-c(S,t;K)=S_t \Phi(d(S_t;K,T-t))-Ke^{-r(T-t)} \Phi(d(S_t;K,T-t)-\sigma\sqrt{T-t}),
+c(S,t;K)=S \Phi(d(S;K,T-t))-Ke^{-r(T-t)} \Phi(d(S;K,T-t)-\sigma\sqrt{T-t}),
 \end{equation}
 where $\Phi(\cdot)$ is the standard normal cumulative distribution function and
 \begin{equation}
-d(S_t;K,T-t)=\frac{1}{\sigma \sqrt{T-t}} [\log(\frac{S_t}{K}) + (r+\frac{1}{2}\sigma ^2)(T-t)].
+d(S;K,T-t)=\frac{1}{\sigma \sqrt{T-t}} [\log(\frac{S}{K}) + (r+\frac{1}{2}\sigma ^2)(T-t)].
 \end{equation}
 Equation (\ref{blfc}) is known as the Black-Scholes formula for a European call option with strike $K$ and maturity date $T$.
 
@@ -326,11 +334,11 @@ Comparing the pricing formulas for put and call options, we find that equation (
 c(S,t;K) + K e^{-r(T-t)} = p(S,t;K) + S_t.
 \end{equation}
 
-The above relationship between the values of European put and call options is called the put-call parity. We can get the put-call parity by constructing two portfolios. One contains a European call option and $Ke^{-rT}$ in bond which yields risk-free rate. Another contains a European put option and one share of the underlying stock. At maturity of the options, both portfolios are worth 
+The above relationship between the values of European put and call options is called the put-call parity. We can get the put-call parity by constructing two portfolios. One contains a European call option and $Ke^{-rT}$ in bond which yields the risk-free rate. Another contains a European put option and one share of the underlying stock. At maturity of the options, both portfolios are worth 
 \begin{equation}
 \max(S_T,K).
 \end{equation}
-Since the European options cannot be exercised before maturity, the two portfolios must have the same value at the beginning. This is the reason why put-call parity holds. Thanks to the put-call parity, if we know the price of a European call option, we can deduce the price of the corresponding European put option with the same strike price and maturity date, and vice versa.
+Since the European options cannot be exercised before maturity, the two portfolios must have the same value at the beginning. This is the reason why the put-call parity holds. Thanks to the put-call parity, if we know the price of a European call option, we can deduce the price of the corresponding European put option with the same strike price and maturity date, and vice versa.
 
 
 Further studies suggest that some conditions in the Black-Scholes model can be relaxed. Models with transaction fees, short sale constrains and other extensions are available.
@@ -347,71 +355,72 @@ Further studies suggest that some conditions in the Black-Scholes model can be r
 
 
 \subsection{Risk-neutral valuation}\label{risk-neutral frame}
-As revealed in the Black-Scholes PDE (\ref{black-pde}) and the corresponding boundary conditions (\ref{eq:EuF}), the market parameters that are relevant to the price of options include interest rate $r$, volatility $\sigma$, strike price $K$, stock price $S_0$ and time to maturity $T-t$. The expected stock return rate $\mu$, very surprisingly, does not have any influence on the option price. The Black-Scholes PDE also does not involve any parameter regarding the risk preference of investors. This phenomenon brings a hint to another approach of option valuation, risk-neutral valuation. 
+As revealed in the Black-Scholes PDE (\ref{black-pde}) and the corresponding boundary conditions (\ref{eq:EuF}), the market parameters that are relevant to the price of options include interest rate $r$, volatility $\sigma$, strike price $K$, stock price $S_t$ and time to maturity $T-t$. The expected stock return rate $\mu$, very surprisingly, does not have any influence on the option price. The Black-Scholes PDE also does not involve any parameter regarding the risk preference of investors. This phenomenon brings a hint to another approach of option valuation, risk-neutral valuation. 
 
-Risk-neutral valuation, first introduced by \citet*{cox-ross1976}, is a very important pricing tool. As a powerful and frequently used pricing theory, the mathematical fundamentals of risk-neutral valuation model are very advanced and complicated. But the underlying principle can be easily expressed in the binomial case. 
+Risk-neutral valuation, first introduced by \citet*{cox-ross1976}, is a very important pricing tool. As a powerful and frequently used pricing theory, the mathematical fundamentals of risk-neutral valuation are very advanced and complicated. But the underlying principle can be easily expressed in the binomial case. 
 
-Assume a risky asset whose price is currently $S$ and its price in the next period is either $Su$ with probability $q$ or $Sd$ with probability $1-q$. Factors $u$ and $d$ indicate one plus the percentage change in asset price. In real world we require extra reward for taking risk. In a risk-averse world, any risky asset is priced as the discounted value of its future expectation. In our example, the expected future price of this asset is $qSu+(1-q)Sd$. Therefore, the current price of this asset should be 
+Assume there exists a risky asset whose price is currently $S$ and its price in the next period is either $Su$ with probability $q$ or $Sd$ with probability $1-q$. Factors $u$ and $d$ indicate one plus the percentage change in asset price. In the real world we require extra reward for taking risk. In a risk-averse world, any risky asset is priced as the discounted value of its future expectation. In our example, the expected future price of this asset is $qSu+(1-q)Sd$. Therefore, the current price of this asset should be 
 \begin{equation}
 S=\frac{qSu+(1-q)Sd}{1+k}
 \end{equation}
-where $k$ is the risky discount factor, sometimes known as the required return rate, which usually consists of risk-free rate $r$ plus a risk premium. Resorting to the famous capital asset pricing model (CAPM), we can deduce the risky discount factor. Thus we can get the price of the asset. 
+where $k$ is the risky discount factor, sometimes known as the required return rate, which usually consists of the risk-free rate $r$ plus a risk premium. Resorting to the famous capital asset pricing model (CAPM), we can deduce the risky discount factor. Thus we can get the price of the asset. 
 
-However, with the knowledge of $S$, $u$ and $d$, can we get the price of the asset in a different order? That is, can we find a new probability pair $p$ and $1-p$ that can substitute $q$ and $1-q$ in the calculation of asset price which allows us to use the risk-free interest rate $r$ instead of risky discount factor $k$? If $d < 1+r < u$, that is, in arbitrage-free world, the answer is affirmative. 
+However, with the knowledge of $S$, $u$ and $d$, can we get the price of the asset in a different way? That is, can we find a new probability pair $p$ and $1-p$ that can substitute $q$ and $1-q$ in the calculation of the asset price which allows us to use the risk-free interest rate $r$ instead of the risky discount factor $k$? If $d < 1+r < u$, that is, in an arbitrage-free world, the answer is affirmative. 
 
-When $d<1+r<u$, if $p$ satisfies $pu+(1-p)d=1+r$, or equivalently $p=(1+r-d)/(u-d)$, we can write the stock price in following manner: 
+When $d<1+r<u$, if $p$ satisfies $pu+(1-p)d=1+r$, or equivalently $p=(1+r-d)/(u-d)$, we can write the asset price in the following manner: 
 \begin{equation}\label{r-n-s}
 S=\frac{pSu+(1-p)Sd}{1+r}.
 \end{equation}
 
-This can be easily proven. Just divide both sides of the above equation (\ref{r-n-s}) by $S$ and multiply with $1+r$, we get $1+r = pu +(1-p)d$, or its equivalent statement $p=(1+r-d)/(u-d)$. This expression shows that we can restate the price of stock by firstly adjusting the probability measure in real world and then discounting the expectation of asset value obtained under the adjusted probability measure at the risk-free rate. The only information we need to know in this process is the volatility and risk-free rate. We need make no assumption about investors' attitude towards risk. This method works on risk-averse, risk-neutral and risk-seeking investors, regardless their risk preference. A world where all individuals are indifferent to risk is called a {\it risk-neutral world}. In this world investors do not demand compensation for taking risk and the expected return for any financial product in a risk-neutral world is the risk-free rate.
+This can be easily proven. Just divide both sides of the equation (\ref{r-n-s}) by $S$ and multiply with $1+r$, we get $1+r = pu +(1-p)d$, or its equivalent statement $p=(1+r-d)/(u-d)$. This expression shows that we can restate the price of stock by firstly adjusting the probability measure in the real world and then discounting the expectation of the asset value obtained under the adjusted probability measure at the risk-free rate. The only information we need to know in the approach is the volatility and risk-free rate. We need make no assumption about investors' attitude towards risk. This method works on risk-averse, risk-neutral and risk-seeking investors, regardless of their risk preference. A world where all individuals are indifferent to risk is called a {\it risk-neutral world}. In this world investors do not demand compensation for taking risk and the expected return for any financial product in a risk-neutral world is the risk-free rate.
 
-We have described above the basic idea of an important derivative pricing principle called the {\it risk-neutral valuation}. The probability $p$ used to calculate expectation in a risk-neutral world is known as the {\it risk-neutral probability measure} or {\it equivalent martingale probability}. With the help of more advanced mathematics, the risk-neutral valuation method remains valid and powerful to deal with the pricing problems for continuous time model. 
+We have described above the basic idea of an important derivative pricing principle called {\it risk-neutral valuation}. The probability $p$ used to calculate expectations in a risk-neutral world is known as the {\it risk-neutral probability measure} or {\it equivalent martingale measure}. With the help of more advanced mathematics, the risk-neutral valuation method remains valid and powerful to deal with the pricing problems for continuous time models such as the Black-Scholes model.
 
-In risk-neutral method for continuous time model, the option price $S_t$ follows 
+Under the equivalent martingale measure $\mathbb P$, the option price $S_t$ follows 
 \begin{equation}
 dS_t = rS_tdt + \sigma S_t dB_t^{*},
 \end{equation}
-where $B_t^{*}$ is a standard Brownian motion under the equivalent martingale measure $\mathbb P$. The relation between the equivalent martingale measure $\mathbb P$ and statistical measure $\mathbb Q$ is 
+where $B_t^{*}$ is a standard Brownian motion under $\mathbb P$. The relation between $\mathbb P$ and  the statistical measure $\mathbb Q$ is 
 \begin{equation}
 d\mathbb P = \exp{\left(-\left(\frac{(\mu-r)^2}{2\sigma^2}\right)-\frac{\mu-r}{\sigma}B_t \right) }d\mathbb Q.
 \end{equation}
 
-Thus $S(t)$ follows GBM 
+Thus $S_t$  is the following GBM 
 \begin{equation}
-S_t=S_0\exp((r-\sigma^2 /2)t + \sigma B_t^*)
+S_t=S_0\exp((r-\sigma^2 /2)t + \sigma B_t^*).
 \end{equation}
 
 Under the risk-neutral measure $\mathbb P$, the price of a European option can be stated as 
 \begin{equation}
-V(S_t,t)=e^{-r(T-t)}\mathbb E[f(S,T)|\mathcal{F}_t], \quad 0\leq t\leq T
+V(S_t,t)=e^{-r(T-t)}\mathbb E[f(S_T)|\mathcal{F}_t], \quad 0\leq t\leq T,
 \end{equation}
-where $\mathcal {F}_t$ is the filtration which contains all the information up to time $t$. Readers can refer to \cite{Steven} for the detailed information. 
-%Interesting study about this model can be found in \cite{HarrisonKreps1979}, \cite{Harrison1981} and \cite{Kreps1981}.
-
-\section{American options}
-In the risk-neutral valuation model, the pricing problem of American options can be defined as a solution to an optimal stopping time problem. 
-
-At time $t$, under the risk-neutral probability measure $\mathbb P$, the price of an American option is given by
-\begin{equation}\label{Am-rn-equation}
-V(S,t) =\sup_{t\leq \tau\leq  T}\mathbb E[e^{-r(\tau-t)}f(S,\tau)|\mathcal{F}_t], \quad 0\leq t\leq T
-\end{equation}
-where $\tau$ denotes a stopping time taking values in $[t,T]$, ${\mathcal{F}_t}$ is the filtration containing all the information up to time $t$ and 
+where $\mathcal {F}_t$ is the filtration which contains all the information up to time $t$ and 
 \[
-f(S,t) = 
+f(S) = 
 \begin{cases}
-(S_t-K)^+ & \text{for call options},\\
-(K-S_t)^+ & \text{for put options},
+(S-K)^+ & \text{for call options},\\
+(K-S)^+ & \text{for put options},
 \end{cases}
 \]
 is the usual payoff function.
+ Readers can refer to \cite{Steven} for detailed information. 
+%Interesting study about this model can be found in \cite{HarrisonKreps1979}, \cite{Harrison1981} and \cite{Kreps1981}.
+
+\section{American options}
+The pricing problem of American options can be defined as an optimal stopping time problem. 
+
+At time $t$, under the risk-neutral probability measure $\mathbb P$, the price of an American option is given by
+\begin{equation}\label{Am-rn-equation}
+V(S_t,t) =\sup_{t\leq \tau\leq  T}\mathbb E[e^{-r(\tau-t)}f(S_\tau)|\mathcal{F}_t], \quad 0\leq t\leq T,
+\end{equation}
+where $\tau$ denotes a stopping time taking values in $[t,T]$, ${\mathcal{F}_t}$ is the filtration containing all the information up to time $t$.
 %This is an optimal stopping problem. 
 
-We can understand (\ref{Am-rn-equation}) by noticing that $\tau$ corresponds to possible strategies to exercise the option. More precisely, the holder will exercise the option at time $\tau$. The American option price corresponds using the optimal strategy. It can be shown that the optimal exercise strategy is represented by some {\it exercise region} $\mathcal D$ in $(S,t)$-plane, i.e. the optimal stopping time is given by $\tau^*=\min\Set{\xi \in[t,T]|(S_\xi,\xi)\in \mathcal D}\wedge T$. In domain $D$ it is optimal for the holder to exercise the contract. The complement of $D$ is called the {\it continuation region}. 
+We can understand (\ref{Am-rn-equation}) by noticing that $\tau$ corresponds to possible strategies to exercise the option. More precisely, the holder will exercise the option at the random time $\tau$. The American option price corresponds to using the optimal strategy. It can be shown that the optimal exercise strategy is represented by some {\it exercise region} $\mathcal D$ in the $(S,t)$-plane, i.e., the optimal stopping time is given by $\tau^*=\min\Set{\xi \in[t,T]|(S_\xi,\xi)\in \mathcal D}\wedge T$. In the domain $D$ it is optimal for the holder to exercise the contract. The complement of $D$ is called the {\it continuation region}. 
 
 %There is a systematic way to translate optimal stopping problem (\ref{Am-rn-equation}) into a PDE. However it is also possible to derive the PDE directly, the same way we derived the Black-Scholes PDE (\ref{black-pde}).
 
-We also can price an American option under the Black-Scholes frame work. Suppose we hold the same riskless portfolio 
+We also can price an American option under the Black-Scholes framework. Suppose we hold the same riskless portfolio 
 \begin{equation}
 \Pi_t = V_t - \frac{\partial V}{\partial S} S_t.
 \end{equation} 
@@ -427,12 +436,12 @@ However, due to the early-exercise feature is only available to a option's holde
 
 Since the holder has the early-exercise right, the price of an American option $V(S,t)$ should never be less than the immediate payoff $f(S,t)$. Otherwise there will exist an arbitrage opportunity. Because one can borrow money to buy this contract at the price $V(S,t)$ and immediate exercise it to get a payoff $f(S,t)$. If $V(S,t)<f(S,t)$, this strategy ensures a profit at nothing. To prevent arbitrage, we must have
 \begin{equation}\label{Am-a}
-V(S,t)\geq f(S,t),  \quad t\in [0,T].
+V(S,t)\geq f(S),  \quad t\in [0,T].
 \end{equation}
 
 At maturity we have final condition
 \begin{equation}\label{Am-b}
-V(S,T)=f(S,T).
+V(S,T)=f(S).
 \end{equation} 
 
 In \cite{Paul2006}, it is stated that an American option value is maximized if the holder exercises such that 
