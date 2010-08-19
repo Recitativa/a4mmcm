@@ -429,12 +429,12 @@ The instantaneous return is still
 d\Pi_t= \left(\frac{\partial V}{\partial t} + \frac{1}{2}\frac{{\partial}^2 V }{\partial S^2} S_t^2 {\sigma}^2 \right) dt.
 \end{equation}
 
-However, due to the early-exercise feature is only available to a option's holder, the long and short relationship in an American option is asymmetrical. Then the holder of an American option can not earn more than the risk-free rate $r$. Thus for an American option, we get an inequality 
+However, due to the early-exercise feature available to an option's holder, the long and short relationship in an American option is asymmetrical. Then the holder of an American option cannot earn more than the risk-free rate $r$. Thus for an American option, we get an inequality 
 \begin{equation}\label{black-in}
 \frac{\partial V}{\partial t} + \frac{\partial V }{\partial S} S r + \frac{1}{2} \frac{{\partial}^2 V}{\partial S^2} S^2 {\sigma}^2 -rV \leq 0.
 \end{equation}
 
-Since the holder has the early-exercise right, the price of an American option $V(S,t)$ should never be less than the immediate payoff $f(S,t)$. Otherwise there will exist an arbitrage opportunity. Because one can borrow money to buy this contract at the price $V(S,t)$ and immediate exercise it to get a payoff $f(S,t)$. If $V(S,t)<f(S,t)$, this strategy ensures a profit at nothing. To prevent arbitrage, we must have
+Since the holder has the early-exercise right, the price of an American option $V(S,t)$ should never be less than the immediate payoff $f(S,t)$. Otherwise there will exist an arbitrage opportunity. Because one can borrow money to buy this contract at the price $V(S,t)$ and immediately exercise it to get a payoff $f(S,t)$, if $V(S,t)<f(S)$, this strategy ensures a profit at nothing. To prevent arbitrage, we must have
 \begin{equation}\label{Am-a}
 V(S,t)\geq f(S),  \quad t\in [0,T].
 \end{equation}
@@ -449,7 +449,7 @@ In \cite{Paul2006}, it is stated that an American option value is maximized if t
 \frac{\partial V}{\partial S} \quad  \text{is continuous}. 
 \end{equation}
 
-The pricing of an American option in the Black-Scholes frame contains (\ref{black-in}), (\ref{Am-a}), (\ref{Am-b}) and (\ref{Am-c}).
+The pricing of an American option in the Black-Scholes framework requires a solution to  (\ref{black-in}), (\ref{Am-a}), (\ref{Am-b}) and (\ref{Am-c}).
 
 
 %Let $V(S,t)$ be the price of an American option. Let us consider an American call option. Before the option has been exercised, $V(S,t)$ should satisfy the usual Black-Scholes PDE (\ref{black-pde}). When the stock price is sufficiently high, the holder should exercise the option, otherwise there will be an arbitrage opportunity. We get a free boundary problem:
@@ -484,46 +484,46 @@ One interesting fact about the floating-strike lookback options are that these o
 \cite{Goldman1979} provided valuation formulas for European-style floating strike lookback options using risk-neutral pricing method. Comparing to payoff functions of most of the options which are only the positive part of the difference between two variables, the payoff function of this type of lookback options is simply the difference between two variables. Because of the additivity of conditional expectation, the pricing problem of this type of European-style options can be easily solved by risk-neutral method. Reader can refer to \cite{Bingham1998} for the proof. Using the similar notation of \cite{Hull2008}, the value of a call option of this type is
 \begin{equation}\label{eq:3}
 \begin{split}
-\displaystyle V(S,t;{S_{\min}}) &= S_t\Phi(a_1) - \frac{\sigma ^2}{2r}S_t\Phi(-a_1) \\
-& - S_{\min}^t e^{-r(T-t)}\left(\Phi(a_2) - \frac{\sigma^2}{2r} e ^{Y_1}  \Phi(-a_3)\right),
+\displaystyle V(S,t;{S_{\min}}) &= S\Phi(a_1) - \frac{\sigma ^2}{2r}S\Phi(-a_1) \\
+& - S_{\min} e^{-r(T-t)}\left(\Phi(a_2) - \frac{\sigma^2}{2r} e ^{Y_1}  \Phi(-a_3)\right),
 \end{split}
 \end{equation}
 where
 \[\displaystyle
 \begin{split}
-\displaystyle a_1 &=\frac{\ln(S_t / S_{\min}^t) + (r+\sigma^2 /2)(T-t)}{\sigma \sqrt{(T-t)}}\\
+\displaystyle a_1 &=\frac{\ln(S / S_{\min}) + (r+\sigma^2 /2)(T-t)}{\sigma \sqrt{(T-t)}}\\
 a_2 &= a_1 - \sigma \sqrt{(T-t)}\\
-a_3 &= \frac{\ln(S_t / S_{\min}^t)+ (-r+\sigma^2 / 2)(T-t)}{\sigma \sqrt{(T-t)}}\\
-Y_1 &= - \frac{2(r-\sigma^2 / 2) \ln(S_t / S_{\min}^t)}{\sigma^2}.
+a_3 &= \frac{\ln(S / S_{\min})+ (-r+\sigma^2 / 2)(T-t)}{\sigma \sqrt{(T-t)}}\\
+Y_1 &= - \frac{2(r-\sigma^2 / 2) \ln(S / S_{\min})}{\sigma^2}.
 \end{split}
 \]
 
 The value of a put option of this type is
 \begin{equation}\label{eq:5}
 \begin{split}
-V(S,t;S_{\max{}}) &= S_t \frac{\sigma^2}{2r} \Phi(-b_2) - S_t \Phi(b_2)\\
-&+ S_{\max{}}^t e^{-r(T-t)} \left(\Phi(b_1) - \frac{\sigma^2}{2r} e^{Y_2} \Phi(-b_3)\right),
+V(S,t;S_{\max{}}) &= S \frac{\sigma^2}{2r} \Phi(-b_2) - S \Phi(b_2)\\
+&+ S_{\max{}} e^{-r(T-t)} \left(\Phi(b_1) - \frac{\sigma^2}{2r} e^{Y_2} \Phi(-b_3)\right),
 \end{split}
 \end{equation}
 where
 \[
 \begin{split}
-\displaystyle b_1 &= \frac{\ln(S_{\max}^t / S_t) + (-r+\sigma^2 /2)T}{\sigma \sqrt{(T-t)}}\\
+\displaystyle b_1 &= \frac{\ln(S_{\max} / S) + (-r+\sigma^2 /2)T}{\sigma \sqrt{(T-t)}}\\
 b_2 &= b_1 - \sigma\sqrt{(T-t)}\\
-b_3 &= \frac{\ln(S_{\max}^t / S_t) + (r-\sigma^2 /2)T}{\sigma\sqrt{(T-t)}}\\
-\displaystyle Y_2 &= \frac{2(r-\sigma^2 / 2) \ln(S_{\max}^t / S_t)}{\sigma^2}.
+b_3 &= \frac{\ln(S_{\max} / S) + (r-\sigma^2 /2)T}{\sigma\sqrt{(T-t)}}\\
+\displaystyle Y_2 &= \frac{2(r-\sigma^2 / 2) \ln(S_{\max} / S)}{\sigma^2}.
 \end{split}
 \]
 
 We should notice that at the initiation of the contract, i.e., at time $0$, $S_{\max}^0=S_{\min}^0=S_0$.
 Formulas (\ref{eq:3}) and (\ref{eq:5}) are obtained under the assumption that the underlying asset price is observed continuously. However, in real life, the asset price is observed discretely. \cite{Broadie1999} provided a correction to these formulas to deal with discrete situation.
 
-For the discretely monitored options, let $m$ be the number of price-fixing dates and $h= T/m$ be the interval between fixings. In this section we denote $\tS_{\min{}}^t$ as the discretely monitored realized minimum over $[0,t]$, $\tS_{\max{}}^t$ as the discretely monitored realized maximum over $[0,t]$. In addition, denote $V_d(S,t;\tS_{\max{}})$ as the price of a discretely monitored European-style lookback put option at time $t$ and $V_d(S,t;\tS_{\min{}}^t)$ as the price of a discretely monitored call option of this style. In \cite{Broadie1999}, the price of a discretely monitored lookback option put option at the $k$-th fixing date and the price of a corresponding continuously monitored lookback put option at time $t = kh$ satisfies
+For the discretely monitored options, let $m$ be the number of price-fixing dates and $h= T/m$ be the interval between fixings. In this section we denote $\tS_{\min{}}^t$ as the discretely monitored realized minimum over $[0,t]$, $\tS_{\max{}}^t$ as the discretely monitored realized maximum over $[0,t]$. In addition, denote $V_d(S,t;\tS_{\max{}}^t)$ as the price of a discretely monitored European-style lookback put option at time $t$ and $V_d(S,t;\tS_{\min{}}^t)$ as the price of a discretely monitored call option of this style. In \cite{Broadie1999}, the price of a discretely monitored lookback option put option at the $k$-th fixing date and the price of a corresponding continuously monitored lookback put option at time $t = kh$ satisfies
 \begin{equation}\label{eq:7}
 V_d(S,t;\tS_{\max{}})
 =[e^{-\beta_1 \sigma \sqrt{{T/m}}}
 V(S,t;\tS_{\max{}} e^{\beta _1 \sigma \sqrt{T/m}}) +
-(e^{-\beta_1 \sigma \sqrt{{T/m}}} -1)S_t ]+ o(1/\sqrt{m}),
+(e^{-\beta_1 \sigma \sqrt{{T/m}}} -1)S ]+ o(1/\sqrt{m}),
 \end{equation}
 where function $V(\cdot)$ in the right hand side is the valuation formula (\ref{eq:5}) for continuously monitored lookback put option, and 
 \[
@@ -539,7 +539,7 @@ As for the discretely monitored lookback call option, \cite{Broadie1999} showed 
 V_d(S,t;\tS_{\min{}})
 =-[e^{\beta_1 \sigma \sqrt{{T/m}}}
 V(S,t;\tS_{\min{}} e^{-\beta _1 \sigma \sqrt{T/m}}) +
-(e^{\beta_1 \sigma \sqrt{{T/m}}} -1)S_t ]+ o(1/\sqrt{m}),
+(e^{\beta_1 \sigma \sqrt{{T/m}}} -1)S ]+ o(1/\sqrt{m}),
 \end{equation}
 where function $V(\cdot)$ in the right hand side is the valuation formula (\ref{eq:3}) for continuously monitored lookback put option. 
 
@@ -551,8 +551,8 @@ Similar to plain vanilla options, a lookback option's strike price also can be f
 For a fixed-strike lookback call option, the holder is allowed to calculate the payoff using the highest underlying asset price attained before maturity. As for a fixed lookback put option, the holder can use the underlying asset's lowest price. One finds that the intrinsic value of a fixed-strike strike lookback option is nondecreasing as time passes. The payoff functions for fixed-strike lookback call and put options respectively are:
 \begin{equation}
 \begin{split}
-&LC_{fixed} = \max\{S_{\max} - K, 0\}, \\
-&LP_{fixed} = \max\{K-S_{\min}, 0\},
+&LC_{fixed} = \max\{S_{\max}^T - K, 0\}, \\
+&LP_{fixed} = \max\{K-S_{\min}^T, 0\},
 \end{split}
 \end{equation}
 where $K$ is the strike price.
@@ -562,26 +562,26 @@ in \cite{Paul2006}.
 Denote 
 \[
 \begin{split}\displaystyle
-d &= (\ln(S_t / K) + ( r+ \sigma^2 /2)(T-t))/ ({\sigma \sqrt{T-t}}), \\
-d' &=(\ln (S_t / S_{\max}^t) + (r + \sigma^2 /2)(T-t))/ ({\sigma \sqrt{T-t}}), \\
-\displaystyle d'' &=(\ln(S_t / S_{\min}^t) + (r + \sigma^2 /2)(T-t))/ ({\sigma \sqrt{T-t}}).
+d &= (\ln(S / K) + ( r+ \sigma^2 /2)(T-t))/ ({\sigma \sqrt{T-t}}), \\
+d' &=(\ln (S / S_{\max}) + (r + \sigma^2 /2)(T-t))/ ({\sigma \sqrt{T-t}}), \\
+\displaystyle d'' &=(\ln(S / S_{\min}) + (r + \sigma^2 /2)(T-t))/ ({\sigma \sqrt{T-t}}).
 \end{split}
 \]
  
 Under the risk-neutral pricing frame work of section \ref{risk-neutral frame}, the value of a call option of this type at time $t$ is 
 \begin{equation}
 \begin{split}\displaystyle
-&V(S_{\max},t;K) \\
-= &\, S_t \Phi(d) - Ke^{-r(T-t)}\Phi(d-\sigma \sqrt{T-t}) \\
-&+ S_t e^{-r(T-t)} \frac{\sigma^2}{2r} \left[ -\left(\frac{S_t}{K}\right)^{-{2r/\sigma^2}} \Phi\left(d-\frac{2r}{\sigma}\sqrt{T-t}\right) + e^{r(T-t)}\Phi(d)\right], \quad K\geq S_{\max}^t ,
+&V(S, t, S_{\max};K) \\
+= &\, S \Phi(d) - Ke^{-r(T-t)}\Phi(d-\sigma \sqrt{T-t}) \\
+&+ S e^{-r(T-t)} \frac{\sigma^2}{2r} \left[ -\left(\frac{S}{K}\right)^{-{2r/\sigma^2}} \Phi\left(d-\frac{2r}{\sigma}\sqrt{T-t}\right) + e^{r(T-t)}\Phi(d)\right], \quad K\geq S_{\max} ,
 \end{split}
 \end{equation}
 and
 \begin{equation}
 \begin{split}
-&V(S_{\max},t;K)\\ 
-= &\, e^{-r(T-t)}(S_{\max}^t - K) + S_t \Phi(d') - S_{\min}^t e^{-r(T-t)} \Phi(d'-\sigma \sqrt{T-t}) \\
-&+ S_t e^{-r(T-t)} \frac{\sigma ^2}{2r}\left[ -\left(\frac{S_t}{S_{\max}^t}\right)^{-{2r/\sigma^2}}\Phi\left(d'-\frac{2r}{\sigma}\sqrt{T-t}\right) + e^{r(T-t)}\Phi(d')\right], \quad K<S_{\max}^t .
+&V(S,t,S_{\max};K)\\ 
+= &\, e^{-r(T-t)}(S_{\max} - K) + S \Phi(d') - S_{\min} e^{-r(T-t)} \Phi(d'-\sigma \sqrt{T-t}) \\
+&+ S e^{-r(T-t)} \frac{\sigma ^2}{2r}\left[ -\left(\frac{S}{S_{\max}}\right)^{-{2r/\sigma^2}}\Phi\left(d'-\frac{2r}{\sigma}\sqrt{T-t}\right) + e^{r(T-t)}\Phi(d')\right], \quad K<S_{\max}.
 \end{split}
 \end{equation}
 
@@ -589,17 +589,17 @@ and
 Similarly, the value of the put is 
 \begin{equation}
 \begin{split}
-& V(S_{\min},t;K)\\
-=&\, -S_t \Phi(-d) + Ke^{-r(T-t)} \Phi(-d + \sigma \sqrt{T-t})  \\
-&+ S_t e^{-r(T-t)} \frac{\sigma^2}{2r}\left[ \left(\frac{S_t}{K}\right)^{-2r /\sigma^2}\Phi\left(-d+\frac{2r}{\sigma}\sqrt{T-t}\right) - e^{r(T-t)}\Phi(-d)\right], \quad K\leq S_{\min}^t,
+& V(S,t,S_{\min};K)\\
+=&\, -S \Phi(-d) + Ke^{-r(T-t)} \Phi(-d + \sigma \sqrt{T-t})  \\
+&+ S e^{-r(T-t)} \frac{\sigma^2}{2r}\left[ \left(\frac{S}{K}\right)^{-2r /\sigma^2}\Phi\left(-d+\frac{2r}{\sigma}\sqrt{T-t}\right) - e^{r(T-t)}\Phi(-d)\right], \quad K\leq S_{\min},
 \end{split}
 \end{equation}
 and
 \begin{equation}
 \begin{split}
-& V(S_{\min},t;K) \\
-=&\, e^{-r(T-t)} (K-S_{\min}^t) - S_t \Phi(-d'') + S_{\min}^t e^{-r(T-t)} N (-d'' + \sigma \sqrt{T-t}) \\
-&+ S_t e^{-r(T-t)} \frac{\sigma^2}{2r} \left[\left(\frac{S_t}{S_{\max}^t}\right)^{-2r/\sigma^2}\Phi\left(-d'' + \frac{2r}{\sigma} \sqrt{T-t}\right) -e^{r(T-t)}\Phi(-d'')\right], \quad K > S_{\min}^t.
+& V(S,t,S_{\min};K) \\
+=&\, e^{-r(T-t)} (K-S_{\min}) - S \Phi(-d'') + S_{\min} e^{-r(T-t)} N (-d'' + \sigma \sqrt{T-t}) \\
+&+ S e^{-r(T-t)} \frac{\sigma^2}{2r} \left[\left(\frac{S}{S_{\max}}\right)^{-2r/\sigma^2}\Phi\left(-d'' + \frac{2r}{\sigma} \sqrt{T-t}\right) -e^{r(T-t)}\Phi(-d'')\right], \quad K > S_{\min}.
 \end{split}
 \end{equation}
 
@@ -676,7 +676,7 @@ Calculate the corresponding discounted payoff for each sample path.
 Calculate the average discounted payoff on all the samples.
 \end{enumerate}
 
-The sharp advantage of the Monte Carlo method is that it is convenience to calculate high dimensional integrations. 
+An advantage of the Monte Carlo method is that it is convenient to calculate high dimensional integrations. 
 The convergence of Monte Carlo is guaranteed by large number theory. Now the focus of the study in this field is on improving the computational efficiency. Interested readers can find detailed survey on this method in \cite{Boyle1997} and \cite{Glasserman2004}. 
 
 
@@ -815,7 +815,7 @@ g_2 (x;t) = \begin{cases}
 %%Another approach to price quantile option is Monte Carlo simulation. In this method, we need to use the inverse function of the cumulative distribution function of $\alpha$-quantile. When the brownian motion is without drift, 
 
 %Sometimes to get the integration of a certain stochastic process, we are only able to get the value numerically. For example, if we need to know $\int^T_{0} M(\alpha , t)dt$, usually we need to simulate a discretized version of the Brownian motion $\{B_t\}$ and then do the calculation based on the simulated sample. Obviously, the accuracy of this approximation is closely related to the length of the discretized time increment, which we denote as $\Delta t= \frac{T}{N}$. Then the questions arise: how fine should the discretization length be in order to get a satisfied approximation and whether we can quantify the accuracy of this type of simulation. 
-Euler scheme is a straight forward method to approximate the solution to a Stochastic Differential Equation(SDE). For a process $Y=\{Y(t)\}_{t\geq 0}$ satisfying the SDE 
+The Euler scheme is a straight forward method to approximate the solution to a Stochastic Differential Equation (SDE). For a process $Y=\{Y(t)\}_{t\geq 0}$ satisfying the SDE 
 \begin{equation}
 dY(t)= b(Y(t))dt + \sigma (Y(t))dB_t,
 \end{equation}
@@ -837,7 +837,7 @@ If (\ref{strong-g}) is $O(h^\gamma)$ as $h \downarrow 0$, this approximation is 
 \end{equation}
 as $h \downarrow 0$. Weak convergence is of importance when only an estimation of the probability distribution of $Y(t)$ is essential. 
 
-The definitions of strong order and weak order of convergence of a numerical solution to stochastic differential equation also can be found in \cite{lacus2008} and \cite{Peter1999}. This idea of using order to measure the convergence speed of numerical solution is inherited from the similar convention used to measure the convergence speed of numerical solution to deterministic differential equation. We notice that, mathematically, for a numerical algorithm the $\gamma$ is not unique by this definition, since $O(h^{\gamma_1})$ is $O(h^{\gamma_2})$ if $\gamma_1 > \gamma_2$. But since $\gamma$ indicates the speed of convergence, it has a practical meaning. Conventionally, when we talk about order, we mean the largest $\gamma$.
+The definitions of strong order and weak order of convergence of a numerical solution to a stochastic differential equation also can be found in \cite{lacus2008} and \cite{Peter1999}. This idea of using order to measure the convergence speed of a numerical solution is inherited from the similar convention used to measure the convergence speed of a numerical solution to a deterministic differential equation. We notice that, mathematically, for a numerical algorithm the $\gamma$ is not unique by this definition, since $O(h^{\gamma_1})$ is $O(h^{\gamma_2})$ if $\gamma_1 > \gamma_2$. But since $\gamma$ indicates the speed of convergence, it has a practical meaning. Conventionally, when we talk about order, we mean the largest $\gamma$.
 
 In the first step to get the Euler approximation of the $\alpha$-quantile of a Brownian motion at time $T$, we divide the time interval $[0,T]$ into $N$ equal small time intervals. Then the Euler approximation for the $\alpha$-quantile $M(\alpha, T)$ of the Brownian motion $\{X_t\}_{t\leq T}$ is the $k$-th order statistic of the set $\{X_{nh},n=0,1,\cdots,N\}$ with $k= \lceil \alpha  N\rceil$. Since $h$ and $N$ are related by $h=T/N$, we denote the Euler approximation of $M(\alpha, T)$ with $h=T/N$ as $\M(k,N)$. Then the discretization error for the Euler approximation of the $\alpha$-quantile of a Brownian motion at time $T$ is 
 \begin{equation}
