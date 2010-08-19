@@ -1306,14 +1306,14 @@ path.% at least, we have to record the occupation time of $X_k$.
 In risk-neutral world, we always can write the price of an
 American-style quantile option in following way:
 \[
-V(S,\alpha,t;K) = \sup_{\tau\leq T} E[f(S_0 M(\alpha, T),\tau,K)|\mathcal F_t],
+V(S,\alpha,t;K) = \sup_{\tau\leq T} E[e^{-r(\tau-t))}f(S_0 M(\alpha, \tau);K)|\mathcal F_t],
 \]
-where $\tau$ are any stopping time stops taking value in $[t,T]$, $\mathcal F_t$ is the filtration contains all the information about stock price up to time $t$ and
+where $\tau$ are any stopping time stops taking value in $[t,T]$, $\mathcal F_t$ is the filtration contains all the information about stock price up to time $t$ and the payoff function
 \[
-f(x,t;K) = 
+f(x;K) = 
 \begin{cases}
-e^{-rt}(x-K)^+ & \text{for call option},\\
-e^{-rt}(K-x)^+ & \text{for put option}.
+(x-K)^+ & \text{for call option},\\
+(K-x)^+ & \text{for put option}.
 \end{cases}
 \]
 This is an optimal stopping problem. 
@@ -1323,12 +1323,7 @@ Discretize the time, i.e. let $0=t_0< t_1, \cdots, t_N =T$. Let $P_k=(X_0, \cdot
 Then the possible value of the immediate next node $X_{k+1}$ along path $P_k$ can only be $X_{k}e^u$ and $X_{k}e^d$ with probability $p^+$ and $p^-$, where $u$, $d$, $p^+$ and $p^-$ are prefixed constants in the usual binomial tree method. We denote the two possible paths one step longer than path $P_k$ as $P_k^+ = (X_0,\cdots,X_k,X_{k+1}=X_{k}e^u)$ and $P_k^- = (X_0,\cdots,X_k,X_{k+1}=X_{k}e^d)$. 
 Then let 
 \[
-\mathrm{Pay}_{P_k} = e^{rt_k}f(X_{P_k}^\alpha, t_k;K)
-%=
-%\begin{cases}
-%(x-K)^+ & \text{for call option}\\
-%(K-x)^+ & \text{for put option}
-%\end{cases}
+\mathrm{Pay}_{P_k} = f(X_{P_k}^\alpha;K)
 \] 
 be the payoff if the option holder exercise the option at time $t_k$, 
 where $X_{P_k}^\alpha$ denotes the $\alpha$-quantile of path $P_k$. 
