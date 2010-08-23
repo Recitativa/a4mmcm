@@ -28,7 +28,7 @@
 \newenvironment{expl}{\it}{\color{black}\normalsize}
 \DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
 
-
+\def\sign{{\rm sign}}
 \def\Ker{{\rm Ker}}
 \def\Im{{\rm Im}}
 \def\Hom{{\rm Hom}}
@@ -2636,29 +2636,6 @@ Using the results in \cite{Howe1979Opq}, we will see that $\mu$ is a lowest
 weight module. Then by the algebric version of Bott-Borel-Weil theorem, 
 we have $(\Gamma_{\aso(2r),O(2)\times O(2r-2)}^{O(2r})^j \mu = \chh_l$
 
-Consider see-saw pair 
-\[
-\xymatrix{
-O(2,2r) \ar@{-}[dr]& SL(2,\bR)\times SL(2,\bR) \\
-O(2)\times O(2r)\ar@{-}[ur] & SL(2,\bR)}
-\] 
-we get $O(2)\times O(2r)$-type
- $\chh_a\otimes \chh_b$ appair in $\rho(D_{l+n-r-1})$ 
-iff $D_{a+1}\otimes \overline{D_{b+r}}$ has a $D_{l+n-r-1}$ quotient.
-From \cite{Howe1979Opq},
-this equivelent to $D_{l+n-r-1}$ appair in this tensor product. 
-By the results of \cite{Repka1976tensor}, we know this means
-\[
-a+1 - (b+r)\geq l + n-r-1
-\]
-i.e. 
-\[
-a -b \geq l+n-2.
-\]
-So $\rho(D_{l+n-r-1})$ is a unitary lowest weight $O(2)\times O(2r)$-module.
-As $(\aso(2n), SO(2)\times O(2r)\times O(2n-2r)$-module, there are two heighest
-weight
-
 \begin{align*}
 &(l+n-2, 0,\cdots, 0, l, 0, \cdots,0)\\
 &(-(l+n-2), 0, \cdots, 0,l , 0, \cdots, 0)
@@ -2688,21 +2665,50 @@ s = \sharp\Set{\alpha\in \Delta_\fkk|\inn{\tau+\rho}{\alpha}<0}
 \]
 
 
- 
+\subsubsection{Lifting of discrete series}
+
+
+Now we consider the lifting of discrete series, it is from Li\cite{Li1990}.
+We define $D_l$ be the discrete series representation of $\SL(2,\bR)$ with 
+lowest weight $l\geq 2$. The contragredient representation $\overline{D_l}$ is 
+$D_{-l}$, the highest weight representation with highest weight $-l$.
+
+Now we consider the lifting of $D_{l}$.
+Asumme $p=2r, q=2s$.
+Take the usual root system of $\aso(p+q,\bC)$, and usual Cartan decomposition
+of $O(p,q)$. 
+
+Consider see-saw pair 
+\[
+\xymatrix{
+O(p,q) \ar@{-}[dr]& SL(2,\bR)\times SL(2,\bR) \\
+O(p)\times O(q)\ar@{-}[ur] & SL(2,\bR)}
+\] 
+we get $O(p)\times O(q)$-type
+ $\chh_a\otimes \chh_b$ appair in $\theta(D_{l})$ 
+iff $D_{a+p/2}\otimes \overline{D_{b+q/2}}$ has a $D_{l}$ quotient.
+From \cite{Howe1979Opq},
+this equivelent to $D_{l}$ appair in this tensor product. 
+By the results of \cite{Repka1976tensor}, we know this means
+\[
+a \geq b + \frac{q-p}{2} + l.
+\]
+
+
 Infinitesimal character is preserved by Derived functor, hence it is same as 
 what in the theta-correspondence.
-
-For simplicity, assume $p<q$, $m=p+q$. 
+Infinitesimal charicater of $D_l$ is $(l-1)$. 
 The infinitesimal character correspondence is 
 \[
 \begin{matrix}
- SL(2,\bR) & & O(2p,2q)\\
- (l) & \leftrightarrow & (l, m-2, \cdots, 1, 0)
+ SL(2,\bR) & & O(2r,2s)\\
+ (l-1) & \leftrightarrow & (l-1, m-2, \cdots, 1, 0)
 \end{matrix}
 \]
+where $m=p+q$.
 
-Take the usual root system of $\aso(2p+2p,\bC)$, and usual Cartan decomposition
-of $O(2p,2q)$. 
+Now asumme $l-1>m-1$, i.e. $l>m$.
+
 Let $x = (1, 0,\cdots, 0)\in i\ftt$,
 \begin{align*}
 \fll =& \sspan \Set{E_\alpha |\alpha(x) =0 }\\
@@ -2712,26 +2718,40 @@ Let $x = (1, 0,\cdots, 0)\in i\ftt$,
 
 Now 
 \[
-\Delta(\fuu\cap \fpp) = \Set{e_1\pm e_j|j>p}.
+\Delta(\fuu\cap \fpp) = \Set{e_1\pm e_j|j>r}.
 \]
 So, 
 \[
-\rho(\fuu\cap \fpp) = (q, 0, \cdots, 0).
+\rho(\fuu\cap \fpp) = (s, 0, \cdots, 0).
 \]
 Take
 \[
-\lambda = (-m, 0, \cdots, 0),
+\lambda = (l+(q-p)/2-s, 0, \cdots, 0)=(l-(p+q)/2,0,\cdots, 0),
+\]
+which is a charicter of $\fll\cong \aso(2)\oplus \aso(2r-2,2s)$ 
+such that(\cite{VoganZuckerman1984} (5.1))
+\[
+\inn{\alpha}{\lambda} \geq 0 \quad \forall \alpha \in \Delta(\fuu).
 \]
 
 But
 \[
-\tau = \lambda+2\rho(\fuu\cap\fpp) = (q-p, 0,\cdots, 0)
+\tau = \lambda+2\rho(\fuu\cap\fpp) = (l+(q-p)/2, 0,\cdots, 0)
 \]
-is the highest weight of $K$-type occure in the both representation and
+is the highest weight of $K$-type occure in the both representation 
+$\theta(D_l)$ and $A_\fqq(\lambda)$.
+Moreover,
 \[
-\lambda + (m-1, m-2, \cdots, 0) = (-1, 0, \cdots, 0) 
+\lambda + \rho = (l-1, m-2, \cdots, 0)
 \]
-
+is the infinitesimal charicter of $\theta(D_l)$. 
+Hence we get
+\begin{lemma}
+\begin{enumerate}[a)]
+\item When $l> n/2$, $\theta(D_l)\cong A_\fqq(\lambda)$ defined as above.
+\item 
+\end{enumerate}
+\end{lemma}
 
 
 \section{Fock model III}
@@ -2836,6 +2856,8 @@ Choose real subgroup stablize $W_{p,q}$, we have $\OO(p,q)$ and $\SL(2,\bR)$
 as real reductive dual pair subgroup in $\Sp(2n,\bR)$. 
 Note that the embedding of $\SL(2,\bR)$ in $\Sp(2n,\bC)$ is not change for
 different $W_{p,q}$.
+
+
 
 \subsection{correspondence}
 Now we choose two real form $W_{2,n-2}$ and $W_{p,q}$ of $W$, we have
@@ -3117,18 +3139,72 @@ Since $\rho$ is irreducible, and $T\circ x = c(x) T$,
 the action is well defined, independent of $T$. 
 Similarly, define $\cuu(\fhh')^{G'}$ action on $\sigma$.
 
+Consider following commutative digram:
+\[
+\xymatrix{
+\omega \ar[r]^{S_2} \ar[d]_{S_1}\ar[dr]^{Q} & \tau\otimes \rho(\tau)\ar[d]^{T_2}\\
+\rho(\sigma)\otimes \sigma\ar[r]_{T_1} & \tau\otimes \sigma 
+}
+\]
+Here $T_i = T\otimes \id$.
+
 Note that $\omega(\cuu(\fgg)^H) = \omega(\cuu(\fhh')^{G'})$,
 for $x\in \cuu(\fgg)^H$, 
 there is a $y\in \cuu(\fhh')^{G'}$.
 such that $\omega(x) = \omega(y)$.
 
+
+Now for any $v\otimes w\in \tau\otimes \sigma$, there is $a\in \omega$ such
+that $Q(a) = v\otimes w$.
 Hence, 
 \[
 (x \cdot v)\otimes w 
-= T_1(x v') \otimes w
-= T_1(
+= T_1 (x S_1 (a))
+= T_1 \circ S_1 (\omega(x) a)
+= T_2 \circ S_2 (\omega(y) a)
+= v\otimes (y\cdot w) 
 \]
 
+\section{skew duality}
+This is from \cite{howe1995perspective} Section~4.1. 
+I give the detils as doing an  exercise.
+
+\subsection{Skew $(\GL_n,\GL_m)$- duality}
+\begin{thm}[\cite{howe1995perspective} Theorem~4.1.1]
+We have the $\GL_n\times \GL_m$-module decomposition
+\[
+\bigwedge ( \bC^n\otimes \bC^m)\cong \sum_{D}\rho^D_n\otimes \rho^{D^t}_m.
+\]
+In this sum, $D$ ranges over all diagrams with at most $n$ rows 
+and with rows lengths at most $m$. The diagram $D^t$ is the transpose 
+of $D$: the rows of $D$ are the columns of $D^t$, and vice versa.
+\end{thm} 
+\proof
+We use the Schur Duality. Let $S_k$ be the symmetric group of degree $n$ and
+$m$ respectively.
+Let $U= \bC^n$,$V=\bC^m$.
+Note that 
+\[
+\begin{split}
+\bigwedge^k \bC^n\otimes \bC^m 
+\cong&  \left(\left(U\otimes V\right)^{\otimes^k}\right)^{sign,S_k}\\
+\cong&  \left(U^{\otimes^k} \otimes V^{\otimes^k}\right)^{\sign,\triangle S_k}\\
+\cong& \left((\sum_{D}\rho_U^D\otimes \sigma^D)
+  \otimes (\sum_{E}\rho_V^E\otimes\sigma^E)\right)^{\sign,\triangle S_k}\\
+\cong& \sum_{D,E} \rho_U^D\otimes \rho_V^E 
+\otimes (\sigma^D\otimes \sigma^E)^{\sign,\triangle S_k}\\
+\cong& \sum_{D} \rho_U^D\otimes \rho_V^{D^t}
+\end{split}
+\]
+The summation of $D,E$ is over young diagram of size $k$ at most depth $m$, 
+The last equation valide since 
+\[
+\Hom_{S_k}(\sigma^E\otimes \sigma^D, \sign) 
+\cong \Hom_{S_k}(\sigma^E, \sign\otimes (\sigma^D)^*)
+\cong \Hom_{S_k}(\sigma^E,\sign\otimes \sigma^D)
+\cong \Hom_{S_k}(\sigma^E,\sigma^{D^t})
+\]
+for $\sigma^D\otimes \sign \cong \sigma^{D^t}$, see \cite{Fulton1991}~Exercise~4.4 or \cite{James1981}~2.1.8.  
 \bibliography{bib/reppapers}{}
 \bibliographystyle{alpha}
 
