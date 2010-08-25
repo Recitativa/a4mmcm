@@ -96,6 +96,7 @@
 \def\lww{\mathcal{W}}
 \def\lxx{\mathcal{X}}
 \def\lyy{\mathcal{Y}}
+\def\fbb{\mathfrak{b}}
 \def\fhh{\mathfrak{h}}
 \def\fnn{\mathfrak{n}}
 \def\fuu{\mathfrak{u}}
@@ -117,6 +118,7 @@
 \def\cuu{\mathcal{U}}
 \def\cxx{\mathcal{X}}
 \def\cyy{\mathcal{Y}}
+\def\cff{\mathcal{F}}
 \def\fmm{\mathfrak{m}}
 \def\GL{\mathrm{GL}}
 \def\SO{\mathrm{SO}}
@@ -2749,74 +2751,50 @@ Hence we get
 \begin{lemma}
 \begin{enumerate}[a)]
 \item When $l> n/2$, $\theta(D_l)\cong A_\fqq(\lambda)$ defined as above.
-\item 
+\item When $p=2$, $\fll=\fkk$ is the maximal Lie algebra of maximal compact
+subgroup, $\fuu =\fpp^+=\sspan\Set{X_{e_1\pm e_j}|j\geq 2}$. Let 
+$\fqq=\fll\oplus\fpp^+$ and
+$\overline{\fqq}=\fll\oplus\fpp^-$, $\tau= (l+(q-p)/2,0,\cdots, 0)$ is a charicter of $\fkk$. Then
+$\theta(D_l)\cong \cuu(\gg)\otimes_{\cuu(\fqq)}\bC_{-\tau}\oplus  \cuu(\gg)\otimes_{\cuu(\overline{\fqq})}\bC_{\tau} $ as $\aso(2,p-2)$ module.
 \end{enumerate}
 \end{lemma}
 
+\section{Example }
+Now we consider lifting of trivial charicter of $SL(2,\bR)$.
+There is a proposition from \cite{ZhuHuang1997}
+\begin{prop}[\cite{ZhuHuang1997}, Proposition~2.1]
+Suppose that $(G,G')$ is in the stable range with $G'$ the small member. 
+Then for any unitary character $\chi\in \widehat{\tilde{G}}$, 
+The Howe quotion is already irreducible. Thus $\rho(\chi)=\theta{\chi}$
+is irreducible and unitary.
+\end{prop} 
 
-\section{Fock model III}
-Assume $W_0$ is a symplectic space over $\bR$.
-Fix a complete polarization $W_0 = \cxx_0\oplus \cyy_0$.  
-$e_1,\cdots, e_n$ is basis of $\cxx_0$, and $f_1,\cdots, f_n$ is dual basis 
-of $e_j$'s in $\cyy_0$, i.e. $\inn{e_\alpha}{e_\beta}=\delta_{\alpha\beta}$.
+First we need a result from Howe \cite{Howe1979Opq}, for any $p,q\geq 0$
+\[
+\omega_{p,q}\cong \int_{s} \tau_s\otimes \rho_s ds \bigoplus_m \theta(D_m)\otimes D_m.
+\]
+Here the integration is respect to the principle series. $D_m$ is holomprhic 
+discrete series or anti-holomorphic series. 
 
-Now choose a chartor of $\bR$, i.e. $\phi(x) = \lambda x$. 
-For $\phi$ be unitary, choose $\lambda \in i\bR$. Usually, we set $\lambda=i$. 
-Let
-\[
-\Omega(W) = T(W) / \left\langle v\otimes w - w\otimes v - \phi(\inn{v}{w})\right\rangle.
-\]
-Now $\Omega(W)$ has a filtraction from $T(W)$, i.e. 
-$\Omega^k(W)$ is the image of $\bigoplus_{j\leq k}T^j(W)$.
-It is easy to see, 
-\[
-[\Omega^i(W),\Omega^j(W)] \subset \Omega^{i+j-2}(W).
-\]
-We have short exact sequence of Lie Algebras:
-\begin{align}
-0\to \Omega^0(W) \to &\Omega^1(W) \to W \to 0\\
-0\to \Omega^1(W) \to &\Omega^2(W) \to \sp(W)\to 0 
-\end{align}
-More over $\Omega^2(W) \cong \sp(W) \oplus \fhh$, 
-where $\fhh\cong \Omega^1(W)$ is a hisenberg Lie algebra.
-The identify cation of $\Omega^2(W)/\Omega^1(W)$ is given by
-consider the $\Omega^2(W)$ action of $\Omega^1(W)/\Omega^0(W)\cong W$. 
+Take 
+ we will see that $\mu$ is a lowest 
+weight module. Then by the algebric version of Bott-Borel-Weil theorem, 
+we have $(\Gamma_{\aso(2r),O(2)\times O(2r-2)}^{O(2r})^j \mu = \chh_l$
 
-Let $W=W_0\otimes_\bR\bC$ be the complexification of $W$. 
-Define $J$ as multiply by ``$i$'' on $W_0$. And define unitary structure
-\[
-U_J(x,y) = \inn{Jx}{y} + i\inn{x}{y}
-\]
-Consdier $W = X\oplus Y$, where $X$ and $Y$ are $\pm i$ eigen-space of $J$. 
-Now it's easy to see that $U_J$ structure is 
-invarient under $X\otimes Y$ action($v\in X, w\in Y, x,y\in W$):
+
+Now we decomposite the Howe quotion $\rho(1)$ into $SO(2,p-2)\otimes SO(q)$ representations.
+Note that as $O(2,p-2)\times O(q)\times SL(2,\bR)\times SL(2,\bR)\times SL(2,\bR)$ module
 \[
 \begin{split}
-U_J(vw\cdot x,y) =& \inn{J(vw\cdot x)}{y} + i\inn{vw\cdot x}{y}\\
-=&\inn{-i\lambda\inn{v}{x} w}{y}
-+\inn{i\lambda\inn{w}{x} v}{y}
- - i \inn{x}{vw\cdot y}\\
-=& \inn{-i\lambda\inn{w}{y}v}{x}
-+ \inn{i\lambda \inn{v}{y}w}{x}
--i\inn{x}{vw\cdot y}\\
-=& \inn{x}{i\lambda{w}{y}v}
-+ \inn{x}{-i\lambda{v}{y}w}
--i\inn{x}{vw\cdot y}\\
-=& \inn{x}{J vw\cdot y} -i\inn{x}{vw\cdot y}\\
-=& -\inn{Jx}{vw\cdot y}  -i\inn{x}{vw\cdot y}= -U_J(x,vw\cdot y).
+\omega =& \omega_{2,p-2}\otimes \omega_{0,q}\\
+=& \left(\bigoplus_{a,b} \theta_{2,p-2}(D_a)\otimes D_a 
+\oplus \int_s\tau_s\otimes \rho_s ds \right) \otimes \chh_b 
+\otimes \overline{D_{b+q/2}}\\ 
+=&\left(\bigoplus_{a,b}  \theta_{2,p-2}(D_a)\otimes D_a \otimes \overline{D_{b+q/2}}
+\right)\oplus \int_s\tau_s\otimes \rho_s ds \otimes \omega_{0,q}
 \end{split}
 \]
 
-Note that, $\sp(n,\bC)\cong S^2(W)$ and the real form $\sp(n,\bR)$ is the 
-Lie subalgebra preserve the real symplectic space $W_0$. 
-
-
-
-Algebra $\Omega(W)$ act on $\Omega(W)/\Omega(W)X \cong \bC[z_1, \cdots,z_n]$ by differential operator:
-\begin{align*}
-e_i &\leftrightarrow \lambda \frac{\partial}{\partial z_i}\\
-f_i &\leftrightarrow z_i\\
-\end{align*}
 
 \subsection{$\cuu(\fgg)^K$}
 \subsubsection{Case $\fgg=\aso(n,\bC)$} 
@@ -3205,6 +3183,164 @@ The last equation valide since
 \cong \Hom_{S_k}(\sigma^E,\sigma^{D^t})
 \]
 for $\sigma^D\otimes \sign \cong \sigma^{D^t}$, see \cite{Fulton1991}~Exercise~4.4 or \cite{James1981}~2.1.8.  
+
+\section{Fock model}
+Assume $W_0$ is a symplectic space over $\bR$.
+Fix a complete polarization $W_0 = \cxx_0\oplus \cyy_0$.  
+$e_1,\cdots, e_n$ is basis of $\cxx_0$, and $f_1,\cdots, f_n$ is dual basis 
+of $e_j$'s in $\cyy_0$, i.e. $\inn{e_\alpha}{e_\beta}=\delta_{\alpha\beta}$.
+
+Now choose a chartor of $\bR$, i.e. $\phi(x) = \lambda x$. 
+For $\phi$ be unitary, choose $\lambda \in i\bR$. Usually, we set $\lambda=i$. 
+Let
+\[
+\Omega(W) = T(W) / \left\langle v\otimes w - w\otimes v - \phi(\inn{v}{w})\right\rangle.
+\]
+Now $\Omega(W)$ has a filtraction from $T(W)$, i.e. 
+$\Omega^k(W)$ is the image of $\bigoplus_{j\leq k}T^j(W)$.
+It is easy to see, 
+\[
+[\Omega^i(W),\Omega^j(W)] \subset \Omega^{i+j-2}(W).
+\]
+We have short exact sequence of Lie Algebras:
+\begin{align}
+0\to \Omega^0(W) \to &\Omega^1(W) \to W \to 0\\
+0\to \Omega^1(W) \to &\Omega^2(W) \to \sp(W)\to 0 
+\end{align}
+More over $\Omega^2(W) \cong \sp(W) \oplus \fhh$, 
+where $\fhh\cong \Omega^1(W)$ is a hisenberg Lie algebra.
+The identify cation of $\Omega^2(W)/\Omega^1(W)$ is given by
+consider the $\Omega^2(W)$ action of $\Omega^1(W)/\Omega^0(W)\cong W$. 
+
+Let $W=W_0\otimes_\bR\bC$ be the complexification of $W$. 
+Define $J$ as multiply by ``$i$'' on $W_0$. And define unitary structure
+\[
+U_J(x,y) = \inn{Jx}{y} + i\inn{x}{y}
+\]
+Consdier $W = X\oplus Y$, where $X$ and $Y$ are $\pm i$ eigen-space of $J$. 
+Now it's easy to see that $U_J$ structure is 
+invarient under $X\otimes Y$ action($v\in X, w\in Y, x,y\in W$):
+\[
+\begin{split}
+U_J(vw\cdot x,y) =& \inn{J(vw\cdot x)}{y} + i\inn{vw\cdot x}{y}\\
+=&\inn{-i\lambda\inn{v}{x} w}{y}
++\inn{i\lambda\inn{w}{x} v}{y}
+ - i \inn{x}{vw\cdot y}\\
+=& \inn{-i\lambda\inn{w}{y}v}{x}
++ \inn{i\lambda \inn{v}{y}w}{x}
+-i\inn{x}{vw\cdot y}\\
+=& \inn{x}{i\lambda{w}{y}v}
++ \inn{x}{-i\lambda{v}{y}w}
+-i\inn{x}{vw\cdot y}\\
+=& \inn{x}{J vw\cdot y} -i\inn{x}{vw\cdot y}\\
+=& -\inn{Jx}{vw\cdot y}  -i\inn{x}{vw\cdot y}= -U_J(x,vw\cdot y).
+\end{split}
+\]
+
+Note that, $\sp(n,\bC)\cong S^2(W)$ and the real form $\sp(n,\bR)$ is the 
+Lie subalgebra preserve the real symplectic space $W_0$. 
+
+
+
+Algebra $\Omega(W)$ act on $\Omega(W)/\Omega(W)X \cong \bC[z_1, \cdots,z_n]$ by differential operator:
+\begin{align*}
+e_i &\leftrightarrow \lambda \frac{\partial}{\partial z_i}\\
+f_i &\leftrightarrow z_i\\
+\end{align*}
+
+\section{Borel-Weil-Bott-Kostant Theorem}
+Reference \cite{KnappVogan1995} Chapter~IV, Section~11 and
+\cite{EnrightWallach1980}.
+
+\begin{thm}[\cite{KnappVogan1995} Corollary~4.160]
+Let $G$ be a compact connected Lie group, $\ftt_0$ be the maximal abelian 
+subalgebra, let $\fbb=\ftt\oplus \fnn$ be the Borel subalgebra corresponding 
+to a positive system $\Delta^+(\fgg,\ftt)$, let $\fqq=\fll\oplus \fuu$ 
+be a parabolic subalgebra with $\ftt\subset \fbb \subset \fqq$, and let
+$L$ be the corresponding Levi subgroup. Let $Z$ be a irreducible $(\fll,L)$
+module with $\Delta^+(\fll,\ftt)$ highest weight $\lambda$. 
+\begin{enumerate}[(a)]
+\item If $\lambda+\delta$ is orthogonal to some root, 
+then $\Pi_j(P_{\fqq,L}^{\fgg,L}(\cff_{\fll,L}^{\fqq,L}(Z)))$ and 
+$\Gamma^j(I_{\overline{\fqq},L}^{\fgg,L}(\cff_{\fll,L}^{\overline{\fqq},L}(Z)))$
+are both $0$ for all $j\geq 0$.
+\item If $\lambda+\sigma$ is orthogonal to no root, put
+\[
+q=\#\Set{\alpha\in \Delta^+(\fgg,\ftt)|\inn{\lambda+\delta}{\alpha}<0}.
+\]
+There exists a unique element $w\in W$ such that 
+$w^{-1}(\lambda+\delta)$ is $\Delta^+(\fgg,\ftt)$ dominant;
+this $w$ has lenght $q$ and is in  
+$W^1=\Set{w\in W|w^{-1} \Delta^+(\fll,\ftt)\subset \Delta^+(\fgg,\ftt)}$.
+\[
+\begin{split}
+&\Pi_j(P_{\fqq,L}^{\fgg,L}(\cff_{\fll,L}^{\fqq,L}(Z)))=
+\Gamma^j(I_{\overline{\fqq},L}^{\fgg,L}(\cff_{\fll,L}^{\overline{\fqq},L}(Z)))\\
+=&\text{irreducible representation of $G$ have highest weight }
+w^{-1}(\lambda+\delta)-\delta.
+\end{split}
+\]
+\end{enumerate}
+\end{thm}
+
+Note that $P_{\fqq,L}^{\fgg,L}(\cff_{\fll,L}^{\fqq,L}(Z) 
+= \cuu(\fgg)\otimes_{\cuu{\fqq}}Z$.
+Use duality theorem below
+\begin{thm}[Zuckerman duality \cite{KnappVogan1995}~Corollary~3.7]
+Let $(\fgg,L)\hookrightarrow (\fgg,K)$ be an inclusion of pairs, 
+and let $m=\dim(\fkk/\fll)$. For $0\leq j\leq m$ and $V$ in 
+$\ccc(\fgg,L)$, there are $\ccc(\fgg,K)$ isomorphisms
+\begin{align*}
+\Pi_j(V\otimes_\bC (\bigwedge^m(\fkk/\fll))^*)&\cong \Gamma^{m-j}(V)\\
+(\Pi_j(V\otimes_\bC \bigwedge^m(\fkk/\fll)))^c &\cong \Pi_{m-j}(V^c)\\
+(\Gamma^j(V\otimes_\bC\bigwedge^m(\fkk/\fll)))^c& \cong \Gamma^{m-j}(V)
+\end{align*} 
+nautural in $V$.
+\end{thm}
+ 
+we get
+\begin{thm}[\cite{Enright1985}~Proposition~6.2]
+If $\fgg$ act on $(\bigwedge^m(\fgg/\fll))^*$ trivially,
+$Z$ is highest weight $\lambda$ respect to $\Delta^+(\fll,\ftt)$. 
+\[
+\begin{split}
+ &\Gamma^{m-i}(\cuu(\fgg)\otimes_{\cuu(\fqq)}Z)\\
+\cong& \Pi_i(\cuu(\fgg)\otimes_{\cuu(\fqq)}Z \otimes (\bigwedge^m(\fgg/\fll))^*)\\
+\cong& \Pi_i(\cuu(\fgg)\otimes_{\cuu(\fqq)}Z)\\
+\cong& \begin{cases}
+\text{highest weight } w^{-1}(\lambda+\delta)-\delta & \text{if } i=\text{length of $w$, $\lambda+\delta$ non-singular}\\
+0 & \text{otherwise}  
+\end{cases}
+\end{split}
+\]
+\end{thm}
+When $\fgg$ is semisimple Lie algebra, automatically be a $(\bigwedge^m(\fgg/\fll))^*$ is trivial representation of $\fgg$,
+since it is $1$-dimension, and the action vanish on $[\fgg,\fgg]=\fgg$.
+
+\section{Unitary Lowest Weight Module}
+Reference \cite{Enright1983}.
+\subsection{$\aso(2,2n-2)$}
+Let 
+\[
+\lambda_z = (-2n+3, 0,\cdots, 0) + z(1, 0, \cdots, 0)
+= (-2n+3+z,0, \cdots, 0)
+\]
+Now
+\[
+N(\lambda_z)=\cuu(\fgg)\otimes_{\cuu(\fbb)}\bC_{\lambda_z}
+\]
+has a unique irreducible quotation $L(\lambda_z)$ which is unitarizable iff $z\leq n-1$ or $z=2n-3$ 
+\cite{Enright1983}~Theorem~10.4. 
+
+In fact, when $z=2n-3$ it just the trivial representation. 
+If $z= n-1$, 
+\[
+\lambda_{z} = (-(n-2), 0, \cdots, 0)
+\]
+is reducible, with the irreducible quotation be the Ladder representation. 
+When $z < n-1$ and is integer,
+we find it is a $\aso(2,2n-2$ subrepresentation of $\theta(D_l)$ for some $l\geq 2$.  
+
 \bibliography{bib/reppapers}{}
 \bibliographystyle{alpha}
 
