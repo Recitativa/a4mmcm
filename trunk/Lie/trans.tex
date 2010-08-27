@@ -2755,10 +2755,44 @@ Hence we get
 subgroup, $\fuu =\fpp^+=\sspan\Set{X_{e_1\pm e_j}|j\geq 2}$. Let 
 $\fqq=\fll\oplus\fpp^+$ and
 $\overline{\fqq}=\fll\oplus\fpp^-$, $\tau= (l+(q-p)/2,0,\cdots, 0)$ is a charicter of $\fkk$. Then
-$\theta(D_l)\cong \cuu(\gg)\otimes_{\cuu(\fqq)}\bC_{-\tau}\oplus  \cuu(\gg)\otimes_{\cuu(\overline{\fqq})}\bC_{\tau} $ as $\aso(2,p-2)$ module.
+$\theta(D_l)\cong \cuu(\gg)\otimes_{\cuu(\fqq)}\bC_{-\tau}\oplus  \cuu(\gg)\otimes_{\cuu(\overline{\fqq})}\bC_{\tau} $ as $\aso(2,2n-2)$ module.
 \end{enumerate}
 \end{lemma}
+\proof
+\begin{enumerate}[a)]
+\item
+\item As $SO(2)\otimes SO(2n-2)$ module $\theta(D_l)
+= \bigoplus_{a\geq b+n-2+l}(a,b,0,\cdots, 0)\oplus \bigoplus_{a\geq b+n-2+l}(-a,b,0,\cdots, 0)
+\triangleq V_1\oplus V_2$.
+Now, $V_1$ is a lowest weight module with l.w. $\tau=(l+n-2, 0, cdots, 0)$.
+In fact, $\fpp\cong \bC_p\otimes \bC_q$ as $SO(p)\otimes SO(q)$ representaton.
+When $p=2$, $\bC_p$ is reducible, $\fpp^- \cong (-1, 1,0, \cdots, 0)$.
+ $\fpp^-\bC_{\tau}=0$ since $\fpp^-\otimes \bC_{\tau} = (l+n-2-1,1, \cdots, 0)$ do not contain 
+in $V_1$. Similary, $V_2$ is a highest weight module with h.w $-\tau$.
 
+Now apply Borel-Weil-Bott-Kostant theorem, $m=2(2n-2)$,
+Note,
+\[
+-\tau+\delta = (-l+1,m-2,cdots, 0),
+\]
+When $l\geq m$ it is regular and
+\[
+\#\Set{\alpha\in \Delta^+| \inn{-\tau+\delta}{\alpha}<0}
+= \#\Set{e_1\pm e_j|2\leq j\leq q/2} = 1
+\]
+and $\dim = pq = 2q$.
+So 
+\[
+\Gamma^q_{\aso(2m),SO(2)\times SO(2m-2)}^{\so(2m),SO(2m)} V_2= (l-m,0,\cdots, 0) 
+\]
+as higest weight module. 
+
+Similary
+\[
+\Gamma^q V_1 = (-(l-m),0,\cdots, 0) 
+\]
+as lowest weight module
+\end{enumerate}
 \section{Example }
 Now we consider lifting of trivial charicter of $SL(2,\bR)$.
 There is a proposition from \cite{ZhuHuang1997}
@@ -2936,12 +2970,6 @@ r_{11} = & \frac{1}{2} h_1^2 + f_1e_1 + e_1f_1 \\
 r_{22} = & \frac{1}{2} h_2^2 + f_2e_2 + e_2f_2 \\
 r_{12} = & \frac{1}{2} h_1h_2 + f_1e_2 + e_1f_2  
 \end{align*}
-
-
-
-
-
-\subsection{Uniquness of  the module}
 
 
 
@@ -3339,7 +3367,7 @@ If $z= n-1$,
 \]
 is reducible, with the irreducible quotation be the Ladder representation. 
 When $z < n-1$ and is integer,
-we find it is a $\aso(2,2n-2$ subrepresentation of $\theta(D_l)$ for some $l\geq 2$.  
+we find it is a $\aso(2,2n-2)$ subrepresentation of $\theta(D_l)$ for some $l\geq 2$.  
 
 \bibliography{bib/reppapers}{}
 \bibliographystyle{alpha}
