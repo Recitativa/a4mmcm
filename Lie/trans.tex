@@ -2747,9 +2747,22 @@ Moreover,
 \lambda + \rho = (l-1, m-2, \cdots, 0)
 \]
 is the infinitesimal charicter of $\theta(D_l)$. 
+
+\begin{lemma}
+For $(\fgg,K)$ module $V$, $\left(\Gamma_{\fgg,K}{\fgg,G}\right)^j V = 0$ if the infinitesimal
+character or $V$ is singular. Here, $G$ and $K$ are compact Lie groups.
+\end{lemma}
+\proof
+If $(\Gamma_{\fgg,K}^{\fgg,G})^j V\neq 0$, it has a irreducible $G_0$ submodule $W$. 
+The infinitesimal charicter of $W$ is $\lambda + \rho_G$, where $\lambda$ 
+is the heightest weight of $W$. Hence $\inn{\lambda+\rho_G}{\alpha}>0$ for all
+$\alpha\in \triangle^+$. But derived functor preserve 
+the infinitesimal character. Hence should be non-singular.
+
 Hence we get
 \begin{lemma}
 \begin{enumerate}[a)]
+\item $\Gamma^j(\theta(D_l)) = 0$ if $l<m=n/2$.  
 \item When $l> n/2$, $\theta(D_l)\cong A_\fqq(\lambda)$ defined as above.
 \item When $p=2$, $\fll=\fkk$ is the maximal Lie algebra of maximal compact
 subgroup, $\fuu =\fpp^+=\sspan\Set{X_{e_1\pm e_j}|j\geq 2}$. Let 
@@ -2760,6 +2773,7 @@ $\theta(D_l)\cong \cuu(\gg)\otimes_{\cuu(\fqq)}\bC_{-\tau}\oplus  \cuu(\gg)\otim
 \end{lemma}
 \proof
 \begin{enumerate}[a)]
+\item If $l<m=n/2$, $\lambda+\rho$ is singular. It follows by above lemma.
 \item
 \item As $SO(2)\otimes SO(2n-2)$ module $\theta(D_l)
 = \bigoplus_{a\geq b+n-2+l}(a,b,0,\cdots, 0)\oplus \bigoplus_{a\geq b+n-2+l}(-a,b,0,\cdots, 0)
@@ -2783,7 +2797,7 @@ When $l\geq m$ it is regular and
 and $\dim = pq = 2q$.
 So 
 \[
-\Gamma^q_{\aso(2m),SO(2)\times SO(2m-2)}^{\so(2m),SO(2m)} V_2= (l-m,0,\cdots, 0) 
+\left(\Gamma_{\aso(2m),SO(2)\times SO(2m-2)}^{\aso(2m),SO(2m)}\right)^j V_2= (l-m,0,\cdots, 0) 
 \]
 as higest weight module. 
 
@@ -2793,6 +2807,7 @@ Similary
 \]
 as lowest weight module
 \end{enumerate}
+
 \section{Example }
 Now we consider lifting of trivial charicter of $SL(2,\bR)$.
 There is a proposition from \cite{ZhuHuang1997}
@@ -3368,6 +3383,9 @@ If $z= n-1$,
 is reducible, with the irreducible quotation be the Ladder representation. 
 When $z < n-1$ and is integer,
 we find it is a $\aso(2,2n-2)$ subrepresentation of $\theta(D_l)$ for some $l\geq 2$.  
+
+\section{Derived functor for disconnected groups}
+
 
 \bibliography{bib/reppapers}{}
 \bibliographystyle{alpha}
