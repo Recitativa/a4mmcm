@@ -133,6 +133,9 @@
 \def\ddt{\frac{d}{dt}}
 \def\pz#1{\partial z_{#1}}
 
+\def\Ind{{\rm Ind}}
+
+
 \def\cmm#1#2{\left[{#1},{#2}\right]}
 \def\acmm#1#2{\left\{{#1},{#2}\right\}}
 
@@ -2749,7 +2752,7 @@ Moreover,
 is the infinitesimal charicter of $\theta(D_l)$. 
 
 \begin{lemma}
-For $(\fgg,K)$ module $V$, $\left(\Gamma_{\fgg,K}{\fgg,G}\right)^j V = 0$ if the infinitesimal
+For $(\fgg,K)$ module $V$, $\left(\Gamma_{\fgg,K}^{\fgg,G}\right)^j V = 0$ if the infinitesimal
 character or $V$ is singular. Here, $G$ and $K$ are compact Lie groups.
 \end{lemma}
 \proof
@@ -2761,20 +2764,29 @@ the infinitesimal character. Hence should be non-singular.
 
 Hence we get
 \begin{lemma}
+Let $\fgg = \aso(2m,\bC)$, $G = O(2m)$, $G_0 = SO(2m)$, $K = O(p)\times O(q)$, 
+$K_0 = SO(p)\times SO(q)$.  
 \begin{enumerate}[a)]
 \item $\Gamma^j(\theta(D_l)) = 0$ if $l<m=n/2$.  
-\item When $l> n/2$, $\theta(D_l)\cong A_\fqq(\lambda)$ defined as above.
+\item When $l\geq n/2$, $\theta(D_l)\cong A_\fqq(\lambda)$ defined as above.
 \item When $p=2$, $\fll=\fkk$ is the maximal Lie algebra of maximal compact
 subgroup, $\fuu =\fpp^+=\sspan\Set{X_{e_1\pm e_j}|j\geq 2}$. Let 
 $\fqq=\fll\oplus\fpp^+$ and
 $\overline{\fqq}=\fll\oplus\fpp^-$, $\tau= (l+(q-p)/2,0,\cdots, 0)$ is a charicter of $\fkk$. Then
 $\theta(D_l)\cong \cuu(\gg)\otimes_{\cuu(\fqq)}\bC_{-\tau}\oplus  \cuu(\gg)\otimes_{\cuu(\overline{\fqq})}\bC_{\tau} $ as $\aso(2,2n-2)$ module.
+
+Moreover, we claim that
+\[
+\Gamma^q\theta(D_l) = (l-m,0,\cdot, 0; +1) 
+\]
+as $O(2m)$ module. 
+\item Similary, $\left(\Gamma_{\fgg,K}^{\fgg,G}\right)^j\theta(D_l) = (\lambda; +1)$ for $j = $.
 \end{enumerate}
 \end{lemma}
 \proof
 \begin{enumerate}[a)]
 \item If $l<m=n/2$, $\lambda+\rho$ is singular. It follows by above lemma.
-\item
+\item Clear.
 \item As $SO(2)\otimes SO(2n-2)$ module $\theta(D_l)
 = \bigoplus_{a\geq b+n-2+l}(a,b,0,\cdots, 0)\oplus \bigoplus_{a\geq b+n-2+l}(-a,b,0,\cdots, 0)
 \triangleq V_1\oplus V_2$.
@@ -2784,7 +2796,7 @@ When $p=2$, $\bC_p$ is reducible, $\fpp^- \cong (-1, 1,0, \cdots, 0)$.
  $\fpp^-\bC_{\tau}=0$ since $\fpp^-\otimes \bC_{\tau} = (l+n-2-1,1, \cdots, 0)$ do not contain 
 in $V_1$. Similary, $V_2$ is a highest weight module with h.w $-\tau$.
 
-Now apply Borel-Weil-Bott-Kostant theorem, $m=2(2n-2)$,
+Now apply Borel-Weil-Bott-Kostant theorem.
 Note,
 \[
 -\tau+\delta = (-l+1,m-2,cdots, 0),
@@ -2794,7 +2806,7 @@ When $l\geq m$ it is regular and
 \#\Set{\alpha\in \Delta^+| \inn{-\tau+\delta}{\alpha}<0}
 = \#\Set{e_1\pm e_j|2\leq j\leq q/2} = 1
 \]
-and $\dim = pq = 2q$.
+and $\dim \fpp = pq = 2q$.
 So 
 \[
 \left(\Gamma_{\aso(2m),SO(2)\times SO(2m-2)}^{\aso(2m),SO(2m)}\right)^j V_2= (l-m,0,\cdots, 0) 
@@ -2805,7 +2817,25 @@ Similary
 \[
 \Gamma^q V_1 = (-(l-m),0,\cdots, 0) 
 \]
-as lowest weight module
+as lowest weight module.
+
+Let $\sigma$ be a order 2 element in $O(q)/SO(q)$, Let 
+$\sigma$ also be the functor in $\ccc(\fgg,K)$(and $\ccc(\fgg,G)$
+ by taking $\sigma$ inveriant. 
+Consider that, 
+$\theta(D_l) = \left(\Ind_{\fgg, K_0}^{\fgg,K}A_\fqq(\lambda)\right)^\sigma$
+
+We have,
+\[
+\begin{split}
+&\left(\Gamma_{\fgg,K}^{\fgg,G}\right)^j\circ \sigma \circ \Ind
+= \left(\Gamma_{\fgg,K}^{\fgg,G} \circ \sigma\circ \Gamma_{\fgg, K_0}^{\fgg,K}\right)^j\\
+=& \left(\sigma \circ \Gamma_{\fgg,K_0}^{\fgg,G})^j
+=  \left(\sigma \circ \Gamma_{\fgg,G_0}^{\fgg,G}\circ \Gamma_{\fgg,K_0}^{\fgg,G_0}\right)^j\\
+= & \sigma\circ \Gamma_{\fgg,G_0}^{\fgg,G}\circ(\Gamma_{\fgg,K_0}^{\fgg,G_0})^j
+\end{split}
+\]
+Apply last functor for $j=q$, we get the result. 
 \end{enumerate}
 
 \section{Example }
