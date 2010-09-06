@@ -2766,7 +2766,7 @@ the infinitesimal character. Hence should be non-singular.
 Hence we get
 \begin{lemma}\label{lemma:derived_D_l}
 Let $\fgg = \aso(2m,\bC)$, $G = O(2m)$, $G_0 = SO(2m)$, $K = O(p)\times O(q)$, 
-$K_0 = SO(p)\times SO(q)$.  
+$K_0 = SO(p)\times SO(q)$.  $\lambda = (l-(p+q)/2,0,\cdots, 0)$.
 \begin{enumerate}[a)]
 \item $\Gamma^j(\theta(D_l)) = 0$ if $l<m=n/2$.  
 \item When $l\geq n/2$, $\theta(D_l)\cong A_\fqq(\lambda)$ defined as above.
@@ -2968,16 +2968,14 @@ Now apply the knowledge about $\cuu(\fgg)^K$ action on
 the derived functor module, in fact for the chain complex level.
 
 
-Now we choose two real form $W_{2,n-2}$ and $W_{p,q}$ of $W$, we have
+Now we choose two real form $W_{r,n-r}$ and $W_{p,q}$ of $W$, we have
 $G_1, G_2$ as real subgroup of $\OO(n,\bC)$ and $G'_1=G'_2$ as real subgroup 
 of $SL(2,\bC)$. $\fgg$ is the complexification of both $\fgg_1$ and $\fgg_2$. 
 
-Now we can idenfity $\cuu(\fgg)^{O(2,p-2)\times O(q)}$ and
+Now we can idenfity $\cuu(\fgg)^{O(r,p-r)\times O(q)}$ and
 $\cuu(\fgg)^{O(p)\times O(q)}$ as same subalgebra in $\cuu(\fgg)$.
 
-
-
-\section{Example }
+\subsection{Lifting of trivial character}
 Now we consider lifting of trivial charicter of $SL(2,\bR)$.
 There is a proposition from \cite{ZhuHuang1997}
 \begin{prop}[\cite{ZhuHuang1997}, Proposition~2.1]
@@ -2989,32 +2987,74 @@ is irreducible and unitary.
 
 First we need a result from Howe \cite{Howe1979Opq}, for any $p,q\geq 0$
 \[
-\omega_{p,q}\cong \int_{s} \tau_s\otimes \rho_s ds \bigoplus_m \theta(D_m)\otimes D_m.
+\omega_{p,q}\cong \int_{s} \tau_s\otimes \rho_s ds \bigoplus_m
+\left( \theta_{p,q}(D_m)\otimes D_m\right).
 \]
 Here the integration is respect to the principle series. $D_m$ is holomprhic 
 discrete series or anti-holomorphic series. 
 
-Take 
- we will see that $\mu$ is a lowest 
-weight module. Then by the algebric version of Bott-Borel-Weil theorem, 
-we have $(\Gamma_{\aso(2r),O(2)\times O(2r-2)}^{O(2r})^j \mu = \chh_l$
-
-
-Now we decomposite the Howe quotion $\rho(1)$ into $SO(2,p-2)\otimes SO(q)$ representations.
-Note that as $O(2,p-2)\times O(q)\times SL(2,\bR)\times SL(2,\bR)\times SL(2,\bR)$ module
+Suppose we have $(G=O(r,s),G'=SL(2,\bR))$ dual pair. 
+Now we decomposite the Howe quotion $\rho_{r,s}(1)$ into $O(r,p-r)\otimes O(q)$ representations ($p>r$, $r+s = p+q=n$ and $r,s,p,q$ are all even numbers).
+Note that as $O(r,p-r)\times O(q)\times SL(2,\bR)\times SL(2,\bR)$ module
 \[
 \begin{split}
-\omega =& \omega_{2,p-2}\otimes \omega_{0,q}\\
-=& \left(\bigoplus_{a,b} \theta_{2,p-2}(D_a)\otimes D_a 
-\oplus \int_s\tau_s\otimes \rho_s ds \right) \otimes \chh_b 
-\otimes \overline{D_{b+q/2}}\\ 
-=&\left(\bigoplus_{a,b}  \theta_{2,p-2}(D_a)\otimes D_a \otimes \overline{D_{b+q/2}}
-\right)\oplus \int_s\tau_s\otimes \rho_s ds \otimes \omega_{0,q}
+\omega =& \omega_{r,p-r}\otimes \omega_{0,q}\\
+=& \left(\bigoplus_a \theta_{r,p-r}(D_{a+p/2})\otimes D_{a+p/2} 
+\oplus \int_s\tau_s\otimes \rho_s ds \right) \otimes 
+\left( \bigoplus_b \chh_b 
+\otimes \overline{D_{b+q/2}}\right)\\ 
+=& \left(\bigoplus_{a, b} \theta_{r,p-r}(D_{a+p/2})\otimes \chh_b \otimes D_{a+p/2}
+\otimes \overline{D_{b+q/2}}\right) 
+\oplus\left(\bigoplus_b \int_s\tau_s\otimes \rho_s ds \otimes \chh_b 
+\otimes \overline{D_{b+q/2}}\right)
 \end{split}
 \]
 
+Since $\rho_{r,s}(1)$ is the maximal quotient of $\omega$ such that $SL(2,\bR)$ act trivially. 
+We have 
+\[
+\rho_{r,s}(1) \cong \bigoplus_{a+p/2=b+q/2} \theta_{r,p-r}(D_{a+p/2})\otimes \chh_b \otimes D_{a+p/2}
+\otimes \overline{D_{b+q/2}} 
+\]
 
+Let
+\[
+\begin{split}
+\fgg=& \aso(p+q)\\
+K_1 =& O(r)\times O(s)\\
+K_2 =& O(p)\times O(q)\\
+G_1 = &O(r,s)\\
+G_2 = &O(p,q)\\
+M = & K_1\cap K_2 = O(r)\times O(p-r)\times O(q)\\
+K = & G_1\cap K_2 = O(r,p-r)\times O(q) < G_1
+\end{split}
+\]
+\[
+\Gamma = \Gamma_{\aso(p+q), O(r)\times O(p-r)\times O(q)}^{\aso(p+q), O(p)\times O(q)}
+\]
+So as $K_2$-representation  
+\[
+\Gamma^{p-r}\rho_{r,s}(1) \cong \bigoplus_{\substack{a,b \geq 0\\a+p/2=b+q/2}}
+\chh_a\otimes \chh_b
+\]
+which exactly is same as the $K_2$-type of $\rho_{p,q}(1)$.
 
+Now pick any $K_2$-type $\chh_a\otimes \chh_b$ of $\Gamma^{p-r}\rho_{r,s}(1)$, the $U(\fgg)^{K_2}$
+action on it is given by the $U(\fgg)^{K}$ 
+action on $\theta_{r,q}(D_{a+p/2})\otimes \chh_b$. But this is given by
+the action $C,C',C''$ action which is determinde by corresponding 
+action on the trivial representation defined by 
+$D_{a+p/2}\otimes \overline{D_{b+q/2}}\to \bC$.
+So this action is same as which action gets from $\theta_{p,q}(1)$.  
+
+Hence we get 
+\begin{prop}
+\[
+\Gamma^{p-r}\theta_{r,s}(1) \cong \theta_{p,q}(1)
+\]
+\end{prop}
+
+\subsection{Lifting of discrete series}
 \appendix
 \section{Some inveriant theory}
 Let $V$ be a finit dimensional  vector space 
