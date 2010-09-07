@@ -2996,7 +2996,7 @@ discrete series or anti-holomorphic series.
 Suppose we have $(G=O(r,s),G'=SL(2,\bR))$ dual pair. 
 Now we decomposite the Howe quotion $\rho_{r,s}(1)$ into $O(r,p-r)\otimes O(q)$ representations ($p>r$, $r+s = p+q=n$ and $r,s,p,q$ are all even numbers).
 Note that as $O(r,p-r)\times O(q)\times SL(2,\bR)\times SL(2,\bR)$ module
-\[
+\begin{equation}\label{eq:decomega1}
 \begin{split}
 \omega =& \omega_{r,p-r}\otimes \omega_{0,q}\\
 =& \left(\bigoplus_a \theta_{r,p-r}(D_{a+p/2})\otimes D_{a+p/2} 
@@ -3008,7 +3008,7 @@ Note that as $O(r,p-r)\times O(q)\times SL(2,\bR)\times SL(2,\bR)$ module
 \oplus\left(\bigoplus_b \int_s\tau_s\otimes \rho_s ds \otimes \chh_b 
 \otimes \overline{D_{b+q/2}}\right)
 \end{split}
-\]
+\end{equation}
 
 Since $\rho_{r,s}(1)$ is the maximal quotient of $\omega$ such that $SL(2,\bR)$ act trivially. 
 We have 
@@ -3041,7 +3041,7 @@ which exactly is same as the $K_2$-type of $\rho_{p,q}(1)$.
 
 Now pick any $K_2$-type $\chh_a\otimes \chh_b$ of $\Gamma^{p-r}\rho_{r,s}(1)$, the $U(\fgg)^{K_2}$
 action on it is given by the $U(\fgg)^{K}$ 
-action on $\theta_{r,q}(D_{a+p/2})\otimes \chh_b$. But this is given by
+action on $\theta_{r,p-r}(D_{a+p/2})\otimes \chh_b$. But this is given by
 the action $C,C',C''$ action which is determinde by corresponding 
 action on the trivial representation defined by 
 $D_{a+p/2}\otimes \overline{D_{b+q/2}}\to \bC$.
@@ -3050,11 +3050,37 @@ So this action is same as which action gets from $\theta_{p,q}(1)$.
 Hence we get 
 \begin{prop}
 \[
-\Gamma^{p-r}\theta_{r,s}(1) \cong \theta_{p,q}(1)
+\Gamma^{p-r}\theta_{r,s}(1)\cong \theta_{p,q}(1)
 \]
 \end{prop}
 
 \subsection{Lifting of discrete series}
+Now consider the transfer of the lifting of discrete series. 
+From Howe\cite{Howe1979Opq}, the howe quotation 
+$\rho_{r,s}(D_l)$ is already irreducible, 
+hence $\theta_{r,s}(D_l) = \rho_{r,s}(D_l)$.
+
+By see-saw pair, we have a $(O(r,p-r)\times O(q)$ map
+\[
+V \triangleq \theta_{r,s}(D_l) \to \theta_{r,p-r}(D_{a+p/2})\otimes \chh_b\triangleq W
+\]
+where
+$ a\geq b+\frac{q-p}{2}+l$.
+
+But infact from the decomposition (\ref{eq:decomega1}) $W$
+ is a direct summand of $V$.
+Hence 
+$\Gamma^jW$ occur in $\Gamma^jV$ when it is non-zero, in particular 
+$\chh_a\otimes\chh_b$ occur in $\Gamma^{p-r}\rho_{r,s}(D_l)$. 
+Moreover, the action of $U(\fgg)^{K_2}$ action on this $K_2$-type is given by
+$U(\fgg)^K$ action on $\theta_{r,p-r}(D_{a+p/2}) \otimes\chh_b$ determined by 
+the action of $C,C',C''$. Hence we get
+\begin{prop}
+$\Gamma^{p-r}\theta_{r,s}(D_l)$
+has a subquotation isomorphic to $\theta_{p,q}(D_l)$.
+\end{prop}
+
+
 \appendix
 \section{Some inveriant theory}
 Let $V$ be a finit dimensional  vector space 
@@ -3368,7 +3394,7 @@ Choose $K = O(p,\bC)\otimes O(q,\bC)$. Now consider a real form of
 $K_0 = K\cap O(r,s) \cong O(r,p-r)\times O(q)$ (assume $r<p$).
 
 \begin{lemma} Under above notation.
-\[\cuu(\fgg)^{K} = \cuu(\fgg)^{K_0}\], 
+\[\cuu(\fgg)^{K} = \cuu(\fgg)^{K_0},\]
 hence, $\cuu(\fgg)^{K_0}$ is independent with the real form $O(r,s)$. 
 \end{lemma}
 \proof Note that we can have $K=K'Z$, where $K' = SO(n,\bC)$ is the identity component of
