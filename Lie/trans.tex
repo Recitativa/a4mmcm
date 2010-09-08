@@ -2588,89 +2588,90 @@ and
 as $\fkk$ representation. 
 By branching laws(Chapter~V, problems 15-23\cite{Knapp1996Lie},\cite{KimLee2010} ), $\fpp\otimes (\chh_a\otimes \chh_b) $ will be map into $\chh_{a+1}\otimes\chh_{b+1}\oplus \chh_{a-1}\otimes \chh_{b-1}$. 
 
-\subsection{decomposition of $V_{2,2n-2}$}
-Take 
-\[
-s = \begin{pmatrix}
-  I_p & 0 \\
-  0 & iI_q
-\end{pmatrix}
-\]
-Then we can have a explicit isomorphism 
-\[
-\begin{split}
-O(p,q)_\bC &\to O(p+q)\\
-X &\mapsto sXs^{-1}
-\end{split}
-\]
 
-By this isomorphism, we can see
-\[
-\theta_{p,q}(X)=-I_{p,q}X^T I_{p,q}
-\]
- is an Cartan involution on $\aso(n,\bC)$ defining a real 
-Lie subagebra isomorphic to $\aso(p,q)$. 
-Moreover the complex conjugation $\sigma$ respect to $\aso(p,q)$ is 
-\[
-\sigma(X) = I_{p,q}\overline{X}I_{p,q}
-\] 
+% \subsection{decomposition of $V_{2,2n-2}$}
+% Take 
+% \[
+% s = \begin{pmatrix}
+%   I_p & 0 \\
+%   0 & iI_q
+% \end{pmatrix}
+% \]
+% Then we can have a explicit isomorphism 
+% \[
+% \begin{split}
+% O(p,q)_\bC &\to O(p+q)\\
+% X &\mapsto sXs^{-1}
+% \end{split}
+% \]
 
-Consider $V_{2,2n-2}$ as a $(\aso(n,\bC), O(2,2r-2)\times O(2n-2r))$-module,
-by take the drived functor, we will show that 
-\[
-\left(\Gamma_{\aso(n,\bC), O(2,2r-2)\times O(2n-2r)}^{\aso(n,\bC), O(2r)\times O(2n-2r)}\right)^j
-V_{2,2n-2} \simeq V_{2r,2n-2r}
-\]
-for certain $j\in \bN$.
+% By this isomorphism, we can see
+% \[
+% \theta_{p,q}(X)=-I_{p,q}X^T I_{p,q}
+% \]
+%  is an Cartan involution on $\aso(n,\bC)$ defining a real 
+% Lie subagebra isomorphic to $\aso(p,q)$. 
+% Moreover the complex conjugation $\sigma$ respect to $\aso(p,q)$ is 
+% \[
+% \sigma(X) = I_{p,q}\overline{X}I_{p,q}
+% \] 
 
-Now we will decompose $V_{2,2n-2}$ as $O(2,2r)\times O(2(n-r-1))$ module
- by see-saw pair
-\[
-\xymatrix{
-O(2,2n-2) \ar@{-}[dr]& SL(2,\bR)\times SL(2,\bR) \\
-O(2,2r)\times O(2(n-r-1))\ar@{-}[ur] & SL(2,\bR)}
-\]
+% Consider $V_{2,2n-2}$ as a $(\aso(n,\bC), O(2,2r-2)\times O(2n-2r))$-module,
+% by take the drived functor, we will show that 
+% \[
+% \left(\Gamma_{\aso(n,\bC), O(2,2r-2)\times O(2n-2r)}^{\aso(n,\bC), O(2r)\times O(2n-2r)}\right)^j
+% V_{2,2n-2} \simeq V_{2r,2n-2r}
+% \]
+% for certain $j\in \bN$.
 
-Just as \cite{ZhuHuang1997}, suppose that $O(2,2r)\times O(2(n-r-1))$-module 
-$\mu \otimes \chh_l$ occure in $V_{2,2n-2}$.
-We will have a non-trivial map from 
-$\theta(\mu)\otimes \overline{D_{l+2(n-r-1)/2}}$ to $\bC$. 
-This means $\theta(\mu)\simeq D_{l+n-r-1}$. 
+% Now we will decompose $V_{2,2n-2}$ as $O(2,2r)\times O(2(n-r-1))$ module
+%  by see-saw pair
+% \[
+% \xymatrix{
+% O(2,2n-2) \ar@{-}[dr]& SL(2,\bR)\times SL(2,\bR) \\
+% O(2,2r)\times O(2(n-r-1))\ar@{-}[ur] & SL(2,\bR)}
+% \]
 
-Using the results in \cite{Howe1979Opq}, we will see that $\mu$ is a lowest 
-weight module. Then by the algebric version of Bott-Borel-Weil theorem, 
-we have $(\Gamma_{\aso(2r),O(2)\times O(2r-2)}^{O(2r})^j \mu = \chh_l$
+% Just as \cite{ZhuHuang1997}, suppose that $O(2,2r)\times O(2(n-r-1))$-module 
+% $\mu \otimes \chh_l$ occure in $V_{2,2n-2}$.
+% We will have a non-trivial map from 
+% $\theta(\mu)\otimes \overline{D_{l+2(n-r-1)/2}}$ to $\bC$. 
+% This means $\theta(\mu)\simeq D_{l+n-r-1}$. 
 
-\begin{align*}
-&(l+n-2, 0,\cdots, 0, l, 0, \cdots,0)\\
-&(-(l+n-2), 0, \cdots, 0,l , 0, \cdots, 0)
-\end{align*}
+% Using the results in \cite{Howe1979Opq}, we will see that $\mu$ is a lowest 
+% weight module. Then by the algebric version of Bott-Borel-Weil theorem, 
+% we have $(\Gamma_{\aso(2r),O(2)\times O(2r-2)}^{O(2r})^j \mu = \chh_l$
 
-Temporarily, let $M = O(2)\times O(2r)$, $K = O(2r+2)$, $\fkk = \aso(2r+2)$. 
-$M_1 = K^0\cap M = SO(2)\times SO(2r)$.
-By (\cite{BorelWallach2000} p.~29), 
-$\Gamma_{\fkk,M}^{K} = Ind_{MK^0}^K\Gamma_{\fkk,M_1}^{K^0}$.
+% \begin{align*}
+% &(l+n-2, 0,\cdots, 0, l, 0, \cdots,0)\\
+% &(-(l+n-2), 0, \cdots, 0,l , 0, \cdots, 0)
+% \end{align*}
 
-
-In fact, 
-\[
-\tau+\rho(-(l+n-2),0,\cdots, 0) + (r,r-1, \cdots, 0)
-= (-l-(n-r)+2,r-1, \cdots, 0)
-\]
-Take $w$ be change sign of the first and last coordinate. 
-$w(\tau+\rho)= (l+n-2r-2, 0, \cdots, 0) + (r,\cdots, 0)$ is dominate.
-Moreover,by the algebric version of Borel-Weil-Bott, we know, 
-\[
-(\Gamma_{\fkk,M}^K)^s = (l+n-p,0, \cdots, 0),
-\]
-where 
-\[
-s = \sharp\Set{\alpha\in \Delta_\fkk|\inn{\tau+\rho}{\alpha}<0}
-= p-2.
-\]
+% Temporarily, let $M = O(2)\times O(2r)$, $K = O(2r+2)$, $\fkk = \aso(2r+2)$. 
+% $M_1 = K^0\cap M = SO(2)\times SO(2r)$.
+% By (\cite{BorelWallach2000} p.~29), 
+% $\Gamma_{\fkk,M}^{K} = Ind_{MK^0}^K\Gamma_{\fkk,M_1}^{K^0}$.
 
 
-\subsubsection{Lifting of discrete series}
+% In fact, 
+% \[
+% \tau+\rho(-(l+n-2),0,\cdots, 0) + (r,r-1, \cdots, 0)
+% = (-l-(n-r)+2,r-1, \cdots, 0)
+% \]
+% Take $w$ be change sign of the first and last coordinate. 
+% $w(\tau+\rho)= (l+n-2r-2, 0, \cdots, 0) + (r,\cdots, 0)$ is dominate.
+% Moreover,by the algebric version of Borel-Weil-Bott, we know, 
+% \[
+% (\Gamma_{\fkk,M}^K)^s = (l+n-p,0, \cdots, 0),
+% \]
+% where 
+% \[
+% s = \sharp\Set{\alpha\in \Delta_\fkk|\inn{\tau+\rho}{\alpha}<0}
+% = p-2.
+% \]
+
+
+\subsection{Lifting of discrete series}
 
 
 Now we consider the lifting of discrete series, it is from Li\cite{Li1990}.
@@ -2769,7 +2770,7 @@ Let $\fgg = \aso(2m,\bC)$, $G = O(2m)$, $G_0 = SO(2m)$, $K = O(p)\times O(q)$,
 $K_0 = SO(p)\times SO(q)$.  $\lambda = (l-(p+q)/2,0,\cdots, 0)$.
 \begin{enumerate}[a)]
 \item $\Gamma^j(\theta(D_l)) = 0$ if $l<m=n/2$.  
-\item When $l\geq n/2$, $\theta(D_l)\cong A_\fqq(\lambda)$ defined as above.
+\item When $p\neq 2$, $l\geq n/2$, $\theta(D_l)\cong A_\fqq(\lambda)$ as $G_0$ module, defined as above.
 \item When $p=2$, $\fll=\fkk$ is the maximal Lie algebra of maximal compact
 subgroup, $\fuu =\fpp^+=\sspan\Set{X_{e_1\pm e_j}|j\geq 2}$. Let 
 $\fqq=\fll\oplus\fpp^+$ and
