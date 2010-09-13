@@ -37,15 +37,27 @@
 \def\tM{{\widetilde{M}}}
 \def\tG{{\widetilde{G}}}
 \def\tg{{\widetilde{g}}}
+\def\cG{{\check{G}}}
+\def\cg{{\check{g}}}
 \def\tm{{\widetilde{m}}}
 \def\htG{{\widetilde{G}}}
 \def\tH{{\widetilde{H}}}
+\def\tv{{\widetilde{v}}}
+\def\tu{{\widetilde{u}}}
+\def\tphi{{\widetilde{\phi}}}
+\def\cH{{\check{H}}}
 \def\htH{\widehat{\widetilde{H}}}
 \def\kk{\kappa}
 \def\inv{{\natural}}
 \def\ind{{\mathrm{ind}}}
 \def\tr{{\mathrm{tr\,}}}
 \def\rank{{\mathrm{rank\,}}}
+\def\cff{{\mathcal{F}}}
+\def\chh{{\mathcal{H}}}
+\def\coo{{\mathcal{O}}}
+\def\bC{{\mathbb{C}}}
+
+
 \begin{document}
 \maketitle
 
@@ -232,7 +244,7 @@ and $TS$ is the the map
 \[
 TS: U_1/\ker S \to \im T.
 \]
-Conversely, Witt's Theorem (see \cite{Jacobson1953} and \cite{HoweOsc1}
+Conversely, Witt's Theorem (see \cite{Jacobson1953} and \cite{HoweOsc1})
 says these $3$ invariants:
 $\ker S$, $\im T$ and $TS$, characterize the $G'$ orbit of $(S,T)$ in $X$. 
 In particular, we get a mapping 
@@ -402,15 +414,15 @@ of $\omega$ we will be working
 with has as space the tensor product of the space of $\omega_1$ realized by 
 an anisotropic or Fock model and the space of the Schr\"odinger model 
 for $\omega_2$ corresponding to $(X,Y)$. 
-The space of $\omega_q$ is an appropriate subspace $F$ of $L^2(W_0)$. 
+The space of $\omega_q$ is an appropriate subspace $\cff$ of $L^2(W_0)$. 
 (See \cite{HoweOsc2}) Its precise form will not be of great concern to us. 
-The space of $\omega$ will thus be $L^2(X)\otimes F \cong L^2(X,F)$, 
-the space of $F$-valued functions on $X$ with square integrable norm. 
+The space of $\omega$ will thus be $L^2(X)\otimes \cff \cong L^2(X,\cff)$, 
+the space of $\cff$-valued functions on $X$ with square integrable norm. 
 The subgroups $\Sp(W_0)$, $\GL(X)$ and $Z(N)$ are all subgroups
 of $\Sp(W_0)\times \Sp(X\oplus Y)$, so they act according to their
 known action on one or the other factors of $\omega$. 
 We record the formulas.
-\begin{equation}
+\begin{equation}\label{eq:17}
 \begin{split}
 a)\; & \omega(\tg)(\phi)(x)=\omega_1(\tg)(\phi(x))\quad \tg\in \tSp(W_0), 
 x\in X, \phi\in L^2(X,F)\\
@@ -428,7 +440,7 @@ we see it will be enough to write this formula for the
 elements $\gamma^{-1}(T)$, where $T\in \Hom(X,W_0)$. 
 There is a map $\rho$ of $W_0$ into the group of unitary operators of $F$ 
 satisfying
-\begin{equation}
+\begin{equation}\label{eq:18}
 \begin{split}
 \rho(w_1)\rho(w_2)=&\rho(w_1+w_2)\chi(\frac{1}{2}\inn{w_1}{w_2}) 
 \quad w_i \in W_0\\
@@ -485,7 +497,291 @@ T^{**'} &= -T \quad T\in \Hom_D(U,U')\\
 S^{*'*} &= -S \quad S\in \Hom_D(U',U)
 \end{split}
 \end{equation}
+In these coodrinetes on $W$, we may express $\inn{}{}$ by the formula 
+\begin{equation}\label{eq:23}
+\inn{S}{T} = \tr(S^*T) = \tr(TS^*)\quad S,T\in \Hom_D(U,U')
+\end{equation}
+Here $\tr$ is the trace on $\End_D(U)$ or on $\End_D(U')$ as algebra over $F$.
 
+By stability of $(G,G')$, we can find an isotropic subspace $U_1\subseteq U$
+such that $\dim U_1 \geq \dim U'$. Let $U_2$ be an isotropic 
+complement to $U_1^\perp$ in $U$, and set $U_0=(U_1+U_2)^\perp$, 
+so that $U=U_2\oplus U_0 \oplus U_1$. Set
+\begin{equation}\label{eq:24}
+\begin{split}
+Y =& \Hom_D(U_1,U')\\
+W_0 =& \Hom_D(U_0,U')\\
+X=& \Hom_D(U_2,U')
+\end{split}
+\end{equation}
+Then $Y$ is an isotropic subspace of $W$, and $X$ is an isotropic complement 
+to $Y^\perp$, and $W_0=(X+Y)^\perp$, so $W=X\oplus W_0\oplus Y$. Thus we may
+realize the osicllator representation of $\tSp$ by means of a mixed 
+polarization on a space $L^2(X,\cff)$ where $\cff$ is a suitable 
+anisotropic model for a suitable oscillator representation of $\tSp(W_0$. 
+We thus have the formulas $(\ref{eq:17})$, $(\ref{eq:18})$ and $(\ref{eq:19})$
+at our disposal.
+
+We observe that $G'$ is contained in $H=\Sp(W_0)\times\Sp(X\oplus Y)$. 
+Thus $\omega|_{\tG'}$ is essentially a tensor product. That is, 
+we have a cononical surjection
+\[
+\cH = \tSp(W_0)\times \tSp(X\oplus Y) \to \tH
+\]
+and, as noted above, the pullback of $\omega|_\tH$ to $\cH$ is an 
+outer tensor product $\omega_1\otimes \omega_2$ of oscillator 
+representations of the factors of $\cH$. 
+Let $\kk_1$ and $\kk_2$ be the kernels of the projections from
+$\tSp(W_0)$ to $\Sp(W_0)$ and from $\tSp(X\oplus Y)$ to $\Sp(X\oplus Y)$
+respectively and let $\epsilon_1$ be the character by which
+$\kk_i$ acts under $\omega_i$. Let $\cG'$ be the inverse image of
+$G'$ in $\cH$. Then $\cG'$ is an extension of $G'$ by $kk_1\times \kk_2$. 
+Moreover $\omega_1\otimes \omega_2|_{\cG'}$ factors to 
+$\cG'/\ker(\epsilon_1\otimes \epsilon_2)\cong \tG'$, and 
+the pushdown to $\tG'$ of $\omega_1\otimes \omega_2|_{\cG'}$ equals
+$\omega|_{\tG'}$. Hereafter it will be convenient to consider $\omega|_{\tG'}$
+as a representation of $\cG'$ so that we can decompose it into its tensor 
+factors and consider them separately. 
+To begin, let us not that the formula for $\omega|_{\cG'}$. Combining
+$(\ref{eq:17})$  $a)$ and $c)$ we find for $\cg$ in $\cG'$ with 
+image $g\in G'$,
+\begin{equation}\label{eq:25}
+\omega(\cg)(\phi)(x) = \sigma(\cg)\omega_1(\cg)(\phi(g^{-1}(x)))
+\end{equation}
+
+From $(\ref{eq:25})$ we see that as with type II pairs, $\omega|_{\cG'}$ will 
+decompose into a direct integral of representations associated to the orbits
+of $G'$ in $X$. Consider the structure of these orbits. 
+If $T\in \Hom_D(U_2,U')=X$, then $G'(T) = \Set{gT|g\in G'}$ is the 
+$G'$ orbit of $T$. Evidently $\ker T$ 
+and the form $(\,,\,)'\circ T$ on $U_2/\ker T$ are constant on the orbit
+$G'(T)$. Conversly, Witt's Theorem (\cite{Jacobson1953} and \cite{HoweOsc1})
+tells us that the data $\ker T$ and $(\,,\,)'\circ T$ determine $G'(T)$.
+Let $B'(U_2)$ denote the $F$-vector space of $forms$ on $U_2$ of 
+the same sort as $(\,,\,)'$. Then we have the mapping 
+\begin{equation}\label{eq:26}
+\begin{split}
+\tau \colon X/G' &\to B'(U_2)\\
+\tau(T) &= (\,,\,)' \circ T
+\end{split}
+\end{equation}
+We will, as previously, call $\tau$ the orbit parameter map. 
+
+Since $\dim U_2 \geq \dim U'$, the set of $T$ which are surjective 
+onto $U'$ will be an open set in $X$ with complement to measure zero. 
+We will call surjective $T$ \emp{generic} and their $G'$-orbits generic also.
+If $T$ is generic, then $\ker T$ coincides with the radical of the form 
+$\tau(T)$ and is therefore determined by $\tau(T)$. 
+Hence the orbit parameter map separates generic $G'$-orbits. 
+
+It is obvious that $G'$ acts freely on each generic $G'$-orbit.
+Hence $\omega_2|_{\cG'}$ is the integral over the set of generic $G'$-orbits 
+of the $(1\otimes \epsilon_2)$-regular representation. 
+Whence $\omega|_{\cG'}$ is the integral over the set of 
+generic $G'$-orbits of $\omega_1$ tensored with 
+the $(1\otimes \epsilon_2)$-regular representation of $\cG'$. 
+Since $\omega_1$ behaves like $\epsilon_1\otimes 1$ on $\kk_1\times \kk_2$,
+the tensor product of $\omega_1$ with the $(1\times \omega_2)$-regular
+representation is isomorphic to $\dim \omega_1$ copies of the 
+$(\epsilon_1\times \epsilon_2$-regular representation. This will 
+be seen from the following discussion which is quite general, and which will 
+be useful for computing of the commutant of $\omega(\cG')$. 
+
+Let $L$ be a locally compact group with compact central subgroup $C$. 
+Let $\psi_1$ and $\psi_2$ be characters of $C$. Let $\nu(\psi_1)$ 
+be the $\psi_1$-regular representation of $L$ and let $\mu$ be some 
+unitary representation of $L$ which is a multiple of $\psi_2$ on $C$. 
+Then there is a natural isomorphism between 
+$\mu\otimes \nu(\psi_1)$ and $(\dim \mu) 1\otimes \nu(\psi_1\psi_2)$, 
+where $1$ here denotes the trivial representation. To construct the isomorphism,
+Let $\chh$ be the Hilbert space on which $\mu$ acts, 
+and let $L^2(L,\chh,\psi_1)$ be the space of 
+square integrable functions $f$ from $L$ to $\chh$ such that 
+$f(cl) = \psi_1(c)f(l)$ for $c\in C$ and $l\in L$. 
+Then $\mu\otimes \nu(\psi_1)$ is the action of $L$ on $L^2(L,\chh,\psi_1)$
+defined by 
+\[
+\mu \otimes \nu(\psi_1)(l')f(l) = \mu(l')(f(ll')).
+\]
+For $f\in L^2(L,\chh,\psi_1)$, define $A(f)$ by 
+\[
+A(f)(l) = \mu(l)(f(l)).
+\]
+Then it is easy to see that $A$ is an isomorphism from $L^2(L,\chh, \psi_1)$
+to $L^2(L, \chh, \psi_1\psi_2)$. We further compute 
+\[
+\begin{split}
+A(\mu\otimes \nu(\psi_1)(l')(f))(l) 
+=& \mu(l)(\mu\otimes \nu(\psi_1)(l')(f)(l))\\
+=& \mu(l)\mu(l')(f(ll'))\\
+=&\mu(ll')(f(ll'))\\
+=&A(f)(ll').
+\end{split}
+\]
+Thus $A$ is seen to be an intertwining operator between $\mu\otimes \nu(\chi_1)$
+and the action $(\dim \chh)1\otimes \nu(\psi_1\psi_2)$ on
+$L^2(L, \chh, \psi_1\psi_2)$. Hence $A$ is the isomorphism we wanted. 
+
+The isomorphism $A$ allows us to compute the intertwining operators 
+for $\mu\otimes \nu(\psi_1)$. For it is well-known, and a trivial consequence
+of the case $\chh=\bC$, that the commutant of $L$ acting by 
+$(\dim \chh)1\otimes \nu(\psi_1\psi_2)$ on $L^2(L, \chh, \psi_1\psi_2)$ 
+is spanned in the weak topology by operators 
+\[
+\lambda(l')\otimes V\colon f(l)\to V(f({l'}^{-1}l))
+\]
+where $V$ is any bounded operator on $\chh$. conjugating by $A$, we 
+find the commutant of $L$ acting by $\mu\otimes \nu(\psi_1)$ 
+on $L^2(L, \chh,\psi_1)$ is spanned by operators of form 
+\begin{equation}\label{eq:27}
+A^{-1}(\lambda(l')\otimes V)A\colon f(l) \to \mu(l)^{-1}V \mu(l)(f({l'}^{-1}l))
+\end{equation}
+
+Consider now the action of $\omega(\tG)$. More precisely, let $P$ 
+be the parabolic subgroup of $\Sp$ preserving $Y$, 
+and let $P_1=P\cap G$, and consider $\omega(\tP_1)$. 
+We must first study the structure of $P_1$. Observe that $P_1$ is composed 
+of parts similar to the parts of $P$ discussed above. 
+For example, if $M$ is the Levi component of $P$ described above, then 
+$M_1=M\cap G=M\cap P_1$ is a Levi component for $P_1$ and 
+$M_1 \cong \GL(U_2)\times G_0$, where $G_0$ is the isometry group
+of $(\,,\,)$ restricted to $U_0$. And if $N_1 = N\cap P_1$, then 
+$N_1$ is the unipotent radical of $P_1$. $N_1$ is two-step nilpotent. 
+The center of $N_1$, denoted $Z(N_1)$, is isomorphic to 
+a certain space $B'(U_2^*)$ of forms on $U_2^*$, and 
+$N_1/Z(N_1)$ is isomorphic to $\Hom_D(U_0,U_2)$. We will describe explicitly 
+the appropriate isomorphisms.
+Consider first $N_1/Z(N_1)$. If $n\in N_1$, the image of $n$ in $N_1/Z(N_1)$
+defines by $(\ref{eq:13})$ a map $\gamma(n)$ from $\Hom_D(U_2,U')$ 
+to $\Hom_D(U_0,U')$. Since $n$ is in $G$, we see $\gamma(n)$ must 
+commute with $G'$ acting on these spaces by postmultiplication. 
+It follows there is a map $\gamma_1(n)$ in $\Hom_D(U_0,U_2)$
+such that 
+\begin{equation}\label{eq:28}
+  \gamma(n)(T) = T\gamma_1(n) \quad T\in \Hom_D(U_2,U')
+\end{equation}
+The map 
+\[
+\gamma_1 \colon N_1/Z(N_1) \quad n \mapsto \gamma_1(n)
+\]
+is the desired isomorphism. We may also define $\gamma_1^{-1}$ from 
+$\Hom(U_0,U_2)$ to $N_1$ in analogy with $(\ref{eq:14})$.
+
+Consider $Z(N_1)$. Since $U_2$ is left $D$ vector space, 
+$U_2^*$ is naturally considered a right $D$ vector space with
+scalar multiplication given by 
+\[
+u^*d(u) = u^*(u) d \quad d\in D, u\in U, u^*\in U^*
+\]
+Let $B'(U_2^*)$ be the space of forms $\beta$ on $U_2^*$ such that
+\[
+\beta(vd,\widetilde{v}) = \beta(v,\widetilde{v}) d
+\quad d\in D; v,\widetilde{v}\in U_2^*
+\]
+and having the same symmetry as $(\,,\,)'$ under interchange of $v$ 
+and $\widetilde{v}$.
+Take $z\in Z(N_1)$. By formula $(\ref{eq:13})$ we may attach 
+to $z$ a symmetric bilinear form $\beta_z$ on 
+$X=\Hom_D(U_2,U')=U_2^*\otimes_DU'$. Since $z$ commutes with $G'$, 
+the form $\beta_z$ is invariant under the action of $G'$ on $X$. 
+This allows one to show there is a well defined form $\beta_z^1\in B'(U_2^*)$
+such that $v,\tv\in U_2^*$, and $u', \tu'\in U'$
+\[
+\beta_z(v\otimes u', \tv\otimes\tu') = \tr(\beta_z^1(v,\tv)(u',\tu')')
+\]
+Then the map 
+\begin{equation}\label{eq:29}
+\beta^1\colon Z(N_1)\to B'(U_2^*) \quad z\mapsto \beta_z^1
+\end{equation}
+is the isomorphism we want. 
+
+The space $B'(U_2^*)$ is naturally dual to $B'(U_2)$, the range of 
+the orbit parameter map for $G'$ orbits. Thus $B'(U_2^*)$ may be 
+also identified to the Pontrjagin dual of $B'(U_2)$. To accomplish this 
+explicitly, let $\Set{e_i}_{i=1}^k$ be a basis for $U_2$ 
+and let $\Set{f_i}_{i=1}^k$ be the dual basis for $U_2^*$. 
+Given $\beta$ in $B'(U_2^*)$ and 
+$\tau$ in $B'(U_2)$, put 
+\begin{equation}\label{eq:30}
+\psi_\beta(\tau) = \chi(\frac{1}{2} \tr(\sum_{i,j}\tau(e_i,e_j)\beta(f_i,f_j)))
+\end{equation}
+Then $\psi_\beta$ is a unitary character of $B'(U_2)$.
+
+Now we may describe the action of $\omega(\tP_1)$. 
+First look at $P_1\cap \Sp(X\oplus Y) = \GL_D(U_2)\cdot Z(N_1)$.
+From $(\ref{eq:17})$, $(\ref{eq:26})$ $(\ref{eq:29})$ and $(\ref{eq:30})$
+we see that for $z$ in $Z(N_1)$, the operator $\omega(z)$ is multiplication 
+by $\psi_z\circ \tau$, where $\tau$ is the orbit parameter map.
+In particular $\omega(Z(N_1))$ acts by a scalar on each 
+generic $G'$-orbit and separates these orbits. 
+From $(\ref{eq:17})$ we see $\GL_D(U_2)$ acts transitively on
+the generic points of $X$. Hence $\GL_D(U_2)$ permutes the 
+generic $G'$-orbits transitively, and the isotropy group in $\GL_D(U_2)$
+of each generic $G'$ orbit acts transitively on that orbit. 
+Therefore, if $U_0$ were trivial we would be in precisely the same situation 
+as we were when dealing with type II pairs, and would therefore be done.
+Here we must also take into account the action of $\omega(N_1)$. 
+
+Fix a generic $G'$-orbit $\coo$ in $X$, and point $T$ in $\coo$. 
+Given $\phi$ in $C_c^\infty(X,\cff)$ (smooth functions of compact 
+support with values in $\cff$), define
+$\tphi$ in   $C_c^\infty(\cG',\cff,\epsilon_2)$ by
+\[
+\tphi(\cg)=\sigma(\cg)\psi(g^{-1}(T))
+\]
+Then formula $(\ref{eq:25})$ says for $\cg\in \cG'$
+\[
+(\omega(\cg)(\phi))^{\sim}(\cg_0) =\omega_1(\cg)(\tphi(\cg_0\cg)) 
+\]
+so that the map $\phi\mapsto \tphi$ intertwines $\omega$ with the action 
+$\omega_1\otimes \nu(\epsilon_2)$ of $\cG$ on $C_c^\infty(\cG',\cff, \epsilon_2)$,
+where $\nu(\epsilon_2)$ is the $(1\otimes \epsilon_2)$-regular representation
+of $\cG$. We also see from $(\ref{eq:19})$ that if $S\in \Hom_D(U_0,U_2)$, 
+then 
+\begin{equation}\label{eq:31}
+\begin{split}
+\omega(\gamma_1^{-1}(S)\phi)^{\sim}(\cg) = & \rho(-g^{-1}TS)(\tphi(\cg))\\
+=& \omega_1(\cg)^{-1} \rho(-TS)\omega_1(\cg)(\tphi(\cg))
+\end{split}
+\end{equation} 
+Formula $(\ref{eq:31})$ shows that via $\phi\mapsto \tphi$, and
+operator $\omega(\gamma_1^{-1}(S))$ goes to an 
+operator of the form $A^{-1}(\lambda(1) + \rho(-TS))A$ in $(\ref{27})$. 
+Since $T$ is generic, 
+the map $S\mapsto TS$ from $\Hom_D(U_0,U_2)$ to $\Hom_D(U_0,U')$
+is surjective. Further it is well known (see for example  \cite{Cartier1966})
+that the operators $\rho(w)$ given by $(\ref{eq:18})$
+for $w\in W_0=\Hom_D(U_0,U')$ act irreducibly on $\cff$. Hence 
+the weak closure of the span of the $\rho(w)$ is the space of 
+all bound operators on $\cff$. 
+
+Combining this fact with our previous observations we find ourselves 
+in the following situation:
+\begin{enumerate}[i)]
+\item $\omega|_{\cG'}$ is a direct integral over the generic $G'$-orbits
+of copies of the representation $\omega_1\otimes \nu(\epsilon_2)$, 
+where $\nu(\epsilon_2)$ 
+is the right $(1\otimes \epsilon_2)$-regular representation.
+\item $\omega(Z(N_1))$ provides multiplication operators acting as scalars on 
+each generic orbit and separating the generic orbits.
+\item $\omega(\GL_D(U_2))$ permutes the orbits transitively.
+\item Additionally, the isotropy group of a given orbit, 
+acts on the restriction of functions to that orbit by $(\dim U)1\oplus\lambda$,
+where $\lambda$ is the left $\epsilon_2$-regular representation.
+\item $\omega(N_1)$ acts on the restrictions of functions to a given 
+orbit by operators of the form $(\ref{eq:27})$ with $l'=1$,
+and weakly spans all such operators.  
+\end{enumerate}
+From (iv) and (v), we see by our general discussion before $(\ref{eq:27})$
+that $\omega(\GL_D(U_2)\cdot N_1)$ acting on the restriction of functions to
+any generic $G'$-orbit, generates the full commutant of
+$\omega_1\otimes \nu(\epsilon_2)$. Hence using (ii) and (iii) 
+an argument similar to the one sketched in the type II case
+establises the result here also. This concludes Theorem~\ref{thm:1}.
+
+On reading \cite{Asmuth1979}, I find the above proof is very similar to Asmuth's
+argument for the pair $(\Sp_2n,O_n)$ where $O_m$ is anisotropic $p$-adic
+of dimension $2$ or $4$ and $n\geq m$ (so the pair is stable).
 
 \bibliographystyle{alpha}
 \bibliography{bib/reppapers}
