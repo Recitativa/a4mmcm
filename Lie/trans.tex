@@ -84,7 +84,7 @@
 \def\tJ{{\widetilde{J}}}
 \def\tDelta{\widetilde{\Delta}}
 \def\barZ{{\overline{Z}}}
-
+\def\bz{{\overline{z}}}
 
 \def\Ad{\mathrm{Ad}}
 \def\agl{\mathfrak{gl}}
@@ -3385,6 +3385,34 @@ e_i &\leftrightarrow \lambda \frac{\partial}{\partial z_i}\\
 f_i &\leftrightarrow z_i\\
 \end{align*}
 
+
+\subsection{relation of differential operators between Schordinger and Fock model}
+Choose a polaization of real symplectic space $W_0$, $\Set{e,f}$ be bases
+
+Now let 
+\begin{align*}
+\omega(e) &=  x\\
+\omega(f) &= i\partial_ x = i\frac{\partial}{\partial x}
+\end{align*}
+Then it satisfy $\omega(\inn{e,f})=\omega(1)=i$, 
+Let 
+\begin{align*}
+z =& e + if\\
+\bz =& e -if 
+\end{align*}
+Then $\inn{z}{\bz}=2i$, hence $\omega(\inn{z}{\bz}) = -2$. 
+So let
+\begin{align*}
+\omega(z) &= \sqrt{2} z \\
+\omega(\bz) &=  \sqrt{2} \partial_z
+\end{align*}
+Hence 
+\begin{align*}
+x = \omega(e) 
+&= \omega(\frac{1}{2}(z+\bz)) = \frac{1}{\sqrt{2}}\left(\partial_z + z\right)\\
+\partial_x = \omega(-if) &= \omega(\frac{1}{2}(-z + \bz)) = 
+\frac{1}{2}\left(\partial_z -z \right)
+\end{align*}
 
 \section{$\cuu(\fgg)^K$}
 \subsubsection{Case $\fgg=\aso(n,\bC)$} 
