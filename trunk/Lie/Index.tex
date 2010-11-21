@@ -1,0 +1,96 @@
+\documentclass[11pt]{amsart}
+\usepackage[margin=2cm]{geometry}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{braket}
+\usepackage{paralist}
+
+\newtheorem{Thm}{Theorem}
+\newtheorem{Cor}[Thm]{Corollary}
+\newtheorem{Lem}[Thm]{Lemma}
+\newtheorem{Def}[Thm]{Definition}
+\newtheorem{Rmk}[Thm]{Remark}
+
+
+\def\cA{{\mathcal{A}}}
+\def\cAg{{\mathcal{A}_G}}
+\def\cL{{\mathcal{L}}}
+\def\cE{{\mathcal{E}}}
+\def\bC{{\mathbb{C}}}
+\def\bA{{\mathbb{A}}}
+\def\bAg{{\mathbb{A}_\mathfrak{g}}}
+\def\fgg{{\mathfrak{g}}}
+\def\bZ{{\mathbb{Z}}}
+\def\dg{{d_{\fgg}}}
+
+\title{Index}
+\author{Ma Jia Jun, HT071232M}
+
+
+\begin{document}
+\maketitle
+
+\section{Equivariant vector bundle}
+
+$H$ is a Lie group, 
+
+\section{Equivariant Cohomology}
+Let $G$ be a Lie group. 
+$\cE$ be a equivariant vector bundle. 
+
+Consdier the space $\bC[\fgg]\otimes \cA(M,\cE)$, which is the space of polynomial maps from $\fgg$ to $\cA(M,\cE)$. View this space as a $G$-space by action
+\[
+(g\cdot \alpha)(X) = g\cdot (\alpha (g^{-1}\cdot X)) \quad \forall g\in G,
+X\ in \fgg, \alpha \in \bC[\fgg]\otimes \cA(M,\cE).
+\]
+Give a $\bZ$-grading of this space by 
+\[
+\deg(P\otimes \alpha) = 2\deg(P)+\deg(\alpha), 
+\quad \forall P\in \bC[\fgg], \alpha \in \cA(M,\cE)
+\]
+
+\begin{Def}
+Let 
+\[
+\cA_G(M,\cE) = \left(\bC[\fgg]\otimes \cA(M,\cE)\right)^G
+\]
+be the $G$-invariant subspace of $\bC[\fgg]\otimes \cA(M,\cE)$, vectors in this space called equivariant differential forms with value in $\cE$.
+
+Define operator $\dg$ on $\bC[\fgg]\otimes \cA(M,\cE)$ by
+\[
+\dg \alpha(X) = d(\alpha(X)) - \tau(X)(\alpha(X)).
+\]
+It can be show that $\dg$ increase the degree by one and restrict on 
+$\cAg(M,\cE)$ we have $\dg^2= 0$. Hence we can define
+$H_G^*(M,\cE)$ be the cohomology of complex $\left(\cAg(M,\cE),\dg\right)$, 
+called equivariant cohomology with coffecient in $\cE$. 
+\end{Def}
+
+\begin{Rmk}
+Some useful formulars, 
+\[
+(\dg^2 \alpha)(X) = - \cL^\cE(X)\alpha(X)\quad \forall \alpha
+\in \bC[\fgg]\otimes \cA(M,\cE)
+\]
+The infinitesimal condition to define a $G$-equivariant form is 
+\[
+\cL^\cE(Y)\alpha(X) - \alpha([Y,X]) = 0.
+\]
+If $\cE$ is the trivial line bundle on $M$ with $G$ act trivially on the fiber, it will give the usual equivariant cohomology.
+\end{Rmk}
+
+
+\begin{Def}
+Suppose a superbundle $\cE = \cE^+\oplus \cE^-$ 
+with both even and odd part are $G$-equvariant.
+A superconnection on $\cE$ called $G$-invariant if 
+\[
+[\bA,\cL(X)]=0.
+\]
+The equivariant superconnection $\bAg$ is the operator given by 
+\[
+(\cAg \alpha)(X) = (\cA-\tau(X))(\alpha(X)) \quad \forall  \bC[\fgg]\otimes \cA(M,\cE).
+\]
+\end{Def}
+
+\end{document}
