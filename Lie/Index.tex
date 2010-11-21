@@ -15,13 +15,22 @@
 \def\cA{{\mathcal{A}}}
 \def\cAg{{\mathcal{A}_G}}
 \def\cL{{\mathcal{L}}}
+\def\cLE{\cL^\cE}
 \def\cE{{\mathcal{E}}}
 \def\bC{{\mathbb{C}}}
 \def\bA{{\mathbb{A}}}
 \def\bAg{{\mathbb{A}_\mathfrak{g}}}
+\def\Fg{{F_{\fgg}}}
 \def\fgg{{\mathfrak{g}}}
 \def\bZ{{\mathbb{Z}}}
 \def\dg{{d_{\fgg}}}
+\def\End{{\mathrm{End}}}
+\def\Str{\mathop{\mathrm{Str}}}
+\def\kw#1{{\em #1}}
+\def\ch{\mathrm{ch}}
+\def\Ah{{\hat{A}}}
+\def\chg{\ch_\fgg}
+\def\Ahg{\Ah_\fgg}
 
 \title{Index}
 \author{Ma Jia Jun, HT071232M}
@@ -30,9 +39,58 @@
 \begin{document}
 \maketitle
 
+
+\section{Notation and useful facts}
+Let $G$ be a Lie group and $\fgg$ is the Lie algebra of $G$.
+\begin{Def}
+We say that $\pi:\cE\to M$ is a  $G$-equivariant fiber bundle if $G$ act smoothly on left both on $\cE$ and $M$ such that 
+\[
+\gamma \circ \pi = \pi \circ \gamma \quad \forall \gamma\in G.
+\]
+When $\cE$ is a vector bundle, we require in addition that the $G$
+action on fiber, $\gamma^\cE:\cE_x \to \cE_{\gamma\cdot x}$,  is linear.
+
+Now $G$ act on the space of sections $\Gamma(M,\cE)$ by 
+\[
+(\gamma\cdot s)(x) = \gamma^\cE\cdot s(\gamma^{-1}\cdot x) \quad
+\forall x\in M, s\in \Gamma(M,\cE). 
+\]
+For $X \in \fgg$, we denote $\cL^\cE(X)$ the infinitesimal action of
+$\Gamma(M,\cE)$, 
+\[
+\cL^\cE(X) s =\left.\frac{d}{dt}\right|_{t=0} exp(tX)\cdot s,
+\]
+which is called the Lie derivative.
+\end{Def}
+For any vector field $X$ on $M$, it defines a famliy of diffeomorphisms $\phi_t$
+on $M$ for sufficient small $t$. This diffeomorphism will induce the
+Lie derivative on tensor bundles, denote by $\cL(X)$. 
+
+Now consider the bundle of exterior differentials $\bigwedge
+T^*M$, denote $\cA(M)=\Gamma(M,\bigwedge T^*M)$  the space of
+differential forms, which is a graded algebra by nature grading
+inherited from $\bigwedge T^*M$.
+Denote $\cA(M,\cE)=\Gamma(M,\bigwedge T^*M\otimes \cE)$  the space
+of $\cE$ valued differential forms. We can take $\cE$ be the trivial
+line bundle on $M$, then $\cA(M) \cong \cA(M,\cE)$ as $\cA(M)$ module.  
+
+For any differential form $\alpha$, denote the
+left exterior multiplication  by $\alpha$ operator on $\cA(M, \cE)$ by
+$\varepsilon(\alpha)$.
+For any vector field $X$ on $M$, denote the contraction map induced
+from the natural paring between $TM$ and $T^*M$ by 
+$\tau(X):\cA^\bullet(M,\cE)\to
+\cA^{\bullet-1}(M,\cE)$. Also denote the exterior differential
+operator by $d:\cA^\bullet(M,\cE) \to \cA^{\bullet+1}(M,\cE)$. The
+  following E.Cartan's homotopy formula is useful:
+\[
+\cL(X) = d\circ \tau(X) + \tau(X)\circ d.
+\]
+For any $X\in \fgg$ it induce a vector feild $X_M$ on $M$, we will
+abuse the notation still call this vector feild $X$.
+
 \section{Equivariant vector bundle}
 
-$H$ is a Lie group, 
 
 \section{Equivariant Cohomology}
 Let $G$ be a Lie group. 
@@ -61,40 +119,122 @@ Define operator $\dg$ on $\bC[\fgg]\otimes \cA(M,\cE)$ by
 \dg \alpha(X) = d(\alpha(X)) - \tau(X)(\alpha(X)).
 \]
 It can be show that $\dg$ increase the degree by one and restrict on 
-$\cAg(M,\cE)$ we have $\dg^2= 0$. Hence we can define
-$H_G^*(M,\cE)$ be the cohomology of complex $\left(\cAg(M,\cE),\dg\right)$, 
-called equivariant cohomology with coffecient in $\cE$. 
+$\cAg(M)$ we have $\dg^2= 0$. Hence we can define
+the equivariant cohomology $H_G^*(M)$ to be the cohomology of complex $\left(\cAg(M),\dg\right)$.
 \end{Def}
 
 \begin{Rmk}
-Some useful formulars, 
+By homotopy formula,
 \[
-(\dg^2 \alpha)(X) = - \cL^\cE(X)\alpha(X)\quad \forall \alpha
-\in \bC[\fgg]\otimes \cA(M,\cE)
+(\dg^2 \alpha)(X) = - \cL(X)\alpha(X)\quad \forall \alpha
+\in \bC[\fgg]\otimes \cA(M)
 \]
 The infinitesimal condition to define a $G$-equivariant form is 
 \[
-\cL^\cE(Y)\alpha(X) - \alpha([Y,X]) = 0.
+\cL(Y)\alpha(X) - \alpha([Y,X]) = 0 \quad \forall X,Y \in \fgg.
 \]
-If $\cE$ is the trivial line bundle on $M$ with $G$ act trivially on the fiber, it will give the usual equivariant cohomology.
+Hence $\dg^2 = 0$ on $\cAg(M)$.
 \end{Rmk}
-
 
 \begin{Def}
 Suppose a superbundle $\cE = \cE^+\oplus \cE^-$ 
 with both even and odd part are $G$-equvariant.
 A superconnection on $\cE$ called $G$-invariant if 
 \[
-[\bA,\cL(X)]=0.
+[\bA,\cL^\cE(X)]=0.
 \]
 The equivariant superconnection $\bAg$ is the operator given by 
 \[
-(\cAg \alpha)(X) = (\cA-\tau(X))(\alpha(X)) \quad \forall  \bC[\fgg]\otimes \cA(M,\cE).
+(\bAg \alpha)(X) = (\bA-\tau(X))(\alpha(X)) \quad \forall  \bC[\fgg]\otimes \cA(M,\cE).
 \]
+It satisfies \[
+\bAg(\alpha\wedge \theta) = \dg \alpha \wedge \theta +
+(-1)^{|\alpha|}\alpha\wedge \bAg\theta \quad \forall\alpha \in \cA(M),
+\theta \in \cA(M,\cE).
+\]
+Define the \kw{equivariant curvature} $\Fg$ by
+\[
+\varepsilon(\Fg(X))\alpha(X) = \bAg^2\alpha(X) + \cL^\cE(X)\alpha(X),
+\] 
+which can be show is in $\cAg^+(M,\End(\cE))$.
+Moreover the \kw{equivariant Bianchi formula} holds:
+\[
+\bAg\Fg \triangleq [\bAg,\varepsilon(\Fg)] = 0.
+\]
+Define the \kw{moment} of $X\in \fgg$ by 
+\[
+\mu(X) = \cLE(X) - [\tau(X),\bA] = \Fg(X) - F \in \cAg^+(M,\End(\cE)),
+\]
+where $F = \bA^2$ is the usual curvature for superconnection $\bA$.
+
+If $f(z)$ is a polynomial in the indeterminate $z$, we define an
+\kw{equivariant characteristic form} by taking supertrace,
+i.e. $\Str(f(\Fg)) \in \cAg^+(M)$. In paticular, we have
+\kw{equivariant Chern character} 
+\[\chg(\bA) = \Str(\exp(-\Fg))
+\]
+ and
+\kw{equivariant $\Ah$-genus} 
+\[
+\Ahg(\nabla)(X) =
+{\det}^{1/2}\left(\frac{\Fg(X)/2}{\sinh(\Fg(X)/2)}\right)
+\]
+for $G$-equvariant connection $\nabla$.
 \end{Def}
 
+\begin{Rmk}
+We extend $\cL^\cE(X)$ to act on $\cA(M,\cE)$ by 
+\[
+\cLE(X)(\alpha\wedge \theta) =\cL(X) \alpha \wedge \theta +\alpha
+\wedge \cLE(X)\theta \quad \forall \alpha\in \cA(M), \theta\in \cA(M,\cE).
+\]
+
+As in the non-equivariant case, we have $\Str(f(\Fg))$ is
+equivariantly closed, i.e. $\dg \Str(f(\Fg)) = 0$ and its equivariant
+cohomology class is independent of the choice of the $G$-invariant
+superconnection $\bA$.
+\end{Rmk}
+
+
+\subsection{symplectic manifold}
+A symplectic manifold is a manifold $M$ with symplectic two form
+$\Omega$, where $\Omega\in \cA^2(M)$ such that $d\Omega=0$ and
+the bilinear form $\Omega_x(X,Y)$ on $T_xM$ is non-degenerate.
+For any $f\in C^\infty(M)$ one can define the \kw{Hamiltonian vector
+  field} generated by $f$ by 
+\[
+df = \tau(H_f)\Omega.
+\] 
+$G$ acts on $M$ Hamiltonian means that there is a $G$-equivariant linear
+map $\mu:\fgg\to C^\infty(M)$ such that 
+\[
+d\mu(X) = \tau(X) \Omega \quad \forall X\in \fgg.
+\]
+One define the \kw{symplectic moment map} of the action be the
+$C^\infty$ map $\mu\colon M\to \fgg^*$ defined by $(X,\mu(m)) =
+\mu(X)(m)$.
+
+\subsection{Coadjoint Orbit}
+The most importent example of symplectic manifold with Hamiltonian $G$
+action is the Coadjoint Orbit. 
+Let $\fgg^*$ be the dual vector space to the vector space of Lie
+algebra $\fgg$ of $G$. $G$ act on $\fgg$ by adjoint action and on
+$\fgg^*$ by corresponding dual action.
+
+Let $M_\lambda$ be an orbit of coadjoint represention of $G$ on $\fgg^*$.
+
+\subsection{The Localization Formula}
+
+\begin{Thm} Let $\alpha$ be an equivariantly closed differential form
+  on $M$. Assume $X_M$ has only isolated zeros. Then
+\[
+\int_M \alpha(X) = (-2\pi)^{\dim(M)/2}\sum_{p\in M_0(X)}\frac{\alpha(X)(p)}{\det^{1/2}(L_p)},
+\]
+where $\alpha(X)(p)$ means the value of the function $\alpha(X)_{[0]}$
+at point $p\in M$.
+\end{Thm}
 
 \section{The Fourier Transform of Coadjoint Orbits}
-
+The 
 
 \end{document}
