@@ -6,6 +6,7 @@
 \usepackage{paralist}
 
 \newtheorem{Thm}{Theorem}
+\newtheorem{Prop}{Proposition}
 \newtheorem{Cor}[Thm]{Corollary}
 \newtheorem{Lem}[Thm]{Lemma}
 \newtheorem{Def}[Thm]{Definition}
@@ -32,6 +33,7 @@
 \def\chg{\ch_\fgg}
 \def\Ahg{\Ah_\fgg}
 \def\ddt{\left.\frac{d}{dt}\right|_{t=0}}
+\def\sprof{{\bf sketch of the proof:}}
 
 \title{Index}
 \author{Ma Jia Jun, HT071232M}
@@ -90,12 +92,16 @@ operator by $d:\cA^\bullet(M,\cE) \to \cA^{\bullet+1}(M,\cE)$. The
 For any $X\in \fgg$ it induce a vector feild $X_M$ on $M$, we will
 abuse the notation still call this vector feild $X$.
 
+We will assume the group $G$ is a compact Lie group and $\cE$ is a
+equivariant vector bundle with base space $M$  in the following part
+of this notes. Moreover, let $n=\dim M$, $l = \dim M/2$.
+For any differentail form $\alpha$ let $\alpha_{[n]}$ be the degree
+$n$ part of this form.
+
 \section{Equivariant vector bundle}
 
 
 \section{Equivariant Cohomology}
-Let $G$ be a Lie group. 
-$\cE$ be a equivariant vector bundle. 
 
 Consdier the space $\bC[\fgg]\otimes \cA(M,\cE)$, which is the space of polynomial maps from $\fgg$ to $\cA(M,\cE)$. View this space as a $G$-space by action
 \[
@@ -257,7 +263,53 @@ Hamiltonian with symplectic moment map $\mu$.
 
 
 \subsection{The Localization Formula}
+By using a equivariant Riemannian metric $(\,,\,)$ on $M$ (which is always exist
+in our case since $G$ is compact). 
+Let $M_0(X)$ be the set of zero of vector field $X_M$ for $X\in \fgg$.
+One can show that 
+\begin{Prop}
+Let $\alpha$ be an equivariantly closed differential form on $M$. 
+Then $\alpha(X)_{[n]}$ $M_0(X)$ is exact outside $M_0(X)$.
+\end{Prop}
+\sprof 
+Define one form $\theta$ by $\theta(\xi) = (X_M, \xi)$. 
+Then $d_X^2 \theta  = -\cL(X)\theta  = 0$ and $d_X\theta  = |X|^2 + d\theta$ is
+invertable outside $M_0(M)$. 
+Let $\beta$ defined by $ d_X\theta \wedge \beta = \theta \wedge \alpha(X)$ outside $M_0(M)$.
+Note that $d_X^2 \theta=0$ and $d_X\alpha(X) = 0$, we have
+\[
+d_X\theta \wedge \alpha(X) = 
+d_X(d_X\theta \wedge \beta) = d_X\theta \wedge d_X\beta.
+\]
+So 
+\[
+\alpha(X) = d_X(\beta) = d_X\left(\frac{\theta\wedge \alpha(X)}{d_X\theta}\right).
+\]
+Read the above result of highest degree piece of each side, we have
+\[
+\alpha(X)_{[n]} = d\left(\frac{\theta\wedge \alpha(X)}{d_X\theta}\right)_{[n-1]}.
+\] \qed
 
+From the above result, it is tempting to reduce the integration
+$\int_M\alpha(X)$ to a integration over $M_0(X)$, the set of zeroes $X_M$.
+%%In general, this will be subtle since $M_0(X)$ may not even be a manifold. 
+
+Let us consider the simplest but important case, $M_0(X)$ is a set of
+isolated points.
+For any point $p\in M_0(X)$,
+$\cL(X)\xi = [X_M,\xi]$ will gives rise to a linear
+transformation $L_p$ of $T_pM$ since 
+\[\cL(X)(f\xi) = (X(f))\xi + f\cL(X)\xi = f\cL(X)\xi \quad \forall \xi
+\in \Gamma(M,TM), f\in C^\infty(M).
+\]. This linear transformation is invertible, because if $\xi\in T_pM$ is
+annihilated by $L_p$ all the  points on the curve $\exp_p(s\xi)$ will
+be fiexed by $\exp(tX)$ which contridict to  $p$ is an isolated point
+in $M_0(X)$.
+Since $G$ is compact, $L_p\in SO(n)$ by choosing a $G$-invariant
+metric on $T_pM$. Now $\det^{1/2} (L_p)$ make sense.
+
+Now we have the Localization formula for isolated zeroes.
+  
 \begin{Thm} Let $\alpha$ be an equivariantly closed differential form
   on $M$. Assume $X_M$ has only isolated zeros. Then
 \[
