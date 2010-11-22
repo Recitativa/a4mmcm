@@ -658,20 +658,59 @@ One check that
 [h,e] &= 2 f & [h,f] &= -2e &[e,f] &= 2h\\
 e &= E -F& f &= iE+iF & h& = iH.
 \end{align*}
-Now the Killing form $B_K(X,Y) = -\frac{1}{4}\Tr(XY)$.
+%Now the Killing form $B_K(X,Y) = -\frac{1}{4}\Tr(XY)$.
 
 We identify $\fgg^*$ as $\fgg$ by the from 
-$B(X,Y) = -\frac{1}{2}\Tr(XY)$.
+$B(X,Y) = -\frac{1}{2}\Tr(XY)$ 
+Therefore if $X = x_1e+x_2f+x_3h$ and $Y = y_1e+y_2f+y_3h$, 
+$B(X,Y) = x_1y_1+x_2y_2+x_3y_3$.
+Also by above formula, 
+\[
+[X,Y] = 2(x_2y_3-x_3y_2)e+2(x_3y_1- x_1y_3)f +2(x_1y_2-y_1x_2) h.
+\]
+The symplectic form at point $f = x_1 e+ x_2 f+ x_3 h \in \fgg^*$ is 
+\[
+\Omega_f = - 2(x_1 dx_2dx_3 + x_2dx_3 dx_1+ x_3 dx_1 dx_2).
+\] 
+Therefore the Liouville form $d\beta = \Omega/2\pi=\frac{-r}{\pi}d\sigma$
+where $d\sigma$ is the usual Euclidean measure on the sphere $S_r$ and
+$r = \|(x_1,x_2,x_3)\|$. 
+
 Choose $\ftt = \bR h$, so $\ftt_\bC = \bC H$. 
 Now the root system $\Delta(\fgg,\ftt) = \Set{\pm 2 H} \subset \fgg_\bC^* $
-and the Weyl group act on $\ftt$ by change sign, ie.e $wh = -h$.
+and the Weyl group $W\cong \bZ/2\bZ$ act on $\ftt$ by change sign, i.e. $wh = -h$. 
 The lattic $L_T = \Set{2\pi h} \subset \ftt$, $L_T^* = \bZ h$.
 The $G$ act on $\fgg\cong \bR^3$ by rotation, so the $G$ orbits in $\fgg^*$ 
 are spheres $x_1^2+x_2^2+x_3^2=r^2$. For $\lambda \in L_T^*$, $M_\lambda$ is the
 spheres with integer radius. 
 
+For $\lambda = r h \in \fgg^*$, it is regular if and only if $r \neq 0$.
 
+The set of regular element in $L_T^*/W$ can be identified by the set of positive 
+integers. For any positive integer $\lambda = nh$ we associate the representation $T_\lambda$ to be the natural representation of $SU(2)$ on $S^{n-1}(\bC^2)$, that
+is the space of homogeneous degree $n-1$ 
+elements in the symmetric algebra $S(\bC^2)$. 
 
+Clearly $z_1^{j}z_2^{n-j}$ ($z_1, z_2$ form a basis of $\bC^2$) 
+are the $T$ weight space of representation $T_\lambda$.
+Now it is easy to see that 
+\[
+\Tr\, T_\lambda(exp(th)) 
+= \sum_{j=0}^{n-1}e^{i(n-1-j)t} = \frac{e^{int} - e^{-int}}{e^{it}-e^{-it}}
+\]
+
+Choose the positive system $P = \Set{2H}$, 
+\[
+j_\fgg^{1/2}(th) = \frac{e^{ti}-e^{-ti}}{2ti}
+\]
+
+Now the Kirillov theorem is saying that 
+\[
+\frac{e^{ti}-e^{-ti}}{2ti} \frac{e^{int} - e^{-int}}{e^{it}-e^{-it}}
+=  j_\fgg^{1/2}(th)\Tr\, T_\lambda(exp(th)) 
+= \int_{M_\lambda}e^{if(X)}d\beta
+= \int_{S_r}e^{i zt} (x\,dy\,dz+y\,dz\,dx+z\,dy\,dx)/\pi.
+\]
 
 \bibliographystyle{alpha}
 \bibliography{reppapers}
