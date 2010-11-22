@@ -6,7 +6,7 @@
 \usepackage{paralist}
 
 \newtheorem{Thm}{Theorem}
-\newtheorem{Prop}{Proposition}
+\newtheorem{Prop}[Thm]{Proposition}
 \newtheorem{Cor}[Thm]{Corollary}
 \newtheorem{Lem}[Thm]{Lemma}
 \newtheorem{Def}[Thm]{Definition}
@@ -21,6 +21,7 @@
 \def\cE{{\mathcal{E}}}
 \def\cS{{\mathcal{S}}}
 \def\bC{{\mathbb{C}}}
+\def\bR{{\mathbb{R}}}
 \def\bZ{{\mathbb{Z}}}
 \def\bA{{\mathbb{A}}}
 \def\bAg{{\mathbb{A}_\mathfrak{g}}}
@@ -28,10 +29,12 @@
 \def\fgg{{\mathfrak{g}}}
 \def\ftt{{\mathfrak{t}}}
 \def\frr{{\mathfrak{r}}}
+\def\fnn{{\mathfrak{n}}}
+\def\fso{{\mathfrak{so}}}
 \def\bZ{{\mathbb{Z}}}
 \def\dg{{d_{\fgg}}}
 \def\End{{\mathrm{End}}}
-\def\Str{\mathop{\mathrm{Str}}}
+\def\Str{{\mathrm{Str}}}
 \def\kw#1{{\bf \em #1}}
 \def\ch{\mathrm{ch}}
 \def\Ah{{\hat{A}}}
@@ -47,14 +50,14 @@
 \def\Tr{\mathrm{Tr}}
 \def\Mr{M^{\gamma}}
 
-\title{Index}
+\title{Equivariant Index Theorem}
 \author{Ma Jia Jun, HT071232M}
 
 
 \begin{document}
 \maketitle
 
-This almost a notes on the book Heat Kernels and Dirac Operators\cite{berline2004heat}.
+This almost a notes on the book Heat Kernels and Dirac Operators\cite{berline2004heat}. The example can be found in \cite{vergne1982representations}.
 
 \section{Notation and useful facts}
 Let $G$ be a Lie group and $\fgg$ is the Lie algebra of $G$.
@@ -114,6 +117,7 @@ let $\sigma_V\colon C(V) \to \bigwedge V$ be the symbol maps and
 $c \colon V \to C(V)$ be the natural embedding.
 
 \section{Equivariant Index Theorem}
+\label{Sec:fix}
 Here we assume $G$ action preserve the orientation and is isometric.
 Hence induce a $G$ action on Clifford bundle $C(M)$, which $g$ act as algebra
 automorphism. 
@@ -197,19 +201,21 @@ We have following form of equivariant index theorem.
 \begin{Thm}[Atiyah-Segal-Singer]
 The equivariant index $\ind_G(\gamma,D)$ of an equivariant Dirac operator $D$
 associated to an ordinary connection satisfy the following formula:
-\[
+\begin{equation}\label{eq:fixed}
 \int_G(\gamma, D) = i^{-\dim M/2}\int_{\Mr}(2\pi)^{-\dim \Mr/2} T_M
 \left(\frac{\Ah(\Mr)\ch_G(\gamma,\cE/\cS)}{\det^{1/2}
 (1-\gamma_1\exp(-R^1)}\right).
-\]
+\end{equation}
 \end{Thm}
+
+We are interested in the special case of $\Mr$ is a set of isolated points.
 
 \section{Equivariant Cohomology}
 
 Consdier the space $\bC[\fgg]\otimes \cA(M,\cE)$, which is the space of polynomial maps from $\fgg$ to $\cA(M,\cE)$. View this space as a $G$-space by action
 \[
 (g\cdot \alpha)(X) = g\cdot (\alpha (g^{-1}\cdot X)) \quad \forall g\in G,
-X\ in \fgg, \alpha \in \bC[\fgg]\otimes \cA(M,\cE).
+X \in \fgg, \alpha \in \bC[\fgg]\otimes \cA(M,\cE).
 \]
 Give a $\bZ$-grading of this space by 
 \[
@@ -276,6 +282,11 @@ Define the \kw{moment} of $X\in \fgg$ by
 \mu(X) = \cLE(X) - [\tau(X),\bA] = \Fg(X) - F \in \cAg^+(M,\End(\cE)),
 \]
 where $F = \bA^2$ is the usual curvature for superconnection $\bA$.
+One example is the Riemennian moment for the tangent bundule with Levi-Civita connection $\nabla$.
+That is (by $\nabla$ is torsion free)
+\begin{equation}\label{eq:Rm}
+\mu^M(X)Y = [X,Y] - \nabla_X Y = -\nabla_Y X
+\end{equation}
 
 If $f(z)$ is a polynomial in the indeterminate $z$, we define an
 \kw{equivariant characteristic form} by taking supertrace,
@@ -320,8 +331,8 @@ map $\mu:\fgg\to C^\infty(M)$ such that
 \[
 d\mu(X) = \tau(X) \Omega \quad \forall X\in \fgg.
 \]
-One define the \kw{symplectic moment map} of the action be the
-$C^\infty$ map $\mu\colon M\to \fgg^*$ defined by $(X,\mu(m)) =
+One define the \kw{symplectic moment map} of the action to be the
+$C^\infty$ map $\mu\colon M\to \fgg^*$ given by $(X,\mu(m)) =
 \mu(X)(m)$.
 
 Call the volume form 
@@ -424,6 +435,10 @@ where $\alpha(X)(p)$ means the value of the function $\alpha(X)_{[0]}$
 at point $p\in M$.
 \end{Thm}
 
+We also develop the general localization formula by introduce the 
+actions and curvature on normal bundle $\cN$ over the zero set $M_0$ 
+of $X$ similar to Section~\ref{Sec:fix}. But let me omit it here.
+
 \subsection{The Fourier Transform of Coadjoint Orbits}
 We follow the notation in Section~\ref{Sec:co1}.
 For any coadjoint orbit $M$, we define the Fourier transform of an orbit
@@ -442,7 +457,10 @@ For any root $\alpha\in \Delta$ pick $H_\alpha \in i\ftt$ such that $\inn{\alpha
 %$X_\alpha \in \fgg_\alpha, {X_{\bC}}_{\alpha}\in {\fgg_{\bC}_{-\alpha}$ and $ H%_\alpha\in \ftt_\bC $ such that they form a $\mathfrak{sl}(2,\bC)$ system, i.e.% 
 %$[H_\alpha, X_\alpha] = 2X_\alpha, [H_\alpha,X_{-\alpha}] = -2 X_\alpha$ and $[X_{}]$
 For given $\lambda\in\ftt^*$,
-let $P_\lambda = \Set{\alpha\in \Delta|\inn{\lambda}{iH_\alpha}>0}$.
+let 
+\begin{equation}\label{eq:positive}
+P_\lambda = \Set{\alpha\in \Delta|\inn{\lambda}{iH_\alpha}>0}.
+\end{equation}
 In particularly, when$\lambda$ is regular, i.e. 
 the isotropy subgroup $G(\lambda)$ of $\lambda$ is $T$ 
 or equivalently the orbit $M_\lambda$ has maximal possible dimension (we define $X\in \ftt$ ragular in the similar way), $P_\lambda$ will give a positive system of the root system $\Delta$.
@@ -477,8 +495,185 @@ to (\ref{eq:fourier}) one get the result.
 \section{Kirillov Formula}
 The right hand side of the Equation~(\ref{eq:harish1}) is very similar to 
 Weyl Character Formula for irreducible representation of Compact Lie groups.
-We will see the relations in soon.
+We will see the relations in soon. 
 
+Let me indroduce necessary notations to state the Kirillove formula first.
+Then we will see the Kirillov Character Formula will be a consequence of 
+compute the index of a line bundle in two different way.  
+
+Let $R_\fgg = \mu^M+ R \in \cA^2_G(M,\fso(M))$ be the equivariant Riemannian 
+curvature where $\mu^M$ is the Riemannian moment map.
+The equivariant $\Ah$-genus of the tengent budle is 
+\[
+\Ah_\fgg(X,M) = {\det}^{1/2}\left(\frac{R_\fgg(X)/2}{\sinh(R_\fgg(X)/2}\right).
+\]
+The \kw{twisting moment} is 
+\[
+\mu^{\cE/\cS}(X) = \mu^\cE(X) - \frac{1}{2}\sum_{i<j}(\mu^M(X)e_i,e_j)c(e^i)c(e^j)
+\]
+where $\Set{e^i|1\leq i\leq n}$ is an orthonormal frame of $T^*M$.
+
+Now we can define the \kw{equivariant twisting curvature} to be
+\[
+F_\fgg^{\cE/\cS}(X) = \mu^{\cE/\cS}(X) + F^{\cE/\cS}\in \cA^2_G(M,\End_{C(M)}(\cE))
+\]
+and the \kw{equivariant ralative Chern character} form to be
+\[
+\ch_\fgg(X, \cE/\cS) = \Str_{\cE/\cS}(\exp(-F_\fgg^{\cE/\cS}(X))).
+\]
+
+Now we have 
+\begin{Thm}[Kirillov formula]
+For $X\in \fgg$ sufficiently close to zero, 
+\[
+\ind_G(e^{-X},D)=(2\pi i)^{-n/2}\int_M(\Ah_\fgg(X,M)\ch_\fgg(X,\cE/\cS).
+\]
+\end{Thm}
+This theorem can be proved by using the general localization formula.
+The approach is to show that the forms in this integral is equal to the 
+forms appeared in the fixed point formula~\ref{eq:fixed} of equivariant index theorem.   
+
+\subsection{Character formulas }
+Let $T$ be a maximal torus of connected compact Lie group. 
+Then $T\cong \ftt/L_T$ as abelian Lie group 
+where $L_T = \Set{X\in \ftt|e^X = 1}$ is a lattic in $\ftt$.
+
+Define the dual lattic 
+\[
+L_T^* = \Set{l\in \ftt^*|l(X) \in 2\pi \bZ \,\,\, \forall X \in L_T}
+\subset \ftt^*.
+\]
+Choose a positive system $P\subset \Delta(\fgg_\bC,\ftt_\bC)$ of roots.
+Let $\rho_P = \frac{1}{2}\sum_{\alpha\in P} \alpha$, 
+Now let $X_G = i\rho_P + L_T^*$ be the shifted dual lattice.
+
+The representation theory of connected compac Lie group tells us:
+\begin{Thm}
+The set of irreducible representation of $G$ is one-one correspond to 
+the Weyl group $W$ orbit of the regular element of $X_G$.
+In particular, 
+and dominate respect to $P$ there exits a unique 
+finite-dimensional irreducible representation $T_\lambda$ of $G$
+(with infinitesimal character $\lambda$).
+If $\lambda$ is dominate with respect to $P$ (this can always be down by let
+$P=P_\lambda$ see Equation~(\ref{eq:positive})), we have 
+\[
+\Tr(T_\lambda(e^X)) = \frac{\sum_{w\in W}\sign(w)e^{i\inn{w\lambda}{X}}}{
+\prod_{\alpha\in P}(e^{\inn{\alpha}{X}/2} - e^{-\inn{\alpha}{X}/2} }.
+\] 
+\end{Thm}
+
+Define the analytic $G$-invariant function $j_\fgg^{1/2}$ on $\fgg$, 
+which restrict on $\ftt$ is equal to 
+\[
+j_\fgg^{1/2} (X) 
+= \prod_{\alpha\in P}\frac{e^{\inn{\alpha}{X}/2} - e^{-\inn{\alpha}{X}/2}}{\inn{\alpha}{X}}
+\]
+
+By comapring the value restrict on $\ftt$ of the bothside of following 
+equation(for right handside, which is the Fourier transform of Coadjoint Orbit
+$M_\lambda$, c.f. Equation~(\ref{eq:harish1}))
+we get the identity by Chevalley's theorem 
+for $G$-invariant functions.
+\begin{Thm}[Kirillov Character Formula]
+Let $\lambda\in X_G$. We have
+\[
+j_\fgg^{1/2}(X) \Tr(T_\lambda(e^X)) = \int_{M_\lambda}e^{if(x)} d\beta.
+\] 
+\end{Thm} 
+
+Now we construct a line bundle $\cL_\lambda = G\times_T\bC_\lambda$ over
+$M_\lambda \cong G/T$ for any $\lambda\in X_G$.
+
+Kostant shows that $\cL_\lambda$ has a canonical $G$-invariant canonical 
+Hermitian connection given by $\nabla_X = \cL(X) - i\mu^\lambda(X)$.
+The corresponding equivariant curvature is $i(\mu^\lambda(X)+\Omega_\lambda)$.
+
+Now assume $G$ is simple connected, $i\rho_P\in L^*_T$, so that $X_G = L_T^*$.
+We can construct a a Spinor bundle $\cS = G\times_T\bigwedge \fnn$, where 
+$\fnn = \bigoplus_{\alpha\in P} \fgg_\alpha$. %%check.
+
+Consider the twisted $G$-invariant Dirac operator 
+$D_\lambda$ on $\Gamma(G/T,\cS\otimes \cL_\lambda)$.
+Then
+\begin{Thm}
+The fixed point formula for the equivariant index of $D_\lambda$ is given by 
+\[
+\ind_G(e^X, D_\lambda) =  \frac{\sum_{w\in W}\sign(w)e^{i\inn{w\lambda}{X}}}{
+\prod_{\alpha\in P}(e^{\inn{\alpha}{X}/2} - e^{-\inn{\alpha}{X}/2} }.
+\]
+The Kirillove formula for $X\in \fgg$ small gives 
+\[
+\ind_G(e^X, D_\lambda) = \epsilon(P,P_\lambda)\int_{M_\lambda} j_\fgg^{-1/2}(X)
+e^{if(x)} d\beta.
+\] 
+Here $\epsilon(P,P_\lambda)$ is the some sign function which can given by 
+$\sign(w)$ where $w$ is the unique element in $W$ such that $wP = P_\lambda$.
+\end{Thm}
+ We can see the Kirillov Character Formula is a special case of above Theorem.
+
+\section{A example: $G = SU(2)$}
+Now let us look at a simple example: $G=SU(2)$.
+The Lie algebra 
+\[
+\fgg  = \mathfrak{su}(2) = 
+\Set{\begin{pmatrix}
+ix_3 & -x_1+ix_2\\
+x_1+ix_2& -ix_3
+\end{pmatrix}
+}\cong \bR^3.
+\] 
+Let
+\begin{align*}
+H =& \begin{pmatrix}
+1 & 0\\
+0 & -1
+\end{pmatrix} &
+E =& \begin{pmatrix}
+0 & 1\\
+0 & 0
+\end{pmatrix} &
+F =& \begin{pmatrix}
+0 & 0\\
+1 & 0
+\end{pmatrix}
+\end{align*}
+\begin{align*}
+h =& \begin{pmatrix}
+i & 0\\
+0 & -i
+\end{pmatrix} &
+e =& \begin{pmatrix}
+0 & 1\\
+-1 & 0
+\end{pmatrix} &
+f =& \begin{pmatrix}
+0 & i\\
+i & 0
+\end{pmatrix}
+\end{align*}
+One check that 
+\begin{align*}
+[H,E] &= 2E& [H,F] &= -2F& [E,F] &= H\\ 
+[h,e] &= 2 f & [h,f] &= -2e &[e,f] &= 2h\\
+e &= E -F& f &= iE+iF & h& = iH.
+\end{align*}
+Now the Killing form $B_K(X,Y) = -\frac{1}{4}\Tr(XY)$.
+
+We identify $\fgg^*$ as $\fgg$ by the from 
+$B(X,Y) = -\frac{1}{2}\Tr(XY)$.
+Choose $\ftt = \bR h$, so $\ftt_\bC = \bC H$. 
+Now the root system $\Delta(\fgg,\ftt) = \Set{\pm 2 H} \subset \fgg_\bC^* $
+and the Weyl group act on $\ftt$ by change sign, ie.e $wh = -h$.
+The lattic $L_T = \Set{2\pi h} \subset \ftt$, $L_T^* = \bZ h$.
+The $G$ act on $\fgg\cong \bR^3$ by rotation, so the $G$ orbits in $\fgg^*$ 
+are spheres $x_1^2+x_2^2+x_3^2=r^2$. For $\lambda \in L_T^*$, $M_\lambda$ is the
+spheres with integer radius. 
+
+
+
+
+\bibliographystyle{alpha}
 \bibliography{reppapers}
 
 \end{document}
