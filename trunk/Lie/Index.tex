@@ -16,24 +16,36 @@
 \def\cA{{\mathcal{A}}}
 \def\cAg{{\mathcal{A}_G}}
 \def\cL{{\mathcal{L}}}
+\def\cN{{\mathcal{N}}}
 \def\cLE{\cL^\cE}
 \def\cE{{\mathcal{E}}}
+\def\cS{{\mathcal{S}}}
 \def\bC{{\mathbb{C}}}
+\def\bZ{{\mathbb{Z}}}
 \def\bA{{\mathbb{A}}}
 \def\bAg{{\mathbb{A}_\mathfrak{g}}}
 \def\Fg{{F_{\fgg}}}
 \def\fgg{{\mathfrak{g}}}
+\def\ftt{{\mathfrak{t}}}
+\def\frr{{\mathfrak{r}}}
 \def\bZ{{\mathbb{Z}}}
 \def\dg{{d_{\fgg}}}
 \def\End{{\mathrm{End}}}
 \def\Str{\mathop{\mathrm{Str}}}
-\def\kw#1{{\em #1}}
+\def\kw#1{{\bf \em #1}}
 \def\ch{\mathrm{ch}}
 \def\Ah{{\hat{A}}}
 \def\chg{\ch_\fgg}
 \def\Ahg{\Ah_\fgg}
 \def\ddt{\left.\frac{d}{dt}\right|_{t=0}}
-\def\sprof{{\bf sketch of the proof:}}
+\def\sproof{{\bf sketch of the proof:}}
+\def\inn#1#2{\left<{#1},{#2}\right>}
+\def\brk#1{\left<{#1}\right>}
+\def\sign{\mathrm{sign\,}}
+\def\sspan{\mathrm{span}}
+\def\ind{\mathrm{ind}}
+\def\Tr{\mathrm{Tr}}
+\def\Mr{M^{\gamma}}
 
 \title{Index}
 \author{Ma Jia Jun, HT071232M}
@@ -42,6 +54,7 @@
 \begin{document}
 \maketitle
 
+This almost a notes on the book Heat Kernels and Dirac Operators\cite{berline2004heat}.
 
 \section{Notation and useful facts}
 Let $G$ be a Lie group and $\fgg$ is the Lie algebra of $G$.
@@ -93,13 +106,103 @@ For any $X\in \fgg$ it induce a vector feild $X_M$ on $M$, we will
 abuse the notation still call this vector feild $X$.
 
 We will assume the group $G$ is a compact Lie group and $\cE$ is a
-equivariant vector bundle with base space $M$  in the following part
-of this notes. Moreover, let $n=\dim M$, $l = \dim M/2$.
+equivariant vector bundle with base space $M$ in the following part
+of this notes. Let $n=\dim M$, $l = \dim M/2$.
 For any differentail form $\alpha$ let $\alpha_{[n]}$ be the degree
-$n$ part of this form.
+$n$ part of this form. For Clifford algebra $C(V)$ over quadratic vector space,
+let $\sigma_V\colon C(V) \to \bigwedge V$ be the symbol maps and 
+$c \colon V \to C(V)$ be the natural embedding.
 
-\section{Equivariant vector bundle}
+\section{Equivariant Index Theorem}
+Here we assume $G$ action preserve the orientation and is isometric.
+Hence induce a $G$ action on Clifford bundle $C(M)$, which $g$ act as algebra
+automorphism. 
 
+\begin{Def}
+An \kw{equivariant Clifford module} $\cE$ over $M$ 
+is an $G$-equivariant bundle, with a $\bZ_2$-grading, 
+a Clifford module structure 
+and Hermitian inner product preserved by group action.
+
+The Dirac operator associated to a Clifford connection $\nabla^\cE$ on $\cE$
+is given by ($c\colon \cA(M) \to C(M)$ is the qantization map)
+\[
+D = \sum_i c(dx^i)\nabla^\cE_{\partial_i}\colon \Gamma(M,\cE) \to \Gamma(M,\cE),
+\]
+which it is odd parity first order diffrential operator.
+When $\Delta^\cE$ is $G$-invariant, $G$-action commutes with the Dirac operator.
+So $\ker(D)$ becomes a $\bZ_2$-graded representation of $G$.
+Define the \kw{equivariant index} to be the virtual charactor of this representation, that is 
+\[
+\ind_G(\gamma, D) = \Str(\gamma, \ker(D)) 
+= \Tr(\gamma,\ker(D^+)) - \Tr(\gamma,\ker(D^-))\quad \forall \gamma\in G.
+\]
+\end{Def}
+
+Now we have a generalization of the McKean-Singer formula
+\begin{Prop}
+Let $k_t(\gamma, x)|dx|=\brk{x|\gamma e^{-tD^2}|x}$ be the restriction of the
+kernel of the operator $\gamma e^{-tD^2}$ to the 
+diagonal. Then for $t>0$, 
+\[
+\ind_G(\gamma,D) = \Str(\gamma e^{-tD^2} = \int_M \Str(k_t(\gamma,x))|dx|.
+\]
+\end{Prop}
+
+Observe that $k_t(\gamma,x) = \gamma^\cE_{\gamma^{-1}x}\brk{\gamma^{-1}x|e^{-tD^2}|x}$,
+so when $t\to 0$, $k_t$ decay very fast if $\gamma^{-1}x \neq x$ and 
+tends to the dirac measure on $x$ if $\gamma^{-1}x=x$.
+Therefor we can expect the above integration will defend to integration
+over the set fixed point. We will state the equivariant index theorem.
+
+Denote the fixed point set of $\gamma$ by $M^\gamma$. It is a submainforld 
+may have several components of different dimension. We have a orthonormal
+decomposition
+of tangent bundle $TM$ along $M^\gamma$ respect to the Riemannian metric as
+\[
+TM|_{M^\gamma} \cong T\Mr \oplus \cN
+\]
+where $\cN$ is the normal bundle along $\Mr$. 
+Noticing that Levi-Civita connection preserves the decompositon, so 
+induces connections of $T\Mr$ and $\cN$. Let $R^0$ and $R^1$ be the curvature
+associated to these connections respectively. $R^0$ is the Riemannian curvature
+of $M^\gamma$, 
+hence $\Ah$-genus of $M^\gamma$ 
+equals to $\det^{1/2}\left(\frac{R^0/2}{\sinh(R^0/2}\right)$.
+
+Since the action of $\gamma$ on $\cE$ along $M^\gamma$ commuts with 
+$c(\alpha)$ for $\alpha\in \Gamma(\Mr,T^*\Mr)$. $\gamma$ can view as a 
+section $\gamma^\cE$ of $C(\cN^*)\otimes \End_{C(M)}(\cE)$.
+
+Let $F_0^{\cE/\cS}\in \cA(M^\gamma,\End_{C(M)}(\cE))$ be the restriction of the twisteing curvature of
+connection $\nabla^\cE$. 
+\begin{Def}
+Define the \kw{localized ralative Chern character} form
+\[
+\ch_G(\gamma, \cE/\cS) = \frac{2^{l_1}}{\det^{1/2}(1-\gamma_1)}
+\Str_{\cE/\cS}(\sigma_{\cN}(\gamma^\cE)\exp(-F_0^{\cE/\cS})) \in \cA(M^\gamma,\det(\cN)).
+\]
+Here $\Str_{\cE/\cS}$ is the extension of usual supertrace to 
+\[
+\Str_{\cE/\cS}\colon \cA(\Mr, \End_{C(M)}(\cE)\otimes \det(\cN))
+\to \cA(\Mr,\det(\cN)).
+\]
+$l_1 = \dim(\cN)$ is a locally constant function on $\Mr$. 
+\end{Def}
+
+Let $T_M\colon \Gamma(\Mr, \bigwedge T^*M) \to C^{\infty}(\Mr)$ be the 
+Berezin integral. Denote the $\gamma$ action on $\cN$ be $\gamma_1$.
+
+We have following form of equivariant index theorem.
+\begin{Thm}[Atiyah-Segal-Singer]
+The equivariant index $\ind_G(\gamma,D)$ of an equivariant Dirac operator $D$
+associated to an ordinary connection satisfy the following formula:
+\[
+\int_G(\gamma, D) = i^{-\dim M/2}\int_{\Mr}(2\pi)^{-\dim \Mr/2} T_M
+\left(\frac{\Ah(\Mr)\ch_G(\gamma,\cE/\cS)}{\det^{1/2}
+(1-\gamma_1\exp(-R^1)}\right).
+\]
+\end{Thm}
 
 \section{Equivariant Cohomology}
 
@@ -227,7 +330,7 @@ d\beta=(e^{\Omega/2\pi})_[n] = \frac{\Omega^l}{(2\pi)^ll!}
 \] 
 on $M$ \kw{Liouville form}.
 
-\subsection{Coadjoint Orbit}
+\subsection{Coadjoint Orbit}\label{Sec:co1}
 The most importent example of symplectic manifold with Hamiltonian $G$
 action is the Coadjoint Orbit. 
 Let $\fgg^*$ be the dual vector space to the vector space of Lie
@@ -271,7 +374,7 @@ One can show that
 Let $\alpha$ be an equivariantly closed differential form on $M$. 
 Then $\alpha(X)_{[n]}$ $M_0(X)$ is exact outside $M_0(X)$.
 \end{Prop}
-\sprof 
+\sproof 
 Define one form $\theta$ by $\theta(\xi) = (X_M, \xi)$. 
 Then $d_X^2 \theta  = -\cL(X)\theta  = 0$ and $d_X\theta  = |X|^2 + d\theta$ is
 invertable outside $M_0(M)$. 
@@ -310,16 +413,72 @@ metric on $T_pM$. Now $\det^{1/2} (L_p)$ make sense.
 
 Now we have the Localization formula for isolated zeroes.
   
-\begin{Thm} Let $\alpha$ be an equivariantly closed differential form
+\begin{Thm}
+Let $\alpha$ be an equivariantly closed differential form
   on $M$. Assume $X_M$ has only isolated zeros. Then
-\[
+\begin{equation}
+\label{eq:localization}
 \int_M \alpha(X) = (-2\pi)^{\dim(M)/2}\sum_{p\in M_0(X)}\frac{\alpha(X)(p)}{\det^{1/2}(L_p)},
-\]
+\end{equation}
 where $\alpha(X)(p)$ means the value of the function $\alpha(X)_{[0]}$
 at point $p\in M$.
 \end{Thm}
 
-\section{The Fourier Transform of Coadjoint Orbits}
-The 
+\subsection{The Fourier Transform of Coadjoint Orbits}
+We follow the notation in Section~\ref{Sec:co1}.
+For any coadjoint orbit $M$, we define the Fourier transform of an orbit
+by 
+\[
+F_M(X) = \int_M e^{i f(X)}d\beta = (2\pi i )^{-l}\int_Me^{i\Omega_\fgg(X)}, 
+\]
+where $\Omega_\fgg(X) = \mu(X) + \Omega$ is a equivariantly closed form.
+%Above may not make sence when $M$ is not sufficiently well-behaved.
+%%can be realized as a equivariant curvi 
+
+Now assume $G$ is connected compact Lie group.
+Fix a Cartan subalgebra $\ftt$ in $\fgg$ so that $\fgg=\ftt\oplus \frr$ (where $\frr = [\ftt,\fgg]$ is the span of roots of $\ftt$). Let $T = Z_G(\ftt)$ be the corresponding Cartan subgroup. Denote the root system by $\Delta \subset \ftt^* \subset \ftt_\bC^*$ (In fact, all the roots take purly imaginary value on $\ftt$).
+Let $W = N_G(T)/T$ be the Weyl group which can be identified with the algebric Weyl group $W(\fgg_\bC,\ftt_\bC)$ generated by simple reflection $s_\alpha$ on $\ftt_\bC$. 
+For any root $\alpha\in \Delta$ pick $H_\alpha \in i\ftt$ such that $\inn{\alpha}{H_\alpha}=2$.
+%$X_\alpha \in \fgg_\alpha, {X_{\bC}}_{\alpha}\in {\fgg_{\bC}_{-\alpha}$ and $ H%_\alpha\in \ftt_\bC $ such that they form a $\mathfrak{sl}(2,\bC)$ system, i.e.% 
+%$[H_\alpha, X_\alpha] = 2X_\alpha, [H_\alpha,X_{-\alpha}] = -2 X_\alpha$ and $[X_{}]$
+For given $\lambda\in\ftt^*$,
+let $P_\lambda = \Set{\alpha\in \Delta|\inn{\lambda}{iH_\alpha}>0}$.
+In particularly, when$\lambda$ is regular, i.e. 
+the isotropy subgroup $G(\lambda)$ of $\lambda$ is $T$ 
+or equivalently the orbit $M_\lambda$ has maximal possible dimension (we define $X\in \ftt$ ragular in the similar way), $P_\lambda$ will give a positive system of the root system $\Delta$.
+
+\begin{Thm}[Harish-Chandra]
+For given $\lambda\in \ftt^*$, let $W_\lambda = \Set{w\in W|w\lambda = \lambda}$
+be the subgroup of $W$ stabilize $\lambda$. For regular element $X\in \ftt$, 
+\begin{equation}\label{eq:fourier}
+F_{M_\lambda}(X) = \sum_{w\in W/W_\lambda}\frac{e^{i\inn{w\lambda}{X}}}{
+\prod_{\alpha\in P_\lambda}\inn{w\alpha}{X}}. 
+\end{equation}
+Especially, when $\lambda$ is regular, the denominator in above formula are 
+all same up to sign $\sign(w) = (-1)^{l(w)}$( $l(w)$ is the length of $w$ in the sence to decompose $w$ into product of simple reflection)
+\begin{equation}
+\label{eq:harish1}
+F_{M_\lambda}(X) = \frac{\sum_{w\in W} \sign(w)e^{i\inn{w\lambda}{X}}}{\prod_{\alpha\in P_\lambda}\inn{w\alpha}{X}}
+\end{equation}
+\end{Thm}
+\sproof When $X$ is regular, the zero set of $Z_M$
+(or equivlantly the fixed point of $\exp(tX)$ on $M_\lambda$ is exactly
+the finite set 
+\[
+M_0(X) = \Set{w\lambda|w\in W/W_\lambda}.
+\]
+Let $\frr_{[i\alpha]}$ be the subspace of $\frr$ 
+such that $X$ act on it by infinitesimal rotation with angle $i\alpha(X)$.
+One can identify $\frr_\lambda = \sspan\Set{\frr_{[i\alpha]}|alpha \in P_\lambda}$ 
+with $T_\lambda M$. So $\det^{1/2}(\cL(X)) = \prod_{\alpha\in P_\lambda}(i\alpha(X))$.
+Now apply the localization Formula~(\ref{eq:localization}) 
+to (\ref{eq:fourier}) one get the result.
+
+\section{Kirillov Formula}
+The right hand side of the Equation~(\ref{eq:harish1}) is very similar to 
+Weyl Character Formula for irreducible representation of Compact Lie groups.
+We will see the relations in soon.
+
+\bibliography{reppapers}
 
 \end{document}
