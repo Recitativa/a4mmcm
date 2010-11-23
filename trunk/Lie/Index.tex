@@ -1,4 +1,4 @@
-\documentclass[11pt]{amsart}
+\documentclass[12pt]{amsart}
 \usepackage[margin=2cm]{geometry}
 \usepackage{amssymb}
 \usepackage{graphicx}
@@ -79,7 +79,7 @@ $\Gamma(M,\cE)$,
 \[
 \cL^\cE(X) s =\left.\frac{d}{dt}\right|_{t=0} exp(tX)\cdot s,
 \]
-which is called the Lie derivative.
+which is called the \kw{Lie derivative}.
 \end{Def}
 For any vector field $X$ on $M$, it defines a famliy of diffeomorphisms $\phi_t$
 on $M$ for sufficient small $t$. This diffeomorphism will induce the
@@ -149,7 +149,7 @@ Let $k_t(\gamma, x)|dx|=\brk{x|\gamma e^{-tD^2}|x}$ be the restriction of the
 kernel of the operator $\gamma e^{-tD^2}$ to the 
 diagonal. Then for $t>0$, 
 \[
-\ind_G(\gamma,D) = \Str(\gamma e^{-tD^2} = \int_M \Str(k_t(\gamma,x))|dx|.
+\ind_G(\gamma,D) = \Str(\gamma e^{-tD^2}) = \int_M \Str(k_t(\gamma,x))|dx|.
 \]
 \end{Prop}
 
@@ -202,7 +202,7 @@ We have following form of equivariant index theorem.
 The equivariant index $\ind_G(\gamma,D)$ of an equivariant Dirac operator $D$
 associated to an ordinary connection satisfy the following formula:
 \begin{equation}\label{eq:fixed}
-\int_G(\gamma, D) = i^{-\dim M/2}\int_{\Mr}(2\pi)^{-\dim \Mr/2} T_M
+\ind_G(\gamma, D) = i^{-\dim M/2}\int_{\Mr}(2\pi)^{-\dim \Mr/2} T_M
 \left(\frac{\Ah(\Mr)\ch_G(\gamma,\cE/\cS)}{\det^{1/2}
 (1-\gamma_1\exp(-R^1)}\right).
 \end{equation}
@@ -228,7 +228,7 @@ Let
 \[
 \cA_G(M,\cE) = \left(\bC[\fgg]\otimes \cA(M,\cE)\right)^G
 \]
-be the $G$-invariant subspace of $\bC[\fgg]\otimes \cA(M,\cE)$, vectors in this space called equivariant differential forms with value in $\cE$.
+be the $G$-invariant subspace of $\bC[\fgg]\otimes \cA(M,\cE)$, vectors in this space called \kw{equivariant differential forms} with value in $\cE$.
 
 Define operator $\dg$ on $\bC[\fgg]\otimes \cA(M,\cE)$ by
 \[
@@ -236,7 +236,7 @@ Define operator $\dg$ on $\bC[\fgg]\otimes \cA(M,\cE)$ by
 \]
 It can be show that $\dg$ increase the degree by one and restrict on 
 $\cAg(M)$ we have $\dg^2= 0$. Hence we can define
-the equivariant cohomology $H_G^*(M)$ to be the cohomology of complex $\left(\cAg(M),\dg\right)$.
+the \kw{equivariant cohomology} $H_G^*(M)$ to be the cohomology of complex $\left(\cAg(M),\dg\right)$.
 \end{Def}
 
 \begin{Rmk}
@@ -259,7 +259,7 @@ A superconnection on $\cE$ called $G$-invariant if
 \[
 [\bA,\cL^\cE(X)]=0.
 \]
-The equivariant superconnection $\bAg$ is the operator given by 
+The \kw{equivariant superconnection} $\bAg$ is the operator given by 
 \[
 (\bAg \alpha)(X) = (\bA-\tau(X))(\alpha(X)) \quad \forall  \bC[\fgg]\otimes \cA(M,\cE).
 \]
@@ -476,7 +476,7 @@ Especially, when $\lambda$ is regular, the denominator in above formula are
 all same up to sign $\sign(w) = (-1)^{l(w)}$( $l(w)$ is the length of $w$ in the sence to decompose $w$ into product of simple reflection)
 \begin{equation}
 \label{eq:harish1}
-F_{M_\lambda}(X) = \frac{\sum_{w\in W} \sign(w)e^{i\inn{w\lambda}{X}}}{\prod_{\alpha\in P_\lambda}\inn{w\alpha}{X}}
+F_{M_\lambda}(X) = \frac{\sum_{w\in W} \sign(w)e^{i\inn{w\lambda}{X}}}{\prod_{\alpha\in P_\lambda}\inn{\alpha}{X}}
 \end{equation}
 \end{Thm}
 \sproof When $X$ is regular, the zero set of $Z_M$
@@ -575,6 +575,7 @@ equation(for right handside, which is the Fourier transform of Coadjoint Orbit
 $M_\lambda$, c.f. Equation~(\ref{eq:harish1}))
 we get the identity by Chevalley's theorem 
 for $G$-invariant functions.
+
 \begin{Thm}[Kirillov Character Formula]
 Let $\lambda\in X_G$. We have
 \[
@@ -644,8 +645,8 @@ i & 0\\
 0 & -i
 \end{pmatrix} &
 e =& \begin{pmatrix}
-0 & 1\\
--1 & 0
+0 & -1\\
+1 & 0
 \end{pmatrix} &
 f =& \begin{pmatrix}
 0 & i\\
@@ -655,8 +656,8 @@ i & 0
 One check that 
 \begin{align*}
 [H,E] &= 2E& [H,F] &= -2F& [E,F] &= H\\ 
-[h,e] &= 2 f & [h,f] &= -2e &[e,f] &= 2h\\
-e &= E -F& f &= iE+iF & h& = iH.
+[h,e] &= -2 f & [h,f] &= 2e &[e,f] &= -2h\\
+%e &= E -F& f &= iE+iF & h& = iH.
 \end{align*}
 %Now the Killing form $B_K(X,Y) = -\frac{1}{4}\Tr(XY)$.
 
@@ -664,17 +665,17 @@ We identify $\fgg^*$ as $\fgg$ by the from
 $B(X,Y) = -\frac{1}{2}\Tr(XY)$ 
 Therefore if $X = x_1e+x_2f+x_3h$ and $Y = y_1e+y_2f+y_3h$, 
 $B(X,Y) = x_1y_1+x_2y_2+x_3y_3$.
-Also by above formula, 
-\[
-[X,Y] = 2(x_2y_3-x_3y_2)e+2(x_3y_1- x_1y_3)f +2(x_1y_2-y_1x_2) h.
-\]
-The symplectic form at point $f = x_1 e+ x_2 f+ x_3 h \in \fgg^*$ is 
-\[
-\Omega_f = - 2(x_1 dx_2dx_3 + x_2dx_3 dx_1+ x_3 dx_1 dx_2).
-\] 
-Therefore the Liouville form $d\beta = \Omega/2\pi=\frac{-r}{\pi}d\sigma$
-where $d\sigma$ is the usual Euclidean measure on the sphere $S_r$ and
-$r = \|(x_1,x_2,x_3)\|$. 
+%Also by above formula, 
+%\[
+%[X,Y] = 2(x_2y_3-x_3y_2)e+2(x_3y_1- x_1y_3)f +2(x_1y_2-y_1x_2) h.
+%\]
+%The symplectic form at point $f = x_1 e+ x_2 f+ x_3 h \in \fgg^*$ is 
+%\[
+%\Omega_f = - 2(x_1 dx_2dx_3 + x_2dx_3 dx_1+ x_3 dx_1 dx_2).
+%\] 
+%Therefore the Liouville form $d\beta = \Omega/2\pi=\frac{-r}{\pi}d\sigma$
+%where $d\sigma$ is the usual Euclidean measure on the sphere $S_r$ and
+%$r = \|(x_1,x_2,x_3)\|$. 
 
 Choose $\ftt = \bR h$, so $\ftt_\bC = \bC H$. 
 Now the root system $\Delta(\fgg,\ftt) = \Set{\pm 2 H} \subset \fgg_\bC^* $
@@ -696,8 +697,18 @@ are the $T$ weight space of representation $T_\lambda$.
 Now it is easy to see that 
 \[
 \Tr\, T_\lambda(exp(th)) 
-= \sum_{j=0}^{n-1}e^{i(n-1-j)t} = \frac{e^{int} - e^{-int}}{e^{it}-e^{-it}}
+= \sum_{j=0}^{n-1}e^{i(n-1-2j)t} = \frac{e^{int} - e^{-int}}{e^{it}-e^{-it}}
 \]
+
+To calculate the symplectic form, we know it will be some multiple of the
+usual area form $dS$ of surface since $M_\lambda$ is two dimensional 
+and the space of $G$-invariant $2$-form is dimension $1$ with $dS$ in it.
+Let's calculate the infinitesimal action of $h$ at on $\fgg^*$. 
+It is given by rotation along $h$, at $ne$ it generate the tangent vector 
+$2n\partial_{x_2}$, similar for $f$ it generate tangent vector 
+$-2n\partial_{x_3}$. Hence $dS_{ne}(h_M,f_M) = -4n^2$. 
+However $\Omega_{ne}(h_M,f_M) = -\inn{ne}{[h,f]} = -\inn{ne}{2e} = -2n$.
+Hence the Liouville form $d\beta = \Omega/2\pi = dS/4n\pi$.
 
 Choose the positive system $P = \Set{2H}$, 
 \[
@@ -709,8 +720,22 @@ Now the Kirillov theorem is saying that
 \frac{e^{ti}-e^{-ti}}{2ti} \frac{e^{int} - e^{-int}}{e^{it}-e^{-it}}
 =  j_\fgg^{1/2}(th)\Tr\, T_\lambda(exp(th)) 
 = \int_{M_\lambda}e^{if(X)}d\beta
-= \int_{S_r}e^{i zt} (x\,dy\,dz+y\,dz\,dx+z\,dy\,dx)/\pi.
+= \int_{S_r}e^{i zt}dS/4n\pi.
 \]
+Of course, this identity can be verified by direct computation.
+
+\section{Further directions.}
+Relating the geometry and representation theory is a improtent and interesting 
+direction in representation theory. There are several ways to associate 
+a geometry object to a geometry object which are more or less the same 
+(although the proof of the equivalences are non-trivial).
+On the other hand, we also want construct represetations from some geometric 
+objects.
+The picture for compact and nilpotent/solvable Lie groups 
+may be already clear. However, 
+for non-compact group, especially for non-compact reductive group there still 
+have a hard-core left, i.e. the nilpotent orbit. 
+I hope I could have a chance to learn and discuss these topics in the future.
 
 \bibliographystyle{alpha}
 \bibliography{reppapers}
