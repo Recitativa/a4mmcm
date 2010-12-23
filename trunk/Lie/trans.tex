@@ -81,7 +81,11 @@
 \def\SO{{\rm SO}}
 \def\det{{\rm det}}
 
+\def\tG{{\widetilde{G}}}
+\def\tK{{\widetilde{K}}}
+\def\tM{{\widetilde{M}}}
 \def\tJ{{\widetilde{J}}}
+\def\trho{{\widetilde{\rho}}}
 \def\tDelta{\widetilde{\Delta}}
 \def\barZ{{\overline{Z}}}
 \def\bz{{\overline{z}}}
@@ -109,7 +113,9 @@
 \def\fkk{\mathfrak{k}}
 \def\caa{\mathcal{A}}
 \def\ccc{\mathcal{C}}
+\def\cdd{\mathcal{D}}
 \def\chh{\mathcal{H}}
+\def\cjj{\mathcal{J}}
 \def\crr{\mathcal{R}}
 \def\css{\mathcal{S}}
 \def\cpp{\mathcal{P}}
@@ -119,6 +125,8 @@
 \def\cxx{\mathcal{X}}
 \def\cyy{\mathcal{Y}}
 \def\cff{\mathcal{F}}
+\def\czz{\mathcal{Z}}
+\def\cug{\cuu(\fgg)}
 \def\fmm{\mathfrak{m}}
 \def\GL{\mathrm{GL}}
 \def\SO{\mathrm{SO}}
@@ -130,9 +138,8 @@
 \def\U{\mathrm{U}}
 \def\Gr{\mathrm{Gr\,}}
 \def\tU{{\widetilde{U}}}
-\def\ddt{\frac{d}{dt}}
 \def\pz#1{\partial z_{#1}}
-
+\def\ddt{\left.\frac{d}{dt}\right|_{t=0}}
 
 \def\Ind{{\rm Ind}}
 
@@ -3083,6 +3090,82 @@ has a subquotation isomorphic to $\theta_{p,q}(D_l)$.
 \end{prop}
 
 
+\section{Transfer of the Lifting of character}
+Let us consider a simple case. Suppose $(G,G')$ are reductive dual pair. 
+$V = \theta_{G'\to G}(\rho)$ is the theta lifting of character $\rho$ of $G'$.
+
+The following result is crucial, and is known by \cite{Shimura1990} 
+or \cite{Zhu2003} :
+\begin{thm}
+Let $\rho$ be a one-dimensional representation of $K$, where $K$ is a maximal 
+compact subgroup of some classical group $G$. Let $\cjj' = \Ker\rho_u|_{\cuu(\fkk)}$ where $\rho_u$ is the antihomorphism of $\cuu(\ftt)$ by extending 
+$\rho_u(X) = -\rho(X)$.
+Then the natural map
+\[
+\czz(\fgg) \to \cuu(\fgg)^K/(\cuu(\fgg)\cjj\cap\cuu(\fgg)^K)
+\]
+is surjective.
+Hence the $\cuu(\fgg)^K$ action on the $\rho$ isotypic component $V_\rho$ 
+of any $\cuu(\fgg)$ module $V$ is determind by the $\cuu(\fgg)$ action 
+on $V_\rho$. In particular, if $V$ has infinitesimal character, 
+$V$ is determined by its infinitesimal character.
+\end{thm}
+
+
+In fact, we need a silghtly different version of above theorem:
+If $G$ is classical, 
+\[
+\czz(\fgg)\to \cuu(\fgg)^K/(\cjj\cuu(\fgg)\cap \cuu(\fgg)^K)
+\]
+is surjective, where $\cjj = \Ker(\rho)|_{\cuu(\fkk)}$.
+
+We can see this easly by taking the automorphism on $\cuu(\fgg$ by 
+extanding $X \mapsto -X$. It clearly perserves $\cuu(\fgg)^K$ and
+$\czz(\fgg)$ and send $\cuu(\fgg)\cjj'$ to $\cjj\cuu(\fgg)$. 
+
+Now assume $\omega$ is a $(\cuu(\fgg),K)$-modoule, $K$ not necessary compact. 
+there is finite $K$ representation $\rho$ such that 
+$\dim \Hom_K(\omega, \rho)=1$ (Should be consider as $(\fkk, K)$ 
+module level homomorphism). Fix a intertwing map $T\in \Hom_K(\omega, \rho)$.
+For any $x\in \cuu(\fgg)^K$, we have $T\circ x = c(x)T$ for some $c(x)\in \bC$. 
+
+Hence we can difine the $\cuu(\fgg)^K$ action on $\rho$ as the appendix. 
+The above theorem tell as the $\cuu(\fgg)^K$ action on $\rho$ is determind by 
+the $\czz(\fgg)$ action. Since
+for any $B\in \cuu(\fgg)^K$, we can find $Z\in \czz(\fgg)$ such that 
+$B-Z \in \cjj\cuu(\fgg)$.
+Now $Bv = Zv \mod \Ker(T)$ since $Q \in \cjj$ implies $Q v \in \Ker(T)$
+for any $v\in \omega$.
+
+Now let us consider the $\cug^K$ action after apply the derived functor. 
+As above setting, $\Hom_K(V,W)$ is one-dimensional 
+Let $\Gamma^i =\left(\Gamma_{(\fkk,K_0)}^{(\fkk,K)}\right)^i$ and . 
+$\Gamma^iW$ is non zero irreducible. 
+We ahve $\Gamma^iT \colon \Gamma^iV \to \Gamma^iW$.
+$\cug^K$ act on $\Gamma^iW$ is given by the $\cug^K$ 
+on $V$ by the functoriality of the derived functor:
+\[
+\Gamma^i T\circ \Gamma^i x = \Gamma^i T\circ x = c(x)\Gamma^i T \quad
+\forall x\in \cug^K.
+\]
+
+By observing the realization of the oscillator representation, 
+for any $x \in \cug^K$ we can find $x'\in \cuu(\cmm')^{G'}$. such that
+$\omega(x) = \omega(x')$ and this choise is independent of the realization 
+of oscillator representation. Now choose $z' \in \czz(\cmm')$ such that
+$x'-z' \in \cjj\cuu(\cmm')$. Then again by the realization, we can find 
+$z\in \czz(\fkk)$ independent of realization, 
+such that $\omega(z) = \omega(z')$.
+Hence $x$ act on $\Gamma^iW$ by $z$ 
+act on $\Gamma^iW$.
+Now suppose that for another dual pair $(\tG, \tG')$, character $\trho$
+of $\tG'$ such that $\cjj$ annilate $\trho$ and $\theta(\trho)$ has 
+$K$-type $\Gamma^i W$. Then the $x$ action on this $K$-type by $z$ actoin. 
+Since the infinitesimal character determind the $K$-type, we conclude that 
+$\Gamma^i\theta(\rho)$ has a composition component $\theta(\trho)$.
+
+   
+
 \appendix
 \section{Some inveriant theory}
 Let $V$ be a finit dimensional  vector space 
@@ -3584,6 +3667,97 @@ If $z= n-1$,
 is reducible, with the irreducible quotation be the Ladder representation. 
 When $z < n-1$ and is integer,
 we find it is a $\aso(2,2n-2)$ subrepresentation of $\theta(D_l)$ for some $l\geq 2$.  
+
+\section{Invariant differential operator}
+
+Let $V$ be a finite dimensional representation of $K$ where $K$ is a maximal
+compact subgroup of Lie group $G$. 
+Define
+\[
+C^\infty(G,V)  = V \otimes C^\infty(G)
+\]
+be the set of $C^\infty$ function on $G$ with value in $V$. 
+Consider $C^\infty(\rho)$ be the subset of $C^\infty(G,V)$
+such that $f(kx) = \rho(k)f(x)$ for all $k\in K$ 
+if and only if $f\in C^\infty(\rho)$.
+Then $G$ act on $C^\infty(\rho)$ by right translation.
+
+Let $\cuu(\fgg)$ act on right of $C^\infty(G,V)$ as right invariant differential
+operators. That is, for $B\in \fgg$,
+\[
+(f\cdot X)(g) = \left.\frac{d}{dt}\right|_{t=0} f(\exp(tX)g).
+\]
+One check that this induce a $\cuu(\fgg)$ action on $C^\infty(G,V)$.
+In paticular for $X\in \fkk$, 
+\[
+(f\cdot X)(g) = \ddt(\exp(tX)g) = \ddt \rho(\exp (tX))f(g) = \rho(X) f(g)
+\quad
+\forall f\in C^\infty(\rho)
+\]
+Now $\cuu(\fkk)$ act on $C^\infty(\rho)$ by the usual action on $V$, 
+since (by induction)
+\[
+\begin{split}
+((f\cdot u)\cdot Y)(g) =& \ddt(f\cdot u)(\exp(tY)g)
+ = \ddt \rho(u)f(\exp(tY)g) \\
+=& \rho(u)\ddt f(\exp(tY)g)
+= \rho(u)\rho(Y) f(g) \\
+=& \rho(uY)f(g) 
+\quad 
+\forall u\in \cuu^r(\fkk), Y\in \fkk, f\in C^\infty(\rho)
+\end{split}
+\]
+
+If $B= X_1\cdots, X_n\in \fgg$,
+\[
+\begin{split}
+(f \Ad(k)B)(g) = & (f\Ad(k)(X_1\cdots X_n))(g)\\
+=& \left.\frac{d}{dt_n}\right|_{t_n=0} (f\Ad(k)(X_1\cdots X_{n-1}))(\exp(t_n\Ad(k)X_n)g)\\
+=& \left.\frac{d}{dt_n}\right|_{t_n=0}
+\left.\frac{d}{dt_{n-1}}\right|_{t_{n-1}=0}
+ (f\Ad(k)(X_1\cdots X_{n-2}))(\exp(t_{n-1}\Ad(k)X_{n-1})\exp(t_{n}\Ad(k)X_{n})g)\\
+=&\left.\frac{d}{dt_n}\right|_{t_n=0} \cdots \left.\frac{d}{dt_{1}}\right|_{t_{1}=0}
+f(\exp(t_1\Ad(k)X_1)\cdots \exp(t_n\Ad(k)X_n) g)\\
+=&\rho(k)
+\left.\frac{d}{dt_n}\right|_{t_n=0} \cdots \left.\frac{d}{dt_{1}}\right|_{t_{1}=0}
+f(\exp(t_1X_1)\cdots \exp(t_nX_n) k^{-1}g)\\
+=& \rho(k)(fB)(k^{-1}g)
+\end{split}
+\]
+
+So we have
+\[
+[f(\Ad(k)B)](g)= \rho(k)(fB)(k^{-1}g) \quad \forall B\in \cuu{\fgg}, k\in K, 
+g\in G. 
+\]
+If $B\in \cug^K$, we have $(fB)(g)  = \rho(k)f(B)(k^{-1}g)$.
+Hence $\cug^K\in D(\rho)$, where $D(\rho)$ is the subset of $\cuu(G)$ preserve 
+space $C^\infty(\rho)$. Let the image of $D(\rho)$ in the
+set of differential opeartors  be $\cdd(\rho)$.
+
+Now we have
+\begin{prop}[Harish-Chandra, Shimura~\cite{Shimura1990} Prop~2.1]
+\begin{enumerate}[(1)] 
+\item An element $T$ of $\cuu(\fgg)$ annihilates 
+$C^{\infty}(\rho)$ if and only if $T \in \cjj\cuu(\fgg)$, where
+$\cjj = \Ker(d\rho)$.
+\item $D(\rho) = \cjj\cug + \cug^K$.
+\item The natural map of $D(\rho)$ onto $\cdd(\rho)$ gives an 
+isomorphism of $\cug^K/(\cug^K\cap \cjj\cug)$ onto $\cdd(\rho)$. 
+\end{enumerate}
+\end{prop}
+\proof
+\begin{enumerate}[(1)]
+Clearly $\cjj\cug$ annihilates $C^\infty(\rho)$.
+Since $G = K \exp(\fpp_0)$, 
+fix a basis $\Set{X_1, \cdots, X_n}$ of $\fpp_0$
+we can identify $C^\infty(\rho)$ 
+with $C^\infty(\bR^n,V)$ by 
+$f_h(k\exp(\sum_{i=1}^n t_i X_i) = \rho(k)h(t_1,\cdots, t_n)$.
+
+
+\end{enumerate}
+
 
 \section{Derived functor for disconnected groups}
 
