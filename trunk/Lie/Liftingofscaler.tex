@@ -1,0 +1,403 @@
+\documentclass[12pt]{article}
+\usepackage[margin=2cm]{geometry}
+\usepackage{pdfsync}
+
+\usepackage{hyperref}
+
+\usepackage{amssymb}
+\usepackage{amsmath, amsthm}
+\usepackage{graphicx}
+%\usepackage{amscd}
+\usepackage{braket}
+\usepackage{paralist}
+\usepackage{eufrak}
+%\usepackage{calrsfs}
+%\usepackage[small,nohug,heads=littlevee]{diagrams}
+%\diagramstyle[labelstyle=\scriptstyle]
+%\usepackage{diagrams}
+\usepackage[all,cmtip]{xy}
+\usepackage{diagxy}
+%\usepackage{pictexwd,dcpic}
+%\usepackage{mathrsfs}
+
+
+\newtheorem{lemma}{Lemma}
+\newtheorem{thm}{Theorem}
+\newtheorem{prop}{Proposition}
+\newtheorem{cor}{Corollary}
+\newenvironment{expl}{\it}{\color{black}\normalsize}
+\DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
+
+\def\sign{{\rm sign}}
+\def\Ker{{\rm Ker}}
+\def\Im{{\rm Im}}
+\def\Hom{{\rm Hom}}
+\def\End{{\rm End}}
+\def\Mat{{\rm Mat}}
+\def\Ind{{\rm Ind}}
+\def\bR{{\mathbb{R}}}
+\def\bN{{\mathbb{N}}}
+\def\bZ{{\mathbb{Z}}}
+\def\bC{{\mathbb{C}}}
+\def\bQ{{\mathbb{Q}}}
+\def\bB{{\mathbb{B}}}
+\def\bA{{\mathbb{A}}}
+\def\bs{{\mathbf{s}}}
+\def\bd{{\mathbf{d}}}
+\def\bT{{\mathbb{T}}}
+\def\bt{{\mathbf{t}}}
+\def\br{{\mathbf{r}}}
+\def\vv{{\vec{v}}}
+\def\vw{{\vec{w}}}
+\def\vx{{\vec{x}}}
+\def\vy{{\vec{y}}}
+\def\v0{{\vec{0}}}
+\def\ol{\overline}
+\def\sspan{\rm{span}}
+\def\sl2{{\mathfrak{sl}(2)}}
+\def\slc{{\mathfrak{sl}(2,\bC)}}
+\def\sp{{\mathfrak{sp}}}
+\def\gg{{\mathfrak{g}}}
+\def\kk{{\mathfrak{k}}}
+\def\pp{{\mathfrak{p}}}
+\def\qq{{\mathfrak{q}}}
+\def\sP{\mathcal{P}}
+\def\sH{\mathcal{H}}
+\def\sU{\mathcal{U}}
+\def\sC{\mathcal{C}}
+\def\sS{\mathcal{S}}
+\def\Stab{{\rm Stab}}
+\def\ad{{\rm ad}}
+\def\Ad{{\rm Ad}}
+\def\id{{\rm id}}
+\def\sgn{{\rm sgn}}
+\def\gcd{{\rm gcd}}
+\def\inn#1#2{\left\langle{#1},{#2}\right\rangle}
+\def\abs#1{\left|{#1}\right|}
+\def\norm#1{{\left\|{#1}\right\|}}
+\def\Sp{{\rm Sp}}
+\def\SL{{\rm SL}}
+\def\O{{\rm O}}
+\def\SO{{\rm SO}}
+\def\det{{\rm det}}
+
+\def\tG{{\widetilde{G}}}
+\def\tK{{\widetilde{K}}}
+\def\tM{{\widetilde{M}}}
+\def\tJ{{\widetilde{J}}}
+\def\trho{{\widetilde{\rho}}}
+\def\tDelta{\widetilde{\Delta}}
+\def\barZ{{\overline{Z}}}
+\def\bz{{\overline{z}}}
+
+\def\Ad{\mathrm{Ad}}
+\def\agl{\mathfrak{gl}}
+\def\asl{\mathfrak{sl}}
+\def\aso{\mathfrak{so}}
+\def\asp{\mathfrak{sp}}
+\def\au{\mathfrak{u}}
+\def\diag#1{\mathrm{diag}(#1)}
+\def\lww{\mathcal{W}}
+\def\lxx{\mathcal{X}}
+\def\lyy{\mathcal{Y}}
+\def\fbb{\mathfrak{b}}
+\def\fhh{\mathfrak{h}}
+\def\fnn{\mathfrak{n}}
+\def\fuu{\mathfrak{u}}
+\def\fll{\mathfrak{l}}
+\def\foo{\mathfrak{o}}
+\def\fpp{\mathfrak{p}}
+\def\fqq{\mathfrak{q}}
+\def\ftt{\mathfrak{t}}
+\def\fgg{\mathfrak{g}}
+\def\fkk{\mathfrak{k}}
+\def\caa{\mathcal{A}}
+\def\ccc{\mathcal{C}}
+\def\cdd{\mathcal{D}}
+\def\chh{\mathcal{H}}
+\def\cjj{\mathcal{J}}
+\def\crr{\mathcal{R}}
+\def\css{\mathcal{S}}
+\def\cpp{\mathcal{P}}
+\def\cww{\mathcal{W}}
+\def\cnn{\mathcal{N}}
+\def\cuu{\mathcal{U}}
+\def\cxx{\mathcal{X}}
+\def\cyy{\mathcal{Y}}
+\def\cff{\mathcal{F}}
+\def\czz{\mathcal{Z}}
+\def\cug{\cuu(\fgg)}
+\def\fmm{\mathfrak{m}}
+\def\GL{\mathrm{GL}}
+\def\SO{\mathrm{SO}}
+\def\OO{\mathrm{O}}
+\def\rad{\mathrm{rad}}
+\def\SL{\mathrm{SL}}
+\def\tr{\mathrm{tr}}
+\def\Mat{\mathrm{Mat}}
+\def\U{\mathrm{U}}
+\def\Gr{\mathrm{Gr\,}}
+\def\tU{{\widetilde{U}}}
+\def\pz#1{\partial z_{#1}}
+\def\ddt{\left.\frac{d}{dt}\right|_{t=0}}
+
+\def\Ind{{\rm Ind}}
+
+
+\def\cmm#1#2{\left[{#1},{#2}\right]}
+\def\acmm#1#2{\left\{{#1},{#2}\right\}}
+
+\def\seesawpair#1#2#3#4{
+\xymatrix{
+{#1} \ar@{-}[dr]& {#2} \\
+{#3} \ar@{-}[ur] & {#4}}
+}
+
+\def\real{{\rm Re\,}}
+\def\imag{{\rm Im\,}}
+
+\hypersetup{
+    bookmarks=false,         % show bookmarks bar?
+    unicode=false,          % non-Latin characters in Acrobat¡¯s bookmarks
+    pdftoolbar=true,        % show Acrobat¡¯s toolbar?
+    pdfmenubar=false,        % show Acrobat¡¯s menu?
+    pdffitwindow=false,      % page fit to window when opened
+    %pdftitle={},    % title
+    pdfauthor={Ma Jia Jun},     % author
+    %pdfsubject={Subject},   % subject of the document
+    pdfcreator={Hoxide},   % creator of the document
+    %pdfproducer={Producer}, % producer of the document
+    %pdfkeywords={keywords}, % list of keywords
+    pdfnewwindow=true,      % links in new window
+    colorlinks=true,       % false: boxed links; true: colored links
+    linkcolor=blue,          % color of internal links
+    citecolor=green,        % color of links to bibliography
+    filecolor=magenta,      % color of file links
+    urlcolor=cyan           % color of external links
+}
+
+
+\title{Lifting of character}
+
+\begin{document}
+\maketitle
+
+
+
+
+Now assume $H$ is a subgroup of $G$,
+Suppose that $V$ is a $G$ module, $W$ is a $K$ module, such that
+$\Hom_{H}(V,W)\neq 0$.
+Define \[
+\Omega_V(W) = V / \cnn_{V,W}
+\], 
+where 
+\[
+\cnn_{V,W} = \bigcap_{T\in \Hom_H(V,W)}\Ker(T)
+\]
+which is a generization 
+of Howe quotion. It is clear that, any $S\in \Hom_H(V,V)$ act on 
+$\Omega_V(W)$ via the quotient map, 
+the action is well defined by the construction
+(For any $v\in \cnn_{V,W}$, $T\circ S(v) = 0$ since $T\circ S\in \Hom_H(V,W)$ 
+for any $T\in \Hom_H(V,W)$. Hence $S(v)\in \cnn_{V,W}$.).
+One crucial example is the $\cuu(\fgg)^K$ action on the 
+$K$ isotypic component $V(\tau)$ of 
+$V$ where $W\in \tau$.
+
+For simplicity,
+suppose that $\dim \Hom_{H}(V,W)=1$,
+Hence $T\circ S = c(S) T$ for any $S\in \Hom_{H}(V,V)$ by Schur's lemma,
+where $c_{V,X}(x)\in \bC$. 
+Hence $S$ act on $\Omega_{V,W}$ by this scaler $c_{V,W}(S)$.
+In fact, let $\phi$ be 
+the projection map, if $v\in V$ such 
+that $\phi(v) \neq 0$, $S \phi(v) = \phi \circ S (v) = c_{V,W}(S) \phi(v)$. 
+
+
+Consider the situation of see-saw pair:
+Suppose we have see-saw pair
+\[
+\xymatrix{G \ar@{-}[dr] & H'\\
+H\ar@{-}[ur] & G'
+}
+\]
+where $H < G$, $H'> G'$. 
+
+For representation $\sigma$ of $G'$ which can be realized as a quotient of
+the Weil representation, by Howe we have
+\[
+ \Omega_\omega(\sigma) = \rho(\sigma)\otimes \sigma
+\]
+for some representation $\rho(\sigma)$ of $G$ as $G\times G'$ representation.
+
+For any irreducible representation $\tau$ of $H$.
+\[
+\begin{split}
+&\Hom_{H}(\rho(\sigma), \tau)\\
+= & \Hom_{H\times G'}(\rho(\sigma)\otimes \sigma, \tau\otimes \sigma)
+=  \Hom_{H\times G'}(\omega/\cnn_\sigma, \tau\otimes \sigma)\\
+= & \Hom_{H\times G'}(\omega, \tau\otimes \sigma)\\
+= & \Hom_{H\times G'}(\omega/\cnn_\tau, \tau\otimes \sigma)
+= \Hom_{H\times G'}(\tau\otimes \rho(\tau), \tau\otimes \sigma)\\
+= & \Hom_{G'}(\rho(\tau), \sigma).
+\end{split}
+\]
+The third equality above valid by the definition of $\cnn_\sigma$. 
+
+Again assume $\dim \Hom_{H}(\rho(\sigma),\tau) = 1$.
+Since $\rho(\sigma)$ is $\fgg$ module,  $\cuu(\fgg)^H$ act 
+on $\Omega_{\rho(\sigma),\tau} \cong \tau$ via character $c_{\rho(\sigma),\tau}$.
+Similary we have $\dim \Hom_G'(\rho(\tau),\sigma) = 1$,
+and $\cuu(\fhh')^{G'}$ action on $\Omega_{\rho(\tau),\sigma}\cong \sigma$
+via $c_{\rho(\tau),\sigma}$.
+
+\begin{lemma}\label{lemma:ugkcorr}
+For see-saw pair as above, 
+\[
+\omega(\cuu(\fgg)^H) = \omega(\cuu(\fhh')^{G'}).
+\]
+Hence for any $x\in \cuu(\fgg)^H$ we can choose $y\in \cuu(\fhh')^{G'}$ 
+such that $\omega(x) = \omega(y)$ and this choose is independent of 
+realization of $\omega$.
+\end{lemma}
+\proof Clear from the realization of oscillate representation and Howe's paper.
+\qed
+
+\begin{lemma}
+The map $c_{\rho(\tau),\sigma}$ and $c_{\rho(\sigma),\tau)}$ determin each other 
+in a canonical way.
+\end{lemma}
+\proof 
+Consider following commutative digram:
+\[
+\xymatrix{
+\omega \ar[r]^{S_2} \ar[d]_{S_1}\ar[dr]^{Q} & \tau\otimes \rho(\tau)\ar[d]^{T_2}\\
+\rho(\sigma)\otimes \sigma\ar[r]_{T_1} & \tau\otimes \sigma 
+}
+\]
+Here $T_i = T\otimes \id$.
+
+Note that $\omega(\cuu(\fgg)^H) = \omega(\cuu(\fhh')^{G'})$,
+for $x\in \cuu(\fgg)^H$, 
+there is a $y\in \cuu(\fhh')^{G'}$.
+such that $\omega(x) = \omega(y)$.
+
+
+Now for any $v\otimes w\in \tau\otimes \sigma$, there is $a\in \omega$ such
+that $Q(a) = v\otimes w$.
+Hence, 
+\[
+(x \cdot v)\otimes w 
+= T_1 (x S_1 (a))
+= T_1 \circ S_1 (\omega(x) a)
+= T_2 \circ S_2 (\omega(y) a)
+= v\otimes (y\cdot w).
+\]
+\qed
+
+
+Let us consider a simple case. Suppose $(G,G')$ are reductive dual pair. 
+$V = \theta_{G', G}(\rho)$ is the theta lifting of character $\rho$ of $\tG'$.
+
+The following result is crucial, and is known by \cite{Shimura1990}, 
+\cite{Zhu2003} or \cite{Wallach1992real}:
+\begin{lemma}
+  $K$ is a maximal compact subgroup of some classical group $G$ 
+  of some classical group.
+  Let $\sigma$ be a one-dimensional representation of $K$.
+  Let $\cjj = \Ker(\sigma)|_{\cuu(\fkk)}$.
+  Then the natural map
+  \[
+  \czz(\fgg) \to \cuu(\fgg)^K/(\cjj\cuu(\fgg)\cap\cuu(\fgg)^K)
+  \]
+  is surjective.
+\end{lemma}
+
+We need a slightly generized version. 
+\begin{lemma}\label{lemma:scalerk}
+  Consder pair $(G,K)$ where 
+  $K$ is a subgroup $G$ meet all the component of $G$.
+  Suppose that $\fgg$ be the complexification of 
+  a complex classical Lie algebra.
+  More over there is a involution, such that $\fgg$ decomposite into 
+  $\fgg = \fkk+\fpp$ where 
+  $\fkk$ is the complexification of the Lie algebra of $K$.
+  
+  Let $\sigma$ be a one-dimensional representation of $K$.
+  Let $\cjj = \Ker(\sigma)|_{\cuu(\fkk)}$.
+  Then the natural map
+  \[
+  \czz(\fgg) \to \cuu(\fgg)^K/(\cjj\cuu(\fgg)\cap\cuu(\fgg)^K)
+  \]
+  is surjective.
+\end{lemma}
+\proof TBA \qed
+
+\begin{lemma}
+In above setting, let $V$ be a $G$ module and $W$ be a character of $K$
+such that $\dim \Hom_K(V,W)=1$. 
+Then the $\cuu(\fgg)^K$ action on $\Omega_{V,W}$ is given by the
+$Z(\fgg)$ action on $V$.
+\end{lemma}
+\proof
+Consider the short exact sequence:
+\[
+0\to \cnn_{V,W}\to V\to W\to 0.
+\]
+For any $x\in \cuu(\fgg)^K$, choose $z\in Z(\fgg)$ such that 
+$x-z \in \cjj\cuu(\fgg)$.
+\qed
+
+\begin{thm}
+Let $\sigma \in R(G', \omega)$ be a character of $G'$. 
+Suppose that $\tau \in R(K, \omega)$ such that 
+$\dim \Hom_{K}(\rho(\sigma),\tau) = 1$.
+Then the $\cuu(\fgg)^K$ action on $\Omega_{\rho(\sigma),\tau}$ 
+is determined by the infinitesimal character of $\tau$ and annilater ideal 
+$\cjj = \Ker(\sigma)|_{\cuu(\fhh')}$  
+\end{thm}
+\proof
+By Lemma~\ref{lemma:ugkcorr}, 
+for any $x \in \cug^K$ we can find $x'\in \cuu(\fmm')^{G'}$. Such that
+$\omega(x) = \omega(x')$ and this choise is independent of the realization 
+of oscillator representation. Now choose $z' \in \czz(\fmm')$ such that
+$x'-z' \in \cjj\cuu(\fmm')$ by Lemma~\ref{lemma:scalerk}.
+
+Then again by Lemma~\ref{lemma:ugkcorr}, we can find 
+$z\in \czz(\fkk)$ independent of realization,
+such that $\omega(z) = \omega(z')$.
+Hence $x$ act on $\Omega_{\rho(\sigma),\tau}$ by $z$.
+ 
+\qed
+
+
+Now suppose that for another dual pair $(\tG, \tG')$, character $\trho$
+of $\tG'$ such that $\cjj$ annilate $\trho$ and $\theta(\trho)$ has 
+$K$-type $\Gamma^i W$. Then the $x$ action on this $K$-type by $z$ actoin. 
+Since the infinitesimal character determind the $K$-type, we conclude that 
+$\Gamma^i\theta(\rho)$ has a composition component $\theta(\trho)$.
+\qed
+
+\begin{cor}
+Suppose that:
+\begin{enumerate}[(1)]
+\item $\rho$ is a character of $G'$, $\pi = \theta_{G,G'}(\rho)$ is the theta
+lifting of $\rho$.
+\item   
+\end{enumerate}
+\end{cor}
+
+
+
+\begin{lemma}
+Suppose $G$ is a classical group, $K$ is a maximal compact subgroup of $G$, 
+
+\end{lemma}
+
+
+
+\bibliography{bib/reppapers}{}
+\bibliographystyle{alpha}
+
+\end{document}
