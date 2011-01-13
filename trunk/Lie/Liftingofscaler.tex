@@ -86,6 +86,7 @@
 \def\tM{{\widetilde{M}}}
 \def\tJ{{\widetilde{J}}}
 \def\trho{{\widetilde{\rho}}}
+\def\tsigma{{\widetilde{\sigma}}}
 \def\tDelta{\widetilde{\Delta}}
 \def\barZ{{\overline{Z}}}
 \def\bz{{\overline{z}}}
@@ -332,21 +333,32 @@ We need a slightly generized version.
   \]
   is surjective.
 \end{lemma}
-\proof TBA \qed
+\proof In view of Shimura's proof, the only step use the assumption 
+that $G$ is classical is to grantee the following relation:
+\[
+\phi(S^r(\fgg)^G))+\cuu(\fgg)\fkk \supset \phi(S^r(\fgg)^K).
+\]
+Note that $S^r(\fgg)^K\subset S^r(\fgg)^{K^c}$ in our case, the above lemma
+holds by the same proof. 
+ \qed
 
 \begin{lemma}
 In above setting, let $V$ be a $G$ module and $W$ be a character of $K$
 such that $\dim \Hom_K(V,W)=1$. 
 Then the $\cuu(\fgg)^K$ action on $\Omega_{V,W}$ is given by the
-$Z(\fgg)$ action on $V$.
+$Z(\fgg)$ action on $V$ and the annilater ideal $\cjj\subset \cuu(\fkk)$ of 
+$\rho$.
 \end{lemma}
 \proof
-Consider the short exact sequence:
+Consider the $K$-module short exact sequence:
 \[
 0\to \cnn_{V,W}\to V\to W\to 0.
 \]
 For any $x\in \cuu(\fgg)^K$, choose $z\in Z(\fgg)$ such that 
 $x-z \in \cjj\cuu(\fgg)$.
+Note that for any $v\in V$ we have $jv \in \cnn_{V,W}$ where $j\in \cjj$.
+So $\pi \circ x -\pi \circ z = \pi \circ (x-z) = 0$.
+Hence $c_{V,W}(x) = c_{V,W}(z)$.
 \qed
 
 \begin{thm}
@@ -355,46 +367,87 @@ Suppose that $\tau \in R(K, \omega)$ such that
 $\dim \Hom_{K}(\rho(\sigma),\tau) = 1$.
 Then the $\cuu(\fgg)^K$ action on $\Omega_{\rho(\sigma),\tau}$ 
 is determined by the infinitesimal character of $\tau$ and annilater ideal 
-$\cjj = \Ker(\sigma)|_{\cuu(\fhh')}$  
+$\cjj = \Ker(\sigma)|_{\cuu(\fgg')}$  
 \end{thm}
 \proof
 By Lemma~\ref{lemma:ugkcorr}, 
 for any $x \in \cug^K$ we can find $x'\in \cuu(\fmm')^{G'}$. Such that
-$\omega(x) = \omega(x')$ and this choise is independent of the realization 
+$\omega(x) = \omega(x')$ and this choice is independent of the realization 
 of oscillator representation. Now choose $z' \in \czz(\fmm')$ such that
 $x'-z' \in \cjj\cuu(\fmm')$ by Lemma~\ref{lemma:scalerk}.
 
 Then again by Lemma~\ref{lemma:ugkcorr}, we can find 
-$z\in \czz(\fkk)$ independent of realization,
+$z\in \czz(\fkk)$
 such that $\omega(z) = \omega(z')$.
-Hence $x$ act on $\Omega_{\rho(\sigma),\tau}$ by $z$.
- 
+%So $x$ action on $\Omega_{\rho(\sigma),\tau}$ is same as $z$ action on $\tau$.
+Hence, $c_{\rho(\sigma),\tau}(x) = \chi_{\tau}(z)$, 
+where $\chi_{\tau}$ is the infinitesimal character of $\tau$.
 \qed
 
 
-Now suppose that for another dual pair $(\tG, \tG')$, character $\trho$
-of $\tG'$ such that $\cjj$ annilate $\trho$ and $\theta(\trho)$ has 
-$K$-type $\Gamma^i W$. Then the $x$ action on this $K$-type by $z$ actoin. 
-Since the infinitesimal character determind the $K$-type, we conclude that 
-$\Gamma^i\theta(\rho)$ has a composition component $\theta(\trho)$.
+Let $\Gamma = \Gamma_{\fkk,M}^{\fkk,\tK}$, where $M$ is 
+the maximal compact subgroup of $K$.
+\begin{lemma}\label{lemma:derugkact}
+Let $V$ be a $(\fgg,M)$-module, 
+For $x\in \cuu(\fgg)^K$, it act on 
+$\Gamma^iV$ by $\Gamma^i x$, where view $x$ as a $(\fkk,M)$ endomorphism
+of $V$. 
+\end{lemma}
+\proof Form the realization of derive functor. \qed
+
+\begin{lemma}\label{lemma:derugkact2}
+In above setting, assume $\Gamma^iV \to \Gamma^i x$ is non-zero,
+Then $\Gamma^iV$ has a composition component with $\cuu(\fgg)^\tK$
+action on some $\tau$ via $c_{V,W}$, where $\Gamma^i(W)(\tau)\neq 0$.
+\end{lemma}
+\proof
+Consider the following diagram of $K$-module for $x\in \cuu(\fgg)^\tK$:
+\[
+\bfig
+\iiixii{15}[\cnn_{V,W}`V`W`\cnn_{V,W}`V`W;``x`x`c_{V,W}(x)``]
+\efig
+\]
+Take derive functor on it we get:
+\[
+\bfig
+\hSquares[\Gamma^i\cnn_{V,W}`\Gamma^iV`\Gamma^iW`\Gamma^i\cnn_{V,W}`\Gamma^iV`\Gamma^iW;``\Gamma^ix`\Gamma^ix`c_{V,W}(x)``]
+\efig
+\]
+Take any $\tK$ component $\tau$ of the image of $\Gamma^iV$, 
+So $\Gamma^i(V)(\tau)$ has a $\cuu(\fgg)^\tK\times \tK$ composition component
+with $c_{V,W}\otimes \tau$ action.
+By the equivalent of category of $\cuu(\fgg)^\tK\times \tK$
+module and $G$ module, the result is clear. 
 \qed
 
 \begin{cor}
-Suppose that:
-\begin{enumerate}[(1)]
-\item $\rho$ is a character of $G'$, $\pi = \theta_{G,G'}(\rho)$ is the theta
-lifting of $\rho$.
-\item   
-\end{enumerate}
+  Suppose that:
+  \begin{enumerate}[(1)]
+  \item $\sigma$ is a character of $G'$, $\pi = \rho_{G,G'}(\sigma)$.
+  \item $\tau$ is a $K$-module such that $\dim Hom_K(\pi,\tau) = 1$.
+  \item $\Gamma^i \tau$ irreducibule, 
+    $\Gamma^i \pi to \Gamma^i \tau$ is non-zero.
+  \item  Suppose that there is another dual pair 
+    $(\tG, \tG')$ with same size and type
+    such that the maximal compact subgroup $\tK$ of $\tG$ 
+    has complexified Lie algebra $\fkk$.
+  \item
+    $\tsigma$
+    is  character
+    of $\tG'$ such that $\cjj$ annilate $\tsigma$ and
+    $\tK$-type $\mu=\Gamma^i \tau$ occure in  $\rho(\tsigma)$ multiplicity free.
+  \end{enumerate}
+  Then $\Gamma^i \pi$ has a composition component isomorphic to 
+  a composition component of $\rho(\trho)$ with that $K$-type.
 \end{cor}
-
-
-
-\begin{lemma}
-Suppose $G$ is a classical group, $K$ is a maximal compact subgroup of $G$, 
-
-\end{lemma}
-
+\proof
+By Lemma~\ref{lemma:derugkact2}, $\Gamma^i\pi$ has a composition component 
+with $\cuu(\fgg)^K$ action $\cnn_{V,W}$. However for any $x\in \cuu(\fgg)^\tK$, 
+we can find $z\in Z(\fkk)$ such that $c_{\rho(\sigma),\tau}(x) = \chi_\tau(z)$.
+However $x$ act on $\tK$ isotropic space of $\theta(\tsigma)$ 
+is by $c_{\rho(\tsigma),\mu}(x) = \chi_\mu(z)$. So by the equivalence of category
+the result follows.  
+\qed
 
 
 \bibliography{bib/reppapers}{}
