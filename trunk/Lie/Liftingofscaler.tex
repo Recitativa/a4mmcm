@@ -22,9 +22,9 @@
 
 
 \newtheorem{lemma}{Lemma}
-\newtheorem{thm}{Theorem}
-\newtheorem{prop}{Proposition}
-\newtheorem{cor}{Corollary}
+\newtheorem{thm}[lemma]{Theorem}
+\newtheorem{prop}[lemma]{Proposition}
+\newtheorem{cor}[lemma]{Corollary}
 \newenvironment{expl}{\it}{\color{black}\normalsize}
 \DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
 
@@ -92,11 +92,9 @@
 \def\bz{{\overline{z}}}
 
 \def\Ad{\mathrm{Ad}}
-\def\agl{\mathfrak{gl}}
-\def\asl{\mathfrak{sl}}
-\def\aso{\mathfrak{so}}
-\def\asp{\mathfrak{sp}}
-\def\au{\mathfrak{u}}
+\def\fgl{\mathfrak{gl}}
+\def\fsl{\mathfrak{sl}}
+\def\fso{\mathfrak{so}}
 \def\diag#1{\mathrm{diag}(#1)}
 \def\lww{\mathcal{W}}
 \def\lxx{\mathcal{X}}
@@ -187,34 +185,44 @@
 
 
 Now assume $H$ is a subgroup of $G$,
-Suppose that $V$ is a $G$ module, $W$ is a $K$ module, such that
+Suppose that $V$ is a $G$ module, $W$ is a irreducible $H$ module, such that
 $\Hom_{H}(V,W)\neq 0$.
-Define \[
-\Omega_V(W) = V / \cnn_{V,W}
-\], 
+Define a $H$-module \[
+\Omega_V(W) = V / \cnn_{V,W},
+\]
 where 
 \[
 \cnn_{V,W} = \bigcap_{T\in \Hom_H(V,W)}\Ker(T)
 \]
-which is a generization 
+which is a generization
 of Howe quotion. It is clear that, any $S\in \Hom_H(V,V)$ act on 
-$\Omega_V(W)$ via the quotient map, 
+$\Omega_V(W)$ via the quotient map,
 the action is well defined by the construction
 (For any $v\in \cnn_{V,W}$, $T\circ S(v) = 0$ since $T\circ S\in \Hom_H(V,W)$ 
 for any $T\in \Hom_H(V,W)$. Hence $S(v)\in \cnn_{V,W}$.).
 One crucial example is the $\cuu(\fgg)^K$ action on the 
-$K$ isotypic component $V(\tau)$ of 
+$K$ isotypic component $V(\tau)\cong \Omega_V(W)$ of 
 $V$ where $W\in \tau$.
 
-For simplicity,
-suppose that $\dim \Hom_{H}(V,W)=1$,
-Hence $T\circ S = c(S) T$ for any $S\in \Hom_{H}(V,V)$ by Schur's lemma,
-where $c_{V,X}(x)\in \bC$. 
+One key property of $\Omega_V(W)$ is that:
+\[
+\Hom_H(V,W) \cong \Hom_H(\Omega_V(W),W).
+\]
+
+\begin{lemma}
+Suppose that $\dim \Hom_{H}(V,W)=1$,
+Then $S \in \Hom_{H}(V,V)$ act on $\Omega_{V,W}$ by a  scaler $c_{V,W}(S)$.
+The scaler is determined by the $S$ action on any vector $v\in V$ with 
+non-zero projection to $W$.
+\end{lemma}
+\proof
+Since $T\circ S \in \Hom_{H}(V,W)$ for any $S\in \Hom_{H}(V,V)$ assumption,
+$T\circ S = c_{V,X}(S)T$ by the assumption. 
 Hence $S$ act on $\Omega_{V,W}$ by this scaler $c_{V,W}(S)$.
-In fact, let $\phi$ be 
+In fact, let $\phi\colon V\to \Omega_V(W)$ be 
 the projection map, if $v\in V$ such 
 that $\phi(v) \neq 0$, $S \phi(v) = \phi \circ S (v) = c_{V,W}(S) \phi(v)$. 
-
+\qed
 
 Consider the situation of see-saw pair:
 Suppose we have see-saw pair
@@ -225,8 +233,8 @@ H\ar@{-}[ur] & G'
 \]
 where $H < G$, $H'> G'$. 
 
-For representation $\sigma$ of $G'$ which can be realized as a quotient of
-the Weil representation, by Howe we have
+For representation $\sigma \in R(\omega,G')$ of $G'$, i.e. which can be realized as a quotient of
+the Weil representation, we have
 \[
  \Omega_\omega(\sigma) = \rho(\sigma)\otimes \sigma
 \]
@@ -236,22 +244,25 @@ For any irreducible representation $\tau$ of $H$.
 \[
 \begin{split}
 &\Hom_{H}(\rho(\sigma), \tau)\\
-= & \Hom_{H\times G'}(\rho(\sigma)\otimes \sigma, \tau\otimes \sigma)
-=  \Hom_{H\times G'}(\omega/\cnn_\sigma, \tau\otimes \sigma)\\
-= & \Hom_{H\times G'}(\omega, \tau\otimes \sigma)\\
-= & \Hom_{H\times G'}(\omega/\cnn_\tau, \tau\otimes \sigma)
-= \Hom_{H\times G'}(\tau\otimes \rho(\tau), \tau\otimes \sigma)\\
-= & \Hom_{G'}(\rho(\tau), \sigma).
+\cong & \Hom_{H\times G'}(\rho(\sigma)\otimes \sigma, \tau\otimes \sigma)
+\cong  \Hom_{H\times G'}(\omega/\cnn_\sigma, \tau\otimes \sigma)\\
+\cong & \Hom_{H\times G'}(\omega, \tau\otimes \sigma)\\
+\cong & \Hom_{H\times G'}(\omega/\cnn_\tau, \tau\otimes \sigma)
+\cong \Hom_{H\times G'}(\tau\otimes \rho(\tau), \tau\otimes \sigma)\\
+\cong & \Hom_{G'}(\rho(\tau), \sigma).
 \end{split}
 \]
-The third equality above valid by the definition of $\cnn_\sigma$. 
 
 Again assume $\dim \Hom_{H}(\rho(\sigma),\tau) = 1$.
 Since $\rho(\sigma)$ is $\fgg$ module,  $\cuu(\fgg)^H$ act 
 on $\Omega_{\rho(\sigma),\tau} \cong \tau$ via character $c_{\rho(\sigma),\tau}$.
-Similary we have $\dim \Hom_G'(\rho(\tau),\sigma) = 1$,
-and $\cuu(\fhh')^{G'}$ action on $\Omega_{\rho(\tau),\sigma}\cong \sigma$
+Similary, since we have $\dim \Hom_G'(\rho(\tau),\sigma) = 1$ by above,
+$\cuu(\fhh')^{G'}$ action on $\Omega_{\rho(\tau),\sigma}\cong \sigma$
 via $c_{\rho(\tau),\sigma}$.
+
+{\bf Remark:}  $\cuu(\fgg)^H$ and $\cuu(\fhh')^{G'}$ 
+has a joint action on $\Hom_{H\times G'}(\omega,\tau\otimes\sigma)$ and by above 
+isomorphisms we can link the $\cuu(\fgg)^H$ action on $\Hom_H(\rho(\sigma),\tau)$ and $\cuu(\fhh')^{G'}$  action on $\Hom_G'(\rho(\tau),\sigma)$.
 
 \begin{lemma}\label{lemma:ugkcorr}
 For see-saw pair as above, 
@@ -259,14 +270,14 @@ For see-saw pair as above,
 \omega(\cuu(\fgg)^H) = \omega(\cuu(\fhh')^{G'}).
 \]
 Hence for any $x\in \cuu(\fgg)^H$ we can choose $y\in \cuu(\fhh')^{G'}$ 
-such that $\omega(x) = \omega(y)$ and this choose is independent of 
-realization of $\omega$.
+such that $\omega(x) = \omega(y)$ and this choose is independent of real form.
 \end{lemma}
-\proof Clear from the realization of oscillate representation and Howe's paper.
+\proof Clear from the Fock model of oscillate representation~\cite{Adams2007} 
+and Howe's paper~\cite{Howe1989Rem}. See appendix.
 \qed
 
 \begin{lemma}
-The map $c_{\rho(\tau),\sigma}$ and $c_{\rho(\sigma),\tau)}$ determin each other 
+The map $c_{\rho(\tau),\sigma}$ and $c_{\rho(\sigma),\tau)}$ determine each other 
 in a canonical way.
 \end{lemma}
 \proof 
@@ -277,7 +288,9 @@ Consider following commutative digram:
 \rho(\sigma)\otimes \sigma\ar[r]_{T_1} & \tau\otimes \sigma 
 }
 \]
-Here $T_i = T\otimes \id$.
+Here $T_i = \phi_i\otimes \id$.
+$\phi_1$ and $\phi_2$ are the projection map $\rho(\sigma)\to \Omega_{\rho(\sigma)}(\tau)\cong \tau$ 
+and $\rho(\tau)\to \Omega_{\rho(\tau)}(\sigma)\cong \sigma$. $S_i$ are similar.
 
 Note that $\omega(\cuu(\fgg)^H) = \omega(\cuu(\fhh')^{G'})$,
 for $x\in \cuu(\fgg)^H$, 
@@ -289,11 +302,13 @@ Now for any $v\otimes w\in \tau\otimes \sigma$, there is $a\in \omega$ such
 that $Q(a) = v\otimes w$.
 Hence, 
 \[
+c_{\rho(\sigma),\tau}(x) (v\otimes w )
 (x \cdot v)\otimes w 
 = T_1 (x S_1 (a))
 = T_1 \circ S_1 (\omega(x) a)
 = T_2 \circ S_2 (\omega(y) a)
 = v\otimes (y\cdot w).
+= c_{\rho(\tau),\sigma}(y)(v\otimes w)
 \]
 \qed
 
@@ -303,17 +318,17 @@ $V = \theta_{G', G}(\rho)$ is the theta lifting of character $\rho$ of $\tG'$.
 
 The following result is crucial, and is known by \cite{Shimura1990}, 
 \cite{Zhu2003} or \cite{Wallach1992real}:
-\begin{lemma}
-  $K$ is a maximal compact subgroup of some classical group $G$ 
-  of some classical group.
-  Let $\sigma$ be a one-dimensional representation of $K$.
-  Let $\cjj = \Ker(\sigma)|_{\cuu(\fkk)}$.
-  Then the natural map
-  \[
-  \czz(\fgg) \to \cuu(\fgg)^K/(\cjj\cuu(\fgg)\cap\cuu(\fgg)^K)
-  \]
-  is surjective.
-\end{lemma}
+% \begin{lemma}
+%   $K$ is a maximal compact subgroup of some classical group $G$ 
+%   of some classical group.
+%   Let $\sigma$ be a one-dimensional representation of $K$.
+%   Let $\cjj = \Ker(\sigma)|_{\cuu(\fkk)}$.
+%   Then the natural map
+%   \[
+%   \czz(\fgg) \to \cuu(\fgg)^K/(\cjj\cuu(\fgg)\cap\cuu(\fgg)^K)
+%   \]
+%   is surjective.
+% \end{lemma}
 
 We need a slightly generized version. 
 \begin{lemma}\label{lemma:scalerk}
@@ -448,6 +463,47 @@ However $x$ act on $\tK$ isotropic space of $\theta(\tsigma)$
 is by $c_{\rho(\tsigma),\mu}(x) = \chi_\mu(z)$. So by the equivalence of category
 the result follows.  
 \qed
+
+\appendix
+\section{Remarks of models of oscillate representation}
+This is following Adams' notes~\cite{Adams2007} and Howe~\cite{Howe1989Rem}.
+The main point is in the examples.
+
+Take a complex vector space $X$, form a symplectic space $W = X\oplus X^*$.
+Let $S = \bC[[X]]$ be the set of formal power series on $X$. 
+differential operators.
+Let $X$ act on $S$ by multiplication, and $X^*$ act on $S$ by differentiation as Howe~\cite{Howe1989Rem}. 
+There is a conical isomorphism of Lie algebra $\sp(W)\cong X\otimes X^* \oplus S^2(X) \oplus S^2(X^*)$.
+And $\cuu(\sp(W))$ act on this space as polynomial coeffients
+
+Now Take a real symplectic subspace $W_0$ of $W$ such that $(W_0)_\bC = W$. 
+We can view $\sp(W_0)$ as a real subalgebra of $\sp(W)$ act on $\bC[[X]]$. 
+
+The we can pick a symplectic basis $\Set{e_j,f_j}$ of $W_0$ such that 
+there is a unique $v\in S$ such that $(e_j-if_j)\cdot v = 0$. 
+The $W$ invariant subspace generated by $v$
+is a model of oscillator representation of $\sp(W_0)$.
+
+Let's look at a example. 
+Let $X = \Mat_{m,n}= V\otimes W$ be the set of $m$ by $n$ matrices.
+$W = X \oplus X^* = \Mat_{m,2n}$. The symplectic form on $W$ is given by 
+\[
+\inn{A}{B} = \tr AJB^T, \forall A,B\in W,
+\]
+where 
+\[J = \begin{pmatrix}
+  0 & I_n\\
+  -I_n &0
+\end{pmatrix}
+\]
+and $I_n$ is the $n$ by $n$ identity matrix.
+
+Denote $\fmm = X\otimes X^* \subset \sp(W)$.
+$\fgg=\fso(m,\bC)$ be the Lie subalgebra of $\sp(W)$ act on left of $W$
+and $\fgg'=\sp(2n,\bC)$ act on $W$ by right action. $\fmm\cap \fgg' \cong \fgl(n,\bC)$.
+
+Choose 
+$W_0 =  $
 
 
 \bibliography{bib/reppapers}{}
