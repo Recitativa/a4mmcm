@@ -28,6 +28,7 @@
 \newenvironment{expl}{\it}{\color{black}\normalsize}
 \DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
 
+
 \def\sign{{\rm sign}}
 \def\Ker{{\rm Ker}}
 \def\Im{{\rm Im}}
@@ -139,7 +140,7 @@
 \def\tU{{\widetilde{U}}}
 \def\pz#1{\partial z_{#1}}
 \def\ddt{\left.\frac{d}{dt}\right|_{t=0}}
-
+\def\csigma\
 \def\Ind{{\rm Ind}}
 
 
@@ -184,7 +185,7 @@
 
 
 
-Now assume $H$ is a subgroup of $G$,
+Assume $H$ is a subgroup of $G$,
 Suppose that $V$ is a $G$ module, $W$ is a irreducible $H$ module, such that
 $\Hom_{H}(V,W)\neq 0$.
 Define a $H$-module \[
@@ -192,10 +193,10 @@ Define a $H$-module \[
 \]
 where 
 \[
-\cnn_{V,W} = \bigcap_{T\in \Hom_H(V,W)}\Ker(T)
+\cnn_{V,W} = \bigcap_{T\in \Hom_H(V,W)}\Ker(T).
 \]
-which is a generization
-of Howe quotion. It is clear that, any $S\in \Hom_H(V,V)$ act on 
+This is a generization
+of Howe quotient. It is clear that, any $S\in \Hom_H(V,V)$ act on 
 $\Omega_V(W)$ via the quotient map,
 the action is well defined by the construction
 (For any $v\in \cnn_{V,W}$, $T\circ S(v) = 0$ since $T\circ S\in \Hom_H(V,W)$ 
@@ -213,7 +214,7 @@ One key property of $\Omega_V(W)$ is that:
 Suppose that $\dim \Hom_{H}(V,W)=1$,
 Then $S \in \Hom_{H}(V,V)$ act on $\Omega_{V,W}$ by a  scaler $c_{V,W}(S)$.
 The scaler is determined by the $S$ action on any vector $v\in V$ with 
-non-zero projection to $W$.
+non-zero $H$-equivariant projection to $W$.
 \end{lemma}
 \proof
 Since $T\circ S \in \Hom_{H}(V,W)$ for any $S\in \Hom_{H}(V,V)$ assumption,
@@ -223,6 +224,7 @@ In fact, let $\phi\colon V\to \Omega_V(W)$ be
 the projection map, if $v\in V$ such 
 that $\phi(v) \neq 0$, $S \phi(v) = \phi \circ S (v) = c_{V,W}(S) \phi(v)$. 
 \qed
+
 
 Consider the situation of see-saw pair:
 Suppose we have see-saw pair
@@ -234,7 +236,7 @@ H\ar@{-}[ur] & G'
 where $H < G$, $H'> G'$. 
 
 For representation $\sigma \in R(\omega,G')$ of $G'$, i.e. which can be realized as a quotient of
-the Weil representation, we have
+the Weil representation $\omega$, we have
 \[
  \Omega_\omega(\sigma) = \rho(\sigma)\otimes \sigma
 \]
@@ -265,7 +267,7 @@ has a joint action on $\Hom_{H\times G'}(\omega,\tau\otimes\sigma)$ and by above
 isomorphisms we can link the $\cuu(\fgg)^H$ action on $\Hom_H(\rho(\sigma),\tau)$ and $\cuu(\fhh')^{G'}$  action on $\Hom_G'(\rho(\tau),\sigma)$.
 
 \begin{lemma}\label{lemma:ugkcorr}
-For see-saw pair as above, 
+For any see-saw pair, 
 \[
 \omega(\cuu(\fgg)^H) = \omega(\cuu(\fhh')^{G'}).
 \]
@@ -277,8 +279,8 @@ and Howe's paper~\cite{Howe1989Rem}. See appendix.
 \qed
 
 \begin{lemma}
-The map $c_{\rho(\tau),\sigma}$ and $c_{\rho(\sigma),\tau)}$ determine each other 
-in a canonical way.
+The map $c_{\rho(\tau),\sigma}$ and $c_{\rho(\sigma),\tau}$ determine each other 
+and is independent of real form.
 \end{lemma}
 \proof 
 Consider following commutative digram:
@@ -290,7 +292,7 @@ Consider following commutative digram:
 \]
 Here $T_i = \phi_i\otimes \id$.
 $\phi_1$ and $\phi_2$ are the projection map $\rho(\sigma)\to \Omega_{\rho(\sigma)}(\tau)\cong \tau$ 
-and $\rho(\tau)\to \Omega_{\rho(\tau)}(\sigma)\cong \sigma$. $S_i$ are similar.
+and $\rho(\tau)\to \Omega_{\rho(\tau)}(\sigma)\cong \sigma$. $S_i$ are defined similarly.
 
 Note that $\omega(\cuu(\fgg)^H) = \omega(\cuu(\fhh')^{G'})$,
 for $x\in \cuu(\fgg)^H$, 
@@ -332,64 +334,64 @@ The following result is crucial, and is known by \cite{Shimura1990},
 
 We need a slightly generized version. 
 \begin{lemma}\label{lemma:scalerk}
-  Consder pair $(G,K)$ where 
-  $K$ is a subgroup $G$ meet all the component of $G$.
+  Consder pair $(G,H)$ where 
+  $H$ is a subgroup $G$ meet all the component of $G$.
   Suppose that $\fgg$ be the complexification of 
-  a complex classical Lie algebra.
-  More over there is a involution, such that $\fgg$ decomposite into 
+  a classical Lie algebra.
+  Moreover there is a involution, such that $\fgg$ decomposite into 
   $\fgg = \fkk+\fpp$ where 
-  $\fkk$ is the complexification of the Lie algebra of $K$.
+  $\fkk$ is the complexification of the Lie algebra of $H$.
   
-  Let $\sigma$ be a one-dimensional representation of $K$.
+  Let $\sigma$ be a one-dimensional representation of $H$.
   Let $\cjj = \Ker(\sigma)|_{\cuu(\fkk)}$.
   Then the natural map
   \[
-  \czz(\fgg) \to \cuu(\fgg)^K/(\cjj\cuu(\fgg)\cap\cuu(\fgg)^K)
+  \czz(\fgg) \to \cuu(\fgg)^H/(\cjj\cuu(\fgg)\cap\cuu(\fgg)^H)
   \]
   is surjective.
 \end{lemma}
 \proof In view of Shimura's proof, the only step use the assumption 
 that $G$ is classical is to grantee the following relation:
 \[
-\phi(S^r(\fgg)^G))+\cuu(\fgg)\fkk \supset \phi(S^r(\fgg)^K).
+\phi(S^r(\fgg)^G))+\cuu(\fgg)\fkk \supset \phi(S^r(\fgg)^H).
 \]
 But this is true in our case.So the above lemma
 holds by the same proof. 
  \qed
 
 \begin{lemma}
-In above setting, let $V$ be a $G$ module and $W$ be a character of $K$
-such that $\dim \Hom_K(V,W)=1$. 
-Then the $\cuu(\fgg)^K$ action on $\Omega_{V,W}$ is given by the
+In above setting, let $V$ be a $G$ module and $W$ be a character of $H$
+such that $\dim \Hom_H(V,W)=1$. 
+Then the $\cuu(\fgg)^H$ action on $\Omega_{V,W}$ is determined by the
 $Z(\fgg)$ action on $V$ and the  ideal $\cjj\subset \cuu(\fkk)$ of 
 $\rho$.
 \end{lemma}
 \proof
-Consider the $K$-module short exact sequence:
+Consider the $H$-module short exact sequence:
 \[
-0\to \cnn_{V,W}\to V\to W\to 0.
+0\to \cnn_{V,W}\to V\to^{\pi} W\to 0.
 \]
-For any $x\in \cuu(\fgg)^K$, choose $z\in Z(\fgg)$ such that 
+For any $x\in \cuu(\fgg)^H$, choose $z\in Z(\fgg)$ such that 
 $x-z \in \cjj\cuu(\fgg)$.
-Note that for any $v\in V$ we have $jv \in \cnn_{V,W}$ for any $j\in \cjj$.
+Note that for any $v\in V$ we have $jv \in \cnn_{V,W}$ for all $j\in \cjj$.
 So $\pi \circ x -\pi \circ z = \pi \circ (x-z) = 0$.
 Hence $c_{V,W}(x) = c_{V,W}(z)$.
 \qed
 
-\begin{thm}
+\begin{thm}\label{thm:ugkcor}
 Let $\sigma \in R(G', \omega)$ be a character of $G'$. 
-Suppose that $\tau \in R(K, \omega)$ such that 
-$\dim \Hom_{K}(\rho(\sigma),\tau) = 1$.
-Then the $\cuu(\fgg)^K$ action on $\Omega_{\rho(\sigma),\tau}$ 
+Suppose that $\tau \in R(H, \omega)$ such that 
+$\dim \Hom_{H}(\rho(\sigma),\tau) = 1$.
+Then the $\cuu(\fgg)^H$ action on $\Omega_{\rho(\sigma),\tau}$ 
 is determined by the infinitesimal character of $\tau$ and annilater ideal 
 $\cjj = \Ker(\sigma)|_{\cuu(\fgg')}$  
 \end{thm}
 \proof
 By Lemma~\ref{lemma:ugkcorr}, 
-for any $x \in \cug^K$ we can find $x'\in \cuu(\fmm')^{G'}$. Such that
-$\omega(x) = \omega(x')$ and this choice is independent of real form 
-of oscillator representation. Now choose $z' \in \czz(\fmm')$ such that
-$x'-z' \in \cjj\cuu(\fmm')$ by Lemma~\ref{lemma:scalerk}.
+for any $x \in \cug^H$ we can find $x'\in \cuu(\fhh')^{G'}$. Such that
+$\omega(x) = \omega(x')$ and this choice is independent of real form.
+Now choose $z' \in \czz(\fhh')$ such that
+$x'-z' \in \cjj\cuu(\fhh')$ by Lemma~\ref{lemma:scalerk}.
 
 Then again by Lemma~\ref{lemma:ugkcorr}, we can find 
 $z\in \czz(\fkk)$
@@ -401,11 +403,11 @@ where $\chi_{\tau}$ is the infinitesimal character of $\tau$.
 
 
 Let $\Gamma = \Gamma_{\fgg,M}^{\fgg,K^c}$, where $M$ is 
-the maximal compact subgroup of $K$, and $K^c$ is a compact real form of $\fkk$.
+the maximal compact subgroup of $H$, and $K^c$ is a compact real form of $\fkk$.
 We abuse of notation and write $\Gamma = \Gamma_{\fkk,M}^{\fkk,K^c}$ when it apply to $(\fkk,M)$-module.
 \begin{lemma}\label{lemma:derugkact}
 Let $V$ be a $(\fgg,M)$-module, 
-For $x\in \cuu(\fgg)^K = \cuu(\fgg)^{K^c}$, it act on 
+For $x\in \cuu(\fgg)^H = \cuu(\fgg)^{K^c}$, it act on 
 $\Gamma^iV$ by $\Gamma^i x$, where view $x$ as a $(\fkk,M)$-module endomorphism
 of $V$. 
 \end{lemma}
@@ -413,12 +415,14 @@ of $V$.
 \qed
 
 \begin{lemma}\label{lemma:derugkact2}
-In above setting, assume $\Gamma^iV \to \Gamma^i x$ is non-zero,
+In above setting, assume $\Gamma^iV \to \Gamma^i x$ is non-zero 
+and $K^c$ type $\mu$ occure in the image
+of this map.
 Then $\Gamma^iV$ has a composition component with $\cuu(\fgg)^{K^c}$
-action on some $\tau$ via $c_{V,W}$, where $\Gamma^i(W)(\tau)\neq 0$.
+action on the $K^c$ isotropic space of type $\mu$ via $c_{V,W}$. 
 \end{lemma}
 \proof
-Consider the following diagram of $K$-module for $x\in \cuu(\fgg)^\tK$:
+Consider the following diagram of $H$-module for $x\in \cuu(\fgg)^\tK$:
 \[
 \bfig
 \iiixii{15}[\cnn_{V,W}`V`W`\cnn_{V,W}`V`W;``x`x`c_{V,W}(x)``]
@@ -430,64 +434,85 @@ Take derive functor on it we get:
 \hSquares[\Gamma^i\cnn_{V,W}`\Gamma^iV`\Gamma^iW`\Gamma^i\cnn_{V,W}`\Gamma^iV`\Gamma^iW;``\Gamma^ix`\Gamma^ix`c_{V,W}(x)``]
 \efig
 \]
-Take any $K^c$ component $\tau$ of the image of $\Gamma^iV$, 
-So $\Gamma^i(V)(\tau)$ has a $\cuu(\fgg)^{K^c}\times {K^c}$ composition component
+So $\Gamma^i(V)(\mu)$ has a $\cuu(\fgg)^{K^c}\times {K^c}$ composition component
 with $c_{V,W}\otimes \tau$ action.
 By the equivalence of categories of $\cuu(\fgg)^{K^c}\times {K^c}$
 module and $G$ module, the result is clear. 
 \qed
 
+\def\ckG{\check{G}}
+\def\ckK{\check{K}}
+\def\csigma{\check{\sigma}}
+\def\cfkk{\check{\fkk}}
 \begin{cor}
-  Suppose that:
+  Suppose that 
+  $G$ and $\ckG$ are two real forms of a reductive Lie algebra $\fgg$ as
+  the setting in~\cite{WallachZhu2004}
+  (i.e. there are Cartan involutions 
+  and complex conjugations respect these real forms 
+  are commute to each other).
+  Moreover
+  $(G,G')$ and $(\ckG,\ckG')$ form reductive dual pairs such that 
+  $G'$ and $\ckG'$ are also two real forms of a same complex 
+  Lie algebra $\fgg'$.
+  
+  Let $H$ be the subgroup of $G$ with Lie algebre $\cfkk$, where
+  $\fgg=\cfkk \oplus \check{\fpp}$ under the involution of $\ckG$.
+
+  Let $\Gamma = \Gamma_{H\cap \ckK}^{\ckK}$.
+  Suppose 
   \begin{enumerate}[(1)]
-  \item $\sigma$ is a character of $G'$, $\pi = \rho_{G,G'}(\sigma)$.
-  \item $\tau$ is a $K$-module such that $\dim Hom_K(\pi,\tau) = 1$.
-  \item $\Gamma^i \tau$ irreducibule, 
-    $\Gamma^i \pi to \Gamma^i \tau$ is non-zero.
-  \item  Suppose that there is another dual pair 
-    $(\tG, \tG')$ with same size and type
-    such that the maximal compact subgroup $\tK$ of $\tG$ 
-    has complexified Lie algebra $\fkk$.
-  \item
-    $\tsigma$
-    is  character
-    of $\tG'$ such that $\cjj$ annilate $\tsigma$ and
-    $\tK$-type $\mu=\Gamma^i \tau$ occure in  $\rho(\tsigma)$ multiplicity free.
+  \item $\sigma_i$ is a character of $G_i'$, where $i=1,2$. 
+  \item  Let $\cjj_1 = \Ker(\sigma|_{\cuu(\fgg')}) \subset \cuu{\fgg'}$.
+    $\cjj_1 = \cjj_2$.
+  \item $\tau_1$ is a $K_1$-module such that
+    $\dim \Hom_{H_1}(\rho(\sigma_1),\tau_1) = 1$.
+  \item $\tau_2$ is a $K_2$-module occure in the
+    image of map $\Gamma^i \rho(\sigma_1) \to \Gamma^i \tau$ 
+    such that 
+    $\dim \Hom_{H_2}(\rho(\sigma_2),\tau_2) =1$.
   \end{enumerate}
-  Then $\Gamma^i \pi$ has a composition component isomorphic to 
-  a composition component of $\rho(\trho)$ with that $K$-type.
+  Then $\Gamma^i \rho(\sigma_1)$ and 
+  $\rho(\sigma_2)$ has a isomrophic irreducible subquotient 
+  with common $K_2$-type $\tau_2$.
 \end{cor}
 \proof
 By Lemma~\ref{lemma:derugkact2}, $\Gamma^i\pi$ has a composition component 
-with $\cuu(\fgg)^K$ action $\cnn_{V,W}$. However for any $x\in \cuu(\fgg)^\tK$, 
+with $\cuu(\fgg)^{\ckK}$ action on $\mu$ component via $c_{\rho(\sigma),\tau}$.
+By Theorem~\ref{thm:ugkcor}, for any $x\in \cuu(\fgg)^{\ckK}$, 
 we can find $z\in Z(\fkk)$ such that $c_{\rho(\sigma),\tau}(x) = \chi_\tau(z)$.
-However $x$ act on $\tK$ isotropic space of $\theta(\tsigma)$ 
-is by $c_{\rho(\tsigma),\mu}(x) = \chi_\mu(z)$. So by the equivalence of category
+On the other hand, $x$ act on $\mu$ isotropic space of $\rho(\csigma)$ 
+is by $c_{\rho(\csigma),\mu}(x) = \chi_\mu(z)$.
+Since the derived functor preserve the infinitesimal character, 
+\[
+c_{\rho(\sigma),\tau}(x) = \chi_\tau(z) = \chi_\mu(z)=c_{\rho(\csigma),\mu}(x).
+\]
+So by the equivalence of categories
 the result follows.  
 \qed
 
 \appendix
 \section{Remarks of models of oscillate representation}
-This is following Adams' notes~\cite{Adams2007} and Howe~\cite{Howe1989Rem}.
+This remarks are following Adams' notes~\cite{Adams2007} and Howe~\cite{Howe1989Rem}.
 The main point is in the examples.
 
 Take a complex vector space $X$, form a symplectic space $W = X\oplus X^*$.
 Let $S = \bC[[X]]$ be the set of formal power series on $X$. 
-differential operators.
-Let $X$ act on $S$ by multiplication, and $X^*$ act on $S$ by differentiation as Howe~\cite{Howe1989Rem}. 
+Let $X$ act on $S$ by multiplication, and $X^*$ act on $S$ by differentiation as 
+Adams~\cite{Adams2007} (twisted by $i=\sqrt{-1}$). 
 There is a conical isomorphism of Lie algebra $\sp(W)\cong X\otimes X^* \oplus S^2(X) \oplus S^2(X^*)$.
-And $\cuu(\sp(W))$ act on this space as polynomial coeffients
+And $\cuu(\sp(W))$ act on $S=\bC[[X]]$ as polynomial coeffients differential operators.
 
 Now Take a real symplectic subspace $W_0$ of $W$ such that $(W_0)_\bC = W$. 
 We can view $\sp(W_0)$ as a real subalgebra of $\sp(W)$ act on $\bC[[X]]$. 
 
-The we can pick a symplectic basis $\Set{e_j,f_j}$ of $W_0$ such that 
-there is a unique (upto scaler) $v\in S$ such that $(e_j-if_j)\cdot v = 0$. 
+The we can pick a symplectic basis $\Set{e_j,f_j}$ of $W_0$.  
+There is a unique (upto scaler) $0\neq v\in S$ such that $(e_j-if_j)\cdot v = 0$. 
 The $W$ invariant subspace generated by $v$
 is a model of oscillator representation of $\sp(W_0)$.
 
 \begin{lemma}
-Fix a $(\fgg,\fgg')$ is a pair of complex Lie algebra of some dual pair.
+Fix a is a pair of complex Lie algebra $(\fgg,\fgg')$ of some dual pair.
 For any real form $(G,G')$, we can find some $W_0$ 
 such that $Lie(G) \cong \sp(W_0)\cap \fgg$ and $Lie(G')\cong \sp(W_0)\cap \fgg'$.
 \end{lemma}
@@ -495,8 +520,8 @@ such that $Lie(G) \cong \sp(W_0)\cap \fgg$ and $Lie(G')\cong \sp(W_0)\cap \fgg'$
 Let's look at a example. 
 $U$ is a complex orthognal space with orthonormal basis $\Set{a_i}$. $V$ is a complex symplectic space with 
 symplectic basis $\Set{b_i, c_i}$ where $b_i$ 
-span a maximal isotropic subspace and $c_i$ are the corresponding dual.
-Let $W = U\otimes V$ and $X = \sspan{a_i\otimes b_j}$. 
+span a maximal isotropic subspace and $c_i$ are the corresponding dual vectors.
+Let $W = U\otimes V$ and $X = \sspan\Set{a_i\otimes b_j}$. 
 Denote $\fmm = X\otimes X^* \subset \sp(W)$.
 $\fgg=\fso(U)$ and $\fgg'=\sp(V)$ be the subalgebra of $\sp(W)$.
 
@@ -534,7 +559,9 @@ and corresponding $W$ invariant $\bC[X]$ generated by $1$ is $\bC[X]$, this just
 {\bf Schrodinger model}
 On the other hand let $W$ be a complex symplectic space with symplectic basis $\Set{e_j,f_j}$.
 Let $W_0$ be the real span of this basis. Then $e_j-if_j$ nil vector is $e^{-x^2/2}$ 
-and this leads the Schrodinger model.
+and this leads to the Schrodinger model.
+
+
 
 \bibliography{bib/reppapers}{}
 \bibliographystyle{alpha}
