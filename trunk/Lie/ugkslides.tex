@@ -17,7 +17,7 @@
 
 \input{mymaros.tex}
 
-\title[$\cuu(\fgg)^K$ in dual pairs]{$\cuu(\fgg)^K$ actions in dual pairs}
+\title{Dual pairs and $\cuu(\fgg)^K$ actions}
 \author{Ma Jia Jun}
 \institute[NUS]{National University of Singapore}
 
@@ -30,7 +30,7 @@ For any real reducitve group $G$,
 we will consider a subgroup $H$ of $G$ such that $K_H = H\cap K_G$ is a maximal 
 compact subgroup of $H$, where $K_G$ is the maximal compact subgroup of $G$.
 
-Now a $(\fgg,K)$ module is also a $(\fhh,K_H)$ module.
+Now a $(\fgg,K_G)$ module is also a $(\fhh,K_H)$ module.
 
 All the module we considered later will in this case, 
 so we suppress the maximal compact subgroup and work with 
@@ -75,10 +75,10 @@ Suppose $(G,G')$ is a reducitive dual pair with
 Weil representation $\omega$.
 
 Let $R(\omega,\widetilde{G})$
-be the set of irreducible  representation of $\widetilde{G}$
-which can be realize as a quotient of $\omega$.
+be the set of irreducible  representations of $\widetilde{G}$
+which can be realized as a quotient of $\omega$.
 
-We will always work under the double covers of groups, so
+We will always working with the double covers of groups, so
 we just suppress the $\widetilde{\ \  }$ and think all groups 
 appears later actually are some double cover.
 
@@ -156,12 +156,13 @@ The character $c_{\rho(\tau),\sigma}$ of $\cuu(\fgg)^H$ and
 \end{frame}
 
 \begin{frame}{A surjectivity result}
-The following result is crucial for the later discussion. It is known by \cite{Shimura1990} and \cite{Wallach1992real}.
+The following result is crucial for the later discussion. It is by Helgason,
+ \cite{Shimura1990} and \cite{Wallach1992real}.
 Moreover it is used in \cite{Zhu2003} to study the representations with scaler $K$-type.
 \begin{lemma}\label{lemma:scalerk}
   Suppose that $\fgg$ be the complexification of 
   a classical Lie algebra.
-  Consder symmetric pair $(G,H)$ where
+  Consder a pair of groups $(G,H)$ where
   $H$ is a subgroup $G$ meet all the component of $G$.
   Moreover there is a involution, such that $\fgg=Lie(G)_\bC$ decomposite into 
   $\fgg = \fkk+\fpp$ where 
@@ -184,7 +185,7 @@ Then the $\cuu(\fgg)^H$ action on $\Omega_{V,W}$ is determined by the
 $Z(\fgg)$ action on $V$ and the  ideal $\cjj\subset \cuu(\fkk)$ of 
 $\rho$.
 \end{lemma}
-Tthi is because $\cjj\cuu(\fgg)\cap\cuu(\fgg)^H$ act trivially on $\Omega_{V,W}$.
+This is because $\cjj\cuu(\fgg)\cap\cuu(\fgg)^H$ act trivially on $\Omega_{V,W}$.
 
 
 \begin{theorem}\label{thm:ugkcor}
@@ -204,7 +205,8 @@ the maximal compact subgroup of $H$.
 $K^c$ is a compact real form of $\fkk$ such that $\cuu(\fgg)^H = \cuu(\fgg)^{K^c}$.
 %We abuse of notation and write $\Gamma = \Gamma_{\fkk,M}^{\fkk,K^c}$ when it apply to $(\fkk,M)$-module.
 
-From the realization of derived functor module (c.f. \cite{Wallach1992real} Chapter 6), we have
+From the realization of derived functor module (c.f.
+\cite{EnrightWallach1980} and \cite{Wallach1992real} Chapter 6), we have
 \begin{lemma}\label{lemma:derugkact}
 Let $V$ be a $(\fgg,M)$-module, 
 $s\in \cuu(\fgg)^{K^c}$ act on 
@@ -213,8 +215,18 @@ of $V$.
 \end{lemma}
 \end{frame}
 
+\begin{frame}
+\begin{lemma}\label{lemma:derugkact2}
+In above setting, assume $\Gamma^iV \to \Gamma^i W$ is non-zero 
+and $K^c$ type $\mu$ occure in the image
+of this map.
+Then $\Gamma^iV$ has a subquotient with $\cuu(\fgg)^{K^c}$
+action on the $K^c$ isotropic space of type $\mu$ via $c_{V,W}$. 
+\end{lemma}
+
+\end{frame}
+
 \begin{frame}{The main result}
-\begin{theorem}
   Suppose that 
   $G_1$ and $G_2$ are two real forms of a reductive Lie algebra $\fgg$.
   There are Cartan involutions of $G_i$ commute to each other(c.f. \cite{WallachZhu2004}).
@@ -242,7 +254,7 @@ of $V$.
   Then $\Gamma^i \rho(\sigma_1)$ and 
   $\rho(\sigma_2)$ has a isomrophic irreducible subquotient 
   with common $K_2$-type $\tau_2$.
-\end{theorem}
+
 \end{frame}
 
 \begin{frame}{Examples}
