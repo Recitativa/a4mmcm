@@ -1,0 +1,277 @@
+\documentclass{beamer} 
+
+\usepackage{pdfsync}
+
+\usepackage{hyperref}
+\usepackage{amssymb}
+\usepackage{amsmath, amsthm}
+\usepackage{braket}
+\usepackage{paralist}
+\usepackage{eufrak}
+\usepackage[all,cmtip]{xy}
+\usepackage{diagxy}
+
+\usetheme{Boadilla} 
+
+\begin{document}
+
+\input{mymaros.tex}
+
+\title[$\cuu(\fgg)^K$ in dual pairs]{$\cuu(\fgg)^K$ actions in dual pairs}
+\author{Ma Jia Jun}
+\institute[NUS]{National University of Singapore}
+
+\begin{frame}[plain]
+  \titlepage
+\end{frame}
+
+\begin{frame}{Notions}
+For any real reducitve group $G$, 
+we will consider a subgroup $H$ of $G$ such that $K_H = H\cap K_G$ is a maximal 
+compact subgroup of $H$, where $K_G$ is the maximal compact subgroup of $G$.
+
+Now a $(\fgg,K)$ module is also a $(\fhh,K_H)$ module.
+
+All the module we considered later will in this case, 
+so we suppress the maximal compact subgroup and work with 
+the $(\fgg,K_G)$-module category.
+A $H$-module just means $(\fhh,K_H)$-module and write,
+\[
+\Hom_{H}(V,W) = \Hom_{\fhh,K_H}(V,W),
+\]
+for any $(\fhh,K_H)$-module $V$ and $W$.
+\end{frame}
+
+\begin{frame}{A Generization of $\cuu(\fgg)^K$}
+
+
+Suppose $H\subset G$,  $V$ is a $G$ module, $W$ is a irreducible $H$ module
+ such that
+$\Hom_{H}(V,W)\neq 0$.
+Note that $\cuu(\fgg)^H \subset \Hom_H(V,V)$. $\cuu(\fgg)^H$ act on right 
+of $\Hom_H(V,W)$ by compositon.
+
+To make the action on left, define
+Define a $H$-module \[
+\Omega_V(W) = V / \cnn_{V,W},
+\quad \text{where }
+\cnn_{V,W} = \bigcap_{T\in \Hom_H(V,W)}\Ker(T).
+\]
+Now $\cuu(\fgg)^H$ act on $\Omega_V(W)$ via the quotient map.
+
+\begin{lemma}
+Suppose that $\dim \Hom_{H}(V,W)=1$,
+Then $S \in \cuu(\fgg)^H$ act on $\Omega_{V,W}$ by a  scaler $c_{V,W}(S)$.
+\end{lemma}
+\rmk This scaler is determined by the $S$ action on any vector $v\in V$ with 
+non-zero image under any $H$-equivariant projection to $W$ .
+
+\end{frame}
+
+
+\begin{frame}{Howe quotient.}
+Suppose $(G,G')$ is a reducitive dual pair with 
+Weil representation $\omega$.
+
+Let $R(\omega,\widetilde{G})$
+be the set of irreducible  representation of $\widetilde{G}$
+which can be realize as a quotient of $\omega$.
+
+We will always work under the double covers of groups, so
+we just suppress the $\widetilde{\ \  }$ and think all groups 
+appears later actually are some double cover.
+
+For $G'$ representatoion $\sigma \in R(\omega,G')$, we have
+\[
+ \Omega_\omega(\sigma) = \rho(\sigma)\otimes \sigma.
+\]
+ as $G\times G'$ representation, where $\rho(\sigma)$ is some $G$-module.
+Similary for $G$ representation $\tau\in R(\omega,G)$,
+\[
+ \Omega_\omega(\tau) = \tau\otimes \rho(\tau).
+\]
+
+\end{frame}
+
+\begin{frame}{See-saw pair and  joint action of $\cuu(\fgg)^H$ 
+and $\cuu(\fhh')^{G'}$}
+
+
+Suppose we have following See-Saw pair:
+\[
+\xymatrix{
+\rho(\sigma)& G \ar@{-}[dr] & H'& \rho(\tau)\\
+\tau &H\ar@{-}[ur] & G' & \sigma
+}
+\]
+where $H < G$, $H'> G'$. Let $\sigma\in R(\omega, G')$, $\tau\in R(\omega,H)$.
+Then:
+\[
+\Hom_{H}(\rho(\sigma), \tau) 
+\cong  \Hom_{H\times G'}(\omega, \tau\otimes \sigma)
+\cong  \Hom_{G'}(\rho(\tau), \sigma)
+\]
+
+{\color{blue}
+ $\cuu(\fgg)^H$ and $\cuu(\fhh')^{G'}$ 
+has a joint action on $\Hom_{H\times G'}(\omega,\tau\otimes\sigma)$
+
+we can link the $\cuu(\fgg)^H$ action on $\Hom_H(\rho(\sigma),\tau)$ and $\cuu(\fhh')^{G'}$  action on $\Hom_{G'}(\rho(\tau),\sigma)$.
+}
+\end{frame}
+
+\begin{frame}{Relation between $\cuu(\fgg)^H$ and $\cuu(\fhh')^{G'}$}
+\begin{lemma}\label{lemma:ugkcorr}
+For any see-saw pair, 
+\[
+\omega(\cuu(\fgg)^H) = \omega(\cuu(\fhh')^{G'}).
+\]
+Hence for any $x\in \cuu(\fgg)^H$ we can choose $y\in \cuu(\fhh')^{G'}$ 
+such that $\omega(x) = \omega(y)$ and this choice is independent of real form.
+\end{lemma}
+
+It is followed from the model of oscillate representation (c.f. \cite{Adams2007} 
+and \cite{Howe1989Rem}).
+In particular, let $\End^\circ$ be the set of all polynomial coefficient differential operators.
+Then the image of $\omega(\cuu(\fgg))$ is inside $\End^\circ$ and is precisely the $G'$ inveriant, i.e.:
+\[
+\omega(\cuu(\fgg)) = \left(\End^\circ\right)^{G'}.
+\]
+
+So 
+\[
+\omega(\cuu(\fgg)^H) = \omega(\cuu(\fgg))^H = \omega(\cuu(\fgg))\cap \omega(\cuu(\fhh')) = \omega(\cuu(\fhh')^{G'})
+\]
+\end{frame}
+
+\begin{frame}{A lemma in the Multiplicity one case}
+\begin{lemma}
+Suppose that $\dim \Hom_H(\rho(\sigma),\tau)) =1$.
+The character $c_{\rho(\tau),\sigma}$ of $\cuu(\fgg)^H$ and
+ the character $c_{\rho(\sigma),\tau}$ of $\cuu(\fhh')^{G'}$ determine each other 
+and is independent of real form.
+\end{lemma}
+
+\end{frame}
+
+\begin{frame}{A subjectivity result}
+The following result is crucial for the later discussion. It is known by \cite{Shimura1990} and \cite{Wallach1992real}.
+Moreover it is used in \cite{Zhu2003} to study the representations with scaler $K$-type.
+\begin{lemma}\label{lemma:scalerk}
+  Suppose that $\fgg$ be the complexification of 
+  a classical Lie algebra.
+  Consder symmetric pair $(G,H)$ where
+  $H$ is a subgroup $G$ meet all the component of $G$.
+  Moreover there is a involution, such that $\fgg=Lie(G)_\bC$ decomposite into 
+  $\fgg = \fkk+\fpp$ where 
+  $\fkk=Lie(H)_\bC$.
+  
+  Let $\sigma$ be a one-dimensional representation of $H$.
+  Let $\cjj = \Ker(\sigma|_{\cuu(\fkk)})$.
+  Then the following map is surjective:
+  \[
+  \czz(\fgg) \to \cuu(\fgg)^H/(\cjj\cuu(\fgg)\cap\cuu(\fgg)^H)
+  \]
+\end{lemma}
+\end{frame}
+
+\begin{frame}
+\begin{lemma}
+In above setting, let $V$ be a $G$ module and $W$ be a character of $H$
+such that $\dim \Hom_H(V,W)=1$. 
+Then the $\cuu(\fgg)^H$ action on $\Omega_{V,W}$ is determined by the
+$Z(\fgg)$ action on $V$ and the  ideal $\cjj\subset \cuu(\fkk)$ of 
+$\rho$.
+\end{lemma}
+Tthi is because $\cjj\cuu(\fgg)\cap\cuu(\fgg)^H$ act trivially on $\Omega_{V,W}$.
+
+
+\begin{theorem}\label{thm:ugkcor}
+Let $\sigma \in R(G', \omega)$ be a character of $G'$. 
+Suppose that $\tau \in R(H, \omega)$ such that 
+$\dim \Hom_{H}(\rho(\sigma),\tau) = 1$.
+Then the $\cuu(\fgg)^H$ action on $\Omega_{\rho(\sigma),\tau}$ 
+is determined by the infinitesimal character of $\tau$ and annilater ideal 
+$\cjj = \Ker(\sigma|_{\cuu(\fgg')})$  
+\end{theorem}
+\end{frame}
+
+\begin{frame}{An application on derived functor modules}
+
+Let $\Gamma=\Gamma_M^{K^c}$ be the Zuckerman functor picking up the $\fkk$-finite space in any $(\fgg,M)$-module, where $M$ is 
+the maximal compact subgroup of $H$.
+$K^c$ is a compact real form of $\fkk$ such that $\cuu(\fgg)^H = \cuu(\fgg)^{K^c}$.
+%We abuse of notation and write $\Gamma = \Gamma_{\fkk,M}^{\fkk,K^c}$ when it apply to $(\fkk,M)$-module.
+
+From the realization of derived functor module (c.f. \cite{Wallach1992real} Chapter 6), we have
+\begin{lemma}\label{lemma:derugkact}
+Let $V$ be a $(\fgg,M)$-module, 
+$s\in \cuu(\fgg)^{K^c}$ act on 
+$\Gamma^iV$ by $\Gamma^i s$, where view $s$ as a $(\fkk,M)$-module endomorphism
+of $V$. 
+\end{lemma}
+\end{frame}
+
+\begin{frame}{The main result}
+\begin{theorem}
+  Suppose that 
+  $G_1$ and $G_2$ are two real forms of a reductive Lie algebra $\fgg$.
+  There are Cartan involutions of $G_i$ commute to each other(c.f. \cite{WallachZhu2004}).
+  $G_1'$ and $G_2'$ are two real forms of a reductive Lie algebra $\fgg'$.
+
+  $(G_1,G_1')$ and $(G_2,G_2')$ form reductive dual pairs .
+  
+  Suppose 
+  $\fgg=\fkk_i \oplus \fpp_i$ under a Cartan involution of $G_i$.
+  $K_i$ be the maximal compact subgroup of $G_i$ with Lie algebre $\fkk_i$.
+ 
+  Let $\Gamma=\Gamma_{K_1\cap K_2}^{K_2}$ be the Zuckerman functor.
+  Suppose 
+  \begin{itemize}
+    \item $\sigma_i$ are characters of $G_i'$, where $i=1,2$. 
+  \item  Let $\cjj_i = \Ker(\sigma_i|_{\cuu(\fgg')}) \subset \cuu(\fgg')$.
+    $\cjj_1 = \cjj_2$.
+  \item $\tau_1$ is a $(\fkk_2,K_1\cap K_2)$-module such that
+    $\dim \Hom_{(\fkk_2,K_1\cap K_2)}(\rho(\sigma_1),\tau_1) = 1$.
+  \item $\tau_2$ is a $K_2$-module occure in the
+    image of map $\Gamma^i \rho(\sigma_1) \to \Gamma^i \tau$ 
+    such that 
+    $\dim \Hom_{K_2}(\rho(\sigma_2),\tau_2) =1$.
+  \end{itemize}
+  Then $\Gamma^i \rho(\sigma_1)$ and 
+  $\rho(\sigma_2)$ has a isomrophic irreducible subquotient 
+  with common $K_2$-type $\tau_2$.
+\end{theorem}
+\end{frame}
+
+\begin{frame}{Examples}
+Following examples are constructed in \cite{WallachZhu2004}.
+
+Let $p\leq s$, $q\leq r$ and
+$p+q=m\leq n$. 
+$G_1,G_2 = \Sp(2n,\bR)$, $G_1' = O(m)$, $G_2'=O(p,q)$ and
+$H = U(r,s)$.
+$\theta^{p,q}$ is the theta lifting from $O(p,q)$ to $\Sp(2n,\bR)$.
+
+Then we have
+\[
+\Gamma_{p,q}(\theta^{0,m}(1)) \cong \theta^{p,q}(1^{\xi,\eta}),
+\]
+where $\xi \equiv r-q, \eta\equiv s-p \pmod{2}$.
+
+
+$\Gamma_{p,q}\theta^{0,m}(1)$ is certain submodule of 
+\[
+\left(\Gamma_{\sp(2n),U(r)\times U(s)}^{\sp(2n), U(r+s)}\right)^{rs-(r-q)(s-p)}\theta^{0,m}(1)
+\]
+ 
+
+For more examples, see \cite{Enright1985}.
+\end{frame}
+
+\bibliography{bib/reppapers}{}
+\bibliographystyle{alpha}
+
+
+\end{document}
+
