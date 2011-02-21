@@ -1,0 +1,13 @@
+(defun display-tuple (x)
+  (format t x))
+(defun make-zero-tuple (n)
+  (loop repeat n collect 0))
+(defun make-tuple (begin end step)
+  (if (>= begin end)  (cons begin  (make-tuple (- begin step) end step)) nil)
+)
+(defun make-A-simple (n i j)
+  (let ((v (make-zero-tuple n)))
+       (setf (nth (- i 1) v) 1)
+       (setf (nth (- j 1) v) -1)
+       v))
+
