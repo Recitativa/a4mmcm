@@ -19,7 +19,8 @@
 \pagestyle{fancy}
 \renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter.\ #1}{}}
 \renewcommand{\sectionmark}[1]{\markright{\thesection.\ #1}}
-\newcommand{\helv}{\fontfamily{phv}\fontseries{n}\fontsize{12}{12}\selectfont}
+%\newcommand{\helv}{\fontfamily{phv}\fontseries{n}\fontsize{12}{12}\selectfont}
+\def\helv{}
 
 \fancyhf{}
 \fancyhead[LE]{\helv \nouppercase{\rightmark}}
@@ -63,6 +64,7 @@
 
 \usepackage{titletoc}
 
+
 \contentsmargin{2.55em}
 \titlecontents{section}
 	[3.5em]
@@ -94,6 +96,10 @@
 
 	
 \usepackage{setspace}
+
+%No empty page between chapters
+\let\cleardoublepage\clearpage
+
 
 \begin{document}
 \bibliographystyle{mycje}
@@ -132,6 +138,9 @@
 %\renewcommand{\baselinestretch}{2}
 \doublespacing
 \small\normalsize
+
+
+
 
 \chapter{Introduction}
 \pagenumbering{arabic}
@@ -1073,6 +1082,7 @@ In this section we provide a theoretical analysis about the expectation of the d
 
 Combine $(\ref{eq:Dassios})$ $(\ref{eq:dpathdec})$ and $(\ref{eq:maxest})$, for $0 < \alpha < 1$,
 we get an estimate of the expectation of the discretization error:
+
 \allowdisplaybreaks
 \begin{equation}\label{ex-dis-err-1}
 \begin{split}
@@ -1623,8 +1633,15 @@ In this thesis, we provide a numerical study about the strong order of convergen
 
 $\alpha$-quantile options, a type of strong path-dependent options, are discussed. Existing pricing methods (Monte Carlo method and forward shooting grid method) are only able to give the initiation price for European-style options of this type. We propose a tree method which can price both European-style and American-style $\alpha$-quantile options. Using the price of European-style $\alpha$-quantile options obtained from Monte Carlo method, we have shown how extrapolation method can be applied to improve the accuracy of our pricing method. Although we only discuss the pricing problem of the fixed-strike $\alpha$-quantile options, our tree method is also valid to price the floating-strike quantile options. We also notice that our tree can price the $\alpha$-quantile options at time $t$ after the initiation of a contract, since at time $t$ information about the stock price during $(0,t)$ is available.    
 
+\clearpage
+\addcontentsline{toc}{chapter}{\protect\numberline{}Bibliography}
+\bibliography{prob}
+
+
 \appendix
-\chapter{A forward shooting grid method for a European $\alpha$-quantile option}
+%remove "A" for the numbering of appandix
+\gdef\thechapter{}
+\chapter[Appendix]{A forward shooting grid method for a European $\alpha$-quantile option}
 \label{se:fsg}
 
 
@@ -1717,6 +1734,5 @@ the numerical values of option are plotted against varying $h$. The values of pa
 
 
 
-\bibliography{prob}
 
 \end{document}  
