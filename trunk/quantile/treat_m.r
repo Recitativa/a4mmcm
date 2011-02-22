@@ -133,7 +133,7 @@ run <- function(inFilename,ttt=8,AB=TRUE) {
     PPP <- Re-Rb+2
     cols <- heat.colors(2*PPP)[1:PPP]
     cols[PPP] = "blue"
-                                        # draw the distribution of quantiles
+                                        # draw the distribution of quantdiles
     tt <- c(seq(-6,6,length.out=300))
     for(i in 1:nRQ) {
       alpha <- RQuantiles[i]

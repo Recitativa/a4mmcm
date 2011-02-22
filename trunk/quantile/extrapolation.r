@@ -14,6 +14,10 @@ richard <- function(d,p=.5, do_log=FALSE,f1=log,f2=exp) {
   return(d)
 }
 
+richd <- function(d, p=1.0) {
+  
+}
+
 aitken <- function(v) {
   n <- length(v)
   return(v[1:(n-2)]-diff(v)[-n+1]^2/diff(v,differences=2))
