@@ -1,7 +1,7 @@
 %\documentclass[final]{beamer} % beamer 3.10: do NOT use option hyperref={pdfpagelabels=false} !
 \documentclass[final,hyperref={pdfpagelabels=false}]{beamer} % beamer 3.07: get rid of beamer warnings
  \mode<presentation>  %% check http://www-i6.informatik.rwth-aachen.de/~dreuw/latexbeamerposter.php for example
- \usetheme{I6dv}
+ \usetheme{SMS2011}
  %% you should define your own theme e.g. for big headlines using your own logos 
 
 %\usepackage[english]{babel}
@@ -19,71 +19,238 @@
 \usefonttheme[onlymath]{serif}
 \boldmath
 
- \usepackage[orientation=portrait,size=a1,scale=1.4,grid,debug]{beamerposter}                  % e.g. for DIN-A1 poster, with optional grid and debug output
+
+
+\usepackage[orientation=portrait,size=a1,scale=1.5,debug]{beamerposter}   
+% e.g. for DIN-A1 poster, with optional grid and debug output
 
 \input{mymaros.tex}
+\def\cR{{\mathcal{R}}}
+\def\cC{\mathcal{C}}
+
  
 \title[$\cuu(\fgg)^K$ actions]{Dual pairs and $\cuu(\fgg)^K$ actions}
 \author[Ma]{Ma Jia Jun}
-
+\date{3 May 2011}
 \institute[NUS]{National University of Singapore}
 
-  \date{3 May 2011}
-  \begin{document}
+
+\begin{document}
   \begin{frame}
   \begin{columns}
     \begin{column}{.49\textwidth}
-      \begin{block}
-        bbb
-        \vskip200ex
-    \end{block}
-    \vskip200ex
-  \end{column}
-  \begin{column}{.49\textwidth}
 
-    \begin{block}
+      \begin{block}{Introduction and Motivation}
+        \begin{itemize}
+        \item Construct representations. Methords available for Real Classical Lie groups:
+          \begin{itemize}
+          \item Parabolic induction
+          \item Cohomological induction / Derived Functor
+          \item Theta correspondence
+          \end{itemize}
+        \item Identify Unitary representations
+          \begin{itemize}
+          \item Signature character for cohomological induction,
+          \item Theta lifting in stable range preserve the untarity.
+          \end{itemize}
+        \item Relations between Parabolic induction and theta:\\
+           \hskip2em Kudla's induction principle
+        \item Question: \\
+          What is the relations between cohomological induction and theta?
+        \item Agenda
+          \begin{itemize}
+          \item introduce notations in left column,
+          \item give a result in the case of lifting of character.
+          \end{itemize}
+        \end{itemize}
+      \end{block}
+      \vfill
+      \begin{block}{Oscillator representation}
+        \begin{itemize}
+        \item Fix symplectic space $W$, Heisenberg group $\mathrm{H} = W\oplus \bR$ 
+        \item Fix a nontrivial unitary character $\psi$ of $\bR$. 
+        \item Oscillator representation: the unqiue(up to isomorphism) unitary represntation of $H$ with centeral character $\psi$.
+        %\item These reprenstation related to simple harmonic oscillator in quantum mechanics.
+        \item This representation can extend to a representation $\omega$ of 
+          $\widetilde{\Sp(W)}\rtimes \mathrm{H}$. Where 
+          $\widetilde{\Sp(W)}$ is the unquie nontrivial double cover of the symplectic group $\Sp(W)$.
+        \end{itemize}
+      \end{block}
+      \vfill
+      \begin{block}{Reductive dual pair}
+        $(G,G')$ called a {\em reductive dual pair} in $\Sp(W)$ if
+        \begin{itemize}
+        \item $G$, $G'$  are subgroups of $\Sp(W)$ act on $W$ reductively,
+        \item they are mutual centralizers.
+        \end{itemize}
+        Examples of irreducible real reductive dual pairs over $\bR$.
+        \begin{enumerate}[Type I]
+        \item 
+           $(\mathrm{O}(p,q), \Sp(2n,\bR))\subset \Sp(2(p+q)n,\bR)$\\
+           $(\mathrm{U}(p,q), \mathrm{U}(r,s))\subset \Sp(2(p+q)(r+s),\bR)$
+        \item  $(\GL(m,\bR),\GL(n,\bR))\subset \Sp(2nm,\bR)$\\
+          $(\GL(m,\bC),\GL(n,\bC))\subset \Sp(4nm,\bR)$
+        \end{enumerate}
+      \end{block}
+
+    \begin{block}{Theta/Howe correspondence}
+      \begin{columns}
+        \begin{column}{0.7\textwidth}
+      \begin{itemize}
+        \item Let $\tG$ be the preimage of $G$ in the double cover 
+          $\widetilde{\Sp(W)}$ for any subgroup $G$ of $\Sp$.
+        \item Let $\cR(\tG,\omega)$ be the set of isomorphism classes 
+          of irreducible smooth representations of $\tG$,
+          which can be realized as a quotation of $\omega$ 
+        \item There is a one-one correspondence $\theta$
+          between $\cR(\tG,\omega)$ and $\cR(\tG',\omega)$.
+        \item This correspondence is proved by {\em Roger E. Howe}.
+        \item Howe also initialize the local theory of theta correspondence over other local fields as well as the global theory.
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.26\textwidth}
+      \includegraphics[width=\textwidth]{howe.jpg}
+    \end{column}
+  \end{columns}
+\end{block}
+
+
+\begin{block}{Derived functor and cohomological induction}
+  \begin{itemize}
+     \item $\cC(\fgg,K)$: category of $(\fgg, K)$-module ($K$ compact)
+      \begin{itemize}
+      \item Category of $\bC$-vector spaces  with compatible $\fgg$ and $K$ action
+      \item $\sspan\Set{Kv}$ is finite for any vector $v$  
+      \end{itemize}
+    \item {\em Zuckerman functor}: $\Gamma_{\fgg,M}^{\fgg,K}
+      \colon \cC(\fgg,M)\to \cC(\fgg,K)$ 
+      where $M\subset K$.
+      \begin{itemize}
+      \item realized as taking the subspace of $K$ finite vector,
+      \item right exact.
+      \item has a analog called {\em Bernstein functor} (taking cofinite vector).
+      \end{itemize}
+    \item $\Gamma^j\triangleq\left(\Gamma_{\fgg,M}^{\fgg,K}\right)^j
+      \colon \cC(\fgg,M)\to \cC(\fgg,K)$:\\
+      the $j$-th the derived functor of $\Gamma$.
+    \item $\Gamma^j$ can be realized as $H^j(\fkk,M; \_ \otimes \mathcal{H}(K))$
+    \end{itemize}
+\end{block}
+\end{column}
+  \begin{column}{.49\textwidth}
+    \begin{block}{The main result}
+      Let
+      \begin{itemize}
+      \item ($G_\bC$,$G'_\bC$) be complex reductive dual pairs,
+      \item $G_1$ and $G_2$($G'_1$ and $G'_2$) 
+        be two different real form of $G_\bC$($G'_\bC$),
+     \item $K_1$,$K_2$ be maximal compact subgroups.
+     \end{itemize}
+     Suppose
+     \begin{itemize}
+     \item the Cartan invelotions of $G_1$ and $G_2$ commute to each other, so
+        \begin{itemize}
+        \item we can view $(\fgg, K_1)$-module as $(\fgg, K_1\cap K_2)$-module
+        \item $\left(\Gamma_{\fgg,K_1\cap K_2}^{\fgg,K_2}\right)^j$ gives a functor 
+          from $\cC(\fgg, K_1)$ to $\cC(\fgg,K_2)$.
+        \end{itemize}
+      \item $\chi_1$ and $\chi_2$ are characters of $G'_1$ and $G'_2$.
+      \item $\Gamma^j\theta(\chi_1)$ and  $\theta(\chi_2)$ 
+        have same infinitesimal character
+        and both contain a same multiplicity free $K_2$-type $\tau$.
+      \end{itemize}
+      Then 
+      $\Gamma^j\theta(\chi_1)$ and $\theta(\chi_2)$ 
+      have an isomorphic subquotion contains  $K_2$-type $\tau$.
     \end{block}
+    
+    \begin{block}{See-saw pair and  joint action of $\cuu(\fgg)^H$ 
+and $\cuu(\fhh')^{G'}$}
+
+Consider following See-Saw pair:
+\[
+\xymatrix{
+\rho(\sigma)& G \ar@{-}[dr] & H'& \rho(\tau)\\
+\tau &H\ar@{-}[ur] & G' & \sigma
+}
+\]
+where $H < G$, $H'> G'$, $\sigma\in R(\omega, G')$ and  $\tau\in R(\omega,H)$.
+Then:
+\[
+\Hom_{H}(\rho(\sigma), \tau) 
+\cong  \Hom_{H\times G'}(\omega, \tau\otimes \sigma)
+\cong  \Hom_{G'}(\rho(\tau), \sigma)
+\]
+
+Observation:
+\begin{itemize}
+\item $\cuu(\fgg)^H$ and $\cuu(\fhh')^{G'}$ 
+  has a joint action on $\Hom_{H\times G'}(\omega,\tau\otimes\sigma)$,
+\item $\displaystyle \omega(\cuu(\fgg)^H) = \omega(\cuu(\fhh')^{G'})$.
+\end{itemize}
+
+So we have the Key fact: $\cuu(\fgg)^H$ on $\Hom_H(\rho(\sigma),\tau)$ and $\cuu(\fhh')^{G'}$  action on $\Hom_{G'}(\rho(\tau),\sigma)$ essentially determine each other.
+\end{block}
+
+\begin{block}{A surjectivity theorem by Helgason}
+  Suppose that $\fgg$ be a complex classical Lie algebra.  
+  $\fgg = \fkk+\fpp$ under a involution. 
+  Let $\chi$ be a character of $\fkk$.
+  Let $\cjj = \Ker(\chi|_{\cuu(\fkk)})$.
+  Then the following map is surjective:
+  \[
+  \czz(\fgg) \to \cuu(\fgg)^\fkk/(\cjj\cuu(\fgg)\cap\cuu(\fgg)^\fkk)
+  \]
+\end{block}
+
+\begin{block}{Scathe of the proof}
+  Note that $\cuu(\fgg)^{K_2}$ action commut with derived functor. 
+  The surjectivity theorem will imply the $\cuu(\fgg)^{K_2}$ action is determine by
+  infinitesimal character via the joint action.
+  The result is clear by  comparing the $\cuu(\fgg)^{K_2}$ action on $\tau$
+  and the well-known fact that $\cuu(\fgg)^{K_2}$ action determine the 
+  irreducible representation by Harish-Chandra.
+\end{block}
 
 \begin{block}{Examples}
-       Following examples are constructed by Wallach and Zhu \cite{WallachZhu2004}.
-
-Let $p\leq s$, $q\leq r$ and
-$p+q=m\leq n$. 
-$G_1,G_2 = \Sp(2n,\bR)$, $G_1' = O(m)$, $G_2'=O(p,q)$ and
-$H = U(r,s)$.
-$\theta^{p,q}$ is the theta lifting from $O(p,q)$ to $\Sp(2n,\bR)$.
-
-Then we have
-\[
-\Gamma_{p,q}(\theta^{0,m}(1)) \cong \theta^{p,q}(1^{\xi,\eta}),
-\]
-where $\xi \equiv r-q, \eta\equiv s-p \pmod{2}$.
-
-
-$\Gamma_{p,q}\theta^{0,m}(1)$ is certain submodule of 
-\[
-\left(\Gamma_{\sp(2n),U(r)\times U(s)}^{\sp(2n), U(r+s)}\right)^{rs-(r-q)(s-p)}\theta^{0,m}(1)
-\]
+      Following examples are constructed by Wallach and Zhu
+      %\cite{WallachZhu2004}.
+      Let $p\leq s$, $q\leq r$ and $p+q=m\leq n$.  
+      $G_1,G_2 = \Sp(2n,\bR)$, $G_1' = O(m)$, $G_2'=O(p,q)$ 
+      $\theta^{p,q}$ is the theta lifting from $O(p,q)$ to
+      $\Sp(2n,\bR)$.Then 
+      \[
+      \displaystyle
+      \Gamma_{p,q}(\theta^{0,m}(1)) \cong \theta^{p,q}(1^{\xi,\eta}),\]
+      where $
+      \xi \equiv r-q, \eta\equiv s-p \pmod{2}$,
+      $1^{\xi,\eta}$ is the character of $O(p,q)$
+      whose restriction on $O(p)\times O(q)$ is
+      $\det^\xi\otimes \det^\eta$. 
+      $\Gamma_{p,q}\theta^{0,m}(1)$ is certain submodule of
+      \[
+      \left(\Gamma_{\sp(2n),U(r)\times U(s)}^{\sp(2n),
+          U(r+s)}\right)^{rs-(r-q)(s-p)}\theta^{0,m}(1)
+      \]
+    \end{block}
  
-
-For more examples, see \cite{Enright1985}.
-     \end{block}
- 
-     \begin{block}{Further Direction}
+     \begin{block}{Further Directions}
        \begin{minipage}{\textwidth}
          \begin{itemize}
-           \item a
+           \item Find the examples and results like above for representations other than character.
+           \item Find a explicite intertwining map for above isomorphism.
+           \item Find applications of above theorem.
          \end{itemize}
        \end{minipage}
      \end{block}
 
-     \begin{block}{\small Bibliography}
-       \small
-       \bibliography{bib/reppapers}{}
-       \bibliographystyle{alpha}
-     \end{block}
-   \end{column}
- \end{columns}
-\end{frame}
+     \vfill
+ %     \begin{block}{Bibliography}
+%        \bibliographystyle{plain} 
+%        \bibliography{bib/reppapers}{} 
+%      \end{block}
+    \end{column}
+  \end{columns}
+ \end{frame}
 
 \end{document}
