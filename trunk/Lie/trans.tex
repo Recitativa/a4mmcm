@@ -2387,6 +2387,7 @@ n_s &= \sum_{t=s}^j \alpha_t\\
 ((-n_1, \cdots, -n_j); \epsilon)
 \]
 
+
 \section{Computation for the transform of the Oscillator representation}
 Decomposit $\omega$ into $U(p,q)$ module, by see-saw pair.
 Choose positive system by lower triangle of $U(p,q)$
@@ -2561,6 +2562,52 @@ Now try to apply the method for $\theta^{p,q}(1^{\pm,\pm})$.
 For other cases we also have the multiplicity free of $\pp^\pm\otimes F$, 
 the point is to determine the $c$'s. 
 
+
+\section{some computation in non-stable range}
+Consider the computation in non-stalbe range for $(U(r,s),U(m))$
+$n = r+s$, $m = p+q$.
+Now 
+\begin{align*}
+\rho_m &= \frac{1}{2}(m-1, \cdots, -(m-1))
+\rho_n &= \frac{1}{2}(n-1, \cdots, -(n-1))
+\end{align*}
+
+\[
+\begin{split}
+\lambda' =& (u_1, \cdots, u_r, 0,\cdots ,0, - v_s, \cdots, -v_1) + \rho_m + 
+\frac{r-s}{2}
+\\
+=& (P, T, N)
+\end{split}
+\]
+where
+\begin{align*}
+T = & \frac{1}{2}(m-1-2r, \cdots, -(m-1)+2s) + \frac{r-s}{2}\\
+  = & \frac{1}{2}(m-n-1, \cdots, -m+n +1)\\ 
+P = & (u_1, \cdots, u_r) + \frac{1}{2}(m-1, \cdots, m+1 -2r) + \frac{r-s}{2}\\
+= & (u_1, \cdots, u_r) + \frac{1}{2}(m-1, \cdots, m+1 -2r) + \frac{r-s}{2}\\
+N =& (-v_s, \cdots, -v_1) + \frac{1}{2}(-m-1 + 2s, \cdots, -m+1) + \frac{r-s}{2}
+\end{align*}
+Now the $T$ part is independent of real form $r,s$ and type. 
+So by the correspondence of infinitesimal charicter, 
+we have the infinitesimal charicter of theta lifing is 
+$\lambda = (P,N)$.
+Suppose that $P = (P_1, P_2)$ $u_i$'s in $P_1$ are sufficiently large, 
+$Q = (Q_2,Q_1)$ $v_i$'s in $Q_1$ are sufficiently large, 
+then the derive functor module will non-vanishing for certain choise 
+of $P_2, Q_2$, but this module is unitarizable. 
+
+One the other hand, the $K$ type $(a_1,\cdots, a_n)$ of 
+$Sp(2n,\bR)$ module to be unitarizable 
+ will have a limitation: $a_i -a_{i+1}$ should take at most one value among 
+all $K$-types or infinit many value. 
+If not, we can find a embedding $SL(2,\bR) \hookrightarrow Sp(2n,\bR)$
+such that one $SL(2,\bR)$ sub module transfer as a module 
+with this many $K$-type. By $SL(2,\bR)$ theory, this is contridict to 
+the unitary condition.
+
+From above point of view, it may be shown
+that all unitarizable module is that type. 
 
 \section{Transfer of ladder/minimal representation of $O(2,2n-2)$}
 Work on double cover of all the groups. 
