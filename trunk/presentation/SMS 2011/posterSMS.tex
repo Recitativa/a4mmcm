@@ -1,23 +1,25 @@
-\documentclass[final]{beamer} % beamer 3.10: do NOT use option hyperref={pdfpagelabels=false} !
-  %\documentclass[final,hyperref={pdfpagelabels=false}]{beamer} % beamer 3.07: get rid of beamer warnings
-  \mode<presentation> {  %% check http://www-i6.informatik.rwth-aachen.de/~dreuw/latexbeamerposter.php for example
-  \usetheme{I6dv}
-  %% you should define your own theme e.g. for big headlines using your own logos 
-  }
+%\documentclass[final]{beamer} % beamer 3.10: do NOT use option hyperref={pdfpagelabels=false} !
+\documentclass[final,hyperref={pdfpagelabels=false}]{beamer} % beamer 3.07: get rid of beamer warnings
+ \mode<presentation>  %% check http://www-i6.informatik.rwth-aachen.de/~dreuw/latexbeamerposter.php for example
+ \usetheme{I6dv}
+ %% you should define your own theme e.g. for big headlines using your own logos 
 
-\usepackage[english]{babel}
+%\usepackage[english]{babel}
 \usepackage[latin1]{inputenc}
 \usepackage{amsmath,amsthm, amssymb, latexsym}
+\usepackage{braket}
+%\usepackage{paralist}
+\usepackage{eufrak}
+\usepackage[all,cmtip]{xy}
+\usepackage{diagxy}
+
+
+\usepackage{array}
 
 \usefonttheme[onlymath]{serif}
-  \boldmath
+\boldmath
 
-%\usepackage[orientation=portrait,size=a0,scale=1.4,debug]{beamerposter}                       % e.g. for DIN-A0 poster
  \usepackage[orientation=portrait,size=a1,scale=1.4,grid,debug]{beamerposter}                  % e.g. for DIN-A1 poster, with optional grid and debug output
-  %\usepackage[size=custom,width=200,height=120,scale=2,debug]{beamerposter}                     % e.g. for custom size poster
-  %\usepackage[orientation=portrait,size=a0,scale=1.0,printer=rwth-glossy-uv.df]{beamerposter}   % e.g. for DIN-A0 poster with rwth-glossy-uv printer check
-  % ...
-  %
 
 \input{mymaros.tex}
  
@@ -28,17 +30,22 @@
 
   \date{3 May 2011}
   \begin{document}
-   \begin{minipage}{.47\textwidth}
+  \begin{frame}
+  \begin{columns}
+    \begin{column}{.49\textwidth}
       \begin{block}
         bbb
         \vskip200ex
     \end{block}
     \vskip200ex
-  \end{minipage}
-  \begin{minipage}{.47\textwidth}
+  \end{column}
+  \begin{column}{.49\textwidth}
 
-     \begin{block}{Examples}
-       Following examples are constructed in \cite{WallachZhu2004}.
+    \begin{block}
+    \end{block}
+
+\begin{block}{Examples}
+       Following examples are constructed by Wallach and Zhu \cite{WallachZhu2004}.
 
 Let $p\leq s$, $q\leq r$ and
 $p+q=m\leq n$. 
@@ -61,15 +68,22 @@ $\Gamma_{p,q}\theta^{0,m}(1)$ is certain submodule of
 
 For more examples, see \cite{Enright1985}.
      \end{block}
-
-     \vfill
+ 
      \begin{block}{Further Direction}
-       \begin{itemlize}
-       \end{itemlize}
+       \begin{minipage}{\textwidth}
+         \begin{itemize}
+           \item a
+         \end{itemize}
+       \end{minipage}
      \end{block}
-     \begin{block}{Bibliography}
+
+     \begin{block}{\small Bibliography}
+       \small
        \bibliography{bib/reppapers}{}
        \bibliographystyle{alpha}
      \end{block}
-   \end{minipage}
- \end{document}
+   \end{column}
+ \end{columns}
+\end{frame}
+
+\end{document}
