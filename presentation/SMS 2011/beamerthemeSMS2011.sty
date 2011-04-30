@@ -1,4 +1,4 @@
-\ProvidesPackage{beamerthemeI6dv} % this style was created by David Vilar
+\ProvidesPackage{beamerthemeSMS2011} % this style was created by David Vilar
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\selectcolormodel{cmyk}
@@ -24,13 +24,16 @@
 \definecolor{i6colorschemeFootline}{HTML}{000000}  % for Footbg
 \definecolor{i6colorschemeFootline}{HTML}{100D09}  % for headline bg
 
+% Set bibitem
+\setbeamertemplate{bibliography item}[text]
+
 % headline colors and fonts
 \setbeamercolor{headline}{fg=black,bg=i6colorschemeHeadline}
 \setbeamercolor{title in headline}{fg=black}
 \setbeamercolor{author in headline}{fg=gray}
 \setbeamercolor{institute in headline}{fg=gray}
 \setbeamercolor{logo in headline}{fg=black,bg=gray}
-\setbeamercolor{separation line}{bg=i6colorscheme1}
+%\setbeamercolor{separation line}{bg=i6colorscheme1}
 
 % footline colors and fonts
 \setbeamercolor{footline}{fg=gray,bg=white}
@@ -41,7 +44,7 @@
 
 % block environment
 \setbeamercolor*{block body}{bg=white,fg=black}
-\setbeamercolor*{block title}{fg=i6colorblockfg,bg=i6colorblockbg}
+\setbeamercolor*{block title}{fg=white,bg=gray}
 \setbeamerfont{block title}{size=\large,series=\bf}
 
 % example environment
