@@ -18,6 +18,8 @@
   %\usepackage[orientation=portrait,size=a0,scale=1.0,printer=rwth-glossy-uv.df]{beamerposter}   % e.g. for DIN-A0 poster with rwth-glossy-uv printer check
   % ...
   %
+
+\input{mymaros.tex}
  
 \title[$\cuu(\fgg)^K$ actions]{Dual pairs and $\cuu(\fgg)^K$ actions}
 \author[Ma]{Ma Jia Jun}
@@ -26,21 +28,48 @@
 
   \date{3 May 2011}
   \begin{document}
-  \begin{frame}{} 
-    \vfill
-    \begin{block}{\large Fontsizes}
-      \centering
-      {\tiny tiny}\par
-      {\scriptsize scriptsize}\par
-      {\footnotesize footnotesize}\par
-      {\normalsize normalsize}\par
-      {\large large}\par
-      {\Large Large}\par
-      {\LARGE LARGE}\par
-      {\veryHuge veryHuge}\par
-      {\VeryHuge VeryHuge}\par
-      {\VERYHuge VERYHuge}\par
+   \begin{minipage}{.47\textwidth}
+      \begin{block}
+        bbb
+        \vskip200ex
     \end{block}
-    \vfill
-  \end{frame}
-  \end{document}
+    \vskip200ex
+  \end{minipage}
+  \begin{minipage}{.47\textwidth}
+
+     \begin{block}{Examples}
+       Following examples are constructed in \cite{WallachZhu2004}.
+
+Let $p\leq s$, $q\leq r$ and
+$p+q=m\leq n$. 
+$G_1,G_2 = \Sp(2n,\bR)$, $G_1' = O(m)$, $G_2'=O(p,q)$ and
+$H = U(r,s)$.
+$\theta^{p,q}$ is the theta lifting from $O(p,q)$ to $\Sp(2n,\bR)$.
+
+Then we have
+\[
+\Gamma_{p,q}(\theta^{0,m}(1)) \cong \theta^{p,q}(1^{\xi,\eta}),
+\]
+where $\xi \equiv r-q, \eta\equiv s-p \pmod{2}$.
+
+
+$\Gamma_{p,q}\theta^{0,m}(1)$ is certain submodule of 
+\[
+\left(\Gamma_{\sp(2n),U(r)\times U(s)}^{\sp(2n), U(r+s)}\right)^{rs-(r-q)(s-p)}\theta^{0,m}(1)
+\]
+ 
+
+For more examples, see \cite{Enright1985}.
+     \end{block}
+
+     \vfill
+     \begin{block}{Further Direction}
+       \begin{itemlize}
+       \end{itemlize}
+     \end{block}
+     \begin{block}{Bibliography}
+       \bibliography{bib/reppapers}{}
+       \bibliographystyle{alpha}
+     \end{block}
+   \end{minipage}
+ \end{document}

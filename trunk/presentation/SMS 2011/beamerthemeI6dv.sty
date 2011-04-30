@@ -1,7 +1,8 @@
 \ProvidesPackage{beamerthemeI6dv} % this style was created by David Vilar
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\selectcolormodel{cmyk}
+%\selectcolormodel{cmyk}
+\selectcolormodel{gray}
 \mode<presentation>
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -32,8 +33,8 @@
 \setbeamercolor{separation line}{bg=i6colorscheme1}
 
 % footline colors and fonts
-\setbeamercolor{footline}{fg=white,bg=i6colorschemeHeadline}
-\setbeamerfont{footline}{fg=white, size=\normalsize}
+\setbeamercolor{footline}{fg=gray,bg=white}
+\setbeamerfont{footline}{fg=gray, size=\normalsize}
 
 % body colors and fonts
 \setbeamercolor*{normal text}{fg=black,bg=i6colorscheme3}
@@ -69,19 +70,19 @@
 \setbeamertemplate{navigation symbols}{}  % no navigation on a poster
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\setbeamertemplate{block begin}{
-  \vskip.75ex
-  \begin{beamercolorbox}[leftskip=1cm,colsep*=.75ex]{block title}%
-    \usebeamerfont*{block title}\insertblocktitle
-  \end{beamercolorbox}%
-  {\ifbeamercolorempty[bg]{block body}{}{\nointerlineskip\vskip-0.5pt}}%
-  \usebeamerfont{block body}%
-  \begin{beamercolorbox}[colsep*=.75ex,sep=.75ex,vmode]{block body}%
-    \ifbeamercolorempty[bg]{block body}{\vskip-.25ex}{\vskip-.75ex}\vbox{}%
-  }
-  \setbeamertemplate{block end}{
-  \end{beamercolorbox}
-}
+% \setbeamertemplate{block begin}{
+%   \vskip.75ex
+%   \begin{beamercolorbox}[leftskip=1cm,colsep*=.75ex]{block title}%
+%     \usebeamerfont*{block title}\insertblocktitle
+%   \end{beamercolorbox}%
+%   {\ifbeamercolorempty[bg]{block body}{}{\nointerlineskip\vskip-0.5pt}}%
+%   \usebeamerfont{block body}%
+%   \begin{beamercolorbox}[colsep*=.75ex,sep=.75ex,vmode]{block body}%
+%     \ifbeamercolorempty[bg]{block body}{\vskip-.25ex}{\vskip-.75ex}\vbox{}%
+%   }
+%   \setbeamertemplate{block end}{
+%   \end{beamercolorbox}
+% }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \setbeamertemplate{headline}{  
@@ -90,8 +91,6 @@
   \begin{beamercolorbox}[wd=\paperwidth]{headline}
     \begin{columns}[T]
       \begin{column}{.02\paperwidth}
-      \end{column}
-      \begin{column}{.07\paperwidth}
         \begin{center}
           %\includegraphics[width=.6\linewidth]{logos/i6-hks44}
         \end{center}
@@ -99,15 +98,16 @@
       \end{column}
       \begin{column}{.675\paperwidth}
         \vskip4ex
-        \raggedleft
-        \usebeamercolor{title in headline}{\color{fg}\textbf{\LARGE{\inserttitle}}\\[1ex]}
-        \usebeamercolor{author in headline}{\color{fg}\large{\insertauthor}\\[1ex]}
-        \usebeamercolor{institute in headline}{\color{fg}\large{\insertinstitute}\\[1ex]}     
+        \begin{center}
+          \usebeamercolor{title in headline}{\color{fg}\textbf{\LARGE{\inserttitle}}\\[1ex]}
+          \usebeamercolor{author in headline}{\color{fg}\large{\insertauthor}\\[1ex]}
+          \usebeamercolor{institute in headline}{\color{fg}\large{\insertinstitute}\\[1ex]}     
+        \end{center}
       \end{column}
       \begin{column}{.25\paperwidth}
         \vskip1cm
         \begin{center}
-          \includegraphics[width=.7\linewidth]{NUS_logo_keyline.pdf}
+          \includegraphics[width=.5\linewidth]{NUS_logo_keyline.pdf}
         \end{center}
         \vskip1.5cm
       \end{column}
@@ -142,7 +142,7 @@
   \end{beamercolorbox}
   
   \begin{beamercolorbox}[ht=4ex,leftskip=1cm,rightskip=1cm]{footline}%
-    Lehrstuhl f\"ur Informatik 6 - Computer Science Department - RWTH Aachen University - Aachen, Germany \hfill Mail: \texttt{<surname>@cs.rwth-aachen.de} \hfill WWW: \texttt{http://www-i6.informatik.rwth-aachen.de}
+    Department of Mathematics - National University of Singapore \hfill Mail: \texttt{g0701232@nus.edu.sg}
     \vskip1ex
   \end{beamercolorbox}
 
