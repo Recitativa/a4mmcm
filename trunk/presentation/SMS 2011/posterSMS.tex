@@ -37,17 +37,10 @@
 
 \begin{document}
   \begin{frame}
-
-
-  \begin{columns}
-    \begin{column}{.49\textwidth}
-      \begin{beamercolorbox}[center,wd=\textwidth]{postercolumn}
-        \begin{minipage}[T]{.95\textwidth}  % tweaks the width, makes a new \textwidth
-          \parbox[t]{\textwidth}{ % must be some better way to set 
- 
+    \begin{minipage}[t]{.48\linewidth}
       \begin{block}{Introduction and Motivation}
         \begin{itemize}
-        \item Construct representations. Methords available for Real Classical Lie groups:
+        \item Construct representations. Methods available for Real Classical Lie groups:
           \begin{itemize}
           \item Parabolic induction
           \item Cohomological induction / Derived Functor
@@ -110,7 +103,8 @@
         \item There is a one-one correspondence $\theta$
           between $\cR(\tG,\omega)$ and $\cR(\tG',\omega)$.
         \item This correspondence is proved by {\em Roger E. Howe}.
-        \item Howe also initialize the local theory of theta correspondence over other local fields as well as the global theory.
+        \item Howe also conjectured the general local and global global of theta correspondence.
+  %      \item It is initialed by the studying theta series and have prefound 
       \end{itemize}
     \end{column}
     \begin{column}{0.26\textwidth}
@@ -118,7 +112,6 @@
     \end{column}
   \end{columns}
 \end{block}
-
 
 \begin{block}{Derived functor and cohomological induction}
   \begin{itemize}
@@ -137,23 +130,13 @@
       \end{itemize}
     \item $\Gamma^j\triangleq\left(\Gamma_{\fgg,M}^{\fgg,K}\right)^j
       \colon \cC(\fgg,M)\to \cC(\fgg,K)$:\\
-      the $j$-th the derived functor of $\Gamma$.
+      the $j$-th derived functor of $\Gamma$.
     \item $\Gamma^j$ can be realized as $H^j(\fkk,M; \_ \otimes \mathcal{H}(K))$
     \end{itemize}
 \end{block}
-
-        }
-        \end{minipage}
-      \end{beamercolorbox}
-\end{column}
-
- \begin{column}{.49\textwidth}
-
-   \begin{beamercolorbox}[center,wd=\textwidth]{postercolumn}
-        \begin{minipage}[T]{.95\textwidth}  % tweaks the width, makes a new \textwidth
-          \parbox[t]{\textwidth}{ % must be some better way to set 
- 
-  
+\vfill
+\end{minipage}
+\begin{minipage}[t]{.48\linewidth}
     \begin{block}{The main result}
       Let
       \begin{itemize}
@@ -201,7 +184,7 @@ Then:
 Observation:
 \begin{itemize}
 \item $\cuu(\fgg)^H$ and $\cuu(\fhh')^{G'}$ 
-  has a joint action on $\Hom_{H\times G'}(\omega,\tau\otimes\sigma)$,
+  have a joint action on $\Hom_{H\times G'}(\omega,\tau\otimes\sigma)$,
 \item $\displaystyle \omega(\cuu(\fgg)^H) = \omega(\cuu(\fhh')^{G'})$.
 \end{itemize}
 
@@ -219,18 +202,19 @@ So we have the Key fact: $\cuu(\fgg)^H$ on $\Hom_H(\rho(\sigma),\tau)$ and $\cuu
   \]
 \end{block}
 
-\begin{block}{Scathe of the proof}
-  Note that $\cuu(\fgg)^{K_2}$ action commut with derived functor. 
-  The surjectivity theorem will imply the $\cuu(\fgg)^{K_2}$ action is determine by
+\begin{block}{Sketch of the proof}
+  Note that $\cuu(\fgg)^{K_2}$ action commute with the derived functor. 
+  The surjectivity theorem will imply that the $\cuu(\fgg)^{K_2}$ action is determine by
   infinitesimal character via the joint action.
-  The result is clear by  comparing the $\cuu(\fgg)^{K_2}$ action on $\tau$
-  and the well-known fact that $\cuu(\fgg)^{K_2}$ action determine the 
+  Then the result is clear by  comparing the $\cuu(\fgg)^{K_2}$ action on $\tau$
+  and the well-known fact that $\cuu(\fgg)^{K_2}$ action determines the 
   irreducible representation by Harish-Chandra.
 \end{block}
 
 \begin{block}{Examples}
-      Following examples are constructed by Wallach and Zhu
+      Following examples are constructed by Wallach and Zhu.
       %\cite{WallachZhu2004}.
+
       Let $p\leq s$, $q\leq r$ and $p+q=m\leq n$.  
       $G_1,G_2 = \Sp(2n,\bR)$, $G_1' = O(m)$, $G_2'=O(p,q)$ 
       $\theta^{p,q}$ is the theta lifting from $O(p,q)$ to
@@ -253,8 +237,8 @@ So we have the Key fact: $\cuu(\fgg)^H$ on $\Hom_H(\rho(\sigma),\tau)$ and $\cuu
      \begin{block}{Further Directions}
        \begin{minipage}{\textwidth}
          \begin{itemize}
-           \item Find the examples and results like above for representations other than character.
-           \item Find a explicite intertwining map for above isomorphism.
+           \item Find the examples and results like above for representations other than characters.
+           \item Find a explicit intertwining map for above isomorphism.
            \item Find applications of above theorem.
          \end{itemize}
        \end{minipage}
@@ -265,11 +249,8 @@ So we have the Key fact: $\cuu(\fgg)^H$ on $\Hom_H(\rho(\sigma),\tau)$ and $\cuu
 %        \bibliographystyle{plain} 
 %        \bibliography{bib/reppapers}{} 
 %      \end{block}
-   }
+
  \end{minipage}
-\end{beamercolorbox}
-\end{column}
-\end{columns}
  \end{frame}
 
 \end{document}
