@@ -28,12 +28,12 @@
 \setbeamertemplate{bibliography item}[text]
 
 % headline colors and fonts
-\setbeamercolor{headline}{fg=black,bg=i6colorschemeHeadline}
+\setbeamercolor{headline}{fg=black,bg=white}
 \setbeamercolor{title in headline}{fg=black}
 \setbeamercolor{author in headline}{fg=gray}
 \setbeamercolor{institute in headline}{fg=gray}
 \setbeamercolor{logo in headline}{fg=black,bg=gray}
-%\setbeamercolor{separation line}{bg=i6colorscheme1}
+\setbeamercolor{separation line}{bg=i6colorscheme1}
 
 % footline colors and fonts
 \setbeamercolor{footline}{fg=gray,bg=white}
@@ -90,7 +90,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \setbeamertemplate{headline}{  
   \leavevmode
-
   \begin{beamercolorbox}[wd=\paperwidth]{headline}
     \begin{columns}[T]
       \begin{column}{.02\paperwidth}
@@ -107,6 +106,7 @@
           \usebeamercolor{institute in headline}{\color{fg}\large{\insertinstitute}\\[1ex]}     
         \end{center}
       \end{column}
+      vfill
       \begin{column}{.25\paperwidth}
         \vskip1cm
         \begin{center}
