@@ -19,9 +19,9 @@
 \usefonttheme[onlymath]{serif}
 \boldmath
 
+\def\emph#1{{\em \underline{#1}}}
 
-
-\usepackage[orientation=portrait,size=a1,scale=1.5,debug]{beamerposter}   
+\usepackage[orientation=portrait,size=a1,scale=1.52,debug]{beamerposter}   
 % e.g. for DIN-A1 poster, with optional grid and debug output
 
 \input{mymaros.tex}
@@ -37,7 +37,9 @@
 
 \begin{document}
   \begin{frame}
-    \begin{minipage}[t]{.48\linewidth}
+    %\begin{minipage}[t][150cm][t]{.999\linewidth}
+    \begin{columns}[t]
+    \begin{column}{.48\linewidth}
       \begin{block}{Introduction and Motivation}
         \begin{itemize}
         \item Construct representations. Methods available for Real Classical Lie groups:
@@ -54,24 +56,26 @@
         \item Relations between Parabolic induction and theta:\\
            \hskip2em Kudla's induction principle
         \item Question: \\
-          What is the relations between cohomological induction and theta?
+          \hskip2em 
+          What is the relations between derived functor module and theta?
         \item Agenda
           \begin{itemize}
-          \item introduce notations in left column,
-          \item give a result in the case of lifting of character.
+          \item introduce notation in left column,
+          \item give a result about the case of lifting of character 
+            in right column.
           \end{itemize}
         \end{itemize}
       \end{block}
       \vfill
       \begin{block}{Oscillator representation}
         \begin{itemize}
-        \item Fix symplectic space $W$, Heisenberg group $\mathrm{H} = W\oplus \bR$ 
+        \item Fix symplectic space $W$, define \emph{Heisenberg group} $\mathrm{H} = W\oplus \bR$ 
         \item Fix a nontrivial unitary character $\psi$ of $\bR$. 
-        \item Oscillator representation: the unqiue(up to isomorphism) unitary represntation of $H$ with centeral character $\psi$.
+        \item \emph{Oscillator representation}: the unqiue (up to isomorphism) unitary represntation of $\mathrm{H}$ with centeral character $\psi$.
         %\item These reprenstation related to simple harmonic oscillator in quantum mechanics.
-        \item This representation can extend to a representation $\omega$ of 
-          $\widetilde{\Sp(W)}\rtimes \mathrm{H}$. Where 
-          $\widetilde{\Sp(W)}$ is the unquie nontrivial double cover of the symplectic group $\Sp(W)$.
+        \item This representation can be extend to a representation $\omega$ of 
+          $\widetilde{\Sp(W)}\rtimes \mathrm{H}$, where
+          $\widetilde{\Sp(W)}$ is  the unquie nontrivial double cover of the symplectic group $\Sp(W)$.
         \end{itemize}
       \end{block}
       \vfill
@@ -81,15 +85,22 @@
         \item $G$, $G'$  are subgroups of $\Sp(W)$ act on $W$ reductively,
         \item they are mutual centralizers.
         \end{itemize}
-        Examples of irreducible real reductive dual pairs over $\bR$.
-        \begin{enumerate}[Type I]
-        \item 
-           $(\mathrm{O}(p,q), \Sp(2n,\bR))\subset \Sp(2(p+q)n,\bR)$\\
-           $(\mathrm{U}(p,q), \mathrm{U}(r,s))\subset \Sp(2(p+q)(r+s),\bR)$
-        \item  $(\GL(m,\bR),\GL(n,\bR))\subset \Sp(2nm,\bR)$\\
-          $(\GL(m,\bC),\GL(n,\bC))\subset \Sp(4nm,\bR)$
-        \end{enumerate}
-      \end{block}
+        List of irreducible real reductive dual pairs:
+       \begin{center}\small
+        \begin{tabular}{ l |lll }
+           & $G$ & $G'$ & $\Sp(W)$\\
+          \hline
+           & $\mathrm{O}(p,q)$ & $\Sp(2n,\bR))$ &$\Sp(2(p+q)n,\bR)$\\
+           Type I & $\mathrm{O}(p,\bC)$ & $\Sp(2n,\bC))$ &$\Sp(4pn,\bR)$\\
+          & $\mathrm{U}(p,q)$ & $\mathrm{U}(r,s)$ & $\Sp(2(p+q)(r+s),\bR)$\\ 
+          & $\Sp(p,q)$& $\mathrm{O}^*(n)$ & $\Sp(4n(p+q),\bR$\\
+          \hline
+          &$\GL(m,\bR)$ & $\GL(n,\bR)$& $\Sp(2nm,\bR)$\\
+         Type II &$\GL(m,\bC)$& $\GL(n,\bC))$& $\Sp(4nm,\bR)$ \\
+          &$\GL(m,\bH)$& $\GL(n,\bH))$& $\Sp(8nm,\bR)$
+        \end{tabular}
+      \end{center}
+    \end{block}
 
     \begin{block}{Theta/Howe correspondence}
       \begin{columns}
@@ -99,11 +110,12 @@
           $\widetilde{\Sp(W)}$ for any subgroup $G$ of $\Sp$.
         \item Let $\cR(\tG,\omega)$ be the set of isomorphism classes 
           of irreducible smooth representations of $\tG$,
-          which can be realized as a quotation of $\omega$ 
+          which can be realized as a quotation of $\omega$.
         \item There is a one-one correspondence $\theta$
           between $\cR(\tG,\omega)$ and $\cR(\tG',\omega)$.
-        \item This correspondence is proved by {\em Roger E. Howe}.
-        \item Howe also conjectured the general local and global global of theta correspondence.
+        \item This correspondence is proved by {\em Roger E. Howe} 
+          using invariant theory.
+        \item Howe also conjectured the general local and global theorems of theta correspondence.
   %      \item It is initialed by the studying theta series and have prefound 
       \end{itemize}
     \end{column}
@@ -113,102 +125,119 @@
   \end{columns}
 \end{block}
 
-\begin{block}{Derived functor and cohomological induction}
+\begin{block}{Derived functor}
   \begin{itemize}
      \item $\cC(\fgg,K)$: category of $(\fgg, K)$-module ($K$ compact)
       \begin{itemize}
       \item Category of $\bC$-vector spaces  with compatible $\fgg$ and $K$ action
       \item $\sspan\Set{Kv}$ is finite for any vector $v$  
       \end{itemize}
-    \item {\em Zuckerman functor}: $\Gamma_{\fgg,M}^{\fgg,K}
-      \colon \cC(\fgg,M)\to \cC(\fgg,K)$ 
+    \item \emph{Zuckerman functor}  $\Gamma_{\fgg,M}^{\fgg,K}
+      \colon \cC(\fgg,M)\to \cC(\fgg,K)$, 
       where $M\subset K$.
       \begin{itemize}
-      \item realized as taking the subspace of $K$ finite vector,
-      \item right exact.
-      \item has a analog called {\em Bernstein functor} (taking cofinite vector).
+      \item realized as taking the subspace of $K$ finite vectors,
+      \item left exact.
+      \item has a analog called {\em Bernstein functor} (taking cofinite vectors
+        , right exact).
       \end{itemize}
     \item $\Gamma^j\triangleq\left(\Gamma_{\fgg,M}^{\fgg,K}\right)^j
-      \colon \cC(\fgg,M)\to \cC(\fgg,K)$:\\
-      the $j$-th derived functor of $\Gamma$.
-    \item $\Gamma^j$ can be realized as $H^j(\fkk,M; \_ \otimes \mathcal{H}(K))$
+      \colon \cC(\fgg,M)\to \cC(\fgg,K)$: \\
+      the $j$-th right derived functor of $\Gamma$.
+    \item $\Gamma^j$ can be realized on $H^j(\fkk,M; \underline{\hskip1em} \otimes \mathcal{H}(K))$.
     \end{itemize}
 \end{block}
-\vfill
-\end{minipage}
-\begin{minipage}[t]{.48\linewidth}
+\end{column}
+\begin{column}{.48\linewidth}
     \begin{block}{The main result}
       Let
       \begin{itemize}
-      \item ($G_\bC$,$G'_\bC$) be complex reductive dual pairs,
-      \item $G_1$ and $G_2$($G'_1$ and $G'_2$) 
-        be two different real form of $G_\bC$($G'_\bC$),
-     \item $K_1$,$K_2$ be maximal compact subgroups.
+      \item $(G_i,G'_i)$ $(i=1,2)$ are real reductive dual pairs.
+  %    \item ($G_\bC$,$G'_\bC$) be complex reductive dual pairs,
+      %\item $G_1$ and $G_2$($G'_1$ and $G'_2$) 
+      %  be two different real form of $G_\bC$($G'_\bC$),
+      \item $G_i$ ($G'_i$) sit in the same complexification $G_\bC$ ($G'_\bC$)
+        with commute Cartan involution,
+      \item $K_1$,$K_2$ be the corresponding maximal compact subgroups, so
+        \begin{itemize}
+        \item we can view $(\fgg, \tK_1)$-module 
+          as $(\fgg, \tK_1\cap \tK_2)$-module
+        \item $\left(\Gamma_{\fgg,\tK_1\cap \tK_2}^{\fgg,\tK_2}\right)^j$ provide functors 
+          from $\cC(\fgg, \tK_1)$ to $\cC(\fgg,\tK_2)$.
+        \end{itemize}
      \end{itemize}
      Suppose
      \begin{itemize}
-     \item the Cartan invelotions of $G_1$ and $G_2$ commute to each other, so
-        \begin{itemize}
-        \item we can view $(\fgg, K_1)$-module as $(\fgg, K_1\cap K_2)$-module
-        \item $\left(\Gamma_{\fgg,K_1\cap K_2}^{\fgg,K_2}\right)^j$ gives a functor 
-          from $\cC(\fgg, K_1)$ to $\cC(\fgg,K_2)$.
-        \end{itemize}
-      \item $\chi_1$ and $\chi_2$ are characters of $G'_1$ and $G'_2$.
+        \item $\chi_1$ and $\chi_2$ are characters of $\tG'_1$ and $\tG'_2$.
       \item $\Gamma^j\theta(\chi_1)$ and  $\theta(\chi_2)$ 
         have same infinitesimal character
-        and both contain a same multiplicity free $K_2$-type $\tau$.
+        and both contain a same multiplicity free $\tK_2$-type $\tau$.
       \end{itemize}
       Then 
-      $\Gamma^j\theta(\chi_1)$ and $\theta(\chi_2)$ 
-      have an isomorphic subquotion contains  $K_2$-type $\tau$.
+      $\Gamma^j\theta(\chi_1)$ and 
+      has a subquotion isomorphic to $\theta(\chi_2)$.
     \end{block}
     
-    \begin{block}{See-saw pair and  joint action of $\cuu(\fgg)^H$ 
-and $\cuu(\fhh')^{G'}$}
+    \begin{block}{See-saw pair and  joint action of $\cuu(\fgg)^\tH$ 
+and $\cuu(\fhh')^{\tG'}$}
+
 
 Consider following See-Saw pair:
-\[
+\vskip.5ex
+\begin{minipage}[t]{0.65\textwidth}
+$
 \xymatrix{
-\rho(\sigma)& G \ar@{-}[dr] & H'& \rho(\tau)\\
-\tau &H\ar@{-}[ur] & G' & \sigma
+\hskip4em\Omega(\sigma)& G \ar@{-}[dr] & H'& \Omega(\tau)\hskip4em\\
+\cR(\tH,\omega) \ni \tau &H\ar@{-}[ur] & G' & \sigma  \in \cR(\tG',\omega)
 }
-\]
-where $H < G$, $H'> G'$, $\sigma\in R(\omega, G')$ and  $\tau\in R(\omega,H)$.
+$
+\end{minipage}
+\begin{minipage}[t]{0.3\textwidth}\small
+$H < G$,  $H'> G'$,\\
+$\Omega(\tau)$ and $\Omega(\sigma)$\\ are Howe quotients
+\end{minipage}
+\vskip.5ex
 Then:
 \[
-\Hom_{H}(\rho(\sigma), \tau) 
-\cong  \Hom_{H\times G'}(\omega, \tau\otimes \sigma)
-\cong  \Hom_{G'}(\rho(\tau), \sigma)
+\Hom_{\tH}(\Omega(\sigma), \tau) 
+\cong  \Hom_{\tH\times \tG'}(\omega, \tau\otimes \sigma)
+\cong  \Hom_{\tG'}(\Omega(\tau), \sigma)
 \]
 
 Observation:
 \begin{itemize}
-\item $\cuu(\fgg)^H$ and $\cuu(\fhh')^{G'}$ 
-  have a joint action on $\Hom_{H\times G'}(\omega,\tau\otimes\sigma)$,
-\item $\displaystyle \omega(\cuu(\fgg)^H) = \omega(\cuu(\fhh')^{G'})$.
+\item $\cuu(\fgg)^\tH$ and $\cuu(\fhh')^{\tG'}$ 
+  have a joint action on $\Hom_{\tH\times \tG'}(\omega,\tau\otimes\sigma)$,
+\item $\displaystyle \omega(\cuu(\fgg)^\tH) = \omega(\cuu(\fhh')^{\tG'})$.
 \end{itemize}
 
-So we have the Key fact: $\cuu(\fgg)^H$ on $\Hom_H(\rho(\sigma),\tau)$ and $\cuu(\fhh')^{G'}$  action on $\Hom_{G'}(\rho(\tau),\sigma)$ essentially determine each other.
+\emph{Key fact:} the $\cuu(\fgg)^\tH$ action on $\Hom_\tH(\Omega(\sigma),\tau)$ and the $\cuu(\fhh')^{\tG'}$  action on $\Hom_{\tG'}(\Omega(\tau),\sigma)$ determine  each other.
 \end{block}
 
 \begin{block}{A surjectivity theorem by Helgason}
-  Suppose that $\fgg$ be a complex classical Lie algebra.  
-  $\fgg = \fkk+\fpp$ under a involution. 
-  Let $\chi$ be a character of $\fkk$.
-  Let $\cjj = \Ker(\chi|_{\cuu(\fkk)})$.
-  Then the following map is surjective:
+  Let $\fgg$ be a complex classical Lie algebra.  
+  $\fgg = \fkk+\fpp$ decomposed under a involution. 
+  $\chi$ is a character of $\fkk$.
+   Then the following map is surjective:
   \[
-  \czz(\fgg) \to \cuu(\fgg)^\fkk/(\cjj\cuu(\fgg)\cap\cuu(\fgg)^\fkk)
+  \czz(\fgg) \to \cuu(\fgg)^\fkk/(\Ker(\chi|_{\cuu(\fkk)})\cuu(\fgg)\cap\cuu(\fgg)^\fkk)
   \]
 \end{block}
 
 \begin{block}{Sketch of the proof}
-  Note that $\cuu(\fgg)^{K_2}$ action commute with the derived functor. 
-  The surjectivity theorem will imply that the $\cuu(\fgg)^{K_2}$ action is determine by
-  infinitesimal character via the joint action.
-  Then the result is clear by  comparing the $\cuu(\fgg)^{K_2}$ action on $\tau$
-  and the well-known fact that $\cuu(\fgg)^{K_2}$ action determines the 
-  irreducible representation by Harish-Chandra.
+  \begin{itemize}
+  \item 
+  Note that $\cuu(\fgg)^{\tK_2}$ action commute with the derived functor.
+\item 
+  The surjectivity theorem will imply that the $\cuu(\fgg)^{\tK_2}$ action is determine by
+  infinitesimal characters via above joint action.
+\item Use the well-known theorem by Harish-Chandra: $\cuu(\fgg)^{K}$ action on a $K$-isotypic space determines the  irreducible $G$-representation.
+\item 
+  The main result follows by comparing the $\cuu(\fgg)^{\tK_2}$ action on $\tau$.
+\end{itemize}
+% 
+%  and the well-known fact that $\cuu(\fgg)^{K_2}$ action determines the 
+%  irreducible representation by Harish-Chandra.
 \end{block}
 
 \begin{block}{Examples}
@@ -221,12 +250,11 @@ So we have the Key fact: $\cuu(\fgg)^H$ on $\Hom_H(\rho(\sigma),\tau)$ and $\cuu
       $\Sp(2n,\bR)$.Then 
       \[
       \displaystyle
-      \Gamma_{p,q}(\theta^{0,m}(1)) \cong \theta^{p,q}(1^{\xi,\eta}),\]
-      where $
-      \xi \equiv r-q, \eta\equiv s-p \pmod{2}$,
+      \Gamma_{p,q}(\theta^{0,m}(1)) \cong \theta^{p,q}(1^{\xi,\eta}).\]
+      Here $ \xi \equiv r-q, \eta\equiv s-p \pmod{2}$,
       $1^{\xi,\eta}$ is the character of $O(p,q)$
       whose restriction on $O(p)\times O(q)$ is
-      $\det^\xi\otimes \det^\eta$. 
+      $\det^\xi\otimes \det^\eta$ and
       $\Gamma_{p,q}\theta^{0,m}(1)$ is certain submodule of
       \[
       \left(\Gamma_{\sp(2n),U(r)\times U(s)}^{\sp(2n),
@@ -235,13 +263,12 @@ So we have the Key fact: $\cuu(\fgg)^H$ on $\Hom_H(\rho(\sigma),\tau)$ and $\cuu
     \end{block}
  
      \begin{block}{Further Directions}
-       \begin{minipage}{\textwidth}
          \begin{itemize}
-           \item Find the examples and results like above for representations other than characters.
-           \item Find a explicit intertwining map for above isomorphism.
+           \item  Find the examples and similar results 
+             for represetations other than characters.
+           \item Find a explicit intertwining map of above isomorphism.
            \item Find applications of above theorem.
          \end{itemize}
-       \end{minipage}
      \end{block}
 
      
@@ -249,8 +276,9 @@ So we have the Key fact: $\cuu(\fgg)^H$ on $\Hom_H(\rho(\sigma),\tau)$ and $\cuu
 %        \bibliographystyle{plain} 
 %        \bibliography{bib/reppapers}{} 
 %      \end{block}
-
- \end{minipage}
- \end{frame}
+   \end{column}
+ \end{columns}
+%\end{minipage}
+\end{frame}
 
 \end{document}
