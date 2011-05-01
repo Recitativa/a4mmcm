@@ -33,7 +33,7 @@
 \setbeamercolor{author in headline}{fg=gray}
 \setbeamercolor{institute in headline}{fg=gray}
 \setbeamercolor{logo in headline}{fg=black,bg=gray}
-\setbeamercolor{separation line}{bg=i6colorscheme1}
+\setbeamercolor{separation line}{bg=gray}
 
 % footline colors and fonts
 \setbeamercolor{footline}{fg=gray,bg=white}
@@ -87,56 +87,35 @@
   \end{beamercolorbox}
 }
 
+%\setlength{\headsep}{-10ex}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \setbeamertemplate{headline}{  
   \leavevmode
+  \vskip1ex
   \begin{beamercolorbox}[wd=\paperwidth]{headline}
-    \begin{columns}[T]
-      \begin{column}{.02\paperwidth}
-        \begin{center}
-          %\includegraphics[width=.6\linewidth]{logos/i6-hks44}
-        \end{center}
-        \vskip1ex
-      \end{column}
-      \begin{column}{.675\paperwidth}
-        \vskip4ex
+      \begin{minipage}[b]{.23\paperwidth}
+        \mbox{}
+      \end{minipage}
+      \begin{minipage}[b][4.5cm][b]{0.5\paperwidth}
         \begin{center}
           \usebeamercolor{title in headline}{\color{fg}\textbf{\LARGE{\inserttitle}}\\[1ex]}
           \usebeamercolor{author in headline}{\color{fg}\large{\insertauthor}\\[1ex]}
           \usebeamercolor{institute in headline}{\color{fg}\large{\insertinstitute}\\[1ex]}     
         \end{center}
-      \end{column}
-      vfill
-      \begin{column}{.25\paperwidth}
-        \vskip1cm
+      \end{minipage}
+      \begin{minipage}[b][4.5cm][b]{.23\paperwidth}
+        \vfill
         \begin{center}
-          \includegraphics[width=.5\linewidth]{NUS_logo_keyline.pdf}
+          \includegraphics[width=.65\linewidth]{NUS_logo_keyline.pdf}
         \end{center}
-        \vskip1.5cm
-      \end{column}
-      \begin{column}{.03\paperwidth}
-      \end{column}
-    \end{columns}
-  \end{beamercolorbox}
-  
-%%      \begin{beamercolorbox}[sep=0.1cm,wd=.1\paperwidth,center]{logo in headline}
-%%        \vskip2ex
-%%      \end{beamercolorbox}  
-%%      \begin{beamercolorbox}[sep=1cm,wd=.7\paperwidth]{headline}
-%%        \usebeamercolor{title in headline}{\raggedright\color{fg}\textbf{\LARGE{\inserttitle}}\\[1ex]}
-%%        \usebeamercolor{author in headline}{\raggedright\color{fg}\large{\insertauthor}\\[1ex]}
-%%        \usebeamercolor{institute in headline}{\raggedright\color{fg}\large{\insertinstitute}\\[1ex]}     
-%%      \end{beamercolorbox}%
-%%      \begin{beamercolorbox}[sep=0.1cm,wd=.18\paperwidth,center]{logo in headline}
-%%        \includegraphics[height=5cm]{logos/rwth-hks44}
-%%        \vskip2ex
-%%      \end{beamercolorbox}  
-%%    \end{beamercolorbox}
-  
-  \begin{beamercolorbox}[wd=\paperwidth]{lower separation line head}
-    \rule{0pt}{2pt}
-  \end{beamercolorbox}
-}
+      \end{minipage}
+    \end{beamercolorbox}
+  %  \vskip1ex
+ %   \begin{beamercolorbox}[wd=\paperwidth]{lower separation line head}
+ %     \rule{0pt}{2pt}
+ %   \end{beamercolorbox}
+  }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \setbeamertemplate{footline}{
@@ -155,9 +134,8 @@
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \mode<all>
-
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Local Variables: 
