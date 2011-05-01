@@ -37,9 +37,14 @@
 
 \begin{document}
   \begin{frame}
+
+
   \begin{columns}
     \begin{column}{.49\textwidth}
-
+      \begin{beamercolorbox}[center,wd=\textwidth]{postercolumn}
+        \begin{minipage}[T]{.95\textwidth}  % tweaks the width, makes a new \textwidth
+          \parbox[t]{\textwidth}{ % must be some better way to set 
+ 
       \begin{block}{Introduction and Motivation}
         \begin{itemize}
         \item Construct representations. Methords available for Real Classical Lie groups:
@@ -136,8 +141,19 @@
     \item $\Gamma^j$ can be realized as $H^j(\fkk,M; \_ \otimes \mathcal{H}(K))$
     \end{itemize}
 \end{block}
+
+        }
+        \end{minipage}
+      \end{beamercolorbox}
 \end{column}
-  \begin{column}{.49\textwidth}
+
+ \begin{column}{.49\textwidth}
+
+   \begin{beamercolorbox}[center,wd=\textwidth]{postercolumn}
+        \begin{minipage}[T]{.95\textwidth}  % tweaks the width, makes a new \textwidth
+          \parbox[t]{\textwidth}{ % must be some better way to set 
+ 
+  
     \begin{block}{The main result}
       Let
       \begin{itemize}
@@ -244,13 +260,16 @@ So we have the Key fact: $\cuu(\fgg)^H$ on $\Hom_H(\rho(\sigma),\tau)$ and $\cuu
        \end{minipage}
      \end{block}
 
-     \vfill
+     
  %     \begin{block}{Bibliography}
 %        \bibliographystyle{plain} 
 %        \bibliography{bib/reppapers}{} 
 %      \end{block}
-    \end{column}
-  \end{columns}
+   }
+ \end{minipage}
+\end{beamercolorbox}
+\end{column}
+\end{columns}
  \end{frame}
 
 \end{document}
