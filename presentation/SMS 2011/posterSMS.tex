@@ -42,7 +42,7 @@
     \begin{column}{.48\linewidth}
       \begin{block}{Introduction and Motivation}
         \begin{itemize}
-        \item Construct representations. Methods available for Real Classical Lie groups:
+        \item Construct representations for real classical groups:
           \begin{itemize}
           \item Parabolic induction
           \item Cohomological induction / Derived Functor
@@ -53,7 +53,7 @@
           \item Signature character for cohomological induction,
           \item Theta lifting in stable range preserves the untarity.
           \end{itemize}
-        \item Relations between Parabolic induction and theta:\\
+        \item Relations between parabolic induction and theta:\\
            \hskip2em Kudla's induction principle
         \item Question: \\
           \hskip2em 
@@ -69,12 +69,12 @@
       \vfill
       \begin{block}{Oscillator representation}
         \begin{itemize}
-        \item Fix symplectic space $W$, define \emph{Heisenberg group} $\mathrm{H} = W\oplus \bR$ 
+        \item Fix a symplectic space $W$, define \emph{Heisenberg group} $\mathrm{H} = W\oplus \bR$.
         \item Fix a nontrivial unitary character $\psi$ of $\bR$. 
-        \item \emph{Oscillator representation}: the unqiue (up to isomorphism) unitary represntation of $\mathrm{H}$ with centeral character $\psi$.
+        \item \emph{Oscillator representation}: the unqiue (up to isomorphism) irreducible unitary represntation of $\mathrm{H}$ with centeral character $\psi$.
         %\item These reprenstation related to simple harmonic oscillator in quantum mechanics.
-        \item This representation can be extend to a representation $\omega$ of 
-          $\widetilde{\Sp(W)}\rtimes \mathrm{H}$, where
+        \item This representation can be extended to a representation $\omega$ of 
+          $\widetilde{\Sp(W)}\ltimes \mathrm{H}$, where
           $\widetilde{\Sp(W)}$ is  the unquie nontrivial double cover of the symplectic group $\Sp(W)$.
         \end{itemize}
       \end{block}
@@ -82,8 +82,8 @@
       \begin{block}{Reductive dual pairs}
         $(G,G')$ called a \emph{reductive dual pair} in $\Sp(W)$ if
         \begin{itemize}
-        \item $G$, $G'$  are subgroups of $\Sp(W)$ act on $W$ reductively,
-        \item they are mutual centralizers.
+        \item $G$, $G'$  are subgroups of $\Sp(W)$ and act on $W$ reductively,
+        \item $G$ is the centralizer of $G'$ in $\Sp(W)$ and vice versa. 
         \end{itemize}
         List of irreducible real reductive dual pairs:
        \begin{center}\small
@@ -106,14 +106,14 @@
       \begin{columns}
         \begin{column}{0.7\textwidth}
       \begin{itemize}
-        \item Let $\tG$ be the preimage of $G$ in the double cover 
+        \item Let $\tG$ denote the preimage of $G$ in the double cover 
           $\widetilde{\Sp(W)}$ for a subgroup $G$ of $\Sp$.
         \item Let $\cR(\tG,\omega)$ be the set of isomorphism classes 
           of irreducible smooth representations of $\tG$,
           which can be realized as a quotation of $\omega$.
         \item There is a one-one correspondence $\theta$
           between $\cR(\tG,\omega)$ and $\cR(\tG',\omega)$.
-        \item This correspondence is proved by {\em Roger E. Howe} 
+        \item This correspondence (over $\bR$) is proved by {\em Roger E. Howe} 
           using invariant theory.
         \item Howe also conjectured the general local and global theorems of theta correspondence.
   %      \item It is initialed by the studying theta series and have prefound 
@@ -127,10 +127,11 @@
 
 \begin{block}{Derived functor}
   \begin{itemize}
-     \item $\cC(\fgg,K)$: category of $(\fgg, K)$-module ($K$ compact)
+     \item $\cC(\fgg,K)$: category of admissible $(\fgg, K)$-modules ($K$ compact)
       \begin{itemize}
-      \item Category of $\bC$-vector spaces  with compatible $\fgg$ and $K$ action
-      \item $\sspan\Set{Kv}$ is finite for any vector $v$  
+      \item Category of $\bC$-vector spaces  with compatible $\fgg$ and $K$ action,
+      \item $\sspan\Set{Kv}$ is finite for any vector $v$,
+      \item each $K$-type occurs finite many times.
       \end{itemize}
     \item \emph{Zuckerman functor}  $\Gamma_{\fgg,M}^{\fgg,K}
       \colon \cC(\fgg,M)\to \cC(\fgg,K)$, 
@@ -151,13 +152,13 @@
     \begin{block}{The main result}
       Let
       \begin{itemize}
-      \item $(G_1,G'_1)$ and $(G_2,G'_2)$ are real reductive dual pairs.
+      \item $(G_1,G'_1)$ and $(G_2,G'_2)$ be real reductive dual pairs,
   %    \item ($G_\bC$,$G'_\bC$) be complex reductive dual pairs,
       %\item $G_1$ and $G_2$($G'_1$ and $G'_2$) 
       %  be two different real form of $G_\bC$($G'_\bC$),
-      \item $G_1$ and $G_2$ ($G'_1$ and $G'_2$) sit in the same complexification $G_\bC$ ($G'_\bC$)
-        with commute Cartan involutions,
-      \item $K_1$,$K_2$ be the corresponding maximal compact subgroups, so
+      \item $G_1$ and $G_2$ ($G'_1$ and $G'_2$) sit in the same complexification $G_\bC$ ($G'_\bC$),
+      \item the Cartan involutions of $G_1$ and $G_2$  commute,
+      \item $K_1$ ($K_2$) be the maximal compact subgroups of $G_1$ ($G_2$), so
         \begin{itemize}
         \item we can view $(\fgg, \tK_1)$-module 
           as $(\fgg, \tK_1\cap \tK_2)$-module
@@ -252,7 +253,7 @@ Observation:
       \Gamma_{p,q}(\theta^{0,m}(1)) \cong \theta^{p,q}(1^{\xi,\eta}).\]
       Here $ \xi \equiv r-q, \eta\equiv s-p \pmod{2}$,
       $1^{\xi,\eta}$ is the character of $O(p,q)$
-      whose restriction on $O(p)\times O(q)$ is
+      whose restriction to $O(p)\times O(q)$ is
       $\det^\xi\otimes \det^\eta$ and
       $\Gamma_{p,q}\theta^{0,m}(1)$ is certain submodule of
       \[
