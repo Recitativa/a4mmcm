@@ -1,0 +1,73 @@
+\documentclass[12pt]{article}
+\usepackage[margin=2cm]{geometry}
+\usepackage{pdfsync}
+
+\usepackage{hyperref}
+
+
+
+\usepackage{amssymb}
+\usepackage{amsmath, amsthm}
+\usepackage{graphicx}
+%\usepackage{amscd}
+\usepackage{braket}
+\usepackage{paralist}
+\usepackage{eufrak}
+%\usepackage{calrsfs}
+%\usepackage[small,nohug,heads=littlevee]{diagrams}
+%\diagramstyle[labelstyle=\scriptstyle]
+%\usepackage{diagrams}
+\usepackage[all,cmtip]{xy}
+\usepackage{diagxy}
+%\usepackage{pictexwd,dcpic}
+%\usepackage{mathrsfs}
+
+\newtheorem{thm}{Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}{Proposition}
+\newtheorem{cor}{Corollary}
+\newenvironment{expl}{\it}{\color{black}\normalsize}
+
+
+\theoremstyle{definition}
+\newtheorem{dfn}[thm]{Definition}
+\newtheorem{exam}[thm]{Example}
+
+\theoremstyle{remark}
+\newtheorem{rmk}[thm]{Remark}
+
+\include{mymaros}
+
+\title{Property about $\cuu(\fgg)^K$ action}
+
+\def\propk{{property $K$ }}
+\def\A{{\mathcal{A}}}
+\def\S{{\mathcal{S}}}
+\def\ugk{{\cuu(\fgg)^K}}
+\def\zkk{\mathcal{Z}(\fkk)}
+\begin{document}
+\maketitle
+
+\begin{dfn}
+We say a set $\S$ of representation has \propk
+ if there exist a algebra $\A$ and map 
+$\phi\colon \ugk \to \A$  
+such that the $\ugk$ action  on 
+space $\Hom_K(V,W)$ (as a right module) factor through $\phi$ where $V\in \S$ and $W$ 
+is any irreducible representation of $K$
+and $\zkk$ surjective to $\A$.
+\end{dfn}
+
+\begin{rmk}
+By noticing the following commutative diagram
+\[
+
+\]
+\end{rmk}
+
+
+\bibliography{bib/reppapers}{}
+\bibliographystyle{alpha}
+
+\end{document}
+
