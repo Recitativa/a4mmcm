@@ -183,7 +183,7 @@
 \maketitle
 
 
-
+\section{The general setting}
 
 Assume $H$ is a subgroup of $G$,
 Suppose that $V$ is a $G$ module, $W$ is a irreducible $H$ module, such that
@@ -238,33 +238,33 @@ where $H < G$, $H'> G'$.
 For representation $\sigma \in R(\omega,G')$ of $G'$, i.e. which can be realized as a quotient of
 the Weil representation $\omega$, we have
 \[
- \Omega_\omega(\sigma) = \rho(\sigma)\otimes \sigma
+ \Omega_\omega(\sigma) = \Theta(\sigma)\otimes \sigma
 \]
-for some representation $\rho(\sigma)$ of $G$ as $G\times G'$ representation.
+for some representation $\Theta(\sigma)$ of $G$ as $G\times G'$ representation.
 
 For any irreducible representation $\tau$ of $H$.
 \[
 \begin{split}
-&\Hom_{H}(\rho(\sigma), \tau)\\
-\cong & \Hom_{H\times G'}(\rho(\sigma)\otimes \sigma, \tau\otimes \sigma)
+&\Hom_{H}(\Theta(\sigma), \tau)\\
+\cong & \Hom_{H\times G'}(\Theta(\sigma)\otimes \sigma, \tau\otimes \sigma)
 \cong  \Hom_{H\times G'}(\omega/\cnn_\sigma, \tau\otimes \sigma)\\
 \cong & \Hom_{H\times G'}(\omega, \tau\otimes \sigma)\\
 \cong & \Hom_{H\times G'}(\omega/\cnn_\tau, \tau\otimes \sigma)
-\cong \Hom_{H\times G'}(\tau\otimes \rho(\tau), \tau\otimes \sigma)\\
-\cong & \Hom_{G'}(\rho(\tau), \sigma).
+\cong \Hom_{H\times G'}(\tau\otimes \Theta(\tau), \tau\otimes \sigma)\\
+\cong & \Hom_{G'}(\Theta(\tau), \sigma).
 \end{split}
 \]
 
-Again assume $\dim \Hom_{H}(\rho(\sigma),\tau) = 1$.
-Since $\rho(\sigma)$ is $\fgg$ module,  $\cuu(\fgg)^H$ act 
-on $\Omega_{\rho(\sigma),\tau} \cong \tau$ via character $c_{\rho(\sigma),\tau}$.
-Similary, since we have $\dim \Hom_G'(\rho(\tau),\sigma) = 1$ by above,
-$\cuu(\fhh')^{G'}$ action on $\Omega_{\rho(\tau),\sigma}\cong \sigma$
-via $c_{\rho(\tau),\sigma}$.
+Again assume $\dim \Hom_{H}(\Theta(\sigma),\tau) = 1$.
+Since $\Theta(\sigma)$ is $\fgg$ module,  $\cuu(\fgg)^H$ act 
+on $\Omega_{\Theta(\sigma),\tau} \cong \tau$ via character $c_{\Theta(\sigma),\tau}$.
+Similary, since we have $\dim \Hom_G'(\Theta(\tau),\sigma) = 1$ by above,
+$\cuu(\fhh')^{G'}$ action on $\Omega_{\Theta(\tau),\sigma}\cong \sigma$
+via $c_{\Theta(\tau),\sigma}$.
 
 {\bf Remark:}  $\cuu(\fgg)^H$ and $\cuu(\fhh')^{G'}$ 
 has a joint action on $\Hom_{H\times G'}(\omega,\tau\otimes\sigma)$ and by above 
-isomorphisms we can link the $\cuu(\fgg)^H$ action on $\Hom_H(\rho(\sigma),\tau)$ and $\cuu(\fhh')^{G'}$  action on $\Hom_G'(\rho(\tau),\sigma)$.
+isomorphisms we can link the $\cuu(\fgg)^H$ action on $\Hom_H(\Theta(\sigma),\tau)$ and $\cuu(\fhh')^{G'}$  action on $\Hom_G'(\Theta(\tau),\sigma)$.
 
 \begin{lemma}\label{lemma:ugkcorr}
 For any see-saw pair, 
@@ -279,20 +279,20 @@ and Howe's paper~\cite{Howe1989Rem}. See appendix.
 \qed
 
 \begin{lemma}
-The map $c_{\rho(\tau),\sigma}$ and $c_{\rho(\sigma),\tau}$ determine each other 
+The map $c_{\Theta(\tau),\sigma}$ and $c_{\Theta(\sigma),\tau}$ determine each other 
 and is independent of real form.
 \end{lemma}
 \proof 
 Consider following commutative digram:
 \[
 \xymatrix{
-\omega \ar[r]^{S_2} \ar[d]_{S_1}\ar[dr]^{Q} & \tau\otimes \rho(\tau)\ar[d]^{T_2}\\
-\rho(\sigma)\otimes \sigma\ar[r]_{T_1} & \tau\otimes \sigma 
+\omega \ar[r]^{S_2} \ar[d]_{S_1}\ar[dr]^{Q} & \tau\otimes \Theta(\tau)\ar[d]^{T_2}\\
+\Theta(\sigma)\otimes \sigma\ar[r]_{T_1} & \tau\otimes \sigma 
 }
 \]
 Here $T_i = \phi_i\otimes \id$.
-$\phi_1$ and $\phi_2$ are the projection map $\rho(\sigma)\to \Omega_{\rho(\sigma)}(\tau)\cong \tau$ 
-and $\rho(\tau)\to \Omega_{\rho(\tau)}(\sigma)\cong \sigma$. $S_i$ are defined similarly.
+$\phi_1$ and $\phi_2$ are the projection map $\Theta(\sigma)\to \Omega_{\Theta(\sigma)}(\tau)\cong \tau$ 
+and $\Theta(\tau)\to \Omega_{\Theta(\tau)}(\sigma)\cong \sigma$. $S_i$ are defined similarly.
 
 Note that $\omega(\cuu(\fgg)^H) = \omega(\cuu(\fhh')^{G'})$,
 for $x\in \cuu(\fgg)^H$, 
@@ -304,19 +304,20 @@ Now for any $v\otimes w\in \tau\otimes \sigma$, there is $a\in \omega$ such
 that $Q(a) = v\otimes w$.
 Hence, 
 \[
-c_{\rho(\sigma),\tau}(x) (v\otimes w )
+c_{\Theta(\sigma),\tau}(x) (v\otimes w )
 (x \cdot v)\otimes w 
 = T_1 (x S_1 (a))
 = T_1 \circ S_1 (\omega(x) a)
 = T_2 \circ S_2 (\omega(y) a)
 = v\otimes (y\cdot w).
-= c_{\rho(\tau),\sigma}(y)(v\otimes w)
+= c_{\Theta(\tau),\sigma}(y)(v\otimes w)
 \]
 \qed
 
 
+\section{The lifting of character}
 Let us consider a simple case. Suppose $(G,G')$ are reductive dual pair. 
-$V = \theta_{G', G}(\rho)$ is the theta lifting of character $\rho$ of $\tG'$.
+$V = \theta_{G', G}(\chi)$ is the theta lifting of character $\chi$ of $\tG'$.
 
 The following result is crucial, and is known by \cite{Shimura1990}, 
 \cite{Zhu2003} or \cite{Wallach1992real}:
@@ -360,11 +361,11 @@ holds by the same proof.
  \qed
 
 \begin{lemma}
-In above setting, let $V$ be a $G$ module and $W$ be a character of $H$
+In above setting, let $V$ be a $G$ module and $(\chi,W)$ be a character of $H$
 such that $\dim \Hom_H(V,W)=1$. 
 Then the $\cuu(\fgg)^H$ action on $\Omega_{V,W}$ is determined by the
 $Z(\fgg)$ action on $V$ and the  ideal $\cjj\subset \cuu(\fkk)$ of 
-$\rho$.
+$\chi$.
 \end{lemma}
 \proof
 Consider the $H$-module short exact sequence:
@@ -379,12 +380,12 @@ Hence $c_{V,W}(x) = c_{V,W}(z)$.
 \qed
 
 \begin{thm}\label{thm:ugkcor}
-Let $\sigma \in R(G', \omega)$ be a character of $G'$. 
+Let $\chi \in R(G', \omega)$ be a character of $G'$. 
 Suppose that $\tau \in R(H, \omega)$ such that 
-$\dim \Hom_{H}(\rho(\sigma),\tau) = 1$.
-Then the $\cuu(\fgg)^H$ action on $\Omega_{\rho(\sigma),\tau}$ 
+$\dim \Hom_{H}(\Theta(\chi),\tau) = 1$.
+Then the $\cuu(\fgg)^H$ action on $\Omega_{\Theta(\chi),\tau}$ 
 is determined by the infinitesimal character of $\tau$ and annilater ideal 
-$\cjj = \Ker(\sigma)|_{\cuu(\fgg')}$  
+$\cjj = \Ker(\chi)|_{\cuu(\fgg')}$  
 \end{thm}
 \proof
 By Lemma~\ref{lemma:ugkcorr}, 
@@ -396,8 +397,8 @@ $x'-z' \in \cjj\cuu(\fhh')$ by Lemma~\ref{lemma:scalerk}.
 Then again by Lemma~\ref{lemma:ugkcorr}, we can find 
 $z\in \czz(\fkk)$
 such that $\omega(z) = \omega(z')$.
-%So $x$ action on $\Omega_{\rho(\sigma),\tau}$ is same as $z$ action on $\tau$.
-Hence, $c_{\rho(\sigma),\tau}(x) = \chi_{\tau}(z)$, 
+%So $x$ action on $\Omega_{\Theta(\sigma),\tau}$ is same as $z$ action on $\tau$.
+Hence, $c_{\Theta(\sigma),\tau}(x) = \chi_{\tau}(z)$, 
 where $\chi_{\tau}$ is the infinitesimal character of $\tau$.
 \qed
 
@@ -462,34 +463,39 @@ module and $G$ module, the result is clear.
   Let $\Gamma = \Gamma_{H\cap \ckK}^{\ckK}$.
   Suppose 
   \begin{enumerate}[(1)]
-  \item $\sigma_i$ is a character of $G_i'$, where $i=1,2$. 
-  \item  Let $\cjj_1 = \Ker(\sigma|_{\cuu(\fgg')}) \subset \cuu{\fgg'}$.
+  \item $\chi_1$ and $\chi_2$ are characters of $G$ and $\ckG$ respectively.
+  \item  Let $\cjj_i = \Ker(\chi_i|_{\cuu(\fgg')}) \subset \cuu(\fgg')$.
     $\cjj_1 = \cjj_2$.
-  \item $\tau_1$ is a $K_1$-module such that
-    $\dim \Hom_{H_1}(\rho(\sigma_1),\tau_1) = 1$.
-  \item $\tau_2$ is a $K_2$-module occure in the
-    image of map $\Gamma^i \rho(\sigma_1) \to \Gamma^i \tau$ 
+  \item $\tau$ is a $H$-module such that
+    $\dim \Hom_{H}(\Theta(\chi_1),\tau_1) = 1$.
+  \item $\mu$ is a $\ckK$-module occure in the
+    image of map $\Gamma^i \Theta(\sigma_1) \to \Gamma^i \tau_1$ 
     such that 
-    $\dim \Hom_{H_2}(\rho(\sigma_2),\tau_2) =1$.
+    $\dim \Hom_{\ckK}(\Theta(\sigma_2),\tau_2) =1$.
   \end{enumerate}
-  Then $\Gamma^i \rho(\sigma_1)$ and 
-  $\rho(\sigma_2)$ has a isomrophic irreducible subquotient 
-  with common $K_2$-type $\tau_2$.
+  Then $\Gamma^i \Theta(\chi_1)$ and 
+  $\Theta(\chi_2)$ has a isomrophic irreducible subquotient 
+  with common $\ckK$-type $\mu$.
 \end{cor}
 \proof
 By Lemma~\ref{lemma:derugkact2}, $\Gamma^i\pi$ has a composition component 
-with $\cuu(\fgg)^{\ckK}$ action on $\mu$ component via $c_{\rho(\sigma),\tau}$.
+with $\cuu(\fgg)^{\ckK}$ action on $\tau_2$ component via $c_{\Theta(\chi_1),\tau_1}$.
 By Theorem~\ref{thm:ugkcor}, for any $x\in \cuu(\fgg)^{\ckK}$, 
-we can find $z\in Z(\fkk)$ such that $c_{\rho(\sigma),\tau}(x) = \chi_\tau(z)$.
-On the other hand, $x$ act on $\mu$ isotropic space of $\rho(\csigma)$ 
-is by $c_{\rho(\csigma),\mu}(x) = \chi_\mu(z)$.
+we can find $z\in Z(\fkk)$ such that $c_{\Theta(\chi_1),\tau}(x) = \chi_{\tau}(z)$.
+On the other hand, $x$ act on $\mu$ isotropic space of $\Theta(\chi_2)$ 
+is by $c_{\Theta(\chi_2),\mu}(x) = \chi_\mu(z)$.
 Since the derived functor preserve the infinitesimal character, 
 \[
-c_{\rho(\sigma),\tau}(x) = \chi_\tau(z) = \chi_\mu(z)=c_{\rho(\csigma),\mu}(x).
+c_{\Theta(\chi_1),\tau}(x) = \chi_\tau(z) = \chi_\mu(z)=c_{\Theta(\chi_2),\mu}(x).
 \]
 So by the equivalence of categories
 the result follows.  
 \qed
+
+
+\section{Lifting of Lowest Weight Module}
+Now we consider the transfer of the theta lifting of lowest weight modules.
+Would like to prove that the transfer of theta lifting of lowest weight module is again a theta 
 
 \appendix
 \section{Remarks of models of oscillate representation}
