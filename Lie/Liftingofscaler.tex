@@ -62,6 +62,7 @@
 \def\kk{{\mathfrak{k}}}
 \def\pp{{\mathfrak{p}}}
 \def\qq{{\mathfrak{q}}}
+\def\mm{{\mathfrak{m}}}
 \def\sP{\mathcal{P}}
 \def\sH{\mathcal{H}}
 \def\sU{\mathcal{U}}
@@ -443,6 +444,7 @@ module and $G$ module, the result is clear.
 
 \def\ckG{\check{G}}
 \def\ckK{\check{K}}
+\def\ckM{\check{M}}
 \def\csigma{\check{\sigma}}
 \def\cfkk{\check{\fkk}}
 \begin{cor}
@@ -494,8 +496,28 @@ the result follows.
 
 
 \section{Lifting of Lowest Weight Module}
-Now we consider the transfer of the theta lifting of lowest weight modules.
-Would like to prove that the transfer of theta lifting of lowest weight module is again a theta 
+I would like to prove that the transfer of theta lifting of some module is again a theta lifting of same module of same group to different pairs. 
+This includes the case of lifting of lowest weight module.
+
+Let $\mu$ be a irreducible representation of $\ckK$ and $L(\mu)$ be the represntation of theta lifing of $\mu$ to $\ckM'$.
+
+Suppose that $\sigma$ is a $G'$ quotient of $L(\mu)$.
+Suppose $(\ckG,\ckG')$ is another real form.
+$L(\mu)$ has non-zero lifting from $\ckM'$, and $\theta(L(\mu))$ has non-zero cohomology. There is a integer $r$, such that 
+$\Gamma^r\theta(L(\mu)) \cong \mu$.
+In fact the minimal integer such that $\Gamma^i\theta(L(\mu))$ non-zero will do.
+
+Then
+$\Gamma^r\Theta_{G}(\sigma)$ has a subquotient isomorphic to a subquotient of 
+$\Theta_{\ckG}(\sigma)$ with same $\ckK$ type $\mu$.
+
+\proof
+Fix $\gg$,$\gg'$, $\kk$ and $\mm$ in $\sp$. Fix a real from $\sp_0$,
+such that $\gg\cap \sp_0 = \gg_0$. There is a inner automorphism $\iota(X) = cXc^{-1}$ of $\Sp$ such
+that $\iota$ presever all complex algebra, but $\gg \cap \iota \sp_0=\check{\gg}_0$.
+\qed
+ 
+
 
 \appendix
 \section{Remarks of models of oscillate representation}
