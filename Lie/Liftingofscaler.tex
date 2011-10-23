@@ -499,9 +499,9 @@ the result follows.
 I would like to prove that the transfer of theta lifting of some module is again a theta lifting of same module of same group to different pairs. 
 This includes the case of lifting of lowest weight module.
 
-Let $\mu$ be a irreducible representation of $\ckK$ and $L(\mu)$ be the represntation of theta lifing of $\mu$ to $\ckM'$.
 
-Suppose that $\sigma$ is a $G'$ quotient of $L(\mu)$.
+
+Suppose that 
 Suppose $(\ckG,\ckG')$ is another real form.
 $L(\mu)$ has non-zero lifting from $\ckM'$, and $\theta(L(\mu))$ has non-zero cohomology. There is a integer $r$, such that 
 $\Gamma^r\theta(L(\mu)) \cong \mu$.
@@ -511,10 +511,27 @@ Then
 $\Gamma^r\Theta_{G}(\sigma)$ has a subquotient isomorphic to a subquotient of 
 $\Theta_{\ckG}(\sigma)$ with same $\ckK$ type $\mu$.
 
+
+Let $\mu$ be a irreducible representation of $K$ and $L(\mu)$ be the
+represntation of theta lifing of $\mu$ to $M'$.  First, I assume the
+occurence condition:
+\begin{enumerate}[(i)]
+\item $\sigma$ is a $G'$ quotient of $L(\mu)$;
+\item $\sigma$ occur in both of $(G_i,G')$ ($(i=1,2)$);
+\item 
+\end{enumerate}
+
 \proof
-Fix $\gg$,$\gg'$, $\kk$ and $\mm$ in $\sp$. Fix a real from $\sp_0$,
-such that $\gg\cap \sp_0 = \gg_0$. There is a inner automorphism $\iota(X) = cXc^{-1}$ of $\Sp$ such
-that $\iota$ presever all complex algebra, but $\gg \cap \iota \sp_0=\check{\gg}_0$.
+Fix $\gg$,$\gg'$, $\kk$ and $\mm$ in $\sp$. 
+Note that 
+\[
+\omega(U(\mm))^{G'}= \omega(U(g)^K) 
+\]
+is independent of real form. 
+$\sigma$ has non-zero lifting since $L(\mu)$ has nonzero quotient to $\sigma$.
+The $U(g)^K$ action on $Hom_K(\Theta(sigma),\mu)$ is determined by $U(\mm)^{G'}$
+same as $Hom_K(\Gamma^i\Theta(\sigma),\Gamma^i\Theta(L(\mu))$.
+
 \qed
  
 
