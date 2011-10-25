@@ -4,6 +4,8 @@
 
 \usepackage{hyperref}
 
+\usepackage{bbold}
+
 \usepackage{amssymb}
 \usepackage{amsmath, amsthm}
 \usepackage{graphicx}
@@ -25,6 +27,7 @@
 \newtheorem{thm}[lemma]{Theorem}
 \newtheorem{prop}[lemma]{Proposition}
 \newtheorem{cor}[lemma]{Corollary}
+\newtheorem{eg}[lemma]{Example}
 \newenvironment{expl}{\it}{\color{black}\normalsize}
 \DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
 
@@ -62,7 +65,9 @@
 \def\kk{{\mathfrak{k}}}
 \def\pp{{\mathfrak{p}}}
 \def\qq{{\mathfrak{q}}}
+\def\oo{{\mathfrak{o}}}
 \def\mm{{\mathfrak{m}}}
+\def\uu{{\mathfrak{u}}}
 \def\sP{\mathcal{P}}
 \def\sH{\mathcal{H}}
 \def\sU{\mathcal{U}}
@@ -507,19 +512,36 @@ $L(\mu)$ has non-zero lifting from $\ckM'$, and $\theta(L(\mu))$ has non-zero co
 $\Gamma^r\theta(L(\mu)) \cong \mu$.
 In fact the minimal integer such that $\Gamma^i\theta(L(\mu))$ non-zero will do.
 
+
+\begin{thm}
+Let $\mu$ be a irreducible representation of $K$ and $L(\mu)$ be the
+represntation of theta lifing of $\mu$ to $M'$. 
+
+Fix following data:
+\begin{enumerate}[(a)]
+\item a complex dual pair $\gg,\gg'$ in $\sp$;
+\item two commuting involuton $\tau, \check{\tau}$ of $\sp$ preserve $\gg$
+  and $\gg'$;
+\end{enumerate}
+Now let
+\begin{enumerate}[(a)]
+\item $\kk = \gg^{\tau}$;
+\item $\mm$ be the dual of $\kk$ in $\sp$;
+\item $G,G',K,M$ be the real form of $\gg,\gg',\kk,\mm$ with cartan involution $\tau$
+\item $\check{G},\check{G}',\check{K},\check{M}$ be the real form of $\gg,\gg',\kk,\mm$ with cartan involution 
+$\tau_2$(note that $\check{K}$ is not compact).
+\end{enumerate}
+ 
+Now assume the
+occurence condition:
+\begin{enumerate}[(iv)]
+\item $\sigma$ is a $G'$ quotient of $L(\mu)$;
+\item $\sigma$ occur in both of pairs $(G_i,G')$ ($(i=1,2)$);
+\end{enumerate}
 Then
 $\Gamma^r\Theta_{G}(\sigma)$ has a subquotient isomorphic to a subquotient of 
-$\Theta_{\ckG}(\sigma)$ with same $\ckK$ type $\mu$.
-
-
-Let $\mu$ be a irreducible representation of $K$ and $L(\mu)$ be the
-represntation of theta lifing of $\mu$ to $M'$.  First, I assume the
-occurence condition:
-\begin{enumerate}[(i)]
-\item $\sigma$ is a $G'$ quotient of $L(\mu)$;
-\item $\sigma$ occur in both of $(G_i,G')$ ($(i=1,2)$);
-\item 
-\end{enumerate}
+$\Theta_{\ckG}(\sigma)$ with same $K$ type $\mu$.
+\end{thm}
 
 \proof
 Fix $\gg$,$\gg'$, $\kk$ and $\mm$ in $\sp$. 
@@ -534,9 +556,114 @@ same as $Hom_K(\Gamma^i\Theta(\sigma),\Gamma^i\Theta(L(\mu))$.
 
 \qed
  
+\begin{eg}
+Let $V = \bC^m$, $V'= \bC^n\oplus (\bC^n)^n$,
+Take $W = V\otimes V'$. 
+Now $\gg' =\sp(n,\bC)\cong \sP^2(V')$.
+$\gg = \oo(m,\bC)\cong \sP^2(V)$.
+$\sp = \sp(nm,\bC)\cong \sP^2(W)$.
+
+Here $\sP^2(V)$ is a symmetric bi-linear form on $V\otimes V$.
+Now we have natural map 
+\[
+\phi\colon W\otimes W \to V\otimes V
+\]
+by paring $V'$. Similarly we have $\phi'\colon W\otimes W\to V'\otimes V'$
+The map $\gg\to \sp$ is given by 
+\[
+\begin{array}{ccc}
+\sP^2(V)&\to& \sP^2(V\otimes V')\\
+f &\mapsto & f\circ \phi
+\end{array}
+\]
+Similarly we can embedding $\gg'=\sP^2(V')$ into $\sp = \sP^2(W)$ by
+composing $\phi'$.
+
+\end{eg}
+
+\begin{eg}
+Let $V = \bC^m$, $V'= \bC^n\oplus (\bC^n)^n$,
+Take $W = V\otimes V'$. 
+Now $\gg' =\sp(n,\bC)\cong \sS^2(V')$.
+$\gg = \oo(m,\bC)\cong \bigwedge^2(V)$.
+$\sp = \sp(nm,\bC)\cong \sS^2(W)$.
+
+Take a basis $e_{i}$ of $V$ and dual basis $e_i^*$ (i.e. $(e_i,e_i^*)
+= 1$).  Similarly, chosee a basis $f_i$ of $V'$ such that $f_1,\cdots,
+f_n$ span a isotropic space $X$, $f_{n+1},\cdots,f_{2n}$ is the dual
+of $f_1,\cdots, f_n$ span $X^*$.  Now $f_i^*=f_{n+i}$ and $f_{n+i}^*
+=-f_i$ for $i=1,\cdots, n$.
+
+The map $\iota'\colon\gg'\to \sp$ is given by 
+\[
+\begin{array}{clccl}
+\gg'=&\sS^2(V')&\to& \sp=&\sS^2(V\otimes V')\\
+&\{v_1',v_2'\} &\mapsto & & \sum \{e_i\otimes v_1', e_i^*\otimes v_2'\}.
+\end{array}
+\]
+The map $\iota\colon\gg\to \sp$ is given by 
+\[
+\begin{array}{clccl}
+\gg=&\bigwedge^2(V)&\to& \sp=&\sS^2(V\otimes V')\\
+&[v_1 , v_2 ] &\mapsto & &\sum \{ v_1\otimes f_i, v_2\otimes f_i^*\}.
+\end{array}
+\]
+Note that above map is well defined since $(f_i^*)^*=-f_i$.
+
+Let $V_p$ be the span of $e_1,\cdots, e_p$ and $V_q$ be the span of
+$e_{p+1},\cdots, e_nm$.  Consider $\tau\colon V\to V$ defined by
+$\tau|_{V_p} = \id$ and $\tau|_{V_q}=-\id$ it induce a involution on
+$\sS^2(V)$.  Then $\tau|_{\bigwedge^2 V_p\oplus \bigwedge^2 V_q}=\id$
+and $\tau|_{V_p\otimes V_q} = -\id$.  Define $\tau\colon V'\to V'$ by
+$\tau'(f_i) = \sqrt{-1}f_{i}$ and $\tau'(f_{n+i}) =
+-\sqrt{-1}f_{n+i}$, it induce a involution on $\sS^2(V')$, clearly
+$\tau'|_{X\otimes X'}= \id$ and $\tau'|_{S^2(X)\oplus S^2(X^*)} =
+-\id$.  Now $\tau \otimes \tau'$ is a involution on $W$ and
+\begin{align*}
+  \tau\otimes\tau'|_{V_p\otimes X\oplus V_q\otimes X^*}=&\sqrt{-1}\id,\\
+  \tau\otimes\tau'|_{V_p\otimes X^*\oplus V_q\otimes
+    X}=&-\sqrt{-1}\id.
+\end{align*}
+It induce a involution on $\sS^2(W)$.  By definition, the above
+involutions commute with $\iota$ and $\iota'$.  Similarly define
+$\check{\tau}$ act by $1$ on $V_{\check{p}'}$ and $-1$ on
+$V_{\check{q}'}$, $(\check{\tau}, \tau',\check{\tau}\otimes \tau')$
+define another set of involutions commute with $\iota$ and $\iota'$.
+Clearly above set of involutions commute with previous one.
+
+Let $W$ act on $\sS[[V\otimes X]]$, with $V\otimes X$ act by multiplication
+and $V\otimes X^*$ act by differential.
+ 
+\end{eg}
+
 
 
 \appendix
+
+\section{Cartan involution and real form}
+Fix a involution $\theta$ on $\gg$.
+Let $\kk$ be the $1$-eigenspace and $\fpp$ be the $-1$-eigenspace $\theta$.
+
+To find a real form of $\gg_0$ has Cartan involution $\theta$ is to give a 
+involution $\sigma$ on $\gg$, commute with $\theta$
+and the $1$ eigenspace $\uu_0$ of $\tau = \sigma\theta$ is a compact real form
+of $\gg$.
+Take a compact real form $\uu_0$, such that $\gg = \uu_0\oplus i\uu_0$. 
+Let $\tau_0$ be the Cartan involution respect to $\uu_0$ on $\gg_\bR$.
+By Theorem~6.16 in \cite{Knapp1996Lie}:
+\begin{thm}
+Let $\gg_0$ be a real semisimple Lie algebra, let $\theta$ be
+a Cartan involution, and let $\sigma$ be any involution.
+Then there exists $\phi\in \mathrm{Int}\gg_0$ such that 
+$\phi\theta\phi^{-1}$ commutes with $\sigma$.
+\end{thm}
+we can choose $\tau_0$ commute with $\theta$.  Now $\uu_0$ is stable
+under $\theta$. Let $\kk_0 = \uu_0\cap \kk$ and $\pp_0=\uu_0\cap \pp$.
+Then $\gg_0 = \kk_0\oplus \pp_0$ is the $1$-eigenspace of $\tau_0\theta$ and is a real form of $\gg$ with Cartan
+involution $\theta$.
+$\gg_0$ is a real Lie subalgebra of $\gg$ since $\theta$ and $\tau_0$ both
+are involutions compatible with Lie structure. It is also clear by definition that $\gg_0\otimes \bC = \gg$.
+
 \section{Remarks of models of oscillate representation}
 This remarks are following Adams' notes~\cite{Adams2007} and Howe~\cite{Howe1989Rem}.
 The main point is in the examples.
@@ -551,10 +678,10 @@ And $\cuu(\sp(W))$ act on $S=\bC[[X]]$ as polynomial coeffients differential ope
 Now Take a real symplectic subspace $W_0$ of $W$ such that $(W_0)_\bC = W$. 
 We can view $\sp(W_0)$ as a real subalgebra of $\sp(W)$ act on $\bC[[X]]$. 
 
-The we can pick a symplectic basis $\Set{e_j,f_j}$ of $W_0$.  
-There is a unique (upto scaler) $0\neq v\in S$ such that $(e_j-if_j)\cdot v = 0$. 
-The $W$ invariant subspace generated by $v$
-is a model of oscillator representation of $\sp(W_0)$.
+The we can pick a symplectic basis $\Set{e_j,f_j}$ of $W_0$.  There is
+a unique (upto scaler) $0\neq v\in S$ such that $(e_j-if_j)\cdot v =
+0$.  The $W$ invariant subspace generated by $v$ is a model of
+oscillator representation of $\sp(W_0)$.
 
 \begin{lemma}
 Fix a is a pair of complex Lie algebra $(\fgg,\fgg')$ of some dual pair.
