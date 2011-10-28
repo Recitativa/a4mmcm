@@ -529,14 +529,14 @@ Now let
 \item $\mm$ be the dual of $\kk$ in $\sp$;
 \item $G,G',K,M$ be the real form of $\gg,\gg',\kk,\mm$ with cartan involution $\tau$
 \item $\check{G},\check{G}',\check{K},\check{M}$ be the real form of $\gg,\gg',\kk,\mm$ with cartan involution 
-$\tau_2$(note that $\check{K}$ is not compact).
+$\check{\tau}$(note that $\check{K}$ is not compact).
 \end{enumerate}
  
 Now assume the
 occurence condition:
 \begin{enumerate}[(iv)]
 \item $\sigma$ is a $G'$ quotient of $L(\mu)$;
-\item $\sigma$ occur in both of pairs $(G_i,G')$ ($(i=1,2)$);
+\item $\sigma$ occur in both of pairs $(G,G')$ and $(\check{G},\check{G'})$;
 \end{enumerate}
 Then
 $\Gamma^r\Theta_{G}(\sigma)$ has a subquotient isomorphic to a subquotient of 
@@ -547,39 +547,41 @@ $\Theta_{\ckG}(\sigma)$ with same $K$ type $\mu$.
 Fix $\gg$,$\gg'$, $\kk$ and $\mm$ in $\sp$. 
 Note that 
 \[
-\omega(U(\mm))^{G'}= \omega(U(g)^K) 
+\omega(U(\mm))^{G'}= \omega(U(g))^K 
 \]
 is independent of real form. 
 $\sigma$ has non-zero lifting since $L(\mu)$ has nonzero quotient to $\sigma$.
-The $U(g)^K$ action on $Hom_K(\Theta(sigma),\mu)$ is determined by $U(\mm)^{G'}$
+The $U(g)^K$ action on $Hom_K(\Theta(\sigma),\mu)$ is determined by $U(\mm)^{G'}$
 same as $Hom_K(\Gamma^i\Theta(\sigma),\Gamma^i\Theta(L(\mu))$.
 
 \qed
  
-\begin{eg}
-Let $V = \bC^m$, $V'= \bC^n\oplus (\bC^n)^n$,
-Take $W = V\otimes V'$. 
-Now $\gg' =\sp(n,\bC)\cong \sP^2(V')$.
-$\gg = \oo(m,\bC)\cong \sP^2(V)$.
-$\sp = \sp(nm,\bC)\cong \sP^2(W)$.
-
-Here $\sP^2(V)$ is a symmetric bi-linear form on $V\otimes V$.
-Now we have natural map 
 \[
-\phi\colon W\otimes W \to V\otimes V
+\Hom_{\gg,K}(\Theta(\theta),\theta(L(\mu))
 \]
-by paring $V'$. Similarly we have $\phi'\colon W\otimes W\to V'\otimes V'$
-The map $\gg\to \sp$ is given by 
-\[
-\begin{array}{ccc}
-\sP^2(V)&\to& \sP^2(V\otimes V')\\
-f &\mapsto & f\circ \phi
-\end{array}
-\]
-Similarly we can embedding $\gg'=\sP^2(V')$ into $\sp = \sP^2(W)$ by
-composing $\phi'$.
 
-\end{eg}
+\begin{lemma}
+Let $\mu$ be the $K$-type of lowest degree in $\Theta(\sigma)$, 
+then $\Hom_{K}(\mu,\Theta(\sigma))$ is irreducible under $\cuu(\fgg)^K$ 
+action.
+Therefore  $\Hom_{K}(\Theta(\sigma),\mu)$ is irreducible under $\cuu(\fgg)^K$ 
+\end{lemma}
+\begin{proof}
+Note that $\Theta(\sigma)$ is admissible $(\gg,K)$-module, $\Hom_K(\Theta(\sigma),\mu)$ is finite dimension.
+Hence $\Hom_{K}(\Theta(\sigma), \mu)^*\cong \Hom_{K}(\mu$
+\end{proof}
+
+\begin{lemma}
+\end{lemma}
+
+\begin{lemma}
+Suppose $\mu$ is the $K$-type of lowest degree in $\Theta(\sigma)$ and
+$\Theta(\sigma)$ is irreducible 
+then $\Hom_{g',K'}(L(\mu),\sigma)$ is irreducible as $\cuu(\mm)^{G'}$ module.
+\end{lemma}
+\begin{proof}
+By Howe's work, $\Theta(\sigma)$ has a unique irreducible 
+\end{proof}
 
 \begin{eg}
 Let $V = \bC^m$, $V'= \bC^n\oplus (\bC^n)^n$,
@@ -611,7 +613,7 @@ The map $\iota\colon\gg\to \sp$ is given by
 Note that above map is well defined since $(f_i^*)^*=-f_i$.
 
 Let $V_p$ be the span of $e_1,\cdots, e_p$ and $V_q$ be the span of
-$e_{p+1},\cdots, e_nm$.  Consider $\tau\colon V\to V$ defined by
+$e_{p+1},\cdots, e_m$.  Consider $\tau\colon V\to V$ defined by
 $\tau|_{V_p} = \id$ and $\tau|_{V_q}=-\id$ it induce a involution on
 $\sS^2(V)$.  Then $\tau|_{\bigwedge^2 V_p\oplus \bigwedge^2 V_q}=\id$
 and $\tau|_{V_p\otimes V_q} = -\id$.  Define $\tau\colon V'\to V'$ by
@@ -635,6 +637,7 @@ Let $W$ act on $\sS[[V\otimes X]]$, with $V\otimes X$ act by multiplication
 and $V\otimes X^*$ act by differential.
  
 \end{eg}
+
 
 
 
