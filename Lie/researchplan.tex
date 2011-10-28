@@ -1,0 +1,226 @@
+\documentclass{amsart}
+\usepackage{pdfsync}
+
+\usepackage[left=2cm,top=2cm,right=3cm]{geometry}
+
+\usepackage{hyperref}
+\usepackage{amssymb}
+\usepackage{amsmath, amsthm}
+\usepackage{braket}
+\usepackage{paralist}
+\usepackage{eufrak}
+\usepackage[all,cmtip]{xy}
+\usepackage{diagxy}
+
+\include{mymaros}
+
+\begin{document}
+\title{research plan}
+\author{Ma Jia jun}
+\maketitle
+
+\section{Introduction}
+In this note, I will present two topics in representation theory of
+classical groups I am working on. I will also give some possible
+questions I will study in the next several months. I will give some
+background before each section  at first.
+
+
+\section{Transfer of $K$-type, $\cuu(\fgg)^K$ action and  theta correspondence}
+The explicit constructions of representations are important questions
+in the representation theory of real reductive groups. By
+Harish-Chandra's theory, we can forces on admissible $(\fgg,K)$-module
+where $\fgg$ is the Lie algebra of real reductive group $G$ and $K$ is
+a maximal compact subgroup of $G$.  Now I introduce a sophistic
+construction is given by derived functor as following.  Let
+$\sC(\fgg,K)$ be the category of admissible $(\fgg, K)$-modules.  Let
+$M$ be a subgroup of $K$.  Zuckerman functor
+$\Gamma_{\fgg,M}^{\fgg,K}$ is the functor from $\sC(\fgg,M)$ to $
+\sC(\fgg,K)$ by taking the subspace of $K$ finite vectors of a $(\fgg,
+M)$-module.  This functor is only left exact in general.  So we can
+consider the derived functor of Zuckerman functor and it can be shown
+that there is a natural $(\fgg,K)$-module structure on
+$\left(\Gamma_{\fgg,M}^{\fgg,K}\right)^iW$ for any $W\in \sC(\fgg,K)$.
+
+For classical groups, there is another construction of representation
+called (local) theta correspondence.  
+Fix a symplectic space $W$, define
+\emph{Heisenberg group} $\mathrm{H} = W\oplus \bR$. Fix a nontrivial
+unitary character $\psi$ of $\bR$.  There is a unqiue (up to
+isomorphism) irreducible unitary represntation of $\mathrm{H}$ with
+central character $\psi$.  This representation can be extended to a
+representation $\omega$ of $\widetilde{\Sp(W)}\ltimes \mathrm{H}$,
+where $\widetilde{\Sp(W)}$ is the a nontrivial double cover of the
+symplectic group $\Sp(W)$.
+A pair of subgroup of $\Sp(W)$ called  a reductive dual pair in $\Sp(W)$ if $G$, $G'$  are subgroups of $\Sp(W)$ and act on $W$ reductively
+and they are mutual centralizer in $\Sp(W)$. 
+
+Let $\tG$ denote the preimage of $G$ in the double cover
+$\widetilde{\Sp(W)}$ for a subgroup $G$ of $\Sp$.  Let
+$\sR(\tG,\omega)$ be the set of isomorphism classes of irreducible
+smooth representations of $\tG$, which can be realized as a quotation
+of $\omega$.  Howe~\cite{Howe1989Tran} proved a one-one correspondence
+$\theta$ between $\sR(\tG,\omega)$ and $\sR(\tG',\omega)$.  This give
+a construction of representation $\theta_{G',G}(\sigma)$ of $\tG$ if one have a representation $\sigma$
+of $\tG'$. 
+
+Over last two decades, fruitful results about above two constructions has obtained. However there still a lot of open questions.
+
+\vspace{1em}
+
+My studies is initialed by following example.
+
+\begin{eg}\label{eg:wz2004}
+Let $p\leq s$, $q\leq r$ and
+$p+q=m\leq n=r+s$. 
+$\theta^{p,q}$ is the theta lifting of  from $\O(p,q)$ to $\Sp(2n,\bR)$.
+Wallach and Zhu \cite{WallachZhu2004} have shown that as $U(n)$-representation
+\[
+\Gamma_{p,q}(\theta^{0,m}(1)) \cong \theta^{p,q}(1^{\xi,\eta}),
+\]
+where $\xi \equiv r-q, \eta\equiv s-p \pmod{2}$, $1$ is the trivial representation of $\O(p,q)$, $1^{\xi,\eta}$ are certain character of $\O(p,q)$
+determined by $(\xi, \eta)$ and
+$\Gamma_{p,q}\theta^{0,m}(1)$ is certain submodule of 
+\[
+\left(\Gamma_{\sp(2n),U(r)\times U(s)}^{\sp(2n), U(r+s)}\right)^{rs-(r-q)(s-p)}\theta^{0,m}(1)
+\]
+They guess in their paper that the above isomorphism also a $(\sp(2n), U(n))$-module isomorphism?
+
+The techies I described later will confirm above guess.
+\end{eg}
+
+Let me state the theorem I obtained for this question.
+\begin{thm}\label{thm:scaler}
+  Suppose that 
+  $G_1$ and $G_2$ are two real forms of a reductive Lie algebra $\fgg$.
+  There are Cartan involutions of $G_i$ commute to each other(c.f. \cite{WallachZhu2004}).
+  $G_1'$ and $G_2'$ are two real forms of a reductive Lie algebra $\fgg'$.
+  $(G_1,G_1')$ and $(G_2,G_2')$ form reductive dual pairs.
+  Let
+  $\fgg=\fkk_i \oplus \fpp_i$ under above Cartan involution of $G_i$.
+  $K_i$ be the maximal compact subgroup of $G_i$ with Lie algebre $\fkk_i$.
+ 
+  Let $\Gamma=\Gamma_{\fgg,K_1\cap K_2}^{\fgg, K_2}$ be the Zuckerman functor
+  and $\Theta_{G'_i,G_i}(\sigma_i)$ be corresponding the Howe-quotient.
+  Suppose 
+  \begin{itemize}
+    \item $\sigma_i$ are characters of $G_i'$, where $i=1,2$. 
+  \item  $\Ker(\sigma_1|_{\cuu(\fgg')}) = \Ker(\sigma_2|_{\cuu(\fgg')}) \subset \cuu(\fgg')$.
+  \item $\tau_1$ is a $(\fkk_2,K_1\cap K_2)$-module such that
+    $\dim \Hom_{(\fkk_2,K_1\cap K_2)}(\Theta(\sigma_1),\tau_1) = 1$.
+  \item $\tau_2$ is a $K_2$-module occure in the
+    image of map $\Gamma^i \Theta(\sigma_1) \to \Gamma^i \tau$ 
+    such that 
+    $\dim \Hom_{K_2}(\Theta(\sigma_2),\tau_2) =1$.
+  \end{itemize}
+  Then $\Gamma^i \Theta(\sigma_1)$ and 
+  $\Theta(\sigma_2)$ has a isomrophic irreducible subquotient 
+  with common $K_2$-type $\tau_2$.
+\end{thm}
+
+\begin{rmk}
+It is clear that we can apply above theorem to give positive answer of Example~\ref{eg:wz2004}.
+One can find more examples in Enright et al.'s paper  \cite{Enright1985}
+though they are not presented in that way. 
+\end{rmk}
+
+The key observation is following lemma:
+\begin{lemma}\label{lem:ugk}
+  Let $(G,G')$ and $(H,M)$ are two dual pairs in $\Sp(W)$ If $H<G$ and
+  $G'<M$, we say they form a see-saw pair.  Let $\omega$ be a
+  oscillator representation of $\widetilde{\Sp(W)}$, then
+  \[
+  \omega(\cuu(\fgg)^H) = \omega(\cuu(\fhh')^{G'}).
+  \]
+  Hence for any $x\in \cuu(\fgg)^H$ we can choose $y\in
+  \cuu(\fhh')^{G'}$ such that $\omega(x) = \omega(y)$.  Moreover this
+  choice is independent of real form.
+\end{lemma}
+Combine this lemma and following well-know result of
+Helgason~\cite{Shimura1990} one can prove Theorem~\ref{thm:scaler} 
+by comparing the $\cuu(\fgg)^{K_2}$ action on $\tau_2$ isotypic component of 
+$\Gamma^i\Theta(\sigma_1)$ and $\Theta(\sigma_2)$.
+\begin{lemma}\label{lemma:scalerk}
+  Suppose that $\fgg$ be the complexification of 
+  a classical Lie algebra.
+  Consder a pair of groups $(G,H)$ where
+  $H$ is a subgroup $G$ meet all the component of $G$.
+  Moreover there is a involution, such that $\fgg=Lie(G)_\bC$ decomposite into 
+  $\fgg = \fkk+\fpp$ where 
+  $\fkk=Lie(H)_\bC$.
+  
+  Let $\sigma$ be a one-dimensional representation of $H$.
+  Let $\cjj = \Ker(\sigma|_{\cuu(\fkk)})$.
+  Then the following map is surjective:
+  \[
+  \czz(\fgg) \to \cuu(\fgg)^H/(\cjj\cuu(\fgg)\cap\cuu(\fgg)^H)
+  \]
+\end{lemma}
+
+By same argument. I also can obtain following ``meta-theorem'':
+\begin{thm}[meta-theorem]\label{thm:meta}
+  Suppose that 
+  $G_1$ and $G_2$ are two real forms of a reductive Lie algebra $\fgg$.
+  There are Cartan involutions $\tau_i$ of $G_i$ commute to each other(c.f. \cite{WallachZhu2004}).
+   $(G_1,G')$ and $(G_2,G')$ form reductive dual pairs.
+  Let
+  $\fgg=\fkk_i \oplus \fpp_i$ under involution $\tau_i$.
+  $K_i$ be the maximal compact subgroup of $G_i$ with Lie algebre $\fkk_i$.
+  $H$ be the maximal subgroup of $G$ with Lie algebra $\fkk_2$.
+  Suppose $(G_2,G', K_2,M)$ and $(G_1,G',H,M)$ form see-saw pairs. 
+  Let $\mu$ be a irreducible representation of $K_2$, $L(\mu)$ be the lifting of $\mu$ to $M$ which is a lowest weight module~\cite{Howe1989Rem}.
+  Let $\sigma$ be a irreducible representation of $G'$.
+  Assume:
+\begin{enumerate}[(i)]
+\item $\sigma$ occur in  the theta correspondence of both dual pair $(G_i,G')$;
+\item $\Gamma^r\Theta_{M,H}(L(\mu))\cong \mu$ where $\Gamma=\Gamma_{\fkk_2,K_1\cap K_2}^{\fkk,K_2}$ and $\Theta_{M,H}$ is the Howe quotient lifting from $M$ to $H$ (we use similar notation later). 
+\end{enumerate}
+Then
+$\Gamma^r\Theta_{G', G_1}(\sigma)$ has a subquotient isomorphic to a subquotient of 
+$\Theta_{G', G_2}(\sigma)$ with same $K_2$ type $\mu$.
+\end{thm}
+
+One can apply above ``meta-theorem'' to prove following theorem given in~\cite{LokeMaTang2011}. 
+Note the prove of that theorem I claimed here is different with that in above paper.
+\begin{eg}[Theorem~1.2~\cite{LokeMaTang2011}] \label{eg:loke} Suppose
+  $(p,n, r + r')$ such that $n,r+r'\geq2p$ and $\max{n,r+r'}> 2p$.
+  Let $\tau$ be a representation of $\O(r')$ and $\theta^{n,r}(\tau) =
+  \theta_{\Sp(2p,\bR),\O(n,r)}(\theta_{O(r'),\Sp(2p,\bR)}(\tau))$ be
+  the successive theta lifting of $\tau$. Let $0 < t< r$.
+
+  If $2p \leq r+r'-t$, then
+\[
+\Gamma^{pt}(\theta_p^{n,r}(\tau)) =
+  \theta_p^{n+t,r-t}(\tau)
+\]
+as $(\fso(n+r,\bC), \O(n+r)\times\O(r-t))$-modules where $\Gamma = \Gamma_{\fso(n+r,\bC),\O(n)\times \O(r)\times \O(r-t)}^{\fso(n+r,\bC),\O(n+r)\times \O(r-t)}$.
+\end{eg}
+
+{\bf Further direction:}
+As far as I know, Lemma~\ref{lem:ugk} is never applied to study the representation of classical group before. So it deserve further study.  
+
+In the point of view of Lemma~\ref{lem:ugk} and
+Theorem~\ref{thm:meta}, there should be more examples other
+than~Example~\ref{eg:wz2004} and Example~\ref{eg:loke}, at least, this
+should give the answer of the transfer of $K$-type of the theta
+lifting of lowest weight module. One main direction for my further
+study is to find more interesting examples can apply
+Theorem~\ref{thm:meta}.
+% The main difficult my be the occurrence of representations in theta
+% correspondence.
+
+Another direction is using Lemma~\ref{lem:ugk} to study the relation between 
+cohomological induction and local theta correspondence. 
+
+
+\section{Associative cycle of theta lifted module}
+The following results I presented is a joint work with Loke and Tan~\cite{lokematan2011b}.
+
+
+
+\bibliography{bib/reppapers}{}
+\bibliographystyle{alpha}
+
+
+
+\end{document}
