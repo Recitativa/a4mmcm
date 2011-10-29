@@ -23,11 +23,6 @@
 %\usepackage{mathrsfs}
 
 
-\newtheorem{lemma}{Lemma}
-\newtheorem{thm}[lemma]{Theorem}
-\newtheorem{prop}[lemma]{Proposition}
-\newtheorem{cor}[lemma]{Corollary}
-\newtheorem{eg}[lemma]{Example}
 \newenvironment{expl}{\it}{\color{black}\normalsize}
 \DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
 
@@ -68,11 +63,6 @@
 \def\oo{{\mathfrak{o}}}
 \def\mm{{\mathfrak{m}}}
 \def\uu{{\mathfrak{u}}}
-\def\sP{\mathcal{P}}
-\def\sH{\mathcal{H}}
-\def\sU{\mathcal{U}}
-\def\sC{\mathcal{C}}
-\def\sS{\mathcal{S}}
 \def\Stab{{\rm Stab}}
 \def\ad{{\rm ad}}
 \def\Ad{{\rm Ad}}
@@ -181,6 +171,8 @@
     filecolor=magenta,      % color of file links
     urlcolor=cyan           % color of external links
 }
+
+\include{mymaros}
 
 
 \title{Lifting of character}
@@ -549,39 +541,60 @@ Note that
 \[
 \omega(U(\mm))^{G'}= \omega(U(g))^K 
 \]
-is independent of real form. 
-$\sigma$ has non-zero lifting since $L(\mu)$ has nonzero quotient to $\sigma$.
-The $U(g)^K$ action on $Hom_K(\Theta(\sigma),\mu)$ is determined by $U(\mm)^{G'}$
-same as $Hom_K(\Gamma^i\Theta(\sigma),\Gamma^i\Theta(L(\mu))$.
+is independent of real form.  $\sigma$ has non-zero lifting since
+$L(\mu)$ has nonzero quotient to $\sigma$.  The $\sU(g)^K$ action on
+$Hom_K(\Theta(\sigma),\mu)$ is determined by $\sU(\mm)^{G'}$ same as
+$Hom_K(\Gamma^i\Theta(\sigma),\Gamma^i\Theta(L(\mu))$.
 
 \qed
  
-\[
-\Hom_{\gg,K}(\Theta(\theta),\theta(L(\mu))
-\]
+
+% Following lemma is from the Howe's proof of Theorem~2.1 in his paper~\cite{Howe1989Tran}. Therefore we retain his notion. 
+
+% \begin{lemma}
+% Let $\sigma'$ be the $K$-type of lowest degree in $\Theta(\rho)$, 
+% then $\Hom_{K'}(\sigma',\Theta(\rho))$ is irreducible under $\sU(\fgg')^{K'}$ 
+% action.
+% Therefore  $\Hom_{K'}(\Theta(\rho),\sigma')$ is irreducible under $\sU(\fgg')^{K'}$.
+% \end{lemma}
+% \begin{proof}
+% Note that $\sP/\sN_{\rho} =\rho\otimes \Theta(\rho)$ is a quotient of $\sZ$.
+% Let $\sigma$ be the $K$-type corresponding to $\sigma'$ in the joint harmonic.
+% Then $X=\Hom_{K\cdot K'}(\sH_{\sigma,\sigma'},\sP/\sN_{\rho}\otimes \Theta(\rho))$ has $\sU(\fgg)^K$ and $\sU(\fgg')^{K'}$
+% action and they acts  as mutual commutant since there is a simultaneous cyclic vector. 
+% We prove by contradiction.
+% Suppose $\Hom_{K'}(\sigma', \Theta(\rho))$ has  a proper $\sU(\fgg')^{K'}$-
+% submodule, then there is a proper submodule $\rho''$ of $\Theta(\rho))$
+% has non-zero $\sigma'$-isotypic component.
+% Consider $\rho' = \Theta(\rho)/\rho''$ and the corresponding quotient
+% map $\phi$. Clearly $\phi$ commute with the $\sU(\fgg')^{K'}$ action on $Z$.
+% But $\phi$ is not belongs to $\sU(\fgg)^K$. This contradiction shows 
+% $\Hom_{K'}(\sigma', \Theta(\rho))$ is a irreducible $\sU(\fgg')^{K'}$.
+
+
+% Note that $\Theta(\rho)$ is admissible $(\fgg',K')$-module, $\Hom_{K'}(\sigma',\Theta(\rho))$ is finite dimension.
+% Hence $\Hom_{K'}(\Theta(\rho), \sigma')\cong \Hom_{K'}(\sigma',\Theta(\rho))^*$
+% is an irreducible $\sU(\fgg')^{K'}$-module.
+% \end{proof}
+
+% \begin{lemma}
+% \end{lemma}
 
 \begin{lemma}
-Let $\mu$ be the $K$-type of lowest degree in $\Theta(\sigma)$, 
-then $\Hom_{K}(\mu,\Theta(\sigma))$ is irreducible under $\cuu(\fgg)^K$ 
-action.
-Therefore  $\Hom_{K}(\Theta(\sigma),\mu)$ is irreducible under $\cuu(\fgg)^K$ 
-\end{lemma}
-\begin{proof}
-Note that $\Theta(\sigma)$ is admissible $(\gg,K)$-module, $\Hom_K(\Theta(\sigma),\mu)$ is finite dimension.
-Hence $\Hom_{K}(\Theta(\sigma), \mu)^*\cong \Hom_{K}(\mu$
-\end{proof}
-
-\begin{lemma}
-\end{lemma}
-
-\begin{lemma}
-Suppose $\mu$ is the $K$-type of lowest degree in $\Theta(\sigma)$ and
-$\Theta(\sigma)$ is irreducible 
+Suppose $\mu$ is the $K$-type of lowest degree in $\Theta(\sigma)$
+$\Hom_{\fgg,K}(\Theta(\sigma),\mu)$ is irreducible $\sU(\fgg)^K$-module
 then $\Hom_{g',K'}(L(\mu),\sigma)$ is irreducible as $\cuu(\mm)^{G'}$ module.
+This is true when $\Theta(\sigma)$ has one subquotient with $K$-type $\mu$,
+especially when $\Theta(\sigma)$ is irreducible, for example $(G,G')$ is in
+stable range~\cite{Li1989}. {\color{red} Is that true from Li's work?}
 \end{lemma}
 \begin{proof}
-By Howe's work, $\Theta(\sigma)$ has a unique irreducible 
+This is clear from Lemma~\ref{lemma:ugkcorr}.
 \end{proof}
+
+\begin{lemma}
+If $L(\mu)$ has a $G'$ quotient to $\sigma$, then $\sigma$ occur in other dual pairs.  
+\end{lemma}
 
 \begin{eg}
 Let $V = \bC^m$, $V'= \bC^n\oplus (\bC^n)^n$,
