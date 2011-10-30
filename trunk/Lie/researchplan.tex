@@ -20,56 +20,59 @@
 \maketitle
 
 \section{Introduction}
-In this note, I will present two topics in representation theory of
-classical groups I am working on. I will also give some possible
-questions I will study in the next several months. I will give some
-background before each section  at first.
+In this note, I will present two topics in the representation theory of
+classical groups which I am currently  working on. I will discuses
+some results I obtained and then  give some 
+directions I will consider in the next several months. Before that I
+will also  provide some
+backgrounds at the beginning of  each section..
 
 
 \section{Transfer of $K$-type, $\cuu(\fgg)^K$ action and  theta correspondence}
 The explicit constructions of representations are important questions
 in the representation theory of real reductive groups. By
 Harish-Chandra's theory, we can forces on admissible $(\fgg,K)$-module
-where $\fgg$ is the Lie algebra of real reductive group $G$ and $K$ is
-a maximal compact subgroup of $G$.  Now I introduce a sophistic
-construction is given by derived functor as following.  Let
+where $\fgg$ is the Lie algebra of a real reductive group $G$ and $K$ is
+a maximal compact subgroup of $G$. 
+
+Now I introduce a sophistic
+construction of $(\fgg,K)$-module by derived functor as following.  Let
 $\sC(\fgg,K)$ be the category of admissible $(\fgg, K)$-modules.  Let
 $M$ be a subgroup of $K$.  Zuckerman functor
 $\Gamma_{\fgg,M}^{\fgg,K}$ is the functor from $\sC(\fgg,M)$ to $
-\sC(\fgg,K)$ by taking the subspace of $K$ finite vectors of a $(\fgg,
+\sC(\fgg,K)$ by taking the subspace of $K$ finite vectors in a $(\fgg,
 M)$-module.  This functor is only left exact in general.  So we can
 consider the derived functor of Zuckerman functor and it can be shown
-that there is a natural $(\fgg,K)$-module structure on
+that there is a natural $(\fgg,K)$-module structure on the $i$-th
+derived functor module 
 $\left(\Gamma_{\fgg,M}^{\fgg,K}\right)^iW$ for any $W\in \sC(\fgg,K)$.
 
-For classical groups, there is another construction of representation
-called (local) theta correspondence.  
+
+For classical groups, there is an alternative way to construct
+representations which is 
+via (local) theta correspondence.  
 Fix a symplectic space $W$, define
-\emph{Heisenberg group} $\mathrm{H} = W\oplus \bR$. Fix a nontrivial
-unitary character $\psi$ of $\bR$.  There is a unqiue (up to
+\emph{Heisenberg group} $\mathrm{H} = W\oplus \bR$. For any fixed nontrivial
+unitary character $\psi$ of $\bR$, there is a unqiue (up to
 isomorphism) irreducible unitary represntation of $\mathrm{H}$ with
 central character $\psi$.  This representation can be extended to a
 representation $\omega$ of $\widetilde{\Sp(W)}\ltimes \mathrm{H}$,
-where $\widetilde{\Sp(W)}$ is the a nontrivial double cover of the
+where $\widetilde{\Sp(W)}$ is a nontrivial double covering of the
 symplectic group $\Sp(W)$.
-A pair of subgroup of $\Sp(W)$ called  a reductive dual pair in $\Sp(W)$ if $G$, $G'$  are subgroups of $\Sp(W)$ and act on $W$ reductively
+A pair of subgroups of $\Sp(W)$ is called  a reductive dual pair in
+$\Sp(W)$ if $G$and $G'$  are subgroups of $\Sp(W)$  acting on $W$ reductively
 and they are mutual centralizer in $\Sp(W)$. 
-
-Let $\tG$ denote the preimage of $G$ in the double cover
+Denote $\tG$ for the preimage of $G$ in the covering group
 $\widetilde{\Sp(W)}$ for a subgroup $G$ of $\Sp$.  Let
-$\sR(\tG,\omega)$ be the set of isomorphism classes of irreducible
-smooth representations of $\tG$, which can be realized as a quotation
-of $\omega$.  Howe~\cite{Howe1989Tran} proved a one-one correspondence
+$\sR(\tG,\omega)$ be the set of infinitesimally isomorphism classes of irreducible
+smooth representations of $\tG$ which can be realized as a quotation
+of $\omega$.  Howe~\cite{Howe1989Tran} proved an one-one correspondence
 $\theta$ between $\sR(\tG,\omega)$ and $\sR(\tG',\omega)$.  This give
 a construction of representation $\theta_{G',G}(\sigma)$ of $\tG$ if one have a representation $\sigma$
 of $\tG'$. 
 
 Over last two decades, fruitful results about above two constructions has obtained. However there still a lot of open questions.
-
-\vspace{1em}
-
 My studies is initialed by following example.
-
 \begin{eg}\label{eg:wz2004}
 Let $p\leq s$, $q\leq r$ and
 $p+q=m\leq n=r+s$. 
@@ -78,15 +81,15 @@ Wallach and Zhu \cite{WallachZhu2004} have shown that as $U(n)$-representation
 \[
 \Gamma_{p,q}(\theta^{0,m}(1)) \cong \theta^{p,q}(1^{\xi,\eta}),
 \]
-where $\xi \equiv r-q, \eta\equiv s-p \pmod{2}$, $1$ is the trivial representation of $\O(p,q)$, $1^{\xi,\eta}$ are certain character of $\O(p,q)$
+where $\xi \equiv r-q, \eta\equiv s-p \pmod{2}$, $1$ is the trivial representation of $\O(p,q)$, $1^{\xi,\eta}$ are certain characters of $\O(p,q)$
 determined by $(\xi, \eta)$ and
 $\Gamma_{p,q}\theta^{0,m}(1)$ is certain submodule of 
 \[
 \left(\Gamma_{\sp(2n),U(r)\times U(s)}^{\sp(2n), U(r+s)}\right)^{rs-(r-q)(s-p)}\theta^{0,m}(1)
 \]
-They guess in their paper that the above isomorphism also a $(\sp(2n), U(n))$-module isomorphism?
+They guessed in their paper that the above isomorphism is also a $(\sp(2n), U(n))$-module isomorphism.
 
-The techies I described later will confirm above guess.
+The techniques  I described later will confirm above guess.
 \end{eg}
 
 Let me state the theorem I obtained for this question.
@@ -263,7 +266,7 @@ the graded module of $\theta(\sigma)$ from known admissible data for $\sigma$.
 
 Another direction is to relate these results with the space of
 Whittiker functional of $\theta(\sigma)$. A reasonable consideration
-is to extend the result 
+is to extend the result of irreducible highest weight modules in~\cite{Yamashita2001cayley}.
 
 \section{Conclusion}
 Form above discussion, I may get some interesting result following the plan.
