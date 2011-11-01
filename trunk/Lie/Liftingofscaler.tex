@@ -491,8 +491,8 @@ So by the equivalence of categories
 the result follows.  
 \qed
 
+\section{General setting}
 
-\section{Lifting of Lowest Weight Module}
 I would like to prove that the transfer of theta lifting of some module is again a theta lifting of same module of same group to different pairs. 
 This includes the case of lifting of lowest weight module.
 
@@ -602,7 +602,74 @@ of the group in the dual pair is compact.
 If $L(\mu)$ has a $G'$ quotient to $\sigma$, then $\sigma$ occur in other dual pairs.  
 \end{lemma}
 
-\begin{eg}
+
+\section{Lifting of Lowest Weight Module}
+Now we are consider the transfer problem of lowest weight module. 
+This is a generalization of~\cite{LokeMaTang2011}.
+
+We are considering following cases:
+
+\begin{tabular}{c|cc|cc|c}
+    & $G_1$ & $G'$ & $H$ & $M$ & $G_2$ \\
+\hline
+Case~$\bR$ & $\O(p,q)$ & $\Sp(2n,\bR)$& $\O(p,r)\times \O(q-r)$ &
+$\Sp(2n,\bR)\times \Sp(2n,\bR)$ & $\O(p+r,q)$ \\
+Case~$\bC$ & $\U(p,q)$ & $\U(l,n)$ & $\U(p,r)\times \U(q-r)$ 
+& $\U(l,n)\times \U(l,n)$ & $\U(p+r,q)$\\
+Case~$\bH$ & $\Sp(p,q)$ & $\O^*(2n)$ & $\Sp(p,r)\times \Sp(q)$ & $\O^*(2n)\times
+\O^*(2n)$
+& $\Sp(p+r,q)$
+\end{tabular}
+
+\begin{tabular}{c|cc}
+    & $G_{p,q}$ & $G'$ \\
+\hline
+Case~$\bR$ & $\O(p,q)$ & $\Sp(2n,\bR)$ \\
+Case~$\bC$ & $\U(p,q)$ & $\U(l,n)$ \\
+Case~$\bH$ & $\Sp(p,q)$ & $\O^*(2n)$ 
+\end{tabular}
+
+Let $\mu$ be a finite dimensional representation of $G_{o,r'}$, 
+let $L(\mu)$ be the theta lifting of $\mu$.
+
+We want to prove following theorem 
+\begin{thm}\label{thm:translwm}
+\[
+\Gamma^i \theta_{p,q}(L(\mu)) = \theta_{p+r,q-r}(L(\mu))
+\]
+\end{thm}
+
+Following lemma is from Zhu~\cite{ZhuHuang1997}. 
+\begin{lemma}
+Suppose that $(G,G')$ is in the stable range with $G'$ the small
+member.
+Then for any unitary character $\chi\in \hat{\tilde{G}'}(\epsilon)$, 
+$\Theta(\chi)$ is already irreducible. Thus $\Theta(\chi) =
+\theta(\chi)$ is irreducible and unitary. 
+\end{lemma}
+\begin{proof}
+When $\chi$ is trivial, this is from the Zhu's paper~\cite{Zhu1992}
+Lee and Zhu's
+work~\cite{LeeZhu1997}~\cite{LeeZhu1998}~\cite{LeeZhu2008} of 
+degenerate principle series. 
+{\color{red} In general, one should do some Orbit analysis. May by
+  Kudla and Rallis~\cite{KudlaRalis1992}}
+\end{proof}
+
+I learn following occurrence lemma is from Loke.
+\begin{lemma}
+If $G_{p,q+r'},G'$ is in stable range, $L(\mu)$ has non-vanishing
+lifting
+to $G_{p,q}$ when.
+Moreover, $\Theta(L(\mu))$ is irreducible and unitarizable.
+\end{lemma}
+\begin{proof}
+Let $\theta_{p,q+r'}(1)$
+\end{proof}
+
+
+
+\begin{eg}\label{eg:lwmO}
 Let $V = \bC^m$, $V'= \bC^n\oplus (\bC^n)^n$,
 Take $W = V\otimes V'$. 
 Now $\gg' =\sp(n,\bC)\cong \sS^2(V')$.
