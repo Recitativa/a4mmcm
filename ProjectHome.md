@@ -1,0 +1,1 @@
+Answers of the Exercises in Mathematical Methods of Classical Mechanics
